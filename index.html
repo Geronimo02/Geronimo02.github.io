@@ -23,17 +23,17 @@
     <meta name="twitter:description" content="Desarrollador web y especialista en automatizaciones">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./app/img/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="./app/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./FOTO PERFIL .png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./FOTO PERFIL .png">
     
     <link rel="stylesheet" href="./app/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="./app/js/script.js" defer></script>
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
-            <img src="./app/img/foto perfil.jpeg" alt="Foto de perfil de Geronimo Serratti" class="profile-img">
+            <img src="./FOTO PERFIL .png" alt="Foto de perfil de Geronimo Serratti" class="profile-img">
             <h1>GERONIMO SERRATTI</h1>
             
             <div class="contact-info">
@@ -401,34 +401,14 @@
             <h2>CONTACTO</h2>
             <p>¿Tenés un proyecto en mente? Hablemos sobre cómo puedo ayudarte a automatizar procesos, desarrollar tu sitio web o integrar tus sistemas.</p>
             
-            <form class="contact-form" id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Nombre <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required aria-required="true">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required aria-required="true">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="subject">Asunto <span class="required">*</span></label>
-                    <input type="text" id="subject" name="subject" required aria-required="true">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Mensaje <span class="required">*</span></label>
-                    <textarea id="message" name="message" rows="6" required aria-required="true"></textarea>
-                </div>
-                
-                <button type="submit" class="btn-submit">
-                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
-                </button>
-                
-                <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
-            </form>
+            <div class="contact-direct-actions">
+                <a href="https://wa.me/5492494589884" target="_blank" class="btn-submit">
+                    <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                </a>
+                <a href="mailto:serrattigeronimo1@gmail.com" class="btn-submit contact-email-link">
+                    <i class="fas fa-envelope"></i> Enviar email
+                </a>
+            </div>
         </section>
     </section>
 
@@ -443,7 +423,8 @@
                     <a href="#about">Sobre Mí</a>
                     <a href="#services">Servicios</a>
                     <a href="#experience">Proyectos</a>
-                    <a href="#contact">Contacto</a>
+                    <a href="./presentacion.html">Presentacion</a>
+                    <a href="https://wa.me/5492494589884" target="_blank">Contacto</a>
                 </div>
             </div>
             <div class="footer-right">
@@ -474,6 +455,5 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="./app/js/script.js"></script>
 </body>
 </html>
