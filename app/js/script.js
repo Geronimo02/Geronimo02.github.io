@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
 
     // Aplicar a todas las secciones
-    document.querySelectorAll('section').forEach(section => {
+    document.querySelectorAll('section:not(.presentation-strip)').forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
         section.style.transition = 'all 0.6s ease-out';
