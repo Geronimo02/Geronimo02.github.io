@@ -3,450 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios digitales | Geronimo Serratti</title>
-    <meta name="description" content="Desarrollo web, automatizaciones, integraciones y sistemas a medida para negocios que quieren vender mejor y ordenar su operacion.">
+    <title>Geronimo Serratti — Sistemas y Operaciones para negocios digitales</title>
+    <meta name="description" content="Ayudo a negocios digitales a ordenar Ventas y Operaciones conectando herramientas, automatizando procesos y desarrollando el software que realmente necesitan.">
     <meta name="author" content="Geronimo Serratti">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Servicios digitales | Geronimo Serratti">
-    <meta property="og:description" content="Webs, automatizaciones e integraciones pensadas para negocios reales.">
+    <meta property="og:title" content="Geronimo Serratti — Sistemas y Operaciones">
+    <meta property="og:description" content="Sistemas que trabajan sin vos. Ventas, operaciones y software a medida.">
     <meta property="og:image" content="./FOTO PERFIL .png">
+    <meta name="theme-color" content="#0B0D10">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./FOTO PERFIL .png">
     <link rel="stylesheet" href="./app/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="./app/js/script.js" defer></script>
 </head>
 <body class="presentation-page">
     <a class="skip-link" href="#main">Saltar al contenido</a>
 
     <header class="presentation-nav">
+        <span class="presentation-scroll-progress" aria-hidden="true"></span>
         <a href="./index.html" class="presentation-brand" aria-label="Volver al portfolio">
             <span>GS</span>
             <strong>Geronimo Serratti</strong>
         </a>
         <nav aria-label="Navegacion principal">
-            <a href="#servicios">Servicios</a>
-            <a href="#planes">Planes</a>
+            <a href="#problema">Problema</a>
+            <a href="#sistemas">Sistemas</a>
             <a href="#proyectos">Casos</a>
             <a href="#proceso">Proceso</a>
             <a href="#contacto">Contacto</a>
         </nav>
-        <a class="presentation-nav-cta" href="https://wa.me/5492494589884" target="_blank" aria-label="Hablar por WhatsApp">
+        <a class="presentation-nav-cta" href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20quiero%20analizar%20mi%20operaci%C3%B3n." target="_blank" rel="noopener noreferrer" aria-label="Hablar por WhatsApp">
             <i class="fab fa-whatsapp" aria-hidden="true"></i>
             Hablemos
         </a>
     </header>
 
     <main id="main">
+
+        <!-- 1. HERO -->
         <section class="presentation-hero">
-            <div class="presentation-hero-copy">
-                <p class="presentation-kicker">Desarrollo web + automatizacion</p>
-                <h1>Webs y sistemas que trabajan por tu negocio.</h1>
-                <p class="presentation-lead">Construyo sitios, automatizaciones e integraciones para captar consultas, ordenar procesos y reducir tareas manuales sin sumar complejidad.</p>
-                <div class="presentation-actions">
-                    <a href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20quiero%20consultarte%20por%20un%20proyecto%20digital." target="_blank" class="presentation-button primary">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        Consultar proyecto
-                    </a>
-                    <a href="#proyectos" class="presentation-button secondary">
-                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
-                        Ver trabajos
-                    </a>
-                </div>
+            <div class="presentation-hero-art" aria-hidden="true">
+                <span class="presentation-hero-orbit orbit-one"></span>
+                <span class="presentation-hero-orbit orbit-two"></span>
+                <span class="presentation-hero-mark">GS</span>
             </div>
+            <p class="presentation-kicker">Sistemas que trabajan sin vos</p>
+            <h1>Tu negocio <span>no debería depender de que vos estés mirando el teléfono.</span></h1>
+            <p class="presentation-lead">Ayudo a negocios digitales a ordenar Ventas y Operaciones conectando sus herramientas, automatizando procesos y desarrollando únicamente el software que realmente necesitan.</p>
+            <div class="presentation-actions">
+                <a href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20quiero%20analizar%20mi%20operaci%C3%B3n." target="_blank" rel="noopener noreferrer" class="presentation-button primary">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    Analizar mi operación
+                </a>
+                <a href="#proyectos" class="presentation-button secondary">
+                    Ver sistemas que construí
+                </a>
+            </div>
+            <p class="presentation-hero-meta">Ventas <span>·</span> Operaciones <span>·</span> Software a medida</p>
+        </section>
 
-            <div class="presentation-hero-panel" aria-label="Resumen de servicios">
-                <img src="./FOTO PERFIL .png" alt="Geronimo Serratti" class="presentation-portrait">
-                <div class="presentation-panel-card main">
-                    <span>Foco</span>
-                    <strong>Webs, apps, CRM, n8n, APIs</strong>
+        <!-- 2. EL PROBLEMA -->
+        <section id="problema" class="presentation-section">
+            <div class="presentation-problems-grid" data-reveal>
+                <div class="presentation-problem-intro">
+                    <p class="presentation-eyebrow">El problema</p>
+                    <h2>WhatsApp, Sheets, pagos y seguimiento. Todo desconectado.</h2>
+                    <p>Cuando cada herramienta vive en su mundo, el negocio depende de que alguien esté mirando todo el tiempo. El trabajo crece pero la operación no escala.</p>
                 </div>
-                <div class="presentation-panel-grid">
-                    <div>
-                        <strong>+15</strong>
-                        <span>entregas digitales</span>
-                    </div>
-                    <div>
-                        <strong>24/7</strong>
-                        <span>flujos activos</span>
-                    </div>
-                </div>
+                <ul class="presentation-problem-list">
+                    <li data-reveal data-delay="1">Consultas que llegan por WhatsApp y quedan perdidas sin seguimiento.</li>
+                    <li data-reveal data-delay="2">Clientes y pedidos administrados en varias planillas sin un lugar central.</li>
+                    <li data-reveal data-delay="3">Pagos sin registro automático ni notificaciones al equipo.</li>
+                    <li data-reveal data-delay="4">Sin visibilidad real del estado de la operación en ningún momento.</li>
+                    <li data-reveal data-delay="5">Herramientas que no se hablan entre sí y generan trabajo duplicado.</li>
+                </ul>
             </div>
         </section>
 
-        <section class="presentation-strip" aria-label="Especialidades">
-            <span>Next.js</span>
-            <span>React</span>
-            <span>TypeScript</span>
-            <span>Tailwind CSS</span>
-            <span>Supabase</span>
-            <span>Node.js</span>
-            <span>NestJS</span>
-            <span>GraphQL</span>
-            <span>n8n</span>
-            <span>WordPress</span>
-            <span>WooCommerce</span>
-            <span>GoHighLevel</span>
-            <span>Zapier</span>
-            <span>REST APIs</span>
-            <span>Webhooks</span>
-            <span>PostgreSQL</span>
-            <span>MongoDB</span>
-            <span>Redis</span>
-            <span>Docker</span>
-            <span>GitHub Actions</span>
-            <span>Vercel</span>
-            <span>AWS</span>
-            <span>Firebase</span>
-            <span>Claude API</span>
-        </section>
-
-        <section id="servicios" class="presentation-section">
-            <div class="presentation-section-heading">
-                <p class="presentation-kicker">Servicios</p>
-                <h2>Servicios claros</h2>
-                <p>No se trata solo de tener una web linda. La idea es que cada pieza digital ayude a captar, responder, ordenar o automatizar algo concreto.</p>
+        <!-- 3. SISTEMAS -->
+        <section id="sistemas" class="presentation-section">
+            <div class="presentation-section-heading" data-reveal>
+                <p class="presentation-eyebrow">Lo que construyo</p>
+                <h2>Sistemas para ordenar el negocio</h2>
+                <p>No herramientas genéricas. Sistemas que se adaptan a la forma en que ya trabajás y eliminan el trabajo manual repetitivo.</p>
             </div>
-
-            <div class="presentation-services">
-                <article class="presentation-service-card featured">
-                    <i class="fas fa-display" aria-hidden="true"></i>
-                    <h3>Sitios web que convierten</h3>
-                    <p>Landings, webs institucionales y WordPress personalizados con estructura clara, carga rapida y foco comercial.</p>
-                    <ul>
-                        <li>Arquitectura de secciones y mensajes</li>
-                        <li>Diseño responsive y SEO base</li>
-                        <li>WhatsApp, formularios, analytics y pixels</li>
-                    </ul>
-                </article>
-
-                <article class="presentation-service-card">
-                    <i class="fas fa-diagram-project" aria-hidden="true"></i>
-                    <h3>Automatizaciones</h3>
-                    <p>Flujos con n8n para evitar tareas repetidas: avisos, carga de datos, seguimiento de leads y reportes.</p>
-                    <ul>
-                        <li>Webhooks y disparadores</li>
-                        <li>Notificaciones internas</li>
-                        <li>Control de errores y registros</li>
-                    </ul>
-                </article>
-
-                <article class="presentation-service-card">
-                    <i class="fas fa-plug-circle-bolt" aria-hidden="true"></i>
+            <div class="presentation-systems-grid">
+                <div class="presentation-system-card" data-reveal data-delay="1">
+                    <div class="presentation-system-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                    <h3>Ventas</h3>
+                    <p>Pipeline de leads, seguimiento de consultas, CRM adaptado al proceso comercial del negocio.</p>
+                </div>
+                <div class="presentation-system-card" data-reveal data-delay="2">
+                    <div class="presentation-system-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                    <h3>Clientes</h3>
+                    <p>Historial completo, estados, comunicación registrada y acceso rápido a la información que importa.</p>
+                </div>
+                <div class="presentation-system-card" data-reveal data-delay="3">
+                    <div class="presentation-system-icon"><i class="fas fa-credit-card" aria-hidden="true"></i></div>
+                    <h3>Pagos</h3>
+                    <p>Registro automático de cobros, notificaciones al equipo y estados de deuda sin planillas manuales.</p>
+                </div>
+                <div class="presentation-system-card" data-reveal data-delay="1">
+                    <div class="presentation-system-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                    <h3>Operaciones</h3>
+                    <p>Turnos, reservas, inventario, tareas internas. Todo desde un solo lugar, sin herramientas desconectadas.</p>
+                </div>
+                <div class="presentation-system-card" data-reveal data-delay="2">
+                    <div class="presentation-system-icon"><i class="fas fa-plug-circle-bolt" aria-hidden="true"></i></div>
                     <h3>Integraciones</h3>
-                    <p>Conexion entre herramientas para que CRM, pagos, formularios, email y bases de datos trabajen juntos.</p>
-                    <ul>
-                        <li>APIs REST y autenticacion</li>
-                        <li>Sincronizacion de informacion</li>
-                        <li>Mapeo y transformacion de datos</li>
-                    </ul>
-                </article>
-
-                <article class="presentation-service-card">
-                    <i class="fas fa-layer-group" aria-hidden="true"></i>
-                    <h3>Sistemas y apps</h3>
-                    <p>Herramientas internas o productos SaaS para ordenar ventas, clientes, inventario, turnos, pagos o procesos propios.</p>
-                    <ul>
-                        <li>Paneles administrativos</li>
-                        <li>Roles y flujos operativos</li>
-                        <li>Versiones escalables por etapas</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section class="presentation-section presentation-outcomes">
-            <div class="presentation-section-heading compact">
-                <p class="presentation-kicker">Resultado buscado</p>
-                <h2>Menos trabajo manual</h2>
-            </div>
-            <div class="presentation-outcome-grid">
-                <div>
-                    <span>01</span>
-                    <h3>Captar mejor</h3>
-                    <p>Mensajes claros, CTA directos y medicion para saber de donde llegan las consultas.</p>
+                    <p>Conecto formularios, pagos, WhatsApp y sistemas existentes para que dejen de operar en silos.</p>
                 </div>
-                <div>
-                    <span>02</span>
-                    <h3>Responder rapido</h3>
-                    <p>Leads enviados a WhatsApp, CRM o email con contexto y seguimiento automatizado.</p>
-                </div>
-                <div>
-                    <span>03</span>
-                    <h3>Ordenar datos</h3>
-                    <p>Informacion centralizada para evitar planillas sueltas, errores manuales y trabajo duplicado.</p>
-                </div>
-                <div>
-                    <span>04</span>
-                    <h3>Escalar por etapas</h3>
-                    <p>Primero lo que mueve la aguja; despues mejoras, integraciones y automatizaciones mas profundas.</p>
+                <div class="presentation-system-card" data-reveal data-delay="3">
+                    <div class="presentation-system-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                    <h3>Software propio</h3>
+                    <p>Cuando ninguna herramienta existente resuelve el problema, construyo exactamente lo que se necesita.</p>
                 </div>
             </div>
         </section>
 
+        <!-- 4. CASOS -->
         <section id="proyectos" class="presentation-section">
-            <div class="presentation-section-heading">
-                <p class="presentation-kicker">Trabajo real</p>
-                <h2>Trabajo real</h2>
-                <p>Una mezcla de productos propios, proyectos en desarrollo y webs comerciales entregadas para operaciones concretas.</p>
+            <div class="presentation-section-heading" data-reveal>
+                <p class="presentation-eyebrow">Casos seleccionados</p>
+                <h2>Proyectos construidos como sistemas de negocio</h2>
+                <p>Cada caso parte de una operación concreta: diagnóstico, arquitectura, producto y desarrollo hasta llegar a una solución que el equipo puede usar.</p>
             </div>
 
-            <div class="presentation-work-grid">
-                <a href="https://ventify.space" target="_blank" class="presentation-work-card wide">
-                    <img src="./app/img/tienda.png" alt="Logo de Ventify">
-                    <span class="presentation-work-status live">En produccion</span>
-                    <div>
-                        <span>SaaS de gestion con IA</span>
-                        <h3>Ventify</h3>
-                        <p>Gestion de ventas, clientes, inventario, finanzas e integraciones desde un panel centralizado.</p>
+            <div class="presentation-case-grid">
+                <a href="./casos/ventify.html" class="presentation-case-card" data-reveal data-delay="1">
+                    <div class="presentation-case-preview">
+                        <img src="./app/img/tienda.png" alt="Logo Ventify">
+                        <span class="presentation-work-status live">En producción</span>
+                    </div>
+                    <div class="presentation-case-body">
+                        <div>
+                            <p class="presentation-case-category">Caso de proyecto · Gestión comercial</p>
+                            <h3>Ventify</h3>
+                            <p>SaaS con módulos de Ventas, Clientes, Inventario, Finanzas y Operaciones integrados desde un solo panel.</p>
+                        </div>
+                        <div class="presentation-case-metrics">
+                            <div class="presentation-case-metric">
+                                <strong>5</strong>
+                                <span>módulos integrados</span>
+                            </div>
+                            <div class="presentation-case-metric">
+                                <strong>0</strong>
+                                <span>herramientas separadas</span>
+                            </div>
+                        </div>
+                        <span class="presentation-case-link">Ver proyecto completo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="https://gymflowapp.space/" target="_blank" class="presentation-work-card">
-                    <img src="./app/img/gymAPP.jpeg" alt="Logo de Gymflow">
-                    <span class="presentation-work-status live">En produccion</span>
-                    <div>
-                        <span>Gestion para gimnasios</span>
-                        <h3>Gymflow</h3>
+
+                <a href="./casos/gymflow.html" class="presentation-case-card" data-reveal data-delay="2">
+                    <div class="presentation-case-preview">
+                        <img src="./app/img/gymAPP.jpeg" alt="Logo Gymflow">
+                        <span class="presentation-work-status live">En producción</span>
+                    </div>
+                    <div class="presentation-case-body">
+                        <div>
+                            <p class="presentation-case-category">Caso de proyecto · Operación de gimnasios</p>
+                            <h3>Gymflow</h3>
+                            <p>Rutinas personalizadas, reserva de clases, check-in por QR y seguimiento de pagos en una sola plataforma.</p>
+                        </div>
+                        <div class="presentation-case-metrics">
+                            <div class="presentation-case-metric">
+                                <strong>QR</strong>
+                                <span>check-in instantáneo</span>
+                            </div>
+                            <div class="presentation-case-metric">
+                                <strong>0</strong>
+                                <span>planillas manuales</span>
+                            </div>
+                        </div>
+                        <span class="presentation-case-link">Ver proyecto completo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
-                <a href="https://finavo.space" target="_blank" class="presentation-work-card">
-                    <img src="./app/img/finavo.png" alt="Logo de Finavo">
-                    <span class="presentation-work-status progress">En proceso</span>
-                    <div>
-                        <span>Finanzas personales</span>
-                        <h3>Finavo</h3>
+
+                <a href="./casos/orbe.html" class="presentation-case-card" data-reveal data-delay="3">
+                    <div class="presentation-case-preview">
+                        <img src="./app/img/orbeAPP.png" alt="Logo Orbe">
+                        <span class="presentation-work-status progress">En proceso</span>
                     </div>
-                </a>
-                <a href="http://mediumaquamarine-rail-943729.hostingersite.com/" target="_blank" class="presentation-work-card">
-                    <img src="./app/img/orbeAPP.png" alt="Logo de Orbe">
-                    <span class="presentation-work-status progress">En proceso</span>
-                    <div>
-                        <span>Turnos y reservas</span>
-                        <h3>Orbe</h3>
+                    <div class="presentation-case-body">
+                        <div>
+                            <p class="presentation-case-category">Caso de proyecto · Reservas y operación</p>
+                            <h3>Orbe</h3>
+                            <p>Plataforma unificada para turnos, reservas, mesas, hospedajes y pagos online con autogestión del cliente.</p>
+                        </div>
+                        <div class="presentation-case-metrics">
+                            <div class="presentation-case-metric">
+                                <strong>24/7</strong>
+                                <span>reservas disponibles</span>
+                            </div>
+                            <div class="presentation-case-metric">
+                                <strong>0</strong>
+                                <span>llamadas para confirmar</span>
+                            </div>
+                        </div>
+                        <span class="presentation-case-link">Ver proyecto completo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>
             </div>
 
-            <div class="presentation-work-divider">
-                <span>Webs comerciales</span>
-            </div>
+            <div class="presentation-web-divider">Páginas web</div>
 
-            <div class="presentation-work-grid compact">
-                <a href="https://victoriaguala.com.ar/" target="_blank" class="presentation-work-card">
+            <div class="presentation-web-grid">
+                <a href="https://victoriaguala.com.ar/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
                     <img src="./app/img/victoria.webp" alt="Logo Victoria Guala">
-                    <div>
-                        <span>Web comercial</span>
-                        <h3>Victoria Guala</h3>
-                    </div>
+                    <span>Web comercial</span>
+                    <h3>Victoria Guala</h3>
                 </a>
-                <a href="https://celibrand.com.ar/" target="_blank" class="presentation-work-card">
+                <a href="https://celibrand.com.ar/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
                     <img src="./app/img/celibrand.webp" alt="Logo Celibrand">
-                    <div>
-                        <span>Marca y ecommerce</span>
-                        <h3>Celibrand</h3>
-                    </div>
+                    <span>Marca y tienda online</span>
+                    <h3>Celibrand</h3>
                 </a>
-                <a href="https://chepapa.com.ar/" target="_blank" class="presentation-work-card">
-                    <img src="./app/img/che papa.webp" alt="Logo de Che Papa">
-                    <div>
-                        <span>Web comercial</span>
-                        <h3>Che Papa</h3>
-                    </div>
+                <a href="https://chepapa.com.ar/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
+                    <img src="./app/img/che papa.webp" alt="Logo Che Papa">
+                    <span>Web comercial</span>
+                    <h3>Che Papa</h3>
                 </a>
-                <a href="https://anaarribas.com/" target="_blank" class="presentation-work-card">
+                <a href="https://anaarribas.com/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
                     <img src="./app/img/ana arribas.png" alt="Logo Ana Arribas">
-                    <div>
-                        <span>Web profesional</span>
-                        <h3>Ana Arribas</h3>
-                    </div>
+                    <span>Web profesional</span>
+                    <h3>Ana Arribas</h3>
                 </a>
-                <a href="https://inakirossi.com/" target="_blank" class="presentation-work-card">
+                <a href="https://inakirossi.com/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
                     <img src="./app/img/iniaki rossi .png" alt="Logo Inaki Rossi">
-                    <div>
-                        <span>Web profesional</span>
-                        <h3>Inaki Rossi</h3>
-                    </div>
+                    <span>Web profesional</span>
+                    <h3>Inaki Rossi</h3>
                 </a>
-                <a href="https://aranramiflow.com/" target="_blank" class="presentation-work-card">
+                <a href="https://aranramiflow.com/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
                     <img src="./app/img/aran.jpeg" alt="Logo Aranramiflow">
-                    <div>
-                        <span>Web comercial</span>
-                        <h3>Aranramiflow</h3>
-                    </div>
+                    <span>Web comercial</span>
+                    <h3>Aranramiflow</h3>
                 </a>
-                <a href="https://chepaparadio.com.ar/" target="_blank" class="presentation-work-card">
+                <a href="https://chepaparadio.com.ar/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
                     <img src="./app/img/radio .png" alt="Logo Che Papa Radio">
-                    <div>
-                        <span>Radio online</span>
-                        <h3>Che Papa Radio</h3>
-                    </div>
+                    <span>Radio online</span>
+                    <h3>Che Papa Radio</h3>
                 </a>
-                <a href="https://aquamarine-dugong-807622.hostingersite.com/" target="_blank" class="presentation-work-card">
-                    <img src="./app/img/ANTOJITOS LOGO.png" alt="Logo Antojitos">
-                    <div>
-                        <span>Web gastronomica</span>
-                        <h3>Antojitos</h3>
-                    </div>
+                <a href="https://xn--catlogocuchilleramanantial-6ec36a.com/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
+                    <img src="./app/img/logo cuchis.png" alt="Logo Cuchillería Manantial">
+                    <span>Catálogo online</span>
+                    <h3>Cuchillería Manantial</h3>
                 </a>
-                <a href="https://singlutentandil.com/" target="_blank" class="presentation-work-card">
+                <a href="https://singlutentandil.com/" target="_blank" rel="noopener noreferrer" class="presentation-web-card">
                     <img src="./app/img/singluten.png" alt="Logo Sin Gluten Tandil">
-                    <div>
-                        <span>Web comercial</span>
-                        <h3>Sin Gluten Tandil</h3>
-                    </div>
+                    <span>Web comercial</span>
+                    <h3>Sin Gluten Tandil</h3>
                 </a>
             </div>
         </section>
 
-        <section id="proceso" class="presentation-section presentation-process">
-            <div class="presentation-section-heading compact">
-                <p class="presentation-kicker">Forma de trabajo</p>
-                <h2>Proceso simple</h2>
+        <!-- 5. PROCESO -->
+        <section id="proceso" class="presentation-section">
+            <div class="presentation-section-heading" data-reveal>
+                <p class="presentation-eyebrow">Cómo trabajamos</p>
+                <h2>Un proceso de punta a punta</h2>
+                <p>Un proceso simple para ir de la situación actual al sistema que el negocio realmente necesita.</p>
             </div>
-            <div class="presentation-process-list">
-                <article>
-                    <span>1</span>
-                    <h3>Diagnostico</h3>
-                    <p>Entiendo el objetivo, el publico, las herramientas actuales y el problema que conviene resolver primero.</p>
-                </article>
-                <article>
-                    <span>2</span>
-                    <h3>Propuesta</h3>
-                    <p>Defino alcance, entregables, prioridades y una primera version que se pueda validar rapido.</p>
-                </article>
-                <article>
-                    <span>3</span>
-                    <h3>Construccion</h3>
-                    <p>Desarrollo la web, sistema o automatizacion con revisiones por etapas y ajustes sobre uso real.</p>
-                </article>
-                <article>
-                    <span>4</span>
-                    <h3>Entrega</h3>
-                    <p>Dejo la solucion lista para operar, con accesos, explicacion y base para futuras mejoras.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="planes" class="presentation-section presentation-offers">
-            <div class="presentation-section-heading">
-                <p class="presentation-kicker">Planes</p>
-                <h2>Por donde empezar</h2>
-                <p>Cada plan incluye implementacion inicial y abono mensual. El abono cubre soporte, mantenimiento y ajustes para que todo siga funcionando.</p>
-            </div>
-            <div class="presentation-offer-grid">
-                <article>
-                    <i class="fas fa-globe" aria-hidden="true"></i>
-                    <h3>Web + Seguimiento</h3>
-                    <p class="offer-target">Para negocios que necesitan presencia profesional y recibir consultas sin depender de soluciones improvisadas.</p>
-                    <ul class="offer-features">
-                        <li>Web responsive, formularios y WhatsApp</li>
-                        <li>Google Maps y redes sociales</li>
-                        <li>Soporte mensual y cambios menores</li>
-                    </ul>
-                    <div class="offer-price">
-                        <div class="offer-price-row">
-                            <span>Implementacion</span>
-                            <strong>desde USD 200</strong>
-                        </div>
-                        <div class="offer-price-row">
-                            <span>Mensual</span>
-                            <strong>desde USD 35/mes</strong>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20quiero%20consultar%20por%20una%20web%20profesional." target="_blank">Consultar</a>
-                </article>
-                <article>
-                    <i class="fas fa-diagram-project" aria-hidden="true"></i>
-                    <h3>Web + Automatizacion</h3>
-                    <p class="offer-target">Para negocios que reciben consultas, turnos o pedidos y quieren ordenar el seguimiento automaticamente.</p>
-                    <ul class="offer-features">
-                        <li>Formulario conectado a base de datos o planilla</li>
-                        <li>Registro automatico y notificaciones internas</li>
-                        <li>Estados de seguimiento y revision mensual</li>
-                    </ul>
-                    <div class="offer-price">
-                        <div class="offer-price-row">
-                            <span>Implementacion</span>
-                            <strong>desde USD 300</strong>
-                        </div>
-                        <div class="offer-price-row">
-                            <span>Mensual</span>
-                            <strong>desde USD 60/mes</strong>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20quiero%20consultar%20por%20una%20automatizacion%20para%20mi%20negocio." target="_blank">Consultar</a>
-                </article>
-                <article>
-                    <i class="fas fa-layer-group" aria-hidden="true"></i>
-                    <h3>Sistema de Gestion</h3>
-                    <p class="offer-target">Para negocios que necesitan un panel propio para operar: clientes, pedidos, turnos, pagos, stock o procesos internos.</p>
-                    <ul class="offer-features">
-                        <li>Panel con login, roles y modulos</li>
-                        <li>Gestion de clientes, pedidos, pagos o stock</li>
-                        <li>Reportes, exportaciones y soporte mensual</li>
-                    </ul>
-                    <div class="offer-price single">
-                        <div class="offer-price-row">
-                            <span>Precio</span>
-                            <strong>Cotizar segun proyecto</strong>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20quiero%20consultar%20por%20un%20sistema%20de%20gestion%20a%20medida." target="_blank">Consultar</a>
-                </article>
-                <article class="offer-idea">
-                    <i class="fas fa-lightbulb" aria-hidden="true"></i>
-                    <h3>Tengo una idea</h3>
-                    <p class="offer-target">¿Algo que no encaja en ninguno de estos planes? Desarrollo cualquier cosa digital: apps, bots, herramientas internas, integraciones a medida o lo que necesites.</p>
-                    <div class="offer-price single idea">
-                        <div class="offer-price-row">
-                            <span>Precio</span>
-                            <strong>Lo cotizamos juntos</strong>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20tengo%20una%20idea%20que%20quiero%20contarte." target="_blank">Contame la idea</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="presentation-section presentation-abono">
-            <div class="presentation-section-heading compact">
-                <p class="presentation-kicker">Que incluye</p>
-                <h2>El abono mensual</h2>
-                <p>No entrego y desaparezco. Todos los planes incluyen soporte y acompanamiento continuo para que la herramienta siga siendo util.</p>
-            </div>
-            <div class="presentation-abono-cols">
-                <div class="presentation-abono-col">
-                    <p class="abono-col-label includes">Incluye</p>
-                    <ul>
-                        <li><i class="fas fa-check" aria-hidden="true"></i>Mantenimiento tecnico y correccion de errores</li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i>Soporte mensual</li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i>Ajustes menores sobre lo existente</li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i>Actualizaciones y revision de funcionamiento</li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i>Acompanamiento continuo</li>
-                    </ul>
+            <div class="presentation-process-grid">
+                <div class="presentation-process-step" data-reveal data-delay="1">
+                    <p class="presentation-step-num">01 — Diagnóstico</p>
+                    <h3>Entender el problema real</h3>
+                    <p>Mapeo la operación actual: qué herramientas se usan, dónde se pierde tiempo, cuál es el cuello de botella más costoso.</p>
                 </div>
-                <div class="presentation-abono-col">
-                    <p class="abono-col-label excludes">No incluye</p>
-                    <ul>
-                        <li><i class="fas fa-xmark" aria-hidden="true"></i>Nuevas funcionalidades grandes o modulos adicionales</li>
-                        <li><i class="fas fa-xmark" aria-hidden="true"></i>Redisenos completos</li>
-                        <li><i class="fas fa-xmark" aria-hidden="true"></i>Integraciones complejas nuevas</li>
-                        <li><i class="fas fa-xmark" aria-hidden="true"></i>Costos externos (dominio, hosting, APIs pagas)</li>
-                    </ul>
+                <div class="presentation-process-step" data-reveal data-delay="2">
+                    <p class="presentation-step-num">02 — Diseño</p>
+                    <h3>Definir qué construir</h3>
+                    <p>Propongo el alcance mínimo útil: qué resolver primero, qué integrar, qué no construir todavía. Sin features innecesarias.</p>
+                </div>
+                <div class="presentation-process-step" data-reveal data-delay="3">
+                    <p class="presentation-step-num">03 — Implementación</p>
+                    <h3>Construir por etapas</h3>
+                    <p>Desarrollo iterativo con revisiones frecuentes. Cada versión es funcional y usable antes de agregar complejidad.</p>
+                </div>
+                <div class="presentation-process-step" data-reveal data-delay="4">
+                    <p class="presentation-step-num">04 — Optimización</p>
+                    <h3>Mejorar según el uso real</h3>
+                    <p>Una vez en producción, analizo el uso real y priorizo mejoras según lo que genera más impacto en la operación.</p>
                 </div>
             </div>
         </section>
 
-        <section id="contacto" class="presentation-cta">
+        <!-- 6. CTA CONTACTO -->
+        <section id="contacto" class="presentation-cta-section" data-reveal>
             <div>
-                <p class="presentation-kicker">Contacto</p>
+                <p class="presentation-kicker">Siguiente paso</p>
                 <h2>Hablemos del primer paso.</h2>
-                <p>Con una charla corta alcanza para detectar si conviene empezar por una web, una automatizacion, una integracion o un sistema interno.</p>
+                <p>Con una charla corta podemos detectar el problema más importante y definir si conviene empezar por una integración, un sistema o una mejora puntual.</p>
             </div>
             <div class="presentation-cta-actions">
-                <a href="https://wa.me/5492494589884" target="_blank" class="presentation-button primary">
+                <a href="https://wa.me/5492494589884?text=Hola%20Geronimo,%20quiero%20analizar%20mi%20operaci%C3%B3n." target="_blank" rel="noopener noreferrer" class="presentation-button primary">
                     <i class="fab fa-whatsapp" aria-hidden="true"></i>
                     WhatsApp
                 </a>
@@ -456,11 +308,87 @@
                 </a>
             </div>
         </section>
+
     </main>
 
     <footer class="presentation-footer">
-        <span>Geronimo Serratti - Tandil, Buenos Aires</span>
-        <a href="./index.html">Volver al portfolio</a>
+        <span>Geronimo Serratti — desde Tandil para toda Argentina</span>
+        <a href="./index.html">Ver portfolio</a>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script>
+    (function () {
+        const progress = document.querySelector('.presentation-scroll-progress');
+        const updateProgress = function () {
+            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            const value = scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0;
+            if (progress) progress.style.setProperty('--scroll-progress', value);
+        };
+        updateProgress();
+        window.addEventListener('scroll', updateProgress, { passive: true });
+
+        if (!window.gsap || !window.ScrollTrigger) return;
+        gsap.registerPlugin(ScrollTrigger);
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Hero — stagger on load
+        gsap.from([
+            '.presentation-hero .presentation-kicker',
+            '.presentation-hero h1',
+            '.presentation-hero .presentation-lead',
+            '.presentation-hero .presentation-actions'
+        ], { opacity: 0, y: 26, duration: 0.8, stagger: 0.1, ease: 'power4.out', clearProps: 'all' });
+
+        // Section headings
+        gsap.utils.toArray('.presentation-section-heading').forEach(function (el) {
+            gsap.from(el, {
+                opacity: 0, y: 28, duration: 0.75, ease: 'power3.out', clearProps: 'all',
+                scrollTrigger: { trigger: el, start: 'top 82%' }
+            });
+        });
+
+        // Problem intro + list
+        gsap.from('.presentation-problem-intro', {
+            opacity: 0, y: 22, duration: 0.7, ease: 'power3.out', clearProps: 'all',
+            scrollTrigger: { trigger: '.presentation-problems-grid', start: 'top 80%' }
+        });
+        gsap.from('.presentation-problem-list li', {
+            opacity: 0, x: -18, duration: 0.5, stagger: 0.07, ease: 'power3.out', clearProps: 'all',
+            scrollTrigger: { trigger: '.presentation-problem-list', start: 'top 82%' }
+        });
+
+        // System cards
+        gsap.from('.presentation-system-card', {
+            opacity: 0, y: 24, scale: 0.97, duration: 0.55, stagger: 0.06, ease: 'power3.out', clearProps: 'all',
+            scrollTrigger: { trigger: '.presentation-systems-grid', start: 'top 78%' }
+        });
+
+        // Case cards
+        gsap.from('.presentation-case-card', {
+            opacity: 0, y: 30, duration: 0.65, stagger: 0.1, ease: 'power3.out', clearProps: 'all',
+            scrollTrigger: { trigger: '.presentation-case-grid', start: 'top 80%' }
+        });
+
+        // Web grid
+        gsap.from('.presentation-web-card', {
+            opacity: 0, y: 18, scale: 0.97, duration: 0.45, stagger: 0.05, ease: 'power3.out', clearProps: 'all',
+            scrollTrigger: { trigger: '.presentation-web-grid', start: 'top 80%' }
+        });
+
+        // Process steps
+        gsap.from('.presentation-process-step', {
+            opacity: 0, y: 24, duration: 0.6, stagger: 0.09, ease: 'power3.out', clearProps: 'all',
+            scrollTrigger: { trigger: '.presentation-process-grid', start: 'top 80%' }
+        });
+
+        // CTA
+        gsap.from('.presentation-cta-section', {
+            opacity: 0, y: 28, duration: 0.75, ease: 'power3.out', clearProps: 'all',
+            scrollTrigger: { trigger: '.presentation-cta-section', start: 'top 85%' }
+        });
+    })();
+    </script>
 </body>
 </html>
