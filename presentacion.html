@@ -459,6 +459,7 @@
         if (!window.gsap || !window.ScrollTrigger) return;
         gsap.registerPlugin(ScrollTrigger);
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const mobileMotion = window.matchMedia('(max-width: 768px)').matches;
 
         // Hero — stagger on load
         gsap.from([
@@ -482,7 +483,7 @@
             scrollTrigger: { trigger: '.presentation-problems-grid', start: 'top 80%' }
         });
         gsap.from('.presentation-problem-list li', {
-            opacity: 0, x: -18, duration: 0.5, stagger: 0.07, ease: 'power3.out', clearProps: 'all',
+            opacity: 0, x: mobileMotion ? 0 : -18, y: mobileMotion ? 14 : 0, duration: 0.5, stagger: 0.07, ease: 'power3.out', clearProps: 'all',
             scrollTrigger: { trigger: '.presentation-problem-list', start: 'top 82%' }
         });
 
@@ -494,7 +495,7 @@
 
         // Client fit
         gsap.from('.presentation-fit-item', {
-            opacity: 0, x: 20, duration: 0.55, stagger: 0.08, ease: 'power3.out', clearProps: 'all',
+            opacity: 0, x: mobileMotion ? 0 : 20, y: mobileMotion ? 16 : 0, duration: 0.55, stagger: 0.08, ease: 'power3.out', clearProps: 'all',
             scrollTrigger: { trigger: '.presentation-fit-grid', start: 'top 82%' }
         });
 
@@ -530,11 +531,11 @@
 
         // Founder
         gsap.from('.presentation-founder-portrait', {
-            opacity: 0, x: -26, duration: 0.75, ease: 'power3.out', clearProps: 'all',
+            opacity: 0, x: mobileMotion ? 0 : -26, y: mobileMotion ? 24 : 0, duration: 0.75, ease: 'power3.out', clearProps: 'all',
             scrollTrigger: { trigger: '.presentation-founder-section', start: 'top 80%' }
         });
         gsap.from('.presentation-founder-copy', {
-            opacity: 0, x: 26, duration: 0.75, ease: 'power3.out', clearProps: 'all',
+            opacity: 0, x: mobileMotion ? 0 : 26, y: mobileMotion ? 24 : 0, duration: 0.75, ease: 'power3.out', clearProps: 'all',
             scrollTrigger: { trigger: '.presentation-founder-section', start: 'top 80%' }
         });
 

@@ -1348,12 +1348,25 @@ section p { margin-bottom:10px; color:var(--muted); font-size:.92rem }
   .presentation-nav nav a { min-height:44px; border-radius:10px; padding:0 13px; font-size:.8rem }
   .presentation-hero { min-height:92dvh; padding:128px 0 76px }
   .presentation-hero-art { width:112vw; opacity:.72 }
+  .presentation-hero-art::before { display:none }
   .presentation-hero h1 { font-size:clamp(3rem,14vw,5rem); line-height:.96 }
   .presentation-lead { font-size:.94rem }
   .presentation-hero-meta { margin-top:50px; line-height:1.8 }
   .presentation-section { padding:92px 0 }
   .presentation-section-heading { margin-bottom:44px }
   .presentation-section-heading h2 { font-size:clamp(2.7rem,12vw,4.4rem) }
+  .presentation-page main > *,
+  .presentation-problems-grid > *,
+  .presentation-fit-section > *,
+  .presentation-system-card,
+  .presentation-offer-card,
+  .presentation-case-body,
+  .presentation-founder-section > *,
+  .presentation-cta-section > * { min-width:0 }
+  .presentation-page h1,
+  .presentation-page h2,
+  .presentation-page h3,
+  .presentation-button { max-width:100% }
   .presentation-proof-strip { grid-template-columns:repeat(2,minmax(0,1fr)) }
   .presentation-proof-strip > div { border-bottom:1px solid var(--border) }
   .presentation-proof-strip > div:nth-child(2) { border-right:0 }
@@ -1382,16 +1395,39 @@ section p { margin-bottom:10px; color:var(--muted); font-size:.92rem }
 
 @media (max-width:520px) {
   .presentation-page main,.presentation-footer { width:min(1440px,calc(100% - 24px)) }
+  .presentation-nav { gap:10px; padding-inline:12px }
   .presentation-brand strong { display:none }
-  .presentation-nav-cta { height:40px; padding:0 15px }
+  .presentation-nav-cta { height:40px; padding:0 14px; font-size:.75rem }
   .presentation-actions,.presentation-cta-actions { width:100%; flex-direction:column }
-  .presentation-button { width:100% }
+  .presentation-button {
+    width:100%;
+    min-height:50px;
+    height:auto;
+    padding:12px 18px;
+    line-height:1.25;
+    text-align:center;
+    white-space:normal;
+  }
+  .presentation-hero { padding-top:118px }
+  .presentation-hero h1 { font-size:clamp(2.72rem,13.4vw,3.7rem); line-height:.97; letter-spacing:-.042em }
+  .presentation-section-heading h2,
+  .presentation-problem-intro h2,
+  .presentation-founder-copy h2,
+  .presentation-cta-section h2 {
+    font-size:clamp(2.2rem,11vw,2.8rem);
+    line-height:1.02;
+    letter-spacing:-.042em;
+  }
   .presentation-hero-meta { max-width:300px }
   .presentation-proof-strip { grid-template-columns:1fr }
-  .presentation-proof-strip > div,.presentation-proof-strip > div:nth-child(2) { min-height:92px; border-right:0; border-bottom:1px solid var(--border) }
+  .presentation-proof-strip > div,.presentation-proof-strip > div:nth-child(2) { min-height:92px; padding:20px 18px; border-right:0; border-bottom:1px solid var(--border) }
   .presentation-proof-strip > a { grid-column:auto }
   .presentation-systems-grid { gap:12px }
-  .presentation-system-card { padding:28px }
+  .presentation-system-card { padding:26px }
+  .presentation-offer-card { padding:28px }
+  .presentation-offer-card h3,.presentation-offer-card.compact h3 { margin-top:40px }
+  .presentation-case-body { padding:30px 22px }
+  .presentation-case-card h3 { font-size:clamp(2.15rem,11vw,2.6rem) }
   .presentation-case-metrics { grid-template-columns:1fr }
   .presentation-shot-body { min-height:205px }
   .presentation-shot-body.with-sidebar { grid-template-columns:64px 1fr }
@@ -1400,10 +1436,33 @@ section p { margin-bottom:10px; color:var(--muted); font-size:.92rem }
   .presentation-shot-columns > span { min-height:128px; padding:5px }
   .presentation-shot-columns i { height:23px }
   .presentation-web-grid { grid-template-columns:1fr }
-  .presentation-web-card { min-height:132px }
-  .presentation-founder-portrait { min-height:400px }
+  .presentation-web-card { min-height:132px; padding:20px }
+  .presentation-founder-portrait { min-height:380px }
   .presentation-founder-links { flex-wrap:wrap }
+  .presentation-cta-section { padding:38px 20px }
+  .presentation-cta-section .presentation-cta-note { align-items:flex-start }
   .presentation-footer > div { flex-wrap:wrap; justify-content:center }
+  .presentation-footer > span { max-width:30ch }
+}
+
+@media (max-width:360px) {
+  .presentation-page main,.presentation-footer { width:calc(100% - 20px) }
+  .presentation-nav { gap:8px; padding-inline:10px }
+  .presentation-brand span { width:32px; height:32px }
+  .presentation-menu-toggle { width:38px; height:38px }
+  .presentation-nav-cta { height:38px; padding-inline:12px; font-size:.72rem }
+  .presentation-hero h1 { font-size:clamp(2.58rem,13.2vw,3rem) }
+  .presentation-kicker,.presentation-eyebrow { letter-spacing:.18em }
+  .presentation-section-heading h2,
+  .presentation-problem-intro h2,
+  .presentation-founder-copy h2,
+  .presentation-cta-section h2 { font-size:clamp(2.08rem,10.8vw,2.45rem) }
+  .presentation-fit-item { grid-template-columns:34px 1fr; gap:12px }
+  .presentation-fit-item h3 { font-size:1.2rem }
+  .presentation-product-shot { width:92%; margin-block:28px }
+  .presentation-case-preview .presentation-work-status { top:14px; right:14px }
+  .presentation-offer-card { padding:25px }
+  .presentation-cta-section { padding-inline:18px }
 }
 
 @keyframes presentation-system-pulse {
