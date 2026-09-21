@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Guía práctica de GERO para entender Claude for Small Business: 43 workflows, 27 integraciones, cómo elegirlos y cuáles probar primero.">
+<meta name="theme-color" content="#0B0D10">
+<title>43 workflows de Claude para negocios — GERO IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D10;--surface:#15191F;--surface2:#1B2027;--text:#F4F4F5;--muted:#9CA3AF;--accent:#C7FF3D;--line:#2A3038;--ink:#090B0D;--good:#B8FF72}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 4%,rgba(199,255,61,.08),transparent 22%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}a{color:inherit}.top{position:sticky;top:0;z-index:10;background:rgba(11,13,16,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}.topin{height:58px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:900;letter-spacing:.16em}.brand b{color:var(--accent)}.nav{display:flex;gap:18px;flex-wrap:wrap}.nav a{text-decoration:none;color:var(--muted);font-size:12px;font-weight:700}.hero{padding:84px 0 58px;border-bottom:1px solid var(--line)}.kicker,.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font-size:clamp(48px,8.5vw,100px);line-height:.93;letter-spacing:-.06em;margin:18px 0 24px;max-width:960px}h2{font-size:clamp(32px,5.2vw,58px);line-height:1;letter-spacing:-.045em;margin:0 0 24px}h3{font-size:19px;line-height:1.2;margin:0 0 10px}.lede{font-size:clamp(18px,2vw,23px);color:var(--muted);max-width:800px}.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}.metric,.card,.group,.note,.step,.usecase,.prompt,.decision{background:linear-gradient(180deg,var(--surface),#11151A);border:1px solid var(--line);border-radius:18px}.metric{padding:28px}.metric strong{display:block;color:var(--accent);font-size:56px;line-height:1}.metric span{color:var(--muted)}.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 17px;border-radius:12px;background:var(--accent);color:var(--ink);text-decoration:none;font-weight:900}.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}.section{padding:72px 0}.section+.section{border-top:1px solid rgba(255,255,255,.04)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:24px}.rank{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:.12em}.card p,.muted{color:var(--muted)}.why{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:14px}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.quick .card strong{display:block;font-size:28px;color:var(--accent)}.decision-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.decision{padding:24px}.decision b{color:var(--accent)}.workflow-groups{display:grid;grid-template-columns:1fr 1fr;gap:20px}.group{padding:24px}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.chip{display:inline-flex;padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface2);font:600 12px/1 Inter;color:#D5D7DA}.price{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.price .card strong{font-size:26px}.badge{display:inline-flex;background:var(--accent);color:var(--ink);font-weight:900;border-radius:999px;padding:7px 11px;font-size:11px;letter-spacing:.08em}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:48px 1fr;padding:18px;gap:14px}.num{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--ink);display:grid;place-items:center;font-weight:900}.usecases{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.usecase{padding:24px}.usecase ul{margin:14px 0 0;padding-left:18px;color:var(--muted)}.prompts{display:grid;gap:12px}.prompt{padding:18px}.prompt code{white-space:pre-wrap;color:#E9ECEF;font-family:Inter,system-ui,sans-serif;font-size:14px}.callout{padding:26px;border-left:3px solid var(--accent);background:rgba(199,255,61,.06);border-radius:0 16px 16px 0}.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}.toc a{text-decoration:none;color:var(--muted);font-size:13px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}.cta{margin:32px 0 72px;padding:42px;border-radius:24px;background:var(--accent);color:var(--ink)}.cta h2{max-width:780px}.cta p{max-width:760px;color:#344100}.cta .btn{background:var(--ink);color:#fff}.footer{padding:30px 0 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}.source-list{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}.source-list a{color:#DDE1E6}@media(max-width:850px){.hero-grid,.grid,.decision-grid,.workflow-groups,.price,.usecases,.quick,.toc{grid-template-columns:1fr}.section{padding:54px 0}.cta{padding:28px}.wrap{width:min(100% - 28px,1120px)}.nav{display:none}h1{font-size:clamp(46px,16vw,74px)}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap topin"><div class="brand">GERO <b>IA</b></div><nav class="nav"><a href="#empezar">Empezar</a><a href="#top">Mi selección</a><a href="#mapa">Los 43</a><a href="#precio">Precio</a><a href="#fuentes">Fuentes</a></nav></div></header>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker">Guía práctica · @geronimo.serratti</div>
+  <h1>43 workflows de Claude para negocios.</h1>
+  <p class="lede">Anthropic lanzó una colección de workflows y conectores pensados para tareas reales de una pyme. Esta guía no busca que uses los 43: busca que encuentres <b>el primero que realmente te ahorre trabajo</b>.</p>
+  <div class="hero-grid"><div class="metric"><strong>43</strong><span>skills / workflows disponibles en el plugin Small Business</span></div><div class="metric"><strong>27</strong><span>nuevas integraciones anunciadas el 15 de septiembre de 2026</span></div></div>
+  <div class="hero-cta"><a class="btn" href="#empezar">Elegir mi primer workflow ↓</a><a class="btn secondary" href="https://claude.ai/" target="_blank" rel="noopener">Abrir Claude ↗</a></div>
+  <div class="toc"><a href="#que-es">01 · Qué es</a><a href="#top">02 · Qué probaría</a><a href="#casos">03 · Casos reales</a><a href="#mapa">04 · Los 43</a><a href="#empezar">05 · Cómo arrancar</a><a href="#prompts">06 · Prompts</a><a href="#precio">07 · Precio</a><a href="#fuentes">08 · Fuentes</a></div>
+</div></section>
+
+<section class="section" id="que-es"><div class="wrap">
+  <div class="eyebrow">En 30 segundos</div><h2>Qué es exactamente esto.</h2>
+  <div class="quick">
+    <article class="card"><strong>Skill</strong><p>Un conjunto de instrucciones para ejecutar una tarea concreta de forma repetible.</p></article>
+    <article class="card"><strong>Workflow</strong><p>Una secuencia que puede combinar varias skills para completar un proceso más grande.</p></article>
+    <article class="card"><strong>Connector</strong><p>El puente para leer o trabajar con las herramientas que ya usa tu negocio.</p></article>
+  </div>
+  <div class="callout" style="margin-top:18px"><b>La idea importante:</b> no es “Claude sabe más cosas”. Es que podés darle un proceso con pasos, herramientas y criterios definidos para que deje de depender de prompts improvisados.</div>
+</div></section>
+
+<section class="section" id="top"><div class="wrap">
+  <div class="eyebrow">Mi selección</div><h2>Los 8 que revisaría primero.</h2>
+  <p class="muted">No porque sean los más llamativos, sino porque atacan cuellos de botella muy comunes: seguimiento comercial, caja, administración y coordinación.</p>
+  <div class="grid">
+    <article class="card"><div class="rank">01 · OPERACIONES</div><h3>/monday-brief</h3><p>Un resumen semanal para juntar caja, ventas, pipeline, agenda y prioridades en una sola vista.</p><div class="why">Lo probaría si el dueño empieza cada lunes persiguiendo información.</div></article>
+    <article class="card"><div class="rank">02 · VENTAS</div><h3>/speed-to-lead</h3><p>Organiza la respuesta inicial a consultas nuevas y ayuda a que no queden leads esperando.</p><div class="why">Lo probaría si llegan consultas fuera de horario o por varios canales.</div></article>
+    <article class="card"><div class="rank">03 · VENTAS</div><h3>proposal-builder</h3><p>Ayuda a transformar notas, archivos y requerimientos en una propuesta lista para revisar.</p><div class="why">Lo probaría en agencias, servicios y presupuestos repetitivos.</div></article>
+    <article class="card"><div class="rank">04 · CRM</div><h3>crm-autopilot</h3><p>Reduce el trabajo manual de mantener oportunidades y contactos actualizados.</p><div class="why">Lo probaría si el CRM nunca refleja lo que realmente habló el equipo.</div></article>
+    <article class="card"><div class="rank">05 · FINANZAS</div><h3>cash-flow-snapshot</h3><p>Reúne señales de caja, cuentas por cobrar y pagos para tener una vista de corto plazo.</p><div class="why">Lo probaría si la caja se entiende tarde o a puro Excel.</div></article>
+    <article class="card"><div class="rank">06 · COBRANZA</div><h3>invoice-chase</h3><p>Ayuda a priorizar facturas vencidas y preparar seguimientos para cada cliente.</p><div class="why">Lo probaría si cobrar depende de que alguien se acuerde.</div></article>
+    <article class="card"><div class="rank">07 · MARKETING</div><h3>/marketing-monday</h3><p>Condensa señales de crecimiento para decidir acciones semanales con más contexto.</p><div class="why">Lo probaría si marketing vive desconectado de ventas y feedback real.</div></article>
+    <article class="card"><div class="rank">08 · CONTENIDO</div><h3>social-content-engine</h3><p>Ayuda a sostener un calendario de contenido y preparar piezas para revisión.</p><div class="why">Lo probaría si el cuello de botella es producir y aprobar contenido.</div></article>
+  </div>
+</div></section>
+
+<section class="section" id="casos"><div class="wrap">
+  <div class="eyebrow">Aplicación</div><h2>Qué elegir según tu problema.</h2>
+  <div class="decision-grid">
+    <article class="decision"><h3>“Los leads se enfrían.”</h3><p class="muted"><b>Empezaría con:</b> /speed-to-lead + lead-triage + crm-autopilot.</p><p>Objetivo: responder, priorizar y dejar el seguimiento registrado.</p></article>
+    <article class="decision"><h3>“No sé cómo viene la semana.”</h3><p class="muted"><b>Empezaría con:</b> /monday-brief + business-pulse.</p><p>Objetivo: condensar las señales del negocio en una sola vista accionable.</p></article>
+    <article class="decision"><h3>“Cobrar es un caos.”</h3><p class="muted"><b>Empezaría con:</b> invoice-chase + cash-flow-snapshot.</p><p>Objetivo: saber qué reclamar primero y cómo impacta en caja.</p></article>
+    <article class="decision"><h3>“Hago propuestas desde cero.”</h3><p class="muted"><b>Empezaría con:</b> proposal-builder.</p><p>Objetivo: reutilizar contexto y estructura sin convertir cada presupuesto en un proyecto manual.</p></article>
+    <article class="decision"><h3>“Mi CRM siempre está atrasado.”</h3><p class="muted"><b>Empezaría con:</b> crm-autopilot.</p><p>Objetivo: reducir actualizaciones manuales y detectar oportunidades sin movimiento.</p></article>
+    <article class="decision"><h3>“No sostengo el contenido.”</h3><p class="muted"><b>Empezaría con:</b> content-strategy + social-content-engine.</p><p>Objetivo: pasar de ideas sueltas a un sistema editorial con revisión humana.</p></article>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="eyebrow">Por tipo de negocio</div><h2>Una forma simple de empezar.</h2>
+  <div class="usecases">
+    <article class="usecase"><h3>Agencia / consultora</h3><ul><li>proposal-builder</li><li>speed-to-lead</li><li>crm-autopilot</li><li>/monday-brief</li></ul></article>
+    <article class="usecase"><h3>Ecommerce</h3><ul><li>/restock</li><li>inventory-planner</li><li>review-reputation</li><li>/reactivate</li></ul></article>
+    <article class="usecase"><h3>Servicios locales</h3><ul><li>/speed-to-lead</li><li>proposal-builder</li><li>invoice-chase</li><li>review-reputation</li></ul></article>
+    <article class="usecase"><h3>Negocio con equipo</h3><ul><li>/monday-brief</li><li>inbox-manager</li><li>hiring-screener</li><li>report-builder</li></ul></article>
+  </div>
+</div></section>
+
+<section class="section" id="mapa"><div class="wrap">
+  <div class="eyebrow">Mapa completo</div><h2>Los 43 workflows / skills.</h2>
+  <p class="muted">Mantengo los nombres oficiales para que puedas encontrarlos dentro del plugin. No hace falta memorizar ninguno: podés describir la tarea en lenguaje natural y Claude intenta elegir la skill adecuada.</p>
+  <div class="workflow-groups">
+    <div class="group"><h3>Setup y extensión</h3><div class="chips"><span class="chip">smb-onboard</span><span class="chip">build-connector</span><span class="chip">build-agent</span></div></div>
+    <div class="group"><h3>Workflows principales · operación</h3><div class="chips"><span class="chip">/pay-the-bills</span><span class="chip">/restock</span><span class="chip">/report-pack</span><span class="chip">/monday-brief</span><span class="chip">/close-month</span><span class="chip">/tax-prep</span><span class="chip">/plan-payroll</span></div></div>
+    <div class="group"><h3>Skills · operación</h3><div class="chips"><span class="chip">inbox-manager</span><span class="chip">report-builder</span><span class="chip">ap-processor</span><span class="chip">payroll-prep</span><span class="chip">inventory-planner</span><span class="chip">ticket-deflector</span><span class="chip">cash-flow-snapshot</span><span class="chip">invoice-chase</span><span class="chip">month-end-prep</span><span class="chip">tax-season-organizer</span><span class="chip">business-pulse</span><span class="chip">hiring-screener</span><span class="chip">contract-review</span><span class="chip">job-post-builder</span></div></div>
+    <div class="group"><h3>Workflows principales · crecimiento</h3><div class="chips"><span class="chip">/call-list</span><span class="chip">/grow-pipeline</span><span class="chip">/speed-to-lead</span><span class="chip">/marketing-monday</span><span class="chip">/reactivate</span></div></div>
+    <div class="group" style="grid-column:1/-1"><h3>Skills · crecimiento</h3><div class="chips"><span class="chip">lead-finder</span><span class="chip">lead-triage</span><span class="chip">outreach-composer</span><span class="chip">speed-to-lead</span><span class="chip">proposal-builder</span><span class="chip">ad-manager</span><span class="chip">seo-ai-visibility</span><span class="chip">growth-pulse</span><span class="chip">canva-creator</span><span class="chip">social-content-engine</span><span class="chip">review-reputation</span><span class="chip">crm-autopilot</span><span class="chip">content-strategy</span><span class="chip">grant-rfp-writer</span></div></div>
+  </div>
+</div></section>
+
+<section class="section" id="empezar"><div class="wrap">
+  <div class="eyebrow">Implementación</div><h2>Cómo probarlo sin hacer un quilombo.</h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><div><h3>Elegí un problema, no una herramienta.</h3><div class="muted">Algo frecuente, molesto y fácil de reconocer cuando está bien resuelto.</div></div></div>
+    <div class="step"><div class="num">2</div><div><h3>Conectá solo los datos necesarios.</h3><div class="muted">No hace falta abrir todo tu stack. Arrancá con el mínimo contexto para ese proceso.</div></div></div>
+    <div class="step"><div class="num">3</div><div><h3>Corré una prueba con un caso que conozcas.</h3><div class="muted">Elegí un lead, factura o semana cuyo resultado puedas validar manualmente.</div></div></div>
+    <div class="step"><div class="num">4</div><div><h3>Revisá antes de aprobar.</h3><div class="muted">Anthropic indica que las skills preparan y muestran el trabajo antes de enviar, publicar o pagar.</div></div></div>
+    <div class="step"><div class="num">5</div><div><h3>Definí una métrica.</h3><div class="muted">Tiempo ahorrado, leads respondidos, errores detectados, facturas cobradas o tareas evitadas.</div></div></div>
+    <div class="step"><div class="num">6</div><div><h3>Recién ahí pensá en automatizar más.</h3><div class="muted">Si no mejora algo concreto, agregar más workflows solo agrega complejidad.</div></div></div>
+  </div>
+</div></section>
+
+<section class="section" id="prompts"><div class="wrap">
+  <div class="eyebrow">Prompts iniciales</div><h2>5 formas de arrancar sin aprender comandos.</h2>
+  <div class="prompts">
+    <div class="prompt"><code>“Mostrame qué necesito saber para empezar la semana: caja, pipeline, reuniones importantes y tres prioridades.”</code></div>
+    <div class="prompt"><code>“Revisá los leads nuevos de las últimas 24 horas, priorizalos y prepará una respuesta para los más urgentes.”</code></div>
+    <div class="prompt"><code>“Con estas notas del cliente, prepará una propuesta clara con alcance, próximos pasos y puntos que tengo que confirmar antes de enviarla.”</code></div>
+    <div class="prompt"><code>“Decime qué facturas están vencidas, cuáles conviene reclamar primero y prepará un borrador diferente según el historial de cada cliente.”</code></div>
+    <div class="prompt"><code>“Analizá qué contenido y canales están generando mejores señales comerciales y proponé tres acciones concretas para esta semana.”</code></div>
+  </div>
+</div></section>
+
+<section class="section" id="precio"><div class="wrap">
+  <div class="eyebrow">Precio / disponibilidad</div><h2>Qué necesitás para usarlo.</h2>
+  <div class="price">
+    <div class="card"><span class="muted">Free</span><strong>USD 0</strong><p>Claude tiene un plan gratuito, pero el plugin Small Business en Cowork requiere un plan compatible.</p></div>
+    <div class="card"><span class="muted">Pro</span><strong>USD 20/mes</strong><p>También existe facturación anual de USD 200.</p></div>
+    <div class="card"><span class="muted">Max</span><strong>USD 100 / 200</strong><p>Dos niveles de capacidad para uso más intensivo.</p></div>
+    <div class="card"><span class="muted">Organizaciones</span><strong>Team / Enterprise</strong><p>Acceso sujeto a administración y condiciones del plan organizacional.</p></div>
+  </div>
+  <div class="note" style="padding:22px;margin-top:16px"><span class="badge">REQUISITO</span><p class="muted" style="margin-bottom:0">La guía oficial de instalación indica que necesitás la app de escritorio de Claude y Cowork en Pro, Max, Team o Enterprise para instalar el plugin Small Business. Las herramientas conectadas pueden tener sus propios planes y permisos.</p></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="eyebrow">Antes de darle acceso</div><h2>4 reglas que mantendría siempre.</h2>
+  <div class="grid">
+    <article class="card"><h3>1. Mínimo acceso</h3><p>Conectá solo lo que el proceso necesita. Más datos no significa mejor resultado.</p></article>
+    <article class="card"><h3>2. Validación humana</h3><p>Revisá especialmente envíos, pagos, contratos, precios y cambios sensibles.</p></article>
+    <article class="card"><h3>3. Caso de prueba</h3><p>Antes de usarlo en producción, probalo con un caso cuyo resultado ya conozcas.</p></article>
+    <article class="card"><h3>4. Medí resultado</h3><p>Si no reduce tiempo, error o fricción, no hay motivo para mantenerlo.</p></article>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="cta"><div class="kicker" style="color:#344100">Mi criterio</div><h2>No copies Claude. Copiá el proceso.</h2><p>Elegí una tarea que hoy dependa de memoria, copiar y pegar o perseguir información. Convertí esa tarea en un workflow, mantené aprobación humana y medí si el sistema realmente mejora algo.</p><a class="btn" href="https://academy.claude.com/tutorials/how-to-install-the-claude-for-small-business-plugin" target="_blank" rel="noopener">Ver instalación oficial ↗</a></div></div></section>
+
+<footer class="footer" id="fuentes"><div class="wrap"><div class="eyebrow">Fuentes verificadas</div><p>Datos de producto y precios verificados contra fuentes oficiales de Anthropic el 21 de septiembre de 2026. La selección, ejemplos, criterios y recomendaciones de implementación son editoriales de GERO.</p>
+<div class="source-list">
+<a href="https://claude.com/blog/claude-for-small-business-launches-new-workflows-integrations-and-training-programs" target="_blank" rel="noopener">Anuncio oficial · 15 Sep 2026 ↗</a>
+<a href="https://academy.claude.com/tutorials/how-to-install-the-claude-for-small-business-plugin" target="_blank" rel="noopener">Instalación + inventario oficial ↗</a>
+<a href="https://academy.claude.com/tutorials/using-claude-for-your-small-business" target="_blank" rel="noopener">Ejemplos de uso oficiales ↗</a>
+<a href="https://support.claude.com/en/articles/11049762-choose-a-claude-plan" target="_blank" rel="noopener">Planes y precios ↗</a>
+</div>
+<p style="margin-top:22px">GERO IA · Ideas → Sistemas → Resultados</p></div></footer>
+</body></html>
