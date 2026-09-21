@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Guía práctica de GERO sobre Gemini en Google Workspace y conectores MCP: qué cambió, cómo funciona, casos de uso, disponibilidad y cómo empezar.">
+<meta name="theme-color" content="#0B0D10">
+<title>Gemini + MCP en Workspace — GERO IA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0D10;--surface:#15191F;--surface2:#1B2027;--text:#F4F4F5;--muted:#9CA3AF;--accent:#C7FF3D;--line:#2A3038;--ink:#090B0D}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 5%,rgba(199,255,61,.09),transparent 24%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.55}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}a{color:inherit}.top{position:sticky;top:0;z-index:10;background:rgba(11,13,16,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}.topin{height:58px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.16em}.brand b{color:var(--accent)}.nav{display:flex;gap:18px}.nav a{text-decoration:none;color:var(--muted);font-size:12px;font-weight:700}.hero{padding:84px 0 58px;border-bottom:1px solid var(--line)}.kicker,.eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}h1{font-size:clamp(48px,8vw,96px);line-height:.94;letter-spacing:-.06em;margin:18px 0 24px;max-width:950px}h2{font-size:clamp(32px,5vw,58px);line-height:1;letter-spacing:-.045em;margin:0 0 24px}h3{font-size:20px;margin:0 0 10px}.lede{font-size:clamp(18px,2vw,23px);color:var(--muted);max-width:820px}.chips,.source-list,.hero-cta{display:flex;gap:10px;flex-wrap:wrap}.chip,.badge{display:inline-flex;border-radius:999px;padding:8px 11px;font-size:12px;font-weight:800}.chip{background:var(--surface2);border:1px solid var(--line);color:#D6DADE}.badge{background:var(--accent);color:var(--ink)}.hero-grid,.grid3,.grid2,.price{display:grid;gap:16px}.hero-grid{grid-template-columns:1.2fr .8fr;margin-top:34px}.grid3{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:repeat(2,1fr)}.price{grid-template-columns:repeat(3,1fr)}.card,.metric,.flow,.note,.connector{background:linear-gradient(180deg,var(--surface),#11151A);border:1px solid var(--line);border-radius:18px}.card,.connector{padding:24px}.metric{padding:26px}.metric strong{display:block;color:var(--accent);font-size:58px;line-height:1}.metric span{color:var(--muted)}.section{padding:72px 0}.section+.section{border-top:1px solid rgba(255,255,255,.04)}.muted{color:var(--muted)}.connector b{color:var(--accent)}.flow{padding:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{padding:18px;border:1px solid var(--line);border-radius:14px;background:#11151A}.step .n{color:var(--accent);font-weight:900;font-size:12px}.callout{padding:24px;border-left:3px solid var(--accent);background:rgba(199,255,61,.06);border-radius:0 16px 16px 0}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 17px;border-radius:12px;background:var(--accent);color:var(--ink);text-decoration:none;font-weight:900}.btn.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}.check{display:grid;gap:12px}.check .card{display:grid;grid-template-columns:38px 1fr;gap:14px}.checknum{width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--ink);display:grid;place-items:center;font-weight:900}.cta{margin:32px 0 72px;padding:42px;border-radius:24px;background:var(--accent);color:var(--ink)}.cta p{color:#344100;max-width:760px}.cta .btn{background:var(--ink);color:white}.footer{padding:32px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}.source-list a{color:#DDE1E6}.mini{font-size:13px}@media(max-width:850px){.nav{display:none}.hero-grid,.grid3,.grid2,.price,.flow{grid-template-columns:1fr}.wrap{width:min(100% - 28px,1120px)}.section{padding:54px 0}.cta{padding:28px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap topin"><div class="brand">GERO <b>IA</b></div><nav class="nav"><a href="#que-cambio">Qué cambió</a><a href="#casos">Casos</a><a href="#empezar">Empezar</a><a href="#precio">Precio</a></nav></div></header>
+
+<section class="hero"><div class="wrap">
+<div class="kicker">Guía práctica · @geronimo.serratti</div>
+<h1>Gemini + MCP dentro de Workspace.</h1>
+<p class="lede">Google ya permite que Gemini interactúe con herramientas externas como Salesforce, HubSpot, QuickBooks, Asana, Monday y Mailchimp sin obligarte a salir del flujo de trabajo. La oportunidad no es “tener más IA”: es <b>conectar contexto real con acciones útiles</b>.</p>
+<div class="hero-grid">
+  <div class="metric"><strong>7</strong><span>conectores de terceros destacados en el lanzamiento oficial</span></div>
+  <div class="metric"><strong>15 Sep</strong><span>fecha del anuncio oficial de Google Workspace en 2026</span></div>
+</div>
+<div class="chips" style="margin-top:20px"><span class="chip">Salesforce</span><span class="chip">HubSpot</span><span class="chip">QuickBooks</span><span class="chip">Asana</span><span class="chip">Monday</span><span class="chip">Mailchimp</span><span class="chip">Atlassian Rovo</span></div>
+<div class="hero-cta" style="margin-top:26px"><a class="btn" href="#empezar">Cómo lo probaría ↓</a><a class="btn secondary" href="https://gemini.google.com/" target="_blank" rel="noopener">Abrir Gemini ↗</a></div>
+</div></section>
+
+<section class="section" id="que-cambio"><div class="wrap">
+<div class="eyebrow">Qué cambió</div><h2>Gemini deja de trabajar aislado.</h2>
+<div class="grid3">
+<article class="card"><h3>Antes</h3><p class="muted">Buscabas datos en CRM, copiabas contexto, cambiabas de pestaña y recién después pedías ayuda a la IA.</p></article>
+<article class="card"><h3>Ahora</h3><p class="muted">Gemini puede acceder a herramientas externas compatibles desde Workspace cuando el admin lo habilita.</p></article>
+<article class="card"><h3>La ventaja</h3><p class="muted">Menos cambio de contexto, menos copiar/pegar y más posibilidades de construir procesos repetibles.</p></article>
+</div>
+<div class="callout" style="margin-top:18px"><b>MCP, explicado simple:</b> un estándar para que una IA pueda conectarse con herramientas externas de forma estructurada. No es magia; es una capa de integración.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="eyebrow">Conectores anunciados</div><h2>Qué herramientas entran en juego.</h2>
+<div class="grid3">
+<article class="connector"><b>Salesforce</b><p class="muted">Contexto comercial, cuentas, oportunidades y datos del CRM.</p></article>
+<article class="connector"><b>HubSpot</b><p class="muted">Información de contactos, deals y procesos de ventas/marketing.</p></article>
+<article class="connector"><b>Intuit QuickBooks</b><p class="muted">Contexto financiero y administrativo sujeto a permisos del servicio.</p></article>
+<article class="connector"><b>Asana</b><p class="muted">Tareas, proyectos y contexto operativo.</p></article>
+<article class="connector"><b>Monday</b><p class="muted">Seguimiento de trabajo, proyectos y procesos internos.</p></article>
+<article class="connector"><b>Intuit Mailchimp</b><p class="muted">Contexto de marketing, audiencias y campañas.</p></article>
+<article class="connector"><b>Atlassian Rovo</b><p class="muted">Contexto del ecosistema Atlassian para trabajo y conocimiento.</p></article>
+</div>
+</div></section>
+
+<section class="section" id="casos"><div class="wrap">
+<div class="eyebrow">Casos de uso</div><h2>Cómo lo llevaría a negocio real.</h2>
+<div class="grid2">
+<article class="card"><h3>Ventas</h3><p class="muted">Desde Gmail: revisar el estado de un deal en Salesforce o HubSpot, recuperar contexto y preparar una respuesta sin abrir tres herramientas.</p></article>
+<article class="card"><h3>Operaciones</h3><p class="muted">Desde Docs o Chat: traer tareas de Asana/Monday, resumir bloqueos y convertir una conversación en próximos pasos.</p></article>
+<article class="card"><h3>Finanzas</h3><p class="muted">Desde Sheets: consultar contexto de QuickBooks y usarlo como apoyo para análisis o preparación de un reporte interno.</p></article>
+<article class="card"><h3>Marketing</h3><p class="muted">Cruzar contexto de Mailchimp con un documento o una conversación para preparar hipótesis, campañas o resúmenes más rápido.</p></article>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="eyebrow">Ejemplo</div><h2>Un flujo simple que sí tiene sentido.</h2>
+<div class="flow">
+<div class="step"><div class="n">01</div><h3>Llega un mail</h3><p class="muted mini">Un cliente pide estado, cambio o propuesta.</p></div>
+<div class="step"><div class="n">02</div><h3>Gemini consulta CRM</h3><p class="muted mini">Trae contexto relevante desde Salesforce o HubSpot.</p></div>
+<div class="step"><div class="n">03</div><h3>Resume contexto</h3><p class="muted mini">Condensa historial, estado y próximos pasos.</p></div>
+<div class="step"><div class="n">04</div><h3>Ayuda a responder</h3><p class="muted mini">Prepara un borrador que vos revisás antes de enviar.</p></div>
+</div>
+<p class="muted" style="margin-top:18px">La mejora real no es “usar Gemini”. Es evitar que el equipo pierda tiempo buscando y trasladando contexto entre herramientas.</p>
+</div></section>
+
+<section class="section" id="empezar"><div class="wrap">
+<div class="eyebrow">Implementación</div><h2>Cómo empezaría sin complicarlo.</h2>
+<div class="check">
+<div class="card"><div class="checknum">1</div><div><h3>Elegí un cuello de botella.</h3><p class="muted">Un proceso que hoy tenga cambio de pestañas, búsqueda manual o copia y pega.</p></div></div>
+<div class="card"><div class="checknum">2</div><div><h3>Elegí un solo conector.</h3><p class="muted">No conectes todo. Probá primero con CRM, tareas, marketing o finanzas.</p></div></div>
+<div class="card"><div class="checknum">3</div><div><h3>Pedí acceso al admin.</h3><p class="muted">Google permite controlar conectores por dominio, OU o grupo. La disponibilidad depende de la configuración organizacional.</p></div></div>
+<div class="card"><div class="checknum">4</div><div><h3>Probalo en un caso conocido.</h3><p class="muted">Usá un deal, proyecto o reporte que puedas validar manualmente.</p></div></div>
+<div class="card"><div class="checknum">5</div><div><h3>Medí tiempo ahorrado.</h3><p class="muted">Si no reduce pasos, errores o tiempo de búsqueda, no vale la pena mantenerlo.</p></div></div>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="eyebrow">Prompts para probar</div><h2>5 pedidos que haría primero.</h2>
+<div class="grid2">
+<article class="card"><p>“Revisá el estado de este cliente en Salesforce y ayudame a redactar una respuesta con los próximos pasos.”</p></article>
+<article class="card"><p>“Traé las tareas abiertas de este proyecto en Asana y resumime los bloqueos más importantes.”</p></article>
+<article class="card"><p>“Usá el contexto de HubSpot para decirme qué conversaciones comerciales necesitan seguimiento hoy.”</p></article>
+<article class="card"><p>“Revisá la información disponible en QuickBooks y ayudame a preparar un resumen ejecutivo para esta planilla.”</p></article>
+<article class="card"><p>“Usá el contexto de Mailchimp para proponer tres acciones de campaña basadas en lo que ya está pasando.”</p></article>
+</div>
+</div></section>
+
+<section class="section" id="precio"><div class="wrap">
+<div class="eyebrow">Precio / disponibilidad</div><h2>No es una función universal de una cuenta gratuita.</h2>
+<div class="price">
+<article class="card"><span class="badge">DISPONIBLE</span><h3 style="margin-top:14px">Workspace compatible</h3><p class="muted">Google lista Business, Standard y Plus; Enterprise, Standard y Plus; Enterprise Essentials Plus; varios add-ons de Education.</p></article>
+<article class="card"><span class="badge">CONSUMER</span><h3 style="margin-top:14px">Google AI Pro / Ultra</h3><p class="muted">Google también lista planes de consumidor compatibles, sujetos al rollout y acceso del producto.</p></article>
+<article class="card"><span class="badge">ADMIN</span><h3 style="margin-top:14px">Control organizacional</h3><p class="muted">El admin puede habilitar o bloquear conectores por dominio, OU o grupo.</p></article>
+</div>
+<div class="callout" style="margin-top:18px"><b>Importante:</b> Google Workspace tiene planes con precios propios y cada servicio conectado —Salesforce, HubSpot, QuickBooks, etc.— mantiene además sus propios permisos, licencias y costos. No asumas que conectar Gemini vuelve gratuitas esas herramientas.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="eyebrow">Mi criterio</div><h2>Cuándo sí usaría MCP.</h2>
+<div class="grid3">
+<article class="card"><h3>Mucho contexto disperso</h3><p class="muted">Cuando la tarea depende de revisar varias fuentes antes de responder o decidir.</p></article>
+<article class="card"><h3>Proceso repetitivo</h3><p class="muted">Cuando el equipo hace la misma búsqueda y armado de contexto muchas veces por semana.</p></article>
+<article class="card"><h3>Resultado verificable</h3><p class="muted">Cuando podés revisar fácilmente si la respuesta o el resumen quedó bien.</p></article>
+</div>
+<div class="callout" style="margin-top:18px"><b>No empezaría</b> por procesos críticos, irreversibles o con permisos excesivos. Primero probaría un flujo de lectura, resumen y borrador con revisión humana.</div>
+</div></section>
+
+<section><div class="wrap"><div class="cta">
+<div class="kicker" style="color:#344100">Idea central</div>
+<h2>El valor no está en Gemini. Está en el sistema que armás alrededor.</h2>
+<p>Si una integración elimina cinco pasos manuales todas las semanas, ahí empieza a tener sentido. Si solo agrega otra capa de tecnología, no.</p>
+<a class="btn" href="https://workspaceupdates.googleblog.com/2026/09/connect-to-more-tools-with-gemini-in-Google-Workspace.html" target="_blank" rel="noopener">Ver anuncio oficial ↗</a>
+</div></div></section>
+
+<footer class="footer"><div class="wrap">
+<div class="eyebrow">Fuentes</div>
+<p>Información de disponibilidad y conectores verificada contra el anuncio oficial de Google Workspace del 15 de septiembre de 2026. Los ejemplos, criterios y recomendaciones de implementación son editoriales de GERO.</p>
+<div class="source-list">
+<a href="https://workspaceupdates.googleblog.com/2026/09/connect-to-more-tools-with-gemini-in-Google-Workspace.html" target="_blank" rel="noopener">Anuncio oficial de Google ↗</a>
+<a href="https://workspace.google.com/pricing" target="_blank" rel="noopener">Planes de Google Workspace ↗</a>
+<a href="https://gemini.google.com/" target="_blank" rel="noopener">Abrir Gemini ↗</a>
+</div>
+<p style="margin-top:22px">GERO IA · Ideas → Sistemas → Resultados</p>
+</div></footer>
+</body></html>
