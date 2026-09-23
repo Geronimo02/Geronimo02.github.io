@@ -578,6 +578,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .site:hover h4 { color: var(--primary); }
 .site p { font-size: 13px; line-height: 20px; color: var(--on-surface-variant); }
+.site--inactive { cursor: default; }
+.site--inactive:hover {
+    background: var(--surface-container);
+    border-color: var(--outline-variant);
+    transform: none;
+}
+.site--inactive:hover h4 { color: var(--on-surface); }
+.pending-icon { font-size: 18px; color: var(--on-surface-variant); }
 .site-link {
     margin-top: auto; color: var(--primary-container);
     font-family: var(--font-mono); font-size: 14px; letter-spacing: -.01em; font-weight: 600;
