@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stack IA Dev — Septiembre 2026 | GERO IA</title>
+<meta name="description" content="Guía práctica para elegir GPT-6 Sol/Luna, Claude Opus 5.5, Grok 4.7 y Cursor según tarea, costo y etapa del desarrollo.">
+<style>
+:root{--b:#090b0d;--s:#13181d;--t:#f4f5f6;--m:#a8afb5;--a:#c8ff3d;--l:#2c333a}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 85% 0,rgba(200,255,61,.1),transparent 24%),var(--b);color:var(--t);font:16px/1.6 Inter,system-ui,sans-serif}.w{width:min(1080px,calc(100% - 36px));margin:auto}header{padding:78px 0 52px;border-bottom:1px solid var(--l)}h1{font-size:clamp(48px,8vw,88px);line-height:.95;letter-spacing:-.055em;margin:12px 0 22px}h2{font-size:clamp(32px,5vw,54px);line-height:1;letter-spacing:-.045em;margin:0 0 24px}h3{margin:0 0 8px}.k{color:var(--a);font-size:12px;letter-spacing:.14em;font-weight:900;text-transform:uppercase}.lead,.m{color:var(--m)}.lead{font-size:21px;max-width:820px}.sec{padding:62px 0;border-bottom:1px solid rgba(255,255,255,.05)}.g2,.g3{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.c{background:linear-gradient(180deg,var(--s),#0e1216);border:1px solid var(--l);border-radius:18px;padding:22px}.tag{display:inline-flex;padding:6px 10px;border-radius:999px;border:1px solid rgba(200,255,61,.35);color:var(--a);font-size:11px;font-weight:900}.price{font-size:31px;font-weight:900;letter-spacing:-.03em;margin:10px 0}.table{border:1px solid var(--l);border-radius:18px;overflow:hidden}.r{display:grid;grid-template-columns:1.1fr 1fr 1.3fr;gap:16px;padding:17px 20px;border-bottom:1px solid var(--l)}.r:last-child{border:0}.rh{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:900;background:#151b20}.call{margin-top:16px;border-left:4px solid var(--a);background:rgba(200,255,61,.06);padding:18px 20px;border-radius:0 14px 14px 0}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:40px 1fr;gap:14px;background:var(--s);border:1px solid var(--l);border-radius:16px;padding:18px}.n{width:38px;height:38px;border-radius:10px;background:var(--a);color:#0a0c0e;display:grid;place-items:center;font-weight:900}pre{white-space:pre-wrap;background:#080a0c;border:1px solid var(--l);padding:16px;border-radius:13px;color:#dce0e3;font-size:13px}.src a{color:var(--a)}footer{padding:34px 0 55px;color:var(--m);font-size:13px}@media(max-width:800px){.g2,.g3,.r{grid-template-columns:1fr}.w{width:min(100% - 24px,1080px)}}
+</style>
+</head>
+<body>
+<header><div class="w"><div class="k">GERO IA · GUÍA ACTUALIZADA 27/09/2026</div><h1>El nuevo <span style="color:#c8ff3d">stack de IA</span> para programar.</h1><p class="lead">Esta semana cambió algo más importante que los benchmarks: ahora es más fácil separar <b>capacidad, costo y etapa del trabajo</b>. La idea no es elegir un ganador; es usar cada herramienta donde realmente rinde.</p></div></header>
+
+<section class="sec"><div class="w"><div class="k">Mapa de decisión</div><h2>Elegí por tarea, no por hype.</h2><div class="table">
+<div class="r rh"><div>Necesidad</div><div>Primera opción</div><div>Por qué</div></div>
+<div class="r"><b>Coding / agente complejo</b><span>Claude Opus 5.5 o GPT‑6 Sol</span><span class="m">Más criterio para cambios largos, contexto y trabajo multi‑paso.</span></div>
+<div class="r"><b>Mucho volumen</b><span>GPT‑6 Luna</span><span class="m">Costo API muy bajo para tareas enfocadas y repetibles.</span></div>
+<div class="r"><b>Coding costo‑rendimiento</b><span>Grok 4.7</span><span class="m">US$2/US$6 por 1M tokens y 500k de contexto.</span></div>
+<div class="r"><b>Después del merge</b><span>Cursor Rollouts + Security Review</span><span class="m">Monitoreo de cambios en despliegue y revisión continua de PRs.</span></div>
+</div><div class="call"><b>Regla GERO:</b> el stack ganador suele ser una mezcla. Reservá los modelos caros para los pasos que requieren criterio y usá opciones baratas donde el trabajo sea acotado y verificable.</div></div></section>
+
+<section class="sec"><div class="w"><div class="k">Modelos</div><h2>Qué cambió esta semana.</h2><div class="g2">
+<article class="c"><span class="tag">GPT‑6 SOL</span><div class="price">US$2 / US$10</div><p class="m">Input / output por 1M tokens. OpenAI lo orienta a coding complejo y workflows agentic.</p><p><b>Acceso:</b> ChatGPT Work y Codex para Plus, Pro, Business, Enterprise y Edu. No está en el Chat normal al 27/09.</p></article>
+<article class="c"><span class="tag">GPT‑6 LUNA</span><div class="price">US$0.10 / US$0.50</div><p class="m">Input / output por 1M tokens. Pensado para tareas enfocadas y alto volumen.</p><p><b>Acceso:</b> Work/Codex en pagos; Free y Go reciben Luna en desktop según rollout.</p></article>
+<article class="c"><span class="tag">CLAUDE OPUS 5.5</span><div class="price">US$4 / US$20</div><p class="m">Input / output por 1M tokens; cache reads US$0.20/M. Anthropic reporta ~40% menos costo típico de workload que Opus 5.</p><p><b>Acceso:</b> Pro, Max, Team, Enterprise, API y clouds compatibles.</p></article>
+<article class="c"><span class="tag">GROK 4.7</span><div class="price">US$2 / US$6</div><p class="m">Input / output por 1M tokens. 500k de contexto, razonamiento low→xhigh y foco en coding / agentic work.</p><p><b>Acceso:</b> xAI API, Grok Build, Cursor y rollout en GitHub Copilot.</p></article>
+</div></div></section>
+
+<section class="sec"><div class="w"><div class="k">Entrega</div><h2>Cursor ya mira lo que pasa después del código.</h2><div class="g2">
+<article class="c"><span class="tag">ROLLOUTS</span><h3>Monitorea el despliegue</h3><p class="m">Analiza el cambio, prepara un plan de monitoreo y sigue señales asociadas al PR a medida que avanza por los ambientes.</p><p>La novedad conceptual: la IA deja de terminar en “hice el commit”.</p></article>
+<article class="c"><span class="tag">SECURITY REVIEW</span><h3>Revisión continua por PR</h3><p class="m">Cursor agregó un bot dedicado a detectar problemas relevantes de seguridad en cambios de código.</p><p><b>Disponibilidad:</b> Teams y Enterprise.</p></article>
+</div><div class="call"><b>Precio de Cursor Teams:</b> US$40 por usuario/mes en modalidad mensual. Enterprise tiene precio personalizado.</div></div></section>
+
+<section class="sec"><div class="w"><div class="k">Sistema recomendado</div><h2>Cómo lo usaría en un proyecto real.</h2><div class="steps">
+<div class="step"><div class="n">1</div><div><h3>Planificá con un modelo fuerte</h3><p class="m">Opus 5.5 o GPT‑6 Sol para entender el repo, restricciones, riesgos y estrategia antes de editar.</p></div></div>
+<div class="step"><div class="n">2</div><div><h3>Mandá subtareas a modelos baratos</h3><p class="m">Luna o Grok 4.7 cuando la tarea sea pequeña, repetible y fácil de validar.</p></div></div>
+<div class="step"><div class="n">3</div><div><h3>Validá con herramientas deterministas</h3><p class="m">Tests, typecheck, lint y checks del proyecto. La propia explicación del agente no reemplaza evidencia.</p></div></div>
+<div class="step"><div class="n">4</div><div><h3>Mirá el post‑merge</h3><p class="m">Usá Rollouts para monitorear la entrega y agregá una revisión específica de PRs cuando el proyecto lo justifique.</p></div></div>
+</div></div></section>
+
+<section class="sec"><div class="w"><div class="k">Prompts</div><h2>4 patrones para copiar.</h2><div class="g2">
+<div><h3>1 · Plan de cambio</h3><pre>Analizá este repositorio antes de tocar código. Identificá arquitectura, archivos afectados, invariantes, riesgos y tests que deberían pasar. Proponé el cambio mínimo que resuelva el objetivo sin refactors no solicitados.</pre></div>
+<div><h3>2 · Ejecución acotada</h3><pre>Implementá únicamente [X]. No rediseñes arquitectura. Antes de terminar, corré [tests/typecheck/lint] y devolvé cambios, validación e incertidumbres.</pre></div>
+<div><h3>3 · Revisión</h3><pre>Revisá este diff buscando correctness, permisos, datos, concurrencia y casos borde. Priorizá problemas que puedan afectar producción. Evitá comentarios de estilo que no cambien el riesgo.</pre></div>
+<div><h3>4 · Post‑deploy</h3><pre>A partir de este diff, definí qué métricas, logs y síntomas deberían monitorearse después del deploy. Separá señales de éxito, regresión e incertidumbre.</pre></div>
+</div></div></section>
+
+<section class="sec"><div class="w"><div class="k">Limitaciones</div><h2>No vendas esto como magia.</h2><div class="g3">
+<article class="c"><h3>Benchmark ≠ tu repo</h3><p class="m">Probá tareas reales tuyas antes de cambiar un workflow completo.</p></article>
+<article class="c"><h3>Precio API ≠ límites del plan</h3><p class="m">Un precio por token más bajo no implica automáticamente más uso en una suscripción.</p></article>
+<article class="c"><h3>Más autonomía exige más control</h3><p class="m">Cuanto más puede ejecutar un agente, más importante es definir permisos, alcance y validación.</p></article>
+</div></div></section>
+
+<section class="sec src"><div class="w"><div class="k">Fuentes oficiales</div><h2>Verificá todo acá.</h2>
+<p><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/">OpenAI — GPT‑6 Sol y Luna</a></p>
+<p><a href="https://www.anthropic.com/claude/opus">Anthropic — Claude Opus 5.5</a></p>
+<p><a href="https://x.ai/news/grok-4-7">xAI — Grok 4.7</a> · <a href="https://docs.x.ai/developers/models/grok-4.7">modelo y pricing</a></p>
+<p><a href="https://cursor.com/changelog">Cursor — changelog</a> · <a href="https://cursor.com/pricing">pricing</a></p>
+<p><a href="https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21/">GitHub Copilot — release semanal</a></p>
+<p><a href="https://lovable.dev/blog/opus-5-5-now-in-lovable">Lovable — Opus 5.5 en workloads reales</a></p>
+</div></section>
+<footer><div class="w">GERO IA · Ideas → Sistemas → Resultados · Datos verificados al 27/09/2026.</div></footer>
+</body></html>
