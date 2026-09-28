@@ -1,0 +1,34 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Microsoft Copilot Home, Code y Autopilot — Guía práctica GERO</title><style>body{margin:0;background:#0b0d0f;color:#f4f6f7;font-family:Inter,Arial,sans-serif;line-height:1.6}.wrap{max-width:960px;margin:auto;padding:52px 22px 90px}.lime{color:#c7ff28}.muted{color:#aab1b8}.card{background:#14191e;border:1px solid #2b333b;border-radius:18px;padding:22px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}h1{font-size:clamp(2.7rem,7vw,5.6rem);line-height:.96;margin:.2em 0 .3em}h2{font-size:2rem;margin-top:2.2em}h3{font-size:1.25rem}.tag{display:inline-block;padding:5px 10px;border:1px solid #303943;border-radius:999px;color:#c7ff28;font-weight:700;font-size:.82rem}pre{white-space:pre-wrap;background:#07090b;border:1px solid #2b333b;padding:18px;border-radius:14px}a{color:#8fd0ff}table{width:100%;border-collapse:collapse;background:#14191e}th,td{padding:13px;border-bottom:1px solid #2b333b;text-align:left;vertical-align:top}th{color:#c7ff28}.note{border-left:4px solid #c7ff28;padding:18px;background:#11161a;border-radius:12px}.check li{margin:.45em 0}</style></head><body><main class="wrap"><div class="tag">GERO · SISTEMAS / OPS / IA</div><h1>Copilot dejó de ser solo chat.<br><span class="lime">Ahora Microsoft quiere que ejecute trabajo.</span></h1><p class="muted">Guía práctica para entender Home, Code y Autopilot, qué cambia de verdad, cuándo lo probaría yo y dónde todavía no confiaría.</p>
+<div class="note"><b>Mi lectura:</b> lo importante no son tres nombres nuevos. Microsoft está cambiando la unidad de trabajo: de “pregunta → respuesta” a “pedido → ejecución → seguimiento → entrega”.</div>
+<h2>1. Qué cambió realmente</h2><div class="grid"><div class="card"><h3>Home</h3><p>Une Chat, Cowork y Office para que el contexto de trabajo viva en un solo lugar. La idea es retomar proyectos, delegar tareas y producir documentos sin saltar entre tantas superficies.</p></div><div class="card"><h3>Code</h3><p>Permite describir apps, dashboards y automatizaciones en lenguaje natural. Microsoft dice que usa tecnología de GitHub Copilot y apunta a resultados ejecutables, no solo a snippets.</p></div><div class="card"><h3>Autopilot</h3><p>Agente persistente con identidad, memoria, computadora y workspace. Está pensado para seguir pendientes, retomar trabajo días después y operar en segundo plano.</p></div></div>
+<h2>2. Disponibilidad y acceso</h2><p><b>PRECIO / DISPONIBILIDAD:</b> ACCESO LIMITADO / BETA. Home y Code empiezan rollout a través de Frontier; Autopilot amplía private preview. No lo trataría hoy como una función disponible para cualquier cuenta gratis estándar. Tampoco asumiría un precio independiente: forma parte del ecosistema Copilot/Microsoft 365 y el acceso depende del producto, plan, tenant y rollout.</p>
+<h2>3. El caso donde yo lo probaría primero</h2><div class="card"><h3>Lanzamiento de un producto</h3><ol><li>Le doy objetivos, fecha, stakeholders y archivos.</li><li>Home centraliza documentos y contexto.</li><li>Code arma un dashboard de seguimiento o una automatización chica.</li><li>Autopilot sigue pendientes y me trae excepciones.</li><li>Yo reviso decisiones, aprobaciones y cualquier acción irreversible.</li></ol></div>
+<h2>4. Cómo lo implementaría sin mandarme una macana</h2><ol class="check"><li>Arrancaría con un workflow de bajo riesgo.</li><li>Definiría qué puede leer, qué puede modificar y qué requiere aprobación.</li><li>Separaría “preparar” de “ejecutar”.</li><li>Usaría una carpeta o workspace acotado, no toda la empresa.</li><li>Revisaría logs y resultados durante una semana.</li><li>Recién después agregaría automatizaciones persistentes.</li></ol>
+<h2>5. Mi checklist de seguridad</h2><table><tr><th>Pregunta</th><th>Qué haría</th></tr><tr><td>¿Puede borrar o enviar algo?</td><td>Human-in-the-loop obligatorio.</td></tr><tr><td>¿Tiene acceso a información sensible?</td><td>Principio de mínimo privilegio.</td></tr><tr><td>¿Puede ejecutar durante horas/días?</td><td>Límite, logs, alertas y condición de parada.</td></tr><tr><td>¿Genera código?</td><td>PR, tests, revisión y sandbox antes de producción.</td></tr></table>
+<h2>6. Prompt que usaría para probar Home/Cowork</h2><pre>Objetivo: preparar el lanzamiento de [producto].
+Contexto válido: solo los archivos de esta carpeta y los mails que te indique.
+Entregables:
+1. checklist con responsables,
+2. borrador de documento ejecutivo,
+3. tabla de riesgos,
+4. pendientes que requieren decisión humana.
+No envíes mensajes, no publiques y no modifiques archivos originales sin pedirme confirmación.
+Al final, separá claramente:
+- hecho,
+- pendiente,
+- bloqueado,
+- requiere mi aprobación.</pre>
+<h2>7. Prompt que usaría para Code</h2><pre>Construí un dashboard interno para [caso].
+Antes de implementar:
+- resumí requisitos,
+- definí datos de entrada,
+- listá integraciones,
+- marcá supuestos.
+Luego armá una primera versión mínima.
+No agregues features no pedidas.
+Incluí estados de error, logging y un checklist de deploy.</pre>
+<h2>8. Cuándo NO lo usaría</h2><ul><li>Procesos irreversibles sin aprobación humana.</li><li>Acceso amplio a datos sensibles desde el día uno.</li><li>Automatizaciones donde no puedo auditar qué hizo.</li><li>Procesos mal definidos: automatizar caos sigue siendo caos.</li></ul>
+<h2>9. Diferencia frente a ChatGPT/Claude/Gemini</h2><p>No lo reduciría a “qué modelo es mejor”. La ventaja potencial de Microsoft es el <b>contexto operativo dentro de Microsoft 365</b> y la persistencia del agente. Si tu empresa vive en Word, Excel, Outlook, Teams y SharePoint, esa integración puede pesar más que una diferencia chica de benchmark.</p>
+<h2>10. Qué mediría yo en una prueba</h2><div class="grid"><div class="card"><b>Tiempo ahorrado</b><p>Minutos humanos por tarea antes/después.</p></div><div class="card"><b>Errores</b><p>Cuántas correcciones humanas necesita.</p></div><div class="card"><b>Autonomía útil</b><p>Cuánto puede avanzar sin supervisionar cada paso.</p></div><div class="card"><b>Riesgo</b><p>Cuántas veces intenta acciones que deberían esperar aprobación.</p></div></div>
+<h2>11. Fuentes oficiales</h2><ul><li><a href="https://blogs.microsoft.com/blog/2026/09/25/introducing-the-new-copilot-with-home-code-and-autopilot/">Microsoft — Introducing the new Copilot with Home, Code and Autopilot</a></li><li><a href="https://copilot.microsoft.com/">Microsoft Copilot</a></li><li><a href="https://github.com/features/copilot">GitHub Copilot</a></li></ul>
+<p class="muted">Actualizado para el Radar IA de GERO. Confirmá siempre rollout, tenant y plan antes de implementar en producción.</p></main></body></html>
