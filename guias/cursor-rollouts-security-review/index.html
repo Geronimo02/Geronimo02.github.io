@@ -1,0 +1,35 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cursor Rollouts + Security Review — Guía práctica GERO</title><style>body{margin:0;background:#0b0d0f;color:#f5f7f8;font-family:Inter,Arial,sans-serif;line-height:1.62}.w{max-width:960px;margin:auto;padding:52px 22px 90px}.lime{color:#c7ff28}.muted{color:#aab1b8}.card{background:#14191e;border:1px solid #2b333b;border-radius:18px;padding:22px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}h1{font-size:clamp(2.7rem,7vw,5.5rem);line-height:.96;margin:.2em 0 .3em}h2{font-size:2rem;margin-top:2.2em}h3{font-size:1.25rem}.tag{display:inline-block;padding:5px 10px;border:1px solid #303943;border-radius:999px;color:#c7ff28;font-weight:700;font-size:.82rem}.note{border-left:4px solid #c7ff28;padding:18px;background:#11161a;border-radius:12px}pre{white-space:pre-wrap;background:#07090b;border:1px solid #2b333b;padding:18px;border-radius:14px}a{color:#8fd0ff}table{width:100%;border-collapse:collapse;background:#14191e}th,td{padding:13px;border-bottom:1px solid #2b333b;text-align:left;vertical-align:top}th{color:#c7ff28}</style></head><body><main class="w"><div class="tag">GERO · SISTEMAS / OPS / IA</div><h1>Cursor ya no termina en el PR.<br><span class="lime">Ahora mira deploy y seguridad.</span></h1><p class="muted">Guía para entender Rollouts + Security Review sin vender humo: qué hacen, cómo los probaría yo y dónde todavía hace falta observabilidad y seguridad de verdad.</p><div class="note"><b>Mi lectura:</b> esto es más interesante que “otro agente que codea”. Cursor está intentando meterse en el último metro del shipping: después del merge, cuando aparecen las regresiones y los riesgos reales.</div>
+<h2>1. Qué es Rollouts</h2><p>Rollouts conecta el cambio de código con lo que ocurre después. Lee el PR, genera un plan de monitoreo y usa señales de deployment/telemetría para clasificar el rollout como saludable, regresión o inconcluso.</p>
+<div class="grid"><div class="card"><h3>Lee el diff</h3><p>Entiende qué cambió y qué debería observarse.</p></div><div class="card"><h3>Arma el plan</h3><p>Define logs, métricas o traces relevantes para ese cambio.</p></div><div class="card"><h3>Sigue el deploy</h3><p>Relaciona staging/production con señales reales.</p></div><div class="card"><h3>Ayuda a reaccionar</h3><p>Ante una regresión puede sugerir un revert PR o pasar el problema a un cloud agent.</p></div></div>
+<h2>2. Qué es Security Review</h2><p>Es un revisor centrado en vulnerabilidades explotables, no en “estilo de código”. Busca categorías como inyección SQL/command, auth bypass, SSRF/redirects, secrets, deserialización insegura y dependencias vulnerables.</p>
+<h2>3. Precio / disponibilidad</h2><p><b>PRECIO / DISPONIBILIDAD:</b> PAGO. Cursor publica Teams Standard a USD 40 por usuario/mes y Enterprise con precio personalizado. Las funciones se activan desde Automations y Cursor indica créditos de prueba para Rollouts durante el periodo anunciado. Confirmaría siempre la página de pricing antes de comprar.</p>
+<h2>4. Cómo lo probaría yo</h2><ol><li>Repo chico o servicio no crítico.</li><li>Conectar source control + deploy + una sola fuente de telemetría.</li><li>Elegir 5 PRs reales con distinto riesgo.</li><li>Comparar qué señales eligió Rollouts vs las que hubiera elegido el equipo.</li><li>Ver falsos positivos/negativos de Security Review.</li><li>No permitir rollback/merge automático.</li></ol>
+<h2>5. Caso real de prueba</h2><pre>PR: cambia validación de pagos.
+Esperado:
+- no aumenta error rate del endpoint,
+- no sube latencia p95,
+- no aumenta el ratio de pagos rechazados,
+- no aparecen excepciones nuevas.
+Si hay regresión:
+- explicar cambio sospechoso,
+- mostrar evidencia,
+- proponer revert PR,
+- NO ejecutar el merge sin revisión humana.</pre>
+<h2>6. Lo que yo mediría</h2><table><tr><th>Métrica</th><th>Por qué importa</th></tr><tr><td>Tiempo hasta detectar regresión</td><td>Si reduce minutos/horas reales de debugging.</td></tr><tr><td>Precisión de la causa sugerida</td><td>Evitar que solo “detecte humo”.</td></tr><tr><td>Falsos positivos de seguridad</td><td>Si grita por todo, el equipo lo ignora.</td></tr><tr><td>PRs donde encontró algo que el equipo no vio</td><td>Valor incremental real.</td></tr></table>
+<h2>7. Cuándo NO confiaría solo en esto</h2><ul><li>Compliance o auditorías formales.</li><li>Sistemas críticos donde una vulnerabilidad es catastrófica.</li><li>Repos sin tests ni telemetría útil.</li><li>Deployments donde “healthy” depende de negocio y no solo de infraestructura.</li></ul>
+<h2>8. Mi checklist antes de activarlo</h2><ul><li>Observabilidad ya funcionando.</li><li>Owners de cada servicio definidos.</li><li>Rollback manual claro.</li><li>Alertas con severidad y deduplicación.</li><li>PR templates con contexto suficiente.</li><li>Reglas para secrets y PII.</li><li>Sin acciones irreversibles automáticas al inicio.</li></ul>
+<h2>9. Prompt / instrucción operativa que usaría</h2><pre>Revisá este rollout priorizando impacto de usuario.
+No concluyas "healthy" solo porque no hay errores 5xx.
+Buscá:
+- error rate,
+- latencia,
+- métricas de negocio asociadas,
+- cambios en logs,
+- anomalías nuevas.
+Si sospechás regresión:
+1. mostrà evidencia,
+2. indicá el cambio más probable,
+3. sugerí próximos pasos,
+4. NO ejecutes rollback ni merge automáticamente.</pre>
+<h2>10. Mi recomendación</h2><p>Yo lo probaría si ya tenés CI/CD y telemetría. Si todavía no tenés buenas métricas, Rollouts no te arregla la observabilidad: solo automatiza la lectura de señales que ya existen.</p>
+<h2>11. Fuentes oficiales</h2><ul><li><a href="https://cursor.com/changelog/rollouts-and-security-reviewer">Cursor — Rollouts and Security Reviewer</a></li><li><a href="https://cursor.com/pricing">Cursor — Pricing</a></li><li><a href="https://cursor.com/">Cursor</a></li></ul><p class="muted">Guía GERO · actualizada para esta edición del Radar IA.</p></main></body></html>
