@@ -1,0 +1,44 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ElevenLabs API + MCP — Pipeline creativo GERO</title><style>body{margin:0;background:#0b0d0f;color:#f5f7f8;font-family:Inter,Arial,sans-serif;line-height:1.62}.w{max-width:960px;margin:auto;padding:52px 22px 90px}.lime{color:#c7ff28}.muted{color:#aab1b8}.card{background:#14191e;border:1px solid #2b333b;border-radius:18px;padding:22px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}h1{font-size:clamp(2.7rem,7vw,5.5rem);line-height:.96;margin:.2em 0 .3em}h2{font-size:2rem;margin-top:2.2em}h3{font-size:1.25rem}.tag{display:inline-block;padding:5px 10px;border:1px solid #303943;border-radius:999px;color:#c7ff28;font-weight:700;font-size:.82rem}.note{border-left:4px solid #c7ff28;padding:18px;background:#11161a;border-radius:12px}pre{white-space:pre-wrap;background:#07090b;border:1px solid #2b333b;padding:18px;border-radius:14px}a{color:#8fd0ff}table{width:100%;border-collapse:collapse;background:#14191e}th,td{padding:13px;border-bottom:1px solid #2b333b;text-align:left;vertical-align:top}th{color:#c7ff28}</style></head><body><main class="w"><div class="tag">GERO · SISTEMAS / OPS / IA</div><h1>ElevenLabs ya no es solo voz.<br><span class="lime">Ahora podés montar una fábrica creativa.</span></h1><p class="muted">Mi guía para bajar Image API, Video API, Templates API y MCP a un workflow de negocio real, con controles para no terminar generando basura a escala.</p><div class="note"><b>Mi lectura:</b> la novedad importante no es que ElevenLabs haga “más cosas creativas”. Es que esas cosas ahora pueden vivir detrás de un API, un template y un evento de tu sistema.</div>
+<h2>1. Qué cambió</h2><div class="grid"><div class="card"><h3>Image API</h3><p>Generar y editar imágenes programáticamente usando modelos disponibles dentro de ElevenLabs.</p></div><div class="card"><h3>Video API</h3><p>Crear o animar video desde código, sin depender de repetir el flujo manual en la app.</p></div><div class="card"><h3>Templates API</h3><p>Diseñás un Flow aprobado una vez y después tu sistema cambia inputs sin reconstruir toda la lógica.</p></div><div class="card"><h3>MCP</h3><p>Los nodos pueden invocarse desde clientes compatibles como Claude, ChatGPT o Cursor, según integración y permisos.</p></div></div>
+<h2>2. Precio / disponibilidad</h2><p><b>PRECIO / DISPONIBILIDAD:</b> API DE PAGO / consumo. ElevenLabs indica que imagen y video usan el mismo pricing que su app para esos modelos; el importe depende del modelo y del output. No hay un único “precio de la API creativa”. Para producción, yo presupuestaría por asset terminado y no por llamada.</p>
+<h2>3. El workflow que yo armaría</h2><pre>NUEVO SKU / NUEVA CAMPAÑA
+        ↓
+Webhook desde PIM / ecommerce / Notion
+        ↓
+Validador de datos
+        ↓
+Template aprobado
+        ↓
+Imagen → Video → Voz → Música/SFX
+        ↓
+Carpeta de revisión
+        ↓
+Humano aprueba
+        ↓
+Publicación / DAM / ads</pre>
+<h2>4. Por qué Templates me parece lo más potente</h2><p>Sin templates, cada generación depende demasiado del prompt del momento. Con un template podés fijar estructura, referencias, estilo, voz, formato y orden de nodos. Después solo cambian variables como producto, claim, color o campaña.</p>
+<h2>5. Ejemplo real: ecommerce</h2><div class="card"><h3>Entrada</h3><p>SKU, nombre, color, fotos base, beneficios y audiencia.</p><h3>Salida</h3><p>3 packshots, 2 variantes de anuncio, 1 video corto, voz y versión vertical para social.</p><h3>Mi regla</h3><p>No publicaría directo. Mandaría todo a una bandeja de aprobación y guardaría prompt/template/version/modelo usado.</p></div>
+<h2>6. Cómo lo implementaría en pequeño</h2><ol><li>Elegí un solo producto.</li><li>Hacé un template de 3–5 nodos.</li><li>Definí un único formato de salida.</li><li>Disparalo manualmente vía API o MCP.</li><li>Guardá costos y tiempos.</li><li>Recién después agregá webhook/evento automático.</li></ol>
+<h2>7. Prompt de brief que usaría</h2><pre>Producto: {{producto}}
+Audiencia: {{audiencia}}
+Objetivo: {{objetivo}}
+Canal: Instagram Reel 9:16
+Tono: técnico, premium, directo
+Restricciones:
+- no inventar claims,
+- no modificar logo,
+- mantener colores de marca,
+- evitar stock humano genérico,
+- texto máximo 8 palabras por escena.
+
+Generá:
+1. concepto visual,
+2. 3 escenas,
+3. voz en off breve,
+4. assets requeridos,
+5. checklist de QA.</pre>
+<h2>8. Gotchas que yo vigilaría</h2><table><tr><th>Riesgo</th><th>Control</th></tr><tr><td>Generar basura a escala</td><td>QA humano + muestras antes de automatizar.</td></tr><tr><td>Costo variable</td><td>Presupuesto por asset y límites por job.</td></tr><tr><td>Brand drift</td><td>Templates, referencias fijas y versionado.</td></tr><tr><td>Duplicados / reintentos</td><td>Idempotency key o job ID propio.</td></tr><tr><td>Errores silenciosos</td><td>Webhook de estado + logs + alertas.</td></tr></table>
+<h2>9. MCP: cómo lo usaría yo</h2><p>Para prototipar rápido: le pediría a Claude/ChatGPT/Cursor que ejecute el workflow usando un MCP ya autorizado. Para producción, preferiría que la lógica crítica viva en mi backend o automatizador, con credenciales y logs controlados.</p>
+<h2>10. Cuándo NO lo usaría</h2><ul><li>Si solo necesitás una pieza ocasional: la app manual puede ser más simple.</li><li>Si no tenés brand guidelines claras.</li><li>Si el costo de revisión humana es mayor que el ahorro.</li><li>Si el contenido requiere precisión legal o médica sin validación.</li></ul>
+<h2>11. Checklist de producción</h2><ul><li>Template versionado.</li><li>Input schema validado.</li><li>Presupuesto por job.</li><li>Timeout y retries.</li><li>Salida guardada con metadata.</li><li>Revisión humana.</li><li>Webhook de estado.</li><li>Fallback si falla un nodo.</li></ul>
+<h2>12. Fuentes oficiales</h2><ul><li><a href="https://elevenlabs.io/blog/introducing-the-image-video-and-templates-apis">ElevenLabs — Image, Video and Templates APIs</a></li><li><a href="https://elevenlabs.io/pricing">ElevenLabs — Pricing</a></li><li><a href="https://elevenlabs.io/">ElevenLabs</a></li></ul><p class="muted">Guía GERO · actualizada para esta edición del Radar IA.</p></main></body></html>
