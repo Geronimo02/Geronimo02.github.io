@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qué modelo de IA usar en 2026 — Guía práctica de GERO</title>
+<meta name="description" content="Matriz práctica para elegir entre GPT-6 Sol/Luna, Claude Opus 5.5 y Grok 4.7 según tarea, costo, autonomía y volumen.">
+<style>
+:root{--bg:#0b0d0f;--card:#12161a;--text:#f5f7f8;--muted:#a8afb7;--lime:#c6ff23;--line:#2a3036;--cream:#f4f0e6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;line-height:1.6}
+main{max-width:980px;margin:auto;padding:52px 22px 100px}.eyebrow{color:var(--lime);font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}
+h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:.95;margin:.25em 0 .3em;letter-spacing:-.045em}h2{font-size:2rem;margin-top:2.5em}h3{font-size:1.3rem;margin-top:1.7em}
+.lead{font-size:1.25rem;color:#d7dce1;max-width:760px}.note,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}.note{border-left:4px solid var(--lime)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.badge{display:inline-block;border:1px solid var(--line);padding:5px 10px;border-radius:999px;color:var(--muted);font-size:.85rem}
+table{width:100%;border-collapse:collapse;margin:18px 0;background:var(--card);border-radius:16px;overflow:hidden}th,td{padding:14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--lime)}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}pre{background:#07090b;border:1px solid var(--line);padding:18px;border-radius:14px;overflow:auto}
+a{color:#9ed7ff}ul,ol{padding-left:1.3rem}.lime{color:var(--lime)}.muted{color:var(--muted)}hr{border:0;border-top:1px solid var(--line);margin:50px 0}
+.check{list-style:"✓  "}.avoid{list-style:"×  "}.footer{margin-top:70px;color:var(--muted);font-size:.9rem}
+</style></head>
+<body><main>
+<div class="eyebrow">GERO · Sistemas / Ops / IA</div>
+<h1>No existe “la mejor IA”.<br><span class="lime">Existe la que conviene para tu tarea.</span></h1>
+<p class="lead">Esta es la matriz que yo usaría hoy para elegir entre GPT‑6 Sol/Luna, Claude Opus 5.5 y Grok 4.7 sin caer en benchmarks sueltos ni pagar de más.</p>
+<div class="note"><b>La regla central:</b> primero definí la tarea, después la calidad mínima aceptable, después el costo de repetirla 100 o 10.000 veces. Recién al final elegí modelo.</div>
+
+<h2>1. Mi mapa de decisión rápido</h2>
+<div class="grid">
+<div class="card"><span class="badge">Volumen / costo</span><h3>GPT‑6 Luna</h3><p>Lo probaría primero para clasificación, extracción, limpieza, reformateo y pasos baratos dentro de automatizaciones.</p></div>
+<div class="card"><span class="badge">Producto / software</span><h3>GPT‑6 Sol</h3><p>Mi candidato para implementar, depurar, usar herramientas y trabajar sobre proyectos con bastante contexto técnico.</p></div>
+<div class="card"><span class="badge">Análisis profundo</span><h3>Claude Opus 5.5</h3><p>Lo evaluaría para documentos largos, arquitectura, planificación compleja y tareas donde quiero una segunda mirada muy razonada.</p></div>
+<div class="card"><span class="badge">Agentes largos</span><h3>Grok 4.7</h3><p>Me parece especialmente interesante para coding prolongado y loops con herramientas cuando el precio/rendimiento cierra.</p></div>
+</div>
+
+<h2>2. Precio / disponibilidad que sí está confirmado</h2>
+<table><thead><tr><th>Modelo</th><th>Acceso</th><th>Precio público relevante</th><th>Qué miraría yo</th></tr></thead>
+<tbody>
+<tr><td><b>GPT‑6 Sol</b></td><td>API; ChatGPT Work y Codex en planes elegibles</td><td>Standard, contexto corto: USD 2 input / USD 10 output por 1M tokens</td><td>Calidad alta sin ir al costo de Astra.</td></tr>
+<tr><td><b>GPT‑6 Luna</b></td><td>API; Work/Codex; Free/Go en desktop según rollout</td><td>Standard, contexto corto: USD 0.10 input / USD 0.50 output por 1M tokens</td><td>Es el que testearía primero cuando el volumen manda.</td></tr>
+<tr><td><b>Grok 4.7</b></td><td>xAI API, Cursor, Grok Build y routers</td><td>Hasta 200k prompt: USD 2 input / USD 6 output por 1M tokens; 500k de contexto</td><td>Muy competitivo para loops largos; cuidado con contexto >200k, donde sube el precio.</td></tr>
+<tr><td><b>Claude Opus 5.5</b></td><td>Claude / API según plan y disponibilidad</td><td>Anthropic anunció 40% menos costo que Opus 5. Verificá la tabla vigente antes de producción.</td><td>No asumiría que “más caro = mejor”; lo evaluaría por tarea difícil.</td></tr>
+</tbody></table>
+
+<h2>3. El error que yo evitaría: usar el mismo modelo para todo</h2>
+<p>Si una automatización tiene 8 pasos, no hay motivo para que los 8 corran con el modelo más caro. Yo la partiría por nivel de dificultad:</p>
+<pre>entrada
+  ↓
+Luna → clasifica / limpia / extrae
+  ↓
+Sol → decide / implementa / usa herramientas
+  ↓
+Opus 5.5 → revisión difícil o excepción
+  ↓
+reglas → validación + salida</pre>
+<p>Esto baja costo y, más importante, te obliga a diseñar el workflow en lugar de delegarle todo a una caja negra.</p>
+
+<h2>4. Mi método de evaluación en 30 minutos</h2>
+<ol>
+<li>Elegí <b>10 casos reales</b>, no prompts de benchmark.</li>
+<li>Definí qué cuenta como “bien”: exactitud, formato, tiempo, uso de herramientas, alucinaciones.</li>
+<li>Corré el mismo set con 2–4 modelos.</li>
+<li>Guardá tokens, latencia y correcciones humanas.</li>
+<li>Compará <b>costo por resultado aceptado</b>, no costo por request.</li>
+<li>Repetí con temperatura/configuración estable si aplica.</li>
+</ol>
+<div class="note"><b>Tip mío:</b> si un modelo barato necesita tres reintentos y uno caro sale bien a la primera, el barato puede terminar siendo más caro. Medí el workflow entero.</div>
+
+<h2>5. Prompts que usaría para probarlos</h2>
+<h3>A. Extracción / volumen</h3>
+<pre>Extraé de cada registro únicamente:
+- empresa
+- contacto
+- problema observado
+- próxima acción
+
+Respondé JSON válido. Si un dato no está explícito, devolvé null.
+No infieras ni completes información.</pre>
+<h3>B. Coding / implementación</h3>
+<pre>Actuá como implementador. Antes de tocar código:
+1) inspeccioná la estructura,
+2) proponé un plan de 5 pasos,
+3) identificá archivos afectados,
+4) recién después implementá.
+No cambies arquitectura fuera del alcance.
+Al final listá tests y riesgos pendientes.</pre>
+<h3>C. Revisión profunda</h3>
+<pre>Revisá esta decisión como si fueras un segundo arquitecto.
+Buscá supuestos ocultos, deuda que introduce, casos límite,
+alternativas más simples y señales que me harían revertir la decisión.
+Priorizá problemas concretos por impacto.</pre>
+
+<h2>6. Cuándo NO usaría cada uno</h2>
+<ul class="avoid">
+<li><b>Luna:</b> no arrancaría por acá en una decisión técnica ambigua donde un error cuesta horas de ingeniería.</li>
+<li><b>Sol:</b> no lo gastaría en reformatear miles de filas si una regla o un modelo más barato resuelve igual.</li>
+<li><b>Opus 5.5:</b> no lo pondría como default de un workflow de alto volumen sin medir costo por resultado.</li>
+<li><b>Grok 4.7:</b> no mandaría contextos gigantes “porque entra”; arriba de 200k prompt cambian las tarifas y el contexto extra puede empeorar la señal.</li>
+</ul>
+
+<h2>7. Tres gotchas que casi nadie mira</h2>
+<div class="grid">
+<div class="card"><h3>Cache</h3><p>En agentes repetitivos, diseñar prompts para reutilizar prefijos puede cambiar muchísimo el costo real.</p></div>
+<div class="card"><h3>Contexto</h3><p>Más contexto no siempre mejora. Meté sólo lo necesario y compactá en loops largos.</p></div>
+<div class="card"><h3>Salida cara</h3><p>Un modelo con input barato puede salir caro si generás respuestas enormes. Limitá formato y verbosity.</p></div>
+</div>
+
+<h2>8. El setup que yo armaría</h2>
+<p>Si tuviera que montar un router simple hoy:</p>
+<pre>si tarea == "clasificar" o "extraer":
+    modelo = "gpt-6-luna"
+elif tarea == "programar" o "usar_herramientas":
+    modelo = "gpt-6-sol"
+elif dificultad == "alta" and necesita_revision:
+    modelo = "claude-opus-5-5"
+elif agente_largo and presupuesto_ok:
+    modelo = "grok-4.7"
+
+si falla_validacion:
+    escalar_a_modelo_superior()</pre>
+<p>No automatizaría el routing “inteligente” el día uno. Primero reglas visibles y logs. Cuando ya tengas datos, recién ahí optimizás.</p>
+
+<h2>9. Checklist antes de ponerlo en producción</h2>
+<ul class="check">
+<li>10–30 casos reales de evaluación.</li>
+<li>Validación automática de formato.</li>
+<li>Timeout y máximo de reintentos.</li>
+<li>Límite de tokens de salida.</li>
+<li>Registro de modelo, costo, latencia y resultado.</li>
+<li>Fallback explícito.</li>
+<li>Human-in-the-loop para acciones irreversibles.</li>
+<li>Revisión mensual de precios y modelos.</li>
+</ul>
+
+<h2>10. Fuentes oficiales</h2>
+<ul>
+<li><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/">OpenAI — GPT‑6 Sol y Luna</a></li>
+<li><a href="https://developers.openai.com/api/docs/pricing">OpenAI API pricing</a></li>
+<li><a href="https://www.anthropic.com/news">Anthropic Newsroom — Claude Opus 5.5</a></li>
+<li><a href="https://x.ai/news/grok-4-7">xAI — Grok 4.7</a></li>
+<li><a href="https://docs.x.ai/developers/grok-4-7">xAI Docs — Grok 4.7</a></li>
+</ul>
+<hr>
+<p class="lead"><b>Mi conclusión:</b> no busco casarme con un modelo. Busco construir un sistema donde cada modelo haga el trabajo que justifica su costo.</p>
+<div class="footer">GERO · Guía actualizada para el Radar IA de septiembre de 2026. Precios y disponibilidad pueden cambiar: antes de producción, verificá las páginas oficiales.</div>
+</main></body></html>
