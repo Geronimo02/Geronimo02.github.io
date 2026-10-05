@@ -1,0 +1,9 @@
+.claude/
+.agents/
+.codex/
+skills-lock.json
+
+# atl skill registry caches (anywhere)
+**/.atl/
+# playwright MCP session logs
+**/.playwright-mcp/
