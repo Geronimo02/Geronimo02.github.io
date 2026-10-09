@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cursor Remote Control — Guía GERO</title>
+<style>
+body{background:#0b0d0f;color:#f5f7f8;font-family:Inter,Arial,sans-serif;line-height:1.65;max-width:960px;margin:auto;padding:48px 24px}
+a{color:#9cff38} h1{font-size:44px;line-height:1.08} h2{margin-top:38px} code,pre{background:#14181c;border:1px solid #2b333a;border-radius:10px;padding:3px 6px} pre{padding:18px;overflow:auto;white-space:pre-wrap}
+.badge{display:inline-block;border:1px solid #9cff38;color:#9cff38;border-radius:999px;padding:5px 11px;font-weight:700}
+.note{background:#14181c;border-left:4px solid #9cff38;padding:16px 18px;border-radius:8px}
+li{margin:.45rem 0}
+</style></head><body>
+<span class="badge">GRATIS · HOBBY</span>
+<h1>Cursor Remote Control: controlar agentes locales desde el iPhone</h1>
+<p><b>PRECIO / DISPONIBILIDAD:</b> Cursor lanzó Remote Control el 6 de octubre de 2026. La función está activada por defecto para todos salvo organizaciones Enterprise. El plan <b>Hobby es gratis</b>, sin tarjeta, y tiene solicitudes de Agent limitadas. Remote Control está disponible en la app de Cursor para <b>iOS</b>. El agente sigue ejecutándose en tu computadora: no es un Cloud Agent y tu equipo debe quedar encendido y online.</p>
+
+<h2>Qué cambió</h2>
+<p>Podés ver los agentes locales que están corriendo en tu computadora desde el iPhone, abrir uno, revisar qué está haciendo y mandarle un mensaje para corregir dirección o agregar contexto.</p>
+
+<h2>Por qué importa</h2>
+<p>Hasta ahora, un agente local largo te ataba bastante al escritorio. Esta función convierte el teléfono en una consola remota de supervisión. No hace que el trabajo ocurra en la nube: simplemente te permite controlar la sesión local a distancia.</p>
+
+<h2>Para quién sirve</h2>
+<ul>
+<li>Desarrolladores que dejan correr tareas largas de refactor o implementación.</li>
+<li>Freelancers que alternan reuniones, calle y escritorio.</li>
+<li>Personas que quieren supervisar un agente sin pagar por Cloud Agents.</li>
+<li>Equipos chicos que usan Cursor local y necesitan intervenir rápido.</li>
+</ul>
+
+<h2>Para quién NO</h2>
+<ul>
+<li>Quien apaga la computadora o necesita que el trabajo continúe con el equipo dormido.</li>
+<li>Usuarios Android por ahora.</li>
+<li>Quien espera uso ilimitado de Agent en el plan gratuito: Hobby tiene límites.</li>
+</ul>
+
+<h2>Cómo funciona</h2>
+<ol>
+<li>Instalá y abrí Cursor Desktop.</li>
+<li>Instalá Cursor en iOS e iniciá sesión con la misma cuenta.</li>
+<li>En el teléfono aparecerán las computadoras asociadas.</li>
+<li>Elegí una y aprobá el pairing desde Cursor Desktop.</li>
+<li>Abrí el agente local desde el iPhone.</li>
+<li>Leé el progreso o enviale un mensaje de steering.</li>
+</ol>
+
+<h2>Configuración que elegiría</h2>
+<p>Para una tarea larga activaría <b>Keep this computer awake</b> en Remote Control, dejaría el equipo enchufado y con la tapa abierta, y definiría antes de irme un criterio de éxito claro.</p>
+
+<h2>Workflow real</h2>
+<pre>1. En el escritorio:
+   “Implementá este ticket. Antes de cambiar arquitectura, avisame.”
+
+2. Me voy del escritorio.
+
+3. En iPhone:
+   reviso progreso → veo si tomó una decisión equivocada → mando:
+   “No agregues otra dependencia. Reutilizá la capa existente y seguí.”
+
+4. Vuelvo con la tarea más avanzada y menos retrabajo.</pre>
+
+<h2>Prompt de arranque</h2>
+<pre>Objetivo: [ticket o tarea].
+Antes de empezar, resumí el plan en 5 puntos.
+No cambies arquitectura ni dependencias sin consultarme.
+Trabajá por pasos verificables.
+Después de cada bloque importante, dejá un resumen corto para que pueda supervisarlo desde Remote Control.
+Si algo está ambiguo, frená antes de inventar.</pre>
+
+<h2>Mapa de decisión</h2>
+<ul>
+<li><b>Necesito que corra aunque cierre la laptop:</b> Remote Control no alcanza; necesitás ejecución cloud.</li>
+<li><b>Mi laptop puede quedar encendida:</b> Remote Control encaja muy bien.</li>
+<li><b>Solo quiero revisar mensajes:</b> úsalo como consola de supervisión.</li>
+<li><b>Necesito ejecutar muchos agentes:</b> revisá límites del plan y el costo antes de escalar.</li>
+</ul>
+
+<h2>Limitaciones</h2>
+<ul>
+<li>iOS en el lanzamiento.</li>
+<li>La computadora debe estar encendida y conectada.</li>
+<li>El plan Hobby incluye solicitudes de Agent limitadas.</li>
+<li>Enterprise debe habilitar Remote Control desde la administración.</li>
+<li>Control remoto no elimina la necesidad de revisar cambios importantes.</li>
+</ul>
+
+<h2>Qué haría yo</h2>
+<p>No lo usaría para “programar desde el celular”. Lo usaría para <b>intervenir en el momento correcto</b>. Lanzaría tareas bien especificadas desde el escritorio y usaría el teléfono para evitar que un error temprano se convierta en una hora de retrabajo.</p>
+
+<h2>Checklist</h2>
+<ul>
+<li>Cursor Desktop actualizado</li><li>Cursor iOS</li><li>Misma cuenta</li><li>Pairing aprobado</li>
+<li>Equipo enchufado</li><li>Keep awake</li><li>Tarea bien acotada</li><li>Puntos de control definidos</li>
+</ul>
+
+<h2>Próximos pasos</h2>
+<p>Probalo con una sola tarea de 20–40 minutos. Si Remote Control te evita al menos una vuelta completa de corrección, ya encontró su lugar en el workflow.</p>
+
+<h2>Fuentes oficiales</h2>
+<p><a href="https://cursor.com/changelog/remote-control-local-agents">Cursor — Remote control for local agents</a></p>
+<p><a href="https://cursor.com/pricing">Cursor Pricing — Hobby Free</a></p>
+</body></html>
