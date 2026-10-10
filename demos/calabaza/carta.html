@@ -1,0 +1,3049 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Calabaza Belgrano — Carta Digital & Viandas del Día | Tandil</title>
+  <meta name="description" content="Carta digital interactiva y viandas caseras de Restaurant Calabaza Belgrano 1301, Tandil. Ruleta del chef, vapor en vivo, bandeja semanal y pedidos directos a WhatsApp.">
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM — BODEGÓN KINÉTICO & ROTISERÍA DE TANDIL
+       100% Humano, táctil, apetitoso y con micro-interacciones únicas.
+       ============================================================ */
+    :root {
+      --bg:             #120f0d;
+      --bg-surface:     #1a1512;
+      --bg-card:        #221c18;
+      --bg-elevated:    #2a231e;
+      --bg-receipt:     #f8f4ec;
+      
+      --text:           #f7f2ea;
+      --text-muted:     #a89f92;
+      --text-dim:       #73695d;
+      --text-dark:      #1f1914;
+      
+      --terracotta:     #e25822;
+      --terracotta-dark:#bf4414;
+      --terracotta-glow:rgba(226, 88, 34, 0.28);
+      
+      --amber:          #f2a63b;
+      --amber-soft:     rgba(242, 166, 59, 0.12);
+      --olive:          #48693c;
+      
+      --border:         rgba(247, 242, 234, 0.08);
+      --border-hover:   rgba(247, 242, 234, 0.2);
+      
+      --font-display:   'Playfair Display', Georgia, serif;
+      --font-sans:      'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      
+      --radius-sm:      6px;
+      --radius-md:      12px;
+      --radius-lg:      20px;
+      --radius-full:    999px;
+      
+      color-scheme: dark;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      padding-bottom: 120px;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Subtle warm paper grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .wrap {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 32px);
+    }
+
+    /* Custom Cursor (Desktop) */
+    #cur-dot, #cur-ring {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      top: 0; left: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    #cur-dot { width: 6px; height: 6px; background: var(--terracotta); }
+    #cur-ring { width: 34px; height: 34px; border: 1.5px solid var(--amber); }
+    body.cursor-active #cur-dot, body.cursor-active #cur-ring { opacity: 1; }
+    @media(hover: none) { #cur-dot, #cur-ring { display: none !important; } }
+
+    /* ============================================================
+       TOP HEADER & TICKER
+       ============================================================ */
+    .top-promo-ticker {
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: tickerRun 28s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 24px;
+    }
+    .ticker-dot {
+      width: 5px;
+      height: 5px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+    @keyframes tickerRun {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .main-header {
+      padding: 24px 0 20px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-stamp {
+      width: 48px;
+      height: 48px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--amber);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .brand-stamp:hover {
+      transform: scale(1.1) rotate(6deg);
+    }
+    .brand-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .brand-title span {
+      color: var(--terracotta);
+    }
+    .brand-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 3px;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(72, 105, 60, 0.2);
+      border: 1px solid rgba(72, 105, 60, 0.4);
+      color: #9cd18b;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: #73c757;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #73c757;
+      animation: pulseGreen 2s infinite;
+    }
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .header-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sound-toggle-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    .sound-toggle-btn:hover {
+      color: var(--amber);
+      border-color: var(--amber);
+    }
+    .sound-toggle-btn.sound-on {
+      color: var(--amber);
+      background: var(--amber-soft);
+      border-color: rgba(242, 166, 59, 0.3);
+    }
+    .btn-header-back {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-header-back:hover {
+      color: var(--text);
+      border-color: var(--border-hover);
+      background: var(--bg-surface);
+    }
+    .btn-ruleta-hero {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--terracotta) 0%, #d83d10 100%);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px var(--terracotta-glow);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-ruleta-hero:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 20px var(--terracotta-glow);
+    }
+
+    /* ============================================================
+       MODALIDAD TACTIL (VIANDAS / SALÓN)
+       ============================================================ */
+    .mode-container {
+      margin: 24px 0 28px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 6px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      position: relative;
+    }
+    .mode-tab-btn {
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mode-tab-btn.active {
+      background: var(--bg-card);
+      color: var(--text);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      border: 1px solid var(--border-hover);
+    }
+    .mode-tab-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+    .mode-badge-hint {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: var(--radius-full);
+      background: var(--terracotta);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       INNOVACIÓN 1: SPOTLIGHT DE VIANDA CON VAPOR DE HORNO EN VIVO
+       ============================================================ */
+    .viandas-hero-card {
+      background: linear-gradient(145deg, #1f1915 0%, #171310 100%);
+      border: 1px solid rgba(226, 88, 34, 0.25);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 3.5vw, 32px);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+    .viandas-hero-card::after {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, var(--terracotta-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .viandas-header-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .viandas-headline-group {
+      max-width: 520px;
+    }
+    .stamp-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 6px;
+    }
+    .viandas-card-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.2vw, 32px);
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .viandas-subnote {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Tira interactiva de días con deslizamiento suave */
+    .days-carousel-wrap {
+      margin: 18px 0 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+    .days-carousel-wrap::-webkit-scrollbar { display: none; }
+    .days-pill-row {
+      display: flex;
+      gap: 8px;
+      min-width: max-content;
+    }
+    .day-selector-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      min-width: 96px;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .day-selector-btn .day-main {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .day-selector-btn .day-sub {
+      font-size: 10px;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .day-selector-btn:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+    .day-selector-btn.active {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+      box-shadow: 0 4px 14px var(--terracotta-glow);
+      transform: translateY(-2px);
+    }
+
+    /* Presentación del plato con CANVASES DE VAPOR INTERACTIVO */
+    .vianda-spotlight {
+      display: grid;
+      grid-template-columns: 160px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    @media (max-width: 720px) {
+      .vianda-spotlight {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        text-align: left;
+      }
+    }
+    .vianda-photo-box {
+      width: 160px;
+      height: 140px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      background: #171310;
+    }
+    @media (max-width: 720px) {
+      .vianda-photo-box {
+        width: 100%;
+        height: 200px;
+      }
+    }
+    .vianda-photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .viandas-hero-card:hover .vianda-photo-box img {
+      transform: scale(1.05);
+    }
+
+    /* Canvas de Vapor sobre la comida */
+    .steam-canvas-overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      z-index: 5;
+    }
+    .steam-hot-tag {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(18, 15, 13, 0.85);
+      backdrop-filter: blur(6px);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      z-index: 6;
+      border: 1px solid var(--border);
+    }
+
+    .vianda-info-box {
+      flex: 1;
+    }
+    .vianda-tag-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .vianda-chip {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      background: var(--amber-soft);
+      color: var(--amber);
+      border: 1px solid rgba(242, 166, 59, 0.2);
+    }
+    .vianda-chef-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .vianda-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .vianda-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .vianda-action-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    @media (max-width: 720px) {
+      .vianda-action-box {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding-top: 10px;
+        border-top: 1px solid var(--border);
+      }
+    }
+    .vianda-price-val {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .btn-add-spotlight {
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 12px 22px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px var(--terracotta-glow);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-add-spotlight:hover {
+      background: var(--terracotta-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--terracotta-glow);
+    }
+
+    /* ============================================================
+       INNOVACIÓN 2: ARMADOR TÁCTIL DE BANDEJA SEMANAL (5 DÍAS)
+       ============================================================ */
+    .weekly-tray-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 44px;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .tray-head-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .tray-head-row h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .tray-discount-tag {
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(72, 105, 60, 0.2);
+      border: 1px solid rgba(72, 105, 60, 0.4);
+      color: #9cd18b;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Los 5 slots de la bandeja física */
+    .tray-slots-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 680px) {
+      .tray-slots-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .tray-slots-grid .tray-slot:last-child {
+        grid-column: span 2;
+      }
+    }
+    .tray-slot {
+      background: var(--bg-card);
+      border: 1px dashed var(--border-hover);
+      border-radius: var(--radius-md);
+      padding: 12px 10px;
+      text-align: center;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tray-slot:hover {
+      border-color: var(--amber);
+      transform: translateY(-2px);
+      background: var(--bg-elevated);
+    }
+    .tray-slot.filled {
+      border-style: solid;
+      border-color: rgba(226, 88, 34, 0.5);
+      background: rgba(226, 88, 34, 0.06);
+    }
+    .slot-day-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      margin-bottom: 6px;
+    }
+    .slot-dish-name {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .slot-change-btn {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-top: 1px dotted var(--border);
+      padding-top: 4px;
+      display: block;
+    }
+
+    /* Sello animado que estampa la bandeja completa */
+    .tray-stamp-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .tray-calc-info {
+      font-size: 13px;
+    }
+    .tray-calc-info strong {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--text);
+      margin-right: 8px;
+    }
+    .tray-stamped-badge {
+      display: none;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      border: 2px solid var(--terracotta);
+      padding: 6px 14px;
+      border-radius: 4px;
+      transform: rotate(-3deg);
+      box-shadow: 0 0 16px var(--terracotta-glow);
+      animation: stampDrop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes stampDrop {
+      0% { opacity: 0; transform: scale(2) rotate(-15deg); }
+      100% { opacity: 1; transform: scale(1) rotate(-3deg); }
+    }
+    .tray-stamped-badge.stamped {
+      display: inline-block;
+    }
+    .btn-pack-order {
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .btn-pack-order:hover {
+      background: var(--terracotta-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       INNOVACIÓN 3: WIDGET RULETA ROTISERA "¿QUÉ ALMORZAMOS HOY?"
+       ============================================================ */
+    .ruleta-teaser-card {
+      background: radial-gradient(circle at 10% 50%, rgba(242, 166, 59, 0.15) 0%, #1a1512 80%);
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .ruleta-teaser-left {
+      max-width: 520px;
+    }
+    .ruleta-teaser-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ruleta-teaser-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .btn-open-ruleta {
+      background: var(--amber);
+      color: #1a1309;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 13px 26px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(242, 166, 59, 0.35);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-open-ruleta:hover {
+      background: #f7b454;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 24px rgba(242, 166, 59, 0.5);
+    }
+
+    /* Modal de la Ruleta */
+    .ruleta-modal-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 7, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 350;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .ruleta-modal-scrim.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .ruleta-modal-card {
+      background: #1c1713;
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 100%;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ruleta-modal-scrim.open .ruleta-modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Contenedor de la Rueda Física */
+    .wheel-stage {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      margin: 20px auto 24px;
+    }
+    .wheel-canvas {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6), inset 0 0 0 6px #2b221a;
+      transition: transform 4s cubic-bezier(0.15, 0.9, 0.25, 1);
+    }
+    .wheel-pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 28px;
+      z-index: 10;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+    }
+    .wheel-center-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--amber) 0%, #a86c18 100%);
+      border: 3px solid #1c1713;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .ruleta-winner-box {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--amber);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    .ruleta-winner-box.show {
+      display: block;
+    }
+    .winner-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 4px;
+    }
+    .winner-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    /* ============================================================
+       STICKY CATEGORIES NAV
+       ============================================================ */
+    .sticky-cat-nav {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(18, 15, 13, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      margin: 0 -16px 36px;
+      padding: 12px 16px;
+    }
+    .cat-scroll-container {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .cat-scroll-container::-webkit-scrollbar { display: none; }
+    .cat-nav-link {
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cat-nav-link:hover {
+      color: var(--text);
+      border-color: var(--border-hover);
+    }
+    .cat-nav-link.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       INNOVACIÓN 4: TARJETAS CON 3D TILT & SPECULAR SHINE
+       ============================================================ */
+    .menu-section {
+      margin-bottom: 56px;
+      scroll-margin-top: 80px;
+    }
+    .section-head {
+      margin-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 30px);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .section-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      perspective: 1200px;
+    }
+
+    /* Tarjeta de plato interactiva con 3D Tilt */
+    .dish-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .dish-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+    }
+    /* Capa de reflejo especular */
+    .dish-card-glare {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+    }
+    .dish-card:hover .dish-card-glare {
+      opacity: 1;
+    }
+
+    .dish-card-img-wrap {
+      width: 100%;
+      height: 160px;
+      position: relative;
+      overflow: hidden;
+      background: #191410;
+    }
+    .dish-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .dish-card:hover .dish-card-img-wrap img {
+      transform: scale(1.07);
+    }
+    .dish-badge-pill {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(18, 15, 13, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      color: var(--amber);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      z-index: 2;
+    }
+
+    .dish-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .dish-name {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .dish-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Sub-selector de opciones desplegable */
+    .dish-options-drawer {
+      display: none;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .dish-options-drawer.open {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+    .opt-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--amber);
+      margin-bottom: 8px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .opt-chip-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .opt-chip {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+    .opt-chip.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+      font-weight: 700;
+    }
+
+    .dish-footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      gap: 12px;
+    }
+    .dish-price {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .dish-btn-add {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dish-btn-add:hover {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #fff;
+      box-shadow: 0 4px 12px var(--terracotta-glow);
+      transform: scale(1.04);
+    }
+    .dish-btn-add:active {
+      transform: scale(0.95);
+    }
+
+    /* ============================================================
+       BARRA FLOTANTE DE PEDIDO
+       ============================================================ */
+    .floating-order-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(18, 15, 13, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-hover);
+      padding: 14px 0;
+      transform: translateY(110%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 -8px 24px rgba(0,0,0,0.5);
+    }
+    .floating-order-bar.visible {
+      transform: translateY(0);
+    }
+    .bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .bar-summary {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+    .bar-items-badge {
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+    }
+    .bar-total-amount {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-view-ticket {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 10px 16px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .btn-view-ticket:hover {
+      color: var(--text);
+      background: var(--bg-surface);
+    }
+    .btn-send-whatsapp {
+      background: #25d366;
+      color: #0b2210;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-send-whatsapp:hover {
+      background: #2ee672;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+    .btn-send-whatsapp svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ============================================================
+       INNOVACIÓN 5: TICKET TÉRMICO CON ANIMACIÓN DE IMPRESIÓN
+       ============================================================ */
+    .drawer-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 7, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-scrim.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .ticket-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 440px;
+      background: #171310;
+      border-left: 1px solid var(--border-hover);
+      z-index: 201;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -12px 0 36px rgba(0,0,0,0.6);
+    }
+    .ticket-drawer.open {
+      transform: translateX(0);
+    }
+
+    .ticket-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ticket-header-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .ticket-close-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+    .ticket-close-btn:hover {
+      color: var(--text);
+      background: var(--bg-elevated);
+    }
+
+    .receipt-paper-wrap {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Animación de impresión al abrir */
+    .receipt-box {
+      background: var(--bg-receipt);
+      color: var(--text-dark);
+      border-radius: var(--radius-sm);
+      padding: 24px 20px;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transform-origin: top center;
+    }
+    .ticket-drawer.open .receipt-box {
+      animation: printFeed 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes printFeed {
+      0% { transform: translateY(-40px) scaleY(0.7); opacity: 0; }
+      100% { transform: translateY(0) scaleY(1); opacity: 1; }
+    }
+
+    /* Borde zigzag de ticket */
+    .receipt-box::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: radial-gradient(circle, transparent, transparent 50%, var(--bg-receipt) 50%, var(--bg-receipt) 100%);
+      background-size: 12px 12px;
+    }
+    .receipt-box::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: radial-gradient(circle, transparent, transparent 50%, var(--bg-receipt) 50%, var(--bg-receipt) 100%);
+      background-size: 12px 12px;
+    }
+
+    .receipt-header-stamp {
+      text-align: center;
+      border-bottom: 1px dashed rgba(0,0,0,0.2);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .receipt-brand-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .receipt-meta-line {
+      font-size: 11px;
+      color: #63574c;
+      margin-top: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .receipt-items-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .receipt-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      border-bottom: 1px dotted rgba(0,0,0,0.12);
+      padding-bottom: 8px;
+    }
+    .receipt-item-left {
+      flex: 1;
+    }
+    .receipt-item-title {
+      font-weight: 700;
+      color: #1a1612;
+    }
+    .receipt-item-opt {
+      font-size: 11px;
+      color: #7a6b5e;
+      margin-top: 2px;
+    }
+    .receipt-item-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+    }
+    .receipt-item-price {
+      font-weight: 700;
+      font-family: var(--font-sans);
+    }
+    .receipt-qty-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+    .receipt-qty-btn {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+      background: #e2dbce;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .receipt-totals-box {
+      border-top: 2px dashed rgba(0,0,0,0.25);
+      padding-top: 14px;
+      margin-top: 6px;
+    }
+    .receipt-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 16px;
+      font-weight: 700;
+      color: #120e0b;
+    }
+    .receipt-total-big {
+      font-family: var(--font-display);
+      font-size: 24px;
+    }
+    .receipt-policy-note {
+      font-size: 11px;
+      color: #73675a;
+      text-align: center;
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    .drawer-inputs-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .drawer-input-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--amber);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .drawer-text-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .drawer-text-input:focus {
+      border-color: var(--terracotta);
+    }
+
+    .drawer-footer-action {
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-surface);
+    }
+    .btn-drawer-checkout {
+      width: 100%;
+      background: #25d366;
+      color: #0b2210;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 15px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-drawer-checkout:hover {
+      background: #2ee672;
+      transform: translateY(-1px);
+    }
+    .btn-drawer-checkout svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Modal Stand QR */
+    .qr-modal-scrim {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 8, 7, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .qr-modal-scrim.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .qr-modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-lg);
+      max-width: 440px;
+      width: 100%;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      transform: translateY(16px) scale(0.96);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .qr-modal-scrim.open .qr-modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Floating Toast */
+    .mini-toast {
+      position: fixed;
+      bottom: 84px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-card);
+      border: 1px solid var(--border-hover);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 150;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mini-toast.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .mini-toast-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--terracotta);
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cur-dot"></div>
+  <div id="cur-ring"></div>
+
+  <!-- Ticker tape dinámico con mensajes rotiseros -->
+  <aside class="top-promo-ticker" aria-label="Novedades de la casa">
+    <div class="ticker-track">
+      <div class="ticker-item"><span>Masa casera horneada hoy</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Sin cobro de cubierto jamás</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Viandas de mediodía de lunes a viernes</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Belgrano 1301 • Tandil</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Pastas frescas amasadas a diario</span><span class="ticker-dot"></span></div>
+      <!-- Duplicado continuo -->
+      <div class="ticker-item"><span>Masa casera horneada hoy</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Sin cobro de cubierto jamás</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Viandas de mediodía de lunes a viernes</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Belgrano 1301 • Tandil</span><span class="ticker-dot"></span></div>
+      <div class="ticker-item"><span>Pastas frescas amasadas a diario</span><span class="ticker-dot"></span></div>
+    </div>
+  </aside>
+
+  <!-- ============================================================
+       CABECERA PRINCIPAL CON SONIDO & CONTROL
+       ============================================================ -->
+  <header class="main-header">
+    <div class="wrap header-content">
+      <div class="brand-group">
+        <button class="brand-stamp" onclick="playChefDing(); showToast('¡Bienvenido a Calabaza Belgrano!')" title="Tocar para timbre de cocina" aria-label="Timbre de cocina">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C9.5 2 7.5 4 7.5 6.5c0 .3.03.6.08.9C5.3 8.3 4 10.7 4 13.5c0 4.7 3.6 8.5 8 8.5s8-3.8 8-8.5c0-2.8-1.3-5.2-3.58-6.1.05-.3.08-.6.08-.9C16.5 4 14.5 2 12 2zm0 18c-3.3 0-6-2.9-6-6.5 0-2.3 1.1-4.3 2.9-5.4.5-.3.9-.8.9-1.4 0-.1-.01-.3-.02-.4-.04-.3-.07-.6-.07-.9 0-1.4 1-2.5 2.3-2.5s2.3 1.1 2.3 2.5c0 .3-.03.6-.07.9-.01.1-.02.3-.02.4 0 .6.4 1.1.9 1.4 1.8 1.1 2.9 3.1 2.9 5.4 0 3.6-2.7 6.5-6 6.5z"/>
+          </svg>
+        </button>
+        <div>
+          <h1 class="brand-title">Calabaza <span>Belgrano</span></h1>
+          <div class="brand-sub">
+            <span>Belgrano 1301, Tandil</span>
+            <span>•</span>
+            <span class="status-pill"><span class="status-dot"></span> Cocina en Marcha</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-nav-actions">
+        <!-- Toggle de sonido háptico -->
+        <button class="sound-toggle-btn sound-on" id="btn-sound-toggle" onclick="toggleAudio()" title="Activar/Desactivar sonido" aria-label="Sonido">
+          🔊
+        </button>
+
+        <!-- Botón para disparar la ruleta -->
+        <button class="btn-ruleta-hero" onclick="openRuletaModal()">
+          <span>🎡</span> Ruleta del Chef
+        </button>
+
+        <a href="index.html" class="btn-header-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          Web
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- SELECTOR DE MODALIDAD TÁCTIL -->
+    <section class="mode-container" aria-label="Modalidad del pedido">
+      <button class="mode-tab-btn active" id="btn-mode-takeaway" onclick="switchOrderMode('takeaway')">
+        <svg viewBox="0 0 24 24"><path d="M19 7h-3V6a4 4 0 0 0-8 0v1H5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zm-9-1a2 2 0 0 1 4 0v1h-4V6zm9 13H5V9h14v10z"/></svg>
+        <span>Viandas & Retiro</span>
+        <span class="mode-badge-hint">Mediodía</span>
+      </button>
+      <button class="mode-tab-btn" id="btn-mode-salon" onclick="switchOrderMode('salon')">
+        <svg viewBox="0 0 24 24"><path d="M4 19h16v2H4zm1-5h14v2H5zm1.5-7.5L12 2l5.5 4.5H16v4h-2V7h-4v3.5H8v-4H6.5z"/></svg>
+        <span>En Mesa de Salón</span>
+      </button>
+    </section>
+
+    <!-- ============================================================
+         INNOVACIÓN 1: VIANDAS CON VAPOR DE HORNO EN VIVO (CANVAS)
+         ============================================================ -->
+    <section class="viandas-hero-card" id="seccion-viandas">
+      <div class="viandas-header-line">
+        <div class="viandas-headline-group">
+          <span class="stamp-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Cocina Casera de Olla & Horno
+          </span>
+          <h2 class="viandas-card-title">Viandas Frescas del Mediodía</h2>
+          <p class="viandas-subnote">Cocinadas cada mañana con ingredientes de quintas locales. Pasá el cursor por el plato para sentir el vapor interactivo.</p>
+        </div>
+      </div>
+
+      <!-- Tira deslizable de días -->
+      <div class="days-carousel-wrap">
+        <div class="days-pill-row">
+          <button class="day-selector-btn active" onclick="selectViandaDay('lunes', this)">
+            <span class="day-main">Lunes</span>
+            <span class="day-sub">Pastel Cuchillo</span>
+          </button>
+          <button class="day-selector-btn" onclick="selectViandaDay('martes', this)">
+            <span class="day-main">Martes</span>
+            <span class="day-sub">Pollo Verdeo</span>
+          </button>
+          <button class="day-selector-btn" onclick="selectViandaDay('miercoles', this)">
+            <span class="day-main">Miércoles</span>
+            <span class="day-sub">Canelones</span>
+          </button>
+          <button class="day-selector-btn" onclick="selectViandaDay('jueves', this)">
+            <span class="day-main">Jueves</span>
+            <span class="day-sub">Cazuela Ternera</span>
+          </button>
+          <button class="day-selector-btn" onclick="selectViandaDay('viernes', this)">
+            <span class="day-main">Viernes</span>
+            <span class="day-sub">Suprema Napo</span>
+          </button>
+          <button class="day-selector-btn" onclick="selectViandaDay('pack', this)">
+            <span class="day-main">Pack 5 Días</span>
+            <span class="day-sub">Abono Semanal</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Spotlight del plato de vianda seleccionado con VAPOR CANVASES -->
+      <div class="vianda-spotlight" id="vianda-spotlight-box">
+        <div class="vianda-photo-box" id="steam-photo-container">
+          <img id="vianda-img" src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80" alt="Pastel de Papas al Horno">
+          <!-- Canvas de vapor interactivo -->
+          <canvas class="steam-canvas-overlay" id="steam-canvas"></canvas>
+          <span class="steam-hot-tag">🔥 Salido del horno</span>
+        </div>
+        <div class="vianda-info-box">
+          <div class="vianda-tag-row">
+            <span class="vianda-chip" id="vianda-chip-text">Plato de Hoy • Lunes</span>
+            <span class="vianda-chef-tag" id="vianda-chef-text">Receta clásica criolla</span>
+          </div>
+          <h3 class="vianda-title" id="vianda-title-text">Pastel de Papas Tradicional a Cuchillo</h3>
+          <p class="vianda-desc" id="vianda-desc-text">Carne de ternera tandilera cortada a cuchillo, sofrito criollo de cebolla, morrón dulce y huevo duro, cubierto con puré natural gratinado a horno fuerte.</p>
+        </div>
+        <div class="vianda-action-box">
+          <div class="vianda-price-val" id="vianda-price-text">$8.400</div>
+          <button class="btn-add-spotlight" onclick="addCurrentSpotlightVianda()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Sumar Vianda
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INNOVACIÓN 2: ARMADOR TÁCTIL DE BANDEJA SEMANAL (5 DÍAS)
+         ============================================================ -->
+    <section class="weekly-tray-section" id="armador-semanal">
+      <div class="tray-head-row">
+        <div>
+          <span class="stamp-label">Innovación Rotisera</span>
+          <h3>Armá tu Bandeja Semanal de 5 Días</h3>
+          <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">
+            Tocá los días para personalizar tu menú semanal. Llevala lista con <strong>-15% de ahorro</strong>.
+          </p>
+        </div>
+        <span class="tray-discount-tag">-15% Ahorro Pack</span>
+      </div>
+
+      <!-- Los 5 slots -->
+      <div class="tray-slots-grid">
+        <div class="tray-slot filled" onclick="cycleTraySlot('lunes')">
+          <div class="slot-day-title">Lunes</div>
+          <div class="slot-dish-name" id="slot-name-lunes">Pastel de Papas</div>
+          <span class="slot-change-btn">⇄ Cambiar</span>
+        </div>
+        <div class="tray-slot filled" onclick="cycleTraySlot('martes')">
+          <div class="slot-day-title">Martes</div>
+          <div class="slot-dish-name" id="slot-name-martes">Pollo al Verdeo</div>
+          <span class="slot-change-btn">⇄ Cambiar</span>
+        </div>
+        <div class="tray-slot filled" onclick="cycleTraySlot('miercoles')">
+          <div class="slot-day-title">Miércoles</div>
+          <div class="slot-dish-name" id="slot-name-miercoles">Canelones Mixtos</div>
+          <span class="slot-change-btn">⇄ Cambiar</span>
+        </div>
+        <div class="tray-slot filled" onclick="cycleTraySlot('jueves')">
+          <div class="slot-day-title">Jueves</div>
+          <div class="slot-dish-name" id="slot-name-jueves">Cazuela de Ternera</div>
+          <span class="slot-change-btn">⇄ Cambiar</span>
+        </div>
+        <div class="tray-slot filled" onclick="cycleTraySlot('viernes')">
+          <div class="slot-day-title">Viernes</div>
+          <div class="slot-dish-name" id="slot-name-viernes">Suprema Napo</div>
+          <span class="slot-change-btn">⇄ Cambiar</span>
+        </div>
+      </div>
+
+      <div class="tray-stamp-banner">
+        <div class="tray-calc-info">
+          <span>Pack 5 Viandas Semanales:</span>
+          <strong>$38.500</strong>
+          <span style="font-size: 11px; color: var(--amber); text-decoration: line-through;">$45.000</span>
+          <span class="tray-stamped-badge stamped" id="tray-seal-badge">★ PACK SELLADO ★</span>
+        </div>
+        <button class="btn-pack-order" onclick="addFullWeeklyTray()">
+          <span>✓</span> Confirmar Bandeja Semanal
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INNOVACIÓN 3: TEASER DE LA RULETA "¿QUÉ ALMORZAMOS HOY?"
+         ============================================================ -->
+    <div class="ruleta-teaser-card">
+      <div class="ruleta-teaser-left">
+        <div class="ruleta-teaser-title">
+          <span>🎡</span> ¿Indeciso con qué pedir hoy?
+        </div>
+        <p class="ruleta-teaser-desc">
+          Girás la ruleta interactiva de Calabaza y dejás que el azar del chef elija tu plato del día en segundos con beneficio sorpresa.
+        </p>
+      </div>
+      <button class="btn-open-ruleta" onclick="openRuletaModal()">
+        Girar la Ruleta del Chef →
+      </button>
+    </div>
+
+    <!-- ============================================================
+         STICKY CATEGORIES NAV BAR
+         ============================================================ -->
+    <nav class="sticky-cat-nav" aria-label="Categorías de la carta">
+      <div class="cat-scroll-container">
+        <a href="#cat-tartas" class="cat-nav-link active">Tartas Artesanales</a>
+        <a href="#cat-pastas" class="cat-nav-link">Pastas Caseras</a>
+        <a href="#cat-bodegon" class="cat-nav-link">Bodegón & Milanesas</a>
+        <a href="#cat-entradas" class="cat-nav-link">Empanadas & Entradas</a>
+        <a href="#cat-postres" class="cat-nav-link">Postres Caseros</a>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+         CATEGORÍA 1: NUESTRAS FAMOSAS TARTAS ARTESANALES (CON 3D TILT)
+         ============================================================ -->
+    <section class="menu-section" id="cat-tartas">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Tartas de Masa Artesanal</h2>
+          <p class="section-sub">El clásico de Calabaza: masa crocante amasada a diario, rellenos abundantes y queso fundido.</p>
+        </div>
+        <span class="status-pill">Porciones Generosas</span>
+      </div>
+
+      <div class="dishes-grid">
+        <!-- Tarta 1 -->
+        <article class="dish-card tilt-card" id="dish-tarta-calabaza">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80" alt="Tarta Calabaza Muzzarella">
+            <span class="dish-badge-pill">Firma de la Casa</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Tarta Calabaza, Muzzarella & Cebolla Caramelizada</h3>
+              <p class="dish-desc">Puré de calabazas asadas al horno de leña, lluvia de muzzarella fundida y cebollas rubias caramelizadas en manteca.</p>
+            </div>
+            
+            <div class="dish-options-drawer" id="opt-tarta-1">
+              <span class="opt-title">Temperatura de entrega</span>
+              <div class="opt-chip-row">
+                <button class="opt-chip active" onclick="setDishOption(this, 'Caliente lista')">Caliente lista</button>
+                <button class="opt-chip" onclick="setDishOption(this, 'Para calentar')">Para calentar en casa</button>
+              </div>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$7.900</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Tarta Calabaza & Muzzarella', 7900, 'opt-tarta-1')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarta 2 -->
+        <article class="dish-card tilt-card" id="dish-tarta-pollo">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Tarta Pollo al Verdeo">
+            <span class="dish-badge-pill">Muy Pedida</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Tarta de Pollo al Verdeo & Choclo Cremoso</h3>
+              <p class="dish-desc">Pechuga desmenuzada salteada con puerros y verdeo fresco de huerta, crema de leche y granos tiernos de choclo.</p>
+            </div>
+
+            <div class="dish-options-drawer" id="opt-tarta-2">
+              <span class="opt-title">Temperatura</span>
+              <div class="opt-chip-row">
+                <button class="opt-chip active" onclick="setDishOption(this, 'Caliente')">Caliente</button>
+                <button class="opt-chip" onclick="setDishOption(this, 'Fría')">Fría para llevar</button>
+              </div>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$8.200</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Tarta Pollo al Verdeo', 8200, 'opt-tarta-2')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarta 3 -->
+        <article class="dish-card tilt-card" id="dish-tarta-pascualina">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=600&q=80" alt="Pascualina Rústica">
+            <span class="dish-badge-pill">Vegetariana</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Pascualina Rústica de Espinaca & Ricota</h3>
+              <p class="dish-desc">Hojas de espinaca fresca a la manteca, ricota artesanal de Tandil, nuez moscada y huevos enteros de campo.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$7.800</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Pascualina de Espinaca & Ricota', 7800)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Tarta 4 -->
+        <article class="dish-card tilt-card" id="dish-tarta-jamon">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80" alt="Tarta Cuatro Quesos">
+            <span class="dish-badge-pill">Clásica</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Tarta Jamón Cocido & Cuatro Quesos</h3>
+              <p class="dish-desc">Jamón cocido natural seleccionado con corazón de muzzarella, sardo tandilero rallado, provolone y toque de queso azul.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$8.400</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Tarta Jamón & Cuatro Quesos', 8400)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORÍA 2: PASTAS CASERAS AMASADAS A MANO
+         ============================================================ -->
+    <section class="menu-section" id="cat-pastas">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Pastas Frescas de la Olla</h2>
+          <p class="section-sub">Semolín fino, huevos de campo y salsas reducidas a fuego lento sin apuro.</p>
+        </div>
+        <span class="status-pill">Hechas Hoy</span>
+      </div>
+
+      <div class="dishes-grid">
+        <!-- Pasta 1 -->
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80" alt="Sorrentinos Calabaza y Brie">
+            <span class="dish-badge-pill">Plato Estrella</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Sorrentinos de Calabaza Asada & Queso Brie</h3>
+              <p class="dish-desc">Masa suave al huevo rellena de puré de calabaza especiada y cubos de queso brie derretido, con salsa crema de hongos serranos.</p>
+            </div>
+
+            <div class="dish-options-drawer" id="opt-pasta-1">
+              <span class="opt-title">Elegí tu salsa</span>
+              <div class="opt-chip-row">
+                <button class="opt-chip active" onclick="setDishOption(this, 'Crema de Hongos')">Crema de Hongos</button>
+                <button class="opt-chip" onclick="setDishOption(this, 'Filetto Casero')">Filetto Casero</button>
+                <button class="opt-chip" onclick="setDishOption(this, 'Manteca & Salvia')">Manteca & Salvia</button>
+              </div>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$9.800</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Sorrentinos Calabaza & Brie', 9800, 'opt-pasta-1')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pasta 2 -->
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281691?auto=format&fit=crop&w=600&q=80" alt="Ñoquis Rellenos">
+            <span class="dish-badge-pill">Tradición</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Ñoquis de Papa Rellenos de Muzzarella</h3>
+              <p class="dish-desc">Bocados suaves de papa natural rellenos de corazón elástico de muzzarella, con estofado de ternera de 4 horas.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$9.200</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Ñoquis Rellenos con Estofado', 9200)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pasta 3 -->
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=600&q=80" alt="Canelones de Espinaca">
+            <span class="dish-badge-pill">Abundante</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Canelones de Espinaca & Ternera Gratinados</h3>
+              <p class="dish-desc">Finos panqueques caseros enrollados con relleno mixto de verdura y ternera picada, cubiertos de salsa mixta y queso dorado.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$8.900</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Canelones Mixtos Gratinados', 8900)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORÍA 3: BODEGÓN & MILANESAS GIGANTES
+         ============================================================ -->
+    <section class="menu-section" id="cat-bodegon">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Bodegón & Milanesas de la Casa</h2>
+          <p class="section-sub">Porciones que desbordan el plato. Incluyen guarnición casera a elección.</p>
+        </div>
+        <span class="status-pill">Para Compartir</span>
+      </div>
+
+      <div class="dishes-grid">
+        <!-- Bodegón 1 -->
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Milanesa Napolitana">
+            <span class="dish-badge-pill">Famosa en Tandil</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Milanesa Napolitana "Calabaza Especial"</h3>
+              <p class="dish-desc">Ternera tiernizada empanada a mano, salsa de tomates asados, jamón cocido natural, abundante muzzarella y morrones asados.</p>
+            </div>
+
+            <div class="dish-options-drawer" id="opt-milan-1">
+              <span class="opt-title">Elegí tu guarnición</span>
+              <div class="opt-chip-row">
+                <button class="opt-chip active" onclick="setDishOption(this, 'Papas Fritas')">Papas Fritas</button>
+                <button class="opt-chip" onclick="setDishOption(this, 'Puré Mixto')">Puré Mixto</button>
+                <button class="opt-chip" onclick="setDishOption(this, 'Ensalada Mixta')">Ensalada Mixta</button>
+              </div>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$12.800</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Milanesa Napolitana Calabaza', 12800, 'opt-milan-1')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bodegón 2 -->
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80" alt="Cazuela de Ternera">
+            <span class="dish-badge-pill">Olla & Barro</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Cazuela de Ternera & Calabaza Asada</h3>
+              <p class="dish-desc">Corte vacuno braseado durante 4 horas en vino tinto, calabaza dulce asada, zanahorias tiernas y arvejas en cazuela de barro.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$11.900</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Cazuela de Ternera Serrana', 11900)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bodegón 3 -->
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Suprema Suiza">
+            <span class="dish-badge-pill">Cremosa</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Suprema de Pollo Suiza con Puré Rústico</h3>
+              <p class="dish-desc">Pechuga crocante dorada en manteca, bañada en salsa bechamel sedosa y gratín de queso sardo de Tandil al horno.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$11.500</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Suprema Suiza con Puré', 11500)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORÍA 4: EMPANADAS & ENTRADAS
+         ============================================================ -->
+    <section class="menu-section" id="cat-entradas">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Empanadas & Entradas de Rotisería</h2>
+          <p class="section-sub">Empanadas doradas con repulgue a mano y masa con grasa vacuna auténtica.</p>
+        </div>
+        <span class="status-pill">Recién Horneadas</span>
+      </div>
+
+      <div class="dishes-grid">
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Docena de Empanadas">
+            <span class="dish-badge-pill">Pack Ahorro</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Docena de Empanadas Caseras (12 un.)</h3>
+              <p class="dish-desc">A elección: Carne suave picada a cuchillo, Pollo al verdeo, Jamón & Queso, o Calabaza con muzzarella.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$14.400</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Docena de Empanadas Caseras', 14400)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Media Docena">
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Media Docena de Empanadas (6 un.)</h3>
+              <p class="dish-desc">6 unidades recién horneadas con masa casera hojaldrada y relleno jugoso.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$7.500</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Media Docena de Empanadas', 7500)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80" alt="Tortilla Babé">
+            <span class="dish-badge-pill">Babé Clásica</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Tortilla de Papas & Cebolla al Punto</h3>
+              <p class="dish-desc">Papas fritas en aceite limpio confitadas con cebolla rubia y huevos frescos. Dorada por fuera y cremosa en su centro.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$6.900</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Tortilla de Papas & Cebolla', 6900)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORÍA 5: POSTRES CASEROS
+         ============================================================ -->
+    <section class="menu-section" id="cat-postres">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Postres de la Casa</h2>
+          <p class="section-sub">El final dulce como en casa, con dulce de leche tandilero de tambo.</p>
+        </div>
+      </div>
+
+      <div class="dishes-grid">
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80" alt="Flan Mixto Casero">
+            <span class="dish-badge-pill">Obligatorio</span>
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Flan Casero con Dulce de Leche & Crema</h3>
+              <p class="dish-desc">Huevos frescos de campo y caramelo rubio casero, servido con una generosa cucharada de dulce de leche repostero.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$3.800</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Flan Casero con DDL y Crema', 3800)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card tilt-card">
+          <div class="dish-card-glare"></div>
+          <div class="dish-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80" alt="Tiramisú Casero">
+          </div>
+          <div class="dish-body">
+            <div class="dish-top-meta">
+              <h3 class="dish-name">Tiramisú Artesanal de Café Espresso</h3>
+              <p class="dish-desc">Vainillas bañadas en café fuerte, crema de mascarpone batida y lluvia de cacao amargo puro.</p>
+            </div>
+
+            <div class="dish-footer-row">
+              <span class="dish-price">$4.200</span>
+              <button class="dish-btn-add" onclick="handleDishAdd('Tiramisú Artesanal', 4200)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Agregar
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       MODAL DE LA RULETA DEL CHEF (CON ANIMACIÓN DE FÍSICA)
+       ============================================================ -->
+  <div class="ruleta-modal-scrim" id="ruleta-modal-scrim" onclick="closeRuletaModal(event)">
+    <div class="ruleta-modal-card" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+        <h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 700;">La Ruleta de Calabaza</h3>
+        <button onclick="closeRuletaModal()" style="font-size: 16px; color: var(--text-dim);" aria-label="Cerrar">✕</button>
+      </div>
+      <p style="font-size: 13px; color: var(--text-muted);">
+        ¿No te decidís qué almorzar hoy? Dejá que la rueda elija tu plato con el tip del cocinero.
+      </p>
+
+      <div class="wheel-stage">
+        <!-- Puntero superior -->
+        <svg class="wheel-pointer" viewBox="0 0 24 28">
+          <polygon points="12,28 0,0 24,0" fill="#f2a63b" stroke="#1c1713" stroke-width="2"/>
+        </svg>
+
+        <canvas class="wheel-canvas" id="wheel-canvas" width="280" height="280"></canvas>
+        <div class="wheel-center-pin">★</div>
+      </div>
+
+      <!-- Cuadro de plato ganador -->
+      <div class="ruleta-winner-box" id="ruleta-winner-box">
+        <div class="winner-label">¡La Ruleta ha decidido!</div>
+        <div class="winner-title" id="winner-dish-name">Tarta de Calabaza & Brie</div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;" id="winner-dish-desc">
+          Masa artesanal quebrada con puré de calabaza asada y queso brie tandilero.
+        </p>
+        <button class="btn-pack-order" style="width: 100%; justify-content: center;" onclick="addRuletaWinnerToCart()">
+          Sumar este plato a mi pedido →
+        </button>
+      </div>
+
+      <button class="btn-open-ruleta" id="btn-spin-wheel" style="width: 100%; justify-content: center;" onclick="spinWheel()">
+        ¡Girar la Ruleta Ahora! 🎡
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BARRA FLOTANTE INFERIOR (TICKET ACTIVO)
+       ============================================================ -->
+  <div class="floating-order-bar" id="floating-bar">
+    <div class="wrap bar-inner">
+      <div class="bar-summary">
+        <span class="bar-items-badge" id="bar-badge">0 platos</span>
+        <span class="bar-total-amount" id="bar-total">$0</span>
+      </div>
+      <div class="bar-actions">
+        <button class="btn-view-ticket" onclick="openTicketDrawer()">Ver Detalle</button>
+        <button class="btn-send-whatsapp" onclick="sendOrderWhatsAppDirect()">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 18.09c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.19-.47-.31z"/></svg>
+          Pedir por WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       DRAWER LATERAL DE PEDIDO (TICKET ROTISERO VINTAGE)
+       ============================================================ -->
+  <div class="drawer-scrim" id="drawer-scrim" onclick="closeTicketDrawer()"></div>
+
+  <aside class="ticket-drawer" id="ticket-drawer" aria-label="Tu pedido">
+    <div class="ticket-header">
+      <h3 class="ticket-header-title">Tu Ticket de Pedido</h3>
+      <button class="ticket-close-btn" onclick="closeTicketDrawer()" aria-label="Cerrar">✕</button>
+    </div>
+
+    <div class="receipt-paper-wrap">
+      <!-- El ticket de papel impreso al instante -->
+      <div class="receipt-box" id="thermal-receipt">
+        <div class="receipt-header-stamp">
+          <div class="receipt-brand-name">Calabaza Belgrano</div>
+          <div class="receipt-meta-line">Belgrano 1301 • Tandil • Rotisería & Salón</div>
+          <div class="receipt-meta-line" id="receipt-date-time">Fecha: Hoy • Cocina Casera</div>
+        </div>
+
+        <div class="receipt-items-container" id="receipt-items-list">
+          <!-- Se renderiza con JS -->
+        </div>
+
+        <div class="receipt-totals-box">
+          <div class="receipt-total-row">
+            <span>TOTAL ESTIMADO:</span>
+            <span class="receipt-total-big" id="receipt-grand-total">$0</span>
+          </div>
+          <div class="receipt-policy-note">
+            ✓ Sin cobro de cubierto jamás • Pagás al recibir (efectivo o transferencia).
+          </div>
+        </div>
+      </div>
+
+      <!-- Datos del cliente según modalidad -->
+      <div class="drawer-inputs-box">
+        <div id="field-salon" style="display: none;">
+          <label class="drawer-input-label" for="input-table-no">Número de Mesa en Salón</label>
+          <input type="text" class="drawer-text-input" id="input-table-no" placeholder="Ej: Mesa 4 (Salón Belgrano)">
+        </div>
+
+        <div id="field-takeaway">
+          <label class="drawer-input-label" for="input-takeaway-address">Dirección de Entrega o Retiro</label>
+          <input type="text" class="drawer-text-input" id="input-takeaway-address" placeholder="Ej: Retiro por mostrador a las 13:00 hs">
+        </div>
+
+        <div style="margin-top: 12px;">
+          <label class="drawer-input-label" for="input-notes">Aclaraciones para la Cocina (Opcional)</label>
+          <input type="text" class="drawer-text-input" id="input-notes" placeholder="Ej: Sin sal agregada / Puré bien caliente">
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer-action">
+      <button class="btn-drawer-checkout" onclick="sendOrderWhatsAppDirect()">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 18.09c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.32c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.42 5.82c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1.01 2.55.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.19-.47-.31z"/></svg>
+        <span>Enviar Pedido a WhatsApp</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mini Toast -->
+  <div class="mini-toast" id="mini-toast">
+    <span class="mini-toast-dot"></span>
+    <span id="mini-toast-text">Plato sumado al pedido</span>
+  </div>
+
+  <!-- ============================================================
+       SCRIPTS: AUDIO SYNTH, STEAM CANVAS, RULETA & TRAY LOGIC
+       ============================================================ -->
+  <script>
+    /* ============================================================
+       1. WEB AUDIO API HAPTICS (TIMBRE DE COCINA & CLICKS)
+       ============================================================ */
+    let audioEnabled = true;
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function toggleAudio() {
+      audioEnabled = !audioEnabled;
+      const btn = document.getElementById('btn-sound-toggle');
+      btn.classList.toggle('sound-on', audioEnabled);
+      btn.innerText = audioEnabled ? '🔊' : '🔇';
+      showToast(audioEnabled ? 'Sonidos de cocina activados' : 'Sonidos desactivados');
+    }
+
+    function playChefDing() {
+      if (!audioEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.4);
+      } catch(e) {}
+    }
+
+    function playWheelTick() {
+      if (!audioEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(320, ctx.currentTime);
+        gain.gain.setValueAtTime(0.04, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.04);
+      } catch(e) {}
+    }
+
+    /* ============================================================
+       2. PROCEDURAL STEAM PARTICLES (VAPOR SALIENDO DEL PLATO)
+       ============================================================ */
+    class SteamEngine {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return;
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.mouse = { x: -100, y: -100, isHover: false };
+        this.resize();
+        
+        for (let i = 0; i < 28; i++) {
+          this.particles.push(this.createParticle(true));
+        }
+
+        this.canvas.addEventListener('mousemove', (e) => {
+          const rect = this.canvas.getBoundingClientRect();
+          this.mouse.x = e.clientX - rect.left;
+          this.mouse.y = e.clientY - rect.top;
+          this.mouse.isHover = true;
+        });
+        this.canvas.addEventListener('mouseleave', () => { this.mouse.isHover = false; });
+        window.addEventListener('resize', () => this.resize());
+        this.animate();
+      }
+
+      resize() {
+        this.width = this.canvas.width = this.canvas.offsetWidth || 160;
+        this.height = this.canvas.height = this.canvas.offsetHeight || 140;
+      }
+
+      createParticle(randomY = false) {
+        return {
+          x: this.width * 0.2 + Math.random() * (this.width * 0.6),
+          y: randomY ? Math.random() * this.height : this.height + 6,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: -(0.6 + Math.random() * 0.8),
+          radius: 6 + Math.random() * 12,
+          alpha: 0.01,
+          maxAlpha: 0.12 + Math.random() * 0.08,
+          phase: Math.random() * Math.PI * 2
+        };
+      }
+
+      animate() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        this.particles.forEach((p, idx) => {
+          p.phase += 0.03;
+          p.x += p.vx + Math.sin(p.phase) * 0.4;
+          p.y += p.vy;
+          p.radius += 0.18;
+
+          if (this.mouse.isHover) {
+            const dx = p.x - this.mouse.x;
+            const dy = p.y - this.mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 45) {
+              p.x += (dx / dist) * 1.8;
+              p.y += (dy / dist) * 1.8;
+            }
+          }
+
+          const progress = 1 - (p.y / this.height);
+          if (progress < 0.25) {
+            p.alpha = (progress / 0.25) * p.maxAlpha;
+          } else {
+            p.alpha = Math.max(0, p.maxAlpha * (1 - (progress - 0.25) / 0.75));
+          }
+
+          const grad = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
+          grad.addColorStop(0, `rgba(247, 240, 230, ${p.alpha})`);
+          grad.addColorStop(0.6, `rgba(242, 166, 59, ${p.alpha * 0.25})`);
+          grad.addColorStop(1, 'rgba(247, 240, 230, 0)');
+
+          this.ctx.fillStyle = grad;
+          this.ctx.beginPath();
+          this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          this.ctx.fill();
+
+          if (p.y < -20 || p.alpha <= 0.001) {
+            this.particles[idx] = this.createParticle();
+          }
+        });
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    /* ============================================================
+       3. 3D TILT EFFECT ON DISH CARDS
+       ============================================================ */
+    function init3DTilt() {
+      const cards = document.querySelectorAll('.tilt-card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -7;
+          const rotateY = ((x - centerX) / centerX) * 7;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+          
+          const glare = card.querySelector('.dish-card-glare');
+          if (glare) {
+            glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.12) 0%, transparent 60%)`;
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+      });
+    }
+
+    /* ============================================================
+       4. RULETA ROTISERA DEL CHEF (CON CANVAS & FÍSICA)
+       ============================================================ */
+    const ruletaDishes = [
+      { name: 'Tarta Calabaza & Brie', desc: 'Masa casera quebrada, puré al horno y brie tandilero.', price: 7900, color: '#e25822' },
+      { name: 'Pastel de Papas a Cuchillo', desc: 'Carne picada a cuchillo y puré dorado al horno.', price: 8400, color: '#221c18' },
+      { name: 'Sorrentinos con Hongos', desc: 'Pasta fresca al huevo con crema de hongos serranos.', price: 9800, color: '#b84414' },
+      { name: 'Milanesa Napolitana', desc: 'Ternera tierna, muzzarella y papas doradas.', price: 12800, color: '#2a231e' },
+      { name: 'Pollo al Verdeo', desc: 'Pechuga tierna al vino blanco y papas rústicas.', price: 8900, color: '#e25822' },
+      { name: 'Canelones Mixtos', desc: 'Espinaca fresca, ricota y salsa mixta gratinada.', price: 8900, color: '#221c18' }
+    ];
+
+    let currentRotation = 0;
+    let isSpinning = false;
+    let selectedRuletaWinner = null;
+
+    function drawWheel() {
+      const canvas = document.getElementById('wheel-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const numSlices = ruletaDishes.length;
+      const arc = (2 * Math.PI) / numSlices;
+      const radius = canvas.width / 2;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ruletaDishes.forEach((dish, i) => {
+        const angle = i * arc;
+        ctx.beginPath();
+        ctx.fillStyle = dish.color;
+        ctx.moveTo(radius, radius);
+        ctx.arc(radius, radius, radius - 6, angle, angle + arc);
+        ctx.lineTo(radius, radius);
+        ctx.fill();
+        ctx.strokeStyle = '#f2a63b';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Texto del plato
+        ctx.save();
+        ctx.translate(radius, radius);
+        ctx.rotate(angle + arc / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#f7f2ea';
+        ctx.font = 'bold 11px Plus Jakarta Sans, sans-serif';
+        ctx.shadowColor = 'rgba(0,0,0,0.8)';
+        ctx.shadowBlur = 4;
+        ctx.fillText(dish.name, radius - 20, 4);
+        ctx.restore();
+      });
+    }
+
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+
+      const btn = document.getElementById('btn-spin-wheel');
+      btn.disabled = true;
+      btn.innerText = 'Girando rueda...';
+      document.getElementById('ruleta-winner-box').classList.remove('show');
+
+      // Calcular giro aleatorio (mínimo 5 vueltas completas)
+      const randomIndex = Math.floor(Math.random() * ruletaDishes.length);
+      const sliceAngle = 360 / ruletaDishes.length;
+      const targetDeg = (360 * 5) + (360 - (randomIndex * sliceAngle) - (sliceAngle / 2));
+      
+      currentRotation += targetDeg;
+      const canvas = document.getElementById('wheel-canvas');
+      canvas.style.transform = `rotate(${currentRotation}deg)`;
+
+      // Simular ticks de sonido durante el giro
+      let tickInterval = setInterval(() => {
+        playWheelTick();
+      }, 150);
+
+      setTimeout(() => {
+        clearInterval(tickInterval);
+        isSpinning = false;
+        btn.disabled = false;
+        btn.innerText = '¡Girar de nuevo!';
+
+        selectedRuletaWinner = ruletaDishes[randomIndex];
+        playChefDing();
+
+        document.getElementById('winner-dish-name').innerText = selectedRuletaWinner.name;
+        document.getElementById('winner-dish-desc').innerText = selectedRuletaWinner.desc + ` — $${selectedRuletaWinner.price.toLocaleString('es-AR')}`;
+        document.getElementById('ruleta-winner-box').classList.add('show');
+      }, 4000);
+    }
+
+    function addRuletaWinnerToCart() {
+      if (!selectedRuletaWinner) return;
+      addItemToCart(selectedRuletaWinner.name, selectedRuletaWinner.price, 'Recomendación de la Ruleta');
+      closeRuletaModal();
+      showToast(`¡Sumado de la Ruleta: ${selectedRuletaWinner.name}!`);
+    }
+
+    function openRuletaModal() {
+      drawWheel();
+      document.getElementById('ruleta-modal-scrim').classList.add('open');
+    }
+
+    function closeRuletaModal(e) {
+      if (e) e.stopPropagation();
+      document.getElementById('ruleta-modal-scrim').classList.remove('open');
+    }
+
+    /* ============================================================
+       5. BANDEJA SEMANAL DE 5 DÍAS TÁCTIL
+       ============================================================ */
+    const trayDishesPool = [
+      'Pastel de Papas a Cuchillo',
+      'Pollo de Campo al Verdeo',
+      'Canelones Caseros Mixtos',
+      'Cazuela de Ternera Serrana',
+      'Suprema Napolitana con Puré',
+      'Tarta de Calabaza & Brie',
+      'Ñoquis Rellenos de Muzzarella'
+    ];
+
+    const currentTrayState = {
+      lunes: 0,
+      martes: 1,
+      miercoles: 2,
+      jueves: 3,
+      viernes: 4
+    };
+
+    function cycleTraySlot(day) {
+      currentTrayState[day] = (currentTrayState[day] + 1) % trayDishesPool.length;
+      const newDish = trayDishesPool[currentTrayState[day]];
+      const label = document.getElementById(`slot-name-${day}`);
+      
+      label.style.opacity = '0';
+      setTimeout(() => {
+        label.innerText = newDish;
+        label.style.opacity = '1';
+      }, 120);
+
+      playChefDing();
+    }
+
+    function addFullWeeklyTray() {
+      const lunes = document.getElementById('slot-name-lunes').innerText;
+      const martes = document.getElementById('slot-name-martes').innerText;
+      const miercoles = document.getElementById('slot-name-miercoles').innerText;
+      const jueves = document.getElementById('slot-name-jueves').innerText;
+      const viernes = document.getElementById('slot-name-viernes').innerText;
+
+      const fullSummary = `Pack 5 Viandas [Lun: ${lunes} | Mar: ${martes} | Mié: ${miercoles} | Jue: ${jueves} | Vie: ${viernes}]`;
+      addItemToCart(fullSummary, 38500, 'Pack Semanal Sellado');
+
+      const stamp = document.getElementById('tray-seal-badge');
+      stamp.classList.remove('stamped');
+      void stamp.offsetWidth; // re-trigger animation
+      stamp.classList.add('stamped');
+
+      playChefDing();
+      showToast('¡Bandeja semanal sellada y agregada al pedido!');
+    }
+
+    /* ============================================================
+       6. CORE DEL CARRITO, TICKETS & MODALIDAD
+       ============================================================ */
+    const viandasData = {
+      lunes: {
+        chip: 'Plato de Hoy • Lunes',
+        chef: 'Receta criolla casera',
+        title: 'Pastel de Papas Tradicional a Cuchillo',
+        desc: 'Carne de ternera tandilera cortada a cuchillo, sofrito criollo de cebolla, morrón dulce y huevo duro, cubierto con puré natural gratinado a horno fuerte.',
+        price: 8400,
+        img: 'https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80'
+      },
+      martes: {
+        chip: 'Martes • Especial al Fuego',
+        chef: 'Reducción de vino blanco',
+        title: 'Pollo de Campo al Verdeo & Papas Rústicas',
+        desc: 'Pechuga tierna dorada en manteca con puerros y verdeo fresco de huertas locales, crema ligera y papas doradas con piel.',
+        price: 8900,
+        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80'
+      },
+      miercoles: {
+        chip: 'Miércoles • Pasta & Horno',
+        chef: 'Panqueques artesanales',
+        title: 'Canelones Caseros de Espinaca & Ricota',
+        desc: 'Masa fina casera rellena de espinaca salteada a la manteca, ricota de tambo tandilero y salsa mixta gratinada con queso sardo.',
+        price: 8500,
+        img: 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=600&q=80'
+      },
+      jueves: {
+        chip: 'Jueves • Cocina de Olla',
+        chef: 'Cocción lenta 4 horas',
+        title: 'Cazuela de Ternera & Calabaza Asada',
+        desc: 'Carne tierna braseada con cubos de calabaza dulce, zanahorias tiernas y arvejas en cazuela de barro aromática.',
+        price: 9400,
+        img: 'https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80'
+      },
+      viernes: {
+        chip: 'Viernes • Cierre de Semana',
+        chef: 'El favorito de Tandil',
+        title: 'Suprema Napolitana con Puré Mixto',
+        desc: 'Pechuga empanada a mano, salsa casera de tomates asados, jamón natural y muzzarella fundida al horno.',
+        price: 9200,
+        img: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80'
+      },
+      pack: {
+        chip: 'Abono 5 Viandas Semanales',
+        chef: 'Lunes a Viernes',
+        title: 'Pack 5 Viandas del Día a Elección',
+        desc: '5 viandas caseras del día planificadas de lunes a viernes, empacadas listas para retirar al mediodía o recibir en tu oficina.',
+        price: 38500,
+        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80'
+      }
+    };
+
+    let currentViandaDay = 'lunes';
+    let currentOrderMode = 'takeaway';
+    let cart = [];
+
+    const formatARS = (num) => new Intl.NumberFormat('es-AR', {
+      style: 'currency',
+      currency: 'ARS',
+      maximumFractionDigits: 0
+    }).format(num);
+
+    /* Custom Cursor */
+    const curDot = document.getElementById('cur-dot');
+    const curRing = document.getElementById('cur-ring');
+    window.addEventListener('mousemove', (e) => {
+      document.body.classList.add('cursor-active');
+      curDot.style.left = `${e.clientX}px`;
+      curDot.style.top = `${e.clientY}px`;
+      curRing.style.left = `${e.clientX}px`;
+      curRing.style.top = `${e.clientY}px`;
+    });
+
+    function showToast(text) {
+      const toast = document.getElementById('mini-toast');
+      const label = document.getElementById('mini-toast-text');
+      label.innerText = text;
+      toast.classList.add('visible');
+      setTimeout(() => toast.classList.remove('visible'), 2400);
+    }
+
+    function switchOrderMode(mode) {
+      currentOrderMode = mode;
+      document.getElementById('btn-mode-takeaway').classList.toggle('active', mode === 'takeaway');
+      document.getElementById('btn-mode-salon').classList.toggle('active', mode === 'salon');
+      document.getElementById('field-salon').style.display = mode === 'salon' ? 'block' : 'none';
+      document.getElementById('field-takeaway').style.display = mode === 'takeaway' ? 'block' : 'none';
+      
+      playChefDing();
+      showToast(mode === 'salon' ? 'Modo Salón: Indicar mesa en el pedido' : 'Modo Viandas: Retiro o entrega');
+    }
+
+    function selectViandaDay(dayKey, btn) {
+      currentViandaDay = dayKey;
+      document.querySelectorAll('.day-selector-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const data = viandasData[dayKey];
+      const box = document.getElementById('vianda-spotlight-box');
+
+      box.style.opacity = '0.35';
+      box.style.transform = 'translateY(6px)';
+
+      setTimeout(() => {
+        document.getElementById('vianda-chip-text').innerText = data.chip;
+        document.getElementById('vianda-chef-text').innerText = data.chef;
+        document.getElementById('vianda-title-text').innerText = data.title;
+        document.getElementById('vianda-desc-text').innerText = data.desc;
+        document.getElementById('vianda-price-text').innerText = formatARS(data.price);
+        document.getElementById('vianda-img').src = data.img;
+
+        box.style.opacity = '1';
+        box.style.transform = 'translateY(0)';
+      }, 160);
+
+      playChefDing();
+    }
+
+    function addCurrentSpotlightVianda() {
+      const data = viandasData[currentViandaDay];
+      addItemToCart(`${data.title} (${currentViandaDay.toUpperCase()})`, data.price);
+    }
+
+    function setDishOption(btn, optionValue) {
+      const parentRow = btn.parentElement;
+      parentRow.querySelectorAll('.opt-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function handleDishAdd(dishName, price, drawerId = null) {
+      let optionText = '';
+      if (drawerId) {
+        const drawer = document.getElementById(drawerId);
+        if (drawer) {
+          if (!drawer.classList.contains('open')) {
+            drawer.classList.add('open');
+            return;
+          } else {
+            const activeChip = drawer.querySelector('.opt-chip.active');
+            if (activeChip) optionText = activeChip.innerText;
+            drawer.classList.remove('open');
+          }
+        }
+      }
+
+      addItemToCart(dishName, price, optionText);
+    }
+
+    function addItemToCart(name, price, option = '') {
+      const itemKey = option ? `${name} [${option}]` : name;
+      const found = cart.find(i => i.key === itemKey);
+      if (found) {
+        found.qty += 1;
+      } else {
+        cart.push({ key: itemKey, name, option, price, qty: 1 });
+      }
+
+      playChefDing();
+      updateCartUI();
+      showToast(`Sumado: ${name}`);
+    }
+
+    function changeItemQty(key, delta) {
+      const idx = cart.findIndex(i => i.key === key);
+      if (idx !== -1) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      }
+      playChefDing();
+      updateCartUI();
+      renderReceiptItems();
+    }
+
+    function updateCartUI() {
+      const totalQty = cart.reduce((acc, i) => acc + i.qty, 0);
+      const totalSum = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+
+      const floatingBar = document.getElementById('floating-bar');
+      const badge = document.getElementById('bar-badge');
+      const totalLabel = document.getElementById('bar-total');
+      const grandTotalLabel = document.getElementById('receipt-grand-total');
+
+      if (totalQty > 0) {
+        floatingBar.classList.add('visible');
+        badge.innerText = `${totalQty} ${totalQty === 1 ? 'plato' : 'platos'}`;
+        totalLabel.innerText = formatARS(totalSum);
+        grandTotalLabel.innerText = formatARS(totalSum);
+      } else {
+        floatingBar.classList.remove('visible');
+        closeTicketDrawer();
+      }
+    }
+
+    function openTicketDrawer() {
+      renderReceiptItems();
+      document.getElementById('ticket-drawer').classList.add('open');
+      document.getElementById('drawer-scrim').classList.add('open');
+      playChefDing();
+    }
+
+    function closeTicketDrawer() {
+      document.getElementById('ticket-drawer').classList.remove('open');
+      document.getElementById('drawer-scrim').classList.remove('open');
+    }
+
+    function renderReceiptItems() {
+      const container = document.getElementById('receipt-items-list');
+      if (cart.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: #887a6c; padding: 20px 0; font-size: 13px;">No hay platos en tu ticket todavía.</div>';
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="receipt-item-row">
+          <div class="receipt-item-left">
+            <div class="receipt-item-title">${item.qty}x ${item.name}</div>
+            ${item.option ? `<div class="receipt-item-opt">• ${item.option}</div>` : ''}
+          </div>
+          <div class="receipt-item-right">
+            <div class="receipt-item-price">${formatARS(item.price * item.qty)}</div>
+            <div class="receipt-qty-ctrl">
+              <button class="receipt-qty-btn" onclick="changeItemQty('${item.key}', -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="receipt-qty-btn" onclick="changeItemQty('${item.key}', 1)">+</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function sendOrderWhatsAppDirect() {
+      if (cart.length === 0) {
+        showToast('Sumá al menos un plato antes de enviar');
+        return;
+      }
+
+      let total = 0;
+      const orderLines = cart.map(i => {
+        const sub = i.price * i.qty;
+        total += sub;
+        const optLine = i.option ? ` (${i.option})` : '';
+        return `• ${i.qty}x ${i.name}${optLine} — ${formatARS(sub)}`;
+      }).join('%0A');
+
+      let modeLine = '';
+      if (currentOrderMode === 'salon') {
+        const table = document.getElementById('input-table-no').value.trim();
+        modeLine = table ? `Modalidad: En el Salón - ${encodeURIComponent(table)}` : 'Modalidad: En Salón Belgrano 1301';
+      } else {
+        const addr = document.getElementById('input-takeaway-address').value.trim();
+        modeLine = addr ? `Modalidad: ${encodeURIComponent(addr)}` : 'Modalidad: Retiro por Belgrano 1301';
+      }
+
+      const notes = document.getElementById('input-notes').value.trim();
+      const notesLine = notes ? `%0AAclaraciones: ${encodeURIComponent(notes)}` : '';
+
+      const fullMessage = `Hola Calabaza Belgrano! Quiero encargar el siguiente pedido:%0A%0A${orderLines}%0A%0ATotal: ${formatARS(total)}%0A${modeLine}${notesLine}%0A%0A¿Me confirman tiempo estimado? ¡Muchas gracias!`;
+
+      window.open(`https://wa.me/542494440000?text=${fullMessage}`, '_blank');
+      closeTicketDrawer();
+    }
+
+    /* ScrollSpy para las categorías */
+    const catSections = document.querySelectorAll('.menu-section');
+    const catLinks = document.querySelectorAll('.cat-nav-link');
+    window.addEventListener('scroll', () => {
+      let currentId = '';
+      catSections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (window.scrollY >= top) {
+          currentId = sec.getAttribute('id');
+        }
+      });
+      if (currentId) {
+        catLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+        });
+      }
+    });
+
+    /* Inicialización de Canvas de Vapor y 3D Tilt */
+    window.addEventListener('DOMContentLoaded', () => {
+      new SteamEngine('steam-canvas');
+      init3DTilt();
+      drawWheel();
+    });
+  </script>
+</body>
+</html>
