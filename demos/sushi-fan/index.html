@@ -1,0 +1,625 @@
+<!DOCTYPE html><html lang="es-AR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Sushi Fan Tandil | Restó, Delivery y Take Away</title><meta name="description" content="Disfrutá Sushi Fan Tandil: restó en Av. Brasil 184 y delivery / take away en Juncal 689. Consultá las cartas, reservá o pedí por WhatsApp."><meta property="og:title" content="Sushi Fan Tandil"><meta property="og:description" content="Tu próxima tablita. Tu próximo buen momento. Restó, delivery y take away en Tandil."><meta property="og:type" content="website"><meta property="og:locale" content="es_AR"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "Sushi Fan Tandil", "servesCuisine": "Sushi", "address": {"@type": "PostalAddress", "streetAddress": "Av. Brasil 184", "addressLocality": "Tandil", "addressRegion": "Buenos Aires", "addressCountry": "AR"}, "sameAs": ["https://www.instagram.com/sushifantandil/"], "hasMenu": "https://wa.me/c/5492494515187"}</script><style>
+/* ============================================================
+   TOKENS — dark editorial, aji accent, cream text
+   Layout: asymmetric, left-anchored, cinematic
+============================================================ */
+:root {
+  --bg:          #0b0b0b;
+  --bg-surface:  #141414;
+  --bg-elevated: #202020;
+  --text:        #f5f3ee;
+  --text-dim:    #aba8a3;
+  --accent:      #e52329;
+  --accent-h:    #f43c41;
+  --border:      rgba(232,226,213,.07);
+  --r:           3px;
+  --display:     'Cormorant Garamond', Georgia, serif;
+  --body:        'DM Sans', system-ui, sans-serif;
+  color-scheme:  dark;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--body);font-size:16px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  cursor:auto
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+address{font-style:normal}
+
+/* Grain */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+
+/* ===== MAGNETIC CURSOR ===== */
+#cur-dot,#cur-ring{
+  position:fixed;pointer-events:none;z-index:9998;
+  border-radius:50%;transform:translate(-50%,-50%);
+  top:0;left:0;will-change:transform;
+  opacity:0;transition:opacity .3s
+}
+#cur-dot{width:5px;height:5px;background:var(--accent)}
+#cur-ring{
+  width:36px;height:36px;
+  border:1px solid rgba(200,65,42,.55)
+}
+body.cursor-ready #cur-dot,
+body.cursor-ready #cur-ring{opacity:1}
+@media(hover:none){#cur-dot,#cur-ring{display:none}}
+a:hover~#cur-dot,button:hover~#cur-dot{background:var(--text)}
+
+/* ===== LOADER ===== */
+#loader{
+  position:fixed;inset:0;background:var(--bg);z-index:1000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px
+}
+.ld-word{
+  font-family:var(--display);font-size:clamp(28px,6vw,64px);
+  font-weight:300;letter-spacing:.35em;
+  opacity:0;transform:translateY(16px)
+}
+.ld-bar{width:120px;height:1px;background:var(--border);overflow:hidden}
+.ld-bar-fill{height:100%;width:0;background:var(--accent)}
+
+/* ===== NAV ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(20px,5vw,64px);height:68px;
+  transition:background .4s ease,backdrop-filter .4s ease
+}
+.nav.dark{
+  background:rgba(15,14,12,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)
+}
+.nav-logo{
+  font-family:var(--display);font-size:20px;font-weight:400;
+  letter-spacing:.14em;text-transform:uppercase
+}
+.nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links a{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text);opacity:.65;transition:opacity .2s
+}
+.nav-links a:hover{opacity:1}
+.nav-reservar{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid rgba(232,226,213,.3);padding:9px 22px;border-radius:var(--r);
+  transition:background .2s,color .2s,border-color .2s
+}
+.nav-reservar:hover{background:var(--text);color:var(--bg);border-color:var(--text);opacity:1}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:auto;padding:4px}
+.nav-ham span{width:22px;height:1px;background:var(--text);transition:transform .3s,opacity .3s}
+
+/* ===== MOBILE MENU ===== */
+.mob-menu{
+  display:none;position:fixed;inset:0;background:rgba(15,14,12,.97);z-index:99;
+  flex-direction:column;align-items:center;justify-content:center;gap:40px
+}
+.mob-menu.open{display:flex}
+.mob-menu a{
+  font-family:var(--display);font-size:clamp(36px,7vw,60px);
+  font-weight:300;letter-spacing:.04em;color:var(--text);
+  transition:color .2s
+}
+.mob-menu a:hover{color:var(--accent)}
+.mob-close{
+  position:absolute;top:20px;right:clamp(20px,5vw,40px);
+  font-size:30px;cursor:auto;color:var(--text-dim);line-height:1
+}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:100dvh;
+  display:flex;align-items:flex-end;
+  padding:0 clamp(20px,6vw,80px) clamp(56px,8vh,96px);
+  overflow:hidden
+}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  transition:transform 12s ease
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(15,14,12,.97) 0%,
+    rgba(15,14,12,.65) 35%,
+    rgba(15,14,12,.2) 65%,
+    rgba(15,14,12,.05) 100%
+  )
+}
+.hero-content{position:relative;z-index:1;max-width:880px}
+.hero-eyebrow{
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:28px;opacity:0
+}
+
+/* Split-char title */
+.hero-title{
+  font-family:var(--display);
+  font-size:clamp(88px,16vw,220px);
+  font-weight:300;line-height:.86;letter-spacing:-.02em;
+  margin-bottom:20px;display:flex;overflow:hidden;
+  padding-bottom:4px
+}
+.ht-c{
+  display:inline-block;
+  opacity:0;transform:translateY(100%)
+}
+
+.hero-sub{
+  font-family:var(--display);font-size:clamp(20px,3vw,36px);
+  font-weight:300;font-style:italic;
+  color:var(--text-dim);margin-bottom:44px;opacity:0
+}
+.hero-ctas{display:flex;align-items:center;gap:24px;flex-wrap:wrap;opacity:0}
+.btn-fill{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent);color:#fff;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  padding:15px 34px;border-radius:var(--r);
+  transition:background .2s,transform .15s;white-space:nowrap
+}
+.btn-fill:hover{background:var(--accent-h);transform:translateY(-1px)}
+.btn-fill:active{transform:scale(.98)}
+.btn-line{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--text);border-bottom:1px solid rgba(232,226,213,.3);
+  padding-bottom:2px;transition:border-color .2s;white-space:nowrap
+}
+.btn-line:hover{border-color:var(--text)}
+
+/* ===== MARQUEE ===== */
+.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.marquee-track{display:flex;width:max-content;animation:mq 36s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{
+  display:flex;align-items:center;gap:28px;
+  padding:18px 40px;
+  font-family:var(--display);font-size:clamp(16px,2.2vw,26px);
+  font-weight:300;font-style:italic;color:var(--text-dim);white-space:nowrap
+}
+.mq-dot{width:3px;height:3px;background:var(--accent);border-radius:50%;flex-shrink:0}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== SECTION HELPERS ===== */
+.s-label{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.s-heading{font-family:var(--display);font-size:clamp(36px,5.5vw,76px);font-weight:300;line-height:.96}
+
+/* ===== CULTURE ===== */
+.culture{padding:clamp(72px,11vh,144px) clamp(20px,6vw,80px)}
+.culture-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:center}
+.culture-cities{display:flex;align-items:center;margin-bottom:36px;overflow:hidden}
+.c-city{font-family:var(--display);font-size:clamp(14px,2vw,22px);font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);opacity:0}
+.c-rule{flex:1;height:1px;background:var(--border);margin:0 20px;transform:scaleX(0);transform-origin:left}
+.culture-sevilla{font-family:var(--display);font-size:clamp(56px,10vw,140px);font-weight:300;line-height:.88;letter-spacing:-.025em;margin-bottom:44px;opacity:0;transform:translateY(28px)}
+.culture-body p{font-family:var(--display);font-size:clamp(17px,1.8vw,22px);font-weight:300;font-style:italic;color:var(--text-dim);line-height:1.75;max-width:36ch}
+.culture-body p+p{margin-top:14px}
+.culture-ghost{text-align:right;user-select:none}
+.g-word{font-family:var(--display);font-size:clamp(60px,13vw,180px);font-weight:300;line-height:.85;color:rgba(232,226,213,.035)}
+.g-x{font-family:var(--display);font-size:clamp(32px,6vw,80px);font-weight:300;color:var(--accent);line-height:1.1;margin:0 0 -10px}
+
+/* ===== FAMILIA ===== */
+.familia{background:var(--bg-surface);padding:clamp(72px,11vh,144px) clamp(20px,6vw,80px)}
+.familia-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,120px);align-items:center}
+.familia-label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-dim);margin-bottom:20px}
+.familia-heading{font-family:var(--display);font-size:clamp(44px,6.5vw,92px);font-weight:300;line-height:.9;margin-bottom:32px}
+.familia-body p{font-size:15px;color:var(--text-dim);line-height:1.8;max-width:46ch}
+.familia-body p+p{margin-top:14px}
+.familia-img{
+  border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;order:2;
+  clip-path:inset(0 100% 0 0)
+}
+.familia-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+.familia-img:hover img{transform:scale(1.04)}
+
+/* ===== PLATOS — HORIZONTAL SCROLL ===== */
+.platos-scroller{position:relative;overflow:hidden}
+.platos-track{
+  display:flex;align-items:stretch;height:100vh;
+  will-change:transform
+}
+.platos-intro{
+  flex-shrink:0;
+  width:clamp(280px,30vw,480px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 clamp(24px,4vw,64px) clamp(64px,9vh,104px);
+  background:var(--bg);
+  border-right:1px solid var(--border)
+}
+.plato{
+  flex-shrink:0;
+  width:clamp(280px,33vw,500px);
+  height:100vh;
+  position:relative;overflow:hidden;cursor:auto
+}
+.plato img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .9s cubic-bezier(.25,1,.5,1)
+}
+.plato:hover img{transform:scale(1.07)}
+.plato::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(to right, rgba(15,14,12,.25) 0%, transparent 30%);
+  pointer-events:none
+}
+.plato-info{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,14,12,.96) 0%,rgba(15,14,12,.08) 55%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:32px 28px;
+  transition:background .4s ease
+}
+.plato:hover .plato-info{background:linear-gradient(to top,rgba(15,14,12,.99) 0%,rgba(15,14,12,.2) 60%,transparent 100%)}
+.plato-n{font-size:10px;letter-spacing:.22em;color:var(--accent);margin-bottom:10px}
+.plato-name{font-family:var(--display);font-size:clamp(24px,3vw,42px);font-weight:300;line-height:.95;margin-bottom:12px;text-wrap:balance}
+.plato-tag{font-size:11px;letter-spacing:.1em;color:var(--text-dim)}
+
+/* Mobile platos fallback */
+@media(max-width:768px){
+  .platos-scroller{overflow:visible}
+  .platos-track{
+    flex-direction:column;height:auto;
+    transform:none!important
+  }
+  .platos-intro{width:100%;padding:clamp(48px,8vh,80px) clamp(20px,6vw,60px) 32px;border-right:none;border-bottom:1px solid var(--border)}
+  .plato{width:100%;height:75vw;min-height:280px}
+}
+
+/* ===== CARTA — full editorial ===== */
+.carta{
+  background:var(--bg);
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column
+}
+.carta-header{
+  padding:clamp(56px,9vh,120px) clamp(20px,6vw,80px) 0;
+  border-bottom:1px solid var(--border)
+}
+.carta-header-inner{
+  max-width:1400px;margin:0 auto;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding-bottom:32px;gap:24px
+}
+.carta-header-inner .s-heading{margin:0}
+.carta-inner{
+  flex:1;
+  max-width:1400px;width:100%;margin:0 auto;
+  display:grid;
+  grid-template-columns:clamp(200px,24vw,340px) 1fr;
+  align-items:start
+}
+/* Left: category sidebar */
+.carta-side{
+  position:sticky;top:0;
+  min-height:100dvh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,7vh,96px) clamp(20px,4vw,56px);
+  border-right:1px solid var(--border)
+}
+.carta-side-label{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--text-dim);margin-bottom:32px
+}
+.ctab{
+  display:block;
+  font-family:var(--display);
+  font-size:clamp(26px,3.2vw,48px);
+  font-weight:300;
+  line-height:1.1;
+  color:rgba(232,226,213,.25);
+  padding:10px 0;
+  cursor:auto;
+  border:none;background:none;text-align:left;
+  transition:color .35s ease;
+  position:relative
+}
+.ctab::before{
+  content:'';
+  position:absolute;left:-clamp(20px,4vw,56px);top:50%;
+  width:0;height:1px;
+  background:var(--accent);
+  transform:translateY(-50%);
+  transition:width .35s cubic-bezier(.25,1,.5,1)
+}
+.ctab.on{color:var(--text)}
+.ctab.on::before{width:clamp(12px,2vw,28px)}
+.ctab:hover{color:rgba(232,226,213,.65)}
+/* Right: panels */
+.carta-panels{
+  padding:clamp(48px,7vh,96px) clamp(24px,4vw,64px)
+}
+.cpanel{display:none;position:relative;overflow:hidden;animation:panelIn .4s ease}
+.cpanel.on{display:block}
+@keyframes panelIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+/* Watermark category name behind each panel */
+.cpanel::before{
+  content:attr(data-cat);
+  position:absolute;
+  right:-0.04em;bottom:-0.1em;
+  font-family:var(--display);
+  font-size:clamp(120px,18vw,260px);
+  font-weight:300;
+  color:rgba(232,226,213,.03);
+  letter-spacing:-.04em;
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+  white-space:nowrap;
+  z-index:0
+}
+.cat-intro{
+  font-family:var(--display);
+  font-size:clamp(15px,1.6vw,19px);
+  font-weight:300;
+  font-style:italic;
+  color:rgba(232,226,213,.45);
+  line-height:1.5;
+  max-width:38ch;
+  padding-bottom:clamp(24px,4vh,40px);
+  border-bottom:1px solid var(--border);
+  margin-bottom:0;
+  position:relative;z-index:1
+}
+.carta-items{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:14px;
+  position:relative;z-index:1
+}
+.citem{
+  background:var(--bg-surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px 16px 18px;
+  display:flex;flex-direction:column;align-items:center;
+  transition:transform .28s cubic-bezier(.25,1,.5,1),border-color .25s;
+  cursor:default;
+  position:relative
+}
+.citem:hover{
+  transform:translateY(-5px);
+  border-color:rgba(200,65,42,.45)
+}
+.citem-photo{
+  width:140px;height:140px;
+  border-radius:50%;
+  overflow:hidden;
+  border:1.5px solid rgba(232,226,213,.09);
+  background:var(--bg-elevated);
+  box-shadow:0 8px 28px rgba(0,0,0,.45);
+  margin-bottom:16px;
+  flex-shrink:0
+}
+.citem-photo img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .55s ease
+}
+.citem:hover .citem-photo img{transform:scale(1.1)}
+.citem-body{width:100%;display:flex;flex-direction:column;flex:1}
+.citem-name{
+  font-family:var(--display);
+  font-size:clamp(15px,1.5vw,19px);
+  font-weight:300;
+  line-height:1.1;
+  text-align:center;
+  margin-bottom:7px;
+  transition:color .22s
+}
+.citem:hover .citem-name{color:var(--accent)}
+.citem-desc{
+  font-size:10.5px;color:var(--text-dim);
+  line-height:1.55;text-align:center;
+  margin-bottom:14px;flex:1
+}
+.citem-footer{
+  width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--border);
+  padding-top:12px;
+  margin-top:auto
+}
+.citem-price{
+  font-family:var(--display);
+  font-size:17px;font-weight:300;
+  color:var(--text)
+}
+.citem-price::before{content:'€ ';font-size:.72em;color:var(--text-dim)}
+.citem-noprice{font-size:10px;color:var(--text-dim);font-style:italic}
+.citem-add{
+  width:32px;height:32px;
+  border-radius:50%;
+  background:var(--accent);
+  border:none;color:#fff;
+  font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  cursor:auto;
+  transition:background .2s,transform .15s;
+  font-weight:300;
+  padding-bottom:1px
+}
+.citem-add:hover{background:var(--accent-h);transform:scale(1.12)}
+.carta-count{
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--text-dim);margin-top:24px;padding-top:18px;
+  border-top:1px solid var(--border);
+  position:relative;z-index:1
+}
+
+@media(max-width:768px){
+  .carta-inner{grid-template-columns:1fr}
+  .carta-side{
+    position:static;min-height:auto;
+    flex-direction:row;flex-wrap:wrap;gap:8px;
+    padding:24px clamp(20px,6vw,40px);
+    border-right:none;border-bottom:1px solid var(--border)
+  }
+  .carta-side-label{display:none}
+  .ctab{font-size:clamp(18px,5vw,24px);padding:6px 14px;border:1px solid var(--border)}
+  .ctab.on{border-color:var(--accent)}
+  .ctab::before{display:none}
+  .carta-panels{padding:24px clamp(20px,6vw,40px)}
+  .carta-items{grid-template-columns:repeat(2,1fr);gap:10px}
+  .citem{padding:18px 12px 14px;border-radius:12px}
+  .citem-photo{width:100px;height:100px;margin-bottom:12px}
+}
+
+/* ===== REVIEWS ===== */
+.reviews{padding:clamp(72px,11vh,144px) clamp(20px,6vw,80px)}
+.reviews-inner{max-width:1400px;margin:0 auto}
+.rev-score{margin-bottom:72px}
+.rev-num{
+  font-family:var(--display);
+  font-size:clamp(56px,12vw,160px);
+  font-weight:300;line-height:.88;color:var(--text);
+  font-variant-numeric:tabular-nums
+}
+.rev-num em{color:var(--accent);font-style:normal}
+.rev-count{
+  font-family:var(--display);
+  font-size:clamp(28px,5vw,72px);
+  font-weight:300;color:var(--text-dim);
+  margin-top:8px;
+  font-variant-numeric:tabular-nums
+}
+.rev-sub{font-size:13px;color:var(--text-dim);letter-spacing:.07em;margin-top:12px}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.rev-card{background:var(--bg);padding:36px 30px}
+.rev-body{font-family:var(--display);font-size:clamp(17px,1.9vw,22px);font-weight:300;font-style:italic;line-height:1.65;margin-bottom:24px}
+.rev-author{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim)}
+.rev-source{font-size:11px;color:rgba(200,65,42,.55);margin-top:4px}
+
+/* ===== EXPERIENCE ===== */
+.experience{position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden}
+.exp-bg{position:absolute;inset:0}
+.exp-bg img{width:100%;height:100%;object-fit:cover}
+.exp-bg::after{content:'';position:absolute;inset:0;background:rgba(15,14,12,.58)}
+.exp-content{position:relative;z-index:1;padding:0 clamp(20px,6vw,80px);max-width:680px}
+.exp-heading{font-family:var(--display);font-size:clamp(48px,8.5vw,120px);font-weight:300;line-height:.88;margin-bottom:32px}
+.exp-body{font-size:15px;color:rgba(232,226,213,.65);line-height:1.85;max-width:42ch}
+
+/* ===== RESERVATION ===== */
+.reservation{background:var(--bg-surface);padding:clamp(72px,11vh,144px) clamp(20px,6vw,80px)}
+.res-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,120px);align-items:start}
+.res-heading{font-family:var(--display);font-size:clamp(44px,6vw,84px);font-weight:300;line-height:.9;margin-bottom:22px}
+.res-sub{font-size:14px;color:var(--text-dim);line-height:1.75;margin-bottom:40px;max-width:38ch}
+.res-phone-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
+.res-phone-num{font-family:var(--display);font-size:22px;color:var(--text);letter-spacing:.04em}
+.form{display:flex;flex-direction:column;gap:18px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-g{display:flex;flex-direction:column;gap:7px}
+.form-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim)}
+.form-input,.form-select{background:var(--bg-elevated);border:1px solid var(--border);color:var(--text);font-family:var(--body);font-size:14px;padding:13px 14px;border-radius:var(--r);outline:none;appearance:none;-webkit-appearance:none;width:100%;transition:border-color .2s}
+.form-input::placeholder{color:var(--text-dim)}
+.form-input:focus,.form-select:focus{border-color:rgba(232,226,213,.25)}
+.form-submit{background:var(--accent);color:#fff;border:none;font-family:var(--body);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:16px 24px;border-radius:var(--r);cursor:auto;transition:background .2s,transform .15s;margin-top:6px}
+.form-submit:hover{background:var(--accent-h);transform:translateY(-1px)}
+.form-submit:active{transform:scale(.98)}
+.form-note{font-size:11px;color:var(--text-dim);text-align:center;margin-top:12px;line-height:1.5}
+.form-note a{color:var(--text-dim);border-bottom:1px solid var(--border)}
+
+/* ===== LOCATION ===== */
+.location{padding:clamp(72px,11vh,144px) clamp(20px,6vw,80px)}
+.loc-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:center}
+.loc-name{font-family:var(--display);font-size:clamp(30px,3.5vw,52px);font-weight:300;margin-bottom:20px;line-height:1.1}
+.loc-addr{font-size:14px;color:var(--text-dim);line-height:1.9;margin-bottom:28px}
+.loc-links{display:flex;flex-wrap:wrap;gap:20px;margin-bottom:28px}
+.loc-link{font-size:11px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(232,226,213,.25);padding-bottom:2px;transition:border-color .2s}
+.loc-link:hover{border-color:var(--text)}
+.loc-hours{font-size:12px;color:var(--text-dim);padding-top:24px;border-top:1px solid var(--border);line-height:1.7}
+.loc-map{border-radius:var(--r);overflow:hidden;aspect-ratio:1;background:var(--bg-elevated);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:32px}
+.loc-pin{width:48px;height:48px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-dim)}
+.loc-map-text{font-size:13px;color:var(--text-dim);line-height:1.6}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--bg-elevated);padding:clamp(48px,8vh,80px) clamp(20px,6vw,80px) 28px}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:44px;border-bottom:1px solid var(--border);gap:40px;flex-wrap:wrap}
+.footer-logo{font-family:var(--display);font-size:26px;font-weight:300;letter-spacing:.1em;margin-bottom:6px}
+.footer-sub{font-size:12px;color:var(--text-dim);letter-spacing:.07em}
+.footer-cols{display:flex;gap:56px;flex-wrap:wrap}
+.fcol-title{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-dim);margin-bottom:18px}
+.fcol-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fcol-links a{font-size:13px;color:var(--text-dim);transition:color .2s}
+.fcol-links a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:20px;gap:14px;flex-wrap:wrap}
+.footer-copy{font-size:11px;color:rgba(154,146,133,.45)}
+.footer-demo{font-size:10px;color:rgba(154,146,133,.28)}
+
+/* ===== REVEAL UTILITIES ===== */
+.rv{opacity:0;transform:translateY(36px)}
+.rv-l{opacity:0;transform:translateX(-36px)}
+.rv-r{opacity:0;transform:translateX(36px)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .culture-grid,.familia-grid,.res-grid,.loc-grid{grid-template-columns:1fr}
+  .culture-ghost{display:none}
+  .familia-img{order:-1;aspect-ratio:16/10}
+  .rev-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-links,.nav-reservar{display:none}
+  .nav-ham{display:flex}
+  .form-row{grid-template-columns:1fr}
+  .footer-cols{gap:32px}
+}
+@media(max-width:480px){
+  .hero-ctas{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  .rv,.rv-l,.rv-r{opacity:1!important;transform:none!important}
+  .marquee-track{animation:none}
+  .hero-eyebrow,.hero-sub,.hero-ctas{opacity:1!important}
+  .ht-c{opacity:1!important;transform:none!important}
+  .familia-img{clip-path:none!important}
+}
+  
+/* Sushi Fan branding and source-photo framing */
+html{scroll-padding-top:88px}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.nav{background:rgba(11,11,11,.92);backdrop-filter:blur(14px)}.nav-logo{display:flex;align-items:center;gap:12px;letter-spacing:0;text-transform:none;font-size:26px}.brand-icon{width:44px;height:44px;flex:none;border-radius:50%;background-image:url('img/instagram-productos.png');background-size:1387.3% 722.2%;background-position:29.78% 11.1%}
+.nav-ham{background:none;border:0;cursor:pointer}.mob-close{background:none;border:0;cursor:pointer}.mob-menu.open{display:flex}.mob-menu a{font-size:40px}
+.hero{min-height:90svh;align-items:center;padding-top:140px;padding-bottom:72px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px}.hero-content{min-width:0}.hero-title{font-size:clamp(64px,9vw,145px);display:block;line-height:.88;overflow:visible;letter-spacing:-.04em}.hero-title em{font-style:italic;color:var(--accent)}.hero-eyebrow,.hero-sub,.hero-ctas{opacity:1}.hero-sub{margin-top:28px;font-size:clamp(22px,2.5vw,32px)}.hero-photo{aspect-ratio:4/5;border-radius:160px 160px 6px 6px;position:relative}.photo{background-repeat:no-repeat;background-color:var(--bg-elevated);overflow:hidden}.photo::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),transparent 60%);pointer-events:none}.hero-caption{position:absolute;bottom:25px;left:25px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;z-index:1}
+.culture-sevilla{opacity:1;transform:none}.c-city{opacity:1}.c-rule{transform:none}.culture-ghost{display:block;text-align:center}.mascot{width:min(100%,320px);margin:auto}.familia-img{clip-path:none;aspect-ratio:4/5}.familia-img img{object-position:center}.rv,.rv-l,.rv-r{opacity:1;transform:none}
+.fan-gallery{padding:80px clamp(20px,6vw,80px)}.fan-gallery-header{margin-bottom:36px}.fan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.fan-card-photo{aspect-ratio:1;position:relative}.fan-card h3{font-family:var(--display);font-size:32px;margin-top:18px;line-height:1.1}.fan-card p{font-size:13px;color:var(--text-dim);margin-top:8px}.fan-card{min-width:0}
+.carta{min-height:0;padding-bottom:80px}.fan-menus{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:40px clamp(20px,6vw,80px)}.menu-card{padding:36px;border:1px solid rgba(255,255,255,.14);background:var(--bg-surface)}.menu-card h3{font-family:var(--display);font-size:42px;line-height:1.1;margin-bottom:18px}.menu-card p{color:var(--text-dim);margin-bottom:28px;max-width:42ch}.menu-card .btn-line{margin-top:20px}.menu-card address{color:var(--text);font-size:14px;line-height:1.8;margin:20px 0}.menu-card .btn-fill{letter-spacing:.08em;white-space:normal}
+.experience{min-height:0;padding:90px clamp(20px,6vw,80px);background:var(--bg-surface)}.exp-content{padding:0;max-width:900px}.exp-heading{font-size:clamp(48px,8vw,100px)}.exp-body{max-width:60ch}.fan-contact{display:flex;gap:18px;flex-wrap:wrap;margin-top:32px}.footer-copy,.footer-demo{color:var(--text-dim)}
+@media(max-width:900px){.hero{gap:28px}.hero-title{font-size:clamp(58px,10vw,100px)}.culture-ghost{display:block}.mascot{max-width:230px}.familia-img{aspect-ratio:4/5;max-height:520px}.fan-grid{gap:14px}.fan-card h3{font-size:26px}}
+@media(max-width:768px){.hero{grid-template-columns:1fr;padding-top:120px;min-height:0}.hero-title{font-size:clamp(64px,17vw,110px)}.hero-photo{aspect-ratio:1;max-width:440px;width:100%;justify-self:center;border-radius:120px 120px 6px 6px}.fan-grid{grid-template-columns:1fr}.fan-card{max-width:520px}.fan-menus{grid-template-columns:1fr}.menu-card{padding:26px}.nav-logo{font-size:24px}.fan-gallery{padding-top:56px;padding-bottom:56px}.hero-ctas{align-items:flex-start}.btn-fill{padding:15px 24px}.culture-grid{gap:32px}.culture{padding-top:64px;padding-bottom:64px}}
+</style></head><body>
+<nav class="nav" id="mainNav" aria-label="Navegación principal">
+<a href="#inicio" class="nav-logo"><span class="brand-icon" aria-hidden="true"></span>SushiFan</a>
+<ul class="nav-links"><li><a href="#nosotros">Nosotros</a></li><li><a href="#carta">Carta</a></li><li><a href="#ubicacion">Ubicación</a></li><li><a href="https://walink.co/ece07c" target="_blank" rel="noopener" class="nav-reservar">Reservar mesa</a></li></ul>
+<button class="nav-ham" id="navHam" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobMenu"><span></span><span></span><span></span></button></nav>
+<div class="mob-menu" id="mobMenu" hidden><button class="mob-close" id="mobClose" aria-label="Cerrar menú">×</button><a href="#nosotros">Nosotros</a><a href="#carta">Carta</a><a href="#experiencia">La experiencia</a><a href="#ubicacion">Dónde estamos</a></div>
+<main>
+<section class="hero" id="inicio"><div class="hero-content"><p class="hero-eyebrow">Sushi · Restó · Delivery — Tandil</p><h1 class="hero-title">Hoy pinta<br><em>Sushi Fan.</em></h1><p class="hero-sub">Tu próxima tablita.<br>Tu próximo buen momento.</p><div class="hero-ctas"><a class="btn-fill" href="https://walink.co/ece07c" target="_blank" rel="noopener">Reservar mesa ↗</a><a class="btn-line" href="https://walink.co/3d2361" target="_blank" rel="noopener">Pedir delivery ↗</a></div></div><div class="photo hero-photo" role="img" aria-label="Tabla de sushi de Sushi Fan Tandil" style="background-image:url('img/instagram-productos.png');background-size:628.777% 294.498%;background-position:45.714% 96.672%"><span class="hero-caption">Sushi Fan · Tandil</span></div></section>
+<div class="marquee" aria-hidden="true"><div class="marquee-track"><div class="marquee-item">Sushi Fan<div class="mq-dot"></div></div><div class="marquee-item">Tandil<div class="mq-dot"></div></div><div class="marquee-item">Una tablita<div class="mq-dot"></div></div><div class="marquee-item">Un buen encuentro<div class="mq-dot"></div></div><div class="marquee-item">Restó<div class="mq-dot"></div></div><div class="marquee-item">Delivery<div class="mq-dot"></div></div><div class="marquee-item">Sushi Fan<div class="mq-dot"></div></div><div class="marquee-item">Tandil<div class="mq-dot"></div></div><div class="marquee-item">Una tablita<div class="mq-dot"></div></div><div class="marquee-item">Un buen encuentro<div class="mq-dot"></div></div><div class="marquee-item">Restó<div class="mq-dot"></div></div><div class="marquee-item">Delivery<div class="mq-dot"></div></div></div></div>
+<section class="culture" id="cultura"><div class="culture-grid"><div><div class="culture-cities"><span class="c-city">EN EL RESTÓ</span><div class="c-rule"></div><span class="c-city">EN TU CASA</span></div><h2 class="culture-sevilla">Siempre<br>Sushi Fan.</h2><div class="culture-body"><p>Hay planes que empiezan con una tablita.</p><p>Una cena entre amigos, una salida de a dos o una noche tranquila en casa.</p><p>Elegí tu momento. Nosotros ponemos el sushi.</p></div></div><div class="culture-ghost"><img class="mascot" src="img/mascota.png" alt="Mascota de Sushi Fan: un roll sonriente con palitos y vincha roja" width="1024" height="1280" loading="lazy"></div></div></section>
+<section class="familia" id="nosotros"><div class="familia-grid"><div><p class="familia-label">Sushi Fan Tandil</p><h2 class="familia-heading">El sushi nos<br>reúne.</h2><div class="familia-body"><p>Nos gusta lo que pasa alrededor de una mesa: las charlas, los brindis y ese primer bocado que invita al siguiente.</p><p>En Sushi Fan podés disfrutar del restó en Avenida Brasil o elegir delivery y take away desde Juncal.</p><p>Dos formas de encontrarnos. El mismo buen plan.</p></div></div><div class="familia-img"><img src="img/equipo.png" alt="Encuentro frente al local de Sushi Fan Tandil" width="761" height="862" loading="lazy"></div></div></section>
+<section class="fan-gallery" aria-labelledby="galeriaTitle"><div class="fan-gallery-header"><p class="s-label">Un vistazo a Sushi Fan</p><h2 class="s-heading" id="galeriaTitle">Primero, con los ojos.</h2></div><div class="fan-grid"><article class="fan-card"><div class="photo fan-card-photo" role="img" aria-label="Una tablita y un buen plan." style="background-image:url('img/instagram-productos.png');background-size:631.047% 294.498%;background-position:7.614% 96.672%"></div><h3>Una tablita y un buen plan.</h3><p>Para compartir, regalarte un momento o resolver la cena.</p></article><article class="fan-card"><div class="photo fan-card-photo" role="img" aria-label="Salmón protagonista." style="background-image:url('img/instagram-productos.png');background-size:631.047% 294.498%;background-position:45.683% 96.672%"></div><h3>Salmón protagonista.</h3><p>Color, variedad y bocados que dan ganas de repetir.</p></article><article class="fan-card"><div class="photo fan-card-photo" role="img" aria-label="Nos vemos en el restó." style="background-image:url('img/instagram-productos.png');background-size:631.047% 294.498%;background-position:84.024% 96.672%"></div><h3>Nos vemos en el restó.</h3><p>Sushi, una copa y tiempo para disfrutar.</p></article></div></section>
+<section class="carta" id="carta"><div class="carta-header"><div class="carta-header-inner"><div><p class="s-label">Elegí tu plan</p><h2 class="s-heading">La carta de Sushi Fan.</h2></div></div></div><div class="fan-menus"><article class="menu-card"><p class="s-label">01 · Restó</p><h3>Una mesa para<br>disfrutar.</h3><p>Consultá la carta del restó y escribinos para reservar tu próximo encuentro.</p><a class="btn-fill" href="https://wa.me/c/5492494515187" target="_blank" rel="noopener">Ver carta del restó ↗</a><br><a class="btn-line" href="https://walink.co/ece07c" target="_blank" rel="noopener">Consultar una reserva ↗</a></article><article class="menu-card"><p class="s-label">02 · Delivery / Take away</p><h3>Tu tablita,<br>donde quieras.</h3><p>Elegí desde la carta de delivery y coordiná tu pedido por WhatsApp.</p><a class="btn-fill" href="https://wa.me/c/5492494333204" target="_blank" rel="noopener">Ver carta de delivery ↗</a><br><a class="btn-line" href="https://walink.co/3d2361" target="_blank" rel="noopener">Hacer un pedido ↗</a></article></div></section>
+<section class="experience" id="experiencia"><div class="exp-content"><p class="s-label">Sushi & buenos momentos</p><h2 class="exp-heading">La noche pide<br>un buen plan.</h2><p class="exp-body">Una copa, una tablita y la compañía que elijas. Vení al restó y disfrutá de Sushi Fan en Tandil.</p><div class="fan-contact"><a class="btn-fill" href="https://walink.co/ece07c" target="_blank" rel="noopener">Reservar por WhatsApp ↗</a><a class="btn-line" href="https://www.instagram.com/sushifantandil/" target="_blank" rel="noopener">Conocé más en Instagram ↗</a></div></div></section>
+<section class="location" id="ubicacion"><p class="s-label">Dónde encontrarnos</p><h2 class="s-heading">Dos formas de disfrutar.</h2><div class="fan-menus" style="padding:36px 0 0"><article class="menu-card"><h3>Sushi Fan Restó</h3><address>Av. Brasil 184 · Tandil</address><p>Jueves a domingo · 19:00 a 00:00</p><div class="loc-links"><a class="loc-link" href="https://www.google.com/maps/search/?api=1&query=Sushi+Fan+Av+Brasil+184+Tandil" target="_blank" rel="noopener">Cómo llegar ↗</a><a class="loc-link" href="https://walink.co/ece07c" target="_blank" rel="noopener">Reservas ↗</a></div></article><article class="menu-card"><h3>Delivery / Take Away</h3><address>Juncal 689 · Tandil</address><p>Miércoles a sábado · 19:00 a 00:00</p><div class="loc-links"><a class="loc-link" href="https://www.google.com/maps/search/?api=1&query=Sushi+Fan+Juncal+689+Tandil" target="_blank" rel="noopener">Cómo llegar ↗</a><a class="loc-link" href="https://walink.co/3d2361" target="_blank" rel="noopener">Pedidos ↗</a></div></article></div><p class="loc-hours">Consultá cambios de horario y novedades en <a href="https://www.instagram.com/sushifantandil/" target="_blank" rel="noopener">@sushifantandil</a>.</p></section>
+</main><footer class="footer"><div class="footer-inner"><div class="footer-top"><div><div class="footer-logo">SushiFan</div><div class="footer-sub">Restó · Delivery · Take Away — Tandil</div></div><div class="footer-cols"><div><p class="fcol-title">Sushi Fan</p><ul class="fcol-links"><li><a href="#nosotros">Nosotros</a></li><li><a href="#carta">Cartas</a></li><li><a href="#ubicacion">Ubicación y horarios</a></li></ul></div><div><p class="fcol-title">Hablemos</p><ul class="fcol-links"><li><a href="https://walink.co/ece07c" target="_blank" rel="noopener">Reservas restó</a></li><li><a href="https://walink.co/3d2361" target="_blank" rel="noopener">Pedidos delivery</a></li><li><a href="https://www.instagram.com/sushifantandil/" target="_blank" rel="noopener">Instagram</a></li></ul></div></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Sushi Fan Tandil</span><span class="footer-demo">Propuesta de sitio web · Demo</span></div></div></footer>
+<script>
+const menu=document.getElementById('mobMenu'),toggle=document.getElementById('navHam');
+function setMenu(open){menu.hidden=!open;menu.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':'';if(open)document.getElementById('mobClose').focus();}
+toggle.addEventListener('click',()=>setMenu(menu.hidden));
+document.getElementById('mobClose').addEventListener('click',()=>{setMenu(false);toggle.focus();});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){setMenu(false);toggle.focus();}if(e.key==='Tab'&&!menu.hidden){const items=[...menu.querySelectorAll('button,a')];const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
+window.addEventListener('resize',()=>{if(window.innerWidth>768&&!menu.hidden)setMenu(false)});
+</script></body></html>
