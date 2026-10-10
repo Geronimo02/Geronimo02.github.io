@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anthropic OSS Scanner — Guía GERO</title>
+<style>
+body{background:#0b0d0f;color:#f5f7f8;font-family:Inter,Arial,sans-serif;line-height:1.65;max-width:960px;margin:auto;padding:48px 24px}
+a{color:#9cff38} h1{font-size:44px;line-height:1.08} h2{margin-top:38px} code,pre{background:#14181c;border:1px solid #2b333a;border-radius:10px;padding:3px 6px} pre{padding:18px;overflow:auto;white-space:pre-wrap}
+.badge{display:inline-block;border:1px solid #9cff38;color:#9cff38;border-radius:999px;padding:5px 11px;font-weight:700}
+.note{background:#14181c;border-left:4px solid #9cff38;padding:16px 18px;border-radius:8px}
+li{margin:.45rem 0}
+</style></head><body>
+<span class="badge">GRATIS · OPEN SOURCE ELEGIBLE</span>
+<h1>Anthropic OSS Scanner: auditorías de seguridad con modelos fuertes, sin pagar</h1>
+<p><b>PRECIO / DISPONIBILIDAD:</b> Anthropic lanzó OSS Scanner el 8 de octubre de 2026 como servicio <b>gratuito</b> y opt-in para proyectos open source elegibles. No es un scanner gratis para cualquier repositorio privado: está dirigido a mantenedores centrales de proyectos establecidos con impacto relevante y capacidad para triagear hallazgos.</p>
+
+<h2>Qué cambió</h2>
+<p>Los proyectos aceptados reciben escaneos periódicos con los modelos más capaces de Anthropic. Los reportes pueden incluir prueba de concepto de explotación, explicación, análisis de causa y una corrección sugerida cuando está disponible.</p>
+
+<h2>La diferencia importante</h2>
+<p>Este fast track envía hallazgos generados por modelos <b>sin revisión humana previa</b>. Eso acelera mucho la entrega, pero también implica falsos positivos o severidades mal clasificadas. El mantenedor conserva el trabajo crítico de validar y priorizar.</p>
+
+<h2>Para quién sirve</h2>
+<ul>
+<li>Mantenedores core de proyectos open source establecidos.</li>
+<li>Librerías expuestas a inputs no confiables.</li>
+<li>Proyectos con muchos usuarios o dependencias downstream.</li>
+<li>Equipos que ya tienen capacidad para responder a findings high/critical.</li>
+</ul>
+
+<h2>Para quién NO</h2>
+<ul>
+<li>Repos privados de clientes o empresas que buscan un scanner comercial gratis.</li>
+<li>Proyectos sin capacidad para triagear reportes frecuentes.</li>
+<li>Equipos que necesitan findings human-verified antes de recibirlos.</li>
+</ul>
+
+<h2>Cómo anotarse</h2>
+<ol>
+<li>Abrí un PR en <code>anthropics/oss-scanner</code>.</li>
+<li>Agregá <code>projects/&lt;proyecto&gt;/project.yaml</code>.</li>
+<li>Indicá el repo y contacto principal.</li>
+<li>Proveé un Dockerfile que deje el entorno listo y dependencias instaladas.</li>
+<li>Opcional: agregá <code>threat_model.md</code> con alcance y criterios.</li>
+<li>Corré <code>tools/validate.py</code> antes de abrir el PR.</li>
+<li>Anthropic valida manualmente que seas mantenedor core y revisa elegibilidad.</li>
+</ol>
+
+<h2>Config mínima</h2>
+<pre>repo: https://github.com/tu-org/tu-proyecto
+primary_contact: security@tu-proyecto.org
+Dockerfile: Dockerfile</pre>
+
+<h2>Threat model: lo que yo agregaría</h2>
+<pre># Alcance
+- código que procesa input externo
+- parsers, auth, serialización, uploads
+
+# Fuera de alcance
+- ejemplos
+- benchmarks
+- tooling de desarrollo no distribuido
+
+# Prioridad
+1. RCE / auth bypass
+2. exposición de secretos
+3. path traversal / SSRF
+4. DoS explotable remotamente
+
+# Formato esperado
+- reproducción mínima
+- impacto
+- archivo + función
+- parche mínimo sugerido
+- test de regresión</pre>
+
+<h2>Qué recibís</h2>
+<p>Después del alta, Anthropic realiza un primer escaneo y envía un paquete de reportes por email. Luego escanea periódicamente para encontrar vulnerabilidades nuevas o previamente omitidas. La frecuencia puede variar según capacidad del programa.</p>
+
+<h2>Seguridad y privacidad del scanner</h2>
+<p>Anthropic indica que los agentes de scanning corren en sandboxes endurecidos con acceso a Internet deshabilitado durante el análisis. El Dockerfile se construye con red para instalar dependencias y el audit posterior corre offline.</p>
+
+<h2>Limitaciones</h2>
+<ul>
+<li>Hallazgos del fast track no tienen revisión humana.</li>
+<li>Puede haber falsos positivos o severidad incorrecta.</li>
+<li>La elegibilidad se evalúa caso por caso.</li>
+<li>No es equivalente a Claude Security, que es un producto comercial.</li>
+<li>Necesitás preparar un entorno reproducible que el scanner pueda construir.</li>
+</ul>
+
+<h2>Comparativa</h2>
+<p><b>OSS Scanner:</b> gratuito, para open source elegible, findings rápidos no revisados. <b>Proceso CVD de Anthropic:</b> disclosures con revisión humana. <b>Claude Security:</b> oferta comercial para integrar scanning en desarrollo empresarial.</p>
+
+<h2>Qué haría yo</h2>
+<p>Antes de anotarme, limpiaría el setup del repo y escribiría un threat model corto. Un scanner potente sin contexto te puede dar más ruido. Con alcance, severidad y formato definidos, aumentás la probabilidad de recibir algo accionable.</p>
+
+<h2>Checklist</h2>
+<ul>
+<li>Soy mantenedor core</li><li>Proyecto establecido</li><li>Capacidad de triage</li><li>Dockerfile reproducible</li>
+<li>Tests pasan en container</li><li>project.yaml validado</li><li>Threat model recomendado</li><li>Contacto de seguridad activo</li>
+</ul>
+
+<h2>Próximos pasos</h2>
+<p>Si el proyecto encaja, revisá el template oficial, prepará el Dockerfile y abrí el PR. Si no encaja, no intentes forzar el programa: usá scanners OSS tradicionales y un workflow de revisión propio.</p>
+
+<h2>Fuentes oficiales</h2>
+<p><a href="https://www.anthropic.com/news/anthropic-cyber-mission">Anthropic — Cyber Mission</a></p>
+<p><a href="https://red.anthropic.com/oss-scanner/">Anthropic — OSS Scanner</a></p>
+<p><a href="https://github.com/anthropics/oss-scanner">GitHub — anthropics/oss-scanner</a></p>
+</body></html>
