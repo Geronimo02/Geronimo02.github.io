@@ -19,7 +19,7 @@
   <script defer src="site.js"></script>
   <script defer src="eventos.js"></script>
 </head>
-<body>
+<body class="hero-visible">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header" id="inicio">
     <div class="container header-inner">
@@ -40,16 +40,19 @@
 
   <main id="contenido">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-photo"><picture><source media="(max-width: 760px)" srcset="assets/salon-mobile-v2.jpg"><img src="assets/hero-panorama-v2.jpg" width="1672" height="941" alt="Salón azul de Cener House con araña de cristal, mesas y murales" fetchpriority="high"></picture></div>
+      <div class="hero-photo" aria-hidden="true">
+        <picture><source media="(max-width: 760px)" srcset="assets/salon-mobile-v2.jpg"><img src="assets/hero-panorama-v2.jpg" width="1672" height="941" alt="" fetchpriority="high"></picture>
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-panorama-v2.jpg" aria-hidden="true">
+          <source src="assets/cener-en-movimiento.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
       <div class="container hero-content">
-        <h1 id="hero-title">Una casa<br>para los<br>sentidos.</h1>
+        <div class="hero-ornament" aria-hidden="true"><span></span><i class="icon-sparkle"></i><span></span></div>
+        <h1 id="hero-title">Una casa para los sentidos.</h1>
         <p class="hero-lead">Cocina, arte y encuentros en Tandil.</p>
-        <div class="hero-actions">
-          <a class="button button-gold" href="https://www.instagram.com/cener.resto/" target="_blank" rel="noopener noreferrer">Consultar reserva</a>
-          <a class="button button-outline" href="#la-casa">Explorar la casa</a>
-        </div>
-        <p class="hero-signature"><span></span> CENER HOUSE · TANDIL</p>
+        <a class="hero-cta" href="https://www.instagram.com/cener.resto/" target="_blank" rel="noopener noreferrer">Consultar reserva <span class="icon-arrow-right" aria-hidden="true"></span></a>
       </div>
     </section>
 
