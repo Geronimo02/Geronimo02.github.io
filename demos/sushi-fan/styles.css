@@ -109,8 +109,15 @@
 @media(max-width:600px){.menu-preview-main{height:380px}.menu-preview-detail{height:130px;border-width:5px}.carta-page .products-grid{grid-template-columns:1fr}.carta-page .product-card img{height:320px}.carta-hero h1{font-size:112px}.carta-hero-content{padding-bottom:65px}.carta-outro h2{font-size:78px}}
 [hidden]{display:none!important}
 
-/* Shared footer composition for the home and menu pages. */
+/* Closing emblem and shared footer composition. */
 .closing img{height:auto}
+@media(max-width:520px){
+  .closing-inner{display:grid;grid-template-columns:minmax(0,1fr) 68px;align-items:end;gap:24px 12px;padding-block:70px}
+  .closing-inner>div{grid-column:1/-1;min-width:0}
+  .closing h2{max-width:100%;font-size:clamp(64px,13vw,78px);margin-bottom:0}
+  .closing .button{grid-column:1;grid-row:2;justify-self:start;align-self:center}
+  .closing img{grid-column:2;grid-row:2;width:68px;justify-self:end;align-self:center}
+}
 .footer{border-top:1px solid var(--line)}
 .footer-main{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,.7fr);gap:clamp(28px,4vw,64px)}
 .footer-main>p{margin:0;max-width:350px;color:var(--white);font:300 clamp(22px,2.2vw,34px)/1.1 var(--editorial);letter-spacing:-.025em}
