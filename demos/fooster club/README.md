@@ -15,12 +15,14 @@ Abrí `http://127.0.0.1:4173/` para la home y `http://127.0.0.1:4173/carta/` par
 ## Datos editables
 
 - `data.mjs`: categorías, productos, precios y `config` comercial.
+- `config.address`, `config.openingHours`, `config.phoneNumber` y `config.instagramUrl`: datos de la ficha compartida para la sección de contacto.
 - `config.whatsappNumber`: número oficial internacional sin `+`, espacios ni símbolos.
 - `config.pickupEnabled` y `config.deliveryEnabled`: activar solo modalidades confirmadas.
 - `config.orderingLive`: activar al final, tras verificar número, catálogo, precios, disponibilidad, extras y modalidad.
+- `config.demoOrderingEnabled`: permite armar y finalizar un pedido **solo dentro de la demo**, con `demoPriceArs` ficticios. El resumen no se envía ni se cobra. Se desactiva automáticamente cuando `orderingLive` pasa a `true`.
 - Cada producto necesita `priceArs` entero, `verified: true`, `available: true` y `orderingEnabled: true` para permitir compra. Los adicionales se agregan en `modifiers` de los productos a los que realmente correspondan, con precio y verificación propios.
 
-El carrito y el armado de mensaje para WhatsApp están implementados y probados con datos de prueba. En esta entrega la carta funciona como vista de referencia porque **no hay precios ni WhatsApp oficiales confirmados**. No se puede enviar un pedido real. La dirección y los horarios también siguen pendientes.
+El carrito de prueba admite productos, cantidades, notas, total ficticio y una pantalla final de simulación. El armado de mensaje para WhatsApp sigue implementado, pero **no hay precios reales ni un canal de pedidos confirmado y no se puede enviar un pedido real**. La dirección, el celular, los horarios y el Instagram mostrados se tomaron de la captura compartida para la demo; la ficha anterior del brief decía Constitución 511, mientras que la captura más reciente dice 501.
 
 Las imágenes de ambientación adjuntas son piezas conceptuales generadas. Las fotos de `assets/stock/` son genéricas e ilustrativas: **no representan las recetas exactas ni productos verificados de Foster**. Antes de publicar para clientes, reemplazarlas por fotografías reales o confirmar su uso con Foster. El catálogo transcribe una captura anterior y requiere revisión de nombres, ingredientes, existencia y alérgenos.
 
@@ -30,6 +32,7 @@ Fotos de carta descargadas de Unsplash bajo su [licencia](https://unsplash.com/l
 
 ```sh
 node --test cart-core.test.mjs
+node --test demo-order.test.mjs
 node --check app.mjs
 node --check data.mjs
 ```

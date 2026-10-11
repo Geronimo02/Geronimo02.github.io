@@ -1,14 +1,21 @@
 export const config = {
   brandName: 'Foster Club',
   city: 'Tandil',
-  instagramUrl: 'https://www.instagram.com/fosterclubb/',
-  googleMapsUrl: 'https://www.google.com/maps/place/foster+club/@-37.3330057,-59.1344799,53m/data=!3m1!1e3!4m6!3m5!1s0x95911f9eaa1cea91:0xdd658182fc477ac6!8m2!3d-37.3330508!4d-59.1341719!16s%2Fg%2F11zd4yztqg',
-  address: null, // Pendiente de confirmación con Foster.
-  openingHours: null,
+  instagramUrl: 'https://www.instagram.com/fosterburgerbar/',
+  googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Foster%20Club%2C%20Constituci%C3%B3n%20501%2C%20Tandil',
+  address: 'Constitución 501, B7627 Tandil, Buenos Aires',
+  phoneNumber: '2494206857',
+  openingHours: {
+    monday: '19:00–23:30',
+    tuesday: 'Cerrado',
+    wednesday: '11:30–14:30 y 14:00–23:30',
+    thursdayToSunday: '11:30–14:30 y 19:00–23:59',
+  },
   whatsappNumber: null, // Formato E.164 sin +, tras validación oficial.
   pickupEnabled: false,
   deliveryEnabled: false,
   orderingLive: false,
+  demoOrderingEnabled: true,
   currency: 'ARS',
 };
 
@@ -78,13 +85,31 @@ const illustrativePhotos = {
   'agua-sin-gas': 'water', 'agua-con-gas': 'sparkling-glass',
   gaseosas: 'soda', 'agua-saborizada': 'lemonade',
 };
+const fullPhotoOverrides = {
+  underground: 'imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_26-2.png',
+};
+
+// Importes inventados únicamente para recorrer el carrito de esta demo.
+// Nunca se usan para enviar pedidos reales ni representan precios de Foster.
+const demoPrices = {
+  underground: 14500, 'da-bacon': 15900, 'crispy-queen': 14900,
+  'onion-ranch': 13900, 'blue-cheese': 15900, 'cheese-burger': 11900,
+  'cheeky-chik': 13900, 'veggie-burger': 12900, 'bandeja-420': 21900,
+  salmon: 14900, 'trufa-melt': 15900, funghi: 13900,
+  'brunch-bagel': 12900, 'balde-x4': 19900, 'balde-x8': 34900,
+  'papas-clasicas': 5900, 'papas-foster': 8900, 'aros-de-cebolla': 6900,
+  oreo: 8900, 'chocolate-mani': 8900, cookie: 8900,
+  'nuggets-x5': 9900, 'cheese-burger-jr': 10900, 'mac-and-cheese': 9900,
+  'agua-sin-gas': 2900, 'agua-con-gas': 2900,
+  gaseosas: 3500, 'agua-saborizada': 3500,
+};
 
 // La captura de origen no confirma vigencia, fotos individuales ni escala de precios.
 // Para habilitar un producto: verificarlo con Foster, cargar priceArs, marcar
 // verified/available/orderingEnabled y configurar los adicionales aplicables.
 export const products = entries.map(([category, id, name, description], index) => ({
-  id, category, name, description, priceArs: null,
-  imageUrl: illustrativePhotos[id] ? `assets/stock/${illustrativePhotos[id]}.webp` : null,
+  id, category, name, description, priceArs: null, demoPriceArs: demoPrices[id],
+  imageUrl: fullPhotoOverrides[id] || (illustrativePhotos[id] ? `assets/stock/${illustrativePhotos[id]}.webp` : null),
   verified: false, available: false, orderingEnabled: false,
   featured: ['underground', 'trufa-melt', 'oreo'].includes(id),
   modifiers: [], order: index,

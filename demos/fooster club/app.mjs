@@ -7,7 +7,20 @@ const storageKey = 'foster-cart-v1';
 const currency = value => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(value);
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const photo = path => `${base}${encodeURI(path)}`;
-const canOrder = product => config.orderingLive && product.verified && product.available && product.orderingEnabled && Number.isSafeInteger(product.priceArs) && product.priceArs >= 0;
+const demoMode = config.demoOrderingEnabled && !config.orderingLive;
+const cartCatalog = demoMode ? products.map(product => ({
+  ...product,
+  priceArs: product.demoPriceArs,
+  verified: Number.isSafeInteger(product.demoPriceArs),
+  available: true,
+  orderingEnabled: true,
+})) : products;
+const canOrder = product => demoMode
+  ? Number.isSafeInteger(product.demoPriceArs) && product.demoPriceArs >= 0
+  : config.orderingLive && product.verified && product.available && product.orderingEnabled && Number.isSafeInteger(product.priceArs) && product.priceArs >= 0;
+const priceLabel = product => canOrder(product)
+  ? `${currency(demoMode ? product.demoPriceArs : product.priceArs)}${demoMode ? ' · PRECIO DEMO' : ''}`
+  : 'PRECIO POR CONFIRMAR';
 let cart = [];
 let storageWarning = '';
 
@@ -17,7 +30,7 @@ function loadCart() {
     if (!raw) return [];
     const saved = JSON.parse(raw);
     if (saved.version !== 1 || !Array.isArray(saved.lines)) return [];
-    const valid = revalidateCart(saved.lines, products);
+    const valid = revalidateCart(saved.lines, cartCatalog);
     if (valid.length !== saved.lines.length) storageWarning = 'Algunos productos guardados cambiaron o dejaron de estar disponibles y se quitaron del pedido.';
     return valid;
   } catch {
@@ -32,7 +45,7 @@ function saveCart() {
 }
 
 function updateBadges() {
-  const totals = getTotals(cart, products);
+  const totals = getTotals(cart, cartCatalog);
   document.querySelectorAll('.cart-count').forEach(node => { node.textContent = totals.count; });
   const mobile = document.querySelector('.mobile-cart-bar');
   if (mobile) {
@@ -81,7 +94,7 @@ function renderMenu() {
   nav.innerHTML = `<a href="#categorias" class="category-link" data-all>Carta completa</a>` + categories.map(category => `<a href="#${category.id}" class="category-link" data-category="${category.id}">${escapeHtml(category.name)}</a>`).join('');
   content.innerHTML = categories.map((category, index) => {
     const items = products.filter(product => product.category === category.id);
-    return `<section class="menu-section" id="${category.id}" aria-labelledby="title-${category.id}"><div class="section-heading"><span class="section-number">0${index + 1} / ${String(items.length).padStart(2, '0')} OPCIONES</span><div><h2 id="title-${category.id}">${escapeHtml(category.name)}<span class="dot">.</span></h2><p>${escapeHtml(category.intro)}</p></div></div><div class="product-grid">${items.length ? items.map(product => `<button class="product-card" type="button" data-product="${product.id}" aria-label="Ver detalle de ${escapeHtml(product.name)}"><span class="product-image" aria-hidden="true">${product.imageUrl ? `<img src="${photo(product.imageUrl)}" alt="" width="100" height="100" loading="lazy">` : '<span class="product-mark">f.</span>'}</span><span class="product-copy"><strong>${escapeHtml(product.name)}</strong><span>${escapeHtml(product.description)}</span><small>${canOrder(product) ? currency(product.priceArs) : 'PRECIO POR CONFIRMAR'}</small></span><span class="product-arrow" aria-hidden="true">↗</span></button>`).join('') : '<p class="menu-empty">Todavía no hay productos en esta categoría.</p>'}</div></section>`;
+    return `<section class="menu-section" id="${category.id}" aria-labelledby="title-${category.id}"><div class="section-heading"><span class="section-number">0${index + 1} / ${String(items.length).padStart(2, '0')} OPCIONES</span><div><h2 id="title-${category.id}">${escapeHtml(category.name)}<span class="dot">.</span></h2><p>${escapeHtml(category.intro)}</p></div></div><div class="product-grid">${items.length ? items.map(product => `<button class="product-card" type="button" data-product="${product.id}" aria-label="Ver detalle de ${escapeHtml(product.name)}"><span class="product-image" aria-hidden="true">${product.imageUrl ? `<img src="${photo(product.imageUrl)}" alt="" width="100" height="100" loading="lazy">` : '<span class="product-mark">f.</span>'}</span><span class="product-copy"><strong>${escapeHtml(product.name)}</strong><span>${escapeHtml(product.description)}</span><small>${priceLabel(product)}</small></span><span class="product-arrow" aria-hidden="true">↗</span></button>`).join('') : '<p class="menu-empty">Todavía no hay productos en esta categoría.</p>'}</div></section>`;
   }).join('');
   content.addEventListener('click', event => {
     const button = event.target.closest('[data-product]');
@@ -105,7 +118,7 @@ function openProduct(id) {
   const dialog = document.querySelector('#product-dialog');
   const mount = document.querySelector('#product-detail');
   const groups = product.modifiers || [];
-  mount.innerHTML = `<div class="detail-art">${product.imageUrl ? `<img class="detail-photo" src="${photo(product.imageUrl)}" alt="Fotografía ilustrativa de comida" width="800" height="800"><span>FOTO ILUSTRATIVA · DEMO</span>` : `<img src="${photo(assets.mascot)}" alt="" width="270" height="230">`}</div><div class="detail-content"><p class="eyebrow">${escapeHtml(categories.find(category => category.id === product.category)?.name || '')} / FOSTER CLUB</p><h2 id="product-dialog-title">${escapeHtml(product.name)}<span class="dot">.</span></h2><p>${escapeHtml(product.description)}</p><strong class="detail-price">${canOrder(product) ? currency(product.priceArs) : 'PRECIO POR CONFIRMAR'}</strong><p class="detail-status">${canOrder(product) ? 'Elegí cantidad e indicaciones para sumar al pedido.' : 'Este producto forma parte de una carta de referencia. Esperamos la confirmación del precio y disponibilidad para habilitar pedidos.'}</p><form id="product-form"><input type="hidden" name="productId" value="${escapeHtml(product.id)}"><label class="field-label" for="product-quantity">Cantidad</label><div class="qty-control"><button type="button" data-step="-1" aria-label="Restar una unidad">−</button><input id="product-quantity" name="quantity" type="number" min="1" max="20" value="1" inputmode="numeric"><button type="button" data-step="1" aria-label="Sumar una unidad">+</button></div>${groups.map(group => `<fieldset class="modifier-group"><legend>${escapeHtml(group.label)}</legend>${group.options.map(option => `<label><input type="checkbox" name="option" value="${escapeHtml(option.id)}" ${option.available && option.verified && Number.isSafeInteger(option.priceArs) ? '' : 'disabled'}>${escapeHtml(option.label)} <span>${option.verified && Number.isSafeInteger(option.priceArs) ? currency(option.priceArs) : 'Por confirmar'}</span></label>`).join('')}</fieldset>`).join('')}<label class="field-label" for="product-note">Indicaciones para este producto</label><textarea id="product-note" name="note" maxlength="180" rows="3" placeholder="Ej.: sin cebolla"></textarea><button class="pill pill-orange detail-add" type="submit" ${canOrder(product) ? '' : 'disabled'}>${canOrder(product) ? 'Agregar al pedido' : 'Pedido no disponible'}</button></form></div>`;
+  mount.innerHTML = `<div class="detail-art">${product.imageUrl ? `<img class="detail-photo" src="${photo(product.imageUrl)}" alt="Fotografía ilustrativa de comida" width="800" height="800"><span>FOTO ILUSTRATIVA · DEMO</span>` : `<img src="${photo(assets.mascot)}" alt="" width="270" height="230">`}</div><div class="detail-content"><p class="eyebrow">${escapeHtml(categories.find(category => category.id === product.category)?.name || '')} / FOSTER CLUB</p><h2 id="product-dialog-title">${escapeHtml(product.name)}<span class="dot">.</span></h2><p>${escapeHtml(product.description)}</p><strong class="detail-price">${priceLabel(product)}</strong><p class="detail-status">${demoMode ? 'Precio ficticio para probar el carrito. Este pedido no se envía al local.' : canOrder(product) ? 'Elegí cantidad e indicaciones para sumar al pedido.' : 'Precio y disponibilidad pendientes de confirmación.'}</p><form id="product-form"><input type="hidden" name="productId" value="${escapeHtml(product.id)}"><label class="field-label" for="product-quantity">Cantidad</label><div class="qty-control"><button type="button" data-step="-1" aria-label="Restar una unidad">−</button><input id="product-quantity" name="quantity" type="number" min="1" max="20" value="1" inputmode="numeric"><button type="button" data-step="1" aria-label="Sumar una unidad">+</button></div>${groups.map(group => `<fieldset class="modifier-group"><legend>${escapeHtml(group.label)}</legend>${group.options.map(option => `<label><input type="checkbox" name="option" value="${escapeHtml(option.id)}" ${option.available && option.verified && Number.isSafeInteger(option.priceArs) ? '' : 'disabled'}>${escapeHtml(option.label)} <span>${option.verified && Number.isSafeInteger(option.priceArs) ? currency(option.priceArs) : 'Por confirmar'}</span></label>`).join('')}</fieldset>`).join('')}<label class="field-label" for="product-note">Indicaciones para este producto</label><textarea id="product-note" name="note" maxlength="180" rows="3" placeholder="Ej.: sin cebolla"></textarea><button class="pill pill-orange detail-add" type="submit" ${canOrder(product) ? '' : 'disabled'}>${canOrder(product) ? demoMode ? 'Agregar al pedido de prueba' : 'Agregar al pedido' : 'Pedido no disponible'}</button></form></div>`;
   const form = mount.querySelector('#product-form');
   form.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click', () => {
     const input = form.elements.quantity;
@@ -131,12 +144,37 @@ function openCart() {
   document.body.classList.add('dialog-open');
 }
 
+function setupDemoCheckout(mount, totals) {
+  if (!demoMode) return;
+  mount.querySelector('.order-gate').innerHTML = '<strong>Pedido de prueba</strong><p>Todos los importes son ficticios. El resumen se muestra en esta pantalla y no se envía a Foster Club.</p>';
+  if (!cart.length) return;
+
+  const form = document.createElement('form');
+  form.className = 'demo-order-form';
+  form.innerHTML = '<label for="demo-customer-name">Nombre para la prueba</label><input id="demo-customer-name" name="name" maxlength="80" required autocomplete="off" placeholder="Tu nombre"><label for="demo-order-notes">Nota general (opcional)</label><textarea id="demo-order-notes" name="notes" maxlength="200" rows="3" placeholder="Ej.: sin cebolla"></textarea><button class="pill pill-orange" type="submit">Finalizar pedido de prueba →</button><button class="text-button" type="button" data-clear-cart>Vaciar pedido</button>';
+  mount.append(form);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const name = form.elements.name.value.trim();
+    const notes = form.elements.notes.value.trim();
+    const lines = cart.map(line => {
+      const product = cartCatalog.find(item => item.id === line.productId);
+      return `<li>${line.quantity} × ${escapeHtml(product.name)}</li>`;
+    }).join('');
+    mount.innerHTML = `<div class="demo-confirmation" role="status"><span class="demo-label">Simulación completada</span><h3>Tu pedido de prueba está armado.</h3><p>${escapeHtml(name)}, agregaste ${totals.count} producto${totals.count === 1 ? '' : 's'} por un total ficticio de <strong>${currency(totals.total)}</strong>.</p><ul>${lines}</ul>${notes ? `<p>Nota: ${escapeHtml(notes)}</p>` : ''}<p>No se envió al local ni se cobró nada.</p><button class="pill pill-orange" type="button" data-review-cart>Revisar pedido</button><button class="text-button" type="button" data-close-cart>Volver a la carta</button></div>`;
+    mount.querySelector('[data-review-cart]').addEventListener('click', renderCart);
+    mount.querySelector('[data-close-cart]').addEventListener('click', () => document.querySelector('#cart-dialog').close());
+  });
+}
+
 function renderCart() {
   const mount = document.querySelector('#cart-body');
   if (!mount) return;
-  const totals = getTotals(cart, products);
+  const totals = getTotals(cart, cartCatalog);
   const formEnabled = cart.length > 0 && config.orderingLive && /^[1-9]\d{7,14}$/.test(config.whatsappNumber || '') && (config.pickupEnabled || config.deliveryEnabled);
-  mount.innerHTML = `${storageWarning ? `<p class="cart-notice" role="status">${escapeHtml(storageWarning)}</p>` : ''}${!cart.length ? `<div class="cart-empty"><img src="${photo(assets.mascot)}" alt="" width="210" height="170"><h3>El plan empieza acá.</h3><p>Explorá la carta y encontrá algo que te guste. Los pedidos se habilitarán cuando la información comercial esté confirmada.</p><button class="pill pill-orange" type="button" data-close-cart>Volver a la carta</button></div>` : `<div class="cart-lines">${cart.map(line => { const product = products.find(item => item.id === line.productId); return `<article class="cart-line"><div><h3>${escapeHtml(product.name)}</h3>${line.selectedOptions.map(selected => { const option = product.modifiers.flatMap(group => group.options).find(item => item.id === selected.optionId); return `<p>+ ${escapeHtml(option.label)} ×${selected.quantity}</p>`; }).join('')}${line.note ? `<p>Nota: ${escapeHtml(line.note)}</p>` : ''}<strong>${currency((product.priceArs + line.selectedOptions.reduce((sum, selected) => sum + product.modifiers.flatMap(group => group.options).find(item => item.id === selected.optionId).priceArs * selected.quantity, 0)) * line.quantity)}</strong></div><div class="cart-line-actions"><button type="button" data-qty="-1" data-line="${escapeHtml(line.lineId)}" aria-label="Restar ${escapeHtml(product.name)}">−</button><span>${line.quantity}</span><button type="button" data-qty="1" data-line="${escapeHtml(line.lineId)}" aria-label="Sumar ${escapeHtml(product.name)}">+</button><button type="button" class="remove" data-remove data-line="${escapeHtml(line.lineId)}">Quitar</button></div></article>`; }).join('')}</div><div class="cart-totals"><div><span>Productos</span><strong>${currency(totals.productsTotal)}</strong></div><div><span>Adicionales</span><strong>${currency(totals.extrasTotal)}</strong></div><div class="total"><span>Total estimado</span><strong>${currency(totals.total)}</strong></div></div>`}<div class="order-gate">${formEnabled ? '' : '<strong>Pedidos todavía no disponibles.</strong><p>Faltan precios vigentes, modalidad de entrega o WhatsApp oficial. La carta se puede explorar mientras Foster confirma esos datos.</p>'}</div>${formEnabled ? `<form id="order-form"><label for="customer-name">Tu nombre</label><input id="customer-name" name="name" maxlength="80" required><label for="order-mode">Modalidad</label><select id="order-mode" name="mode" required>${config.pickupEnabled ? '<option value="Retiro en local">Retiro en local</option>' : ''}${config.deliveryEnabled ? '<option value="Delivery">Delivery</option>' : ''}</select>${config.deliveryEnabled ? '<label for="customer-address">Dirección si elegís delivery</label><input id="customer-address" name="address" maxlength="150">' : ''}<label for="order-notes">Observaciones generales</label><textarea id="order-notes" name="notes" maxlength="200" rows="3"></textarea><p class="order-disclaimer">El pedido se enviará por WhatsApp. No queda confirmado hasta que el local te responda.</p><button class="pill pill-orange" type="submit">Enviar pedido por WhatsApp ↗</button><button class="text-button" type="button" data-clear-cart>Vaciar pedido</button></form>` : ''}`;
+  mount.innerHTML = `${storageWarning ? `<p class="cart-notice" role="status">${escapeHtml(storageWarning)}</p>` : ''}${!cart.length ? `<div class="cart-empty"><img src="${photo(assets.mascot)}" alt="" width="210" height="170"><h3>El plan empieza acá.</h3><p>Explorá la carta y encontrá algo que te guste. Acá podés armar un pedido de prueba con precios ficticios.</p><button class="pill pill-orange" type="button" data-close-cart>Volver a la carta</button></div>` : `<div class="cart-lines">${cart.map(line => { const product = cartCatalog.find(item => item.id === line.productId); return `<article class="cart-line"><div><h3>${escapeHtml(product.name)}</h3>${line.selectedOptions.map(selected => { const option = product.modifiers.flatMap(group => group.options).find(item => item.id === selected.optionId); return `<p>+ ${escapeHtml(option.label)} ×${selected.quantity}</p>`; }).join('')}${line.note ? `<p>Nota: ${escapeHtml(line.note)}</p>` : ''}<strong>${currency((product.priceArs + line.selectedOptions.reduce((sum, selected) => sum + product.modifiers.flatMap(group => group.options).find(item => item.id === selected.optionId).priceArs * selected.quantity, 0)) * line.quantity)}</strong></div><div class="cart-line-actions"><button type="button" data-qty="-1" data-line="${escapeHtml(line.lineId)}" aria-label="Restar ${escapeHtml(product.name)}">−</button><span>${line.quantity}</span><button type="button" data-qty="1" data-line="${escapeHtml(line.lineId)}" aria-label="Sumar ${escapeHtml(product.name)}">+</button><button type="button" class="remove" data-remove data-line="${escapeHtml(line.lineId)}">Quitar</button></div></article>`; }).join('')}</div><div class="cart-totals"><div><span>Productos</span><strong>${currency(totals.productsTotal)}</strong></div><div><span>Adicionales</span><strong>${currency(totals.extrasTotal)}</strong></div><div class="total"><span>${demoMode ? 'Total de prueba' : 'Total estimado'}</span><strong>${currency(totals.total)}</strong></div></div>`}<div class="order-gate">${formEnabled ? '' : '<strong>Pedidos todavía no disponibles.</strong><p>Faltan precios vigentes, modalidad de entrega o WhatsApp oficial. La carta se puede explorar mientras Foster confirma esos datos.</p>'}</div>${formEnabled ? `<form id="order-form"><label for="customer-name">Tu nombre</label><input id="customer-name" name="name" maxlength="80" required><label for="order-mode">Modalidad</label><select id="order-mode" name="mode" required>${config.pickupEnabled ? '<option value="Retiro en local">Retiro en local</option>' : ''}${config.deliveryEnabled ? '<option value="Delivery">Delivery</option>' : ''}</select>${config.deliveryEnabled ? '<label for="customer-address">Dirección si elegís delivery</label><input id="customer-address" name="address" maxlength="150">' : ''}<label for="order-notes">Observaciones generales</label><textarea id="order-notes" name="notes" maxlength="200" rows="3"></textarea><p class="order-disclaimer">El pedido se enviará por WhatsApp. No queda confirmado hasta que el local te responda.</p><button class="pill pill-orange" type="submit">Enviar pedido por WhatsApp ↗</button><button class="text-button" type="button" data-clear-cart>Vaciar pedido</button></form>` : ''}`;
+  setupDemoCheckout(mount, totals);
   mount.querySelector('[data-close-cart]')?.addEventListener('click', () => document.querySelector('#cart-dialog').close());
   mount.querySelectorAll('[data-qty]').forEach(button => button.addEventListener('click', () => {
     const line = cart.find(item => item.lineId === button.dataset.line);
@@ -157,6 +195,27 @@ function renderCart() {
   });
 }
 
+function setupMotion() {
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = page === 'home'
+    ? document.querySelectorAll('.featured-intro, .featured-column, .club-copy, .club-art, .gallery-strip figure, .location-intro, .map-card, .visit-info')
+    : document.querySelectorAll('.menu-section .section-heading');
+  if (!targets.length) return;
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    }
+  }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  targets.forEach((target, index) => {
+    target.dataset.reveal = '';
+    target.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 90}ms`);
+    observer.observe(target);
+  });
+  document.documentElement.classList.add('motion-enabled');
+}
+
 document.querySelectorAll('[data-year]').forEach(node => { node.textContent = new Date().getFullYear(); });
 cart = loadCart();
 setupDialogs();
@@ -172,3 +231,4 @@ if (page === 'carta') {
   renderMenu();
   if (location.hash === '#pedido') openCart();
 }
+setupMotion();
