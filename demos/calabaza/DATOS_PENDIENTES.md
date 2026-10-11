@@ -29,7 +29,7 @@ La demo local presenta Belgrano y Centro, usa fotos reales del directorio `img/`
 
 El carrito guarda ID, cantidad y observación en `localStorage`. Al cargar, descarta productos eliminados o agotados y recalcula siempre con el precio vigente de `config.js`. En móvil y tableta, el botón fijo con el subtotal abre el ticket como panel superpuesto: los productos se desplazan dentro del panel y el subtotal y la acción para completar el pedido permanecen visibles. Nombre, modalidad, dirección y observaciones se completan en un segundo paso dentro del mismo ticket, con la acción de WhatsApp siempre visible.
 
-La sección semanal visible es **solo una muestra compartida**. El visitante ve cinco platos ya cargados y puede marcar la semana entera con un toque; no elige entre toda la carta cada día. Esa marca no se guarda, no se mezcla con el carrito y no genera un pedido. El precio mostrado es la suma orientativa de los cinco días, **no** un pack confirmado.
+La sección semanal visible es **solo una muestra compartida**. El visitante ve los platos cargados por Calabaza y elige los días que quiere, sin recorrer toda la carta para cada jornada. Puede sumar esa selección al ticket como consulta de muestra por WhatsApp; el subtotal corresponde únicamente a los días elegidos y **no** representa un pack confirmado. Cada día se guarda como una vianda del ticket y la sucursal confirma si puede ofrecerla.
 
 Para que Calabaza cargue la semana, editar `viandas.weekMenu` en `config.js`: un objeto por día con `day`, `dish`, `detail` y `price`. Completar `viandas.weekStart` con el lunes en formato `AAAA-MM-DD` para mostrar las fechas. Confirmar servicio, disponibilidad, modalidades, fecha límite y condiciones de **cada sucursal** antes de poner `viandas.enabled` en `true` y quitar `demoPreview`; si sus menús difieren, separar los datos por local. `packEnabled` sigue en `false` hasta que el negocio confirme un pack. Esta fase no incluye un panel de administración: la carga se hace en la configuración del sitio.
 
@@ -42,6 +42,8 @@ La ruleta toma hasta ocho productos de `products` con `available: true` y `roule
 | `img/logo.jpg` | Logo original de Centro, conservado sin usar en la landing general |
 | `img/Logotipo circular de Calabaza Centro.png` | Logo circular de Centro, conservado para aplicaciones de esa sucursal |
 | `img/optimized/logo-circular.png` | Copia liviana del logo circular de Centro, disponible para una página propia de la sucursal |
+| `img/Calabaza logo general.png` | Adaptación del logo circular sin “CENTRO”, con el nombre grande y los pétalos bordó |
+| `img/optimized/logo-calabaza.png` | Copia optimizada del logo general usada en cabecera y pie de ambas páginas |
 | `img/optimized/favicon.svg` | Monograma simplificado para pestañas pequeñas |
 | `img/Calabaza chef minimalista y amable.png` | Carrito vacío |
 | `img/Hoja de sprites del chef calabaza.png` | Sugerencia de la cocina |
