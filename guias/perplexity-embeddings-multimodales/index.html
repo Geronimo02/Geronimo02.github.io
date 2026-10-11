@@ -1,0 +1,131 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0B0D10"><meta name="description" content="Guía GERO de embeddings multimodales de Perplexity: buscador de PDFs, modelos 0.6B y 9B MIT, paso a paso, código y criterios para negocios."><title>Buscar en PDFs con Perplexity Embeddings — Guía práctica GERO</title><style>
+:root{--bg:#0B0D10;--surface:#15191F;--surface2:#1B2027;--text:#F4F4F5;--muted:#AAB2BB;--accent:#C7FF3D;--line:#2C333D;--ink:#090B0D}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 82% 0,rgba(199,255,61,.08),transparent 22%),var(--bg);line-height:1.66}a{color:inherit}.wrap{max-width:1120px;width:calc(100% - 40px);margin:auto}
+.top{position:sticky;top:0;z-index:30;background:rgba(11,13,16,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topin{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:60px}.brand{font-size:18px;font-weight:950;letter-spacing:.14em;text-decoration:none}.brand b{color:var(--accent)}.nav{display:flex;gap:20px}.nav a{font-size:12px;text-decoration:none;color:var(--muted);font-weight:700}.nav a:hover{color:var(--accent)}
+.hero{padding:82px 0 62px;border-bottom:1px solid var(--line)}.kicker,.eyebrow{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.pills{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.pill{border:1px solid #435033;color:#E7FFD0;border-radius:99px;font-weight:800;font-size:11px;letter-spacing:.04em;padding:8px 12px}.pill.dim{color:var(--muted);border-color:var(--line)}h1{font-size:clamp(48px,8vw,94px);max-width:1040px;line-height:.97;letter-spacing:-.058em;margin:18px 0 25px}h1 em{color:var(--accent);font-style:normal}h2{font-size:clamp(30px,4.7vw,56px);letter-spacing:-.042em;line-height:1.05;margin:0 0 26px}h3{font-size:21px;line-height:1.2;letter-spacing:-.015em;margin:0 0 12px}p{margin:0 0 16px}.lede{font-size:clamp(19px,2.3vw,24px);max-width:780px;color:#D0D5DB}.muted{color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:13px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;padding:13px 18px;border-radius:12px;background:var(--accent);color:var(--ink);font-weight:900;font-size:14px}.btn.alt{background:transparent;border:1px solid var(--line);color:var(--text)}.btn:hover{filter:brightness(1.08)}
+.section{padding:66px 0;border-bottom:1px solid rgba(255,255,255,.055)}.section .intro{font-size:18px;max-width:890px;color:#D0D5DB}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card,.note,.prompt,.step,.decision{background:linear-gradient(180deg,#171C22,#12161B);border:1px solid var(--line);border-radius:18px;padding:24px;min-width:0}.card p:last-child,.note p:last-child{margin-bottom:0}.card b,.note b,.step b{color:var(--accent)}.note{border-left:3px solid var(--accent);margin:20px 0}.warn{border-left-color:#FFBD66}.warn b{color:#FFBD66}.number{font-weight:950;font-size:40px;color:var(--accent);line-height:1;margin:0 0 14px}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:44px 1fr;gap:16px}.step .number{font-size:29px}.step p{margin:0}.flow{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:26px 0}.flow span{padding:11px 15px;background:var(--surface);border:1px solid var(--line);border-radius:11px;font-size:14px;font-weight:850}.flow i{font-style:normal;color:var(--accent)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:15px;margin:22px 0}table{width:100%;border-collapse:collapse;min-width:650px}th,td{padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{color:var(--accent);font-size:12px;letter-spacing:.05em;text-transform:uppercase;background:#171B20}tr:last-child td{border-bottom:0}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#E9EEDB}pre{margin:12px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#E8EFE4;background:#080B0D;border:1px solid #293237;border-radius:12px;padding:18px}.prompt{margin:15px 0}.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.copy{background:#29342A;color:var(--accent);font:750 12px Inter,system-ui;cursor:pointer;border:1px solid #4D6840;border-radius:8px;padding:7px 10px}.copy:hover{background:#35472D}.list{padding-left:22px}.list li{margin-bottom:10px}.checklist{list-style:none;padding:0}.checklist li{margin:0 0 12px;padding-left:31px;position:relative}.checklist li:before{content:"□";position:absolute;left:3px;color:var(--accent);font-size:21px;line-height:1.2}.toc{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px}.toc a{text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:12px;font-weight:750}.toc a:hover{border-color:var(--accent);color:var(--text)}
+.cta{margin:38px 0;padding:43px;border-radius:24px;background:var(--accent);color:var(--ink)}.cta h2{color:var(--ink)}.cta .btn{background:var(--ink);color:white}.footer{padding:35px 0 72px;color:var(--muted);font-size:13px}.sources{display:flex;flex-wrap:wrap;gap:12px}.sources a{display:inline-block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:#D5E4DF;font-size:13px}.sources a:hover{border-color:var(--accent)}::selection{background:var(--accent);color:var(--ink)}:focus-visible{outline:2px solid var(--accent);outline-offset:4px}@media(max-width:820px){.grid,.grid.three{grid-template-columns:1fr}.nav{display:none}.hero{padding:62px 0 44px}.section{padding:48px 0}h1{font-size:clamp(43px,11vw,72px)}.cta{padding:26px}.wrap{width:calc(100% - 30px)}}</style></head><body><header class="top"><div class="wrap topin"><a class="brand" href="https://geronimo02.github.io/">GERO <b>IA</b></a><nav class="nav"><a href="#arquitectura">Cómo funciona</a><a href="#tutorial">Tutorial</a><a href="#codigo">Código y prompts</a><a href="#decision">Mi criterio</a></nav></div></header><main>
+<section class="hero"><div class="wrap">
+<div class="kicker">GERO IA · Guía práctica · 11/10/2026</div>
+<h1>Buscá dentro de PDFs.<br><em>Sin leer página por página.</em></h1>
+<p class="lede">Perplexity liberó modelos que conectan una consulta escrita con páginas visuales de documentos. No es “una IA que te responde todo”: es una pieza para construir buscadores mejores sobre catálogos, planos y archivos donde una imagen vale más que mil palabras.</p>
+<div class="pills"><span class="pill">PESOS ABIERTOS · MIT</span><span class="pill dim">0.6B Y 9B</span><span class="pill dim">REQUIERE HARDWARE / INTEGRACIÓN</span></div>
+<div class="actions"><a class="btn" target="_blank" rel="noopener" href="https://huggingface.co/perplexity-ai/pplx-embed-v2-late-0.6b">Modelo gratuito 0.6B ↗</a><a class="btn alt" target="_blank" rel="noopener" href="https://research.perplexity.ai/">Investigación oficial ↗</a></div>
+<nav class="toc" aria-label="Índice"><a href="#novedad">Novedad</a><a href="#arquitectura">Cómo funciona</a><a href="#tutorial">Tutorial</a><a href="#codigo">Código</a><a href="#decision">Decisiones</a><a href="#fuentes">Fuentes</a></nav>
+</div></section>
+<section class="section" id="novedad"><div class="wrap">
+<div class="eyebrow">01 / Lo nuevo · 6–7 de octubre de 2026</div><h2>No es otro chatbot. Es una forma distinta de buscar.</h2>
+<p class="intro">Perplexity publicó la familia <b>pplx-embed-v2-late</b> de modelos de recuperación multimodal. La investigación aparece fechada el <b>7 de octubre</b> en Perplexity Research; la referencia bibliográfica del artículo registra el <b>6 de octubre</b>. Los modelos pueden representar <b>texto e imágenes</b>, y puntuar consultas contra representaciones de páginas o pasajes.</p>
+<div class="grid">
+<article class="card"><div class="number">01</div><h3>Representación multivector</h3><p>En vez de condensar una página entera en un único vector, conserva varios vectores asociados a tokens. Esa granularidad permite comparar diferentes partes de una consulta con partes distintas del documento mediante <b>MaxSim</b>.</p></article>
+<article class="card"><div class="number">02</div><h3>Texto contra páginas visuales</h3><p>Podés indexar una página renderizada como imagen y buscarla con una consulta de texto. Es útil para tablas, diagramas, ilustraciones y PDFs con estructura visual.</p></article>
+</div>
+<div class="note"><b>PRECIO / DISPONIBILIDAD:</b> <b>OPEN WEIGHTS / LICENCIA MIT</b> en Hugging Face, con variantes <b>0.6B</b> y <b>9B</b>. Descarga gratuita del modelo; <b>NO es un chatbot hospedado gratis</b>. Necesitás ejecutar inferencia y sostener tu propio índice, CPU/GPU, almacenamiento y mantenimiento. El checkpoint del 0.6B ronda los <b>2,38 GB</b> antes de considerar memoria en ejecución; 9B demanda recursos considerablemente mayores. La disponibilidad de la futura API de Perplexity es una cuestión distinta y no debe asumirse gratuita.</div>
+<p>Mi lectura: la oportunidad no es “hablar con documentos” —eso ya existe— sino <b>encontrar páginas pertinentes de documentación difícil</b> cuando el texto extraído no cuenta toda la historia.</p>
+</div></section>
+<section class="section" id="arquitectura"><div class="wrap">
+<div class="eyebrow">02 / Arquitectura comprensible</div><h2>Cómo llega de un PDF a un resultado útil.</h2>
+<div class="flow"><span>PDF</span><i>→</i><span>Página como imagen</span><i>→</i><span>Embeddings multivector</span><i>→</i><span>Índice</span><i>→</i><span>Consulta + MaxSim</span></div>
+<div class="steps">
+<div class="step"><div class="number">01</div><div><h3>Prepará el documento</h3><p>Renderizá cada página como imagen y guardá metadatos: ID del documento, número de página, versión, origen y permisos de acceso. No pierdas ese vínculo; sin él, después no podés citar nada.</p></div></div>
+<div class="step"><div class="number">02</div><div><h3>Generá representaciones del contenido</h3><p>Con el modelo de Perplexity codificás páginas renderizadas, texto o ambos en lotes separados. <b>La tarjeta oficial aclara que no admite mezclar entradas de texto e imagen en el mismo batch.</b></p></div></div>
+<div class="step"><div class="number">03</div><div><h3>Guardá vectores + metadatos</h3><p>Diseñá una persistencia que soporte <b>múltiples vectores por página</b> y pueda puntuar con MaxSim. No supongas que cualquier base vectorial con un campo embedding único implementa este método.</p></div></div>
+<div class="step"><div class="number">04</div><div><h3>Codificá la pregunta del usuario</h3><p>Una consulta como “¿dónde está la tabla de capacidad del equipo?” se transforma en su propia representación; el sistema busca las páginas relevantes.</p></div></div>
+<div class="step"><div class="number">05</div><div><h3>Devolvé páginas, no certezas inventadas</h3><p>El recuperador devuelve un ranking. Mostrá documento, página y vista previa. Si después sumás un modelo generativo para responder, ese segundo paso requiere controles y citas.</p></div></div>
+</div>
+<div class="note warn"><b>Importante:</b> “sin OCR” significa que podés buscar en representaciones visuales de páginas sin extraer antes todo su texto. <b>No significa</b> que el sistema sea un lector perfecto, un motor de OCR validado ni una solución completa de preguntas y respuestas.</div>
+</div></section>
+<section class="section" id="casos"><div class="wrap">
+<div class="eyebrow">03 / Dónde yo lo probaría</div><h2>Cuatro problemas de negocio.</h2>
+<div class="grid">
+<article class="card"><h3>Distribuidor con catálogos</h3><p>Hay cientos de fichas PDF con tablas, fotos y especificaciones. El equipo pregunta por una característica; el sistema busca <b>qué página del catálogo</b> la contiene. El precio, stock y vigencia se verifican en las fuentes operativas reales.</p></article>
+<article class="card"><h3>Constructora y documentación de obra</h3><p>Manuales, esquemas y fichas técnicas desparramadas en distintas carpetas. Buscás el diagrama o detalle correcto, con referencia al archivo y versión correspondiente. Un profesional sigue validando decisiones de seguridad.</p></article>
+<article class="card"><h3>Manuales de equipamiento</h3><p>Cuando una instrucción aparece dentro de una figura o tabla, la búsqueda textual tradicional a veces la pierde. El buscador visual puede devolver la página para inspección manual.</p></article>
+<article class="card"><h3>Biblioteca de creatividades</h3><p>Encontrar capturas, gráficos, layouts y documentos visuales a partir de una descripción escrita. No hace falta afirmar que comprende perfectamente cada imagen para que el filtrado sea útil.</p></article>
+</div>
+<div class="note"><b>Yo arrancaría por el catálogo.</b> Tiene casos concretos que podés verificar rápido (“encuentra la página con la tabla X”) y no exige prometer que la IA va a tomar decisiones de negocio sin control.</div>
+</div></section>
+<section class="section" id="tutorial"><div class="wrap">
+<div class="eyebrow">04 / Primer experimento reproducible</div><h2>Probarlo sin armar una startup.</h2>
+<p class="intro">En lugar de cargar 50.000 PDFs y medir “sensación de inteligencia”, prepararía un set chiquito con respuestas correctas conocidas. Así sabés si recupera lo que necesitás.</p>
+<div class="steps">
+<div class="step"><div class="number">01</div><div><h3>Elegí 3 PDFs públicos o propios</h3><p>Que tengan diagramas, tablas o ilustraciones. No uses documentos privados sin autorización. Anotá 10–20 preguntas y la página exacta que debería aparecer.</p></div></div>
+<div class="step"><div class="number">02</div><div><h3>Renderizá unas 20–30 páginas a PNG</h3><p>Podés usar una librería de PDF como <a href="https://github.com/pymupdf/PyMuPDF" target="_blank" rel="noopener">PyMuPDF</a> u otra herramienta local. Mantené una convención <code>documento_01_pagina_003.png</code> y un registro de origen.</p></div></div>
+<div class="step"><div class="number">03</div><div><h3>Instalá las dependencias confirmadas</h3><p>La tarjeta oficial especifica <code>sentence-transformers &gt;= 6.0.0</code> y <code>transformers &gt;= 5.4.0</code>. Probá en un entorno Python aislado y con hardware acorde.</p><pre>python -m pip install 'sentence-transformers>=6.0.0' 'transformers>=5.4.0' pillow</pre></div></div>
+<div class="step"><div class="number">04</div><div><h3>Codificá pregunta y página</h3><p>Ejecutá el ejemplo oficial adaptado de abajo. En la tarjeta usan <code>MultiVectorEncoder</code> y <code>device="cuda"</code>; esa configuración <b>requiere una GPU CUDA</b>. Para otro hardware, revisá compatibilidad y documentación antes de cambiar dispositivos a ciegas.</p></div></div>
+<div class="step"><div class="number">05</div><div><h3>Compará con una búsqueda sencilla</h3><p>Probá el mismo set con texto extraído + un buscador básico. Si el nuevo modelo no mejora recuperación de páginas visuales, no lo uses solo porque es nuevo.</p></div></div>
+<div class="step"><div class="number">06</div><div><h3>Medí y decidí</h3><p>Registrá <b>Recall@5</b> (¿la página correcta aparece entre las cinco primeras?), tiempo por consulta, memoria, tiempo de indexación y errores por tipo de documento.</p></div></div>
+</div>
+</div></section>
+<section class="section" id="codigo"><div class="wrap">
+<div class="eyebrow">05 / Código y prompts</div><h2>Un punto de partida técnico.</h2>
+<p>Este fragmento sigue el patrón documentado por Perplexity para puntuar una pregunta contra una imagen. Requiere que ya tengas una página PNG de prueba y las dependencias instaladas. No construye por sí solo un buscador en producción.</p>
+<div class="prompt"><div class="prompt-head"><h3>Prueba mínima sobre una página</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar código</button></div><pre>from PIL import Image
+from sentence_transformers import MultiVectorEncoder
+
+model = MultiVectorEncoder(
+    "perplexity-ai/pplx-embed-v2-late-0.6b",
+    device="cuda",  # Requiere GPU CUDA compatible
+)
+
+preguntas = model.encode_query([
+    "¿Dónde aparece la tabla de especificaciones?"
+])
+
+pagina = Image.open("documento_01_pagina_003.png").convert("RGB")
+paginas = model.encode_document([pagina])
+scores = model.similarity(preguntas, paginas)
+print(scores)</pre></div>
+<div class="note warn"><b>Detalle de implementación:</b> el modelo crea varios vectores por entrada y usa MaxSim. No lo reemplaces por una distancia coseno sobre un vector promedio sin justificarlo. La tarjeta oficial también indica que se deben separar lotes de texto y de imagen.</div>
+<div class="prompt"><div class="prompt-head"><h3>Prompt: diseñar el buscador</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar prompt</button></div><pre>Quiero diseñar un buscador de PDFs con recuperación multimodal local.
+Caso: [TIPO DE DOCUMENTOS]. Cantidad: [N]. Usuarios: [PERFILES].
+Proponé un pipeline de render, embeddings multivector, índice MaxSim, filtrado de permisos y resultados con documento/página/cita.
+Compará tres enfoques: texto extraído + embeddings densos, OCR + búsqueda, y modelo visual late-interaction.
+Separá requisitos confirmados de supuestos. Indicá costos de infraestructura que debo medir, riesgos de privacidad y pruebas de calidad.
+No inventes benchmarks propios ni prometas precisión sin evaluación.</pre></div>
+<div class="prompt"><div class="prompt-head"><h3>Prompt: evaluar si de verdad mejora</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar prompt</button></div><pre>Actuá como evaluador de retrieval.
+Tengo consultas con páginas correctas conocidas.
+Diseñá una tabla de evaluación con: consulta, página esperada, top 5 recuperadas, Recall@5, tipo de error, latencia, tamaño del índice y observaciones.
+Agrupá los errores por páginas escaneadas, tablas, tipografía chica, imágenes y documentos versionados.
+No inventes resultados. Dejá vacío todo lo que no se haya ejecutado.
+Al final, sugerí una decisión: mantener, mejorar, o descartar este enfoque, con justificación.</pre></div>
+</div></section>
+<section class="section" id="decision"><div class="wrap">
+<div class="eyebrow">06 / Decidir con criterio</div><h2>No todos los PDFs necesitan visión.</h2>
+<div class="tablewrap"><table><thead><tr><th>Tu problema</th><th>Enfoque que probaría</th><th>Trade-off</th></tr></thead><tbody>
+<tr><td>Documentos de texto bien estructurado</td><td>Extracción de texto + embeddings densos</td><td>Más simple y barato de operar.</td></tr>
+<tr><td>PDFs escaneados con contenido textual</td><td>OCR + índice textual, como base de comparación</td><td>La calidad depende del OCR y del layout.</td></tr>
+<tr><td>Diagramas, imágenes, tablas y contenido mixto</td><td>Embeddings multimodales late-interaction</td><td>Más cómputo y complejidad para ranking.</td></tr>
+<tr><td>Preguntas que necesitan una respuesta redactada</td><td>Retriever + modelo generativo + citas</td><td>La generación es otro componente, con errores y costos propios.</td></tr>
+<tr><td>Un solo PDF corto</td><td>Búsqueda simple o lectura manual</td><td>Puede que construir un pipeline completo no tenga sentido.</td></tr>
+</tbody></table></div>
+<div class="grid">
+<article class="card"><h3>0.6B vs 9B</h3><p>Yo empezaría con <b>0.6B</b>, por menor demanda de recursos. Si falla en casos importantes y tengo capacidad de cómputo, compararía con 9B. Comparten espacio de embeddings, pero eso no elimina la necesidad de probar indexación y latencia.</p></article>
+<article class="card"><h3>Qué no confundiría</h3><p><b>Embeddings ≠ OCR ≠ RAG ≠ chatbot.</b> Los embeddings recuperan candidatos; OCR convierte imagen a texto; RAG usa recuperación para ayudar a generar; un asistente añade interfaz y políticas.</p></article>
+</div>
+<h3>Errores que evitaría</h3><ul class="list">
+<li>Indexar un PDF entero sin guardar número de página y versión.</li>
+<li>Pasar documentos privados sin autorización o compartir resultados entre usuarios sin control de permisos.</li>
+<li>Suponer que un vector único y una base vectorial cualquiera sirven para MaxSim.</li>
+<li>Comparar contra cero baselines; nunca sabrías si mejoró.</li>
+<li>Omitir costos de GPU, almacenamiento y reindexación cuando cambian documentos.</li>
+<li>Prometer respuestas correctas solo porque se recuperó una página relevante.</li></ul>
+<h3>Checklist que usaría antes de implementarlo</h3><ul class="checklist">
+<li>Documentos autorizados, clasificados y versionados.</li>
+<li>10–20 consultas con páginas esperadas registradas.</li>
+<li>Render de páginas consistente y auditable.</li>
+<li>Dispositivo, versión y dependencias comprobados.</li>
+<li>Soporte de índice multivector y MaxSim confirmado.</li>
+<li>Resultados muestran fuente y página.</li>
+<li>Permisos de lectura aplicados antes de entregar resultados.</li>
+<li>Comparación con OCR/texto, latencia y costos medida.</li></ul>
+<div class="note"><b>Criterio GERO:</b> no construiría “un chatbot para PDFs” de entrada. Haría primero un buen buscador que devuelva la página exacta. Si eso no funciona, agregar un LLM arriba solo consigue respuestas mejor redactadas sobre información incorrecta.</div>
+<div class="cta"><div class="kicker" style="color:#334800">Primero retrieval, después producto</div><h2>Antes de responder,<br>aprendé a encontrar.</h2><p>Armá un experimento con tres PDFs y diez preguntas. Si recuperás bien, sumá interfaz, permisos y respuestas con citas. Si no, corregí la recuperación antes de agregar más IA.</p><a class="btn" href="https://huggingface.co/perplexity-ai/pplx-embed-v2-late-0.6b" target="_blank" rel="noopener">Probar el modelo 0.6B ↗</a></div>
+</div></section>
+<section class="section" id="fuentes"><div class="wrap"><div class="eyebrow">07 / Fuentes y herramientas</div><h2>Links oficiales para seguir.</h2>
+<h3>Probar / ver herramientas</h3><div class="sources"><a href="https://huggingface.co/perplexity-ai/pplx-embed-v2-late-0.6b" target="_blank" rel="noopener">Modelo 0.6B · MIT ↗</a><a href="https://huggingface.co/perplexity-ai/pplx-embed-v2-late-9b" target="_blank" rel="noopener">Modelo 9B · MIT ↗</a><a href="https://github.com/huggingface/sentence-transformers" target="_blank" rel="noopener">Sentence Transformers ↗</a><a href="https://github.com/pymupdf/PyMuPDF" target="_blank" rel="noopener">PyMuPDF ↗</a></div>
+<h3 style="margin-top:32px">Fuente de la novedad</h3><div class="sources"><a href="https://www.perplexity.ai/hub/blog/multimodal-embeddings-beyond-a-single-vector" target="_blank" rel="noopener">Publicación técnica Perplexity ↗</a><a href="https://research.perplexity.ai/" target="_blank" rel="noopener">Perplexity Research · 7/10 ↗</a><a href="https://huggingface.co/perplexity-ai/pplx-embed-v2-late-0.6b" target="_blank" rel="noopener">Tarjeta de modelo y ejemplo oficial ↗</a></div>
+<p class="muted" style="margin-top:24px">Guía editorial de GERO; los casos y la metodología son propuestas para experimentar. No se atribuyen resultados privados no medidos. Precios, requisitos de hardware y disponibilidad pueden cambiar.</p>
+</div></section></main><footer class="footer"><div class="wrap">GERO IA · Ideas → Sistemas → Resultados · <a href="https://geronimo02.github.io/">Volver al portfolio</a> · @geronimo.serratti</div></footer><script>function copyPrompt(btn){var p=btn.closest('.prompt').querySelector('pre');navigator.clipboard.writeText(p.innerText).then(function(){btn.textContent='Copiado ✓';setTimeout(function(){btn.textContent='Copiar prompt'},1800)}).catch(function(){btn.textContent='Seleccioná el texto'});}</script></body></html>
