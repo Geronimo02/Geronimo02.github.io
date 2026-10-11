@@ -1,5 +1,22 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
+const hero = document.querySelector('.hero');
+const heroVideo = document.querySelector('.hero-video');
+
+function playHero() {
+  if (document.visibilityState === 'visible') heroVideo.play().catch(() => {});
+}
+
+heroVideo.muted = true;
+playHero();
+window.addEventListener('pageshow', playHero);
+document.addEventListener('visibilitychange', playHero);
+heroVideo.addEventListener('pause', playHero);
+
+const heroObserver = new IntersectionObserver(([entry]) => {
+  document.body.classList.toggle('hero-visible', entry.isIntersecting);
+}, { threshold: 0.15 });
+heroObserver.observe(hero);
 
 function closeMenu(restoreFocus = false) {
   menuButton.setAttribute('aria-expanded', 'false');
