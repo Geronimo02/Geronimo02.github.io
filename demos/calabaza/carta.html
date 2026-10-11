@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../icons.css">
   <script defer src="config.js"></script>
   <script defer src="site.js"></script>
   <script defer src="menu.js"></script>
@@ -18,14 +19,14 @@
 <body class="page-menu">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="demo-ribbon">Carta de muestra · Consultas por WhatsApp</div>
-  <header class="site-header"><div class="container header-inner"><a class="brand brand-logo" href="index.html" aria-label="Calabaza, inicio"><img src="img/optimized/logo-calabaza.png" alt="" width="640" height="640"></a><a class="menu-back" href="index.html">← Volver al inicio</a><a class="header-cta" id="header-cart-link" href="#pedido">Ver pedido <span aria-hidden="true">↗</span></a></div></header>
+  <header class="site-header"><div class="container header-inner"><a class="brand brand-logo" href="index.html" aria-label="Calabaza, inicio"><img src="img/optimized/logo-calabaza.png" alt="" width="640" height="640"></a><a class="menu-back" href="index.html"><span class="icon-arrow-left" aria-hidden="true"></span> Volver al inicio</a><a class="header-cta" id="header-cart-link" href="#pedido">Ver pedido <span class="icon-arrow" aria-hidden="true"></span></a></div></header>
   <main id="contenido">
     <section class="menu-intro container"><div><p class="eyebrow">Calabaza / Carta digital</p><h1>Elegí a tu ritmo.</h1><p>Armá tu selección y elegí Belgrano o Centro antes de consultar por WhatsApp.</p></div><div class="menu-intro-note"><img src="img/optimized/mascota-carta.png" alt="" width="76" height="76"><p><strong>Propuesta en revisión.</strong> Nombres, precios y disponibilidad son ejemplos para ambos locales. Cada sucursal confirmará su carta real.</p></div></section>
     <section class="menu-photo-banner" aria-label="La cocina de Calabaza"><img src="img/optimized/cocina.jpg" alt="Vegetales salteándose en la cocina de Calabaza" loading="lazy"><div class="container"><span>DETRÁS DE CADA PLATO</span><strong>La cocina también cuenta historias.</strong></div></section>
     <nav class="category-nav" id="category-nav" aria-label="Categorías de la carta"><div class="container category-list"></div></nav>
     <div class="container menu-layout"><div id="menu-sections" class="menu-sections"></div>
       <aside class="order-panel" id="pedido" aria-labelledby="order-title">
-        <button type="button" class="cart-close" id="cart-close" aria-label="Cerrar pedido">Cerrar <span aria-hidden="true">✕</span></button>
+        <button type="button" class="cart-close" id="cart-close" aria-label="Cerrar pedido">Cerrar <span class="icon-close" aria-hidden="true"></span></button>
         <div class="cart-step" id="cart-step">
           <div class="receipt-topline"><span>TICKET DE MUESTRA</span><span>CALABAZA · TANDIL</span></div>
           <div class="order-heading"><p class="eyebrow">Tu selección</p><h2 id="order-title">Revisá tu pedido.</h2></div>
@@ -33,11 +34,11 @@
           <div id="cart-content" aria-live="polite"></div>
           <div class="cart-total"><span>Subtotal de muestra</span><strong id="cart-total">$0</strong></div>
           <p class="cart-disclaimer">Los importes son de demostración. No incluyen un envío ni representan precios vigentes.</p>
-          <button type="button" class="button button-dark order-review" id="review-button" disabled>Completar pedido <span aria-hidden="true">↗</span></button>
+          <button type="button" class="button button-dark order-review" id="review-button" disabled>Completar pedido <span class="icon-arrow" aria-hidden="true"></span></button>
           <div class="receipt-bottomline">EL GUSTO DE ENCONTRARNOS · DEMO</div>
         </div>
         <section class="checkout-step" id="revisar" aria-labelledby="review-title" hidden>
-          <div class="review-header"><div><p class="eyebrow">Último paso</p><h2 id="review-title">Completá tu pedido.</h2></div><button type="button" class="text-link" id="close-review">← Volver</button></div>
+          <div class="review-header"><div><p class="eyebrow">Último paso</p><h2 id="review-title">Completá tu pedido.</h2></div><button type="button" class="text-link" id="close-review"><span class="icon-arrow-left" aria-hidden="true"></span> Volver</button></div>
           <form id="order-form">
             <div class="checkout-scroll">
               <p class="review-warning">Los platos, precios y modalidades siguen siendo de muestra. La sucursal elegida confirmará los detalles por WhatsApp.</p>
@@ -45,20 +46,20 @@
               <div class="message-preview"><h3>Mensaje preparado</h3><pre id="message-preview"></pre></div>
               <p class="small-muted" id="destination-note">Elegí una sucursal en el ticket para preparar el destino de WhatsApp.</p>
             </div>
-            <div class="review-actions"><button type="submit" class="button button-dark" id="send-whatsapp">Continuar en WhatsApp <span aria-hidden="true">↗</span></button><button type="button" class="text-link" id="copy-message">Copiar mensaje</button></div>
+            <div class="review-actions"><button type="submit" class="button button-dark" id="send-whatsapp">Continuar en WhatsApp <span class="icon-arrow" aria-hidden="true"></span></button><button type="button" class="text-link" id="copy-message">Copiar mensaje</button></div>
             <p class="form-feedback" id="form-feedback" role="status"></p>
           </form>
         </section>
       </aside>
     </div>
-    <section class="roulette-section container" id="ruleta" aria-labelledby="roulette-title"><div class="roulette-copy"><p class="eyebrow">Una ayuda para elegir</p><h2 id="roulette-title">¿Qué comemos hoy?</h2><p>Girá la ruleta y dejá que te sugiera un plato de esta carta de muestra. Participan solo las opciones disponibles.</p><button type="button" class="button button-dark" id="roulette-spin">Girar la ruleta <span aria-hidden="true">↗</span></button></div><div class="roulette-stage"><div class="roulette-pointer" aria-hidden="true"></div><div class="roulette-wheel" id="roulette-wheel" aria-hidden="true"><canvas id="roulette-canvas" width="600" height="600"></canvas></div><img class="roulette-mascot" src="img/optimized/mascota-tenedor.png" alt="" width="80" height="80"></div><div class="roulette-result" id="roulette-result" role="status" aria-live="polite" hidden></div></section>
+    <section class="roulette-section container" id="ruleta" aria-labelledby="roulette-title"><div class="roulette-copy"><p class="eyebrow">Una ayuda para elegir</p><h2 id="roulette-title">¿Qué comemos hoy?</h2><p>Girá la ruleta y dejá que te sugiera un plato de esta carta de muestra. Participan solo las opciones disponibles.</p><button type="button" class="button button-dark" id="roulette-spin">Girar la ruleta <span class="icon-arrow" aria-hidden="true"></span></button></div><div class="roulette-stage"><div class="roulette-pointer" aria-hidden="true"></div><div class="roulette-wheel" id="roulette-wheel" aria-hidden="true"><canvas id="roulette-canvas" width="600" height="600"></canvas></div><img class="roulette-mascot" src="img/optimized/mascota-tenedor.png" alt="" width="80" height="80"></div><div class="roulette-result" id="roulette-result" role="status" aria-live="polite" hidden></div></section>
     <section class="week-section container" id="armar-semana" aria-labelledby="week-title"><div class="week-heading"><div><p class="eyebrow light">Viandas · Propuesta de muestra</p><h2 id="week-title">La semana, lista para elegir.</h2><p>Calabaza cargaría los platos de cada día. Así podés ver la semana completa sin elegir entre toda la carta cinco veces.</p></div><img src="img/optimized/mascota-carta.png" alt="" width="120" height="120"></div><div class="week-warning">Este menú es una demostración. Falta confirmar si cada sucursal ofrece viandas, los platos, fechas, precios y condiciones. No se agrega al carrito ni se envía.</div><div class="week-grid" id="week-grid"></div><div class="week-summary"><div><span>TOTAL ORIENTATIVO DE MUESTRA</span><strong id="week-total">$0</strong><p id="week-feedback" role="status">Revisá los cinco días antes de marcar esta semana.</p></div><button type="button" id="week-toggle" aria-pressed="false">Marcar semana de muestra</button></div></section>
   </main>
   <div class="cart-backdrop" id="cart-backdrop" hidden aria-hidden="true"></div>
   <button type="button" class="mobile-cart" id="mobile-cart" aria-controls="pedido" aria-expanded="false" hidden>Ver pedido · <span>$0</span></button>
   <footer class="site-footer"><div class="container">
-    <div class="footer-callout"><div><span class="footer-eyebrow">CALABAZA · TANDIL</span><h2>Nos vemos<br><em>en la mesa.</em></h2></div><div class="footer-callout-side"><p>Dos lugares para encontrarnos: Belgrano y Centro. Conocé las sucursales y elegí dónde pedir.</p><a class="button footer-button" href="index.html#locales">Conocer los locales <span aria-hidden="true">↗</span></a></div></div>
-    <div class="footer-bottom"><div class="footer-identity"><a class="footer-logo" href="index.html" aria-label="Calabaza, inicio"><img src="img/optimized/logo-calabaza.png" alt="" width="640" height="640" loading="lazy"></a><span>El gusto de<br>encontrarnos.</span></div><nav aria-label="Navegación del pie"><a href="index.html">Inicio</a><a href="index.html#locales">Locales</a><a href="index.html#historia">Nuestra historia</a><a href="index.html#libro">El libro</a></nav><div class="footer-external"><span>SEGUÍ EN CONTACTO</span><a href="https://www.instagram.com/calabaza_centro/" target="_blank" rel="noopener noreferrer">Instagram Centro ↗</a><a href="https://www.instagram.com/cocinerodetandil/" target="_blank" rel="noopener noreferrer">Cocinero de Tandil ↗</a><a href="index.html#locales">Contactos por sucursal ↗</a></div></div>
+    <div class="footer-callout"><div><span class="footer-eyebrow">CALABAZA · TANDIL</span><h2>Nos vemos<br><em>en la mesa.</em></h2></div><div class="footer-callout-side"><p>Dos lugares para encontrarnos: Belgrano y Centro. Conocé las sucursales y elegí dónde pedir.</p><a class="button footer-button" href="index.html#locales">Conocer los locales <span class="icon-arrow" aria-hidden="true"></span></a></div></div>
+    <div class="footer-bottom"><div class="footer-identity"><a class="footer-logo" href="index.html" aria-label="Calabaza, inicio"><img src="img/optimized/logo-calabaza.png" alt="" width="640" height="640" loading="lazy"></a><span>El gusto de<br>encontrarnos.</span></div><nav aria-label="Navegación del pie"><a href="index.html">Inicio</a><a href="index.html#locales">Locales</a><a href="index.html#historia">Nuestra historia</a><a href="index.html#libro">El libro</a></nav><div class="footer-external"><span>SEGUÍ EN CONTACTO</span><a href="https://www.instagram.com/calabaza_centro/" target="_blank" rel="noopener noreferrer">Instagram Centro <span class="icon-arrow" aria-hidden="true"></span></a><a href="https://www.instagram.com/cocinerodetandil/" target="_blank" rel="noopener noreferrer">Cocinero de Tandil <span class="icon-arrow" aria-hidden="true"></span></a><a href="index.html#locales">Contactos por sucursal <span class="icon-arrow" aria-hidden="true"></span></a></div></div>
     <div class="footer-meta"><span>Belgrano 1301 · Mitre 587 · Tandil</span><span>Carta de muestra · Consultas por WhatsApp</span></div>
   </div></footer>
 </body>

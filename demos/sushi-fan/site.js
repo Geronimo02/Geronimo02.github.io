@@ -7,6 +7,7 @@
   const storageKey='sushifan-cart-v1',revisionKey='sushifan-menu-revision';
   let cart=[],activeCategory='',lastFocus=null,toastTimer;
   const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  function setArrowLabel(element,label){element.textContent=label+' ';const arrow=document.createElement('span');arrow.className='icon-arrow';arrow.setAttribute('aria-hidden','true');element.append(arrow);}
   function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3200);}
   function notice(message){const el=$('cartNotice');el.textContent=message;el.hidden=false;}
   function save(){try{localStorage.setItem(storageKey,JSON.stringify(cart));localStorage.setItem(revisionKey,menu.revision);}catch{}}
@@ -25,12 +26,12 @@
     if(menu.demo){
       if($('menuFootnote')) $('menuFootnote').textContent='Carta ficticia para demostración. Las fotos y los precios son ilustrativos. WhatsApp se abre sin destinatario: elegí un contacto sólo si querés compartir la prueba.';
       $('cartEmptyText').textContent='Elegí productos de la carta de muestra para empezar tu pedido.';
-      $('sendOrder').textContent='Probar pedido en WhatsApp ↗';
+      setArrowLabel($('sendOrder'),'Probar pedido en WhatsApp');
       $('cartDisclaimer').textContent='Demo: el mensaje se prepara sin destinatario. No es un pedido real.';
     }else{
       if($('menuFootnote')) $('menuFootnote').textContent='La carta del restó puede tener precios y disponibilidad diferentes. El local confirma el importe final por WhatsApp.';
       $('cartEmptyText').textContent='Tu tablita empieza acá. Elegí productos de la carta para armar el pedido.';
-      $('sendOrder').textContent='Enviar pedido por WhatsApp ↗';
+      setArrowLabel($('sendOrder'),'Enviar pedido por WhatsApp');
       $('cartDisclaimer').textContent='El pedido queda confirmado cuando te responde el local.';
     }
   }

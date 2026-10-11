@@ -289,7 +289,11 @@
         add.type = "button";
         add.addEventListener("click", () => {
           changeQty(winner.id, 1);
-          add.textContent = "Agregado al pedido ✓";
+          add.textContent = "Agregado al pedido ";
+          const check = document.createElement("span");
+          check.className = "icon-check";
+          check.setAttribute("aria-hidden", "true");
+          add.append(check);
         });
         copy.append(add);
         result.classList.toggle("no-photo", !photo);
@@ -297,7 +301,11 @@
         result.hidden = false;
         if (window.innerWidth <= 800) result.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
         spinButton.disabled = false;
-        spinButton.textContent = "Girar otra vez ↗";
+        spinButton.textContent = "Girar otra vez ";
+        const arrow = document.createElement("span");
+        arrow.className = "icon-arrow";
+        arrow.setAttribute("aria-hidden", "true");
+        spinButton.append(arrow);
         spinning = false;
       };
       wheel.style.transform = `rotate(${rotation}deg)`;

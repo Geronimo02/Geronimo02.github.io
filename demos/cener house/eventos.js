@@ -44,7 +44,11 @@ function createEventCard(event) {
     const link = document.createElement('a');
     link.className = 'event-link';
     link.href = event.url;
-    link.textContent = event.linkLabel || 'Ver detalles ↗';
+    link.textContent = event.linkLabel || 'Ver detalles';
+    const arrow = document.createElement('span');
+    arrow.className = 'icon-arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    link.append(' ', arrow);
     if (/^https?:\/\//i.test(event.url)) {
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
