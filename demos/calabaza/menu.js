@@ -2,7 +2,15 @@
   "use strict";
   const data = window.CALABAZA_DATA;
   const storageKey = "calabaza-centro-demo-cart-v1";
-  const products = new Map(data.products.map((product) => [product.id, product]));
+  const weekItems = data.viandas?.demoPreview || data.viandas?.enabled ? (data.viandas.weekMenu || []) : [];
+  const weekProducts = weekItems.map((item, index) => ({
+    id: `vianda-${data.viandas.weekStart || "muestra"}-${index}`,
+    name: `Vianda ${item.day}: ${item.dish}`,
+    price: item.price,
+    available: Number.isFinite(item.price) && item.price >= 0,
+    isVianda: true
+  }));
+  const products = new Map([...data.products, ...weekProducts].map((product) => [product.id, product]));
   const money = (amount) => new Intl.NumberFormat("es-AR", {
     style: "currency", currency: "ARS", maximumFractionDigits: 0
   }).format(amount);
@@ -109,7 +117,7 @@
       const valid = {};
       for (const item of saved) {
         const product = products.get(item.id);
-        if (product?.available && Number.isSafeInteger(item.qty) && item.qty > 0 && item.qty <= 99) {
+        if (product?.available && Number.isSafeInteger(item.qty) && item.qty > 0 && item.qty <= (product.isVianda ? 1 : 99)) {
           valid[item.id] = { qty: item.qty, note: typeof item.note === "string" ? item.note.slice(0, 180) : "" };
         }
       }
@@ -190,13 +198,29 @@
   }
   function renderWeekMenu() {
     const weekSection = document.getElementById("armar-semana");
-    if ((!data.viandas.demoPreview && !data.viandas.enabled) || !data.viandas.weekMenu?.length) {
+    if ((!data.viandas.demoPreview && !data.viandas.enabled) || !weekItems.length) {
       weekSection.hidden = true;
       return;
     }
     const start = data.viandas.weekStart ? new Date(data.viandas.weekStart + "T12:00:00") : null;
     const hasDates = start && !Number.isNaN(start.getTime());
-    data.viandas.weekMenu.forEach((item, index) => {
+    const toggle = document.getElementById("week-toggle");
+    const weekFeedback = document.getElementById("week-feedback");
+    const choices = [];
+    const updateWeekSummary = () => {
+      const selected = choices.filter((input) => input.checked);
+      const inCart = choices.filter((input) => Boolean(cart[input.value]));
+      const changed = choices.some((input) => input.checked !== Boolean(cart[input.value]));
+      weekTotal.textContent = money(selected.reduce((sum, input) => sum + products.get(input.value).price, 0));
+      toggle.disabled = !changed;
+      toggle.textContent = selected.length
+        ? changed ? `${inCart.length ? "Actualizar" : "Agregar"} ${selected.length} ${selected.length === 1 ? "día" : "días"} al pedido` : `${selected.length} ${selected.length === 1 ? "día" : "días"} en el pedido`
+        : inCart.length ? "Quitar viandas del pedido" : "Elegí días para continuar";
+      weekFeedback.textContent = selected.length
+        ? `${selected.length} ${selected.length === 1 ? "día elegido" : "días elegidos"}. ${changed ? "Actualizá el ticket para consultar por WhatsApp." : "Ya están en el ticket de muestra."}`
+        : inCart.length ? "Actualizá el ticket para quitar las viandas." : "Elegí solo los días que querés, por ejemplo lunes, miércoles y viernes.";
+    };
+    weekItems.forEach((item, index) => {
       const card = el("article", "week-day");
       const heading = el("div", "week-day-heading");
       heading.append(el("span", "", item.day));
@@ -207,23 +231,39 @@
         time.dateTime = date.toISOString().slice(0, 10);
         heading.append(time);
       }
+      const product = weekProducts[index];
+      const choiceLabel = el("label", "week-select");
+      const choice = el("input", "week-day-choice");
+      choice.type = "checkbox";
+      choice.value = product.id;
+      choice.checked = Boolean(cart[product.id]);
+      choice.disabled = !product.available;
+      choice.setAttribute("aria-label", `Elegir vianda del ${item.day}: ${item.dish}`);
+      choiceLabel.append(choice, el("span", "", "Elegir"));
+      heading.append(choiceLabel);
       card.append(heading, el("h3", "week-dish", item.dish), el("p", "week-detail", item.detail));
       card.append(el("strong", "week-day-price", Number.isFinite(item.price) ? money(item.price) : "Precio pendiente"));
+      card.classList.toggle("is-selected", choice.checked);
+      choice.addEventListener("change", () => {
+        card.classList.toggle("is-selected", choice.checked);
+        choiceLabel.querySelector("span").textContent = choice.checked ? "Elegido" : "Elegir";
+        updateWeekSummary();
+      });
+      choiceLabel.querySelector("span").textContent = choice.checked ? "Elegido" : "Elegir";
+      choices.push(choice);
       weekGrid.append(card);
     });
-    const prices = data.viandas.weekMenu.map((item) => item.price);
-    weekTotal.textContent = prices.every(Number.isFinite) ? money(prices.reduce((sum, price) => sum + price, 0)) : "A confirmar";
-    const toggle = document.getElementById("week-toggle");
-    const weekFeedback = document.getElementById("week-feedback");
     toggle.addEventListener("click", () => {
-      const selected = toggle.getAttribute("aria-pressed") !== "true";
-      toggle.setAttribute("aria-pressed", String(selected));
-      toggle.textContent = selected ? "Quitar selección" : "Marcar semana de muestra";
-      weekSection.classList.toggle("week-selected", selected);
-      weekFeedback.textContent = selected
-        ? "Semana marcada en esta demo. No se agregó al carrito ni se envió."
-        : "Revisá los cinco días antes de marcar esta semana.";
+      choices.forEach((input) => {
+        if (input.checked) cart[input.value] = { qty: 1, note: cart[input.value]?.note || "" };
+        else delete cart[input.value];
+      });
+      saveCart();
+      renderCart();
+      updateWeekSummary();
+      if (choices.some((input) => input.checked)) openMobileCart(toggle);
     });
+    updateWeekSummary();
   }
   function renderRoulette() {
     const options = data.products.filter((product) => product.available && product.roulette).slice(0, 8);
@@ -342,20 +382,35 @@
       const head = el("div", "cart-item-head");
       head.append(el("span", "", product.name), el("span", "", money(product.price * item.qty)));
       const qty = el("div", "qty-row");
-      const minus = el("button", "", "−");
-      minus.type = "button";
-      minus.setAttribute("aria-label", "Quitar una unidad de " + product.name);
-      minus.addEventListener("click", () => changeQty(id, -1));
-      const plus = el("button", "", "+");
-      plus.type = "button";
-      plus.setAttribute("aria-label", "Agregar una unidad de " + product.name);
-      plus.disabled = item.qty >= 99;
-      plus.addEventListener("click", () => changeQty(id, 1));
+      if (product.isVianda) qty.append(el("span", "week-cart-count", "1 vianda"));
+      else {
+        const minus = el("button", "", "−");
+        minus.type = "button";
+        minus.setAttribute("aria-label", "Quitar una unidad de " + product.name);
+        minus.addEventListener("click", () => changeQty(id, -1));
+        const plus = el("button", "", "+");
+        plus.type = "button";
+        plus.setAttribute("aria-label", "Agregar una unidad de " + product.name);
+        plus.disabled = item.qty >= 99;
+        plus.addEventListener("click", () => changeQty(id, 1));
+        qty.append(minus, el("span", "", String(item.qty)), plus);
+      }
       const remove = el("button", "remove-button", "Quitar");
       remove.type = "button";
       remove.setAttribute("aria-label", "Quitar " + product.name + " del pedido");
-      remove.addEventListener("click", () => { delete cart[id]; saveCart(); renderCart(); });
-      qty.append(minus, el("span", "", String(item.qty)), plus, remove);
+      remove.addEventListener("click", () => {
+        delete cart[id];
+        saveCart();
+        renderCart();
+        if (product.isVianda) {
+          const choice = [...weekGrid.querySelectorAll(".week-day-choice")].find((input) => input.value === id);
+          if (choice) {
+            choice.checked = false;
+            choice.dispatchEvent(new Event("change"));
+          }
+        }
+      });
+      qty.append(remove);
       const note = el("label", "cart-note-label", "Observación para este producto");
       const input = el("input", "cart-note");
       input.type = "text";
