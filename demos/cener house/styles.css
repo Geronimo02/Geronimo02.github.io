@@ -85,6 +85,40 @@ button { font: inherit; cursor: pointer; }
 .cuisine .button { margin-top: 20px; min-width: 140px; color: var(--cream); border-color: #b9996c; }
 .cuisine .button:hover { color: var(--blue); background: var(--cream); border-color: var(--cream); }
 
+/* An archival menu gives a sense of the kitchen without suggesting current prices. */
+.menu-preview { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(74px, 8vw, 125px) clamp(58px, 6vw, 90px); }
+.menu-preview::before { content: ''; position: absolute; z-index: -1; right: -105px; top: 20px; width: 350px; height: 520px; background: url('assets/botanica-rosas-512.png') center / contain no-repeat; opacity: .11; mix-blend-mode: multiply; pointer-events: none; }
+.menu-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .42fr); align-items: end; gap: 60px; padding-bottom: 52px; }
+.menu-heading h2 { margin-top: 23px; font-size: clamp(62px, 6.7vw, 104px); line-height: .86; }
+.menu-heading h2 em, .film h2 em, .gallery h2 em { font-weight: 400; }
+.menu-intro p { max-width: 400px; color: #594d41; font: 400 clamp(20px, 1.8vw, 26px)/1.2 var(--serif); }
+.menu-intro a { display: inline-block; margin-top: 21px; padding-bottom: 5px; color: #624329; border-bottom: 1px solid #a17d55; font: 600 12px/1.4 var(--sans); }
+.menu-intro a:hover { color: var(--blue); border-color: var(--blue); }
+.menu-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #bba487; border-bottom: 1px solid #bba487; }
+.menu-category { min-width: 0; padding: 27px clamp(15px, 2.25vw, 38px) 32px; }
+.menu-category:first-child { padding-left: 0; }
+.menu-category:last-child { padding-right: 0; }
+.menu-category + .menu-category { border-left: 1px solid #c8b69f; }
+.menu-category h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 15px; margin: 0 0 11px; font: 400 clamp(35px, 3vw, 46px)/1 var(--serif); letter-spacing: -.03em; }
+.menu-category h3 span { flex: none; color: #8e633c; font: 600 9px/1 var(--sans); letter-spacing: .15em; }
+.menu-category ul { margin: 0; padding: 0; list-style: none; }
+.menu-category li { padding: 14px 0 13px; border-bottom: 1px solid rgba(133,100,65,.27); font: 500 13px/1.4 var(--sans); }
+.menu-category li:last-child { border-bottom: 0; }
+.menu-category li span { display: block; margin-top: 4px; color: #76685a; font: 400 17px/1.16 var(--serif); }
+.menu-footnote { margin-top: 19px; color: #756453; font: 500 11px/1.5 var(--sans); }
+
+/* The supplied documentary reel sits within the page instead of replacing the photo hero. */
+.film { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(70px, 8vw, 115px); }
+.film::before { content: ''; position: absolute; z-index: -1; left: -100px; bottom: -115px; width: 365px; height: 545px; background: url('assets/botanica-olivo-512.png') center / contain no-repeat; filter: brightness(0) invert(93%) sepia(15%) saturate(250%); opacity: .11; pointer-events: none; }
+.film-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, .72fr); align-items: center; gap: clamp(45px, 9vw, 165px); }
+.film-copy h2 { margin: 25px 0 25px; font-size: clamp(82px, 8.8vw, 142px); line-height: .8; }
+.film-copy > p:not(.eyebrow) { max-width: 490px; color: #e7d9c7; font: 400 clamp(23px, 2.2vw, 31px)/1.15 var(--serif); }
+.film-mark { display: block; margin-top: clamp(60px, 8vw, 120px); color: #c9b290; font: 600 9px/1.4 var(--sans); letter-spacing: .25em; }
+.film-frame { max-width: 480px; justify-self: center; width: 100%; border: 1px solid rgba(233,217,192,.45); padding: 9px; background: #162336; }
+.film-frame video { display: block; width: 100%; aspect-ratio: 9 / 13; object-fit: cover; background: #121b2a; }
+.film-frame figcaption { display: flex; justify-content: space-between; gap: 15px; padding: 12px 3px 3px; color: #cfbfa9; font: 500 10px/1.3 var(--sans); letter-spacing: .06em; }
+.film-frame figcaption span { color: #ad9676; }
+
 /* Mural left and cultural copy right, as in the approved image. */
 .culture { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(15px, 2.5vw, 37px); }
 .culture::before { content: ''; position: absolute; z-index: -1; right: -75px; top: -35px; width: 310px; height: 465px; background: url('assets/botanica-olivo-512.png') center / contain no-repeat; opacity: .17; mix-blend-mode: multiply; pointer-events: none; }
@@ -109,16 +143,41 @@ button { font: inherit; cursor: pointer; }
 .events-column-heading > span, .event-date { color: #ddc6a5; font: 600 10px/1.4 var(--sans); letter-spacing: .18em; }
 .events-column-heading h3 { margin: 16px 0 24px; font: 400 clamp(39px, 3.5vw, 54px)/1 var(--serif); letter-spacing: -.035em; }
 .events-empty p { max-width: 360px; color: #efe4d5; font: 400 23px/1.18 var(--serif); }
+.events-placeholder { display: flex; width: min(100%, 340px); min-height: 340px; flex-direction: column; align-items: center; justify-content: space-between; margin-bottom: 24px; padding: 24px 15px 15px; border: 1px solid rgba(226,203,169,.65); outline: 1px solid rgba(226,203,169,.28); outline-offset: -9px; color: #e7d1ae; text-align: center; background: rgba(10,20,34,.12); }
+.events-placeholder span { font: 600 9px/1.3 var(--sans); letter-spacing: .25em; }
+.events-placeholder strong { margin-top: 25px; font: 400 48px/.95 var(--serif); letter-spacing: -.04em; }
+.events-placeholder img { width: 104px; height: 130px; object-fit: contain; filter: brightness(0) invert(87%) sepia(15%) saturate(339%); opacity: .67; }
 .events-empty a, .event-link { display: inline-block; margin-top: 18px; padding-bottom: 4px; color: #e7d2ae; border-bottom: 1px solid #b99b73; font: 500 12px/1.4 var(--sans); }
 .events-empty a:hover, .event-link:hover { color: white; border-color: white; }
 .event-card { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; padding: 22px 0; border-top: 1px solid rgba(243,232,216,.2); }
 .event-card:first-child { border-top: 0; padding-top: 0; }
 .event-card--text { grid-template-columns: 1fr; }
-.event-card img { width: 125px; height: 155px; object-fit: cover; }
+.event-card img { width: 150px; height: 205px; object-fit: cover; border: 1px solid rgba(243,232,216,.35); }
 .event-card h4 { margin: 8px 0 8px; font: 400 30px/1 var(--serif); }
 .event-card p { max-width: 390px; color: #dfd2c0; font: 400 13px/1.6 var(--sans); }
 .event-link { margin-top: 12px; }
 [hidden] { display: none !important; }
+
+/* Documentary images form a varied editorial grid. */
+.gallery { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(75px, 8vw, 122px); }
+.gallery::before { content: ''; position: absolute; z-index: -1; right: -100px; bottom: -155px; width: 370px; height: 555px; background: url('assets/botanica-rosas-512.png') center / contain no-repeat; opacity: .11; mix-blend-mode: multiply; pointer-events: none; }
+.gallery-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .42fr); align-items: end; gap: 50px; padding-bottom: 47px; }
+.gallery-heading h2 { margin-top: 25px; font-size: clamp(70px, 7.4vw, 116px); line-height: .85; }
+.gallery-heading > p { max-width: 390px; padding-bottom: 7px; color: #5d4c3d; font: 400 clamp(20px, 1.9vw, 27px)/1.2 var(--serif); }
+.gallery-grid { display: grid; grid-template-columns: 1.12fr .88fr .88fr; gap: clamp(13px, 1.7vw, 27px); align-items: start; }
+.gallery-item { min-width: 0; }
+.gallery-item > div { overflow: hidden; background: #d8c5ad; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+.gallery-item:hover img { transform: scale(1.035); }
+.gallery-item--salon { grid-row: span 2; }
+.gallery-item--salon > div { aspect-ratio: .67; }
+.gallery-item--mesa > div, .gallery-item--plato > div { aspect-ratio: 1.08; }
+.gallery-item--equipo { grid-column: 2 / 4; }
+.gallery-item--equipo > div { aspect-ratio: 2.1; }
+.gallery-item--salon img, .gallery-item--mesa img { width: 108%; max-width: none; margin-left: -4%; }
+.gallery-item--equipo img { object-position: center 29%; }
+.gallery-item figcaption { display: flex; flex-direction: column; gap: 4px; padding-top: 12px; font: 400 20px/1.1 var(--serif); }
+.gallery-item figcaption span { color: #8e633c; font: 600 9px/1.3 var(--sans); letter-spacing: .18em; }
 
 /* The people behind the house are presented as an editorial roster. */
 .team { padding-block: clamp(65px, 8vw, 115px) clamp(55px, 6vw, 90px); border-top: 1px solid rgba(129,97,62,.22); }
@@ -215,6 +274,23 @@ button { font: inherit; cursor: pointer; }
   .cuisine-visual { height: clamp(235px, 53vw, 410px); }
   .cuisine-copy { padding: 47px 21px 53px; }
   .cuisine h2 { font-size: clamp(46px, 8.7vw, 70px); }
+  .menu-preview { padding-block: 67px 58px; }
+  .menu-preview::before { right: -110px; top: -20px; width: 235px; height: 350px; opacity: .08; }
+  .menu-heading { display: block; padding-bottom: 34px; }
+  .menu-heading h2 { font-size: clamp(56px, 10vw, 78px); }
+  .menu-intro { margin-top: 25px; }
+  .menu-intro p { font-size: 21px; }
+  .menu-columns { display: block; }
+  .menu-category, .menu-category:first-child, .menu-category:last-child { padding: 23px 0 24px; }
+  .menu-category + .menu-category { border-left: 0; border-top: 1px solid #c8b69f; }
+  .menu-category h3 { font-size: 42px; }
+  .menu-category li { padding-block: 12px; }
+  .film { padding-block: 64px; }
+  .film-grid { display: block; }
+  .film-copy h2 { font-size: clamp(80px, 16vw, 115px); }
+  .film-copy > p:not(.eyebrow) { font-size: 23px; }
+  .film-mark { margin-top: 28px; }
+  .film-frame { max-width: 420px; margin: 36px auto 0; }
   .events { padding-block: 62px; }
   .events::before { right: -95px; top: -20px; width: 225px; height: 340px; opacity: .1; }
   .events-heading { display: block; padding-bottom: 34px; }
@@ -226,6 +302,15 @@ button { font: inherit; cursor: pointer; }
   .events-column-heading h3 { font-size: 43px; }
   .event-card img { width: 96px; height: 125px; }
   .event-card h4 { font-size: 26px; }
+  .gallery { padding-block: 65px; }
+  .gallery-heading { display: block; padding-bottom: 32px; }
+  .gallery-heading h2 { font-size: clamp(66px, 11vw, 87px); }
+  .gallery-heading > p { margin-top: 25px; font-size: 22px; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .gallery-item--salon, .gallery-item--equipo { grid-row: auto; grid-column: auto; }
+  .gallery-item--salon > div, .gallery-item--mesa > div, .gallery-item--plato > div, .gallery-item--equipo > div { aspect-ratio: .8; }
+  .gallery-item--equipo img { object-position: 52% center; }
+  .gallery-item figcaption { font-size: 17px; }
   .team { padding-block: 62px 58px; }
   .team-heading { display: block; position: relative; padding-bottom: 38px; }
   .team-heading h2 { position: relative; z-index: 1; font-size: clamp(58px, 10vw, 78px); }
@@ -255,6 +340,10 @@ button { font: inherit; cursor: pointer; }
   .hero-actions .button { padding-inline: 11px; font-size: 13px; }
   .house h2, .culture h2 { font-size: 54px; }
   .visit-actions { flex-direction: column; align-items: stretch; }
+  .menu-heading h2 { font-size: 53px; }
+  .gallery-heading h2 { font-size: 62px; }
+  .gallery-item figcaption { font-size: 16px; }
+  .events-placeholder { min-height: 295px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
