@@ -108,3 +108,25 @@
 @media(max-width:760px){.menu-preview-grid{grid-template-columns:1fr}.menu-preview-main{height:440px}.menu-preview-copy h2{font-size:clamp(72px,14vw,100px)}.carta-hero{height:70svh;min-height:540px}.carta-hero h1{font-size:clamp(112px,22vw,190px)}.carta-hero-side{display:none}.carta-page .category-tabs{top:0;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.carta-page .category-tabs button{white-space:nowrap;flex:none}.carta-page .products-grid{gap:18px}.carta-page .product-info{padding:20px}.carta-page .product-info h3{font-size:42px}}
 @media(max-width:600px){.menu-preview-main{height:380px}.menu-preview-detail{height:130px;border-width:5px}.carta-page .products-grid{grid-template-columns:1fr}.carta-page .product-card img{height:320px}.carta-hero h1{font-size:112px}.carta-hero-content{padding-bottom:65px}.carta-outro h2{font-size:78px}}
 [hidden]{display:none!important}
+
+/* Shared footer composition for the home and menu pages. */
+.footer{border-top:1px solid var(--line)}
+.footer-main{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,.7fr);gap:clamp(28px,4vw,64px)}
+.footer-main>p{margin:0;max-width:350px;color:var(--white);font:300 clamp(22px,2.2vw,34px)/1.1 var(--editorial);letter-spacing:-.025em}
+.footer-main>div{margin-left:0;justify-self:end;gap:13px}
+.footer-main>div a{display:inline-flex;align-items:center;gap:.35em;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.footer-bottom{margin-top:58px;color:#aaa}
+@media(max-width:760px){
+  .footer{padding:56px 0 24px}
+  .footer-main{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px}
+  .footer-main>.brand{grid-column:1/-1}
+  .footer-main>div{justify-self:start}
+  .footer-bottom{margin-top:40px}
+}
+@media(max-width:520px){
+  .footer-main{grid-template-columns:1fr;gap:22px}
+  .footer-main>.brand{grid-column:auto}
+  .footer-main>div{width:100%;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:12px 18px}
+  .footer-bottom{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:34px}
+  .footer-bottom>span,.footer-bottom #year{display:inline;margin:0}
+}
