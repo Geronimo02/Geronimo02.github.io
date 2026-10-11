@@ -2,9 +2,15 @@ const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('.main-nav');
 const hero = document.querySelector('.hero');
 const heroVideo = document.querySelector('.hero-video');
+const mobileHero = window.matchMedia('(max-width: 760px)');
 
 function playHero() {
-  if (document.visibilityState === 'visible') heroVideo.play().catch(() => {});
+  if (mobileHero.matches && document.visibilityState === 'visible') {
+    if (!heroVideo.currentSrc) heroVideo.load();
+    heroVideo.play().catch(() => {});
+  } else if (!heroVideo.paused) {
+    heroVideo.pause();
+  }
 }
 
 heroVideo.muted = true;
@@ -12,6 +18,8 @@ playHero();
 window.addEventListener('pageshow', playHero);
 document.addEventListener('visibilitychange', playHero);
 heroVideo.addEventListener('pause', playHero);
+heroVideo.addEventListener('playing', () => heroVideo.classList.add('is-ready'));
+mobileHero.addEventListener('change', playHero);
 
 const heroObserver = new IntersectionObserver(([entry]) => {
   document.body.classList.toggle('hero-visible', entry.isIntersecting);

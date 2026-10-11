@@ -42,8 +42,13 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-photo" aria-hidden="true">
         <picture><source media="(max-width: 760px)" srcset="assets/salon-mobile-v2.jpg"><img src="assets/hero-panorama-v2.jpg" width="1672" height="941" alt="" fetchpriority="high"></picture>
-        <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-panorama-v2.jpg" aria-hidden="true">
-          <source src="assets/cener-en-movimiento.mp4" type="video/mp4">
+        <div class="hero-tour">
+          <img class="hero-tour-shot hero-tour-shot--salon" src="assets/hero-panorama-v2.jpg" width="1672" height="941" alt="">
+          <img class="hero-tour-shot hero-tour-shot--mirror" src="assets/detalle-espejo-v2.jpg" width="1586" height="992" alt="">
+          <img class="hero-tour-shot hero-tour-shot--mural" src="assets/mural-cultura-v2.jpg" width="1586" height="992" alt="">
+        </div>
+        <video class="hero-video" autoplay muted loop playsinline preload="none" poster="assets/salon-mobile-v2.jpg" aria-hidden="true">
+          <source src="assets/cener-en-movimiento.mp4" media="(max-width: 760px)" type="video/mp4">
         </video>
       </div>
       <div class="hero-shade" aria-hidden="true"></div>
