@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#26364b">
+  <meta name="description" content="Descubrí Cener Restó, una casa donde la cocina, el arte y los encuentros comparten lugar en Tandil. Conocé la propuesta y consultá por tu reserva.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Cener Restó | Cocina, arte y encuentros en Tandil">
+  <meta property="og:description" content="Una casa para los sentidos. Cocina, arte y encuentros en Tandil.">
+  <meta property="og:image" content="assets/hero-panorama-v2.jpg">
+  <title>Cener Restó | Cocina, arte y encuentros en Tandil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="site.js"></script>
+  <script defer src="eventos.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header" id="inicio">
+    <div class="container header-inner">
+      <a class="wordmark" href="#inicio" aria-label="Cener Restó, ir al inicio"><img class="brand-crest" src="assets/escudo-crema.png" width="600" height="525" alt=""><span>CENER RESTÓ</span></a>
+      <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <a href="#la-casa">La casa</a>
+        <a href="#cocina">Cocina</a>
+        <a href="#cultura">Cultura</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#equipo">Equipo</a>
+        <a class="nav-reserve" href="#visitanos">Reservar mesa <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-photo"><picture><source media="(max-width: 760px)" srcset="assets/salon-mobile-v2.jpg"><img src="assets/hero-panorama-v2.jpg" width="1672" height="941" alt="Salón azul de Cener House con araña de cristal, mesas y murales" fetchpriority="high"></picture></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <h1 id="hero-title">Una casa<br>para los<br>sentidos.</h1>
+        <p class="hero-lead">Cocina, arte y encuentros en Tandil.</p>
+        <div class="hero-actions">
+          <a class="button button-gold" href="#visitanos">Reservar mesa</a>
+          <a class="button button-outline" href="#la-casa">Explorar la casa</a>
+        </div>
+        <p class="hero-signature"><span></span> CENER HOUSE · TANDIL</p>
+      </div>
+    </section>
+
+    <section class="house section-cream" id="la-casa" aria-labelledby="house-title">
+      <div class="container house-grid">
+        <div class="section-copy house-copy">
+          <p class="eyebrow"><span class="rule"></span> LA CASA</p>
+          <h2 id="house-title">Cada rincón<br>invita a quedarse.</h2>
+          <p class="section-lead">Una mesa, una obra, una conversación. En Cener, la cocina y la cultura comparten casa.</p>
+          <img class="house-crest" src="assets/escudo.png" width="1341" height="1173" alt="" loading="lazy">
+        </div>
+        <figure class="house-image"><img src="assets/detalle-espejo-v2.jpg" width="1586" height="992" alt="Espejo dorado y chimenea antigua en Cener House" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <section class="cuisine section-blue" id="cocina" aria-labelledby="cuisine-title">
+      <div class="cuisine-grid">
+        <div class="cuisine-visual"><img src="assets/cocina-v2.jpg" width="1774" height="887" alt="Dos platos de Cener presentados sobre una mesa oscura" loading="lazy"></div>
+        <div class="section-copy cuisine-copy">
+          <p class="eyebrow eyebrow-light"><span class="rule"></span> COCINA</p>
+          <h2 id="cuisine-title">La cocina también<br>es una forma<br>de expresión.</h2>
+          <p class="section-lead">Una propuesta para descubrir con todos los sentidos, en una casa que invita a compartir.</p>
+          <a class="button button-outline" href="https://www.instagram.com/cener.resto/" target="_blank" rel="noopener noreferrer">Consultar la carta</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="culture section-cream" id="cultura" aria-labelledby="culture-title">
+      <div class="container culture-grid">
+        <figure class="culture-image"><img src="assets/mural-cultura-v2.jpg" width="1586" height="992" alt="Detalle del mural de Cener House" loading="lazy"></figure>
+        <div class="section-copy culture-copy">
+          <p class="eyebrow"><span class="rule"></span> CULTURA</p>
+          <h2 id="culture-title">La casa está viva.</h2>
+          <p class="section-lead">Arte, música y encuentros que hacen de cada visita una experiencia distinta.</p>
+          <a class="button button-ink" href="#eventos">Ver la agenda</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="events section-blue" id="eventos" aria-labelledby="events-title">
+      <div class="container events-heading">
+        <div>
+          <p class="eyebrow eyebrow-light"><span class="rule"></span> EVENTOS Y ENCUENTROS</p>
+          <h2 id="events-title">Lo que pasa<br>en la casa.</h2>
+        </div>
+        <p>La mesa abre conversaciones. Acá reunimos la agenda que viene y los encuentros que ya fueron parte de Cener House.</p>
+      </div>
+      <div class="container events-grid">
+        <div class="events-column">
+          <div class="events-column-heading"><span>01 / AGENDA</span><h3>Por venir.</h3></div>
+          <div class="events-list" id="events-upcoming"></div>
+          <div class="events-empty" id="events-upcoming-empty"><p>Nuevas fechas y experiencias tendrán su lugar acá.</p><a href="https://www.instagram.com/cener.resto/" target="_blank" rel="noopener noreferrer">Seguí la agenda en Instagram <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="events-column">
+          <div class="events-column-heading"><span>02 / ARCHIVO</span><h3>Lo que pasó.</h3></div>
+          <div class="events-list" id="events-past"></div>
+          <div class="events-empty" id="events-past-empty"><p>Las historias de cada encuentro tendrán su lugar en este archivo.</p><a href="https://www.instagram.com/cener.resto/" target="_blank" rel="noopener noreferrer">Explorar Instagram <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team section-cream" id="equipo" aria-labelledby="team-title">
+      <div class="container team-heading">
+        <div class="team-heading-copy">
+          <p class="eyebrow"><span class="rule"></span> EL EQUIPO</p>
+          <h2 id="team-title">Quienes hacen<br>la casa.</h2>
+          <p class="team-intro">Detrás de cada noche en Cener Restó hay un equipo pequeño que hace que todo suceda.</p>
+        </div>
+        <img class="team-griffin" src="assets/grifo.png" width="650" height="823" alt="Grifo heráldico ilustrado con técnica de grabado" loading="lazy">
+      </div>
+      <div class="container team-roster">
+        <article class="team-person">
+          <span class="team-number">01 / COCINA</span>
+          <figure class="team-portrait"><img src="assets/retrato-tomi.jpg" width="900" height="1200" alt="Tomi Bidauri en la cocina" loading="lazy" decoding="async"></figure>
+          <h3>Tomi Bidauri</h3>
+          <div class="team-social"><a href="https://www.instagram.com/tomasbidauri21/" target="_blank" rel="noopener noreferrer">@tomasbidauri21 ↗</a><a href="https://www.instagram.com/21entorno/" target="_blank" rel="noopener noreferrer">@21entorno ↗</a></div>
+          <p><strong>Chef, recolector y fermentista.</strong> Su cocina nace del vínculo con el entorno, la estacionalidad y el trabajo directo con productores locales. Fermentos, conservas, panes y procesos que respetan los tiempos de cada ingrediente.</p>
+        </article>
+        <article class="team-person">
+          <span class="team-number">02 / SALA Y HUERTA</span>
+          <figure class="team-portrait"><img src="assets/retrato-mari.jpg" width="900" height="1200" alt="Mari Marquez en la huerta" loading="lazy" decoding="async"></figure>
+          <h3>Mari Marquez</h3>
+          <div class="team-social"><a href="https://www.instagram.com/marianamarquez_/" target="_blank" rel="noopener noreferrer">@marianamarquez_ ↗</a><a href="https://www.instagram.com/21entorno/" target="_blank" rel="noopener noreferrer">@21entorno ↗</a></div>
+          <p>A cargo de la huerta, la selección de vinos y el servicio en sala. Con una mirada sensible y cercana, busca que cada detalle acompañe la experiencia, conectando los vinos, los productores y las historias detrás de cada plato.</p>
+        </article>
+        <article class="team-person">
+          <span class="team-number">03 / LA CASA</span>
+          <figure class="team-portrait"><img src="assets/retrato-seba.jpg" width="900" height="1200" alt="Seba Cener pintando un mural" loading="lazy" decoding="async"></figure>
+          <h3>Seba Cener</h3>
+          <div class="team-social"><a href="https://www.instagram.com/sebacener/" target="_blank" rel="noopener noreferrer">@sebacener ↗</a></div>
+          <p>Creador de Cener House. Entre una obra, una idea y un proyecto, también lo vas a encontrar haciendo de runner, bachero, recibiendo proveedores o resolviendo lo que haga falta para que la experiencia funcione.</p>
+        </article>
+      </div>
+      <div class="container team-closing"><span aria-hidden="true">✦</span><p>Somos un equipo chico, haciendo las cosas a nuestra manera. Cocinando, aprendiendo y construyendo un espacio donde el arte, la gastronomía y los encuentros se cruzan alrededor de una misma mesa.</p></div>
+    </section>
+
+    <section class="visit section-blue" id="visitanos" aria-labelledby="visit-title">
+      <div class="container visit-grid">
+        <div class="visit-copy">
+          <p class="eyebrow eyebrow-light"><span class="rule"></span> VISITANOS</p>
+          <h2 id="visit-title">Te esperamos<br>en <em>Cener.</em></h2>
+          <p class="visit-location">14 de Julio 467<br>Tandil, Buenos Aires</p>
+          <p class="visit-note">Para consultar disponibilidad y reservar una mesa, escribinos por Instagram.</p>
+          <div class="visit-actions">
+            <a class="button button-cream" href="https://www.instagram.com/cener.resto/" target="_blank" rel="noopener noreferrer">Consultar reserva <span aria-hidden="true">↗</span></a>
+            <a class="button button-outline" href="https://www.google.com/maps/place/Cener+House/@-37.3295131,-59.1394904,56m/data=!3m1!1e3!4m15!1m8!3m7!1s0x95911f99c31b8ce9:0xbf803df31b459b7a!2s14+de+Julio+467,+B7000+Tandil,+Provincia+de+Buenos+Aires!3b1!8m2!3d-37.3295602!4d-59.139425!16s%2Fg%2F11rg5ync2m!3m5!1s0x95911ff2c62d1079:0x955360f76bca0bde!8m2!3d-37.3295235!4d-59.1394574!16s%2Fg%2F11v67pk130" target="_blank" rel="noopener noreferrer">Cómo llegar <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="visit-art" aria-hidden="true"><img src="assets/escudo-crema.png" width="600" height="525" alt=""></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div><a class="wordmark" href="#inicio"><img class="brand-crest" src="assets/escudo-crema.png" width="600" height="525" alt=""><span>CENER RESTÓ</span></a><p>Una casa para los sentidos.<br><span>Cener House · Tandil</span></p></div>
+      <div class="footer-links"><a href="#la-casa">La casa</a><a href="#cocina">Cocina</a><a href="#cultura">Cultura</a><a href="#eventos">Eventos</a><a href="#equipo">Equipo</a><a href="#visitanos">Visitanos</a></div>
+      <div class="footer-links"><a href="https://www.instagram.com/cener.resto/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.google.com/maps/search/?api=1&query=14+de+Julio+467+Tandil" target="_blank" rel="noopener noreferrer">Ubicación ↗</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="year">2026</span> Cener Restó</span><span>Demo de presentación</span></div>
+  </footer>
+  <a class="mobile-reserve" href="#visitanos">Reservar mesa <span aria-hidden="true">↗</span></a>
+</body>
+</html>
