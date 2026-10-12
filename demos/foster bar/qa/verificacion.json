@@ -1,0 +1,236 @@
+[
+  {
+    "page": "home",
+    "width": 1440,
+    "status": 200,
+    "dimensions": {
+      "body": 1440,
+      "viewport": 1440,
+      "hero": 790,
+      "galleryItems": 6,
+      "overflow": [
+        {
+          "tag": "DIV",
+          "className": "stack-quote",
+          "right": 1448
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 1696
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 1696
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 2037
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 2037
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "page": "home",
+    "width": 1024,
+    "status": 200,
+    "dimensions": {
+      "body": 1024,
+      "viewport": 1024,
+      "hero": 690,
+      "galleryItems": 6,
+      "overflow": [
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 1240
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 1240
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 1490
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 1490
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "page": "home",
+    "width": 768,
+    "status": 200,
+    "dimensions": {
+      "body": 768,
+      "viewport": 768,
+      "hero": 760,
+      "galleryItems": 6,
+      "overflow": [
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 990
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 990
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 1240
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 1240
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 1490
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 1490
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "page": "home",
+    "width": 390,
+    "status": 200,
+    "dimensions": {
+      "body": 390,
+      "viewport": 390,
+      "hero": 760,
+      "galleryItems": 6,
+      "overflow": [
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 595
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 595
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 898
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 898
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 1200
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 1200
+        },
+        {
+          "tag": "FIGURE",
+          "className": "",
+          "right": 1503
+        },
+        {
+          "tag": "IMG",
+          "className": "",
+          "right": 1503
+        }
+      ]
+    },
+    "errors": []
+  },
+  {
+    "test": "mobile menu opens",
+    "expanded": "true",
+    "visible": true
+  },
+  {
+    "test": "mobile menu escapes",
+    "expanded": "false"
+  },
+  {
+    "test": "gallery moves",
+    "scrollLeft": 321
+  },
+  {
+    "page": "carta/",
+    "width": 1440,
+    "status": 200,
+    "dimensions": {
+      "body": 1440,
+      "viewport": 1440
+    },
+    "errors": []
+  },
+  {
+    "page": "carta/",
+    "width": 390,
+    "status": 200,
+    "dimensions": {
+      "body": 390,
+      "viewport": 390
+    },
+    "errors": []
+  },
+  {
+    "page": "reservas/",
+    "width": 1440,
+    "status": 200,
+    "dimensions": {
+      "body": 1440,
+      "viewport": 1440
+    },
+    "errors": []
+  },
+  {
+    "page": "reservas/",
+    "width": 390,
+    "status": 200,
+    "dimensions": {
+      "body": 390,
+      "viewport": 390
+    },
+    "errors": []
+  },
+  {
+    "test": "Thursday rejected",
+    "error": "Solo aceptamos solicitudes para martes y miércoles.",
+    "resultHidden": true
+  },
+  {
+    "test": "Wednesday request",
+    "resultVisible": true,
+    "message": "Hola, soy Ana. Quisiera consultar si hay una mesa para 2 personas el miércoles, 14 de octubre de 2026 a las 20:30 h en Foster Burger Bar. Sé que esta solicitud no confirma la reserva. ¡Gracias!"
+  }
+]

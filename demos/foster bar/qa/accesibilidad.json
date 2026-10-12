@@ -1,0 +1,38 @@
+[
+  {
+    "path": "/",
+    "width": 1440,
+    "hiddenReveal": 0,
+    "violations": []
+  },
+  {
+    "path": "/",
+    "width": 390,
+    "hiddenReveal": 0,
+    "violations": []
+  },
+  {
+    "path": "/carta/",
+    "width": 1440,
+    "hiddenReveal": 0,
+    "violations": []
+  },
+  {
+    "path": "/carta/",
+    "width": 390,
+    "hiddenReveal": 0,
+    "violations": []
+  },
+  {
+    "path": "/reservas/",
+    "width": 1440,
+    "hiddenReveal": 0,
+    "violations": []
+  },
+  {
+    "path": "/reservas/",
+    "width": 390,
+    "hiddenReveal": 0,
+    "violations": []
+  }
+]
