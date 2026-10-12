@@ -49,7 +49,7 @@
   .platos-intro h2{font-size:clamp(72px,14vw,112px)}
   .plato figcaption strong{font-size:clamp(55px,11vw,82px)}
 }
-@media(max-width:520px){.hero h1{font-size:clamp(68px,14.5vw,88px)}.platos-intro,.plato{width:88vw;min-height:430px;height:70svh}.plato figcaption{padding:25px 25px 40px}}
+@media(max-width:520px){.hero{min-height:560px;padding-bottom:30px}.hero-content{padding-top:118px}.hero h1{font-size:clamp(52px,13vw,72px);line-height:.8;letter-spacing:-.06em}.hero-lead{max-width:100%;font-size:15px;line-height:1.5}.hero-actions{display:grid;grid-template-columns:1fr;gap:12px;max-width:420px}.hero-actions .button{width:100%;justify-content:space-between;min-height:52px;padding:14px 18px;font-size:10px;letter-spacing:.12em}.hero-scroll{bottom:24px;left:20px}.platos-intro,.plato{width:88vw;min-height:430px;height:70svh}.plato figcaption{padding:25px 25px 40px}}
 @media(prefers-reduced-motion:reduce){.platos-scroller{height:auto!important}.platos-pin{position:relative;height:auto;min-height:0;overflow:visible}.platos-track{width:100%;height:auto;overflow-x:auto;transform:none!important;will-change:auto}.platos-intro,.plato{width:min(84vw,480px);height:600px;min-height:0}.plato img{transition:none}}
 .order-steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:0 0 36px;padding:0;border-block:1px solid var(--line)}
 .order-steps li{display:flex;align-items:center;gap:12px;min-height:67px;padding:13px 18px;color:var(--white);font-size:12px;font-weight:700;border-right:1px solid var(--line)}
