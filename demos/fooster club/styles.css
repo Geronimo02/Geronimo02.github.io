@@ -78,3 +78,8 @@
 @media (prefers-reduced-motion: reduce) {
   .motion-enabled [data-reveal] { opacity: 1 !important; transform: none !important; }
 }
+.arrow-icon{display:inline-block;width:1.15em;height:1.15em;flex:none;vertical-align:-.16em;background:currentColor;-webkit-mask:var(--arrow-mask) center/contain no-repeat;mask:var(--arrow-mask) center/contain no-repeat}
+.arrow-icon-up-right{--arrow-mask:url("assets/icons/arrow-up-right.svg")}
+.arrow-icon-right{--arrow-mask:url("assets/icons/arrow-right.svg")}
+.arrow-icon-down{--arrow-mask:url("assets/icons/arrow-down.svg")}
+.product-arrow.arrow-icon{width:22px;height:22px;font-size:inherit}
