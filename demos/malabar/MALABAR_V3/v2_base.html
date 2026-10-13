@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151715">
+  <meta name="description" content="Malabar Eventos, un espacio para celebraciones sociales y corporativas en Tandil. Contanos cómo imaginás tu evento.">
+  <title>MALABAR — Momentos extraordinarios · Tandil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  :root{--coal:#181b18;--dark:#101310;--cream:#f7f6f2;--soft:#ebebe6;--ink:#292c29;--muted:#6a6d68;--gold:#b69b74;--line:#deded8;--white:#fff;--font:'Manrope','Helvetica Neue',Arial,sans-serif}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--coal);background:var(--cream);font-family:var(--font);-webkit-font-smoothing:antialiased}
+  body.menu-open{overflow:hidden}
+  a{color:inherit;text-decoration:none}
+  button,input,textarea,select{font:inherit}
+  button{cursor:pointer}
+  img,video{display:block;max-width:100%}
+  ::selection{background:#b69b74;color:#151715}
+  .wrap{width:min(100% - 112px,1460px);margin:auto}
+  .eyebrow{font-weight:700;font-size:11px;line-height:1.5;letter-spacing:.22em;text-transform:uppercase}
+  .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:50px}
+  .section-head h2{margin:16px 0 0;font-size:clamp(43px,5.5vw,88px);line-height:1.07;letter-spacing:-.068em;font-weight:500}
+  .section-head p{max-width:380px;color:var(--muted);font-size:15px;line-height:1.8;margin:0}
+  .arr{font-family:Arial,sans-serif;font-size:24px;line-height:1}
+  .button{display:inline-flex;gap:26px;align-items:center;justify-content:space-between;min-height:55px;padding:0 23px;border-radius:2px;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;transition:background .25s,color .25s,transform .25s,border-color .25s;border:1px solid transparent}
+  .button:hover{transform:translateY(-2px)}
+  .button.light{background:var(--cream);color:var(--coal)}
+  .button.light:hover{background:#dfdbd2}
+  .button.dark{background:var(--coal);color:var(--cream)}
+  .button.dark:hover{background:#353a35}
+  .button.outline-light{color:white;border-color:rgba(255,255,255,.65);background:transparent}
+  .button.outline-light:hover{background:rgba(255,255,255,.15)}
+  .button.ghost{background:transparent;border-color:var(--line);color:var(--coal)}
+  .button.ghost:hover{border-color:var(--coal)}
+  .line-link{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:12px;display:inline-flex;align-items:center;gap:26px}
+  .nav{position:absolute;top:0;left:0;width:100%;z-index:80;height:98px;color:white;transition:background .3s,box-shadow .3s}
+  .nav.is-sticky{position:fixed;background:rgba(17,19,17,.95);backdrop-filter:blur(16px);height:78px;box-shadow:0 8px 30px #0002}
+  .nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:30px}
+  .brand{font-size:21px;font-weight:800;letter-spacing:-.055em;line-height:1;text-transform:uppercase;white-space:nowrap}
+  .brand small{display:block;font-weight:500;letter-spacing:.26em;font-size:7px;margin-top:8px}
+  .nav-links{display:flex;align-items:center;gap:31px}
+  .nav-links>a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.92;transition:opacity .2s}
+  .nav-links>a:hover{opacity:.6}
+  .nav-contact{font-size:10px;letter-spacing:.13em;border:1px solid rgba(255,255,255,.65);padding:15px 20px;font-weight:700;text-transform:uppercase;white-space:nowrap}
+  .mobile-toggle{display:none;border:0;color:#fff;background:transparent;font-size:28px;padding:6px}
+  .hero{position:relative;min-height:780px;height:100svh;max-height:1120px;display:flex;align-items:end;color:white;background:var(--dark);overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(10,13,12,.29) 0%,rgba(10,13,12,.1) 36%,rgba(10,13,12,.77) 100%),url('../assets/01-exterior-atardecer.webp');background-size:cover;background-position:center 47%;animation:heroscale 10s ease-out both}
+  .hero::after{content:'';pointer-events:none;position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,16,13,.18),transparent 70%)}
+  @keyframes heroscale{from{transform:scale(1.085)}to{transform:scale(1)}}
+  .hero-content{position:relative;z-index:1;padding-bottom:93px}
+  .hero-copy{display:flex;align-items:end;justify-content:space-between;gap:40px}
+  .hero .eyebrow{margin-bottom:28px;color:#f2eee9}
+  .hero h1{font-weight:500;max-width:1170px;font-size:clamp(53px,7.8vw,120px);line-height:.99;letter-spacing:-.073em;margin:0}
+  .hero-bottom{display:flex;align-items:center;gap:17px;margin-top:35px;flex-wrap:wrap}
+  .hero-subtext{max-width:222px;font-size:12px;line-height:1.9;color:rgba(255,255,255,.85);margin:0 0 6px}
+  .hero-scroll{position:absolute;right:55px;bottom:29px;z-index:1;display:flex;gap:10px;align-items:center;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+  .tiny{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold)}
+  .intro{padding:156px 0 150px}
+  .intro-grid{display:grid;grid-template-columns:42% 58%;gap:48px;align-items:start}
+  .intro .left{display:flex;gap:12px;align-items:center;padding-top:20px}
+  .intro .left::before{content:'';height:1px;background:var(--ink);width:42px}
+  .intro .statement{font-size:clamp(38px,5.2vw,80px);line-height:1.13;letter-spacing:-.058em;font-weight:500;margin:0 0 32px}
+  .intro .statement em{font-style:normal;color:#959891}
+  .intro .description{max-width:620px;line-height:2;color:#626761;font-size:14px;margin:0 0 36px}
+  .events{padding:65px 0 160px}
+  .events .section-head h2{max-width:800px}
+  .event-grid{display:grid;grid-template-columns:1fr 1fr;gap:23px}
+  .event-card{display:flex;align-items:end;position:relative;aspect-ratio:1.15;overflow:hidden;background:#262a26;color:#fff;padding:35px;isolation:isolate}
+  .event-card:nth-child(2),.event-card:nth-child(3){aspect-ratio:1.1}
+  .event-card::before{content:'';position:absolute;inset:0;z-index:-2;background-position:center;background-size:cover;transition:transform .65s cubic-bezier(.2,.7,.3,1)}
+  .event-card:nth-child(1)::before{background-image:url('../assets/06-ambientacion-lounge.webp')}
+  .event-card:nth-child(2)::before{background-image:url('../assets/03-recepcion-corporativa.webp')}
+  .event-card:nth-child(3)::before{background-image:url('../assets/04-barra-evento.webp')}
+  .event-card:nth-child(4)::before{background-image:url('../assets/02-exterior-panorama.webp')}
+  .event-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 39%,rgba(0,0,0,.76) 100%);z-index:-1}
+  .event-card:hover::before{transform:scale(1.06)}
+  .event-card-content{width:100%;display:flex;align-items:end;justify-content:space-between;gap:20px}
+  .event-card span{display:block;font-size:10px;letter-spacing:.19em;text-transform:uppercase;font-weight:700;margin-bottom:11px}
+  .event-card h3{font-size:clamp(23px,3vw,42px);line-height:1.1;letter-spacing:-.045em;font-weight:500;margin:0}
+  .event-card .circle-arrow{width:56px;height:56px;display:grid;place-items:center;border:1px solid #fff8;border-radius:50%;font-size:30px;flex:none;transition:background .25s,color .25s}
+  .event-card:hover .circle-arrow{background:#fff;color:#222}
+  .space{background:#eaeae4;padding:135px 0 150px}
+  .space .section-head{margin-bottom:68px}
+  .space-hero{height:680px;background:url('../assets/02-exterior-panorama.webp') center 48%/cover no-repeat;position:relative}
+  .space-hero::after{content:'EL ESPACIO · MALABAR';position:absolute;bottom:28px;left:34px;color:white;font-size:10px;font-weight:800;letter-spacing:.23em;text-shadow:0 1px 4px #0009}
+  .space-gallery{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;margin-top:22px}
+  .space-gallery img{width:100%;height:470px;object-fit:cover;object-position:center 56%}
+  .space-gallery img:last-child{object-position:center 40%}
+  .space-note{display:flex;justify-content:space-between;gap:30px;align-items:center;margin-top:35px}
+  .space-note p{max-width:680px;color:var(--muted);font-size:15px;line-height:1.8;margin:0}
+  .experience{padding:145px 0}
+  .experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:center}
+  .experience-photo{position:relative}
+  .experience-photo img{height:760px;object-fit:cover;width:100%}
+  .photo-label{position:absolute;left:24px;bottom:24px;background:#f7f6f2;padding:16px 21px;color:var(--ink);font-size:10px;letter-spacing:.16em;font-weight:800;text-transform:uppercase}
+  .experience h2{font-size:clamp(46px,5.2vw,80px);letter-spacing:-.068em;font-weight:500;line-height:1.09;margin:16px 0 36px}
+  .experience-intro{font-size:15px;line-height:1.9;color:var(--muted);margin:0 0 49px}
+  .service{border-top:1px solid #c8c8c1;padding:21px 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:14px;font-weight:600}
+  .service:last-child{border-bottom:1px solid #c8c8c1}
+  .service small{font-size:11px;color:var(--muted);font-weight:500}
+  .moment{height:min(68vw,780px);min-height:400px;background:linear-gradient(180deg,#0003,#0008),url('../assets/04-barra-evento.webp') center 48%/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
+  .moment h2{font-weight:500;font-size:clamp(44px,6vw,92px);line-height:1.04;letter-spacing:-.055em;max-width:1000px;margin:0 auto 35px}
+  .moment p{font-size:12px;letter-spacing:.23em;text-transform:uppercase;font-weight:800;margin:0 0 25px}
+  .gallery{padding:150px 0}
+  .gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .85fr;gap:20px}
+  .gallery-grid img{height:460px;width:100%;object-fit:cover}
+  .gallery-grid img:first-child{object-position:50% 25%}
+  .gallery-grid img:nth-child(2){object-position:50% 65%}
+  .gallery-grid img:nth-child(3){object-position:50% 40%}
+  .gallery-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:20px;color:var(--muted);font-size:12px;line-height:1.7}
+  .lead{background:#e5e6df;padding:148px 0 160px}
+  .lead-intro{text-align:center;max-width:870px;margin:0 auto 65px}
+  .lead-intro h2{font-size:clamp(43px,6vw,88px);line-height:1.06;letter-spacing:-.065em;font-weight:500;margin:17px 0 25px}
+  .lead-intro p{font-size:14px;color:var(--muted);line-height:1.85;margin:0}
+  .form-shell{width:min(100%,910px);background:#f9f8f5;margin:0 auto;padding:40px 54px 50px;box-shadow:0 30px 80px #1b241b12}
+  .form-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.17em;font-weight:700;text-transform:uppercase;color:#777b74}
+  .progress{margin:25px 0 46px;display:flex;gap:8px}
+  .progress span{height:3px;flex:1;background:#dddeda}
+  .progress span.active{background:#29312b}
+  .form-step[hidden],.conditional[hidden],.summary[hidden],.form-shell [hidden]{display:none!important}
+  .form-step h3{font-size:clamp(28px,3.5vw,46px);letter-spacing:-.05em;font-weight:500;margin:0 0 14px}
+  .form-step>p{font-size:13px;line-height:1.7;color:#757a73;margin:0 0 32px}
+  .radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .choice{display:flex;align-items:center;gap:13px;padding:20px 16px;border:1px solid #dbdcd6;cursor:pointer;min-height:76px;transition:border .2s,background .2s}
+  .choice:hover{border-color:#7c827a}
+  .choice:has(input:checked){background:#edf0e9;border-color:#272c28}
+  .choice input{accent-color:#1c221e;width:16px;height:16px;flex:none}
+  .choice strong{font-size:13px;font-weight:700}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:19px}
+  .field{display:flex;flex-direction:column;gap:10px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:11px;font-weight:700;letter-spacing:.05em}
+  .field input,.field select,.field textarea{border:1px solid #d9dad4;color:var(--coal);background:white;padding:15px 14px;border-radius:0;width:100%;font-size:13px;min-height:52px;outline-offset:2px}
+  .field textarea{min-height:125px;resize:vertical}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  .check{font-size:13px;line-height:1.5;display:flex;align-items:center;gap:10px;padding:15px;border:1px solid #d9dad4;background:white}
+  .check:has(input:checked){border-color:#303a33;background:#edf0e9}
+  .check input{accent-color:#222;width:17px;height:17px;flex:none}
+  .form-actions{display:flex;gap:15px;align-items:center;justify-content:space-between;margin-top:37px;border-top:1px solid #dddeda;padding-top:25px}
+  .form-actions .button:disabled{opacity:.35;cursor:not-allowed}
+  .error{color:#a33a29;font-size:12px;margin-top:12px;min-height:18px}
+  .summary{margin-top:30px;border:1px solid #d8dad2;padding:22px;background:#fff}
+  .summary pre{white-space:pre-wrap;word-wrap:break-word;font:12px/1.7 var(--font);color:var(--ink);margin:15px 0}
+  .summary .button{margin-right:10px;margin-top:10px}
+  .consent{font-size:12px;line-height:1.6;display:flex;gap:10px;margin-top:24px;color:#666}
+  .consent input{flex:none;width:17px;height:17px;accent-color:#1f241f;margin:1px 0 0}
+  .form-note{display:block;margin-top:16px;font-size:11px;line-height:1.75;color:#777}
+  .footer-cta{background:#171b18;color:white;padding:126px 0 92px}
+  .footer-cta-inner{display:flex;justify-content:space-between;align-items:end;gap:35px;padding-bottom:95px;border-bottom:1px solid #ffffff25}
+  .footer-cta h2{font-size:clamp(48px,7vw,110px);font-weight:500;line-height:1.02;letter-spacing:-.07em;margin:16px 0 0;max-width:1000px}
+  .footer-bottom{display:grid;grid-template-columns:2fr 1fr 1fr;gap:65px;margin-top:70px}
+  .footer-bottom p,.footer-bottom a{font-size:12px;color:#adb3ac;line-height:2}
+  .footer-bottom .eyebrow{color:white;margin-bottom:15px}
+  .footer-bottom .brand{color:white;font-size:25px}
+  .copyright{font-size:10px;color:#838c82;margin-top:75px;letter-spacing:.08em}
+  .mobile-fixed{display:none}
+  @media (max-width:1120px){.nav-links{gap:15px}.nav-links>a{font-size:9px}.hero-copy{align-items:start;flex-direction:column}.hero-subtext{max-width:390px}.experience-grid{gap:55px}.space-hero{height:550px}}
+  @media (max-width:850px){.wrap{width:min(100% - 44px,1460px)}.nav{height:76px}.nav.is-sticky{height:70px}.nav-links,.nav-contact{display:none}.mobile-toggle{display:block}.nav-links.open{display:flex;position:fixed;inset:70px 0 0;background:#141714;align-items:stretch;justify-content:flex-start;flex-direction:column;padding:32px;gap:30px;z-index:70}.nav-links.open>a{font-size:18px}.hero{min-height:730px;max-height:950px}.hero-content{padding-bottom:92px}.hero h1{font-size:clamp(55px,9vw,78px)}.hero-scroll{right:22px}.intro{padding:105px 0}.intro-grid{grid-template-columns:1fr;gap:35px}.intro .left{padding-top:0}.intro .statement{font-size:clamp(40px,6vw,60px)}.events{padding:30px 0 105px}.event-grid{gap:12px}.event-card{padding:20px;aspect-ratio:.78}.event-card:nth-child(2),.event-card:nth-child(3){aspect-ratio:.78}.event-card h3{font-size:clamp(20px,3.5vw,32px)}.event-card .circle-arrow{height:42px;width:42px;font-size:23px}.space{padding:95px 0}.space-hero{height:430px}.space-gallery img{height:340px}.experience{padding:100px 0}.experience-grid{grid-template-columns:1fr;gap:40px}.experience-photo img{height:520px}.experience-text{order:-1}.moment{height:500px}.gallery{padding:105px 0}.gallery-grid img{height:300px}.lead{padding:110px 0}.footer-bottom{grid-template-columns:1fr 1fr;gap:30px}.footer-bottom>div:first-child{grid-column:1/-1}.footer-cta-inner{flex-direction:column;align-items:start}}
+  @media (max-width:600px){.wrap{width:calc(100% - 32px)}.hero{min-height:710px;height:100svh;max-height:870px}.hero::before{background-position:55% 50%;background-image:linear-gradient(180deg,rgba(10,13,12,.37),rgba(10,13,12,.1) 32%,rgba(10,13,12,.88) 100%),url('../assets/01-exterior-atardecer.webp')}.hero .eyebrow{font-size:9px}.hero-content{padding-bottom:73px}.hero h1{font-size:clamp(49px,13vw,69px);letter-spacing:-.065em}.hero .button{width:100%}.hero-subtext{font-size:11px}.hero-scroll{display:none}.intro{padding:90px 0}.intro .statement{font-size:42px}.section-head{flex-direction:column;align-items:start;margin-bottom:30px}.section-head h2{font-size:47px}.events{padding-bottom:100px}.event-grid{grid-template-columns:1fr;gap:13px}.event-card,.event-card:nth-child(2),.event-card:nth-child(3){aspect-ratio:1.05;padding:24px}.event-card h3{font-size:32px}.space{padding:88px 0}.space-hero{height:300px}.space-gallery{gap:12px}.space-gallery img{height:250px}.space-note{flex-direction:column;align-items:start}.experience-photo img{height:520px}.moment{min-height:450px}.moment h2{font-size:48px}.gallery-grid{grid-template-columns:1fr 1fr;gap:10px}.gallery-grid img{height:270px}.gallery-grid img:last-child{grid-column:1/-1;height:350px}.lead{padding:95px 0 115px}.form-shell{padding:25px 20px 30px}.radio-grid,.fields,.checks{grid-template-columns:1fr}.form-top{font-size:9px}.form-step h3{font-size:34px}.form-actions{gap:10px}.form-actions .button{min-height:52px;padding:0 15px;gap:10px;font-size:10px}.footer-cta{padding:100px 0 100px}.footer-cta h2{font-size:61px}.footer-cta-inner{padding-bottom:65px}.footer-bottom{grid-template-columns:1fr}.footer-bottom>div:first-child{grid-column:auto}.mobile-fixed{position:fixed;display:none;bottom:0;left:0;right:0;background:#f7f6f2;z-index:49;padding:10px 16px;box-shadow:0 -8px 22px #0002}.mobile-fixed.visible{display:flex}.mobile-fixed .button{width:100%;justify-content:center;min-height:46px}.copyright{margin-top:48px}body{padding-bottom:66px}}
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <nav class="nav" id="navbar" aria-label="Navegación principal">
+    <div class="wrap">
+      <a class="brand" href="#inicio">MALABAR<small>EVENTOS · TANDIL</small></a>
+      <div class="nav-links" id="nav-links">
+        <a href="#concepto">Concepto</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#espacio">El espacio</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#galeria">Galería</a>
+      </div>
+      <a class="nav-contact" href="#organizar">Organizá tu evento&nbsp;&nbsp; ↗</a>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">☰</button>
+    </div>
+  </nav>
+  <main>
+    <section class="hero" id="inicio" aria-label="Malabar, eventos en Tandil">
+      <div class="hero-content wrap">
+        <p class="eyebrow">MALABAR · EXPERIENCIAS QUE PERDURAN</p>
+        <div class="hero-copy">
+          <h1>Momentos<br>extraordinarios.<br>Un lugar único.</h1>
+          <p class="hero-subtext">Eventos sociales y corporativos en un entorno único de Tandil.</p>
+        </div>
+        <div class="hero-bottom">
+          <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗</span></a>
+          <a href="#espacio" class="button outline-light">Conocé el espacio <span class="arr">↓</span></a>
+        </div>
+      </div>
+      <span class="hero-scroll">SCROLL PARA DESCUBRIR &nbsp; ↓</span>
+    </section>
+    <section class="intro" id="concepto">
+      <div class="wrap intro-grid">
+        <div class="left"><span class="eyebrow">01 / BIENVENIDOS A MALABAR</span></div>
+        <div>
+          <h2 class="statement">Un lugar que transforma <em>cada encuentro</em> en algo para recordar.</h2>
+          <p class="description">Entre arquitectura contemporánea y naturaleza, Malabar ofrece un escenario distinto para reunirse, celebrar y compartir. Un espacio con personalidad para que cada ocasión tenga su propia historia.</p>
+          <a href="#espacio" class="line-link">Descubrí Malabar <span class="arr">↗</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="events" id="eventos">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">02 / OCASIONES ESPECIALES</span><h2>Tu celebración.<br>A tu manera.</h2></div>
+          <p>Cada encuentro es distinto. Descubrí cómo convertir tu idea en una experiencia en Malabar.</p>
+        </div>
+        <div class="event-grid">
+          <a class="event-card" href="#organizar" data-event="Casamiento o civil"><div class="event-card-content"><div><span>01 · Momentos únicos</span><h3>Casamientos<br>y civiles</h3></div><div class="circle-arrow">↗</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Evento corporativo"><div class="event-card-content"><div><span>02 · Encuentros con propósito</span><h3>Eventos<br>corporativos</h3></div><div class="circle-arrow">↗</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Cumpleaños o celebración"><div class="event-card-content"><div><span>03 · Historias para brindar</span><h3>Cumpleaños<br>y celebraciones</h3></div><div class="circle-arrow">↗</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Evento especial"><div class="event-card-content"><div><span>04 · Ideas sin etiquetas</span><h3>Eventos<br>especiales</h3></div><div class="circle-arrow">↗</div></div></a>
+        </div>
+      </div>
+    </section>
+    <section class="space" id="espacio">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">03 / EL ESCENARIO</span><h2>Diseñado para<br>sentirse diferente.</h2></div>
+          <p>Espacios que invitan a quedarse, detalles que definen una atmósfera y un entorno que acompaña cada encuentro.</p>
+        </div>
+        <div class="space-hero" role="img" aria-label="Fachada y acceso principal de Malabar Eventos"></div>
+        <div class="space-gallery">
+          <img loading="lazy" src="../assets/06-ambientacion-lounge.webp" alt="Salón de Malabar con mobiliario y ambientación">
+          <img loading="lazy" src="../assets/01-exterior-atardecer.webp" alt="Fachada y entorno de Malabar al atardecer">
+        </div>
+        <div class="space-note"><p>La calidez de los materiales, la luz del entorno y un diseño cuidado crean el marco perfecto para disfrutar cada instante.</p><a href="#organizar" class="line-link">Consultar disponibilidad <span class="arr">↗</span></a></div>
+      </div>
+    </section>
+    <section class="experience" id="experiencia">
+      <div class="wrap experience-grid">
+        <div class="experience-photo"><img loading="lazy" src="../assets/05-gastronomia.webp" alt="Propuesta gastronómica servida durante un evento en Malabar"><span class="photo-label">LA EXPERIENCIA MALABAR</span></div>
+        <div class="experience-text"><span class="eyebrow">04 / CADA DETALLE IMPORTA</span><h2>Los momentos<br>se viven en<br>los detalles.</h2><p class="experience-intro">La música, el brindis, la mesa compartida y el ambiente. Contanos qué imaginás para tu evento y armemos una propuesta pensada para vos.</p><div class="service"><span>Gastronomía y recepción</span><small>A consultar ↗</small></div><div class="service"><span>Barra y bebidas</span><small>A consultar ↗</small></div><div class="service"><span>Ambientación y música</span><small>A consultar ↗</small></div><div class="service"><span>Montajes personalizados</span><small>A consultar ↗</small></div><p class="form-note">Los servicios mostrados son opciones a consultar, sujetas a la propuesta comercial de Malabar.</p></div>
+      </div>
+    </section>
+    <section class="moment"><div><p>EL LUGAR. EL MOMENTO. TU HISTORIA.</p><h2>Hay celebraciones que no se olvidan.</h2><a href="#organizar" class="button light">Hacé que suceda <span class="arr">↗</span></a></div></section>
+    <section class="gallery" id="galeria"><div class="wrap"><div class="section-head"><div><span class="eyebrow">05 / MOMENTOS REALES</span><h2>La experiencia,<br>en imágenes.</h2></div><p>Una mirada al ambiente, a los encuentros y a todos esos detalles que hacen especial una celebración.</p></div><div class="gallery-grid"><img loading="lazy" src="../assets/03-recepcion-corporativa.webp" alt="Personas conversando en una recepción de Malabar"><img loading="lazy" src="../assets/04-barra-evento.webp" alt="Barra con invitados y catering"><img loading="lazy" src="../assets/05-gastronomia.webp" alt="Mesa gastronómica preparada para un evento"></div><div class="gallery-caption"><span>Fotografías reales de Malabar Eventos</span><a class="line-link" href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Ver Instagram <span class="arr">↗</span></a></div></div></section>
+    <section class="lead" id="organizar"><div class="wrap"><div class="lead-intro"><span class="eyebrow">06 / EMPEZÁ A IMAGINARLO</span><h2>Tu próximo evento<br>empieza acá.</h2><p>Respondé unas preguntas y prepará una consulta personalizada para Malabar.<br> Sin compromisos ni reservas automáticas.</p></div>
+    <div class="form-shell" id="form-shell"><div class="form-top"><span>PLANIFICÁ CON NOSOTROS</span><span id="step-count">PASO 01 / 04</span></div><div class="progress" id="progress"><span class="active"></span><span></span><span></span><span></span></div>
+      <form id="event-form" novalidate>
+        <div class="form-step" data-step="0"><h3>¿Qué querés celebrar?</h3><p>Elegí la ocasión. Después vamos a ayudarte a darle forma.</p><div class="radio-grid">
+        <label class="choice"><input type="radio" name="tipo" value="Casamiento o civil"><strong>Casamiento o civil</strong></label>
+        <label class="choice"><input type="radio" name="tipo" value="Evento corporativo"><strong>Evento corporativo</strong></label>
+        <label class="choice"><input type="radio" name="tipo" value="Cumpleaños o celebración"><strong>Cumpleaños o celebración</strong></label>
+        <label class="choice"><input type="radio" name="tipo" value="Evento especial"><strong>Evento especial</strong></label>
+        </div><div id="corporativo-extra" class="field full conditional" hidden style="margin-top:20px"><label for="empresa">Empresa / organización (opcional)</label><input id="empresa" name="empresa" placeholder="Nombre de la empresa"></div></div>
+        <div class="form-step" data-step="1" hidden><h3>¿Cuándo lo imaginás?</h3><p>Una estimación alcanza. La disponibilidad se confirma al responderte.</p><div class="fields"><div class="field"><label for="fecha">Fecha tentativa</label><input type="date" name="fecha" id="fecha"></div><div class="field"><label for="invitados">Invitados aproximados</label><select name="invitados" id="invitados"><option value="">Elegí un rango</option><option>Hasta 30</option><option>31 a 60</option><option>61 a 100</option><option>Más de 100</option><option>A definir</option></select></div><div class="field full"><label class="consent"><input type="checkbox" name="sinFecha" id="sinFecha">Todavía no tengo una fecha definida</label></div><div class="field full"><label for="turno">Turno preferido</label><select name="turno" id="turno"><option value="A definir">A definir</option><option>Durante el día</option><option>Tarde</option><option>Noche</option></select></div></div></div>
+        <div class="form-step" data-step="2" hidden><h3>¿Cómo lo imaginás?</h3><p>Marcá lo que te interesa. Son preferencias para cotizar, no servicios incluidos.</p><div class="checks"><label class="check"><input type="checkbox" name="servicio" value="Gastronomía / recepción">Gastronomía / recepción</label><label class="check"><input type="checkbox" name="servicio" value="Barra y bebidas">Barra y bebidas</label><label class="check"><input type="checkbox" name="servicio" value="Ambientación">Ambientación</label><label class="check"><input type="checkbox" name="servicio" value="Música / DJ">Música / DJ</label><label class="check"><input type="checkbox" name="servicio" value="Sonido / proyección">Sonido / proyección</label><label class="check"><input type="checkbox" name="servicio" value="Montaje exterior">Montaje exterior</label><label class="check"><input type="checkbox" name="servicio" value="Necesito asesoramiento">Necesito asesoramiento</label></div></div>
+        <div class="form-step" data-step="3" hidden><h3>Un detalle más…</h3><p>Así Malabar puede entender tu idea y responderte con una propuesta.</p><div class="fields"><div class="field"><label for="nombre">Tu nombre *</label><input id="nombre" name="nombre" autocomplete="name" placeholder="Nombre y apellido" required></div><div class="field"><label for="telefono">Tu teléfono *</label><input id="telefono" type="tel" name="telefono" autocomplete="tel" placeholder="+54 9 ..." required></div><div class="field full"><label for="detalles">Contanos algo más (opcional)</label><textarea id="detalles" name="detalles" maxlength="1000" placeholder="Qué tenés en mente, horarios, ideas especiales…"></textarea></div></div><label class="consent"><input type="checkbox" id="consentimiento" name="consentimiento" required> Acepto que Malabar utilice estos datos para responder a mi solicitud de presupuesto.</label></div>
+        <div class="form-actions"><button class="button ghost" type="button" id="prev" disabled>← Anterior</button><button class="button dark" type="button" id="next">Continuar <span class="arr">↗</span></button></div><div id="error" class="error" role="alert" aria-live="polite"></div>
+      </form>
+      <div class="summary" id="summary" hidden><strong style="font-size:15px">Tu consulta está lista</strong><p style="font-size:12px;color:#667">Revisá el mensaje. Al contactar por WhatsApp, el envío se confirma dentro de la aplicación.</p><pre id="summary-text"></pre><button class="button dark" type="button" id="copy">Copiar consulta <span>↗</span></button><a id="wa-link" class="button ghost" href="#" target="_blank" rel="noopener" hidden>Abrir WhatsApp <span>↗</span></a><p class="form-note" id="wa-help">Vista previa: falta configurar el WhatsApp Business real de Malabar. Mientras tanto, podés copiar el mensaje.</p></div>
+    </div></div></section>
+    <section class="footer-cta"><div class="wrap"><div class="footer-cta-inner"><div><p class="eyebrow">TU EXPERIENCIA COMIENZA ACÁ</p><h2>Lo extraordinario<br>se celebra.</h2></div><a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗</span></a></div><div class="footer-bottom"><div><div class="brand">MALABAR<small>EVENTOS · TANDIL</small></div><p>El mejor escenario para tus momentos importantes.</p></div><div><div class="eyebrow">Explorar</div><a href="#eventos">Eventos</a><br><a href="#espacio">El espacio</a><br><a href="#experiencia">Experiencia</a><br><a href="#organizar">Organizá tu evento</a></div><div><div class="eyebrow">Encontranos</div><a href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><br><a href="https://www.google.com/maps/place/Malabar+Eventos/@-37.3531415,-59.1317049,17z/" target="_blank" rel="noopener noreferrer">Ubicación en Maps ↗</a><p>Tandil, Buenos Aires</p></div></div><p class="copyright">© MALABAR EVENTOS · PROTOTIPO DE DIRECCIÓN DE ARTE · DATOS COMERCIALES POR VALIDAR</p></div></section>
+  </main>
+  <div class="mobile-fixed"><a href="#organizar" class="button dark">Organizá tu evento &nbsp;↗</a></div>
+  <script>
+  // PROTOTIPO LOCAL. Reemplazar solo cuando Malabar confirme su numero real en E.164 (solo digitos).
+  const WHATSAPP_BUSINESS_E164 = '';
+  const nav = document.getElementById('navbar');
+  function adjustNav(){ nav.classList.toggle('is-sticky', window.scrollY > 38); document.querySelector('.mobile-fixed').classList.toggle('visible', window.scrollY > window.innerHeight * .7); }
+  window.addEventListener('scroll',adjustNav,{passive:true});adjustNav();
+  const mobileBtn = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('nav-links');
+  mobileBtn.addEventListener('click',()=>{const open=menu.classList.toggle('open');mobileBtn.setAttribute('aria-expanded',open?'true':'false');mobileBtn.textContent=open?'✕':'☰';document.body.classList.toggle('menu-open',open)});
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');mobileBtn.setAttribute('aria-expanded','false');mobileBtn.textContent='☰';document.body.classList.remove('menu-open')}));
+  const form=document.getElementById('event-form');
+  const steps=[...document.querySelectorAll('.form-step')];
+  const progress=[...document.querySelectorAll('#progress span')];
+  const stepCount=document.getElementById('step-count');
+  const prev=document.getElementById('prev');
+  const next=document.getElementById('next');
+  const error=document.getElementById('error');
+  const corporativoExtra=document.getElementById('corporativo-extra');
+  let step=0;
+  function setStep(s){step=s;steps.forEach((el,i)=>el.hidden=i!==s);progress.forEach((el,i)=>el.classList.toggle('active',i<=s));stepCount.textContent=`PASO 0${s+1} / 04`;prev.disabled=s===0;next.innerHTML=s===3?'Preparar mi consulta <span class="arr">↗</span>':'Continuar <span class="arr">↗</span>';error.textContent='';document.getElementById('summary').hidden=true;}
+  form.querySelectorAll('input[name=tipo]').forEach(e=>e.addEventListener('change',()=>{corporativoExtra.hidden=form.elements['tipo'].value!=='Evento corporativo';}));
+  function validate(){if(step===0&&!form.querySelector('input[name=tipo]:checked')) return 'Elegí qué tipo de evento querés organizar.'; if(step===1){if(!form.elements.sinFecha.checked&&!form.elements.fecha.value)return 'Elegí una fecha tentativa o marcá que todavía no la tenés.';if(!form.elements.invitados.value)return 'Seleccioná un rango de invitados.';}if(step===3){if(!form.elements.nombre.value.trim())return 'Completá tu nombre.';if(form.elements.telefono.value.replace(/\D/g,'').length<8)return 'Ingresá un número de teléfono válido.';if(!form.elements.consentimiento.checked)return 'Necesitamos tu autorización para preparar la consulta.';}return '';}
+  prev.addEventListener('click',()=>setStep(Math.max(step-1,0)));
+  next.addEventListener('click',()=>{const msg=validate();if(msg){error.textContent=msg;return;} if(step<3){setStep(step+1);}else {const values=new FormData(form);const lines=[`Hola, equipo de MALABAR 👋`,`Quisiera solicitar una propuesta para organizar un evento.`, ``, `🎉 TIPO DE EVENTO`,values.get('tipo'),...(values.get('empresa')?[`Empresa: ${values.get('empresa')}`]:[]),``,`📅 FECHA Y ASISTENCIA`,`Fecha: ${values.get('sinFecha')?'A definir':values.get('fecha')}`,`Invitados: ${values.get('invitados')}`,`Turno: ${values.get('turno')||'A definir'}`,``,`✨ SERVICIOS DE INTERÉS`, ...((values.getAll('servicio').length?values.getAll('servicio'):['A definir']).map(v=>'• '+v)),``,`📝 DETALLES ADICIONALES`,values.get('detalles')||'Sin detalles adicionales',``,`👤 CONTACTO`,`Nombre: ${values.get('nombre')}`,`Teléfono: ${values.get('telefono')}`,``,`¿Me podrían indicar disponibilidad y presupuesto? Gracias.`];const message=lines.join('\n');document.getElementById('summary-text').textContent=message;document.getElementById('summary').hidden=false;document.getElementById('summary').scrollIntoView({block:'nearest',behavior:'smooth'});const number=WHATSAPP_BUSINESS_E164.replace(/\D/g,'');const waLink=document.getElementById('wa-link');if(/^\d{10,15}$/.test(number)){waLink.href=`https://wa.me/${number}?text=${encodeURIComponent(message)}`;waLink.hidden=false;document.getElementById('wa-help').textContent='El mensaje se abrirá prellenado en WhatsApp. Su envío requiere confirmación del visitante.';}else{waLink.hidden=true;document.getElementById('wa-help').textContent='Vista previa: falta configurar el WhatsApp Business real de Malabar. Mientras tanto, podés copiar el mensaje.';}}});
+  document.getElementById('copy').addEventListener('click',async()=>{const text=document.getElementById('summary-text').textContent;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}else{const el=document.createElement('textarea');el.value=text;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove();}document.getElementById('copy').textContent='¡Consulta copiada! ✓';}catch(e){window.prompt('Copiá tu consulta:',text)}});
+  document.querySelectorAll('[data-event]').forEach(a=>a.addEventListener('click',()=>{const input=[...form.querySelectorAll('input[name=tipo]')].find(x=>x.value===a.dataset.event);if(input){input.checked=true;input.dispatchEvent(new Event('change'));setStep(0)}}));
+  document.getElementById('sinFecha').addEventListener('change',e=>{document.getElementById('fecha').disabled=e.target.checked;if(e.target.checked)document.getElementById('fecha').value=''});
+  setStep(0);
+  </script>
+</body>
+</html>

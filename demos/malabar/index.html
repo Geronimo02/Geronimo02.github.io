@@ -1,0 +1,1122 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151715">
+  <title>MALABAR — Eventos sociales y corporativos en Tandil</title>
+  <meta name="description" content="Malabar Eventos, un espacio para celebraciones sociales y corporativas en Tandil. Momentos extraordinarios en un entorno arquitectónico único.">
+  <meta name="keywords" content="Malabar Eventos, Tandil, salón de eventos, casamientos, eventos corporativos, cumpleaños, fiestas, Dique de Tandil">
+  <meta name="author" content="Malabar Eventos">
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MALABAR — Momentos extraordinarios. Un lugar único.">
+  <meta property="og:description" content="Espacio contemporáneo para eventos sociales y corporativos en el paisaje de Tandil.">
+  <meta property="og:image" content="assets/01-exterior-atardecer.webp">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Favicon vectorial M distintivo -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23181b18'/%3E%3Cpath d='M14 48V16h9l9 17 9-17h9v32h-7V27.5L34.5 43.8h-5L21 27.5V48z' fill='%23b69b74'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+  :root{
+    --coal:#181b18;
+    --dark:#101310;
+    --cream:#f7f6f2;
+    --soft:#ebebe6;
+    --ink:#292c29;
+    --muted:#6a6d68;
+    --gold:#b69b74;
+    --gold-light:#d4bc97;
+    --line:#deded8;
+    --white:#fff;
+    --font:'Manrope','Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--coal);background:var(--cream);font-family:var(--font);-webkit-font-smoothing:antialiased}
+  body.menu-open{overflow:hidden}
+  a{color:inherit;text-decoration:none}
+  button,input,textarea,select{font:inherit}
+  button{cursor:pointer}
+  img,video{display:block;max-width:100%}
+  ::selection{background:#b69b74;color:#151715}
+  .wrap{width:min(100% - 112px,1460px);margin:auto}
+  .eyebrow{font-weight:700;font-size:11px;line-height:1.5;letter-spacing:.22em;text-transform:uppercase}
+  .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:50px}
+  .section-head h2{margin:16px 0 0;font-size:clamp(43px,5.5vw,88px);line-height:1.07;letter-spacing:-.068em;font-weight:500}
+  .section-head p{max-width:380px;color:var(--muted);font-size:15px;line-height:1.8;margin:0}
+  .arr{font-family:Arial,sans-serif;font-size:24px;line-height:1;display:inline-block;transition:transform .25s ease}
+  .button{display:inline-flex;gap:20px;align-items:center;justify-content:space-between;min-height:55px;padding:0 24px;border-radius:2px;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;transition:background .25s,color .25s,transform .25s,border-color .25s;border:1px solid transparent}
+  .button:hover{transform:translateY(-2px)}
+  .button:hover .arr{transform:translate(3px,-3px)}
+  .button.light{background:var(--cream);color:var(--coal)}
+  .button.light:hover{background:#dfdbd2}
+  .button.dark{background:var(--coal);color:var(--cream)}
+  .button.dark:hover{background:#2c332c}
+  .button.gold{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+  .button.gold:hover{background:var(--gold-light)}
+  .button.outline-light{color:white;border-color:rgba(255,255,255,.65);background:transparent}
+  .button.outline-light:hover{background:rgba(255,255,255,.15)}
+  .button.ghost{background:transparent;border-color:var(--line);color:var(--coal)}
+  .button.ghost:hover{border-color:var(--coal)}
+  .line-link{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:12px;display:inline-flex;align-items:center;gap:20px}
+  .line-link:hover .arr{transform:translate(3px,-3px)}
+  .nav{position:absolute;top:0;left:0;width:100%;z-index:80;height:98px;color:white;transition:background .3s,box-shadow .3s,height .3s}
+  .nav.is-sticky{position:fixed;background:rgba(17,19,17,.95);backdrop-filter:blur(16px);height:78px;box-shadow:0 8px 30px #0003}
+  .nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:30px}
+  .brand{font-size:21px;font-weight:800;letter-spacing:-.055em;line-height:1;text-transform:uppercase;white-space:nowrap}
+  .brand small{display:block;font-weight:500;letter-spacing:.26em;font-size:7px;margin-top:8px;color:rgba(255,255,255,.75)}
+  .nav-links{display:flex;align-items:center;gap:31px}
+  .nav-links>a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.92;transition:opacity .2s}
+  .nav-links>a:hover{opacity:.6}
+  .nav-actions{display:flex;align-items:center;gap:14px}
+  .nav-contact{font-size:10px;letter-spacing:.13em;border:1px solid rgba(255,255,255,.65);padding:14px 20px;font-weight:700;text-transform:uppercase;white-space:nowrap;transition:background .2s,border-color .2s}
+  .nav-contact:hover{background:rgba(255,255,255,.15);border-color:#fff}
+  .mobile-toggle{display:none;border:0;color:#fff;background:transparent;font-size:28px;padding:6px}
+  .hero{position:relative;min-height:780px;height:100svh;max-height:1120px;display:flex;align-items:end;color:white;background:var(--dark);overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(180deg,rgba(10,13,12,.29) 0%,rgba(10,13,12,.1) 36%,rgba(10,13,12,.77) 100%),url('assets/01-exterior-atardecer.webp');background-size:cover;background-position:center 47%;animation:heroscale 10s ease-out both}
+  .hero::after{content:'';pointer-events:none;position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,16,13,.18),transparent 70%)}
+  @keyframes heroscale{from{transform:scale(1.085)}to{transform:scale(1)}}
+  .hero-content{position:relative;z-index:1;padding-bottom:93px}
+  .hero-copy{display:flex;align-items:end;justify-content:space-between;gap:40px}
+  .hero .eyebrow{margin-bottom:28px;color:#f2eee9}
+  .hero h1{font-weight:500;max-width:1170px;font-size:clamp(53px,7.8vw,120px);line-height:.99;letter-spacing:-.073em;margin:0}
+  .hero-bottom{display:flex;align-items:center;gap:17px;margin-top:35px;flex-wrap:wrap}
+  .hero-subtext{max-width:240px;font-size:12px;line-height:1.9;color:rgba(255,255,255,.85);margin:0 0 6px}
+  .hero-scroll{position:absolute;right:55px;bottom:29px;z-index:1;display:flex;gap:10px;align-items:center;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+  .tiny{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--gold)}
+  .intro{padding:156px 0 150px}
+  .intro-grid{display:grid;grid-template-columns:42% 58%;gap:48px;align-items:start}
+  .intro .left{display:flex;gap:12px;align-items:center;padding-top:20px}
+  .intro .left::before{content:'';height:1px;background:var(--ink);width:42px}
+  .intro .statement{font-size:clamp(38px,5.2vw,80px);line-height:1.13;letter-spacing:-.058em;font-weight:500;margin:0 0 32px}
+  .intro .statement em{font-style:normal;color:#959891}
+  .intro .description{max-width:620px;line-height:2;color:#626761;font-size:14px;margin:0 0 36px}
+  .events{padding:65px 0 160px}
+  .events .section-head h2{max-width:800px}
+  .event-grid{display:grid;grid-template-columns:1fr 1fr;gap:23px}
+  .event-card{display:flex;align-items:end;position:relative;aspect-ratio:1.15;overflow:hidden;background:#262a26;color:#fff;padding:35px;isolation:isolate}
+  .event-card:nth-child(2),.event-card:nth-child(3){aspect-ratio:1.1}
+  .event-card::before{content:'';position:absolute;inset:0;z-index:-2;background-position:center;background-size:cover;transition:transform .65s cubic-bezier(.2,.7,.3,1)}
+  .event-card:nth-child(1)::before{background-image:url('assets/06-ambientacion-lounge.webp')}
+  .event-card:nth-child(2)::before{background-image:url('assets/03-recepcion-corporativa.webp')}
+  .event-card:nth-child(3)::before{background-image:url('assets/04-barra-evento.webp')}
+  .event-card:nth-child(4)::before{background-image:url('assets/02-exterior-panorama.webp')}
+  .event-card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 39%,rgba(0,0,0,.76) 100%);z-index:-1}
+  .event-card:hover::before{transform:scale(1.06)}
+  .event-card-content{width:100%;display:flex;align-items:end;justify-content:space-between;gap:20px}
+  .event-card span{display:block;font-size:10px;letter-spacing:.19em;text-transform:uppercase;font-weight:700;margin-bottom:11px}
+  .event-card h3{font-size:clamp(23px,3vw,42px);line-height:1.1;letter-spacing:-.045em;font-weight:500;margin:0}
+  .event-card .circle-arrow{width:56px;height:56px;display:grid;place-items:center;border:1px solid #fff8;border-radius:50%;font-size:30px;flex:none;transition:background .25s,color .25s}
+  .event-card:hover .circle-arrow{background:#fff;color:#222}
+  .space{background:#eaeae4;padding:135px 0 150px}
+  .space .section-head{margin-bottom:68px}
+  .space-hero{height:680px;background:url('assets/02-exterior-panorama.webp') center 48%/cover no-repeat;position:relative}
+  .space-hero::after{content:'EL ESPACIO · MALABAR';position:absolute;bottom:28px;left:34px;color:white;font-size:10px;font-weight:800;letter-spacing:.23em;text-shadow:0 1px 4px #0009}
+  .space-gallery{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;margin-top:22px}
+  .space-gallery img{width:100%;height:470px;object-fit:cover;object-position:center 56%}
+  .space-gallery img:last-child{object-position:center 40%}
+  .space-note{display:flex;justify-content:space-between;gap:30px;align-items:center;margin-top:35px}
+  .space-note p{max-width:680px;color:var(--muted);font-size:15px;line-height:1.8;margin:0}
+  .experience{padding:145px 0}
+  .experience-grid{display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:center}
+  .experience-photo{position:relative}
+  .experience-photo img{height:760px;object-fit:cover;width:100%}
+  .photo-label{position:absolute;left:24px;bottom:24px;background:#f7f6f2;padding:16px 21px;color:var(--ink);font-size:10px;letter-spacing:.16em;font-weight:800;text-transform:uppercase}
+  .experience h2{font-size:clamp(46px,5.2vw,80px);letter-spacing:-.068em;font-weight:500;line-height:1.09;margin:16px 0 36px}
+  .experience-intro{font-size:15px;line-height:1.9;color:var(--muted);margin:0 0 49px}
+  .service{border-top:1px solid #c8c8c1;padding:21px 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:14px;font-weight:600}
+  .service:last-child{border-bottom:1px solid #c8c8c1}
+  .service small{font-size:11px;color:var(--muted);font-weight:500}
+  .moment{height:min(68vw,780px);min-height:400px;background:linear-gradient(180deg,#0003,#0008),url('assets/04-barra-evento.webp') center 48%/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
+  .moment h2{font-weight:500;font-size:clamp(44px,6vw,92px);line-height:1.04;letter-spacing:-.055em;max-width:1000px;margin:0 auto 35px}
+  .moment p{font-size:12px;letter-spacing:.23em;text-transform:uppercase;font-weight:800;margin:0 0 25px}
+  .gallery{padding:150px 0}
+  .gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .85fr;gap:20px}
+  .gallery-grid img{height:460px;width:100%;object-fit:cover}
+  .gallery-grid img:first-child{object-position:50% 25%}
+  .gallery-grid img:nth-child(2){object-position:50% 65%}
+  .gallery-grid img:nth-child(3){object-position:50% 40%}
+  .gallery-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:20px;color:var(--muted);font-size:12px;line-height:1.7}
+  .lead{background:#e5e6df;padding:148px 0 160px}
+  .lead-intro{text-align:center;max-width:870px;margin:0 auto 65px}
+  .lead-intro h2{font-size:clamp(43px,6vw,88px);line-height:1.06;letter-spacing:-.065em;font-weight:500;margin:17px 0 25px}
+  .lead-intro p{font-size:14px;color:var(--muted);line-height:1.85;margin:0}
+  .form-shell{width:min(100%,910px);background:#f9f8f5;margin:0 auto;padding:40px 54px 50px;box-shadow:0 30px 80px #1b241b12}
+  .form-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.17em;font-weight:700;text-transform:uppercase;color:#777b74}
+  .progress{margin:25px 0 46px;display:flex;gap:8px}
+  .progress span{height:3px;flex:1;background:#dddeda}
+  .progress span.active{background:#29312b}
+  .form-step[hidden],.conditional[hidden],.summary[hidden],.form-shell [hidden]{display:none!important}
+  .form-step h3{font-size:clamp(28px,3.5vw,46px);letter-spacing:-.05em;font-weight:500;margin:0 0 14px}
+  .form-step>p{font-size:13px;line-height:1.7;color:#757a73;margin:0 0 32px}
+  .radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .choice{display:flex;align-items:center;gap:13px;padding:20px 16px;border:1px solid #dbdcd6;cursor:pointer;min-height:76px;transition:border .2s,background .2s}
+  .choice:hover{border-color:#7c827a}
+  .choice:has(input:checked){background:#edf0e9;border-color:#272c28}
+  .choice input{accent-color:#1c221e;width:16px;height:16px;flex:none}
+  .choice strong{font-size:13px;font-weight:700}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:19px}
+  .field{display:flex;flex-direction:column;gap:10px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:11px;font-weight:700;letter-spacing:.05em}
+  .field input,.field select,.field textarea{border:1px solid #d9dad4;color:var(--coal);background:white;padding:15px 14px;border-radius:0;width:100%;font-size:13px;min-height:52px;outline-offset:2px}
+  .field textarea{min-height:125px;resize:vertical}
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  .check{font-size:13px;line-height:1.5;display:flex;align-items:center;gap:10px;padding:15px;border:1px solid #d9dad4;background:white}
+  .check:has(input:checked){border-color:#303a33;background:#edf0e9}
+  .check input{accent-color:#222;width:17px;height:17px;flex:none}
+  .form-actions{display:flex;gap:15px;align-items:center;justify-content:space-between;margin-top:37px;border-top:1px solid #dddeda;padding-top:25px}
+  .form-actions .button:disabled{opacity:.35;cursor:not-allowed}
+  .error{color:#a33a29;font-size:12px;margin-top:12px;min-height:18px}
+  .summary{margin-top:30px;border:1px solid #d8dad2;padding:26px;background:#fff;border-radius:2px}
+  .summary pre{white-space:pre-wrap;word-wrap:break-word;font:12px/1.7 var(--font);color:var(--ink);margin:15px 0;background:#f8f7f4;padding:18px;border-left:3px solid var(--gold)}
+  .summary-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .consent{font-size:12px;line-height:1.6;display:flex;gap:10px;margin-top:24px;color:#666}
+  .consent input{flex:none;width:17px;height:17px;accent-color:#1f241f;margin:1px 0 0}
+  .form-note{display:block;margin-top:16px;font-size:11px;line-height:1.75;color:#777}
+  .footer-cta{background:#171b18;color:white;padding:126px 0 92px}
+  .footer-cta-inner{display:flex;justify-content:space-between;align-items:end;gap:35px;padding-bottom:95px;border-bottom:1px solid #ffffff25}
+  .footer-cta h2{font-size:clamp(48px,7vw,110px);font-weight:500;line-height:1.02;letter-spacing:-.07em;margin:16px 0 0;max-width:1000px}
+  .footer-bottom{display:grid;grid-template-columns:2fr 1fr 1fr;gap:65px;margin-top:70px}
+  .footer-bottom p,.footer-bottom a{font-size:12px;color:#adb3ac;line-height:2}
+  .footer-bottom a:hover{color:#fff}
+  .footer-bottom .eyebrow{color:white;margin-bottom:15px}
+  .footer-bottom .brand{color:white;font-size:25px}
+  .copyright{font-size:10px;color:#838c82;margin-top:75px;letter-spacing:.08em}
+  .mobile-fixed{display:none}
+
+  @media (max-width:1120px){
+    .nav-links{gap:15px}
+    .nav-links>a{font-size:9px}
+    .hero-copy{align-items:start;flex-direction:column}
+    .hero-subtext{max-width:390px}
+    .experience-grid{gap:55px}
+    .space-hero{height:550px}
+  }
+  @media (max-width:850px){
+    .wrap{width:min(100% - 44px,1460px)}
+    .nav{height:76px}
+    .nav.is-sticky{height:70px}
+    .nav-links,.nav-contact{display:none}
+    .mobile-toggle{display:block}
+    .nav-links.open{display:flex;position:fixed;inset:70px 0 0;background:#141714;align-items:stretch;justify-content:flex-start;flex-direction:column;padding:32px;gap:24px;z-index:70}
+    .nav-links.open>a{font-size:16px;letter-spacing:.18em}
+    .hero{min-height:730px;max-height:950px}
+    .hero-content{padding-bottom:92px}
+    .hero h1{font-size:clamp(55px,9vw,78px)}
+    .hero-scroll{right:22px}
+    .intro{padding:105px 0}
+    .intro-grid{grid-template-columns:1fr;gap:35px}
+    .intro .left{padding-top:0}
+    .intro .statement{font-size:clamp(40px,6vw,60px)}
+    .events{padding:30px 0 105px}
+    .event-grid{gap:12px}
+    .event-card{padding:20px;aspect-ratio:.78}
+    .event-card:nth-child(2),.event-card:nth-child(3){aspect-ratio:.78}
+    .event-card h3{font-size:clamp(20px,3.5vw,32px)}
+    .event-card .circle-arrow{height:42px;width:42px;font-size:23px}
+    .space{padding:95px 0}
+    .space-hero{height:430px}
+    .space-gallery img{height:340px}
+    .experience{padding:100px 0}
+    .experience-grid{grid-template-columns:1fr;gap:40px}
+    .experience-photo img{height:520px}
+    .experience-text{order:-1}
+    .moment{height:500px}
+    .gallery{padding:105px 0}
+    .gallery-grid img{height:300px}
+    .lead{padding:110px 0}
+    .footer-bottom{grid-template-columns:1fr 1fr;gap:30px}
+    .footer-bottom>div:first-child{grid-column:1/-1}
+    .footer-cta-inner{flex-direction:column;align-items:start}
+  }
+  @media (max-width:600px){
+    .wrap{width:calc(100% - 32px)}
+    .hero{min-height:710px;height:100svh;max-height:870px}
+    .hero::before{background-position:55% 50%;background-image:linear-gradient(180deg,rgba(10,13,12,.37),rgba(10,13,12,.1) 32%,rgba(10,13,12,.88) 100%),url('assets/01-exterior-atardecer.webp')}
+    .hero .eyebrow{font-size:9px}
+    .hero-content{padding-bottom:73px}
+    .hero h1{font-size:clamp(49px,13vw,69px);letter-spacing:-.065em}
+    .hero .button{width:100%}
+    .hero-subtext{font-size:11px}
+    .hero-scroll{display:none}
+    .intro{padding:90px 0}
+    .intro .statement{font-size:42px}
+    .section-head{flex-direction:column;align-items:start;margin-bottom:30px}
+    .section-head h2{font-size:47px}
+    .events{padding-bottom:100px}
+    .event-grid{grid-template-columns:1fr;gap:13px}
+    .event-card,.event-card:nth-child(2),.event-card:nth-child(3){aspect-ratio:1.05;padding:24px}
+    .event-card h3{font-size:32px}
+    .space{padding:88px 0}
+    .space-hero{height:300px}
+    .space-gallery{gap:12px}
+    .space-gallery img{height:250px}
+    .space-note{flex-direction:column;align-items:start}
+    .experience-photo img{height:520px}
+    .moment{min-height:450px}
+    .moment h2{font-size:48px}
+    .gallery-grid{grid-template-columns:1fr 1fr;gap:10px}
+    .gallery-grid img{height:270px}
+    .gallery-grid img:last-child{grid-column:1/-1;height:350px}
+    .lead{padding:95px 0 115px}
+    .form-shell{padding:25px 20px 30px}
+    .radio-grid,.fields,.checks{grid-template-columns:1fr}
+    .form-top{font-size:9px}
+    .form-step h3{font-size:34px}
+    .form-actions{gap:10px}
+    .form-actions .button{min-height:52px;padding:0 15px;gap:10px;font-size:10px}
+    .footer-cta{padding:100px 0 100px}
+    .footer-cta h2{font-size:61px}
+    .footer-cta-inner{padding-bottom:65px}
+    .footer-bottom{grid-template-columns:1fr}
+    .footer-bottom>div:first-child{grid-column:auto}
+    .mobile-fixed{position:fixed;display:none;bottom:0;left:0;right:0;background:#f7f6f2;z-index:49;padding:10px 16px;box-shadow:0 -8px 22px #0002}
+    .mobile-fixed.visible{display:flex}
+    .mobile-fixed .button{width:100%;justify-content:center;min-height:46px}
+    .copyright{margin-top:48px}
+    body{padding-bottom:66px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+  }
+
+  /* SISTEMA DE MOTION Y SCROLL EDITORIAL v3 */
+  html { scroll-padding-top: 88px; }
+  body { overflow-x: clip; }
+  section[id] { scroll-margin-top: 88px; }
+  .site-progress { position:fixed; top:0; left:0; height:3px; width:100%; z-index:120; pointer-events:none; }
+  .site-progress-fill { display:block; height:100%; width:100%; background:var(--gold); transform:scaleX(0); transform-origin:left center; will-change:transform; }
+
+  /* Entrada cinemática con marco expansivo */
+  .hero-stage { position:relative; height:177svh; background:var(--dark); isolation:isolate; }
+  .hero-stage .hero { position:sticky; top:0; left:0; height:100svh; max-height:none; min-height:650px; z-index:1; }
+  .hero-stage .hero::before { display:none; }
+  .hero-frame { position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,13,12,.30),rgba(10,13,12,.08) 36%,rgba(10,13,12,.79) 100%),url('assets/01-exterior-atardecer.webp') center 47%/cover no-repeat; transform-origin:center center; border-radius:0; will-change:transform,border-radius; }
+  .hero-stage .hero-content { will-change:transform,opacity; }
+  .hero-stage .hero h1 { text-wrap:balance; }
+  .hero-stage .hero-scroll { animation:scroll-nudge 2.1s ease-in-out infinite; }
+  @keyframes scroll-nudge { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
+
+  /* Revelado suave y contraste progresivo en textos */
+  .motion-on .motion-reveal { opacity:0; transform:translate3d(0,34px,0); transition:opacity .92s cubic-bezier(.2,.75,.25,1), transform .92s cubic-bezier(.2,.75,.25,1); }
+  .motion-on .motion-reveal.is-visible { opacity:1; transform:none; }
+  .motion-word { display:inline-block; opacity:1; will-change:opacity,transform; }
+  .motion-on .motion-word { opacity:.23; }
+  .intro .statement { text-wrap:balance; }
+
+  /* Escenario interactivo para ocasiones especiales */
+  .events { min-height:242svh; padding:120px 0 86svh; position:relative; }
+  .events .section-head { margin-bottom:48px; }
+  .event-grid { display:none; }
+  .event-story { position:sticky; top:14svh; height:73svh; max-height:820px; display:grid; grid-template-columns:43% 57%; background:var(--cream); min-width:0; }
+  .event-story-choices { display:flex; flex-direction:column; justify-content:center; padding-right:8.5%; min-width:0; }
+  .event-story-overline { font-size:10px; letter-spacing:.20em; text-transform:uppercase; font-weight:800; color:#858a83; margin-bottom:20px; }
+  .story-choice { display:flex; align-items:center; gap:25px; border-top:1px solid #ced0cb; padding:20px 6px; color:#959891; text-decoration:none; transition:color .45s,padding-left .45s; }
+  .story-choice:last-of-type { border-bottom:1px solid #ced0cb; }
+  .story-choice small { font-size:10px; font-weight:800; letter-spacing:.13em; align-self:center; }
+  .story-choice strong { font-weight:500; letter-spacing:-.048em; font-size:clamp(23px,2.6vw,42px); line-height:1.18; }
+  .story-choice .story-cta { margin-left:auto; font-size:21px; transform:rotate(-45deg); opacity:0; transition:transform .35s,opacity .35s; }
+  .story-choice.is-active,.story-choice:hover,.story-choice:focus-visible { color:var(--coal); padding-left:15px; }
+  .story-choice.is-active .story-cta,.story-choice:hover .story-cta { transform:rotate(0); opacity:1; }
+  .story-bottom { display:flex; justify-content:space-between; align-items:center; gap:10px; color:#7d8079; font-size:10px; text-transform:uppercase; font-weight:800; letter-spacing:.12em; margin-top:24px; }
+  .story-bottom .story-live-index { color:var(--ink); }
+  .event-story-frame { position:relative; margin:0; overflow:hidden; background:#353731; min-width:0; isolation:isolate; }
+  .event-story-image { position:absolute; inset:0; opacity:0; transition:opacity .72s ease,transform 1.1s cubic-bezier(.18,.75,.22,1); transform:scale(1.085); }
+  .event-story-image.is-active { opacity:1; transform:scale(1); z-index:1; }
+  .event-story-image img { width:100%; height:100%; object-fit:cover; }
+  .event-story-image:nth-child(1) img { object-position:center 65%; }
+  .event-story-image:nth-child(2) img { object-position:center 45%; }
+  .event-story-image:nth-child(3) img { object-position:center 62%; }
+  .event-story-image:nth-child(4) img { object-position:center 49%; }
+  .event-story-frame::after { content:''; position:absolute; inset:32% 0 0; z-index:2; background:linear-gradient(180deg,transparent,rgba(9,13,9,.55)); pointer-events:none; }
+  .event-story-caption { position:absolute; bottom:30px; left:34px; right:34px; display:flex; justify-content:space-between; align-items:end; gap:16px; color:white; z-index:3; }
+  .event-story-caption span:first-child { font-size:10px; letter-spacing:.21em; font-weight:700; text-transform:uppercase; }
+  .event-story-caption strong { font-size:14px; font-weight:500; }
+
+  /* Fotografía arquitectónica con expansión dinámica */
+  .space { padding-top:150px; }
+  .space-photo-stage { position:relative; left:50%; width:100vw; margin-left:-50vw; height:min(78svh,780px); min-height:460px; background:#d8d9d1; }
+  .space-photo-frame { position:absolute; inset:0; background:url('assets/02-exterior-panorama.webp') center 48%/cover no-repeat; clip-path:inset(0 9% 0 9%); will-change:clip-path; overflow:hidden; }
+  .space-photo-frame::after { content:''; position:absolute; inset:50% 0 0; background:linear-gradient(transparent,#0005); }
+  .space-photo-frame span { position:absolute; z-index:1; bottom:30px; left:max(7vw,30px); font-size:10px; letter-spacing:.23em; font-weight:700; color:#fff; text-shadow:0 2px 7px #0008; }
+  .space-gallery { margin-top:30px; }
+  .experience-photo { overflow:hidden; }
+  .experience-photo img { will-change:transform; }
+  .moment { position:relative; isolation:isolate; background:#151916; overflow:hidden; }
+  .moment::before { content:''; position:absolute; z-index:-2; inset:-11%; background:linear-gradient(180deg,#0004,#0009),url('assets/04-barra-evento.webp') center 40%/cover; transform:translate3d(0,var(--moment-shift,0px),0) scale(1.1); will-change:transform; }
+  .moment .moment-content { position:relative; z-index:1; }
+  .moment h2 { text-wrap:balance; }
+
+  /* Galería horizontal ligada al scroll vertical */
+  .gallery { position:relative; height:262svh; padding:0; overflow:clip; }
+  .gallery-pin { position:sticky; top:77px; height:calc(100svh - 77px); display:flex; flex-direction:column; background:var(--cream); padding:48px 0 40px; overflow:hidden; }
+  .gallery-head { flex:none; }
+  .gallery-head .section-head { margin-bottom:25px; }
+  .gallery-head .section-head h2 { font-size:clamp(45px,5vw,77px); }
+  .gallery-viewport { flex:1; min-height:0; width:100%; overflow:hidden; display:flex; align-items:center; padding-left:max(56px,calc((100vw - 1460px)/2)); }
+  .gallery-track { display:flex; gap:24px; height:100%; align-items:stretch; width:max-content; will-change:transform; transform:translate3d(0,0,0); }
+  .gallery-card { position:relative; width:min(54vw,820px); height:100%; flex:0 0 auto; margin:0; overflow:hidden; background:#252c26; }
+  .gallery-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s cubic-bezier(.18,.75,.22,1); }
+  .gallery-card:hover img { transform:scale(1.045); }
+  .gallery-card:nth-child(3) img { object-position:center 40%; }
+  .gallery-card::after { content:''; position:absolute; inset:55% 0 0; background:linear-gradient(transparent,#0009); pointer-events:none; }
+  .gallery-card figcaption { position:absolute; bottom:28px; left:32px; right:32px; z-index:1; color:#fff; display:flex; gap:20px; align-items:end; justify-content:space-between; }
+  .gallery-card figcaption strong { display:block; font-size:clamp(19px,2.3vw,32px); font-weight:500; letter-spacing:-.04em; }
+  .gallery-card figcaption small { font-size:10px; letter-spacing:.18em; font-weight:800; }
+  .gallery-foot { flex:none; display:flex; justify-content:space-between; align-items:center; gap:26px; margin-top:28px; }
+  .gallery-foot .line-link { white-space:nowrap; }
+  .gallery-meter { height:2px; width:min(420px,37vw); background:#d1d3cd; overflow:hidden; }
+  .gallery-meter i { display:block; height:100%; width:100%; transform:scaleX(0); transform-origin:left; background:#242924; }
+  .gallery-label { font-size:10px; letter-spacing:.16em; color:#727770; text-transform:uppercase; font-weight:700; }
+
+  /* Cursor contextual en desktop */
+  .motion-cursor { position:fixed; left:0; top:0; width:92px; height:92px; border-radius:50%; background:var(--gold); color:#151b15; z-index:105; pointer-events:none; display:grid; place-items:center; font:800 10px var(--font); letter-spacing:.15em; opacity:0; transform:translate3d(-150px,-150px,0) scale(.65); transition:opacity .2s ease; box-shadow:0 4px 30px #0002; }
+  .motion-cursor.is-active { opacity:1; }
+  .form-step:not([hidden]) { animation:form-v3-appear .43s cubic-bezier(.2,.72,.22,1) both; }
+  @keyframes form-v3-appear { from { opacity:0; transform:translateY(13px); } to { opacity:1; transform:none; } }
+
+  @media (max-width:1100px) {
+    .story-choice { gap:15px; padding:14px 4px; }
+    .story-choice strong { font-size:25px; }
+    .event-story { top:16svh; height:70svh; }
+    .gallery-card { width:65vw; }
+  }
+  @media (max-width:950px) {
+    .hero-stage { height:auto; }
+    .hero-stage .hero { position:relative; top:auto; height:100svh; max-height:950px; min-height:710px; }
+    .hero-frame { background-position:55% 50%; }
+    .events { min-height:0; padding:46px 0 105px; }
+    .event-story { display:none; }
+    .event-grid { display:grid; }
+    .space { padding-top:95px; }
+    .space-photo-stage { height:56svh; min-height:350px; }
+    .space-photo-frame { clip-path:inset(0 3% 0 3%); }
+    .gallery { height:auto; padding:90px 0; overflow:visible; }
+    .gallery-pin { position:relative; top:auto; height:auto; padding:0; overflow:visible; }
+    .gallery-head { margin-bottom:22px; }
+    .gallery-viewport { overflow-x:auto; scrollbar-width:none; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; padding-left:22px; padding-right:22px; }
+    .gallery-viewport::-webkit-scrollbar { display:none; }
+    .gallery-track { transform:none!important; height:450px; padding-right:22px; }
+    .gallery-card { width:min(70vw,550px); scroll-snap-align:start; }
+    .gallery-foot { margin-top:23px; }
+    .gallery-meter { display:none; }
+    .motion-cursor { display:none; }
+  }
+  @media (max-width:600px) {
+    .hero-stage .hero { min-height:710px; max-height:870px; }
+    .hero-frame { background-image:linear-gradient(180deg,rgba(10,13,12,.36),rgba(10,13,12,.1) 33%,rgba(10,13,12,.86) 100%),url('assets/01-exterior-atardecer.webp'); }
+    .space-photo-stage { height:46svh; min-height:280px; }
+    .space-photo-frame span { bottom:20px; left:24px; font-size:9px; }
+    .gallery-track { height:390px; gap:13px; }
+    .gallery-card { width:84vw; }
+    .gallery-card figcaption { left:19px; bottom:19px; right:16px; }
+    .gallery-foot .gallery-label { display:none; }
+    .gallery-foot { justify-content:flex-start; }
+    .moment::before { inset:-6%; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .hero-stage { height:auto!important; }
+    .hero-stage .hero { position:relative!important; }
+    .hero-frame,.hero-stage .hero-content,.experience-photo img,.gallery-track { transform:none!important; opacity:1!important; }
+    .hero-scroll { animation:none!important; }
+    .motion-word { opacity:1!important; transform:none!important; }
+    .motion-reveal { opacity:1!important; transform:none!important; }
+    .events { min-height:0!important; padding:70px 0 110px!important; }
+    .event-story { display:none!important; }
+    .event-grid { display:grid!important; }
+    .space-photo-frame { clip-path:none!important; }
+    .gallery { height:auto!important; padding:95px 0!important; overflow:visible!important; }
+    .gallery-pin { position:relative!important; top:auto!important; height:auto!important; overflow:visible!important; padding:0!important; }
+    .gallery-viewport { overflow-x:auto!important; scroll-snap-type:x mandatory; }
+    .gallery-track { transform:none!important; height:430px!important; }
+    .gallery-card { width:min(74vw,600px)!important; }
+    .motion-cursor { display:none!important; }
+  }
+  @media (min-width:951px) and (prefers-reduced-motion:no-preference) {
+    .events { height:292svh; min-height:0; padding:120px 0 110px; }
+    .events > .wrap { height:100%; }
+  }
+  @media (max-width:950px) { .events { height:auto; } .events > .wrap { height:auto; } }
+  @media (prefers-reduced-motion:reduce) { .events { height:auto!important; } .events > .wrap { height:auto!important; } }
+  @media (max-width:600px) {
+    .footer-cta h2 { font-size:clamp(42px,12vw,61px); overflow-wrap:break-word; }
+  }
+  </style>
+</head>
+<body>
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav class="nav" id="navbar" aria-label="Navegación principal">
+    <div class="wrap">
+      <a class="brand" href="#inicio">MALABAR<small>EVENTOS · TANDIL</small></a>
+      <div class="nav-links" id="nav-links">
+        <a href="#concepto">Concepto</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#espacio">El espacio</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#galeria">Galería</a>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-contact" href="#organizar">Organizá tu evento&nbsp;&nbsp; ↗</a>
+      </div>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">☰</button>
+    </div>
+  </nav>
+
+  <div class="site-progress" aria-hidden="true"><span class="site-progress-fill"></span></div>
+
+  <main>
+    <!-- HERO PRINCIPAL -->
+    <div class="hero-stage" id="hero-stage">
+      <section class="hero" id="inicio" aria-label="Malabar, eventos en Tandil">
+        <div class="hero-frame" aria-hidden="true"></div>
+        <div class="hero-content wrap">
+          <p class="eyebrow">MALABAR · EXPERIENCIAS QUE PERDURAN</p>
+          <div class="hero-copy">
+            <h1>Momentos<br>extraordinarios.<br>Un lugar único.</h1>
+            <p class="hero-subtext">Eventos sociales y corporativos en un entorno privilegiado de Tandil.</p>
+          </div>
+          <div class="hero-bottom">
+            <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗</span></a>
+            <a href="#espacio" class="button outline-light">Conocé el espacio <span class="arr">↓</span></a>
+          </div>
+        </div>
+        <span class="hero-scroll">SCROLL PARA DESCUBRIR &nbsp; ↓</span>
+      </section>
+    </div>
+
+    <!-- SECCIÓN CONCEPTO -->
+    <section class="intro" id="concepto">
+      <div class="wrap intro-grid">
+        <div class="left"><span class="eyebrow">01 / BIENVENIDOS A MALABAR</span></div>
+        <div>
+          <h2 class="statement">Un lugar que transforma <em>cada encuentro</em> en algo para recordar.</h2>
+          <p class="description">Entre arquitectura contemporánea y naturaleza, Malabar ofrece un escenario distinto para reunirse, celebrar y compartir. Un espacio con personalidad para que cada ocasión tenga su propia historia.</p>
+          <a href="#espacio" class="line-link">Descubrí Malabar <span class="arr">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN EVENTOS / OCASIONES -->
+    <section class="events" id="eventos">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">02 / OCASIONES ESPECIALES</span><h2>Tu celebración.<br>A tu manera.</h2></div>
+          <p>Cada encuentro es distinto. Descubrí cómo convertir tu idea en una experiencia en Malabar.</p>
+        </div>
+
+        <!-- Selector interactivo para Desktop -->
+        <div class="event-story" aria-label="Descubrí eventos mientras recorres la página">
+          <div class="event-story-choices">
+            <div class="event-story-overline">ELEGÍ EL MOTIVO. NOSOTROS PONEMOS EL ESCENARIO.</div>
+            <a href="#organizar" class="story-choice is-active" data-event="Casamiento o civil" aria-current="step"><small>01</small><strong>Casamientos<br>y civiles</strong><span class="story-cta" aria-hidden="true">↗</span></a>
+            <a href="#organizar" class="story-choice" data-event="Evento corporativo"><small>02</small><strong>Eventos<br>corporativos</strong><span class="story-cta" aria-hidden="true">↗</span></a>
+            <a href="#organizar" class="story-choice" data-event="Cumpleaños o celebración"><small>03</small><strong>Cumpleaños y<br>celebraciones</strong><span class="story-cta" aria-hidden="true">↗</span></a>
+            <a href="#organizar" class="story-choice" data-event="Evento especial"><small>04</small><strong>Eventos<br>especiales</strong><span class="story-cta" aria-hidden="true">↗</span></a>
+            <div class="story-bottom"><span>DESLIZÁ PARA DESCUBRIR ↓</span><span class="story-live-index">01 / 04</span></div>
+          </div>
+          <figure class="event-story-frame">
+            <div class="event-story-image is-active"><img src="assets/06-ambientacion-lounge.webp" alt="Ambientación de lounge para celebraciones en Malabar" loading="lazy"></div>
+            <div class="event-story-image"><img src="assets/03-recepcion-corporativa.webp" alt="Recepción corporativa realizada en Malabar" loading="lazy"></div>
+            <div class="event-story-image"><img src="assets/04-barra-evento.webp" alt="Invitados reunidos en la barra del evento" loading="lazy"></div>
+            <div class="event-story-image"><img src="assets/01-exterior-atardecer.webp" alt="Fachada y entorno de Malabar al atardecer" loading="lazy"></div>
+            <figcaption class="event-story-caption"><span class="event-caption-label">Un momento inolvidable</span><strong>MALABAR / TANDIL</strong></figcaption>
+          </figure>
+        </div>
+
+        <!-- Grilla para Mobile / Tablet -->
+        <div class="event-grid">
+          <a class="event-card" href="#organizar" data-event="Casamiento o civil"><div class="event-card-content"><div><span>01 · Momentos únicos</span><h3>Casamientos<br>y civiles</h3></div><div class="circle-arrow">↗</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Evento corporativo"><div class="event-card-content"><div><span>02 · Encuentros con propósito</span><h3>Eventos<br>corporativos</h3></div><div class="circle-arrow">↗</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Cumpleaños o celebración"><div class="event-card-content"><div><span>03 · Historias para brindar</span><h3>Cumpleaños<br>y celebraciones</h3></div><div class="circle-arrow">↗</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Evento especial"><div class="event-card-content"><div><span>04 · Ideas sin etiquetas</span><h3>Eventos<br>especiales</h3></div><div class="circle-arrow">↗</div></div></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN EL ESPACIO -->
+    <section class="space" id="espacio">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">03 / EL ESCENARIO</span><h2>Diseñado para<br>sentirse diferente.</h2></div>
+          <p>Espacios que invitan a quedarse, detalles que definen una atmósfera y un entorno natural que acompaña cada encuentro.</p>
+        </div>
+        <div class="space-photo-stage"><div class="space-photo-frame" role="img" aria-label="Fachada y acceso principal de Malabar Eventos"><span>LA ARQUITECTURA DEL ENCUENTRO</span></div></div>
+        <div class="space-gallery">
+          <img loading="lazy" src="assets/06-ambientacion-lounge.webp" alt="Salón de Malabar con mobiliario y ambientación">
+          <img loading="lazy" src="assets/01-exterior-atardecer.webp" alt="Fachada y entorno de Malabar al atardecer">
+        </div>
+        <div class="space-note"><p>La calidez de los materiales, la luz del entorno y un diseño cuidado crean el marco perfecto para disfrutar cada instante.</p><a href="#organizar" class="line-link">Consultar disponibilidad <span class="arr">↗</span></a></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN EXPERIENCIA -->
+    <section class="experience" id="experiencia">
+      <div class="wrap experience-grid">
+        <div class="experience-photo"><img loading="lazy" src="assets/05-gastronomia.webp" alt="Propuesta gastronómica servida durante un evento en Malabar"><span class="photo-label">LA EXPERIENCIA MALABAR</span></div>
+        <div class="experience-text"><span class="eyebrow">04 / CADA DETALLE IMPORTA</span><h2>Los momentos<br>se viven en<br>los detalles.</h2><p class="experience-intro">La música, el brindis, la mesa compartida y el ambiente. Contanos qué imaginás para tu evento y armemos una propuesta pensada para vos.</p><div class="service"><span>Gastronomía y recepción</span><small>A consultar ↗</small></div><div class="service"><span>Barra y bebidas</span><small>A consultar ↗</small></div><div class="service"><span>Ambientación y música</span><small>A consultar ↗</small></div><div class="service"><span>Montajes personalizados</span><small>A consultar ↗</small></div><p class="form-note">Los servicios mostrados son opciones a coordinar, adaptadas a la medida de cada celebración.</p></div>
+      </div>
+    </section>
+
+    <!-- BANNER EMOCIONAL -->
+    <section class="moment"><div class="moment-content"><p>EL LUGAR. EL MOMENTO. TU HISTORIA.</p><h2>Hay celebraciones que no se olvidan.</h2><a href="#organizar" class="button light">Hacé que suceda <span class="arr">↗</span></a></div></section>
+
+    <!-- SECCIÓN GALERÍA -->
+    <section class="gallery" id="galeria">
+      <div class="gallery-pin">
+        <div class="wrap gallery-head"><div class="section-head"><div><span class="eyebrow">05 / MOMENTOS REALES</span><h2>La experiencia,<br>en imágenes.</h2></div><p>Deslizá para recorrer escenas reales del espacio: encuentros, detalles, gastronomía y brindis.</p></div></div>
+        <div class="gallery-viewport" aria-label="Galería de fotos de Malabar">
+          <div class="gallery-track" role="list">
+            <figure class="gallery-card" role="listitem"><img loading="lazy" src="assets/03-recepcion-corporativa.webp" alt="Recepción de invitados durante un evento en Malabar"><figcaption><strong>Momentos compartidos</strong><small>01 / 05</small></figcaption></figure>
+            <figure class="gallery-card" role="listitem"><img loading="lazy" src="assets/06-ambientacion-lounge.webp" alt="Espacio lounge y mobiliario en el salón"><figcaption><strong>Diseñado para encontrarnos</strong><small>02 / 05</small></figcaption></figure>
+            <figure class="gallery-card" role="listitem"><img loading="lazy" src="assets/05-gastronomia.webp" alt="Mesa de catering en evento de Malabar"><figcaption><strong>El sabor del encuentro</strong><small>03 / 05</small></figcaption></figure>
+            <figure class="gallery-card" role="listitem"><img loading="lazy" src="assets/04-barra-evento.webp" alt="Barra e invitados durante un evento"><figcaption><strong>Brindis que se recuerdan</strong><small>04 / 05</small></figcaption></figure>
+            <figure class="gallery-card" role="listitem"><img loading="lazy" src="assets/02-exterior-panorama.webp" alt="Vista exterior de Malabar al atardecer"><figcaption><strong>Un escenario diferente</strong><small>05 / 05</small></figcaption></figure>
+          </div>
+        </div>
+        <div class="wrap gallery-foot"><div class="gallery-meter" aria-hidden="true"><i></i></div><span class="gallery-label">SCROLL / EXPLORÁ LOS MOMENTOS</span><a class="line-link" href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Ver Instagram <span class="arr">↗</span></a></div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO COTIZADOR INTERACTIVO -->
+    <section class="lead" id="organizar">
+      <div class="wrap">
+        <div class="lead-intro">
+          <span class="eyebrow">06 / EMPEZÁ A IMAGINARLO</span>
+          <h2>Tu próximo evento<br>empieza acá.</h2>
+          <p>Respondé unas breves preguntas y prepará una consulta directa para Malabar por WhatsApp.<br> Sin compromisos ni formularios engorrosos.</p>
+        </div>
+
+        <div class="form-shell" id="form-shell">
+          <div class="form-top"><span>COTIZADOR DE EVENTO</span><span id="step-count">PASO 01 / 04</span></div>
+          <div class="progress" id="progress"><span class="active"></span><span></span><span></span><span></span></div>
+
+          <form id="event-form" novalidate>
+            <!-- Paso 1: Tipo de Evento -->
+            <div class="form-step" data-step="0">
+              <h3>¿Qué querés celebrar?</h3>
+              <p>Elegí la ocasión. Después vamos a ayudarte a darle forma.</p>
+              <div class="radio-grid">
+                <label class="choice"><input type="radio" name="tipo" value="Casamiento o civil"><strong>Casamiento o civil</strong></label>
+                <label class="choice"><input type="radio" name="tipo" value="Evento corporativo"><strong>Evento corporativo</strong></label>
+                <label class="choice"><input type="radio" name="tipo" value="Cumpleaños o celebración"><strong>Cumpleaños o celebración</strong></label>
+                <label class="choice"><input type="radio" name="tipo" value="Evento especial"><strong>Evento especial</strong></label>
+              </div>
+              <div id="corporativo-extra" class="field full conditional" hidden style="margin-top:20px">
+                <label for="empresa">Empresa / organización (opcional)</label>
+                <input id="empresa" name="empresa" placeholder="Nombre de la empresa">
+              </div>
+            </div>
+
+            <!-- Paso 2: Fecha y Asistencia -->
+            <div class="form-step" data-step="1" hidden>
+              <h3>¿Cuándo lo imaginás?</h3>
+              <p>Una estimación alcanza. La disponibilidad exacta se confirma al responderte.</p>
+              <div class="fields">
+                <div class="field">
+                  <label for="fecha">Fecha tentativa</label>
+                  <input type="date" name="fecha" id="fecha">
+                </div>
+                <div class="field">
+                  <label for="invitados">Invitados aproximados</label>
+                  <select name="invitados" id="invitados">
+                    <option value="">Elegí un rango</option>
+                    <option>Hasta 30</option>
+                    <option>31 a 60</option>
+                    <option>61 a 100</option>
+                    <option>Más de 100</option>
+                    <option>A definir</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label class="consent"><input type="checkbox" name="sinFecha" id="sinFecha">Todavía no tengo una fecha definida</label>
+                </div>
+                <div class="field full">
+                  <label for="turno">Turno preferido</label>
+                  <select name="turno" id="turno">
+                    <option value="A definir">A definir</option>
+                    <option>Durante el día</option>
+                    <option>Tarde</option>
+                    <option>Noche</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Paso 3: Servicios de Interés -->
+            <div class="form-step" data-step="2" hidden>
+              <h3>¿Cómo lo imaginás?</h3>
+              <p>Marcá lo que te interesa considerar en la propuesta.</p>
+              <div class="checks">
+                <label class="check"><input type="checkbox" name="servicio" value="Gastronomía / recepción">Gastronomía / recepción</label>
+                <label class="check"><input type="checkbox" name="servicio" value="Barra y bebidas">Barra y bebidas</label>
+                <label class="check"><input type="checkbox" name="servicio" value="Ambientación">Ambientación</label>
+                <label class="check"><input type="checkbox" name="servicio" value="Música / DJ">Música / DJ</label>
+                <label class="check"><input type="checkbox" name="servicio" value="Sonido / proyección">Sonido / proyección</label>
+                <label class="check"><input type="checkbox" name="servicio" value="Montaje exterior">Montaje exterior</label>
+                <label class="check"><input type="checkbox" name="servicio" value="Necesito asesoramiento">Necesito asesoramiento integral</label>
+              </div>
+            </div>
+
+            <!-- Paso 4: Datos de Contacto -->
+            <div class="form-step" data-step="3" hidden>
+              <h3>Un detalle más…</h3>
+              <p>Así el equipo de Malabar puede comprender tu idea y responderte con una propuesta.</p>
+              <div class="fields">
+                <div class="field">
+                  <label for="nombre">Tu nombre *</label>
+                  <input id="nombre" name="nombre" autocomplete="name" placeholder="Nombre y apellido" required>
+                </div>
+                <div class="field">
+                  <label for="telefono">Tu teléfono *</label>
+                  <input id="telefono" type="tel" name="telefono" autocomplete="tel" placeholder="+54 9 ..." required>
+                </div>
+                <div class="field full">
+                  <label for="detalles">Contanos algo más (opcional)</label>
+                  <textarea id="detalles" name="detalles" maxlength="1000" placeholder="Qué tenés en mente, horarios deseados, ideas especiales…"></textarea>
+                </div>
+              </div>
+              <label class="consent"><input type="checkbox" id="consentimiento" name="consentimiento" required> Acepto que Malabar utilice estos datos para responder a mi solicitud de presupuesto.</label>
+            </div>
+
+            <div class="form-actions">
+              <button class="button ghost" type="button" id="prev" disabled>← Anterior</button>
+              <button class="button dark" type="button" id="next">Continuar <span class="arr">↗</span></button>
+            </div>
+            <div id="error" class="error" role="alert" aria-live="polite"></div>
+          </form>
+
+          <!-- Resumen y Envío a WhatsApp -->
+          <div class="summary" id="summary" hidden>
+            <strong style="font-size:16px;color:var(--dark)">¡Tu consulta está lista para enviar!</strong>
+            <p style="font-size:13px;color:var(--muted);margin:8px 0 16px">Al presionar "Abrir WhatsApp", se abrirá una conversación con el mensaje listo para enviar:</p>
+            <pre id="summary-text"></pre>
+            <div class="summary-buttons">
+              <a id="wa-link" class="button dark" href="#" target="_blank" rel="noopener">Abrir en WhatsApp <span class="arr">↗</span></a>
+              <button class="button ghost" type="button" id="copy">Copiar mensaje <span class="arr">↗</span></button>
+            </div>
+            <p class="form-note" id="wa-help">El mensaje se abre en tu WhatsApp con todos los detalles ordenados para una respuesta rápida.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER / CIERRE -->
+    <section class="footer-cta">
+      <div class="wrap">
+        <div class="footer-cta-inner">
+          <div>
+            <p class="eyebrow">TU EXPERIENCIA COMIENZA ACÁ</p>
+            <h2>Lo extraordinario<br>se celebra.</h2>
+          </div>
+          <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗</span></a>
+        </div>
+        <div class="footer-bottom">
+          <div>
+            <div class="brand">MALABAR<small>EVENTOS · TANDIL</small></div>
+            <p style="margin-top:14px">Un escenario privilegiado para tus momentos más importantes en Tandil.</p>
+            <p style="margin-top:8px">
+              <a href="https://wa.me/5492494642400" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">
+                WhatsApp: +54 9 249 464-2400 ↗
+              </a>
+            </p>
+          </div>
+          <div>
+            <div class="eyebrow">Explorar</div>
+            <a href="#concepto">Concepto</a><br>
+            <a href="#eventos">Eventos</a><br>
+            <a href="#espacio">El espacio</a><br>
+            <a href="#experiencia">Experiencia</a><br>
+            <a href="#galeria">Galería</a><br>
+            <a href="#organizar">Cotizador</a>
+          </div>
+          <div>
+            <div class="eyebrow">Encontranos</div>
+            <a href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Instagram (@malabareventos_) ↗</a><br>
+            <a href="https://www.google.com/maps/place/Malabar+Eventos/@-37.3531415,-59.1317049,17z/" target="_blank" rel="noopener noreferrer">Ubicación en Maps ↗</a>
+            <p style="margin-top:8px">Tandil, Buenos Aires, Argentina</p>
+          </div>
+        </div>
+        <p class="copyright">© MALABAR EVENTOS · TANDIL · TODOS LOS DERECHOS RESERVADOS</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="motion-cursor" aria-hidden="true">ELEGIR ↗</div>
+  <div class="mobile-fixed"><a href="#organizar" class="button dark">Organizá tu evento &nbsp;↗</a></div>
+
+  <!-- SCRIPT LOGICA COTIZADOR Y WHATSAPP -->
+  <script>
+  // NUMERO WHATSAPP BUSINESS MALABAR
+  const WHATSAPP_BUSINESS_E164 = '5492494642400';
+
+  const nav = document.getElementById('navbar');
+  function adjustNav(){
+    nav.classList.toggle('is-sticky', window.scrollY > 38);
+    const mobileFixed = document.querySelector('.mobile-fixed');
+    if (mobileFixed) {
+      const formEl = document.getElementById('organizar');
+      const formTop = formEl ? formEl.getBoundingClientRect().top : 9999;
+      mobileFixed.classList.toggle('visible', window.scrollY > window.innerHeight * .7 && formTop > window.innerHeight * .72);
+    }
+  }
+  window.addEventListener('scroll', adjustNav, {passive:true});
+  adjustNav();
+
+  const mobileBtn = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('nav-links');
+  mobileBtn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    mobileBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mobileBtn.textContent = open ? '✕' : '☰';
+    document.body.classList.toggle('menu-open', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    mobileBtn.setAttribute('aria-expanded', 'false');
+    mobileBtn.textContent = '☰';
+    document.body.classList.remove('menu-open');
+  }));
+
+  const form = document.getElementById('event-form');
+  const steps = [...document.querySelectorAll('.form-step')];
+  const progress = [...document.querySelectorAll('#progress span')];
+  const stepCount = document.getElementById('step-count');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const error = document.getElementById('error');
+  const corporativoExtra = document.getElementById('corporativo-extra');
+  let step = 0;
+
+  function setStep(s){
+    step = s;
+    steps.forEach((el, i) => el.hidden = i !== s);
+    progress.forEach((el, i) => el.classList.toggle('active', i <= s));
+    stepCount.textContent = `PASO 0${s+1} / 04`;
+    prev.disabled = s === 0;
+    next.innerHTML = s === 3 ? 'Preparar mi consulta <span class="arr">↗</span>' : 'Continuar <span class="arr">↗</span>';
+    error.textContent = '';
+    document.getElementById('summary').hidden = true;
+  }
+
+  form.querySelectorAll('input[name=tipo]').forEach(e => e.addEventListener('change', () => {
+    corporativoExtra.hidden = form.elements['tipo'].value !== 'Evento corporativo';
+  }));
+
+  function validate(){
+    if(step === 0 && !form.querySelector('input[name=tipo]:checked')) return 'Elegí qué tipo de evento querés organizar.';
+    if(step === 1){
+      if(!form.elements.sinFecha.checked && !form.elements.fecha.value) return 'Elegí una fecha tentativa o marcá que todavía no la tenés.';
+      if(!form.elements.invitados.value) return 'Seleccioná un rango estimado de invitados.';
+    }
+    if(step === 3){
+      if(!form.elements.nombre.value.trim()) return 'Completá tu nombre.';
+      if(form.elements.telefono.value.replace(/\D/g,'').length < 8) return 'Ingresá un número de teléfono válido.';
+      if(!form.elements.consentimiento.checked) return 'Necesitamos tu autorización para preparar la consulta.';
+    }
+    return '';
+  }
+
+  prev.addEventListener('click', () => setStep(Math.max(step-1, 0)));
+  next.addEventListener('click', () => {
+    const msg = validate();
+    if(msg){
+      error.textContent = msg;
+      return;
+    }
+    if(step < 3){
+      setStep(step+1);
+    } else {
+      const values = new FormData(form);
+      const lines = [
+        `Hola, equipo de MALABAR 👋`,
+        `Quisiera consultar disponibilidad y presupuesto para un evento:`,
+        ``,
+        `🎉 TIPO DE EVENTO:`,
+        values.get('tipo'),
+        ...(values.get('empresa') ? [`Empresa: ${values.get('empresa')}`] : []),
+        ``,
+        `📅 FECHA Y ASISTENCIA:`,
+        `Fecha: ${values.get('sinFecha') ? 'A definir' : values.get('fecha')}`,
+        `Invitados aprox.: ${values.get('invitados')}`,
+        `Turno preferido: ${values.get('turno') || 'A definir'}`,
+        ``,
+        `✨ SERVICIOS DE INTERÉS:`,
+        ...((values.getAll('servicio').length ? values.getAll('servicio') : ['A convenir']).map(v => `• ${v}`)),
+        ``,
+        `📝 DETALLES / IDEAS:`,
+        values.get('detalles') || 'Sin detalles adicionales',
+        ``,
+        `👤 CONTACTO:`,
+        `Nombre: ${values.get('nombre')}`,
+        `Teléfono: ${values.get('telefono')}`,
+        ``,
+        `¿Me podrían brindar más información? ¡Muchas gracias!`
+      ];
+      const message = lines.join('\n');
+      document.getElementById('summary-text').textContent = message;
+      document.getElementById('summary').hidden = false;
+      document.getElementById('summary').scrollIntoView({block:'nearest', behavior:'smooth'});
+
+      const number = WHATSAPP_BUSINESS_E164.replace(/\D/g,'');
+      const waLink = document.getElementById('wa-link');
+      if(/^\d{10,15}$/.test(number)){
+        waLink.href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+        waLink.hidden = false;
+      }
+    }
+  });
+
+  document.getElementById('copy').addEventListener('click', async () => {
+    const text = document.getElementById('summary-text').textContent;
+    try{
+      if(navigator.clipboard && window.isSecureContext){
+        await navigator.clipboard.writeText(text);
+      } else {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        el.remove();
+      }
+      const copyBtn = document.getElementById('copy');
+      copyBtn.innerHTML = '¡Mensaje copiado! ✓';
+      setTimeout(() => { copyBtn.innerHTML = 'Copiar mensaje <span class="arr">↗</span>'; }, 3000);
+    } catch(e) {
+      window.prompt('Copiá tu consulta:', text);
+    }
+  });
+
+  document.querySelectorAll('[data-event]').forEach(a => a.addEventListener('click', () => {
+    const input = [...form.querySelectorAll('input[name=tipo]')].find(x => x.value === a.dataset.event);
+    if(input){
+      input.checked = true;
+      input.dispatchEvent(new Event('change'));
+      setStep(0);
+    }
+  }));
+
+  document.getElementById('sinFecha').addEventListener('change', e => {
+    document.getElementById('fecha').disabled = e.target.checked;
+    if(e.target.checked) document.getElementById('fecha').value = '';
+  });
+
+  setStep(0);
+  </script>
+
+  <!-- MOTOR DE ANIMACIONES Y CINEMÁTICA SCROLL v3 -->
+  <script>
+  (function initMalabarMotion(){
+    'use strict';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const heroStage = document.getElementById('hero-stage');
+    const heroFrame = document.querySelector('.hero-frame');
+    const heroContent = document.querySelector('.hero-content');
+    const events = document.getElementById('eventos');
+    const storyChoices = Array.from(document.querySelectorAll('.story-choice'));
+    const storyImages = Array.from(document.querySelectorAll('.event-story-image'));
+    const storyIndex = document.querySelector('.story-live-index');
+    const storyCaption = document.querySelector('.event-caption-label');
+    const photoStage = document.querySelector('.space-photo-stage');
+    const photoFrame = document.querySelector('.space-photo-frame');
+    const gallery = document.getElementById('galeria');
+    const galleryTrack = document.querySelector('.gallery-track');
+    const galleryViewport = document.querySelector('.gallery-viewport');
+    const galleryMeter = document.querySelector('.gallery-meter i');
+    const experiencePhoto = document.querySelector('.experience-photo img');
+    const experienceSection = document.querySelector('.experience');
+    const moment = document.querySelector('.moment');
+    const siteMeter = document.querySelector('.site-progress-fill');
+    const progressLabels = [
+      'Un momento inolvidable',
+      'Encuentros que inspiran',
+      'Historias para brindar',
+      'Una celebración a tu manera'
+    ];
+    const clamp = n => Math.max(0, Math.min(1, n));
+    const absTop = node => node.getBoundingClientRect().top + window.scrollY;
+    const isDesktop = () => window.innerWidth > 950;
+    let selectedStory = -1;
+    let requestId = 0;
+    let words = [];
+
+    function wrapWords(node){
+      const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+      const textNodes = [];
+      while(walker.nextNode()) textNodes.push(walker.currentNode);
+      textNodes.forEach(textNode => {
+        const fragment = document.createDocumentFragment();
+        textNode.nodeValue.split(/(\s+)/).forEach(part => {
+          if(!part) return;
+          if(/^\s+$/.test(part)) fragment.appendChild(document.createTextNode(part));
+          else {
+            const span = document.createElement('span');
+            span.className = 'motion-word';
+            span.textContent = part;
+            fragment.appendChild(span);
+          }
+        });
+        textNode.replaceWith(fragment);
+      });
+      return Array.from(node.querySelectorAll('.motion-word'));
+    }
+
+    const intro = document.getElementById('concepto');
+    const statement = intro.querySelector('.statement');
+    if(!reduced.matches){
+      words = wrapWords(statement);
+      const revealNodes = document.querySelectorAll('.intro .description,.intro .line-link,.section-head,.space-note,.experience-text,.lead-intro,.footer-cta-inner');
+      revealNodes.forEach(node => node.classList.add('motion-reveal'));
+      document.body.classList.add('motion-on');
+      if('IntersectionObserver' in window){
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting){
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        },{threshold:.10, rootMargin:'0px 0px -4% 0px'});
+        revealNodes.forEach(node => io.observe(node));
+      } else {
+        revealNodes.forEach(node => node.classList.add('is-visible'));
+      }
+    }
+
+    function activateStory(index){
+      if(index === selectedStory) return;
+      selectedStory = index;
+      storyChoices.forEach((el, i) => {
+        const active = i === index;
+        el.classList.toggle('is-active', active);
+        if(active) el.setAttribute('aria-current', 'step');
+        else el.removeAttribute('aria-current');
+      });
+      storyImages.forEach((el, i) => {
+        el.classList.toggle('is-active', i === index);
+        el.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+      });
+      if(storyIndex) storyIndex.textContent = `0${index+1} / 04`;
+      if(storyCaption) storyCaption.textContent = progressLabels[index];
+    }
+    activateStory(0);
+
+    function update(){
+      const vh = window.innerHeight;
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
+      if(siteMeter) siteMeter.style.transform = `scaleX(${clamp(window.scrollY/maxScroll)})`;
+
+      if(reduced.matches){
+        if(heroFrame) heroFrame.style.transform = '';
+        if(heroContent){ heroContent.style.transform = ''; heroContent.style.opacity = ''; }
+        if(galleryTrack) galleryTrack.style.transform = '';
+        return;
+      }
+
+      if(isDesktop()){
+        // Escena 1: Hero cinemático pinned, shrink de marco y fadeout de tipografía
+        const heroTravel = Math.max(1, heroStage.offsetHeight - vh);
+        const hp = clamp((window.scrollY - absTop(heroStage)) / heroTravel);
+        heroFrame.style.transform = `scale(${(1 - hp * .105).toFixed(4)})`;
+        heroFrame.style.borderRadius = `${(hp * 18).toFixed(1)}px`;
+        heroContent.style.opacity = (1 - clamp((hp - .13) / .66)).toFixed(3);
+        heroContent.style.transform = `translate3d(0,${Math.round(-hp * 72)}px,0)`;
+
+        // Escena 2: Selector de ocasiones sincronizado con el scroll vertical
+        const eventStart = absTop(events) + vh * .21;
+        const eventEnd = Math.max(eventStart + 1, absTop(events) + events.offsetHeight - vh * .84);
+        const ep = clamp((window.scrollY - eventStart) / (eventEnd - eventStart));
+        const index = Math.min(storyChoices.length - 1, Math.floor(ep * storyChoices.length));
+        if(index >= 0) activateStory(index);
+
+        // Escena 3: Galería horizontal controlada por el scroll
+        const galleryTravel = Math.max(1, gallery.offsetHeight - vh);
+        const gp = clamp((window.scrollY - absTop(gallery) + 77) / galleryTravel);
+        const xMax = Math.max(0, galleryTrack.scrollWidth - galleryViewport.clientWidth + Math.max(56, (innerWidth - 1460)/2) + 35);
+        galleryTrack.style.transform = `translate3d(${-Math.round(xMax * gp)}px,0,0)`;
+        if(galleryMeter) galleryMeter.style.transform = `scaleX(${gp.toFixed(4)})`;
+      } else {
+        heroFrame.style.transform = '';
+        heroFrame.style.borderRadius = '';
+        heroContent.style.transform = '';
+        heroContent.style.opacity = '';
+        galleryTrack.style.transform = '';
+        if(galleryMeter) galleryMeter.style.transform = '';
+      }
+
+      // Progresión de contraste de palabras en la frase editorial
+      const introRect = intro.getBoundingClientRect();
+      const ip = clamp((vh * .75 - introRect.top) / Math.max(1, introRect.height + vh * .65));
+      words.forEach((node, i) => {
+        const wp = clamp((ip - (i / Math.max(1, words.length - 1)) * .67) / .32);
+        node.style.opacity = (.23 + .77 * wp).toFixed(3);
+        node.style.transform = `translate3d(0,${Math.round((1 - wp) * 8)}px,0)`;
+      });
+
+      // Expansión de marco arquitectónico a pantalla completa
+      if(photoFrame && photoStage){
+        const rect = photoStage.getBoundingClientRect();
+        const pp = clamp((vh * .82 - rect.top) / (vh * .86));
+        const inset = (isDesktop() ? 9 : 3) * (1 - pp);
+        photoFrame.style.clipPath = `inset(0 ${inset.toFixed(2)}% 0 ${inset.toFixed(2)}%)`;
+      }
+
+      // Parallax sutil en gastronomía y bloque emocional
+      if(experiencePhoto && isDesktop() && experienceSection){
+        const r = experienceSection.getBoundingClientRect();
+        const p = clamp((vh - r.top) / (vh + r.height));
+        experiencePhoto.style.transform = `translate3d(0,${Math.round((p - .5) * -32)}px,0) scale(1.055)`;
+      } else if(experiencePhoto) {
+        experiencePhoto.style.transform = '';
+      }
+      if(moment && isDesktop()){
+        const r = moment.getBoundingClientRect();
+        const p = clamp((vh - r.top) / (vh + r.height));
+        moment.style.setProperty('--moment-shift', `${Math.round((p - .5) * 45)}px`);
+      }
+    }
+
+    function schedule(){
+      if(requestId) return;
+      requestId = window.requestAnimationFrame(() => {
+        requestId = 0;
+        update();
+      });
+    }
+
+    window.addEventListener('scroll', schedule, {passive:true});
+    window.addEventListener('resize', schedule, {passive:true});
+    if(reduced.addEventListener) reduced.addEventListener('change', () => {
+      if(!reduced.matches && !words.length) words = wrapWords(statement);
+      document.body.classList.toggle('motion-on', !reduced.matches);
+      if(reduced.matches) document.querySelectorAll('.motion-reveal').forEach(node => node.classList.add('is-visible'));
+      schedule();
+    });
+    window.addEventListener('load', schedule, {once:true});
+    schedule();
+
+    // Cursor contextual informativo para desktop
+    if(!reduced.matches && window.matchMedia('(pointer:fine)').matches){
+      const cursor = document.querySelector('.motion-cursor');
+      if(cursor){
+        document.querySelectorAll('.story-choice, .event-card').forEach(a => {
+          a.addEventListener('pointerenter', () => cursor.classList.add('is-active'));
+          a.addEventListener('pointerleave', () => cursor.classList.remove('is-active'));
+        });
+        document.addEventListener('pointermove', e => {
+          cursor.style.transform = `translate3d(${Math.round(e.clientX - 46)}px,${Math.round(e.clientY - 46)}px,0) scale(1)`;
+        }, {passive:true});
+      }
+    }
+  })();
+  </script>
+</body>
+</html>
