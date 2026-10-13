@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foster Club / Admin · Panel de control</title>
+  <meta name="description"
+    content="Panel administrativo demo de Foster Club Tandil. Modificá precios, productos y disponibilidad en tiempo real con la misma identidad del Club.">
+  <link rel="icon" href="../logo/712543979_18082131692192633_3214331047355667281_n.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600;700&family=DM+Mono:wght@400;500;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./admin.css">
+</head>
+
+<body>
+
+  <!-- Header Foster Club -->
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="../" aria-label="Foster Club, inicio">
+        <img src="../logo/Imagen de ChatGPT 11 oct 2026, 15_50_30-1.png" alt="Foster Club" width="150" height="120">
+      </a>
+
+      <div class="header-center-info">
+        <span class="header-tag">ADMIN · TANDIL</span>
+        <span class="demo-chip">
+          <span class="pulse-dot"></span>
+          Modo Demo Activo
+        </span>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" class="pill pill-burgundy-outline pill-sm" id="btn-reset-demo"
+          title="Recuperar los datos originales de la presentación">
+          Restablecer demo ↺
+        </button>
+        <a href="../carta/" target="_blank" class="pill pill-light pill-sm"
+          title="Abrir la carta pública en otra pestaña">
+          Ver carta en vivo <span class="arrow-icon arrow-icon-up-right" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section con la estética de la Landing -->
+  <section class="admin-hero" aria-labelledby="admin-title">
+    <div class="wrap admin-hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow light">FOSTER CLUB / ADMIN</p>
+        <h1 id="admin-title">
+          <span class="outline">PANEL</span><br>
+          DE CONTROL<span class="dot">.</span>
+        </h1>
+        <p>
+          Gestioná tu carta sin depender de nadie.<br>
+          Modificá precios, apagá platos agotados y mirá la actividad del club.
+        </p>
+      </div>
+
+      <p class="hand-note hero-note">
+        GESTIÓN RÁPIDA.<br>
+        SIN VUELTAS.
+      </p>
+
+      <div class="hero-sticker-badge">
+        <span class="sticker">
+          MODO DEMO<br>
+          EN VIVO
+        </span>
+      </div>
+
+      <div class="hero-rider" aria-hidden="true">
+        <img class="hero-mascot" src="../mascota/Imagen de ChatGPT 11 oct 2026, 15_50_31-2.png"
+          alt="Mascota Foster Club" width="240" height="186">
+      </div>
+    </div>
+
+    <!-- Onda orgánica inferior igual a la landing -->
+    <svg class="home-wave" viewBox="0 0 1122 55" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 20 C140 -18 265 8 405 33 C510 53 620 16 745 21 C885 28 1005 49 1122 12 L1122 55 L0 55 Z" />
+    </svg>
+  </section>
+
+  <!-- Contenedor Principal (Fondo Paper) -->
+  <main class="wrap" style="padding-top: 10px; padding-bottom: 60px;">
+
+    <!-- Aviso Demo interactivo -->
+    <div class="menu-notice" role="note">
+      <strong>Demostración comercial interactiva:</strong>
+      <span>
+        Modificá un precio o activá/desactivá un plato. Al abrir la <strong><a href="../carta/" target="_blank"
+            style="color: var(--orange); text-decoration: underline;">Carta en vivo ↗</a></strong> en otra pestaña o
+        pantalla dividida, vas a ver cómo se actualiza al segundo sin recargar la web.
+      </span>
+    </div>
+
+    <!-- Métricas / KPIs del Dashboard -->
+    <section class="kpi-grid" aria-label="Métricas del panel">
+      <article class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Productos en carta</span>
+          <span class="kpi-badge badge-green" id="kpi-active-badge">29 Activos</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-number" id="kpi-total-products">32<span class="dot">.</span></span>
+        </div>
+        <p class="kpi-subtext">Platos cargados en el catálogo</p>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Pedidos iniciados</span>
+          <span class="kpi-badge badge-amber">+3 Hoy</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-number" id="kpi-total-orders">18<span class="dot">.</span></span>
+        </div>
+        <p class="kpi-subtext">Simulaciones iniciadas desde la carta</p>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-title">Platos agotados</span>
+          <span class="kpi-badge badge-red" id="kpi-paused-badge">3 Pausados</span>
+        </div>
+        <div class="kpi-value-row">
+          <span class="kpi-number" id="kpi-out-stock" style="color: #b91c1c;">3<span class="dot">.</span></span>
+        </div>
+        <p class="kpi-subtext">Pausados temporalmente en cocina</p>
+      </article>
+    </section>
+
+    <!-- Barra de Pestañas estilo Carta Foster -->
+    <div class="category-nav-shell">
+      <nav class="category-nav" aria-label="Secciones del panel">
+        <button class="tab-btn active" data-tab="tab-products">
+          🍔 Gestión de productos
+          <span class="tab-count" id="16px">32</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-orders">
+          📦 Pedidos demo
+          <span class="tab-count" id="tab-count-orders">18</span>
+        </button>
+        <button class="tab-btn" data-tab="tab-revenue">
+          📊 Ingresos & Métricas
+        </button>
+        <button class="tab-btn" data-tab="tab-categories">
+          🏷️ Categorías
+        </button>
+      </nav>
+    </div>
+
+    <!-- PANEL 1: PRODUCTOS -->
+    <section class="tab-panel active" id="tab-products">
+      <div class="controls-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" placeholder="Buscar por plato, queso, salsa, bacon..."
+            autocomplete="off">
+        </div>
+        <div class="category-filter-chips" id="category-chips">
+          <!-- Chips renderizados dinámicamente -->
+        </div>
+        <button type="button" class="pill pill-orange pill-sm" id="btn-add-product">
+          + Nuevo plato
+        </button>
+      </div>
+
+      <!-- Filtro rápido de estado -->
+      <div style="display: flex; gap: 8px; margin-bottom: 20px; align-items: center; flex-wrap: wrap;">
+        <span
+          style="font-size: 0.72rem; color: var(--muted); text-transform: uppercase; font-family: 'DM Mono', monospace; font-weight: 700;">Filtrar
+          estado:</span>
+        <button type="button" class="filter-chip active" data-status-filter="all">Todos</button>
+        <button type="button" class="filter-chip" data-status-filter="available">Solo disponibles</button>
+        <button type="button" class="filter-chip" data-status-filter="out">Solo agotados</button>
+        <button type="button" class="filter-chip" data-status-filter="featured">Solo destacados ⭐</button>
+      </div>
+
+      <!-- Lista de Productos -->
+      <div class="products-list" id="products-list">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+    <!-- PANEL 2: PEDIDOS DEMO -->
+    <section class="tab-panel" id="tab-orders" style="display: none;">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+        <p style="font-size: 0.88rem; color: var(--muted);">
+          Actividad reciente simulada del restaurante. Hacé clic en cualquier fila o en <strong>"Ver ticket"</strong>
+          para inspeccionar la comanda completa.
+        </p>
+        <span class="demo-chip">Actualización en vivo</span>
+      </div>
+
+      <div class="orders-table-wrapper">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>ID Pedido</th>
+              <th>Cliente</th>
+              <th>Tiempo</th>
+              <th>Contenido</th>
+              <th>Total ARS</th>
+              <th>Modalidad</th>
+              <th>Estado</th>
+              <th style="text-align: right;">Comanda</th>
+            </tr>
+          </thead>
+          <tbody id="orders-table-body">
+            <!-- Renderizado dinámico -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PANEL 3: INGRESOS & MÉTRICAS (NUEVO) -->
+    <section class="tab-panel" id="tab-revenue" style="display: none;">
+      <div
+        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h2 style="font-size: 1.5rem; color: var(--burgundy); margin-bottom: 4px;">Rendimiento Comercial Foster
+            Club<span class="dot">.</span></h2>
+          <p style="font-size: 0.86rem; color: var(--muted);">
+            Valores consolidados en tiempo real calculados a partir de los pedidos confirmados y en curso.
+          </p>
+        </div>
+        <button type="button" class="pill pill-light pill-sm" id="btn-print-report"
+          style="border: 1px solid var(--line); color: var(--burgundy);">
+          📄 Simular reporte de caja
+        </button>
+      </div>
+
+      <!-- 4 KPIs Financieros -->
+      <div class="revenue-grid">
+        <div class="revenue-card">
+          <div class="revenue-card-header">
+            <span class="revenue-card-title">Facturación total</span>
+            <span class="kpi-badge badge-green">Ventas hoy</span>
+          </div>
+          <div class="revenue-card-value" id="rev-total-income">$482.400</div>
+          <div class="revenue-card-sub" id="rev-total-orders-sub">En 18 pedidos registrados</div>
+        </div>
+
+        <div class="revenue-card">
+          <div class="revenue-card-header">
+            <span class="revenue-card-title">Ticket promedio</span>
+            <span class="kpi-badge badge-amber">Por cliente</span>
+          </div>
+          <div class="revenue-card-value" id="rev-avg-ticket">$26.800</div>
+          <div class="revenue-card-sub">Consumo promedio por pedido</div>
+        </div>
+
+        <div class="revenue-card">
+          <div class="revenue-card-header">
+            <span class="revenue-card-title">Platos despachados</span>
+            <span class="kpi-badge badge-green">Cocina</span>
+          </div>
+          <div class="revenue-card-value" id="rev-items-sold">48 un.</div>
+          <div class="revenue-card-sub">Hamburguesas, papas y bebidas</div>
+        </div>
+
+        <div class="revenue-card">
+          <div class="revenue-card-header">
+            <span class="revenue-card-title">Tasa de confirmación</span>
+            <span class="kpi-badge badge-green">Efectividad</span>
+          </div>
+          <div class="revenue-card-value" id="rev-success-rate">94%</div>
+          <div class="revenue-card-sub">17 pedidos confirmados de 18</div>
+        </div>
+      </div>
+
+      <!-- Sección Partida: Franja Horaria & Ranking -->
+      <div class="revenue-sections-split">
+        <!-- Gráfico Horario -->
+        <div class="dashboard-panel-box">
+          <div class="dashboard-panel-title">
+            Ventas por franja horaria
+            <span class="mono" style="font-size: 0.72rem; color: var(--orange); font-weight: 700;">PICOS DEL DÍA</span>
+          </div>
+          <p class="dashboard-panel-sub">Distribución del volumen de ventas según el turno gastronómico.</p>
+          <div class="hourly-chart" id="hourly-chart-bars">
+            <!-- Barras horarias dinámicas -->
+          </div>
+        </div>
+
+        <!-- Ranking Platos Top -->
+        <div class="dashboard-panel-box">
+          <div class="dashboard-panel-title">
+            Platos más vendidos
+            <span class="mono" style="font-size: 0.72rem; color: var(--orange); font-weight: 700;">TOP 5 RANKING</span>
+          </div>
+          <p class="dashboard-panel-sub">Las burgers y acompañamientos favoritos del club.</p>
+          <div class="ranking-list" id="top-sellers-list">
+            <!-- Lista de ranking dinámica -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Canales y Medios de Pago -->
+      <div class="dashboard-panel-box">
+        <div class="dashboard-panel-title" style="margin-bottom: 16px;">
+          Distribución de canales y medios de pago
+        </div>
+        <div class="channels-grid">
+          <div class="channel-card">
+            <div class="channel-pct" id="rev-channel-delivery">61%</div>
+            <div class="channel-label">🛵 Delivery a domicilio</div>
+          </div>
+          <div class="channel-card">
+            <div class="channel-pct" id="rev-channel-takeaway">39%</div>
+            <div class="channel-label">🛍️ Retiro en local</div>
+          </div>
+          <div class="channel-card">
+            <div class="channel-pct">55% / 45%</div>
+            <div class="channel-label">💳 Mercado Pago / Efectivo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 4: CATEGORÍAS -->
+    <section class="tab-panel" id="tab-categories" style="display: none;">
+      <div style="margin-bottom: 20px;">
+        <p style="font-size: 0.88rem; color: var(--muted);">
+          Categorías oficiales de la carta de Foster Club Tandil.
+        </p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;"
+        id="categories-grid">
+        <!-- Renderizado dinámico -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer oficial Foster Club -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <a class="footer-brand" href="../" aria-label="Foster Club, inicio">
+        <img src="../logo/Imagen de ChatGPT 11 oct 2026, 15_50_30-1.png" alt="Foster Club" width="140" height="110">
+      </a>
+      <p>
+        Burgers, amigos y buenas historias.<br>
+        Constitución 501, Tandil.
+      </p>
+      <div class="footer-actions">
+        <a class="pill pill-light pill-sm" href="../carta/">Ir a la Carta</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© 2026 Foster Club · Panel de control Demo</span>
+      <span>Propuesta comercial interactiva</span>
+    </div>
+  </footer>
+
+  <!-- MODAL: DETALLE DE PEDIDO / COMANDA COCINA (NUEVO) -->
+  <div class="modal-overlay" id="modal-order-detail" role="dialog" aria-modal="true"
+    aria-labelledby="modal-ticket-title">
+    <div class="modal-window ticket-window">
+      <div class="ticket-header">
+        <img src="../logo/Imagen de ChatGPT 11 oct 2026, 15_50_30-1.png" alt="Foster Club">
+        <h3 class="ticket-brand" id="modal-ticket-title">COMANDA DE COCINA</h3>
+        <p class="ticket-sub" id="ticket-order-id">PEDIDO #PED-1018 · FOSTER CLUB</p>
+      </div>
+
+      <!-- Datos del cliente y entrega -->
+      <div class="ticket-meta-grid">
+        <div class="ticket-meta-item">
+          <span class="ticket-meta-label">Cliente</span>
+          <span class="ticket-meta-val" id="ticket-customer-name">Lucas Martínez</span>
+        </div>
+        <div class="ticket-meta-item">
+          <span class="ticket-meta-label">Contacto</span>
+          <span class="ticket-meta-val mono" id="ticket-customer-phone">249 455-8912</span>
+        </div>
+        <div class="ticket-meta-item">
+          <span class="ticket-meta-label">Modalidad & Entrega</span>
+          <span class="ticket-meta-val" id="ticket-delivery-mode">🛵 Delivery</span>
+        </div>
+        <div class="ticket-meta-item">
+          <span class="ticket-meta-label">Medio de pago</span>
+          <span class="ticket-meta-val" id="ticket-payment-method">Mercado Pago (QR)</span>
+        </div>
+        <div class="ticket-meta-item" style="grid-column: 1 / -1;">
+          <span class="ticket-meta-label">Dirección</span>
+          <span class="ticket-meta-val" id="ticket-address">Av. España 482, Piso 2A</span>
+        </div>
+      </div>
+
+      <!-- Tabla de ítems desglosados -->
+      <table class="ticket-items-table">
+        <thead>
+          <tr>
+            <th>Cant.</th>
+            <th>Plato & Especificaciones</th>
+            <th style="text-align: right;">Unitario</th>
+            <th style="text-align: right;">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="ticket-items-body">
+          <!-- Ítems dinámicos -->
+        </tbody>
+      </table>
+
+      <!-- Totales -->
+      <div class="ticket-totals-box">
+        <div class="ticket-totals-row">
+          <span>Subtotal productos</span>
+          <strong class="mono" id="ticket-subtotal-val">$33.900</strong>
+        </div>
+        <div class="ticket-totals-row">
+          <span>Envío estimado</span>
+          <strong class="mono" style="color: #15803d;">Bonificado / $0</strong>
+        </div>
+        <div class="ticket-totals-row grand-total">
+          <span>TOTAL A COBRAR</span>
+          <strong class="amount" id="ticket-total-val">$33.900</strong>
+        </div>
+      </div>
+
+      <!-- Indicaciones de Cocina -->
+      <div class="ticket-kitchen-notes" id="ticket-notes-box">
+        <strong>📝 Observaciones del cliente / cocina:</strong>
+        <p id="ticket-notes-text">Sin cebolla en una burger, dip de salsa aparte.</p>
+      </div>
+
+      <!-- Acciones de Comanda -->
+      <div class="ticket-actions-row">
+        <button type="button" class="pill pill-burgundy-outline pill-sm"
+          style="color: var(--burgundy); border-color: var(--line);" data-close-modal>
+          Cerrar comanda
+        </button>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="pill pill-light pill-sm" id="btn-ticket-print"
+            style="border: 1px solid var(--line); color: var(--burgundy);">
+            🖨️ Imprimir ticket
+          </button>
+          <button type="button" class="pill pill-orange pill-sm" id="btn-ticket-toggle-status">
+            ✓ Marcar como confirmado
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Editar / Crear Producto (Con selector y subida de imágenes) -->
+  <div class="modal-overlay" id="modal-product" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="modal-product-title">Editar Plato</h3>
+        <button type="button" class="modal-close-btn" data-close-modal aria-label="Cerrar">✕</button>
+      </div>
+      <form id="form-product">
+        <input type="hidden" id="prod-id" name="id">
+        <input type="hidden" id="prod-image-url" name="imageUrl">
+
+        <!-- Selector y subida de imágenes -->
+        <div class="image-selector-zone">
+          <div class="image-selector-header">
+            <label>Fotografía del plato</label>
+            <span class="mono" style="font-size: 0.65rem; color: var(--orange); font-weight: 700;">IMPACTO VISUAL EN
+              CARTA</span>
+          </div>
+
+          <div class="img-preview-container">
+            <div class="img-preview-thumb" id="prod-preview-thumb">
+              <span class="thumb-mark">f.</span>
+            </div>
+            <div class="img-preview-actions">
+              <label class="pill pill-light pill-sm"
+                style="border: 1px solid var(--line); color: var(--burgundy); cursor: pointer;">
+                📁 Subir desde tu equipo
+                <input type="file" id="prod-file-input" accept="image/*" style="display: none;">
+              </label>
+              <button type="button" class="pill pill-burgundy-outline pill-sm" id="btn-remove-image"
+                style="color: var(--muted); border-color: var(--line); font-size: 0.65rem;">
+                ✕ Quitar foto
+              </button>
+            </div>
+          </div>
+
+          <!-- Galería rápida de fotos predefinidas -->
+          <div class="preset-photos-title">O elegir foto predefinida de Foster Club:</div>
+          <div class="preset-photos-grid">
+            <button type="button" class="preset-chip-btn"
+              data-preset="imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_38-6.png" title="Burger Smash Doble">
+              <img src="../imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_38-6.png" alt="Burger">
+            </button>
+            <button type="button" class="preset-chip-btn"
+              data-preset="imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_35-4.png" title="Papas Foster Fritas">
+              <img src="../imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_35-4.png" alt="Papas">
+            </button>
+            <button type="button" class="preset-chip-btn"
+              data-preset="imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_39-7.png" title="Milkshake">
+              <img src="../imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_39-7.png" alt="Milkshake">
+            </button>
+            <button type="button" class="preset-chip-btn"
+              data-preset="imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_36-5.png" title="Mesa / Bandeja">
+              <img src="../imagenes/Imagen de ChatGPT 11 oct 2026, 15_50_36-5.png" alt="Mesa">
+            </button>
+            <button type="button" class="preset-chip-btn" data-preset="assets/home/hero-burger-natural.jpg"
+              title="Hero Burger">
+              <img src="../assets/home/hero-burger-natural.jpg" alt="Hero">
+            </button>
+            <button type="button" class="preset-chip-btn" data-preset="assets/stock/chicken.webp"
+              title="Crispy Chicken">
+              <img src="../assets/stock/chicken.webp" alt="Chicken">
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="prod-name">Nombre del plato</label>
+          <input type="text" class="form-control" id="prod-name" name="name" required placeholder="Ej: Cheese Burger">
+        </div>
+
+        <div class="form-group">
+          <label for="prod-category">Categoría</label>
+          <select class="form-control" id="prod-category" name="category" required>
+            <!-- Opciones dinámicas -->
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="prod-price">Precio en pesos ($ ARS)</label>
+          <input type="number" class="form-control mono" id="prod-price" name="demoPriceArs" required min="0" step="100"
+            placeholder="Ej: 14000">
+        </div>
+
+        <div class="form-group">
+          <label for="prod-description">Descripción e ingredientes</label>
+          <textarea class="form-control" id="prod-description" name="description"
+            placeholder="Ej: Doble cheddar, cebolla brunoise, ketchup y mostaza."></textarea>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="prod-available" name="available">
+          <span>Disponible para pedidos (Desmarcar para <strong>Agotado</strong>)</span>
+        </label>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="prod-featured" name="featured">
+          <span>Destacar en la carta (Badge ⭐)</span>
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" class="pill pill-burgundy-outline pill-sm"
+            style="color: var(--burgundy); border-color: var(--line);" data-close-modal>Cancelar</button>
+          <button type="submit" class="pill pill-orange pill-sm">Guardar plato y foto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Confirmar Restablecer Demo -->
+  <div class="modal-overlay" id="modal-confirm-reset" role="dialog" aria-modal="true"
+    aria-labelledby="modal-reset-title">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="modal-reset-title">¿Restablecer datos demo?</h3>
+        <button type="button" class="modal-close-btn" data-close-modal aria-label="Cerrar">✕</button>
+      </div>
+      <p style="color: var(--muted); font-size: 0.92rem; margin-bottom: 22px; line-height: 1.5;">
+        Esta acción recupera la carta original con los 32 platos, precios iniciales y los 18 pedidos de prueba. Ideal
+        para dejar todo listo antes de tu próxima presentación con un cliente.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="pill pill-burgundy-outline pill-sm"
+          style="color: var(--burgundy); border-color: var(--line);" data-close-modal>Cancelar</button>
+        <button type="button" class="pill pill-orange pill-sm" id="btn-execute-reset">Sí, restablecer ahora</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notificación -->
+  <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span id="toast-message">Guardado con éxito · Sincronizado con la Carta</span>
+  </div>
+
+  <!-- Script del Panel Admin -->
+  <script type="module" src="./admin.mjs"></script>
+</body>
+
+</html>

@@ -83,3 +83,13 @@
 .arrow-icon-right{--arrow-mask:url("assets/icons/arrow-right.svg")}
 .arrow-icon-down{--arrow-mask:url("assets/icons/arrow-down.svg")}
 .product-arrow.arrow-icon{width:22px;height:22px;font-size:inherit}
+
+/* Estados dinámicos de catálogo demo (Agotado, Destacado y Acceso a Admin) */
+.product-card.is-out-of-stock{opacity:.65}
+.product-card.is-out-of-stock .product-image{position:relative;filter:saturate(.4)}
+.out-of-stock-tag{position:absolute;bottom:6px;left:6px;right:6px;background:#c53030;color:#fff;font-size:.62rem;font-family:'DM Mono',monospace;font-weight:700;text-align:center;text-transform:uppercase;border-radius:4px;padding:2px 0;letter-spacing:.05em;z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.price-unavailable{color:#dc2626!important;font-weight:700!important}
+.cart-notice-danger{border-left-color:#dc2626!important;background:#fee2e2!important;color:#991b1b!important}
+.featured-dot{color:#f59e0b;margin-left:6px;font-size:1rem;vertical-align:middle}
+.admin-pill-link{background:#250709;color:#ffb800!important;border:1px solid rgba(255,184,0,.45)!important;font-size:.72rem!important;padding:0 18px!important;box-shadow:0 0 12px rgba(255,184,0,.15)}
+.admin-pill-link:hover{background:#ffb800!important;color:#250709!important;transform:translateY(-2px)}
