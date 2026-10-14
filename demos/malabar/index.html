@@ -52,6 +52,7 @@
   .section-head h2{margin:16px 0 0;font-size:clamp(43px,5.5vw,88px);line-height:1.07;letter-spacing:-.068em;font-weight:500}
   .section-head p{max-width:380px;color:var(--muted);font-size:15px;line-height:1.8;margin:0}
   .arr{display:inline-block;width:16px;height:16px;font-size:0;line-height:1;flex:0 0 auto;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .25s ease}
+  .arr-down{transform:rotate(90deg)}
   .button{display:inline-flex;gap:20px;align-items:center;justify-content:space-between;min-height:55px;padding:0 24px;border-radius:2px;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:800;transition:background .25s,color .25s,transform .25s,border-color .25s;border:1px solid transparent}
   .button:hover{transform:translateY(-2px)}
   .button:hover .arr{transform:translate(3px,-3px)}
@@ -120,8 +121,8 @@
   .event-card-content{width:100%;display:flex;align-items:end;justify-content:space-between;gap:20px}
   .event-card span{display:block;font-size:10px;letter-spacing:.19em;text-transform:uppercase;font-weight:700;margin-bottom:11px}
   .event-card h3{font-size:clamp(23px,3vw,42px);line-height:1.1;letter-spacing:-.045em;font-weight:500;margin:0}
-  .event-card .circle-arrow{width:56px;height:56px;display:grid;place-items:center;border:1px solid #fff8;border-radius:50%;font-size:0;flex:none;transition:background .25s,color .25s}
-  .event-card .circle-arrow::before{content:"";width:1.3em;height:1.3em;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat}
+  .event-card .circle-arrow{position:relative;width:56px;height:56px;display:grid;place-items:center;border:1px solid #fff8;border-radius:50%;font-size:0;line-height:0;flex:none;transition:background .25s,color .25s}
+  .event-card .circle-arrow::before{content:"";position:absolute;top:50%;left:50%;width:18px;height:18px;transform:translate(-50%,-50%);background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat}
   .event-card:hover .circle-arrow{background:#fff;color:#222}
   .space{background:#eaeae4;padding:135px 0 150px}
   .space .section-head{margin-bottom:68px}
@@ -141,7 +142,8 @@
   .experience-intro{font-size:15px;line-height:1.9;color:var(--muted);margin:0 0 49px}
   .service{border-top:1px solid #c8c8c1;padding:21px 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:14px;font-weight:600}
   .service:last-child{border-bottom:1px solid #c8c8c1}
-  .service small{font-size:11px;color:var(--muted);font-weight:500}
+  .service small{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);font-weight:500}
+  .service small::after{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat}
   .moment{height:min(68vw,780px);min-height:400px;background:linear-gradient(180deg,#0003,#0008),url('assets/04-barra-evento.webp') center 48%/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
   .moment h2{font-weight:500;font-size:clamp(44px,6vw,92px);line-height:1.04;letter-spacing:-.055em;max-width:1000px;margin:0 auto 35px}
   .moment p{font-size:12px;letter-spacing:.23em;text-transform:uppercase;font-weight:800;margin:0 0 25px}
@@ -331,7 +333,7 @@
   .story-choice:last-of-type { border-bottom:1px solid #ced0cb; }
   .story-choice small { font-size:10px; font-weight:800; letter-spacing:.13em; align-self:center; }
   .story-choice strong { font-weight:500; letter-spacing:-.048em; font-size:clamp(23px,2.6vw,42px); line-height:1.18; }
-  .story-choice .story-cta { margin-left:auto; width:1.3em;height:1.3em;font-size:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat; transform:rotate(-45deg); opacity:0; transition:transform .35s,opacity .35s; }
+  .story-choice .story-cta { margin-left:auto; width:18px;height:18px;font-size:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat; transform:rotate(-45deg); opacity:0; transition:transform .35s,opacity .35s; }
   .story-choice.is-active,.story-choice:hover,.story-choice:focus-visible { color:var(--coal); padding-left:15px; }
   .story-choice.is-active .story-cta,.story-choice:hover .story-cta { transform:rotate(0); opacity:1; }
   .story-bottom { display:flex; justify-content:space-between; align-items:center; gap:10px; color:#7d8079; font-size:10px; text-transform:uppercase; font-weight:800; letter-spacing:.12em; margin-top:24px; }
@@ -472,7 +474,7 @@
         <a href="#galeria">Galería</a>
       </div>
       <div class="nav-actions">
-        <a class="nav-contact" href="#organizar">Organizá tu evento&nbsp;&nbsp; ↗</a>
+        <a class="nav-contact" href="#organizar">Organizá tu evento</a>
       </div>
       <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
         <span aria-hidden="true"></span>
@@ -497,10 +499,10 @@
           </div>
           <div class="hero-bottom">
             <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗</span></a>
-            <a href="#espacio" class="button outline-light">Conocé el espacio <span class="arr">↓</span></a>
+            <a href="#espacio" class="button outline-light">Conocé el espacio <span class="arr arr-down" aria-hidden="true"></span></a>
           </div>
         </div>
-        <span class="hero-scroll">SCROLL PARA DESCUBRIR &nbsp; ↓</span>
+        <span class="hero-scroll">SCROLL PARA DESCUBRIR <span class="arr arr-down" aria-hidden="true"></span></span>
       </section>
     </div>
 
@@ -532,7 +534,7 @@
             <a href="#organizar" class="story-choice" data-event="Evento corporativo"><small>02</small><strong>Eventos<br>corporativos</strong><span class="story-cta" aria-hidden="true">↗</span></a>
             <a href="#organizar" class="story-choice" data-event="Cumpleaños o celebración"><small>03</small><strong>Cumpleaños y<br>celebraciones</strong><span class="story-cta" aria-hidden="true">↗</span></a>
             <a href="#organizar" class="story-choice" data-event="Evento especial"><small>04</small><strong>Eventos<br>especiales</strong><span class="story-cta" aria-hidden="true">↗</span></a>
-            <div class="story-bottom"><span>DESLIZÁ PARA DESCUBRIR ↓</span><span class="story-live-index">01 / 04</span></div>
+            <div class="story-bottom"><span>DESLIZÁ PARA DESCUBRIR <span class="arr arr-down" aria-hidden="true"></span></span><span class="story-live-index">01 / 04</span></div>
           </div>
           <figure class="event-story-frame">
             <div class="event-story-image is-active"><img src="assets/06-ambientacion-lounge.webp" alt="Ambientación de lounge para celebraciones en Malabar" loading="lazy"></div>
@@ -573,7 +575,7 @@
     <section class="experience" id="experiencia">
       <div class="wrap experience-grid">
         <div class="experience-photo"><img loading="lazy" src="assets/05-gastronomia.webp" alt="Propuesta gastronómica servida durante un evento en Malabar"><span class="photo-label">LA EXPERIENCIA MALABAR</span></div>
-        <div class="experience-text"><span class="eyebrow">04 / CADA DETALLE IMPORTA</span><h2>Los momentos<br>se viven en<br>los detalles.</h2><p class="experience-intro">La música, el brindis, la mesa compartida y el ambiente. Contanos qué imaginás para tu evento y armemos una propuesta pensada para vos.</p><div class="service"><span>Gastronomía y recepción</span><small>A consultar ↗</small></div><div class="service"><span>Barra y bebidas</span><small>A consultar ↗</small></div><div class="service"><span>Ambientación y música</span><small>A consultar ↗</small></div><div class="service"><span>Montajes personalizados</span><small>A consultar ↗</small></div><p class="form-note">Los servicios mostrados son opciones a coordinar, adaptadas a la medida de cada celebración.</p></div>
+        <div class="experience-text"><span class="eyebrow">04 / CADA DETALLE IMPORTA</span><h2>Los momentos<br>se viven en<br>los detalles.</h2><p class="experience-intro">La música, el brindis, la mesa compartida y el ambiente. Contanos qué imaginás para tu evento y armemos una propuesta pensada para vos.</p><div class="service"><span>Gastronomía y recepción</span><small>A consultar</small></div><div class="service"><span>Barra y bebidas</span><small>A consultar</small></div><div class="service"><span>Ambientación y música</span><small>A consultar</small></div><div class="service"><span>Montajes personalizados</span><small>A consultar</small></div><p class="form-note">Los servicios mostrados son opciones a coordinar, adaptadas a la medida de cada celebración.</p></div>
       </div>
     </section>
 
@@ -736,7 +738,7 @@
             <p style="margin-top:14px">Un escenario privilegiado para tus momentos más importantes en Tandil.</p>
             <p style="margin-top:8px">
               <a href="https://wa.me/5492494642400" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">
-                WhatsApp: +54 9 249 464-2400 ↗
+                WhatsApp: +54 9 249 464-2400 <span class="arr" aria-hidden="true"></span>
               </a>
             </p>
           </div>
@@ -751,8 +753,8 @@
           </div>
           <div>
             <div class="eyebrow">Encontranos</div>
-            <a href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Instagram (@malabareventos_) ↗</a><br>
-            <a href="https://www.google.com/maps/place/Malabar+Eventos/@-37.3531415,-59.1317049,17z/" target="_blank" rel="noopener noreferrer">Ubicación en Maps ↗</a>
+            <a href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Instagram (@malabareventos_) <span class="arr" aria-hidden="true"></span></a><br>
+            <a href="https://www.google.com/maps/place/Malabar+Eventos/@-37.3531415,-59.1317049,17z/" target="_blank" rel="noopener noreferrer">Ubicación en Maps <span class="arr" aria-hidden="true"></span></a>
             <p style="margin-top:8px">Tandil, Buenos Aires, Argentina</p>
           </div>
         </div>
@@ -762,7 +764,7 @@
   </main>
 
   <div class="motion-cursor" aria-hidden="true">ELEGIR ↗</div>
-  <div class="mobile-fixed"><a href="#organizar" class="button dark">Organizá tu evento &nbsp;↗</a></div>
+  <div class="mobile-fixed"><a href="#organizar" class="button dark">Organizá tu evento <span class="arr" aria-hidden="true"></span></a></div>
 
   <!-- SCRIPT LOGICA COTIZADOR Y WHATSAPP -->
   <script>
