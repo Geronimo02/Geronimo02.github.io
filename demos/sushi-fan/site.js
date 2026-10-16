@@ -55,10 +55,15 @@
   function renderCart(){
     const rows=core.details(cart,products);
     const count=rows.reduce((sum,row)=>sum+row.quantity,0);
+    const subtotal=core.money(core.subtotal(cart,products));
     $('cartCount').textContent=count;
+    $('mobileCartCount').textContent=count;
+    $('mobileCartSubtotal').textContent=subtotal;
+    $('mobileOrderBar').hidden=count===0;
+    document.body.classList.toggle('has-mobile-order',count>0);
     document.querySelectorAll('[data-open-cart]').forEach(b=>b.setAttribute('aria-label',`Abrir pedido, ${count} ${count===1?'producto':'productos'}`));
     $('cartEmpty').hidden=rows.length>0;$('orderForm').hidden=rows.length===0;$('sendOrder').disabled=rows.length===0;
-    $('cartSubtotal').textContent=core.money(core.subtotal(cart,products));
+    $('cartSubtotal').textContent=subtotal;
     $('cartLines').innerHTML=rows.map(row=>`<article class="cart-line" data-id="${escapeHtml(row.id)}" data-variant="${escapeHtml(row.variantId)}"><div><h3>${escapeHtml(row.product.name)}</h3><p>${row.variant?escapeHtml(row.variant.name)+' · ':''}${core.money(row.priceCents)} c/u</p><div class="cart-line-actions"><button type="button" data-quantity="-1" aria-label="Quitar una unidad de ${escapeHtml(row.product.name)}">−</button><span>${row.quantity}</span><button type="button" data-quantity="1" aria-label="Agregar una unidad de ${escapeHtml(row.product.name)}">+</button><button class="remove-line" type="button" data-remove>Eliminar</button></div></div><strong>${core.money(row.subtotalCents)}</strong></article>`).join('');
   }
   function openCart(trigger){lastFocus=trigger||document.activeElement;$('cartBackdrop').hidden=false;$('cartDrawer').inert=false;$('cartDrawer').setAttribute('aria-hidden','false');document.body.classList.add('drawer-open');requestAnimationFrame(()=>$('cartDrawer').classList.add('open'));$('cartClose').focus();}
