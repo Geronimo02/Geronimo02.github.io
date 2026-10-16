@@ -1,0 +1,286 @@
+{
+ "capturado": "2026-10-16",
+ "fuente_precios": "PedidosYa (pueden tener recargo de la app) — [CONFIRMAR precio de mostrador]",
+ "fuente_gustos": "Carta impresa (destacada CARTA de IG) + PedidosYa",
+ "precio_a_confirmar": "?",
+ "categorias": [
+  {
+   "id": "pizzas",
+   "titulo": "Pizzas",
+   "nota": "Grande o individual. Precios de PedidosYa al 16/10/2026.",
+   "items": [
+    {
+     "nombre": "Muzzarella",
+     "ingredientes": "Salsa de tomate, mozzarella",
+     "grande": 22400,
+     "individual": 12400
+    },
+    {
+     "nombre": "Napolitana",
+     "ingredientes": "Salsa, mozzarella, tomates frescos, pesto de ajo y perejil",
+     "grande": 23800,
+     "individual": 13100
+    },
+    {
+     "nombre": "Fugazza con queso",
+     "ingredientes": "Mozzarella, cebolla morada rehogada, oliva y verdeo",
+     "grande": null,
+     "individual": 12900
+    },
+    {
+     "nombre": "Tiago",
+     "ingredientes": "Salsa, mozzarella, jamón cocido, tomates frescos, queso sardo",
+     "grande": 24900,
+     "individual": 13500
+    },
+    {
+     "nombre": "Jamón y queso",
+     "ingredientes": "Salsa, mozzarella, jamón cocido",
+     "grande": 23900,
+     "individual": 13300
+    },
+    {
+     "nombre": "Cuatro quesos",
+     "ingredientes": "Salsa, mozzarella, roquefort, sardo, romano",
+     "grande": 23900,
+     "individual": 13300
+    },
+    {
+     "nombre": "Especial",
+     "ingredientes": "Salsa, mozzarella, jamón cocido, pimientos rojos",
+     "grande": 25100,
+     "individual": 13600
+    },
+    {
+     "nombre": "Capresse",
+     "ingredientes": "Salsa, mozzarella, tomates asados, albahaca fresca",
+     "grande": 23900,
+     "individual": 13300
+    },
+    {
+     "nombre": "Golf Club",
+     "ingredientes": "Salsa, mozzarella, jamón cocido, palmitos, salsa golf",
+     "grande": 25500,
+     "individual": null
+    },
+    {
+     "nombre": "Verdura",
+     "ingredientes": "Mozzarella, acelga con cebolla, salsa blanca, sardo",
+     "grande": 23800,
+     "individual": null
+    },
+    {
+     "nombre": "Panceta y cebolla",
+     "ingredientes": "Salsa, mozzarella, cebolla morada, panceta ahumada",
+     "grande": 25500,
+     "individual": 13700
+    },
+    {
+     "nombre": "Panceta y cheddar",
+     "ingredientes": "Salsa, mozzarella, cheddar, panceta, cebolla morada, verdeo",
+     "grande": 25500,
+     "individual": null
+    },
+    {
+     "nombre": "Pepperoni",
+     "ingredientes": "Salsa, mozzarella, calabresa, ají molido",
+     "grande": 24200,
+     "individual": 13300
+    },
+    {
+     "nombre": "Tropical",
+     "ingredientes": "Salsa, mozzarella, jamón cocido, ananá gratinado",
+     "grande": 25500,
+     "individual": null
+    },
+    {
+     "nombre": "Margarita",
+     "ingredientes": "Salsa, mozzarella, pesto de albahaca",
+     "grande": 23700,
+     "individual": 12800
+    },
+    {
+     "nombre": "Pollo",
+     "ingredientes": "Salsa, mozzarella, pollo a la portuguesa",
+     "grande": "?",
+     "individual": null
+    },
+    {
+     "nombre": "Rúcula",
+     "ingredientes": "Salsa, mozzarella, rúcula, jamón crudo serrano, sardo",
+     "grande": "?",
+     "individual": null
+    },
+    {
+     "nombre": "Rúcula y cherry confitado",
+     "ingredientes": "Salsa, mozzarella, cherry confitado en oliva, rúcula, sardo",
+     "grande": "?",
+     "individual": null
+    }
+   ]
+  },
+  {
+   "id": "rastapan",
+   "titulo": "Rastapan",
+   "nota": "Fermento largo, 48 h de reposo. Cerrado como un calzone, abierto arriba.",
+   "items": [
+    {
+     "nombre": "Jamón y queso",
+     "ingredientes": "Salsa de tomate, jamón y muzzarella",
+     "precio": 22900
+    },
+    {
+     "nombre": "Napolitano",
+     "ingredientes": "Salsa de tomate, muzzarella, tomate fresco y ajo",
+     "precio": 22900
+    },
+    {
+     "nombre": "Fugazza",
+     "ingredientes": "Cebolla morada, aceite de oliva y muzzarella",
+     "precio": 22900
+    },
+    {
+     "nombre": "Capresse",
+     "ingredientes": "Salsa de tomate, muzzarella, tomate fresco y albahaca",
+     "precio": 22900
+    },
+    {
+     "nombre": "Cantimpalo",
+     "ingredientes": "Salsa de tomate, cantimpalo, muzzarella y tomate fresco",
+     "precio": 22900
+    }
+   ]
+  },
+  {
+   "id": "empanadas",
+   "titulo": "Empanadas",
+   "nota": "$3.700 cada una. Al horno; preguntá por las fritas.",
+   "items": [
+    {
+     "nombre": "Carne",
+     "ingredientes": "Carne picada, cebolla, morrón",
+     "precio": 3700
+    },
+    {
+     "nombre": "Carne picante",
+     "ingredientes": "Carne picada, cebolla, morrón, papa, tomate, ají cayena",
+     "precio": 3700
+    },
+    {
+     "nombre": "Jamón y queso",
+     "ingredientes": "Jamón cocido y muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Pollo",
+     "ingredientes": "Pollo, cebolla, morrón, crema",
+     "precio": 3700
+    },
+    {
+     "nombre": "Vacío y provolone",
+     "ingredientes": "Vacío braseado, cebolla, morrón, puerro, provolone",
+     "precio": 3700
+    },
+    {
+     "nombre": "Bondiola",
+     "ingredientes": "Bondiola braseada, cebolla, morrón, zanahoria, barbacoa",
+     "precio": 3700
+    },
+    {
+     "nombre": "Mc Cheddar",
+     "ingredientes": "Carne picada, cebolla, panceta, barbacoa, cheddar",
+     "precio": 3700
+    },
+    {
+     "nombre": "Ananá y jamón",
+     "ingredientes": "Ananá, jamón cocido, muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Panceta y ciruela",
+     "ingredientes": "Panceta, ciruela, muzzarella",
+     "precio": 3700
+    }
+   ]
+  },
+  {
+   "id": "canastitas",
+   "titulo": "Canastitas",
+   "nota": "$3.700 cada una. Abiertas arriba, con el repulgue en espiral.",
+   "items": [
+    {
+     "nombre": "Calabaza y queso",
+     "ingredientes": "Calabaza asada, muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Cantimpalo",
+     "ingredientes": "Cantimpalo, muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Cebolla y queso",
+     "ingredientes": "Mix de cebollas salteadas, muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Champiñones",
+     "ingredientes": "Champiñones salteados, muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Puerro y crema",
+     "ingredientes": "Puerro, cebolla, crema",
+     "precio": 3700
+    },
+    {
+     "nombre": "Verdura",
+     "ingredientes": "Acelga, muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Roquefort",
+     "ingredientes": "Roquefort y muzzarella",
+     "precio": 3700
+    },
+    {
+     "nombre": "Humita",
+     "ingredientes": "Choclo cremoso, cebolla, morrón, crema",
+     "precio": 3700
+    },
+    {
+     "nombre": "Capresse",
+     "ingredientes": "Tomate, muzzarella, pesto de albahaca",
+     "precio": 3700
+    }
+   ]
+  },
+  {
+   "id": "faina",
+   "titulo": "Fainá",
+   "nota": "De harina de garbanzo, aceite de oliva, pesto de ajo y sardo. Ideal para acompañar la pizza.",
+   "items": [
+    {
+     "nombre": "Clásica",
+     "ingredientes": "Garbanzo, oliva, pesto de ajo, sardo",
+     "precio": "?"
+    },
+    {
+     "nombre": "Napolitana",
+     "ingredientes": "Con tomate y pesto de ajo",
+     "precio": "?"
+    },
+    {
+     "nombre": "Al ajo",
+     "ingredientes": "Con pesto de ajo",
+     "precio": "?"
+    },
+    {
+     "nombre": "Fugazza",
+     "ingredientes": "Con cebolla",
+     "precio": "?"
+    }
+   ]
+  }
+ ]
+}
