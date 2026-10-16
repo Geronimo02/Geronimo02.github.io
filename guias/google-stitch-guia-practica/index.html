@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B0D10">
+<meta name="description" content="Guía completa de Google Stitch de GERO: cómo usar la herramienta de diseño con IA, diferencias con Figma, precio gratis, tutorial, prompts, DESIGN.md y de UI a código.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Stitch: guía práctica para diseñar con IA — GERO">
+<meta property="og:description" content="Aprendé Google Stitch desde cero: comparativa con Figma, gratis y límites, 5 prompts, tutorial y cómo pasar el diseño a código real.">
+<meta property="og:url" content="https://geronimo02.github.io/guias/google-stitch-guia-practica/">
+<link rel="canonical" href="https://geronimo02.github.io/guias/google-stitch-guia-practica/">
+<title>Google Stitch: guía práctica, gratis, prompts y comparación con Figma — GERO</title>
+<style>
+:root{--bg:#0B0D10;--surface:#15191F;--surface2:#1B2027;--text:#F4F4F5;--muted:#AAB2BB;--accent:#C7FF3D;--line:#2C333D;--ink:#090B0D}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:radial-gradient(circle at 82% 0,rgba(199,255,61,.08),transparent 22%),var(--bg);line-height:1.66}a{color:inherit}.wrap{max-width:1120px;width:calc(100% - 40px);margin:auto}
+.top{position:sticky;top:0;z-index:30;background:rgba(11,13,16,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.topin{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:60px}.brand{font-size:18px;font-weight:950;letter-spacing:.14em;text-decoration:none}.brand b{color:var(--accent)}.nav{display:flex;gap:20px}.nav a{font-size:12px;text-decoration:none;color:var(--muted);font-weight:700}.nav a:hover{color:var(--accent)}
+.hero{padding:82px 0 62px;border-bottom:1px solid var(--line)}.kicker,.eyebrow{color:var(--accent);font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.pills{display:flex;gap:9px;flex-wrap:wrap;margin:24px 0}.pill{border:1px solid #435033;color:#E7FFD0;border-radius:99px;font-weight:800;font-size:11px;letter-spacing:.04em;padding:8px 12px}.pill.dim{color:var(--muted);border-color:var(--line)}h1{font-size:clamp(48px,8vw,94px);max-width:1040px;line-height:.97;letter-spacing:-.058em;margin:18px 0 25px}h1 em{color:var(--accent);font-style:normal}h2{font-size:clamp(30px,4.7vw,56px);letter-spacing:-.042em;line-height:1.05;margin:0 0 26px}h3{font-size:21px;line-height:1.2;letter-spacing:-.015em;margin:0 0 12px}p{margin:0 0 16px}.lede{font-size:clamp(19px,2.3vw,24px);max-width:780px;color:#D0D5DB}.muted{color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:13px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;padding:13px 18px;border-radius:12px;background:var(--accent);color:var(--ink);font-weight:900;font-size:14px}.btn.alt{background:transparent;border:1px solid var(--line);color:var(--text)}.btn:hover{filter:brightness(1.08)}
+.section{padding:66px 0;border-bottom:1px solid rgba(255,255,255,.055)}.section .intro{font-size:18px;max-width:890px;color:#D0D5DB}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card,.note,.prompt,.step,.decision{background:linear-gradient(180deg,#171C22,#12161B);border:1px solid var(--line);border-radius:18px;padding:24px;min-width:0}.card p:last-child,.note p:last-child{margin-bottom:0}.card b,.note b,.step b{color:var(--accent)}.note{border-left:3px solid var(--accent);margin:20px 0}.warn{border-left-color:#FFBD66}.warn b{color:#FFBD66}.number{font-weight:950;font-size:40px;color:var(--accent);line-height:1;margin:0 0 14px}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:44px 1fr;gap:16px}.step .number{font-size:29px}.step p{margin:0}.flow{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:26px 0}.flow span{padding:11px 15px;background:var(--surface);border:1px solid var(--line);border-radius:11px;font-size:14px;font-weight:850}.flow i{font-style:normal;color:var(--accent)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:15px;margin:22px 0}table{width:100%;border-collapse:collapse;min-width:650px}th,td{padding:15px 16px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{color:var(--accent);font-size:12px;letter-spacing:.05em;text-transform:uppercase;background:#171B20}tr:last-child td{border-bottom:0}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#E9EEDB}pre{margin:12px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#E8EFE4;background:#080B0D;border:1px solid #293237;border-radius:12px;padding:18px}.prompt{margin:15px 0}.prompt-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.copy{background:#29342A;color:var(--accent);font:750 12px Inter,system-ui;cursor:pointer;border:1px solid #4D6840;border-radius:8px;padding:7px 10px}.copy:hover{background:#35472D}.list{padding-left:22px}.list li{margin-bottom:10px}.checklist{list-style:none;padding:0}.checklist li{margin:0 0 12px;padding-left:31px;position:relative}.checklist li:before{content:"□";position:absolute;left:3px;color:var(--accent);font-size:21px;line-height:1.2}.toc{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px}.toc a{text-decoration:none;padding:8px 12px;border:1px solid var(--line);border-radius:10px;color:var(--muted);font-size:12px;font-weight:750}.toc a:hover{border-color:var(--accent);color:var(--text)}
+.cta{margin:38px 0;padding:43px;border-radius:24px;background:var(--accent);color:var(--ink)}.cta h2{color:var(--ink)}.cta .btn{background:var(--ink);color:white}.footer{padding:35px 0 72px;color:var(--muted);font-size:13px}.sources{display:flex;flex-wrap:wrap;gap:12px}.sources a{display:inline-block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:#D5E4DF;font-size:13px}.sources a:hover{border-color:var(--accent)}::selection{background:var(--accent);color:var(--ink)}:focus-visible{outline:2px solid var(--accent);outline-offset:4px}@media(max-width:820px){.grid,.grid.three{grid-template-columns:1fr}.nav{display:none}.hero{padding:62px 0 44px}.section{padding:48px 0}h1{font-size:clamp(43px,11vw,72px)}.cta{padding:26px}.wrap{width:calc(100% - 30px)}}
+
+.hero-split{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.artboard{border:1px solid #343E36;border-radius:23px;background:linear-gradient(145deg,#242B27 0%,#151A1D 52%,#0D1114 100%);padding:14px;box-shadow:0 28px 90px rgba(0,0,0,.28)}
+.artbar{display:flex;align-items:center;gap:6px;padding:2px 2px 12px;border-bottom:1px solid #303B34}
+.artbar span{width:7px;height:7px;background:#69766D;border-radius:100%}.artbar small{margin-left:auto;color:#A7B2AB;font-weight:800;letter-spacing:.09em;font-size:10px}
+.art-main{display:grid;grid-template-columns:96px 1fr;gap:10px;padding-top:12px;min-height:270px}
+.art-side{display:grid;align-content:start;gap:9px}.art-side div{min-height:25px;border-radius:8px;background:#222B28;border:1px solid #39433E}.art-side .active{background:#354C32;border-color:#779E48}
+.art-window{background:#E9EEE5;border-radius:13px;padding:14px;color:#203127;overflow:hidden}
+.art-window .ghost{font-size:10px;text-transform:uppercase;letter-spacing:.14em;font-weight:900;color:#5A7662}
+.art-window h4{font-size:clamp(24px,4vw,37px);letter-spacing:-.06em;line-height:1.08;margin:12px 0;color:#163027}
+.art-window p{color:#55665A;font-size:12px;line-height:1.5;margin-bottom:10px}
+.art-action{display:inline-flex;border-radius:9px;background:#1C4A35;color:#FFFFFF;padding:8px 11px;font-size:10px;font-weight:800}
+.art-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.art-cards span{height:56px;background:linear-gradient(130deg,#D9E9D8,#B6CBAE);border:1px solid #C9D8C6;border-radius:8px}
+.art-foot{display:flex;justify-content:space-between;gap:7px;margin-top:10px;font-size:10px;color:#94A69A;font-weight:700}
+.art-caption{color:#8D9B92;font-size:11px;padding:8px 3px 2px}
+.imageframe{margin:24px 0;border:1px solid var(--line);border-radius:20px;background:#12181A;overflow:hidden}
+.imageframe img{display:block;width:100%;max-height:620px;object-fit:contain;background:#0E1315}
+.imageframe figcaption{padding:12px 18px;color:var(--muted);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}.stat{padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}.stat strong{font-size:20px;color:var(--accent);display:block;margin-bottom:6px}.stat span{color:var(--muted);font-size:12px}
+.badge-lite{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.04em;border-radius:99px;padding:5px 9px;background:#344A2D;color:#D7FFAE;margin:0 7px 6px 0}
+.compare-yes{color:#C7FF3D;font-weight:900}.compare-some{color:#EECF8D;font-weight:800}
+.quote{border-left:3px solid var(--accent);background:rgba(199,255,61,.045);padding:24px;border-radius:0 14px 14px 0;margin:24px 0;font-size:20px;letter-spacing:-.015em}
+.details{display:grid;gap:12px;margin:24px 0}.details details{background:#161B21;border:1px solid var(--line);border-radius:13px;padding:17px 19px}.details summary{font-weight:850;cursor:pointer}.details p{margin:12px 0 0;color:var(--muted)}
+.codeheader{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:9px}
+.mini-flow{margin:24px 0;display:flex;flex-wrap:wrap;align-items:center;gap:7px}.mini-flow span{background:#1A2223;border:1px solid #33433A;border-radius:10px;padding:10px 13px;font-weight:800;font-size:12px}.mini-flow i{font-style:normal;color:var(--accent);font-weight:900}
+.two-col-check{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.note.smallnote{font-size:13px}
+@media(max-width:920px){.hero-split{grid-template-columns:1fr}.artboard{max-width:650px}.stats{grid-template-columns:1fr}}
+@media(max-width:650px){.art-main{grid-template-columns:76px 1fr}.two-col-check{grid-template-columns:1fr}.art-cards span{height:46px}.grid.three{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.art-window h4{font-size:24px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap topin"><a class="brand" href="https://geronimo02.github.io/" aria-label="Volver a GERO">GERO <b>IA</b></a><nav class="nav"><a href="#comparativa">Stitch vs Figma</a><a href="#tutorial">Tutorial</a><a href="#prompts">Prompts</a><a href="#entrega">Código</a><a href="#fuentes">Fuentes</a></nav></div></header>
+<main>
+<section class="hero" id="inicio"><div class="wrap">
+<div class="hero-split">
+<div>
+<p class="kicker">GUÍAS GERO / PRODUCTO + DISEÑO + IA</p>
+<h1>Google <em>Stitch</em>.<br>De una idea a una interfaz.</h1>
+<p class="lede">La herramienta de Google que parece una mezcla entre Figma y un asistente de IA. Te cuento qué hace de verdad, cómo usarla sin gastar de más y cómo llevar un diseño lindo a un producto que funcione.</p>
+<div class="pills"><span class="pill">GRATIS PARA PROBAR · CON LÍMITES</span><span class="pill dim">NO ES FIGMA 1:1</span><span class="pill dim">LECTURA · 12 MIN</span></div>
+<div class="actions"><a class="btn" href="https://stitch.withgoogle.com/" rel="noopener noreferrer" target="_blank">Abrir Google Stitch ↗</a><a class="btn alt" href="#tutorial">Empezar el tutorial ↓</a></div>
+<div class="meta" style="margin-top:23px"><span>Por GERO · Actualizada el 16/10/2026</span><span>Guía editorial · No patrocinada</span></div>
+</div>
+<div class="artboard" aria-label="Ilustración conceptual de un canvas de diseño. No es una captura real de Stitch">
+<div class="artbar"><span></span><span></span><span></span><small>STITCH / CANVAS</small></div>
+<div class="art-main"><div class="art-side"><div class="active"></div><div></div><div></div><div></div><div></div></div>
+<div class="art-window"><div class="ghost">UI CON INTENCIÓN</div><h4>Diseñá una idea.<br>Probá el flujo.</h4><p>Una pantalla no resuelve un negocio. Una experiencia entendible sí.</p><div class="art-action">Explorar producto ↗</div>
+<div class="art-cards"><span></span><span></span><span></span></div></div></div>
+<div class="art-foot"><span>BRIEF</span><span>→</span><span>VARIANTES</span><span>→</span><span>PROTOTIPO</span><span>→</span><span>CÓDIGO</span></div>
+<div class="art-caption">Ilustración conceptual creada para explicar el flujo. No reproduce la interfaz oficial.</div>
+</div>
+</div>
+<nav class="toc" aria-label="Secciones de la guía"><a href="#que-es">Qué es</a><a href="#gratis">Precio</a><a href="#comparativa">Stitch vs Figma</a><a href="#tutorial">Paso a paso</a><a href="#prompts">5 prompts</a><a href="#entrega">A código</a><a href="#errores">Errores</a><a href="#fuentes">Fuentes</a></nav>
+</div></section>
+
+<section class="section" id="que-es"><div class="wrap">
+<div class="eyebrow">01 / Primero, entendamos el producto</div><h2>¿Qué es Google Stitch?</h2>
+<p class="intro">Stitch es un experimento de <b>Google Labs</b> pensado para diseñar interfaces de webs y aplicaciones con inteligencia artificial. En lugar de dibujar cada botón desde cero, describís qué querés construir, aportás referencias visuales y vas refinando el resultado con un agente de diseño.</p>
+<p>No se trata únicamente de generar un screenshot. Podés trabajar con varias pantallas dentro de un canvas, explorar estilos, conectar flujos para probarlos, importar reglas visuales y exportar los resultados a otras herramientas.</p>
+<div class="stats"><div class="stat"><strong>Texto → UI</strong><span>Generá pantallas desde una descripción clara.</span></div><div class="stat"><strong>Imagen → UI</strong><span>Usá bocetos y referencias de diseño como contexto.</span></div><div class="stat"><strong>Diseño → flujo</strong><span>Conectá pantallas y probá una navegación.</span></div></div>
+<div class="grid">
+<article class="card"><h3>Lo que sí es</h3><ul class="list"><li>Un canvas visual asistido por IA para explorar propuestas.</li><li>Una forma rápida de probar variantes y recorridos.</li><li>Un puente hacia Figma, HTML/CSS y herramientas de desarrollo.</li><li>Un lugar para capturar un sistema visual en <code>DESIGN.md</code>.</li></ul></article>
+<article class="card"><h3>Lo que no es</h3><ul class="list"><li>Una garantía de diseño perfecto o accesible.</li><li>Un backend, una base de datos ni una autenticación lista.</li><li>Un reemplazo automático de la revisión UX o técnica.</li><li>Una razón para publicar código generado sin probarlo.</li></ul></article>
+</div>
+<div class="note"><b>Mi criterio:</b> Stitch sirve especialmente en la fase donde todavía estamos decidiendo <b>qué interfaz construir</b>. Si ya tenés una aplicación estable y el problema es un bug de pagos, permisos o base de datos, cambiar la herramienta de diseño no te va a solucionar nada.</div>
+<h3 style="margin-top:30px">Qué fue cambiando</h3>
+<div class="steps">
+<div class="step"><div class="number">25</div><div><h3>Mayo de 2025 · Nace Stitch</h3><p>Google presenta generación de UI desde texto o imágenes y exportación de diseño a Figma y código frontend.</p></div></div>
+<div class="step"><div class="number">03</div><div><h3>Marzo de 2026 · Vibe design</h3><p>Nuevo canvas infinito, agente de diseño, prototipos navegables, voz, reglas <code>DESIGN.md</code> y capacidades MCP/SDK.</p></div></div>
+<div class="step"><div class="number">04</div><div><h3>Abril de 2026 · DESIGN.md abierto</h3><p>Google publica una especificación abierta para compartir el lenguaje visual entre diseñadores, herramientas y agentes. El formato sigue evolucionando.</p></div></div>
+<div class="step"><div class="number">05</div><div><h3>Mayo de 2026 · Edición más fluida</h3><p>El agente muestra iteraciones en tiempo real, se puede orientar durante la generación y conectar el trabajo con AI Studio, Antigravity o Netlify según el flujo.</p></div></div>
+</div>
+<figure class="imageframe"><img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/ainativecanvas.width-1200.format-webp.webp" alt="Imagen oficial de Google con el canvas de diseño de Stitch y sus pantallas" loading="lazy" decoding="async"><figcaption>Captura de Stitch publicada por Google Labs en su anuncio de marzo de 2026. Fuente: <a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/" target="_blank" rel="noopener noreferrer">Google Blog ↗</a>.</figcaption></figure>
+</div></section>
+
+<section class="section" id="gratis"><div class="wrap">
+<div class="eyebrow">02 / Precio y disponibilidad</div><h2>¿Es gratis? Sí, con matices.</h2>
+<div class="note"><b>PRECIO / DISPONIBILIDAD: GRATIS PARA PROBAR (GOOGLE LABS, SUJETO A CUOTAS).</b> A la fecha de esta guía, Stitch tiene acceso experimental gratuito en la web y no identifiqué una tarifa oficial pública estable por usuario para el canvas. <b>Google no garantiza que el límite sea ilimitado ni permanente.</b> Entrá con tu cuenta y mirá el contador o los límites vigentes en la configuración antes de planificar un proyecto.</div>
+<p>Vas a encontrar sitios que citan “350 + 200 generaciones mensuales” y otros que hablan de <b>créditos diarios</b>. Son mediciones de versiones distintas del producto. Prefiero no prometer un número que puede variar por cuenta, región, modelo o actualización. El anuncio oficial de mayo de 2026 indica despliegue global, pero funciones concretas pueden depender de habilitaciones y de la cuenta.</p>
+<div class="grid three">
+<div class="card"><h3>Lo gratuito</h3><p>La posibilidad de explorar diseños desde la herramienta web con límites de uso.</p><span class="badge-lite">Sin prometer cuota fija</span></div>
+<div class="card"><h3>Lo que puede costar aparte</h3><p>Implementación, alojamiento, dominios, herramientas conectadas y servicios de terceros.</p><span class="badge-lite">Revisar cada proveedor</span></div>
+<div class="card"><h3>Lo que tenés que comprobar</h3><p>Créditos disponibles, modos visibles, exportación habilitada y condiciones antes de hacer trabajo para clientes.</p><span class="badge-lite">Chequeo por cuenta</span></div>
+</div>
+<p class="muted">Importante: Stitch es un servicio de Google Labs, <b>no software open source</b>. Lo abierto es, entre otras piezas del ecosistema, el formato <code>DESIGN.md</code> y las herramientas publicadas en repositorios oficiales. No es lo mismo.</p>
+</div></section>
+
+<section class="section" id="comparativa"><div class="wrap">
+<div class="eyebrow">03 / La comparación que importa</div><h2>Stitch vs Figma: no hacen exactamente el mismo trabajo.</h2>
+<p class="intro">Yo no vendería Stitch como “Figma pero gratis”. Los usaría para partes distintas de un proceso. Stitch acelera exploración e iteración guiada por IA; Figma sigue siendo fuerte para edición precisa, colaboración profesional y mantenimiento de sistemas de diseño complejos.</p>
+<div class="tablewrap"><table><thead><tr><th>Situación</th><th>Stitch</th><th>Figma</th></tr></thead><tbody>
+<tr><td>Empezar desde una idea escrita</td><td><span class="compare-yes">Muy conveniente</span>: descripción → propuestas.</td><td>Más control manual; existen también flujos y funciones de IA.</td></tr>
+<tr><td>Explorar estilos rápidamente</td><td><span class="compare-yes">Punto fuerte</span>: pedís variantes conversando.</td><td>Muy flexible, con mayor edición de cada detalle.</td></tr>
+<tr><td>Componentes, variantes y librerías maduras</td><td><span class="compare-some">En evolución</span>; verificar alcance real.</td><td><span class="compare-yes">Muy maduro</span> para equipos y design systems.</td></tr>
+<tr><td>Prototipar navegación</td><td>Sí, enlazando pantallas y probando recorridos.</td><td>Sí, con control fino de prototipado y diseño.</td></tr>
+<tr><td>Exportar a desarrollo</td><td>HTML/CSS, flujos de exportación y conexiones a herramientas.</td><td>Handoff/inspect, archivos de diseño y ecosistema de plugins.</td></tr>
+<tr><td>Pasar una UI a producción</td><td>Ayuda a iniciar el frontend; no sustituye la implementación.</td><td>Documenta y entrega el diseño; tampoco crea el backend.</td></tr>
+<tr><td>Mi elección</td><td>Cuando necesito <b>descubrir la propuesta</b> rápidamente.</td><td>Cuando necesito <b>ajustar, sistematizar y mantener</b> el diseño.</td></tr>
+</tbody></table></div>
+<div class="quote"><b>La secuencia que me parece más útil:</b> pensar el producto → explorar en Stitch → ajustar donde haga falta → implementar y probar en código real.</div>
+<p><b>¿Se puede exportar a Figma?</b> Google documentó una función de “Paste to Figma”. Sin embargo, la experiencia y disponibilidad han variado según modos y versiones. Si no ves esa opción en tu proyecto, revisá el modo activo y las opciones actuales de exportación antes de asumir que siempre está habilitada.</p>
+</div></section>
+
+<section class="section" id="casos"><div class="wrap">
+<div class="eyebrow">04 / Casos que pondría a prueba</div><h2>Dónde puede ahorrarte trabajo.</h2>
+<div class="grid">
+<article class="card"><h3>Landing para un restaurante</h3><p>Antes de programar una web para un cliente, generaría dos direcciones: una cálida y visual, otra editorial/premium. Compararía jerarquía de carta, ubicación, reservas y WhatsApp.</p><p class="muted">Pregunta útil: ¿el cliente entiende en cinco segundos qué ofrece el lugar y cómo consultar?</p></article>
+<article class="card"><h3>Panel para un gimnasio</h3><p>Plantearía una interfaz con socios, vencimientos, clases y asistencia. En vez de veinte widgets por pantalla, validaría primero los tres indicadores que el dueño realmente necesita ver.</p><p class="muted">Pregunta útil: ¿qué decisión puede tomar el encargado al abrir el panel?</p></article>
+<article class="card"><h3>Reservas para servicios</h3><p>Probaría un flujo de tres pantallas: elegir servicio, fecha/hora y confirmar. Después haría pasar el recorrido a alguien ajeno al proyecto.</p><p class="muted">Pregunta útil: ¿dónde duda, retrocede o abandona la persona?</p></article>
+<article class="card"><h3>Prototipo para vender una idea</h3><p>Si todavía no se justifica programar todo, una demo visual permite discutir alcance, navegación y expectativas antes de prometer presupuesto o plazos.</p><p class="muted">Pregunta útil: ¿este diseño representa una necesidad real o solo una pantalla linda?</p></article>
+</div>
+<div class="note"><b>Un detalle comercial:</b> para una demo a un negocio real usaría textos, fotos y datos ficticios o autorizados. No presentaría el prototipo como producto contratado, ni atribuiría al negocio funciones, precios o resultados que todavía no aprobó.</div>
+</div></section>
+
+<section class="section" id="tutorial"><div class="wrap">
+<div class="eyebrow">05 / Tutorial para empezar hoy</div><h2>De cero a un prototipo presentable.</h2>
+<p class="intro">El siguiente método es un <b>workflow propuesto</b> basado en funciones anunciadas oficialmente; no simulo haber operado tu cuenta. Usalo como guía y ajustá los nombres de controles a la interfaz que te aparezca.</p>
+<div class="steps">
+<div class="step"><div class="number">01</div><div><h3>Entrá y elegí una tarea, no un estilo</h3><p>Abrí <a href="https://stitch.withgoogle.com/" target="_blank" rel="noopener noreferrer">stitch.withgoogle.com</a> con tu cuenta de Google. Elegí diseñar una <b>web</b> o <b>app</b> según el caso. Anotá quién la va a usar, qué problema resuelve y cuál es la acción principal.</p></div></div>
+<div class="step"><div class="number">02</div><div><h3>Escribí un brief concreto</h3><p>Definí público, tarea, flujo, contenido realista, secciones y restricciones. Empezá con <b>una pantalla principal</b> para entender la dirección antes de pedir toda la plataforma. El primer prompt de esta guía sirve como base.</p></div></div>
+<div class="step"><div class="number">03</div><div><h3>Pedí propuestas realmente diferentes</h3><p>No gastes iteraciones diciendo “más moderno”. Pedí una variante orientada a conversión, otra orientada a lectura y una tercera enfocada en claridad operativa. Compará qué gana y pierde cada una.</p></div></div>
+<div class="step"><div class="number">04</div><div><h3>Sumá referencias, sin copiar una web ajena 1:1</h3><p>Podés agregar bocetos, capturas, texto y referencias de la marca. Si trabajás para un cliente, usá imágenes y assets autorizados. Describí qué te interesa de cada referencia: densidad, tipografía, ritmo o jerarquía.</p></div></div>
+<div class="step"><div class="number">05</div><div><h3>Revisá la pantalla como usuario</h3><p>¿Se entiende el título? ¿La acción principal está clara? ¿Un cliente puede encontrar precios, horarios o contacto? Corregí la estructura antes de obsesionarte con sombras y colores.</p></div></div>
+<div class="step"><div class="number">06</div><div><h3>Generá las siguientes pantallas con consistencia</h3><p>Pedile que conserve paleta, tipografía, botones y espaciados. Usá el canvas para visualizar la experiencia completa: inicio → detalle → acción → confirmación → error.</p></div></div>
+<div class="step"><div class="number">07</div><div><h3>Conectalas y probá Play</h3><p>Armá un prototipo navegable. Hacé una prueba simple: “Encontrá un servicio y solicitá un turno”. Observá si el recorrido tiene decisiones confusas, callejones sin salida o botones que parecen funcionar y no hacen nada.</p></div></div>
+<div class="step"><div class="number">08</div><div><h3>Guardá las reglas visuales y exportá</h3><p>Si el proyecto va a seguir creciendo, conservá el <code>DESIGN.md</code> o las reglas visuales disponibles. Cuando la propuesta esté revisada, elegí la opción de exportación que tu cuenta muestre: Figma, HTML/CSS o un flujo hacia herramientas de desarrollo.</p></div></div>
+<div class="step"><div class="number">09</div><div><h3>Implementá y verificá en código real</h3><p>Tomá la exportación como punto de partida. Hacé responsive, estados de carga/error, validaciones, accesibilidad, enlaces y pruebas; conectá backend únicamente cuando el flujo esté bien definido.</p></div></div>
+</div>
+<div class="mini-flow"><span>Problema</span><i>→</i><span>Brief</span><i>→</i><span>3 direcciones</span><i>→</i><span>Flujo</span><i>→</i><span>Prueba</span><i>→</i><span>Código</span></div>
+<div class="note warn"><b>Si te trabás:</b> no regeneres todo por una corrección pequeña. Indicá qué pantalla, bloque o componente querés cambiar, qué debe mantenerse intacto y cómo sabrás que quedó bien.</div>
+</div></section>
+
+<section class="section" id="prompts"><div class="wrap">
+<div class="eyebrow">06 / Prompts que sí usaría</div><h2>Copiá, adaptá y diseñá.</h2>
+<p class="intro">Estos prompts no prometen “el diseño perfecto” al primer intento. Buscan darle al agente el contexto que una persona de producto necesita para tomar buenas decisiones.</p>
+<div class="prompt"><div class="prompt-head"><h3>1. Brief base para cualquier UI</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar prompt</button></div><pre>Actuá como diseñador de producto y UX.
+Quiero diseñar [WEB / APP] para [TIPO DE NEGOCIO].
+USUARIO PRINCIPAL: [QUIÉN LA USA].
+PROBLEMA: [QUÉ LE CUESTA RESOLVER HOY].
+OBJETIVO PRINCIPAL: [QUÉ DEBE HACER EN 30 SEGUNDOS].
+PANTALLA A DISEÑAR: [NOMBRE].
+CONTENIDOS REALES O SIMULADOS: [LISTA].
+ESTILO: [3 ADJETIVOS] y referencias visuales [DESCRIBIR].
+RESTRICCIONES: buen contraste, jerarquía clara, uso en celular y escritorio.
+
+Primero proponé una estructura visual clara.
+No inventes cifras, reseñas, precios ni funcionalidades.
+Priorizá el flujo del usuario antes de lo decorativo.</pre></div>
+<div class="prompt"><div class="prompt-head"><h3>2. Landing de restaurante con WhatsApp</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar prompt</button></div><pre>Diseñá una landing para un restaurante independiente.
+Objetivo: que una persona conozca la propuesta gastronómica,
+vea la carta y pueda hacer una consulta por WhatsApp.
+Secciones: hero con foto, propuesta, destacados de carta,
+horarios, dirección, reseñas SOLO si están verificadas y contacto.
+Diseño editorial premium, fotos grandes, tipografía legible,
+paleta negra/blanca con un color acento.
+Mobile-first. CTA principal: Ver carta.
+CTA secundario: Consultar por WhatsApp.
+NO inventes testimonios, promociones ni fotos reales del negocio.
+Quiero una versión clara y otra más expresiva para comparar.</pre></div>
+<div class="prompt"><div class="prompt-head"><h3>3. Dashboard para gimnasio, sin saturación</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar prompt</button></div><pre>Diseñá la pantalla principal de un software de gestión de gimnasios.
+Persona usuaria: recepción / administración.
+Tres necesidades principales:
+1) ver vencimientos y pagos pendientes,
+2) encontrar rápidamente un socio,
+3) consultar ocupación de clases.
+Diseño SaaS serio, denso pero legible, con jerarquía fuerte.
+Incluí búsqueda, resumen de estado, tabla principal y alertas.
+Todos los números y nombres deben ser DEMO / FICTICIOS.
+Mostrá también estado vacío y estado con error de carga.
+No agregues gráficos decorativos que no ayuden a tomar decisiones.</pre></div>
+<div class="prompt"><div class="prompt-head"><h3>4. Prototipo de reservas de tres pantallas</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar prompt</button></div><pre>Partiendo de esta pantalla, diseñá un flujo de reserva coherente:
+1. Elegir servicio y duración.
+2. Elegir fecha y franja horaria.
+3. Revisar los datos antes de confirmar.
+Conservá el sistema visual actual: colores, tipografía y botones.
+Indicá claramente el paso actual y cómo volver atrás.
+Incluí casos de sin disponibilidad y validación incorrecta.
+Después conectá las tres pantallas para probar el recorrido.
+Es un PROTOTIPO: no simules una reserva de producción real.</pre></div>
+<div class="prompt"><div class="prompt-head"><h3>5. Iteración precisa + handoff técnico</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar prompt</button></div><pre>Revisá la pantalla seleccionada como UX reviewer.
+No rediseñes todo. Mantené el branding y la estructura general.
+Necesito mejorar:
+- legibilidad del texto en móvil,
+- contraste de botones,
+- jerarquía entre CTA principal y secundario,
+- estados de foco, error y carga,
+- consistencia con las otras pantallas.
+
+Explicá qué cambiarías y por qué, con prioridad ALTA/MEDIA/BAJA.
+Después aplicá únicamente los cambios aprobados.
+Para el handoff, listá componentes reutilizables, variables de
+estilo, interacciones y qué debe construirse manualmente en código.
+No presentes el HTML exportado como producción validada.</pre></div>
+<div class="note smallnote"><b>Tip para ahorrar iteraciones:</b> especificá dispositivo, usuario, tarea, estructura, datos y restricciones. “Hacelo más profesional” es ambiguo. “Reducí el hero 20%, dejá una sola acción primaria y aumentá la separación de la tabla” es muchísimo más útil.</div>
+</div></section>
+
+<section class="section" id="design-md"><div class="wrap">
+<div class="eyebrow">07 / Mantener coherencia</div><h2>DESIGN.md: que el estilo no cambie de pantalla en pantalla.</h2>
+<p>Una de las funciones más interesantes de Stitch es trabajar con un documento de reglas visuales reutilizable. <b>DESIGN.md</b> puede describir el propósito de colores, tamaños, tipografía, espaciados, bordes y comportamiento de componentes para que distintos agentes y herramientas compartan un mismo lenguaje visual.</p>
+<p>Google abrió la especificación en abril de 2026. Sigue en fase <b>alpha</b>, así que verificaría compatibilidad y formato antes de montar un proceso crítico encima.</p>
+<div class="prompt"><div class="prompt-head"><h3>Ejemplo sencillo de DESIGN.md</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar ejemplo</button></div><pre>---
+name: Panel de Gestión - Demo
+colors:
+  primary: "#C7FF3D"
+  surface: "#15191F"
+  background: "#0B0D10"
+typography:
+  body:
+    fontFamily: Inter
+    fontSize: 16px
+spacing:
+  md: 16px
+  lg: 24px
+rounded:
+  md: 12px
+---
+
+## Overview
+Panel de administración claro, rápido y sobrio.
+La UI debe dar prioridad a decisiones, no a decoración.
+
+## Colors
+El verde lima se usa para acciones y estados destacados,
+no como color indiscriminado en todas las superficies.
+
+## Typography
+Encabezados contundentes; textos de tablas legibles.
+
+## Layout
+Contenido con ancho controlado, jerarquía consistente.
+
+## Components
+Botones primarios muy visibles; errores con mensajes claros.
+
+## Do's and Don'ts
+Hacer: estados vacíos, foco visible, contraste.
+No hacer: inventar estadísticas o crear widgets innecesarios.</pre></div>
+<div class="note"><b>Mi regla:</b> no copies un sistema visual de otra marca para pegarlo sin pensar. Usá <code>DESIGN.md</code> para registrar decisiones tuyas o del cliente y que los siguientes diseños partan del mismo lugar.</div>
+<div class="sources"><a href="https://github.com/google-labs-code/design.md" target="_blank" rel="noopener noreferrer">Especificación oficial abierta ↗</a><a href="https://stitch.withgoogle.com/docs/learn/prompting/" target="_blank" rel="noopener noreferrer">Guía oficial de prompting ↗</a></div>
+</div></section>
+
+<section class="section" id="entrega"><div class="wrap">
+<div class="eyebrow">08 / Del diseño al software</div><h2>Un export no equivale a un producto terminado.</h2>
+<p class="intro">Stitch puede dar una base visual y código frontend exportable. Google también documenta flujos de entrega hacia Figma, AI Studio, Antigravity y publicación web con Netlify. <b>Eso no quiere decir que ya tengas seguridad, datos, lógica de negocio o una app mantenible.</b></p>
+<div class="grid">
+<article class="card"><h3>Qué rescataría de Stitch</h3><ul class="list"><li>Jerarquía y estructura de pantallas.</li><li>Tokens y decisiones visuales.</li><li>Componentes y secciones reutilizables.</li><li>Ejemplos de interacción y estados.</li><li>HTML/CSS o assets exportables según la opción disponible.</li></ul></article>
+<article class="card"><h3>Qué trabajaría en VS Code</h3><ul class="list"><li>Estructura React/Next.js coherente con el proyecto.</li><li>Datos y lógica conectados a fuentes reales.</li><li>Validaciones de formularios y errores.</li><li>Autorización, seguridad y secretos.</li><li>Responsive, accesibilidad y pruebas.</li></ul></article>
+</div>
+<div class="tablewrap"><table><thead><tr><th>Fase</th><th>Entregable mínimo</th><th>Chequeo antes de avanzar</th></tr></thead><tbody>
+<tr><td>1. Exploración</td><td>Una pantalla y tres variantes.</td><td>El problema y CTA están claros.</td></tr>
+<tr><td>2. Flujo</td><td>Prototipo navegable.</td><td>Una persona puede completar la tarea.</td></tr>
+<tr><td>3. Sistema visual</td><td>Tokens / reglas documentadas.</td><td>Coherencia entre pantallas y estados.</td></tr>
+<tr><td>4. Handoff</td><td>Exportación y breve documentación.</td><td>Componentes, datos y decisiones explícitas.</td></tr>
+<tr><td>5. Implementación</td><td>UI con lógica real y validaciones.</td><td>Revisión de accesibilidad, seguridad y errores.</td></tr>
+<tr><td>6. Publicación</td><td>Versión revisada, con enlace funcional.</td><td>Pruebas en mobile, desktop y flujos críticos.</td></tr>
+</tbody></table></div>
+<h3 style="margin-top:32px">¿Y si programás con agentes?</h3>
+<p>Google ofrece el <a href="https://github.com/google-labs-code/stitch-sdk" target="_blank" rel="noopener noreferrer">SDK de Stitch</a> y un servidor MCP para conectar proyectos y pantallas a herramientas compatibles. Mi recomendación es empezar <b>sin MCP</b> para entender el proceso manual y sumar automatización recién si hacés varias interfaces por semana.</p>
+<div class="prompt"><div class="prompt-head"><h3>Ejemplo técnico opcional: SDK oficial</h3><button class="copy" type="button" onclick="copyPrompt(this)">Copiar código</button></div><pre>npm install @google/stitch-sdk
+
+// Ejemplo de TypeScript inspirado en la documentación oficial:
+import { stitch } from "@google/stitch-sdk";
+
+// Configurá STITCH_API_KEY según la documentación,
+// sin pegar la clave en el repositorio.
+const project = await stitch.createProject({
+  title: "Prototipo de reservas",
+});
+const generation = await project.generate(
+  "A clean booking screen with service selection"
+);
+const screen = generation.first;
+const html = await screen.getHtml();
+const preview = await screen.getImage();</pre></div>
+<div class="note warn"><b>Ojo:</b> el SDK requiere autenticación, versiones compatibles y puede cambiar. Nunca publiques <code>STITCH_API_KEY</code>, tokens o assets privados en el repositorio. El ejemplo documenta la API; no implica que el proyecto genere pantallas sin validar cuotas ni permisos.</div>
+</div></section>
+
+<section class="section" id="errores"><div class="wrap">
+<div class="eyebrow">09 / Evitar el humo</div><h2>Errores que cometería cualquiera al empezar.</h2>
+<div class="grid three">
+<article class="card"><div class="number">01</div><h3>Prompt vacío</h3><p>“Hacé una app moderna” no cuenta cuál es el negocio ni qué necesita la persona.</p></article>
+<article class="card"><div class="number">02</div><h3>Diseñar veinte pantallas de golpe</h3><p>Primero resolvé una, luego el flujo principal y recién después el resto.</p></article>
+<article class="card"><div class="number">03</div><h3>Usar datos inventados como reales</h3><p>Las métricas, reseñas, tarifas y clientes de una demo deben identificarse como ficticios.</p></article>
+<article class="card"><div class="number">04</div><h3>Confundir prototipo con software</h3><p>Un botón animado en Play no demuestra que haya reservas, pagos o permisos.</p></article>
+<article class="card"><div class="number">05</div><h3>No controlar versiones</h3><p>Guardá capturas y reglas visuales aprobadas; no dependas del último prompt.</p></article>
+<article class="card"><div class="number">06</div><h3>Olvidar celulares y accesibilidad</h3><p>Una captura desktop puede verse espectacular y ser ilegible en mobile.</p></article>
+</div>
+<h3 style="margin-top:36px">Checklist antes de mostrarlo a un cliente</h3>
+<div class="two-col-check">
+<ul class="checklist">
+<li>Definí persona usuaria y objetivo de negocio.</li>
+<li>Usé solo assets y referencias autorizados.</li>
+<li>Marqué como DEMO los datos ficticios.</li>
+<li>El CTA principal se entiende enseguida.</li>
+<li>El flujo no tiene pantallas sin salida.</li>
+</ul>
+<ul class="checklist">
+<li>Revisé versión celular y escritorio.</li>
+<li>Comprobé contraste, lectura, foco y errores.</li>
+<li>Guardé el sistema visual y las decisiones.</li>
+<li>Separé diseño de funcionalidades reales.</li>
+<li>La persona entiende qué falta desarrollar.</li>
+</ul>
+</div>
+<div class="quote"><b>Mi conclusión:</b> usaría Stitch para acelerar decisiones visuales, no para saltearme el trabajo de producto. La mejor UI es la que una persona puede usar y un equipo puede mantener.</div>
+</div></section>
+
+<section class="section" id="preguntas"><div class="wrap">
+<div class="eyebrow">10 / Preguntas frecuentes</div><h2>Lo que revisaría antes de arrancar.</h2>
+<div class="details">
+<details><summary>¿Google Stitch reemplaza a Figma?</summary><p>No del todo. Stitch destaca en exploración asistida por IA y prototipado rápido. Figma sigue ofreciendo edición precisa y un ecosistema maduro para componentes, colaboración y handoff. Para muchos equipos se complementan.</p></details>
+<details><summary>¿Necesito saber programar?</summary><p>No para generar las primeras pantallas. Para desarrollar y mantener una aplicación real, alguien tiene que revisar código, datos, seguridad, accesibilidad y despliegue.</p></details>
+<details><summary>¿Es gratis y cuántos créditos trae?</summary><p>El acceso web experimental es gratuito para probar con límites. Como las cuotas han cambiado entre versiones, verificá el contador dentro de tu cuenta; no tomes números históricos de blogs como garantía actual.</p></details>
+<details><summary>¿Puedo pasar el resultado a Figma?</summary><p>Google documentó Paste to Figma, pero la opción visible puede variar según el modo y la versión de Stitch. Revisá el menú de exportación de tu proyecto.</p></details>
+<details><summary>¿Puede hacer una web completa con backend?</summary><p>Stitch está enfocado en diseño y frontend. El backend, autorización, pagos, persistencia y lógica real deben implementarse y verificarse aparte, aunque puedas continuar el flujo con herramientas de desarrollo.</p></details>
+<details><summary>¿Conviene usar MCP desde el primer día?</summary><p>Para una web o app sencilla, empezaría por la interfaz. Integraría SDK/MCP si el flujo se repite y la automatización ahorra pasos de verdad; además revisaría seguridad y límites de la cuenta.</p></details>
+</div>
+<div class="cta"><div class="kicker" style="color:#355100">GERO / IDEAS → SISTEMAS → RESULTADOS</div><h2>No arranques dibujando botones.<br>Arrancá entendiendo el problema.</h2><p>Probá Stitch con una pantalla y un recorrido. Si te ayuda a tomar decisiones más rápido, seguí. Si necesitás precisión, mantenibilidad o lógica real, usá las herramientas correctas en la siguiente etapa.</p><a class="btn" href="https://stitch.withgoogle.com/" rel="noopener noreferrer" target="_blank">Abrir Google Stitch ↗</a></div>
+</div></section>
+
+<section class="section" id="fuentes"><div class="wrap">
+<div class="eyebrow">11 / Referencias y transparencia</div><h2>Probar la herramienta y chequear las fuentes.</h2>
+<h3>Probar / ver herramienta</h3>
+<div class="sources"><a href="https://stitch.withgoogle.com/" target="_blank" rel="noopener noreferrer">Google Stitch · app oficial ↗</a><a href="https://stitch.withgoogle.com/docs/learn/prompting/" target="_blank" rel="noopener noreferrer">Documentación de prompts ↗</a><a href="https://github.com/google-labs-code/stitch-sdk" target="_blank" rel="noopener noreferrer">SDK oficial ↗</a><a href="https://github.com/google-labs-code/design.md" target="_blank" rel="noopener noreferrer">Formato DESIGN.md ↗</a></div>
+<h3 style="margin-top:32px">Fuentes de las novedades</h3>
+<div class="sources"><a href="https://developers.googleblog.com/en/stitch-a-new-way-to-design-uis/" target="_blank" rel="noopener noreferrer">Google Developers · Lanzamiento 20/05/2025 ↗</a><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-ai-ui-design/" target="_blank" rel="noopener noreferrer">Google Labs · Canvas y agente · 18/03/2026 ↗</a><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-design-md/" target="_blank" rel="noopener noreferrer">Google Labs · DESIGN.md abierto · 21/04/2026 ↗</a><a href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/" target="_blank" rel="noopener noreferrer">Google I/O · Tiempo real · 19/05/2026 ↗</a></div>
+<p class="muted" style="margin-top:25px">Información contrastada con anuncios y repositorios oficiales hasta el 16 de octubre de 2026. Los tutoriales, prompts, ejemplos de negocios, criterios y recomendaciones son elaboración editorial de GERO, no pruebas medidas ni experiencias con clientes que se afirmen como realizadas. Las funciones, modalidades de exportación, cuotas y disponibilidad pueden cambiar.</p>
+<p class="muted">Seguir leyendo: <a href="https://geronimo02.github.io/guias/copilot-cli-ollama-local/" target="_blank" rel="noopener noreferrer">Copilot CLI + Ollama local ↗</a> · <a href="https://geronimo02.github.io/guias/gemini-skills-2026/" target="_blank" rel="noopener noreferrer">Gemini Skills ↗</a>.</p>
+</div></section></main>
+<footer class="footer"><div class="wrap"><b>GERO IA</b> · Ideas → Sistemas → Resultados · <a href="https://geronimo02.github.io/">Volver al portfolio</a> · @geronimo.serratti</div></footer>
+<script>
+function copyPrompt(button){
+  var text=button.closest('.prompt').querySelector('pre').textContent;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      var old=button.textContent;button.textContent='Copiado ✓';
+      setTimeout(function(){button.textContent=old;},1700);
+    }).catch(function(){button.textContent='Seleccioná el texto'});
+  } else { button.textContent='Seleccioná el texto'; }
+}
+</script>
+</body>
+</html>
