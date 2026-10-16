@@ -126,18 +126,18 @@
         <h3 class="ext bandeja-titulo">La bandeja</h3>
         <button class="vaciar-btn cap" id="btn-vaciar" onclick="vaciarCart()" hidden>Vaciar</button>
       </div>
-      <div class="bvacia" id="bvacia">
-        <svg class="bvacia-plato" viewBox="0 0 160 160" aria-hidden="true">
+      <div class="plato-wrap">
+        <svg class="bvacia-plato" id="plato-svg" viewBox="0 0 160 160" aria-hidden="true">
           <circle cx="80" cy="80" r="78" fill="#1A1410"/>
           <circle cx="80" cy="80" r="74" fill="none" stroke="#C9C2B8" stroke-width="2"/>
           <circle cx="80" cy="80" r="66" fill="none" stroke="#957F6E" stroke-width=".75" stroke-dasharray="3 6"/>
           <circle cx="80" cy="80" r="60" fill="#221C16"/>
           <circle cx="80" cy="80" r="44" fill="none" stroke="#957F6E" stroke-width=".5" opacity=".4"/>
-          <!-- slice mark — centro del plato vacío -->
-          <line x1="80" y1="36" x2="80" y2="80" stroke="#B26D2C" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="80" cy="80" r="3" fill="#B26D2C"/>
+          <g id="bandeja-fichas"></g>
+          <line id="plato-mark" x1="80" y1="36" x2="80" y2="80" stroke="#B26D2C" stroke-width="1.5" stroke-linecap="round"/>
+          <circle id="plato-dot" cx="80" cy="80" r="3" fill="#B26D2C"/>
         </svg>
-        <p class="bvacia-txt sr">El Sr. Moño espera.</p>
+        <p class="bvacia-txt sr" id="plato-vacio-txt">El Sr. Moño espera.</p>
       </div>
       <ul class="bandeja-lista" id="bandeja-lista" aria-live="polite"></ul>
       <div class="bandeja-cierre" id="bandeja-cierre" hidden>
@@ -581,13 +581,20 @@ img{display:block;max-width:100%;height:auto}
   cursor:pointer;padding:0 0 14px;
   text-decoration:underline;text-underline-offset:3px;
 }
-/* empty state */
-.bvacia{
+/* plato + fichas */
+.plato-wrap{
   display:flex;flex-direction:column;align-items:center;gap:10px;
-  padding:20px 20px 16px;
+  padding:20px 20px 4px;
 }
-.bvacia-plato{width:130px;height:130px;flex:none}
-.bvacia-txt{color:var(--plata);font-size:17px}
+.bvacia-plato{
+  width:130px;height:130px;flex:none;
+  transition:width .35s var(--e),height .35s var(--e);
+}
+.bvacia-plato.plato-lleno{width:102px;height:102px}
+.bvacia-txt{color:var(--plata);font-size:17px;transition:opacity .2s}
+@keyframes ficha-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ficha{animation:ficha-in 420ms var(--el) both}
+@media(prefers-reduced-motion:reduce){.ficha{animation:none}}
 
 /* items list */
 .bandeja-lista{list-style:none;padding:0 20px;display:flex;flex-direction:column}
@@ -924,16 +931,16 @@ function addItem(cat, id, nombre, precio, variante){
   const ex = STATE.items.find(i => i.id === id);
   if(ex){ ex.qty++; }
   else { STATE.items.push({id, cat, nombre, precio, variante: variante || null, qty: 1}); }
-  renderCart();
+  renderCart(); animatePlato();
 }
 function updateQty(id, delta){
   const item = STATE.items.find(i => i.id === id);
   if(!item) return;
   item.qty += delta;
   if(item.qty <= 0) STATE.items = STATE.items.filter(i => i.id !== id);
-  renderCart();
+  renderCart(); animatePlato();
 }
-function vaciarCart(){ STATE.items = []; renderCart(); }
+function vaciarCart(){ STATE.items = []; renderCart(); animatePlato(); }
 function calcTotal(){ return STATE.items.reduce((s,i) => s + (typeof i.precio === 'number' ? i.precio * i.qty : 0), 0); }
 function fmtP(precio, qty){ return precio === '?' ? 'a confirmar' : `$${(precio*qty).toLocaleString('es-AR')}`; }
 
@@ -972,13 +979,11 @@ function renderCart(){
   const bar = document.getElementById('cart-bar');
   if(bar) bar.hidden = n === 0;
 
-  const vacio = document.getElementById('bvacia');
   const lista = document.getElementById('bandeja-lista');
   const cierre = document.getElementById('bandeja-cierre');
   const totalEl = document.getElementById('bandeja-total-val');
   const vacBtn = document.getElementById('btn-vaciar');
 
-  if(vacio) vacio.style.display = n ? 'none' : 'flex';
   if(cierre) cierre.hidden = n === 0;
   if(vacBtn) vacBtn.hidden = n === 0;
   if(totalEl) totalEl.textContent = `$${total.toLocaleString('es-AR')}`;
@@ -1040,6 +1045,61 @@ function toggleCart(){
   overlay.hidden = !open;
   document.body.style.overflow = open ? 'hidden' : '';
   if(open) renderSheet();
+}
+
+/* ── BANDEJA FICHAS ─── */
+const FICHAS = {
+  pizzas: (x,y,i) => `<g class="ficha" style="animation-delay:${i*60}ms" transform="translate(${x},${y})">
+    <circle r="16" fill="#B26D2C" opacity=".92"/>
+    <circle r="13" fill="none" stroke="#FEF7E7" stroke-width=".65" opacity=".28"/>
+    <line x1="0" y1="0" x2="0" y2="-16" stroke="#FEF7E7" stroke-width=".7" opacity=".4"/>
+    <line x1="0" y1="0" x2="13.9" y2="8" stroke="#FEF7E7" stroke-width=".7" opacity=".4"/>
+    <line x1="0" y1="0" x2="-13.9" y2="8" stroke="#FEF7E7" stroke-width=".7" opacity=".4"/>
+    <circle cx="0" cy="-8" r="2.4" fill="#D08A45"/>
+    <circle cx="6.5" cy="4.5" r="1.9" fill="#D08A45"/>
+    <circle cx="-6" cy="5" r="1.9" fill="#D08A45"/>
+  </g>`,
+  rastapan: (x,y,i) => `<g class="ficha" style="animation-delay:${i*60}ms" transform="translate(${x},${y})">
+    <rect x="-17" y="-11" width="34" height="22" rx="7" fill="#C9C2B8" opacity=".9"/>
+    <path d="M-12,-1 Q0,-8 12,-1" fill="none" stroke="#17181A" stroke-width="1.2" stroke-linecap="round" opacity=".45"/>
+    <line x1="-10" y1="5" x2="10" y2="5" stroke="#17181A" stroke-width=".8" stroke-linecap="round" opacity=".28"/>
+  </g>`,
+  empanadas: (x,y,i) => `<g class="ficha" style="animation-delay:${i*60}ms" transform="translate(${x},${y})">
+    <path d="M-17,4 A17,17,0,0,1,17,4Z" fill="#D8B99F" opacity=".92"/>
+    <path d="M-17,4 A17,17,0,0,1,17,4" fill="none" stroke="#0B0B0D" stroke-width="1.8" stroke-dasharray="2.5 2" stroke-linecap="round" opacity=".45"/>
+    <ellipse rx="5.5" ry="2.8" cy="4" fill="#C4A07A" opacity=".65"/>
+  </g>`,
+  canastitas: (x,y,i) => `<g class="ficha" style="animation-delay:${i*60}ms" transform="translate(${x},${y})">
+    <path d="M-12,-9 L-16,9 Q0,15 16,9 L12,-9Z" fill="#B26D2C" opacity=".82"/>
+    <ellipse rx="12" ry="4" cy="-9" fill="#D8B99F" opacity=".88"/>
+    <line x1="-9" y1="-1" x2="9" y2="-1" stroke="#FEF7E7" stroke-width=".7" opacity=".3"/>
+    <line x1="-11" y1="5" x2="11" y2="5" stroke="#FEF7E7" stroke-width=".7" opacity=".22"/>
+  </g>`,
+  faina: (x,y,i) => `<g class="ficha" style="animation-delay:${i*60}ms" transform="translate(${x},${y})">
+    <polygon points="0,-17 15,8 -15,8" fill="#957F6E" opacity=".88"/>
+    <polygon points="0,-10 9,5 -9,5" fill="none" stroke="#FEF7E7" stroke-width=".7" opacity=".32"/>
+    <circle r="2.2" cy="1" fill="#C9C2B8" opacity=".72"/>
+  </g>`,
+};
+const POS = [[80,80],[59,60],[101,60],[59,100],[101,100]];
+
+function animatePlato(){
+  const fichas = document.getElementById('bandeja-fichas');
+  const mark = document.getElementById('plato-mark');
+  const dot = document.getElementById('plato-dot');
+  const txt = document.getElementById('plato-vacio-txt');
+  const svg = document.getElementById('plato-svg');
+  const n = STATE.items.length;
+  if(!fichas) return;
+  fichas.innerHTML = STATE.items.slice(-5).map((item,i) => {
+    const [x,y] = POS[i % POS.length];
+    return FICHAS[item.cat] ? FICHAS[item.cat](x,y,i) : '';
+  }).join('');
+  const vacio = n === 0;
+  if(mark) mark.style.display = vacio ? '' : 'none';
+  if(dot)  dot.style.display  = vacio ? '' : 'none';
+  if(txt)  txt.style.opacity  = vacio ? '1' : '0';
+  if(svg)  svg.classList.toggle('plato-lleno', !vacio);
 }
 
 /* ── SCROLL REVEAL ─── */
