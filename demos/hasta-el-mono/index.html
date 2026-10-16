@@ -55,9 +55,9 @@
         <span class="h1-l h1-kraft">hasta</span>
         <span class="h1-l h1-kraft">el moño.</span>
       </h1>
-      <p class="hero-lead h1-after">Masa casera, horno encendido de 11:30 a 14:30 y de 19:30 a 23:30. Armá el pedido acá y lo mandás por WhatsApp.</p>
+      <p class="hero-lead h1-after">Masa propia, horno encendido de 11:30 a 14:30 y de 19:30 a 23:30. El Sr. Moño no acepta nada menos. Armá el encargo acá y lo mandás por WhatsApp.</p>
       <div class="hero-ctas h1-after">
-        <a href="#carta" class="btn btn-oro">Armar mi pedido</a>
+        <a href="#carta" class="btn btn-oro">Componer el encargo</a>
         <a href="#carta" class="btn btn-linea">Ver la carta</a>
       </div>
       <p class="hero-firma sr h1-after">— Atte. Sr. Moño</p>
@@ -76,9 +76,9 @@
       <svg class="opizza" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
       <span>11:30–14:30 · 19:30–23:30</span>
       <svg class="opizza" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
-      <span>Pizzas · Rastapan · Empanadas</span>
+      <span>Rastapan propio · 48 h de reposo</span>
       <svg class="opizza" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
-      <span>Canastitas · Fainá</span>
+      <span>Pizzas · Empanadas · Canastitas · Fainá</span>
       <svg class="opizza" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
       <span>Tandil, Buenos Aires</span>
       <svg class="opizza" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
@@ -88,9 +88,9 @@
       <svg class="opizza" viewBox="0 0 100 100"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
       <span>11:30–14:30 · 19:30–23:30</span>
       <svg class="opizza" viewBox="0 0 100 100"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
-      <span>Pizzas · Rastapan · Empanadas</span>
+      <span>Rastapan propio · 48 h de reposo</span>
       <svg class="opizza" viewBox="0 0 100 100"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
-      <span>Canastitas · Fainá</span>
+      <span>Pizzas · Empanadas · Canastitas · Fainá</span>
       <svg class="opizza" viewBox="0 0 100 100"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
       <span>Tandil, Buenos Aires</span>
       <svg class="opizza" viewBox="0 0 100 100"><path d="M50 50 L50 4 A46 46 0 1 0 85.2 20.4 Z" fill="currentColor"/></svg>
@@ -104,7 +104,7 @@
     <div class="carta-col">
       <div class="carta-cab">
         <h2 id="carta-h2" class="ext reveal">La carta del<br><em class="sr">Señor Moño</em></h2>
-        <p class="carta-sub reveal" style="--delay:80ms">18 pizzas, rastapan, empanadas, canastitas y fainá. Sumá lo que quieras y te armamos el mensaje para WhatsApp.</p>
+        <p class="carta-sub reveal" style="--delay:80ms">18 pizzas, rastapan propio, empanadas, canastitas y fainá. Sumá lo que querés — el Sr. Moño arma el encargo.</p>
       </div>
       <div class="tabs reveal" style="--delay:120ms" role="tablist" aria-label="Categorías de la carta">
         <button class="tab active" role="tab" aria-selected="true" data-tab="pizzas">Pizzas</button>
@@ -124,7 +124,7 @@
     <aside class="bandeja" id="bandeja" aria-label="Tu bandeja">
       <div class="bandeja-top">
         <h3 class="ext bandeja-titulo">La bandeja</h3>
-        <button class="vaciar-btn cap" id="btn-vaciar" onclick="vaciarCart()" hidden>Vaciar</button>
+        <button class="vaciar-btn cap" id="btn-vaciar" onclick="vaciarCart()" hidden>Limpiar</button>
       </div>
       <div class="plato-wrap">
         <svg class="bvacia-plato" id="plato-svg" viewBox="0 0 160 160" aria-hidden="true">
@@ -153,10 +153,10 @@
         <div id="dir-wrap" hidden>
           <input class="campo" type="text" placeholder="Dirección de envío" oninput="STATE.direccion=this.value" aria-label="Dirección">
         </div>
-        <input class="campo" type="text" placeholder="Tu nombre" oninput="STATE.nombre=this.value" aria-label="Tu nombre">
-        <textarea class="campo" placeholder="Comentarios (opcional)" rows="2" oninput="STATE.comentarios=this.value" aria-label="Comentarios"></textarea>
+        <input class="campo" type="text" placeholder="Nombre para el encargo" oninput="STATE.nombre=this.value" aria-label="Tu nombre">
+        <textarea class="campo" placeholder="Alguna instrucción especial" rows="2" oninput="STATE.comentarios=this.value" aria-label="Comentarios"></textarea>
         <a id="wa-btn" href="https://wa.me/5492494694718" class="btn btn-oro btn-wa" target="_blank" rel="noopener" onclick="this.href='https://wa.me/5492494694718?text='+buildWA()">
-          Enviar pedido por WhatsApp
+          Mandar el encargo por WhatsApp
         </a>
       </div>
     </aside>
@@ -249,7 +249,7 @@
 <footer class="pie">
   <div class="wrap pie-inner">
     <div class="pie-top reveal">
-      <p class="cap" style="color:var(--plata)">Escribinos directo</p>
+      <p class="cap" style="color:var(--plata)">Escribile al Sr. Moño</p>
       <a href="https://wa.me/5492494694718" target="_blank" rel="noopener" class="pie-tel ext">+54 9 249<br>469-4718</a>
       <button class="btn btn-linea btn-sm" id="btn-copiar" onclick="copiarWA()">Copiar número</button>
     </div>
@@ -800,7 +800,7 @@ textarea.campo{resize:vertical;min-height:54px}
 <script>
 /* ── CARTA DATA ─── */
 const CARTA = {
-  pizzas:{t:'Pizzas',nota:'Grande o individual. Precios de PedidosYa al 16/10/2026. <em class="confirmar">[CONFIRMAR precio de mostrador]</em>',items:[
+  pizzas:{t:'Pizzas',nota:'18 variedades, grandes o individuales. Precios de PedidosYa al 16/10/2026. <em class="confirmar">[CONFIRMAR precio de mostrador]</em>',items:[
     {id:'p-muzz',n:'Muzzarella',ing:'Salsa de tomate, mozzarella',g:22400,i:12400},
     {id:'p-napo',n:'Napolitana',ing:'Salsa, mozzarella, tomates frescos, pesto de ajo y perejil',g:23800,i:13100},
     {id:'p-fuga',n:'Fugazza con queso',ing:'Mozzarella, cebolla morada rehogada, oliva y verdeo',g:null,i:12900},
@@ -820,14 +820,14 @@ const CARTA = {
     {id:'p-ruca',n:'Rúcula',ing:'Salsa, mozzarella, rúcula, jamón crudo serrano, sardo',g:'?',i:null},
     {id:'p-rucc',n:'Rúcula y cherry confitado',ing:'Salsa, mozzarella, cherry confitado en oliva, rúcula, sardo',g:'?',i:null},
   ]},
-  rastapan:{t:'Rastapan',nota:'Fermento largo, 48 h de reposo. Cerrado como un calzone, abierto arriba. $22.900.',items:[
+  rastapan:{t:'Rastapan',nota:'Producto propio. Fermento largo, 48 h de reposo — el Sr. Moño no acepta atajos. Cerrado como un calzone, abierto arriba. $22.900.',items:[
     {id:'r-jamq',n:'Jamón y queso',ing:'Salsa de tomate, jamón y muzzarella',p:22900},
     {id:'r-napo',n:'Napolitano',ing:'Salsa de tomate, muzzarella, tomate fresco y ajo',p:22900},
     {id:'r-fuga',n:'Fugazza',ing:'Cebolla morada, aceite de oliva y muzzarella',p:22900},
     {id:'r-cap',n:'Capresse',ing:'Salsa de tomate, muzzarella, tomate fresco y albahaca',p:22900},
     {id:'r-cant',n:'Cantimpalo',ing:'Salsa de tomate, cantimpalo, muzzarella y tomate fresco',p:22900},
   ]},
-  empanadas:{t:'Empanadas',nota:'$3.700 cada una. Al horno; preguntá por las fritas.',items:[
+  empanadas:{t:'Empanadas',nota:'$3.700 cada una. Al horno de movida; las fritas se preguntan en el mostrador.',items:[
     {id:'e-carn',n:'Carne',ing:'Carne picada, cebolla, morrón',p:3700},
     {id:'e-cpic',n:'Carne picante',ing:'Carne picada, cebolla, morrón, papa, tomate, ají cayena',p:3700},
     {id:'e-jamq',n:'Jamón y queso',ing:'Jamón cocido y muzzarella',p:3700},
@@ -838,7 +838,7 @@ const CARTA = {
     {id:'e-anaj',n:'Ananá y jamón',ing:'Ananá, jamón cocido, muzzarella',p:3700},
     {id:'e-panc',n:'Panceta y ciruela',ing:'Panceta, ciruela, muzzarella',p:3700},
   ]},
-  canastitas:{t:'Canastitas',nota:'$3.700 cada una. Abiertas arriba, con el repulgue en espiral.',items:[
+  canastitas:{t:'Canastitas',nota:'$3.700 cada una. Abiertas arriba, repulgue en espiral — detalle irrenunciable del Sr. Moño.',items:[
     {id:'c-cala',n:'Calabaza y queso',ing:'Calabaza asada, muzzarella',p:3700},
     {id:'c-cant',n:'Cantimpalo',ing:'Cantimpalo, muzzarella',p:3700},
     {id:'c-cebo',n:'Cebolla y queso',ing:'Mix de cebollas salteadas, muzzarella',p:3700},
@@ -849,7 +849,7 @@ const CARTA = {
     {id:'c-humi',n:'Humita',ing:'Choclo cremoso, cebolla, morrón, crema',p:3700},
     {id:'c-capr',n:'Capresse',ing:'Tomate, muzzarella, pesto de albahaca',p:3700},
   ]},
-  faina:{t:'Fainá',nota:'De harina de garbanzo, aceite de oliva. <em class="confirmar">[CONFIRMAR precios]</em>',items:[
+  faina:{t:'Fainá',nota:'Harina de garbanzo, aceite de oliva, pesto de ajo y sardo. Ideal al lado de la pizza. <em class="confirmar">[CONFIRMAR precios]</em>',items:[
     {id:'f-clas',n:'Clásica',ing:'Garbanzo, oliva, pesto de ajo, sardo',p:'?'},
     {id:'f-napo',n:'Napolitana',ing:'Con tomate y pesto de ajo',p:'?'},
     {id:'f-ajo',n:'Al ajo',ing:'Con pesto de ajo',p:'?'},
@@ -864,11 +864,11 @@ const STATE = {items:[],modo:'retiro',nombre:'',direccion:'',comentarios:''};
 function getEstado(){
   const d = new Date(new Date().toLocaleString('en-US',{timeZone:'America/Argentina/Buenos_Aires'}));
   const t = d.getHours()*60 + d.getMinutes();
-  if(t>=690&&t<870)  return {ab:true, txt:'Abierto · cierra a las 14:30'};
-  if(t>=1170&&t<1410)return {ab:true, txt:'Abierto · cierra a las 23:30'};
+  if(t>=690&&t<870)  return {ab:true, txt:'El Sr. Moño recibe hasta las 14:30'};
+  if(t>=1170&&t<1410)return {ab:true, txt:'El Sr. Moño recibe hasta las 23:30'};
   if(t<690)          return {ab:false,txt:'Cerrado · abre a las 11:30'};
-  if(t<1170)         return {ab:false,txt:'Cerrado · abre a las 19:30'};
-  return {ab:false,txt:'Cerrado · abre mañana 11:30'};
+  if(t<1170)         return {ab:false,txt:'Cerrado · vuelve a las 19:30'};
+  return {ab:false,txt:'Cerrado · vuelve mañana a las 11:30'};
 }
 function initEstado(){
   const e = getEstado();
