@@ -68,17 +68,21 @@
   .button.ghost:hover{border-color:var(--coal)}
   .line-link{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:12px;display:inline-flex;align-items:center;gap:20px}
   .line-link:hover .arr{transform:translate(3px,-3px)}
-  .nav{position:absolute;top:0;left:0;width:100%;z-index:80;height:98px;color:white;transition:background .3s,box-shadow .3s,height .3s}
-  .nav.is-sticky{position:fixed;background:rgba(17,19,17,.95);backdrop-filter:blur(16px);height:78px;box-shadow:0 8px 30px #0003}
+  .nav{position:absolute;top:0;left:0;width:100%;z-index:80;height:98px;color:white;transition:background .3s,box-shadow .3s,height .3s,top .3s}
+  .nav.is-sticky{position:fixed;top:0;background:rgba(17,19,17,.95);backdrop-filter:blur(16px);height:78px;box-shadow:0 8px 30px #0003}
   .nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:30px}
   .brand{font-size:21px;font-weight:800;letter-spacing:-.055em;line-height:1;text-transform:uppercase;white-space:nowrap}
   .brand small{display:block;font-weight:500;letter-spacing:.26em;font-size:7px;margin-top:8px;color:rgba(255,255,255,.75)}
   .nav-links{display:flex;align-items:center;gap:31px}
-  .nav-links>a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.92;transition:opacity .2s}
+  .nav-links>a{position:relative;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;opacity:.92;transition:opacity .2s}
+  .nav-links>a::after{content:'';position:absolute;left:0;right:0;bottom:-10px;height:1px;background:var(--gold-light);transform:scaleX(0);transform-origin:right;transition:transform .38s cubic-bezier(.2,.75,.25,1)}
   .nav-links>a:hover{opacity:.6}
+  .nav-links>a:hover::after,.nav-links>a.is-active::after{transform:scaleX(1);transform-origin:left}
+  .nav-links>a.is-active{opacity:1}
   .nav-actions{display:flex;align-items:center;gap:14px}
-  .nav-contact{font-size:10px;letter-spacing:.13em;border:1px solid rgba(255,255,255,.65);padding:14px 20px;font-weight:700;text-transform:uppercase;white-space:nowrap;transition:background .2s,border-color .2s}
+  .nav-contact{font-size:10px;letter-spacing:.13em;border:1px solid rgba(255,255,255,.65);padding:14px 20px;font-weight:700;text-transform:uppercase;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
   .nav-contact:hover{background:rgba(255,255,255,.15);border-color:#fff}
+  .nav-contact.is-active{color:var(--dark);background:var(--gold-light);border-color:var(--gold-light)}
   .mobile-toggle{display:none;position:relative;width:42px;height:42px;border:0;color:#fff;background:transparent;padding:6px}
   .mobile-toggle span{position:absolute;left:10px;width:22px;height:2px;background:currentColor;transition:transform .25s ease,opacity .25s ease}
   .mobile-toggle span:nth-child(1){transform:translateY(-7px)}
@@ -142,6 +146,11 @@
   .experience-intro{font-size:15px;line-height:1.9;color:var(--muted);margin:0 0 49px}
   .service{border-top:1px solid #c8c8c1;padding:21px 0;display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:14px;font-weight:600}
   .service:last-child{border-bottom:1px solid #c8c8c1}
+  .service>span,.service>small{transition:transform .32s cubic-bezier(.2,.75,.25,1),color .32s ease}
+  @media (hover:hover) and (pointer:fine){
+    .service:hover>span{transform:translate3d(9px,0,0);color:var(--gold)}
+    .service:hover>small{transform:translate3d(-5px,0,0);color:var(--coal)}
+  }
   .service small{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);font-weight:500}
   .service small::after{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat}
   .moment{height:min(68vw,780px);min-height:400px;background:linear-gradient(180deg,#0003,#0008),url('assets/04-barra-evento.webp') center 48%/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:30px}
@@ -158,39 +167,1425 @@
   .lead-intro{text-align:center;max-width:870px;margin:0 auto 65px}
   .lead-intro h2{font-size:clamp(43px,6vw,88px);line-height:1.06;letter-spacing:-.065em;font-weight:500;margin:17px 0 25px}
   .lead-intro p{font-size:14px;color:var(--muted);line-height:1.85;margin:0}
-  .form-shell{width:min(100%,910px);background:#f9f8f5;margin:0 auto;padding:40px 54px 50px;box-shadow:0 30px 80px #1b241b12}
-  .form-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.17em;font-weight:700;text-transform:uppercase;color:#777b74}
-  .progress{margin:25px 0 46px;display:flex;gap:8px}
-  .progress span{height:3px;flex:1;background:#dddeda}
-  .progress span.active{background:#29312b}
-  .form-step[hidden],.conditional[hidden],.summary[hidden],.form-shell [hidden]{display:none!important}
-  .form-step h3{font-size:clamp(28px,3.5vw,46px);letter-spacing:-.05em;font-weight:500;margin:0 0 14px}
-  .form-step>p{font-size:13px;line-height:1.7;color:#757a73;margin:0 0 32px}
-  .radio-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .choice{display:flex;align-items:center;gap:13px;padding:20px 16px;border:1px solid #dbdcd6;cursor:pointer;min-height:76px;transition:border .2s,background .2s}
-  .choice:hover{border-color:#7c827a}
-  .choice:has(input:checked){background:#edf0e9;border-color:#272c28}
-  .choice input{accent-color:#1c221e;width:16px;height:16px;flex:none}
-  .choice strong{font-size:13px;font-weight:700}
-  .fields{display:grid;grid-template-columns:1fr 1fr;gap:19px}
-  .field{display:flex;flex-direction:column;gap:10px}
-  .field.full{grid-column:1/-1}
-  .field label{font-size:11px;font-weight:700;letter-spacing:.05em}
-  .field input,.field select,.field textarea{border:1px solid #d9dad4;color:var(--coal);background:white;padding:15px 14px;border-radius:0;width:100%;font-size:13px;min-height:52px;outline-offset:2px}
-  .field textarea{min-height:125px;resize:vertical}
-  .checks{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-  .check{font-size:13px;line-height:1.5;display:flex;align-items:center;gap:10px;padding:15px;border:1px solid #d9dad4;background:white}
-  .check:has(input:checked){border-color:#303a33;background:#edf0e9}
-  .check input{accent-color:#222;width:17px;height:17px;flex:none}
-  .form-actions{display:flex;gap:15px;align-items:center;justify-content:space-between;margin-top:37px;border-top:1px solid #dddeda;padding-top:25px}
-  .form-actions .button:disabled{opacity:.35;cursor:not-allowed}
-  .error{color:#a33a29;font-size:12px;margin-top:12px;min-height:18px}
-  .summary{margin-top:30px;border:1px solid #d8dad2;padding:26px;background:#fff;border-radius:2px}
-  .summary pre{white-space:pre-wrap;word-wrap:break-word;font:12px/1.7 var(--font);color:var(--ink);margin:15px 0;background:#f8f7f4;padding:18px;border-left:3px solid var(--gold)}
-  .summary-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-  .consent{font-size:12px;line-height:1.6;display:flex;gap:10px;margin-top:24px;color:#666}
-  .consent input{flex:none;width:17px;height:17px;accent-color:#1f241f;margin:1px 0 0}
-  .form-note{display:block;margin-top:16px;font-size:11px;line-height:1.75;color:#777}
+  /* ========================================================
+     COTIZADOR EXCLUSIVO EDITORIAL v4 - MALABAR TANDIL
+     ======================================================== */
+  .form-shell{
+    width:min(100%,940px);
+    background:#ffffff;
+    margin:0 auto;
+    padding:44px 50px 52px;
+    border:1px solid #e2e4dd;
+    border-radius:4px;
+    box-shadow:0 24px 70px rgba(18,24,19,0.06), 0 2px 8px rgba(18,24,19,0.03);
+    position:relative;
+    transition:box-shadow .35s ease,border-color .35s ease;
+  }
+  .form-header-pro{
+    margin-bottom:34px;
+    border-bottom:1px solid #eceee8;
+    padding-bottom:24px;
+  }
+  .form-top-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+  }
+  .cotiz-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:10px;
+    letter-spacing:.20em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--coal);
+  }
+  .cotiz-badge .badge-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 3px rgba(191,163,124,0.25);
+    animation:pulse-gold 2.4s infinite ease-in-out;
+  }
+  @keyframes pulse-gold{
+    0%,100%{transform:scale(1);opacity:.9}
+    50%{transform:scale(1.25);opacity:1}
+  }
+  .step-count-pill{
+    font-size:10px;
+    letter-spacing:.15em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:#73776f;
+    background:#f4f4f0;
+    padding:6px 13px;
+    border-radius:20px;
+    border:1px solid #e1e3dd;
+  }
+  .stepper-labels{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .step-label{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.04em;
+    color:#9ba097;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:color .3s ease;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .step-label .step-num{
+    font-size:10px;
+    font-weight:800;
+    color:#868b82;
+    padding:2px 6px;
+    background:#ebeee6;
+    border-radius:2px;
+    transition:background-color .3s ease,color .3s ease;
+  }
+  .step-label.active{
+    color:var(--coal);
+  }
+  .step-label.active .step-num{
+    background:var(--coal);
+    color:var(--cream);
+  }
+  .step-label.completed{
+    color:#5e635b;
+  }
+  .step-label.completed .step-num{
+    background:#e0dacd;
+    color:var(--coal);
+  }
+  .progress-track{
+    height:3px;
+    width:100%;
+    background:#e8eae3;
+    border-radius:3px;
+    overflow:hidden;
+    position:relative;
+  }
+  .progress-fill{
+    height:100%;
+    width:25%;
+    background:linear-gradient(90deg, var(--gold), #8f744e);
+    border-radius:3px;
+    transition:width .45s cubic-bezier(.2,.8,.25,1);
+  }
+  .step-title-wrap{
+    margin-bottom:30px;
+  }
+  .step-eyebrow{
+    font-size:10px;
+    letter-spacing:.20em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:block;
+    margin-bottom:8px;
+  }
+  .step-title-wrap h3{
+    font-size:clamp(26px,3.2vw,40px);
+    letter-spacing:-.045em;
+    font-weight:500;
+    color:var(--coal);
+    margin:0 0 10px;
+    line-height:1.15;
+  }
+  .step-title-wrap p{
+    font-size:13px;
+    line-height:1.75;
+    color:#6c7169;
+    margin:0;
+    max-width:680px;
+  }
+  .form-step[hidden],.conditional[hidden],.summary[hidden],.summary-editorial[hidden],.form-shell [hidden]{
+    display:none!important;
+  }
+  .pro-radio-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .pro-card-choice{
+    position:relative;
+    cursor:pointer;
+    display:block;
+  }
+  .pro-card-choice input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .pro-card-inner{
+    border:1px solid #dddfd8;
+    background:#faf9f6;
+    padding:24px 22px;
+    border-radius:4px;
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    transition:border-color .28s, background .28s, transform .28s, box-shadow .28s;
+    position:relative;
+  }
+  .pro-card-choice:hover .pro-card-inner{
+    border-color:#b4b8ae;
+    background:#ffffff;
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px rgba(28,34,30,0.05);
+  }
+  .pro-card-choice input:checked + .pro-card-inner{
+    border-color:var(--coal);
+    background:#ffffff;
+    box-shadow:0 14px 34px rgba(28,34,30,0.08), inset 0 0 0 1px var(--coal);
+  }
+  .pro-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+  }
+  .pro-card-icon{
+    width:42px;
+    height:42px;
+    border-radius:4px;
+    background:#eeede8;
+    color:var(--coal);
+    display:grid;
+    place-items:center;
+    transition:background .25s, color .25s;
+  }
+  .pro-card-choice:hover .pro-card-icon{
+    background:#e6e3da;
+  }
+  .pro-card-choice input:checked + .pro-card-inner .pro-card-icon{
+    background:var(--coal);
+    color:var(--cream);
+  }
+  .pro-tag{
+    font-size:9px;
+    letter-spacing:.14em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:#7a7e76;
+    background:#f0f1ec;
+    padding:4px 9px;
+    border-radius:2px;
+  }
+  .pro-card-title{
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:-.02em;
+    color:var(--coal);
+    margin-bottom:8px;
+    display:block;
+  }
+  .pro-card-desc{
+    font-size:12px;
+    line-height:1.65;
+    color:#6f746c;
+    flex:1;
+    margin-bottom:16px;
+    display:block;
+  }
+  .pro-card-check{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+  }
+  .check-circle{
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    border:1.5px solid #c2c5bc;
+    display:grid;
+    place-items:center;
+    transition:background-color .25s ease,border-color .25s ease,color .25s ease,transform .25s ease;
+  }
+  .check-circle::after{
+    content:'';
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--coal);
+    transform:scale(0);
+    transition:transform .22s cubic-bezier(.17,.89,.32,1.28);
+  }
+  .pro-card-choice input:checked + .pro-card-inner .check-circle{
+    border-color:var(--coal);
+    background:transparent;
+  }
+  .pro-card-choice input:checked + .pro-card-inner .check-circle::after{
+    transform:scale(1);
+    background:var(--gold);
+  }
+  .section-subblock{
+    background:#faf9f6;
+    border:1px solid #e1e3dc;
+    border-radius:4px;
+    padding:22px 24px;
+    margin-bottom:18px;
+  }
+  .subblock-label{
+    display:block;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#53574f;
+    margin-bottom:14px;
+  }
+  .date-flex-row{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .date-input-wrap{
+    flex:1;
+    min-width:240px;
+  }
+  .date-input-wrap input{
+    width:100%;
+    min-height:50px;
+    padding:13px 16px;
+    border:1px solid #cbcdc5;
+    background:#ffffff;
+    font-size:13px;
+    color:var(--coal);
+    border-radius:2px;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .date-input-wrap input:focus{
+    outline:none;
+    border-color:var(--coal);
+    box-shadow:0 0 0 2px rgba(28,34,30,0.12);
+  }
+  .toggle-pill-checkbox{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:600;
+    color:#61665e;
+    user-select:none;
+    padding:12px 16px;
+    background:#ffffff;
+    border:1px solid #cbcdc5;
+    border-radius:2px;
+    transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+  }
+  .toggle-pill-checkbox:hover{
+    border-color:var(--coal);
+    color:var(--coal);
+  }
+  .toggle-pill-checkbox input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .toggle-pill-box{
+    width:18px;
+    height:18px;
+    border-radius:2px;
+    border:1.5px solid #aeb2a8;
+    display:grid;
+    place-items:center;
+    color:transparent;
+    transition:background-color .2s ease,border-color .2s ease,color .2s ease;
+  }
+  .toggle-pill-checkbox input:checked ~ .toggle-pill-box{
+    border-color:var(--coal);
+    background:var(--coal);
+    color:var(--gold);
+  }
+  .toggle-pill-checkbox:has(input:checked){
+    border-color:var(--coal);
+    background:#f1eee8;
+    color:var(--coal);
+  }
+  .pills-guest-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+  }
+  .guest-pill{
+    position:relative;
+    cursor:pointer;
+    display:block;
+  }
+  .guest-pill input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .guest-pill-content{
+    border:1px solid #d4d6cf;
+    background:#ffffff;
+    padding:16px 10px;
+    text-align:center;
+    border-radius:3px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    transition:background-color .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
+  }
+  .guest-pill-content strong{
+    font-size:14px;
+    font-weight:800;
+    color:var(--coal);
+    letter-spacing:-.02em;
+  }
+  .guest-pill-content small{
+    font-size:10px;
+    color:#7e827b;
+    line-height:1.3;
+    font-weight:600;
+  }
+  .guest-pill:hover .guest-pill-content{
+    border-color:#9da197;
+    transform:translateY(-1px);
+  }
+  .guest-pill input:checked + .guest-pill-content{
+    border-color:var(--coal);
+    background:var(--coal);
+    box-shadow:0 6px 18px rgba(28,34,30,0.14);
+  }
+  .guest-pill input:checked + .guest-pill-content strong{
+    color:var(--cream);
+  }
+  .guest-pill input:checked + .guest-pill-content small{
+    color:var(--gold-light);
+  }
+  .shift-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+  }
+  .shift-card{
+    position:relative;
+    cursor:pointer;
+    display:block;
+  }
+  .shift-card input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .shift-card-inner{
+    border:1px solid #d4d6cf;
+    background:#ffffff;
+    padding:16px 14px;
+    border-radius:3px;
+    display:flex;
+    align-items:flex-start;
+    gap:11px;
+    height:100%;
+    transition:background-color .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
+  }
+  .shift-icon{
+    font-size:20px;
+    line-height:1;
+    flex:none;
+  }
+  .shift-text strong{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    color:var(--coal);
+    margin-bottom:3px;
+  }
+  .shift-text small{
+    display:block;
+    font-size:10px;
+    color:#737870;
+    line-height:1.4;
+  }
+  .shift-card:hover .shift-card-inner{
+    border-color:#9da197;
+  }
+  .shift-card input:checked + .shift-card-inner{
+    border-color:var(--coal);
+    background:#f4f3ee;
+    box-shadow:inset 0 0 0 1px var(--coal);
+  }
+  .services-pro-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+  }
+  .service-pro-card{
+    position:relative;
+    cursor:pointer;
+    display:block;
+  }
+  .service-pro-card--full{
+    grid-column:1/-1;
+  }
+  .service-pro-card input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .service-pro-inner{
+    border:1px solid #dddfd8;
+    background:#faf9f6;
+    padding:18px 20px;
+    border-radius:3px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    transition:background-color .24s ease,border-color .24s ease,color .24s ease,transform .24s ease;
+  }
+  .service-pro-card:hover .service-pro-inner{
+    border-color:#b6baa0;
+    background:#ffffff;
+  }
+  .service-pro-card input:checked + .service-pro-inner{
+    border-color:var(--coal);
+    background:#ffffff;
+    box-shadow:0 8px 24px rgba(28,34,30,0.06), inset 0 0 0 1px var(--coal);
+  }
+  .service-icon-wrap{
+    width:42px;
+    height:42px;
+    border-radius:3px;
+    background:#eeede8;
+    color:var(--coal);
+    display:grid;
+    place-items:center;
+    flex:none;
+    transition:background-color .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
+  }
+  .service-pro-card input:checked + .service-pro-inner .service-icon-wrap{
+    background:var(--coal);
+    color:var(--gold);
+  }
+  .service-info{
+    flex:1;
+    min-width:0;
+  }
+  .service-info strong{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    color:var(--coal);
+    margin-bottom:4px;
+    letter-spacing:-.01em;
+  }
+  .service-info small{
+    display:block;
+    font-size:11px;
+    color:#737871;
+    line-height:1.5;
+  }
+  .service-indicator{
+    width:20px;
+    height:20px;
+    border-radius:3px;
+    border:1.5px solid #b5b9b0;
+    display:grid;
+    place-items:center;
+    flex:none;
+    transition:background-color .2s ease,border-color .2s ease,color .2s ease;
+  }
+  .service-indicator::after{
+    content:'✓';
+    font-size:12px;
+    font-weight:900;
+    color:var(--cream);
+    opacity:0;
+    transform:scale(0.5);
+    transition:opacity .2s ease,transform .2s ease;
+  }
+  .service-pro-card input:checked + .service-pro-inner .service-indicator{
+    border-color:var(--coal);
+    background:var(--coal);
+  }
+  .service-pro-card input:checked + .service-pro-inner .service-indicator::after{
+    opacity:1;
+    transform:scale(1);
+    color:var(--gold);
+  }
+  .fields-pro{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:24px;
+  }
+  .field-pro{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .field-pro--full{
+    grid-column:1/-1;
+  }
+  .field-pro label{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:#4a4e47;
+  }
+  .field-pro label small{
+    font-size:10px;
+    color:#8b9087;
+    text-transform:none;
+    letter-spacing:normal;
+    font-weight:600;
+  }
+  .field-pro input, .field-pro textarea{
+    border:1px solid #d4d6cf;
+    color:var(--coal);
+    background:#ffffff;
+    padding:15px 16px;
+    border-radius:2px;
+    width:100%;
+    font-size:13px;
+    min-height:52px;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .field-pro textarea{
+    min-height:120px;
+    resize:vertical;
+    line-height:1.7;
+  }
+  .field-pro input:focus, .field-pro textarea:focus{
+    outline:none;
+    border-color:var(--coal);
+    box-shadow:0 0 0 2px rgba(28,34,30,0.12);
+  }
+  .field-title{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:#4a4e47;
+    margin-bottom:8px;
+    display:block;
+  }
+  .field-title small{
+    font-size:10px;
+    color:#8b9087;
+    text-transform:none;
+    letter-spacing:normal;
+  }
+  .input-wrap input{
+    width:100%;
+    border:1px solid #d4d6cf;
+    background:#ffffff;
+    padding:15px 16px;
+    border-radius:2px;
+    font-size:13px;
+    color:var(--coal);
+    min-height:50px;
+  }
+  .input-wrap input:focus{
+    outline:none;
+    border-color:var(--coal);
+    box-shadow:0 0 0 2px rgba(28,34,30,0.12);
+  }
+  .consent-pro{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    cursor:pointer;
+    user-select:none;
+    padding:16px 18px;
+    background:#faf9f6;
+    border:1px solid #e1e3dc;
+    border-radius:3px;
+  }
+  .consent-pro input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+  }
+  .consent-box{
+    width:18px;
+    height:18px;
+    border:1.5px solid #aeb2a8;
+    border-radius:2px;
+    display:grid;
+    place-items:center;
+    flex:none;
+    margin-top:2px;
+    transition:background-color .2s ease,border-color .2s ease,color .2s ease;
+  }
+  .consent-box::after{
+    content:'✓';
+    font-size:11px;
+    font-weight:900;
+    color:var(--cream);
+    opacity:0;
+    transition:opacity .2s;
+  }
+  .consent-pro input:checked + .consent-box{
+    background:var(--coal);
+    border-color:var(--coal);
+  }
+  .consent-pro input:checked + .consent-box::after{
+    opacity:1;
+    color:var(--gold);
+  }
+  .consent-text{
+    font-size:12px;
+    line-height:1.65;
+    color:#61665e;
+  }
+  .form-actions{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:36px;
+    border-top:1px solid #e5e7e0;
+    padding-top:28px;
+  }
+  .form-actions .button.ghost{
+    background:transparent;
+    color:var(--coal);
+    border:1px solid #cbcdc5;
+  }
+  .form-actions .button.ghost:hover{
+    border-color:var(--coal);
+    background:#f3f3ee;
+  }
+  .form-actions .button:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+    transform:none!important;
+  }
+  .error{color:#a33a29;font-size:12px;margin-top:14px;min-height:18px;font-weight:600}
+  .summary-editorial{
+    margin-top:10px;
+    animation:form-v3-appear .45s ease both;
+  }
+  .ticket-pro{
+    background:#ffffff;
+    border:1px solid #dedfd8;
+    border-radius:4px;
+    padding:34px 38px 40px;
+    box-shadow:0 18px 50px rgba(28,34,30,0.06);
+    position:relative;
+    overflow:hidden;
+  }
+  .ticket-pro::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:4px;
+    background:linear-gradient(90deg, var(--coal) 0%, var(--gold) 50%, var(--coal) 100%);
+  }
+  .ticket-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding-bottom:22px;
+    border-bottom:1px solid #eceee8;
+    margin-bottom:24px;
+  }
+  .ticket-brand .ticket-logo{
+    display:block;
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:.08em;
+    color:var(--coal);
+  }
+  .ticket-brand .ticket-sub{
+    font-size:10px;
+    letter-spacing:.22em;
+    font-weight:700;
+    color:var(--gold);
+    display:block;
+    margin-top:2px;
+  }
+  .ticket-status{
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:4px;
+  }
+  .ticket-chip{
+    font-size:9px;
+    letter-spacing:.16em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:#2b663b;
+    background:#e8f4ec;
+    padding:4px 9px;
+    border-radius:2px;
+    border:1px solid #c7e3cf;
+  }
+  .ticket-folio{
+    font-size:11px;
+    letter-spacing:.12em;
+    font-weight:700;
+    color:#7c8178;
+    font-family:monospace;
+  }
+  .ticket-headline{
+    margin-bottom:26px;
+  }
+  .ticket-headline h4{
+    font-size:24px;
+    letter-spacing:-.03em;
+    font-weight:600;
+    color:var(--coal);
+    margin:0 0 6px;
+  }
+  .ticket-headline p{
+    font-size:13px;
+    color:#666b63;
+    line-height:1.7;
+    margin:0;
+  }
+  .ticket-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    background:#f9f8f5;
+    border:1px solid #e5e7e0;
+    padding:24px;
+    border-radius:3px;
+    margin-bottom:28px;
+  }
+  .ticket-cell{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .ticket-cell--full{
+    grid-column:1/-1;
+    border-top:1px solid #ebece6;
+    padding-top:16px;
+  }
+  .ticket-label{
+    font-size:9px;
+    letter-spacing:.18em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:#83887f;
+  }
+  .ticket-val{
+    font-size:14px;
+    font-weight:700;
+    color:var(--coal);
+    letter-spacing:-.01em;
+  }
+  .ticket-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:4px;
+  }
+  .ticket-tag-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:11px;
+    font-weight:700;
+    color:var(--coal);
+    background:#ffffff;
+    border:1px solid #dcdfd6;
+    padding:5px 11px;
+    border-radius:20px;
+  }
+  .ticket-tag-pill::before{
+    content:'•';
+    color:var(--gold);
+    font-size:14px;
+    line-height:0;
+  }
+  .ticket-notes{
+    font-size:12px;
+    color:#5a5f57;
+    line-height:1.7;
+    margin:0;
+    white-space:pre-wrap;
+    background:#ffffff;
+    padding:12px 14px;
+    border-radius:2px;
+    border:1px solid #e1e3db;
+  }
+  .ticket-contact-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#ffffff;
+    padding:14px 18px;
+    border-radius:2px;
+    border:1px solid #e1e3db;
+  }
+  .ticket-actions{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .button-wa-pro{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    background:#25D366;
+    color:#ffffff;
+    padding:18px 26px;
+    border-radius:3px;
+    font-size:12px;
+    letter-spacing:.14em;
+    font-weight:800;
+    text-transform:uppercase;
+    transition:background-color .25s ease,color .25s ease,transform .25s ease,box-shadow .25s ease;
+    box-shadow:0 8px 24px rgba(37,211,102,0.28);
+    text-decoration:none;
+  }
+  .button-wa-pro:hover{
+    background:#1fbd59;
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(37,211,102,0.36);
+    color:#ffffff;
+  }
+  .button-wa-pro svg{
+    flex:none;
+  }
+  .button-secondary-pro{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    background:#faf9f6;
+    color:var(--coal);
+    border:1px solid #d4d6cf;
+    padding:14px 20px;
+    border-radius:3px;
+    font-size:11px;
+    letter-spacing:.12em;
+    font-weight:800;
+    text-transform:uppercase;
+    transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease;
+    cursor:pointer;
+  }
+  .button-secondary-pro:hover{
+    border-color:var(--coal);
+    background:#ffffff;
+  }
+  .button-link-pro{
+    background:none;
+    border:none;
+    color:#737870;
+    font-size:11px;
+    letter-spacing:.10em;
+    font-weight:700;
+    text-transform:uppercase;
+    padding:8px;
+    cursor:pointer;
+    align-self:center;
+    transition:color .2s;
+  }
+  .button-link-pro:hover{
+    color:var(--coal);
+  }
+  .form-note{display:block;margin-top:16px;font-size:11px;line-height:1.75;color:#777;text-align:center}
+
+  /* ========================================================
+     DETALLES EDITORIALES, ESCENARIOS Y PASE VIP 3D
+     ======================================================== */
+  .gold-shimmer {
+    background: linear-gradient(105deg, #c5a059 0%, #fff2d1 25%, #cfab64 45%, #fbe7b2 65%, #9e783a 100%);
+    background-size: 240% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gold-foil-glimmer 6s ease-in-out infinite;
+  }
+  @keyframes gold-foil-glimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* SIMULADOR DE ESCENARIOS */
+  .scenario-scroll-stage{
+    position:relative;
+  }
+  .atmosphere-stage{
+    --scenario-enter:1;
+    width:min(100%,1180px);
+    margin:0 auto 42px;
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:0 34px 90px rgba(18,24,19,0.16);
+    border:1px solid rgba(255,255,255,.08);
+    position:relative;
+    background:#151a16;
+    transform-origin:center 45%;
+  }
+  .atmosphere-visual{
+    --compare:74%;
+    position:relative;
+    aspect-ratio:16/9;
+    min-height:520px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:34px 38px 38px;
+    color:#ffffff;
+    isolation:isolate;
+    background:#171b18;
+  }
+  .atmosphere-media{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    overflow:hidden;
+    opacity:1;
+    transform:scale(1);
+    transition:opacity .32s ease,transform .85s cubic-bezier(.2,.8,.25,1);
+  }
+  .atmosphere-image{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+  .atmosphere-after{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    clip-path:inset(0 calc(100% - var(--compare)) 0 0);
+    will-change:clip-path;
+  }
+  .atmosphere-visual.is-changing .atmosphere-media{
+    opacity:.12;
+    transform:scale(1.018);
+  }
+  .scenario-ambient,.scenario-ambient::before,.scenario-ambient::after{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  .scenario-ambient::before,.scenario-ambient::after{
+    content:'';
+    opacity:.48;
+    mix-blend-mode:screen;
+    will-change:transform,opacity;
+  }
+  .atmosphere-visual[data-scenario="casamiento"] .scenario-ambient::before{
+    inset:-18%;
+    background:radial-gradient(circle at 78% 25%,rgba(255,211,132,.75) 0,rgba(255,190,84,.23) 16%,transparent 39%);
+    animation:scenario-sun-breathe 6.8s ease-in-out infinite alternate;
+  }
+  .atmosphere-visual[data-scenario="celebracion"] .scenario-ambient::before{
+    background:radial-gradient(circle at 15% 23%,rgba(255,211,120,.9) 0 2px,transparent 8px),radial-gradient(circle at 32% 17%,rgba(255,222,150,.85) 0 2px,transparent 9px),radial-gradient(circle at 59% 20%,rgba(255,190,91,.8) 0 2px,transparent 9px),radial-gradient(circle at 81% 16%,rgba(255,219,144,.82) 0 2px,transparent 8px);
+    animation:scenario-bulbs 2.9s ease-in-out infinite alternate;
+  }
+  .atmosphere-visual[data-scenario="celebracion"] .scenario-ambient::after{
+    inset:20% -10% -18%;
+    background:radial-gradient(ellipse at 50% 72%,rgba(201,156,255,.24),transparent 48%);
+    animation:scenario-floor-glow 4.7s ease-in-out infinite alternate;
+  }
+  .atmosphere-visual[data-scenario="corporativo"] .scenario-ambient::before{
+    inset:-20% -35%;
+    background:linear-gradient(104deg,transparent 34%,rgba(181,218,255,.22) 48%,rgba(255,239,199,.16) 52%,transparent 66%);
+    animation:scenario-screen-sweep 7.5s ease-in-out infinite;
+  }
+  .atmosphere-visual[data-scenario="cena"] .scenario-ambient::before{
+    background:radial-gradient(circle at 30% 66%,rgba(255,189,82,.54),transparent 12%),radial-gradient(circle at 48% 61%,rgba(255,211,117,.48),transparent 11%),radial-gradient(circle at 67% 67%,rgba(255,172,69,.45),transparent 12%);
+    animation:scenario-candlelight 2.4s ease-in-out infinite alternate;
+  }
+  @keyframes scenario-sun-breathe{
+    from{opacity:.34;transform:translate3d(-1.5%,1%,0) scale(.96)}
+    to{opacity:.68;transform:translate3d(1.5%,-1%,0) scale(1.05)}
+  }
+  @keyframes scenario-bulbs{from{opacity:.35}to{opacity:.8}}
+  @keyframes scenario-floor-glow{from{opacity:.25;transform:scale(.96)}to{opacity:.55;transform:scale(1.04)}}
+  @keyframes scenario-screen-sweep{0%,18%{opacity:0;transform:translate3d(-26%,0,0)}45%,62%{opacity:.62}82%,100%{opacity:0;transform:translate3d(26%,0,0)}}
+  @keyframes scenario-candlelight{0%{opacity:.28;transform:scale(.99)}42%{opacity:.62}100%{opacity:.4;transform:scale(1.02)}}
+  .atmosphere-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(9,12,10,.48) 0%,rgba(9,12,10,.03) 42%,rgba(9,12,10,.84) 100%);
+    pointer-events:none;
+    z-index:-1;
+  }
+  .compare-range{
+    position:absolute;
+    inset:0;
+    z-index:4;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    opacity:0;
+    cursor:ew-resize;
+    touch-action:pan-y;
+  }
+  .compare-divider{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:var(--compare);
+    z-index:3;
+    width:1px;
+    background:rgba(255,255,255,.86);
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+    transform:translateX(-50%);
+    pointer-events:none;
+  }
+  .compare-divider::after{
+    content:'\2194';
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:#171b18;
+    background:var(--gold-light);
+    border:1px solid rgba(255,255,255,.75);
+    box-shadow:0 8px 28px rgba(0,0,0,.32);
+    transform:translate(-50%,-50%);
+    font-size:17px;
+    font-weight:700;
+  }
+  .compare-label{
+    position:absolute;
+    z-index:3;
+    top:50%;
+    padding:7px 10px;
+    border:1px solid rgba(255,255,255,.26);
+    border-radius:99px;
+    background:rgba(8,11,9,.57);
+    backdrop-filter:blur(9px);
+    color:#fff;
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.17em;
+    line-height:1;
+    text-transform:uppercase;
+    transform:translateY(-50%);
+    pointer-events:none;
+  }
+  .compare-label-after{left:20px}
+  .compare-label-before{right:20px}
+  .compare-tip{
+    position:absolute;
+    z-index:3;
+    top:80px;
+    left:50%;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:6px 10px;
+    border-radius:99px;
+    background:rgba(8,11,9,.55);
+    color:rgba(255,255,255,.78);
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    transform:translateX(-50%);
+    pointer-events:none;
+    white-space:nowrap;
+  }
+  .compare-tip::before{content:'\2194';color:var(--gold-light);font-size:12px;letter-spacing:0}
+  .compare-range:focus-visible + .compare-divider::after{
+    outline:3px solid #fff;
+    outline-offset:3px;
+  }
+  .atmosphere-content{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    height:100%;
+    flex:1;
+    min-height:0;
+  }
+  .atmosphere-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .atmosphere-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(10,13,11,0.65);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(191,163,124,0.4);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:9px;
+    letter-spacing:.18em;
+    font-weight:800;
+    text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .atmosphere-live-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 8px var(--gold);
+    animation:pulse-gold 1.8s infinite;
+  }
+  .atmosphere-code{
+    font-size:10px;
+    letter-spacing:.22em;
+    font-weight:700;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.85);
+    text-shadow:0 2px 8px rgba(0,0,0,0.6);
+  }
+  .atmosphere-footer{
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-end;
+    margin-top:auto;
+  }
+  .atmosphere-meta strong{
+    display:block;
+    font-size:clamp(22px,2.8vw,34px);
+    font-weight:500;
+    letter-spacing:-.04em;
+    line-height:1.15;
+    margin-bottom:6px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.5);
+  }
+  .atmosphere-meta p{
+    font-size:13px;
+    line-height:1.6;
+    color:rgba(255,255,255,0.88);
+    margin:0;
+    max-width:540px;
+    text-shadow:0 1px 6px rgba(0,0,0,0.6);
+  }
+  .atmosphere-presets{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    background:#111411;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .atmo-btn{
+    position:relative;
+    min-height:104px;
+    padding:19px 22px 18px;
+    border:0;
+    border-right:1px solid rgba(255,255,255,.1);
+    background:transparent;
+    color:rgba(255,255,255,.68);
+    text-align:left;
+    transition:background .25s ease,color .25s ease;
+    cursor:pointer;
+  }
+  .atmo-btn:last-child{border-right:0}
+  .atmo-btn::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .32s ease}
+  .atmo-btn span{display:block}
+  .atmo-btn .scenario-index{margin-bottom:11px;color:var(--gold);font-size:9px;font-weight:800;letter-spacing:.18em}
+  .atmo-btn .scenario-name{color:inherit;font-size:12px;line-height:1.25;letter-spacing:.08em;font-weight:800;text-transform:uppercase}
+  .atmo-btn .scenario-detail{margin-top:6px;color:rgba(255,255,255,.43);font-size:10px;line-height:1.35}
+  .atmo-btn:hover{
+    background:#1a1e1a;
+    color:#fff;
+  }
+  .atmo-btn.active{
+    background:#1e231e;
+    color:#fff;
+  }
+  .atmo-btn.active::before{transform:scaleX(1)}
+  .atmo-btn:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+
+  /* PASE VIP 3D INTERACTIVO CON FOIL DORADO */
+  .vip-pass-container{
+    perspective:1200px;
+    margin:0 auto 30px;
+    padding:10px 0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+  }
+  .vip-pass-card{
+    width:min(100%,480px);
+    aspect-ratio:1.586;
+    background:linear-gradient(135deg, #1b201c 0%, #101311 50%, #080a09 100%);
+    border:1.5px solid rgba(191,163,124,0.45);
+    border-radius:12px;
+    padding:28px 30px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 0 rgba(255,255,255,0.15);
+    transform-style:preserve-3d;
+    transition:transform .12s ease-out, box-shadow .25s ease;
+    cursor:pointer;
+  }
+  .vip-pass-glimmer{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    transition:opacity .3s ease;
+    mix-blend-mode:screen;
+    border-radius:12px;
+  }
+  .vip-pass-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .vip-pass-brand{
+    display:flex;
+    flex-direction:column;
+  }
+  .vip-crest{
+    color:var(--gold);
+    font-size:16px;
+    margin-bottom:2px;
+    line-height:1;
+  }
+  .vip-pass-name{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:.14em;
+    color:#f4ebd9;
+    text-shadow:0 1px 2px #000, 0 0 12px rgba(191,163,124,0.3);
+  }
+  .vip-pass-sub{
+    font-size:8px;
+    letter-spacing:.26em;
+    font-weight:800;
+    color:var(--gold);
+  }
+  .badge-gold-foil{
+    display:inline-block;
+    padding:5px 12px;
+    background:linear-gradient(135deg, #bfa37c 0%, #ecdcb9 50%, #8e734c 100%);
+    color:#121512;
+    font-size:9px;
+    letter-spacing:.18em;
+    font-weight:900;
+    text-transform:uppercase;
+    border-radius:20px;
+    box-shadow:0 2px 10px rgba(191,163,124,0.35);
+  }
+  .vip-pass-chip-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:22px 0 16px;
+  }
+  .vip-chip-graphic{
+    width:42px;
+    height:30px;
+    border-radius:5px;
+    background:linear-gradient(135deg, #c5a059 0%, #fae8be 45%, #947137 100%);
+    border:1px solid #fce8bd;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    padding:4px 6px;
+    box-shadow:inset 0 1px 2px rgba(255,255,255,0.6), 0 2px 6px rgba(0,0,0,0.4);
+  }
+  .chip-line{
+    height:1.5px;
+    background:rgba(0,0,0,0.35);
+    border-radius:1px;
+  }
+  .vip-pass-exclusive{
+    font-size:8px;
+    letter-spacing:.20em;
+    color:#899083;
+    font-weight:800;
+  }
+  .vip-pass-holder{
+    margin-bottom:18px;
+  }
+  .vip-pass-holder small{
+    display:block;
+    font-size:8px;
+    letter-spacing:.22em;
+    color:#8a8e84;
+    text-transform:uppercase;
+    margin-bottom:3px;
+  }
+  .vip-pass-holder strong{
+    display:block;
+    font-size:18px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#ffffff;
+    font-family:monospace;
+    text-shadow:0 2px 6px rgba(0,0,0,0.8);
+  }
+  .vip-pass-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:12px;
+  }
+  .vip-pass-bottom small{
+    display:block;
+    font-size:7px;
+    letter-spacing:.20em;
+    color:#7a8074;
+    text-transform:uppercase;
+  }
+  .vip-pass-bottom span{
+    font-size:11px;
+    font-weight:700;
+    color:var(--gold-light);
+    letter-spacing:.04em;
+  }
+  .vip-card-folio{
+    font-family:monospace;
+    letter-spacing:.12em;
+  }
+  .vip-seal{
+    text-align:right;
+    border-left:1px solid rgba(191,163,124,0.3);
+    padding-left:12px;
+  }
+  .vip-seal span{
+    display:block;
+    font-size:9px;
+    letter-spacing:.20em;
+    font-weight:900;
+    color:#fff;
+  }
+  .vip-seal small{
+    font-size:7px;
+    color:var(--gold);
+  }
+  .vip-pass-hint{
+    font-size:10px;
+    letter-spacing:.12em;
+    color:#73786f;
+    margin-top:10px;
+    text-align:center;
+  }
   .footer-cta{background:#171b18;color:white;padding:126px 0 92px}
   .footer-cta-inner{display:flex;justify-content:space-between;align-items:end;gap:35px;padding-bottom:95px;border-bottom:1px solid #ffffff25}
   .footer-cta h2{font-size:clamp(48px,7vw,110px);font-weight:500;line-height:1.02;letter-spacing:-.07em;margin:16px 0 0;max-width:1000px}
@@ -212,7 +1607,7 @@
   }
   @media (max-width:850px){
     .wrap{width:min(100% - 44px,1460px)}
-    .nav{position:fixed;height:70px;background:#141714;box-shadow:0 8px 30px rgba(0,0,0,.28);isolation:isolate;z-index:100}
+    .nav{position:fixed;top:0;height:70px;background:#141714;box-shadow:0 8px 30px rgba(0,0,0,.28);isolation:isolate;z-index:100}
     .nav.is-sticky{height:70px;background:#141714}
     .nav-links,.nav-contact{display:none}
     .mobile-toggle{display:block}
@@ -277,12 +1672,31 @@
     .gallery-grid img{height:270px}
     .gallery-grid img:last-child{grid-column:1/-1;height:350px}
     .lead{padding:95px 0 115px}
-    .form-shell{padding:25px 20px 30px}
-    .radio-grid,.fields,.checks{grid-template-columns:1fr}
-    .form-top{font-size:9px}
-    .form-step h3{font-size:34px}
+    .form-shell{padding:26px 18px 30px}
+    .stepper-labels{display:none}
+    .pro-radio-grid,.services-pro-grid,.fields-pro,.ticket-grid{grid-template-columns:1fr}
+    .pills-guest-grid{grid-template-columns:repeat(2,1fr)}
+    .pills-guest-grid .guest-pill:last-child{grid-column:1/-1}
+    .shift-grid{grid-template-columns:1fr}
+    .ticket-contact-bar{flex-direction:column;align-items:flex-start;gap:12px}
     .form-actions{gap:10px}
-    .form-actions .button{min-height:52px;padding:0 15px;gap:10px;font-size:10px}
+    .form-actions .button{min-height:52px;padding:0 16px;gap:10px;font-size:10px}
+    .atmosphere-visual{aspect-ratio:auto;min-height:430px;padding:24px 20px 26px}
+    .atmosphere-header{align-items:flex-start}
+    .atmosphere-code{display:none}
+    .atmosphere-meta strong{font-size:28px;max-width:460px}
+    .atmosphere-meta p{font-size:12px;max-width:480px}
+    .atmosphere-presets{grid-template-columns:1fr 1fr}
+    .atmo-btn{min-height:96px;padding:17px 18px;border-bottom:1px solid rgba(255,255,255,.1)}
+    .atmo-btn:nth-child(2){border-right:0}
+    .atmo-btn:nth-child(3),.atmo-btn:nth-child(4){border-bottom:0}
+    .compare-tip{top:72px}
+    .compare-label{top:47%;font-size:7px;padding:6px 8px}
+    .compare-label-after{left:12px}
+    .compare-label-before{right:12px}
+    .compare-divider::after{width:38px;height:38px}
+    .vip-pass-card{padding:20px 18px}
+    .vip-pass-holder strong{font-size:14px}
     .footer-cta{padding:100px 0 100px}
     .footer-cta h2{font-size:61px}
     .footer-cta-inner{padding-bottom:65px}
@@ -296,6 +1710,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+    .scenario-ambient::before,.scenario-ambient::after{animation:none!important}
   }
 
   /* SISTEMA DE MOTION Y SCROLL EDITORIAL v3 */
@@ -305,11 +1720,36 @@
   .site-progress { position:fixed; top:0; left:0; height:3px; width:100%; z-index:120; pointer-events:none; }
   .site-progress-fill { display:block; height:100%; width:100%; background:var(--gold); transform:scaleX(0); transform-origin:left center; will-change:transform; }
 
+  /* Navegación narrativa y atmósfera global */
+  .chapter-indicator{position:fixed;right:24px;bottom:24px;z-index:76;display:flex;align-items:center;gap:12px;min-width:206px;padding:11px 14px;border:1px solid rgba(255,255,255,.16);background:rgba(15,18,15,.78);backdrop-filter:blur(12px);color:#fff;opacity:0;transform:translate3d(0,16px,0);transition:opacity .35s ease,transform .35s cubic-bezier(.2,.75,.25,1);pointer-events:none}
+  .chapter-indicator.is-visible{opacity:1;transform:none}
+  .chapter-count{display:flex;align-items:baseline;gap:2px;font-variant-numeric:tabular-nums;color:var(--gold-light)}
+  .chapter-count strong{font-size:13px;letter-spacing:.05em}
+  .chapter-count small{font-size:8px;opacity:.66}
+  .chapter-rule{position:relative;width:46px;height:1px;background:rgba(255,255,255,.22);overflow:hidden}
+  .chapter-rule i{position:absolute;inset:0;background:var(--gold-light);transform:scaleX(0);transform-origin:left center;transition:transform .55s cubic-bezier(.2,.75,.25,1)}
+  .chapter-label{font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+  .ambient-cursor{position:fixed;left:0;top:0;width:220px;height:220px;z-index:61;pointer-events:none;opacity:0;transform:translate3d(-300px,-300px,0);transition:opacity .28s ease;mix-blend-mode:soft-light}
+  .ambient-cursor::before{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(232,202,150,.78) 0%,rgba(190,154,101,.3) 30%,transparent 70%);transform:scale(1);transition:transform .32s cubic-bezier(.2,.75,.25,1),opacity .32s ease}
+  .ambient-cursor.is-visible{opacity:.5}
+  .ambient-cursor.is-hot::before{opacity:.82;transform:scale(.66)}
+
+  /* Tipografía cinética: cortes visuales entre capítulos */
+  .kinetic-band{position:relative;overflow:hidden;padding:19px 0 23px;background:var(--coal);color:var(--cream);border-top:1px solid rgba(182,155,116,.35);border-bottom:1px solid rgba(182,155,116,.35)}
+  .kinetic-band--gold{background:var(--gold);color:var(--coal);border-color:rgba(24,27,24,.25)}
+  .kinetic-track{display:flex;width:max-content;animation:kinetic-loop 25s linear infinite;transform:translate3d(0,0,0)}
+  .kinetic-band--reverse .kinetic-track{animation-name:kinetic-loop-reverse;animation-duration:31s}
+  .kinetic-track span{display:block;flex:none;padding-right:.38em;white-space:nowrap;font-size:clamp(44px,5.2vw,82px);font-weight:500;line-height:.88;letter-spacing:-.065em;text-transform:uppercase}
+  .kinetic-track em{font-style:normal;color:var(--gold-light)}
+  .kinetic-band--gold .kinetic-track em{color:var(--cream)}
+  @keyframes kinetic-loop{to{transform:translate3d(-25%,0,0)}}
+  @keyframes kinetic-loop-reverse{from{transform:translate3d(-25%,0,0)}to{transform:translate3d(0,0,0)}}
+
   /* Entrada cinemática con marco expansivo */
   .hero-stage { position:relative; height:177svh; background:var(--dark); isolation:isolate; }
   .hero-stage .hero { position:sticky; top:0; left:0; height:100svh; max-height:none; min-height:650px; z-index:1; }
   .hero-stage .hero::before { display:none; }
-  .hero-frame { position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,13,12,.30),rgba(10,13,12,.08) 36%,rgba(10,13,12,.79) 100%),url('assets/01-exterior-atardecer.webp') center 47%/cover no-repeat; transform-origin:center center; border-radius:0; will-change:transform,border-radius; }
+  .hero-frame { position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,13,12,.30),rgba(10,13,12,.08) 36%,rgba(10,13,12,.79) 100%),url('assets/01-exterior-atardecer.webp') center 47%/cover no-repeat; transform-origin:center center; border-radius:0; will-change:transform; }
   .hero-stage .hero-content { will-change:transform,opacity; }
   .hero-stage .hero h1 { text-wrap:balance; }
   .hero-stage .hero-scroll { animation:scroll-nudge 2.1s ease-in-out infinite; }
@@ -317,6 +1757,7 @@
 
   /* Revelado suave y contraste progresivo en textos */
   .motion-on .motion-reveal { opacity:0; transform:translate3d(0,34px,0); transition:opacity .92s cubic-bezier(.2,.75,.25,1), transform .92s cubic-bezier(.2,.75,.25,1); }
+  .motion-on .motion-reveal.motion-reveal--media { transform:translate3d(0,48px,0) scale(.975); transition-duration:1.05s; }
   .motion-on .motion-reveal.is-visible { opacity:1; transform:none; }
   .motion-word { display:inline-block; opacity:1; will-change:opacity,transform; }
   .motion-on .motion-word { opacity:.23; }
@@ -329,12 +1770,12 @@
   .event-story { position:sticky; top:14svh; height:73svh; max-height:820px; display:grid; grid-template-columns:43% 57%; background:var(--cream); min-width:0; }
   .event-story-choices { display:flex; flex-direction:column; justify-content:center; padding-right:8.5%; min-width:0; }
   .event-story-overline { font-size:10px; letter-spacing:.20em; text-transform:uppercase; font-weight:800; color:#858a83; margin-bottom:20px; }
-  .story-choice { display:flex; align-items:center; gap:25px; border-top:1px solid #ced0cb; padding:20px 6px; color:#959891; text-decoration:none; transition:color .45s,padding-left .45s; }
+  .story-choice { display:flex; align-items:center; gap:25px; border-top:1px solid #ced0cb; padding:20px 6px; color:#959891; text-decoration:none; transition:color .45s,transform .45s cubic-bezier(.2,.75,.25,1); }
   .story-choice:last-of-type { border-bottom:1px solid #ced0cb; }
   .story-choice small { font-size:10px; font-weight:800; letter-spacing:.13em; align-self:center; }
   .story-choice strong { font-weight:500; letter-spacing:-.048em; font-size:clamp(23px,2.6vw,42px); line-height:1.18; }
   .story-choice .story-cta { margin-left:auto; width:18px;height:18px;font-size:0;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 19 19 5M7 5h12v12'/%3E%3C/svg%3E") center/contain no-repeat; transform:rotate(-45deg); opacity:0; transition:transform .35s,opacity .35s; }
-  .story-choice.is-active,.story-choice:hover,.story-choice:focus-visible { color:var(--coal); padding-left:15px; }
+  .story-choice.is-active,.story-choice:hover,.story-choice:focus-visible { color:var(--coal); transform:translate3d(9px,0,0); }
   .story-choice.is-active .story-cta,.story-choice:hover .story-cta { transform:rotate(0); opacity:1; }
   .story-bottom { display:flex; justify-content:space-between; align-items:center; gap:10px; color:#7d8079; font-size:10px; text-transform:uppercase; font-weight:800; letter-spacing:.12em; margin-top:24px; }
   .story-bottom .story-live-index { color:var(--ink); }
@@ -419,6 +1860,9 @@
     .gallery-foot { margin-top:23px; }
     .gallery-meter { display:none; }
     .motion-cursor { display:none; }
+    .chapter-indicator,.ambient-cursor { display:none; }
+    .kinetic-band{padding:15px 0 18px}
+    .kinetic-track span{font-size:clamp(36px,9vw,58px)}
   }
   @media (max-width:600px) {
     .hero-stage .hero { min-height:710px; max-height:870px; }
@@ -449,10 +1893,19 @@
     .gallery-track { transform:none!important; height:430px!important; }
     .gallery-card { width:min(74vw,600px)!important; }
     .motion-cursor { display:none!important; }
+    .ambient-cursor { display:none!important; }
+    .kinetic-track { animation:none!important; transform:none!important; }
+    .chapter-indicator,.chapter-rule i { transition:none!important; }
+    .scenario-scroll-stage { height:auto!important; margin-bottom:0!important; }
+    .scenario-scroll-stage .atmosphere-stage { position:relative!important; top:auto!important; transform:none!important; }
   }
   @media (min-width:951px) and (prefers-reduced-motion:no-preference) {
     .events { height:292svh; min-height:0; padding:120px 0 110px; }
     .events > .wrap { height:100%; }
+  }
+  @media (min-width:951px) and (min-height:880px) and (prefers-reduced-motion:no-preference) {
+    .scenario-scroll-stage { height:calc(100svh + 330px); margin-bottom:42px; }
+    .scenario-scroll-stage .atmosphere-stage { position:sticky; top:78px; margin-bottom:0; will-change:transform; }
   }
   @media (max-width:950px) { .events { height:auto; } .events > .wrap { height:auto; } }
   @media (prefers-reduced-motion:reduce) { .events { height:auto!important; } .events > .wrap { height:auto!important; } }
@@ -485,6 +1938,11 @@
   </nav>
 
   <div class="site-progress" aria-hidden="true"><span class="site-progress-fill"></span></div>
+  <div class="chapter-indicator" id="chapter-indicator" aria-hidden="true">
+    <span class="chapter-count"><strong id="chapter-current">00</strong><small>/06</small></span>
+    <span class="chapter-rule"><i id="chapter-progress"></i></span>
+    <span class="chapter-label" id="chapter-label">Inicio</span>
+  </div>
 
   <main>
     <!-- HERO PRINCIPAL -->
@@ -492,9 +1950,9 @@
       <section class="hero" id="inicio" aria-label="Malabar, eventos en Tandil">
         <div class="hero-frame" aria-hidden="true"></div>
         <div class="hero-content wrap">
-          <p class="eyebrow">MALABAR · EXPERIENCIAS QUE PERDURAN</p>
+          <p class="eyebrow">MALABAR · UN EVENTO POR JORNADA</p>
           <div class="hero-copy">
-            <h1>Momentos<br>extraordinarios.<br>Un lugar único.</h1>
+            <h1>Momentos<br><span class="gold-shimmer">extraordinarios.</span><br>Un lugar único.</h1>
             <p class="hero-subtext">Eventos sociales y corporativos en un entorno privilegiado de Tandil.</p>
           </div>
           <div class="hero-bottom">
@@ -517,6 +1975,12 @@
         </div>
       </div>
     </section>
+
+    <div class="kinetic-band" aria-hidden="true">
+      <div class="kinetic-track">
+        <span>Un evento · un día · <em>una historia</em> ·&nbsp;</span><span>Un evento · un día · <em>una historia</em> ·&nbsp;</span><span>Un evento · un día · <em>una historia</em> ·&nbsp;</span><span>Un evento · un día · <em>una historia</em> ·&nbsp;</span>
+      </div>
+    </div>
 
     <!-- SECCIÓN EVENTOS / OCASIONES -->
     <section class="events" id="eventos">
@@ -580,7 +2044,13 @@
     </section>
 
     <!-- BANNER EMOCIONAL -->
-    <section class="moment"><div class="moment-content"><p>EL LUGAR. EL MOMENTO. TU HISTORIA.</p><h2>Hay celebraciones que no se olvidan.</h2><a href="#organizar" class="button light">Hacé que suceda <span class="arr">↗</span></a></div></section>
+    <section class="moment"><div class="moment-content"><p>EL LUGAR. EL MOMENTO. TU HISTORIA.</p><h2>Hay celebraciones que <span class="gold-shimmer">no se olvidan.</span></h2><a href="#organizar" class="button light">Hacé que suceda <span class="arr">↗</span></a></div></section>
+
+    <div class="kinetic-band kinetic-band--gold kinetic-band--reverse" aria-hidden="true">
+      <div class="kinetic-track">
+        <span>Luz · música · mesa · <em>brindis</em> ·&nbsp;</span><span>Luz · música · mesa · <em>brindis</em> ·&nbsp;</span><span>Luz · música · mesa · <em>brindis</em> ·&nbsp;</span><span>Luz · música · mesa · <em>brindis</em> ·&nbsp;</span>
+      </div>
+    </div>
 
     <!-- SECCIÓN GALERÍA -->
     <section class="gallery" id="galeria">
@@ -604,100 +2074,459 @@
       <div class="wrap">
         <div class="lead-intro">
           <span class="eyebrow">06 / EMPEZÁ A IMAGINARLO</span>
-          <h2>Tu próximo evento<br>empieza acá.</h2>
+          <h2>Tu próximo evento<br><span class="gold-shimmer">empieza acá.</span></h2>
           <p>Respondé unas breves preguntas y prepará una consulta directa para Malabar por WhatsApp.<br> Sin compromisos ni formularios engorrosos.</p>
         </div>
 
+        <!-- SIMULADOR DE ESCENARIOS -->
+        <div class="scenario-scroll-stage" id="scenario-scroll-stage">
+        <div class="atmosphere-stage" id="atmosphere-stage" aria-label="Simulador visual de escenarios de Malabar">
+          <div class="atmosphere-visual" id="atmosphere-visual" data-scenario="casamiento">
+            <div class="atmosphere-media" aria-hidden="true">
+              <img class="atmosphere-image atmosphere-before" id="atmosphere-before" src="assets/01-exterior-atardecer.webp" alt="">
+              <div class="atmosphere-after" id="atmosphere-after">
+                <img class="atmosphere-image" id="atmosphere-image" src="assets/scenario-casamiento.webp" alt="">
+                <span class="scenario-ambient" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="atmosphere-overlay" aria-hidden="true"></div>
+            <div class="atmosphere-content" aria-live="polite">
+              <div class="atmosphere-header">
+                <span class="atmosphere-pill"><span class="atmosphere-live-dot" aria-hidden="true"></span> IMAGINÁ TU MONTAJE</span>
+                <span class="atmosphere-code" id="atmosphere-code">ESCENARIO 01 · CEREMONIA EXTERIOR</span>
+              </div>
+              <div class="atmosphere-footer">
+                <div class="atmosphere-meta">
+                  <strong id="atmosphere-title">Casamiento al aire libre</strong>
+                  <p id="atmosphere-desc">Ceremonia frente a la arquitectura de Malabar, con pasillo central, madera natural y luz dorada.</p>
+                </div>
+              </div>
+            </div>
+            <span class="compare-label compare-label-after" aria-hidden="true">Montaje</span>
+            <span class="compare-label compare-label-before" aria-hidden="true">Espacio real</span>
+            <span class="compare-tip" id="compare-help" aria-hidden="true">Deslizá para comparar</span>
+            <input class="compare-range" id="scenario-compare" type="range" min="0" max="100" value="74" aria-label="Comparar espacio real y montaje" aria-valuetext="74% montaje, 26% espacio real">
+            <span class="compare-divider" aria-hidden="true"></span>
+          </div>
+          <div class="atmosphere-presets" role="group" aria-label="Elegir un montaje de evento">
+            <button type="button" class="atmo-btn active" data-atmo="casamiento" aria-pressed="true"><span class="scenario-index">01</span><span class="scenario-name">Casamiento</span><span class="scenario-detail">Ceremonia exterior</span></button>
+            <button type="button" class="atmo-btn" data-atmo="celebracion" aria-pressed="false"><span class="scenario-index">02</span><span class="scenario-name">Celebración</span><span class="scenario-detail">Noche & pista</span></button>
+            <button type="button" class="atmo-btn" data-atmo="corporativo" aria-pressed="false"><span class="scenario-index">03</span><span class="scenario-name">Corporativo</span><span class="scenario-detail">Presentación & auditorio</span></button>
+            <button type="button" class="atmo-btn" data-atmo="cena" aria-pressed="false"><span class="scenario-index">04</span><span class="scenario-name">Cena íntima</span><span class="scenario-detail">Mesa larga & velas</span></button>
+          </div>
+        </div>
+        </div>
+
         <div class="form-shell" id="form-shell">
-          <div class="form-top"><span>COTIZADOR DE EVENTO</span><span id="step-count">PASO 01 / 04</span></div>
-          <div class="progress" id="progress"><span class="active"></span><span></span><span></span><span></span></div>
+          <!-- CABECERA DEL COTIZADOR PRO -->
+          <div class="form-header-pro">
+            <div class="form-top-meta">
+              <span class="cotiz-badge"><span class="badge-dot"></span> COTIZADOR EXCLUSIVO</span>
+              <span id="step-count" class="step-count-pill">PASO 01 / 04</span>
+            </div>
+            <div class="stepper-labels" aria-hidden="true">
+              <div class="step-label active" data-step-target="0"><span class="step-num">01</span> Ocasión</div>
+              <div class="step-label" data-step-target="1"><span class="step-num">02</span> Fecha & Escala</div>
+              <div class="step-label" data-step-target="2"><span class="step-num">03</span> Servicios</div>
+              <div class="step-label" data-step-target="3"><span class="step-num">04</span> Contacto</div>
+            </div>
+            <div class="progress-track" aria-label="Progreso de la cotización">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
 
           <form id="event-form" novalidate>
             <!-- Paso 1: Tipo de Evento -->
             <div class="form-step" data-step="0">
-              <h3>¿Qué querés celebrar?</h3>
-              <p>Elegí la ocasión. Después vamos a ayudarte a darle forma.</p>
-              <div class="radio-grid">
-                <label class="choice"><input type="radio" name="tipo" value="Casamiento o civil"><strong>Casamiento o civil</strong></label>
-                <label class="choice"><input type="radio" name="tipo" value="Evento corporativo"><strong>Evento corporativo</strong></label>
-                <label class="choice"><input type="radio" name="tipo" value="Cumpleaños o celebración"><strong>Cumpleaños o celebración</strong></label>
-                <label class="choice"><input type="radio" name="tipo" value="Evento especial"><strong>Evento especial</strong></label>
+              <div class="step-title-wrap">
+                <span class="step-eyebrow">PASO 01 · TIPO DE CELEBRACIÓN</span>
+                <h3>¿Qué querés celebrar?</h3>
+                <p>Elegí la ocasión para adaptar la ambientación, los espacios y la propuesta a tu medida.</p>
               </div>
-              <div id="corporativo-extra" class="field full conditional" hidden style="margin-top:20px">
-                <label for="empresa">Empresa / organización (opcional)</label>
-                <input id="empresa" name="empresa" placeholder="Nombre de la empresa">
+
+              <div class="pro-radio-grid">
+                <!-- Casamiento o civil -->
+                <label class="pro-card-choice">
+                  <input type="radio" name="tipo" value="Casamiento o civil">
+                  <div class="pro-card-inner">
+                    <div class="pro-card-top">
+                      <div class="pro-card-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="9" cy="12" r="5"></circle>
+                          <circle cx="15" cy="12" r="5"></circle>
+                          <path d="M12 7l1-2h-2z"></path>
+                        </svg>
+                      </div>
+                      <span class="pro-tag">Boda & Civil</span>
+                    </div>
+                    <strong class="pro-card-title">Casamiento o civil</strong>
+                    <span class="pro-card-desc">Ceremonia al aire libre, banquete en salón climatizado y pista con parque integrado.</span>
+                    <div class="pro-card-check">
+                      <span class="check-circle"></span>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Evento corporativo -->
+                <label class="pro-card-choice">
+                  <input type="radio" name="tipo" value="Evento corporativo">
+                  <div class="pro-card-inner">
+                    <div class="pro-card-top">
+                      <div class="pro-card-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                      </div>
+                      <span class="pro-tag">Empresarial</span>
+                    </div>
+                    <strong class="pro-card-title">Evento corporativo</strong>
+                    <span class="pro-card-desc">Jornadas de trabajo, lanzamientos de marca, cenas de fin de año o cócteles institucionales.</span>
+                    <div class="pro-card-check">
+                      <span class="check-circle"></span>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Cumpleaños o celebración -->
+                <label class="pro-card-choice">
+                  <input type="radio" name="tipo" value="Cumpleaños o celebración">
+                  <div class="pro-card-inner">
+                    <div class="pro-card-top">
+                      <div class="pro-card-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M8 22h8"></path>
+                          <path d="M12 15v7"></path>
+                          <path d="M5 3h14v4a7 7 0 0 1-14 0V3z"></path>
+                          <path d="M5 8h14"></path>
+                        </svg>
+                      </div>
+                      <span class="pro-tag">Social & Fiesta</span>
+                    </div>
+                    <strong class="pro-card-title">Cumpleaños o celebración</strong>
+                    <span class="pro-card-desc">Aniversarios, 40s, 50s, fiestas de 15 o reencuentros privados en un entorno único.</span>
+                    <div class="pro-card-check">
+                      <span class="check-circle"></span>
+                    </div>
+                  </div>
+                </label>
+
+                <!-- Evento especial -->
+                <label class="pro-card-choice">
+                  <input type="radio" name="tipo" value="Evento especial">
+                  <div class="pro-card-inner">
+                    <div class="pro-card-top">
+                      <div class="pro-card-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                      </div>
+                      <span class="pro-tag">A medida</span>
+                    </div>
+                    <strong class="pro-card-title">Evento especial</strong>
+                    <span class="pro-card-desc">Bautismos, comuniones, recepciones íntimas o producciones con formato a medida.</span>
+                    <div class="pro-card-check">
+                      <span class="check-circle"></span>
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <div id="corporativo-extra" class="conditional" hidden style="margin-top:22px">
+                <label for="empresa" class="field-title">Empresa u Organización <small>(opcional)</small></label>
+                <div class="input-wrap">
+                  <input id="empresa" name="empresa" placeholder="Ej: Grupo Financiero / Estudio Creativo...">
+                </div>
               </div>
             </div>
 
             <!-- Paso 2: Fecha y Asistencia -->
             <div class="form-step" data-step="1" hidden>
-              <h3>¿Cuándo lo imaginás?</h3>
-              <p>Una estimación alcanza. La disponibilidad exacta se confirma al responderte.</p>
-              <div class="fields">
-                <div class="field">
-                  <label for="fecha">Fecha tentativa</label>
-                  <input type="date" name="fecha" id="fecha">
+              <div class="step-title-wrap">
+                <span class="step-eyebrow">PASO 02 · TIEMPO Y ASISTENCIA</span>
+                <h3>¿Cuándo y con cuántos invitados?</h3>
+                <p>Una estimación nos permite calcular la distribución de los espacios y la logística ideal.</p>
+              </div>
+
+              <!-- Fecha -->
+              <div class="section-subblock">
+                <label class="subblock-label">Fecha tentativa</label>
+                <div class="date-flex-row">
+                  <div class="date-input-wrap">
+                    <input type="date" name="fecha" id="fecha">
+                  </div>
+                  <label class="toggle-pill-checkbox">
+                    <input type="checkbox" name="sinFecha" id="sinFecha">
+                    <span class="toggle-pill-box" aria-hidden="true">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                    <span>Aún no tengo fecha definida</span>
+                  </label>
                 </div>
-                <div class="field">
-                  <label for="invitados">Invitados aproximados</label>
-                  <select name="invitados" id="invitados">
-                    <option value="">Elegí un rango</option>
-                    <option>Hasta 30</option>
-                    <option>31 a 60</option>
-                    <option>61 a 100</option>
-                    <option>Más de 100</option>
-                    <option>A definir</option>
-                  </select>
+              </div>
+
+              <!-- Invitados -->
+              <div class="section-subblock">
+                <label class="subblock-label">Cantidad estimada de invitados</label>
+                <div class="pills-guest-grid">
+                  <label class="guest-pill">
+                    <input type="radio" name="invitados" value="Hasta 30">
+                    <div class="guest-pill-content">
+                      <strong>Hasta 30</strong>
+                      <small>Íntimo & Petit</small>
+                    </div>
+                  </label>
+                  <label class="guest-pill">
+                    <input type="radio" name="invitados" value="31 a 60">
+                    <div class="guest-pill-content">
+                      <strong>31 a 60</strong>
+                      <small>Mediano</small>
+                    </div>
+                  </label>
+                  <label class="guest-pill">
+                    <input type="radio" name="invitados" value="61 a 100">
+                    <div class="guest-pill-content">
+                      <strong>61 a 100</strong>
+                      <small>Celebración amplia</small>
+                    </div>
+                  </label>
+                  <label class="guest-pill">
+                    <input type="radio" name="invitados" value="Más de 100">
+                    <div class="guest-pill-content">
+                      <strong>Más de 100</strong>
+                      <small>Gran escala</small>
+                    </div>
+                  </label>
+                  <label class="guest-pill">
+                    <input type="radio" name="invitados" value="A definir">
+                    <div class="guest-pill-content">
+                      <strong>A definir</strong>
+                      <small>Por coordinar</small>
+                    </div>
+                  </label>
                 </div>
-                <div class="field full">
-                  <label class="consent"><input type="checkbox" name="sinFecha" id="sinFecha">Todavía no tengo una fecha definida</label>
-                </div>
-                <div class="field full">
-                  <label for="turno">Turno preferido</label>
-                  <select name="turno" id="turno">
-                    <option value="A definir">A definir</option>
-                    <option>Durante el día</option>
-                    <option>Tarde</option>
-                    <option>Noche</option>
-                  </select>
+              </div>
+
+              <!-- Turno -->
+              <div class="section-subblock">
+                <label class="subblock-label">Turno preferido</label>
+                <div class="shift-grid">
+                  <label class="shift-card">
+                    <input type="radio" name="turno" value="Durante el día">
+                    <div class="shift-card-inner">
+                      <span class="shift-icon" aria-hidden="true">☀️</span>
+                      <div class="shift-text">
+                        <strong>Durante el día</strong>
+                        <small>12:00 a 18:00 hs · Luz y parque</small>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="shift-card">
+                    <input type="radio" name="turno" value="Tarde">
+                    <div class="shift-card-inner">
+                      <span class="shift-icon" aria-hidden="true">🌅</span>
+                      <div class="shift-text">
+                        <strong>Atardecer / Tarde</strong>
+                        <small>17:00 a 23:00 hs · Golden hour</small>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="shift-card">
+                    <input type="radio" name="turno" value="Noche" checked>
+                    <div class="shift-card-inner">
+                      <span class="shift-icon" aria-hidden="true">🌙</span>
+                      <div class="shift-text">
+                        <strong>Noche & Fiesta</strong>
+                        <small>21:00 a 05:00 hs · Luces y pista</small>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="shift-card">
+                    <input type="radio" name="turno" value="A definir">
+                    <div class="shift-card-inner">
+                      <span class="shift-icon" aria-hidden="true">⏳</span>
+                      <div class="shift-text">
+                        <strong>A coordinar</strong>
+                        <small>Flexible según fecha</small>
+                      </div>
+                    </div>
+                  </label>
                 </div>
               </div>
             </div>
 
             <!-- Paso 3: Servicios de Interés -->
             <div class="form-step" data-step="2" hidden>
-              <h3>¿Cómo lo imaginás?</h3>
-              <p>Marcá lo que te interesa considerar en la propuesta.</p>
-              <div class="checks">
-                <label class="check"><input type="checkbox" name="servicio" value="Gastronomía / recepción">Gastronomía / recepción</label>
-                <label class="check"><input type="checkbox" name="servicio" value="Barra y bebidas">Barra y bebidas</label>
-                <label class="check"><input type="checkbox" name="servicio" value="Ambientación">Ambientación</label>
-                <label class="check"><input type="checkbox" name="servicio" value="Música / DJ">Música / DJ</label>
-                <label class="check"><input type="checkbox" name="servicio" value="Sonido / proyección">Sonido / proyección</label>
-                <label class="check"><input type="checkbox" name="servicio" value="Montaje exterior">Montaje exterior</label>
-                <label class="check"><input type="checkbox" name="servicio" value="Necesito asesoramiento">Necesito asesoramiento integral</label>
+              <div class="step-title-wrap">
+                <span class="step-eyebrow">PASO 03 · PROPUESTA INTEGRAL</span>
+                <h3>¿Cómo imaginás la experiencia?</h3>
+                <p>Seleccioná los servicios que te gustaría incluir en la propuesta personalizada.</p>
+              </div>
+
+              <div class="services-pro-grid">
+                <!-- 1. Gastronomía -->
+                <label class="service-pro-card">
+                  <input type="checkbox" name="servicio" value="Gastronomía / recepción" checked>
+                  <div class="service-pro-inner">
+                    <div class="service-icon-wrap" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                        <line x1="6" y1="1" x2="6" y2="4"></line>
+                        <line x1="10" y1="1" x2="10" y2="4"></line>
+                        <line x1="14" y1="1" x2="14" y2="4"></line>
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <strong>Gastronomía & Catering de Autor</strong>
+                      <small>Finger food, islas de autor, recepción en parque o banquete formal.</small>
+                    </div>
+                    <div class="service-indicator" aria-hidden="true"></div>
+                  </div>
+                </label>
+
+                <!-- 2. Barra y bebidas -->
+                <label class="service-pro-card">
+                  <input type="checkbox" name="servicio" value="Barra y bebidas" checked>
+                  <div class="service-pro-inner">
+                    <div class="service-icon-wrap" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 21h10"></path>
+                        <path d="M12 13v8"></path>
+                        <path d="M4 3h16l-8 10-8-10z"></path>
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <strong>Barra & Coctelería de Autor</strong>
+                      <small>Tragos clásicos, coctelería premium, vinos de altura y barra libre.</small>
+                    </div>
+                    <div class="service-indicator" aria-hidden="true"></div>
+                  </div>
+                </label>
+
+                <!-- 3. Ambientación -->
+                <label class="service-pro-card">
+                  <input type="checkbox" name="servicio" value="Ambientación">
+                  <div class="service-pro-inner">
+                    <div class="service-icon-wrap" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <strong>Ambientación & Mobiliario Lounge</strong>
+                      <small>Livings rústico-modernos, vajilla cuidada, velas y diseño escénico.</small>
+                    </div>
+                    <div class="service-indicator" aria-hidden="true"></div>
+                  </div>
+                </label>
+
+                <!-- 4. Música / DJ -->
+                <label class="service-pro-card">
+                  <input type="checkbox" name="servicio" value="Música / DJ">
+                  <div class="service-pro-inner">
+                    <div class="service-icon-wrap" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <strong>Música, Sonido & DJ</strong>
+                      <small>Cabina profesional, acústica de salón y ambientación musical envolvente.</small>
+                    </div>
+                    <div class="service-indicator" aria-hidden="true"></div>
+                  </div>
+                </label>
+
+                <!-- 5. Sonido / proyección -->
+                <label class="service-pro-card">
+                  <input type="checkbox" name="servicio" value="Sonido / proyección">
+                  <div class="service-pro-inner">
+                    <div class="service-icon-wrap" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <strong>Técnica, Pantallas & Puesta de Luces</strong>
+                      <small>Iluminación arquitectónica perimetral, proyectores HD y microfonía.</small>
+                    </div>
+                    <div class="service-indicator" aria-hidden="true"></div>
+                  </div>
+                </label>
+
+                <!-- 6. Montaje exterior -->
+                <label class="service-pro-card">
+                  <input type="checkbox" name="servicio" value="Montaje exterior">
+                  <div class="service-pro-inner">
+                    <div class="service-icon-wrap" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                        <path d="M12 6v6l4 2"></path>
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <strong>Montaje en Parque / Espacio Exterior</strong>
+                      <small>Galería semicubierta, deck de madera, fogones y parque arbolado.</small>
+                    </div>
+                    <div class="service-indicator" aria-hidden="true"></div>
+                  </div>
+                </label>
+
+                <!-- 7. Asesoramiento -->
+                <label class="service-pro-card service-pro-card--full">
+                  <input type="checkbox" name="servicio" value="Necesito asesoramiento">
+                  <div class="service-pro-inner">
+                    <div class="service-icon-wrap" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                      </svg>
+                    </div>
+                    <div class="service-info">
+                      <strong>Coordinación & Asesoramiento Integral</strong>
+                      <small>Acompañamiento en el cronograma, proveedores y soporte durante todo el evento.</small>
+                    </div>
+                    <div class="service-indicator" aria-hidden="true"></div>
+                  </div>
+                </label>
               </div>
             </div>
 
             <!-- Paso 4: Datos de Contacto -->
             <div class="form-step" data-step="3" hidden>
-              <h3>Un detalle más…</h3>
-              <p>Así el equipo de Malabar puede comprender tu idea y responderte con una propuesta.</p>
-              <div class="fields">
-                <div class="field">
-                  <label for="nombre">Tu nombre *</label>
-                  <input id="nombre" name="nombre" autocomplete="name" placeholder="Nombre y apellido" required>
+              <div class="step-title-wrap">
+                <span class="step-eyebrow">PASO 04 · CONTACTO DIRECTO</span>
+                <h3>Tus datos para preparar la propuesta</h3>
+                <p>Así el equipo de Malabar puede analizar la fecha y responderte con disponibilidad concreta.</p>
+              </div>
+
+              <div class="fields-pro">
+                <div class="field-pro">
+                  <label for="nombre">Nombre y apellido *</label>
+                  <input id="nombre" name="nombre" autocomplete="name" placeholder="Ej: Valentina Morales" required>
                 </div>
-                <div class="field">
-                  <label for="telefono">Tu teléfono *</label>
-                  <input id="telefono" type="tel" name="telefono" autocomplete="tel" placeholder="+54 9 ..." required>
+                <div class="field-pro">
+                  <label for="telefono">Teléfono / WhatsApp *</label>
+                  <input id="telefono" type="tel" name="telefono" autocomplete="tel" placeholder="+54 9 249 4..." required>
                 </div>
-                <div class="field full">
-                  <label for="detalles">Contanos algo más (opcional)</label>
-                  <textarea id="detalles" name="detalles" maxlength="1000" placeholder="Qué tenés en mente, horarios deseados, ideas especiales…"></textarea>
+                <div class="field-pro field-pro--full">
+                  <label for="detalles">Contanos algo más de tu evento <small>(opcional)</small></label>
+                  <textarea id="detalles" name="detalles" maxlength="1000" placeholder="¿Tenés alguna idea en mente, horario preferido, estilo o sorpresa especial? Escribilo acá..."></textarea>
                 </div>
               </div>
-              <label class="consent"><input type="checkbox" id="consentimiento" name="consentimiento" required> Acepto que Malabar utilice estos datos para responder a mi solicitud de presupuesto.</label>
+
+              <label class="consent-pro">
+                <input type="checkbox" id="consentimiento" name="consentimiento" required checked>
+                <span class="consent-box" aria-hidden="true"></span>
+                <span class="consent-text">Acepto que Malabar utilice estos datos para comunicarse conmigo y enviarme la propuesta solicitada.</span>
+              </label>
             </div>
 
             <div class="form-actions">
@@ -707,16 +2536,131 @@
             <div id="error" class="error" role="alert" aria-live="polite"></div>
           </form>
 
-          <!-- Resumen y Envío a WhatsApp -->
-          <div class="summary" id="summary" hidden>
-            <strong style="font-size:16px;color:var(--dark)">¡Tu consulta está lista para enviar!</strong>
-            <p style="font-size:13px;color:var(--muted);margin:8px 0 16px">Al presionar "Abrir WhatsApp", se abrirá una conversación con el mensaje listo para enviar:</p>
-            <pre id="summary-text"></pre>
-            <div class="summary-buttons">
-              <a id="wa-link" class="button dark" href="#" target="_blank" rel="noopener">Abrir en WhatsApp <span class="arr">↗</span></a>
-              <button class="button ghost" type="button" id="copy">Copiar mensaje <span class="arr">↗</span></button>
+          <!-- Resumen y Ficha Editorial de Cotización -->
+          <div class="summary-editorial" id="summary" hidden>
+            <div class="ticket-pro">
+              <div class="ticket-header">
+                <div class="ticket-brand">
+                  <span class="ticket-logo">MALABAR</span>
+                  <span class="ticket-sub">EVENTOS · TANDIL</span>
+                </div>
+                <div class="ticket-status">
+                  <span class="ticket-chip">CONSULTA PREPARADA</span>
+                  <span class="ticket-folio" id="ticket-folio">MLB-2026</span>
+                </div>
+              </div>
+
+              <div class="ticket-headline">
+                <h4>Ficha de Consulta Lista</h4>
+                <p>Armamos el resumen de tu celebración. Al hacer clic en el botón verde, se enviará directo a nuestro WhatsApp para coordinar fecha y propuesta personalizada.</p>
+              </div>
+
+              <!-- PASE VIP 3D INTERACTIVO CON FOIL DORADO -->
+              <div class="vip-pass-container" id="vip-pass-stage">
+                <div class="vip-pass-card" id="vip-pass-card" role="region" aria-label="Tarjeta Pase VIP de Malabar">
+                  <div class="vip-pass-glimmer" aria-hidden="true"></div>
+                  <div class="vip-pass-top">
+                    <div class="vip-pass-brand">
+                      <span class="vip-crest" aria-hidden="true">✦</span>
+                      <span class="vip-pass-name">MALABAR</span>
+                      <span class="vip-pass-sub">PRIVATE ACCESS</span>
+                    </div>
+                    <div class="vip-pass-badge">
+                      <span class="badge-gold-foil">VIP INVITATION</span>
+                    </div>
+                  </div>
+
+                  <div class="vip-pass-chip-row">
+                    <div class="vip-chip-graphic" aria-hidden="true">
+                      <span class="chip-line"></span>
+                      <span class="chip-line"></span>
+                      <span class="chip-line"></span>
+                    </div>
+                    <span class="vip-pass-exclusive">EXCLUSIVIDAD TOTAL DEL PREDIO</span>
+                  </div>
+
+                  <div class="vip-pass-holder">
+                    <small>SOLICITANTE REGISTRADO</small>
+                    <strong id="vip-card-name">INVITADO DISTINGUIDO</strong>
+                  </div>
+
+                  <div class="vip-pass-bottom">
+                    <div>
+                      <small>OCASIÓN</small>
+                      <span id="vip-card-event">CASAMIENTO O CIVIL</span>
+                    </div>
+                    <div>
+                      <small>FOLIO DE RESERVA</small>
+                      <span class="vip-card-folio" id="vip-card-folio">#MLB-2026-0000</span>
+                    </div>
+                    <div class="vip-seal">
+                      <span>TANDIL</span>
+                      <small>2025/26</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="vip-pass-hint">
+                  <span>✦ Mové el cursor sobre la tarjeta para apreciar el reflejo de foil dorado metálico</span>
+                </div>
+              </div>
+
+              <div class="ticket-grid">
+                <div class="ticket-cell">
+                  <span class="ticket-label">OCASIÓN</span>
+                  <strong class="ticket-val" id="ticket-tipo">—</strong>
+                </div>
+                <div class="ticket-cell">
+                  <span class="ticket-label">FECHA PREVISTA</span>
+                  <strong class="ticket-val" id="ticket-fecha">—</strong>
+                </div>
+                <div class="ticket-cell">
+                  <span class="ticket-label">INVITADOS ESTIMADOS</span>
+                  <strong class="ticket-val" id="ticket-invitados">—</strong>
+                </div>
+                <div class="ticket-cell">
+                  <span class="ticket-label">TURNO / HORARIO</span>
+                  <strong class="ticket-val" id="ticket-turno">—</strong>
+                </div>
+                <div class="ticket-cell ticket-cell--full">
+                  <span class="ticket-label">SERVICIOS SELECCIONADOS</span>
+                  <div class="ticket-tags" id="ticket-servicios"></div>
+                </div>
+                <div class="ticket-cell ticket-cell--full" id="ticket-detalles-row">
+                  <span class="ticket-label">DETALLES Y NOTAS</span>
+                  <p class="ticket-notes" id="ticket-detalles">—</p>
+                </div>
+                <div class="ticket-cell ticket-cell--full ticket-contact-bar">
+                  <div>
+                    <span class="ticket-label">CONTACTO</span>
+                    <strong class="ticket-val" id="ticket-contacto">—</strong>
+                  </div>
+                  <div>
+                    <span class="ticket-label">TELÉFONO</span>
+                    <strong class="ticket-val" id="ticket-tel">—</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ticket-actions">
+                <a id="wa-link" class="button-wa-pro" href="#" target="_blank" rel="noopener">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.63C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.22 7.38C9.03 7.38 8.84 7.39 8.67 7.46C8.5 7.53 8.35 7.64 8.23 7.8C8.11 7.96 7.6 8.44 7.6 9.42C7.6 10.4 8.31 11.35 8.41 11.49C8.51 11.63 9.79 13.61 11.77 14.47C13.42 15.18 13.76 15.04 14.11 15.01C14.47 14.98 15.26 14.54 15.42 14.09C15.58 13.64 15.58 13.25 15.54 13.18C15.49 13.11 15.35 13.07 15.14 12.96C14.93 12.85 13.9 12.35 13.71 12.28C13.52 12.21 13.38 12.18 13.24 12.39C13.1 12.6 12.7 13.1 12.58 13.24C12.46 13.38 12.34 13.4 12.13 13.3C11.92 13.2 11.25 12.98 10.45 12.27C9.83 11.71 9.41 11.03 9.3 10.82C9.18 10.61 9.28 10.5 9.39 10.39C9.49 10.29 9.61 10.13 9.72 10C9.83 9.87 9.87 9.77 9.94 9.63C10.01 9.49 9.98 9.37 9.92 9.26C9.87 9.15 9.41 8.02 9.22 7.38Z"/>
+                  </svg>
+                  <span>Abrir consulta en WhatsApp</span>
+                  <span class="arr">↗</span>
+                </a>
+                <button class="button-secondary-pro" type="button" id="copy">
+                  <span>Copiar mensaje para WhatsApp</span>
+                  <span class="arr">↗</span>
+                </button>
+                <button class="button-link-pro" type="button" id="edit-form-btn">
+                  <span>← Modificar respuestas del evento</span>
+                </button>
+              </div>
+
+              <pre id="summary-text" style="display:none"></pre>
+              <p class="form-note">Al hacer clic en WhatsApp, se abre la aplicación con el mensaje ordenado para coordinar disponibilidad y presupuesto sin demoras.</p>
             </div>
-            <p class="form-note" id="wa-help">El mensaje se abre en tu WhatsApp con todos los detalles ordenados para una respuesta rápida.</p>
           </div>
         </div>
       </div>
@@ -764,6 +2708,7 @@
   </main>
 
   <div class="motion-cursor" aria-hidden="true">ELEGIR ↗</div>
+  <div class="ambient-cursor" aria-hidden="true"></div>
   <div class="mobile-fixed"><a href="#organizar" class="button dark">Organizá tu evento <span class="arr" aria-hidden="true"></span></a></div>
 
   <!-- SCRIPT LOGICA COTIZADOR Y WHATSAPP -->
@@ -773,7 +2718,7 @@
 
   const nav = document.getElementById('navbar');
   function adjustNav(){
-    nav.classList.toggle('is-sticky', window.scrollY > 38);
+    nav.classList.toggle('is-sticky', window.scrollY > 8);
     const mobileFixed = document.querySelector('.mobile-fixed');
     if (mobileFixed) {
       const formEl = document.getElementById('organizar');
@@ -801,44 +2746,71 @@
 
   const form = document.getElementById('event-form');
   const steps = [...document.querySelectorAll('.form-step')];
-  const progress = [...document.querySelectorAll('#progress span')];
+  const progressFill = document.getElementById('progress-fill');
   const stepCount = document.getElementById('step-count');
+  const stepLabels = [...document.querySelectorAll('.step-label')];
   const prev = document.getElementById('prev');
   const next = document.getElementById('next');
   const error = document.getElementById('error');
   const corporativoExtra = document.getElementById('corporativo-extra');
+  const summaryEl = document.getElementById('summary');
   let step = 0;
 
   function setStep(s){
     step = s;
     steps.forEach((el, i) => el.hidden = i !== s);
-    progress.forEach((el, i) => el.classList.toggle('active', i <= s));
+
+    // Progreso continuo y etiquetas
+    if(progressFill) progressFill.style.width = `${((s + 1) / 4) * 100}%`;
+    stepLabels.forEach((el, i) => {
+      el.classList.toggle('active', i === s);
+      el.classList.toggle('completed', i < s);
+    });
+
     stepCount.textContent = `PASO 0${s+1} / 04`;
     prev.disabled = s === 0;
     next.innerHTML = s === 3 ? 'Preparar mi consulta <span class="arr">↗</span>' : 'Continuar <span class="arr">↗</span>';
     error.textContent = '';
-    document.getElementById('summary').hidden = true;
+    form.hidden = false;
+    summaryEl.hidden = true;
+
+    // Smooth scroll to top of form if scrolled past
+    const formBox = document.getElementById('form-shell');
+    if(formBox && formBox.getBoundingClientRect().top < 40){
+      formBox.scrollIntoView({behavior:'smooth', block:'start'});
+    }
   }
+
+  // Permitir click en etiquetas para volver a pasos completados
+  stepLabels.forEach((label, idx) => {
+    label.style.cursor = 'pointer';
+    label.addEventListener('click', () => {
+      if(idx <= step || !summaryEl.hidden){
+        setStep(idx);
+      }
+    });
+  });
 
   form.querySelectorAll('input[name=tipo]').forEach(e => e.addEventListener('change', () => {
     corporativoExtra.hidden = form.elements['tipo'].value !== 'Evento corporativo';
   }));
 
   function validate(){
-    if(step === 0 && !form.querySelector('input[name=tipo]:checked')) return 'Elegí qué tipo de evento querés organizar.';
+    if(step === 0 && !form.querySelector('input[name=tipo]:checked')) return 'Por favor elegí qué tipo de celebración querés realizar.';
     if(step === 1){
-      if(!form.elements.sinFecha.checked && !form.elements.fecha.value) return 'Elegí una fecha tentativa o marcá que todavía no la tenés.';
-      if(!form.elements.invitados.value) return 'Seleccioná un rango estimado de invitados.';
+      if(!form.elements.sinFecha.checked && !form.elements.fecha.value) return 'Elegí una fecha tentativa o indicá que aún no tenés fecha definida.';
+      if(!form.querySelector('input[name=invitados]:checked')) return 'Por favor seleccioná una cantidad estimada de invitados.';
     }
     if(step === 3){
-      if(!form.elements.nombre.value.trim()) return 'Completá tu nombre.';
-      if(form.elements.telefono.value.replace(/\D/g,'').length < 8) return 'Ingresá un número de teléfono válido.';
-      if(!form.elements.consentimiento.checked) return 'Necesitamos tu autorización para preparar la consulta.';
+      if(!form.elements.nombre.value.trim()) return 'Completá tu nombre y apellido.';
+      if(form.elements.telefono.value.replace(/\D/g,'').length < 8) return 'Ingresá un número de teléfono o WhatsApp válido.';
+      if(!form.elements.consentimiento.checked) return 'Necesitamos tu autorización para responder a tu consulta.';
     }
     return '';
   }
 
   prev.addEventListener('click', () => setStep(Math.max(step-1, 0)));
+
   next.addEventListener('click', () => {
     const msg = validate();
     if(msg){
@@ -849,35 +2821,89 @@
       setStep(step+1);
     } else {
       const values = new FormData(form);
+      const folioId = `MLB-${new Date().getFullYear()}-${Math.floor(1000 + Math.random()*9000)}`;
+      const tipoVal = values.get('tipo') || 'A convenir';
+      const empresaVal = values.get('empresa');
+      const tipoCompleto = empresaVal ? `${tipoVal} (${empresaVal})` : tipoVal;
+      const sinFecha = !!values.get('sinFecha');
+      const fechaVal = sinFecha ? 'A definir con Malabar' : (values.get('fecha') || 'A definir');
+      const invitadosVal = values.get('invitados') || 'A definir';
+      const turnoVal = values.get('turno') || 'A definir';
+      const serviciosList = values.getAll('servicio');
+      const detallesVal = (values.get('detalles') || '').trim();
+      const nombreVal = values.get('nombre') || '';
+      const telVal = values.get('telefono') || '';
+
+      // Actualizar Ficha Editorial de Cotización
+      document.getElementById('ticket-folio').textContent = folioId;
+      document.getElementById('ticket-tipo').textContent = tipoCompleto;
+      document.getElementById('ticket-fecha').textContent = fechaVal;
+      document.getElementById('ticket-invitados').textContent = `${invitadosVal} personas`;
+      document.getElementById('ticket-turno').textContent = turnoVal;
+
+      // Actualizar Pase VIP 3D con Foil Dorado
+      const vipName = document.getElementById('vip-card-name');
+      if(vipName) vipName.textContent = (nombreVal || 'Invitado Distinguido').toUpperCase();
+      const vipEvent = document.getElementById('vip-card-event');
+      if(vipEvent) vipEvent.textContent = tipoCompleto.toUpperCase();
+      const vipFolio = document.getElementById('vip-card-folio');
+      if(vipFolio) vipFolio.textContent = `#${folioId}`;
+
+      const serviciosWrap = document.getElementById('ticket-servicios');
+      serviciosWrap.innerHTML = '';
+      if(serviciosList.length > 0){
+        serviciosList.forEach(s => {
+          const pill = document.createElement('span');
+          pill.className = 'ticket-tag-pill';
+          pill.textContent = s;
+          serviciosWrap.appendChild(pill);
+        });
+      } else {
+        const pill = document.createElement('span');
+        pill.className = 'ticket-tag-pill';
+        pill.textContent = 'Propuesta básica / A definir';
+        serviciosWrap.appendChild(pill);
+      }
+
+      const notasRow = document.getElementById('ticket-detalles-row');
+      if(detallesVal){
+        document.getElementById('ticket-detalles').textContent = detallesVal;
+        notasRow.hidden = false;
+      } else {
+        notasRow.hidden = true;
+      }
+
+      document.getElementById('ticket-contacto').textContent = nombreVal;
+      document.getElementById('ticket-tel').textContent = telVal;
+
+      // Generar mensaje estructurado de WhatsApp
       const lines = [
         `Hola, equipo de MALABAR 👋`,
-        `Quisiera consultar disponibilidad y presupuesto para un evento:`,
+        `Quisiera consultar disponibilidad y presupuesto para un evento en el salón:`,
         ``,
-        `🎉 TIPO DE EVENTO:`,
-        values.get('tipo'),
-        ...(values.get('empresa') ? [`Empresa: ${values.get('empresa')}`] : []),
+        `📋 *PASE VIP REGISTRADO:* #${folioId}`,
+        `✨ *OCASIÓN:* ${tipoCompleto}`,
+        `📅 *FECHA ESTIMADA:* ${fechaVal}`,
+        `👥 *INVITADOS:* ${invitadosVal} personas`,
+        `☀️ *TURNO:* ${turnoVal}`,
         ``,
-        `📅 FECHA Y ASISTENCIA:`,
-        `Fecha: ${values.get('sinFecha') ? 'A definir' : values.get('fecha')}`,
-        `Invitados aprox.: ${values.get('invitados')}`,
-        `Turno preferido: ${values.get('turno') || 'A definir'}`,
+        `🍷 *SERVICIOS DE INTERÉS:*`,
+        ...((serviciosList.length ? serviciosList : ['A asesorar integralmente']).map(v => `• ${v}`)),
+        ...(detallesVal ? [``, `📝 *DETALLES ADICIONALES:*`, detallesVal] : []),
         ``,
-        `✨ SERVICIOS DE INTERÉS:`,
-        ...((values.getAll('servicio').length ? values.getAll('servicio') : ['A convenir']).map(v => `• ${v}`)),
+        `👤 *DATOS DE CONTACTO:*`,
+        `Nombre: ${nombreVal}`,
+        `Teléfono: ${telVal}`,
         ``,
-        `📝 DETALLES / IDEAS:`,
-        values.get('detalles') || 'Sin detalles adicionales',
-        ``,
-        `👤 CONTACTO:`,
-        `Nombre: ${values.get('nombre')}`,
-        `Teléfono: ${values.get('telefono')}`,
-        ``,
-        `¿Me podrían brindar más información? ¡Muchas gracias!`
+        `¿Podrían confirmarme disponibilidad y cómo avanzar con la visita privada y propuesta? ¡Muchas gracias!`
       ];
       const message = lines.join('\n');
       document.getElementById('summary-text').textContent = message;
-      document.getElementById('summary').hidden = false;
-      document.getElementById('summary').scrollIntoView({block:'nearest', behavior:'smooth'});
+
+      // Ocultar formulario y mostrar Ficha Editorial
+      form.hidden = true;
+      summaryEl.hidden = false;
+      summaryEl.scrollIntoView({block:'nearest', behavior:'smooth'});
 
       const number = WHATSAPP_BUSINESS_E164.replace(/\D/g,'');
       const waLink = document.getElementById('wa-link');
@@ -888,6 +2914,15 @@
     }
   });
 
+  // Botón para volver a editar desde el ticket
+  const editBtn = document.getElementById('edit-form-btn');
+  if(editBtn){
+    editBtn.addEventListener('click', () => {
+      setStep(0);
+    });
+  }
+
+  // Copiar mensaje
   document.getElementById('copy').addEventListener('click', async () => {
     const text = document.getElementById('summary-text').textContent;
     try{
@@ -902,8 +2937,9 @@
         el.remove();
       }
       const copyBtn = document.getElementById('copy');
-      copyBtn.innerHTML = '¡Mensaje copiado! ✓';
-      setTimeout(() => { copyBtn.innerHTML = 'Copiar mensaje <span class="arr">↗</span>'; }, 3000);
+      const originalHtml = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<span>¡Mensaje copiado al portapapeles! ✓</span>';
+      setTimeout(() => { copyBtn.innerHTML = originalHtml; }, 3000);
     } catch(e) {
       window.prompt('Copiá tu consulta:', text);
     }
@@ -919,11 +2955,152 @@
   }));
 
   document.getElementById('sinFecha').addEventListener('change', e => {
-    document.getElementById('fecha').disabled = e.target.checked;
-    if(e.target.checked) document.getElementById('fecha').value = '';
+    const fechaInput = document.getElementById('fecha');
+    fechaInput.disabled = e.target.checked;
+    if(e.target.checked) fechaInput.value = '';
   });
 
   setStep(0);
+
+  // ==========================================
+  // LÓGICA DEL SIMULADOR DE ESCENARIOS
+  // ==========================================
+  const atmospherePresets = {
+    casamiento: {
+      img: 'assets/scenario-casamiento.webp',
+      alt: 'Montaje de ceremonia de casamiento en el exterior de Malabar',
+      before: 'assets/01-exterior-atardecer.webp',
+      beforeAlt: 'Espacio exterior real de Malabar al atardecer',
+      code: 'ESCENARIO 01 · CEREMONIA EXTERIOR',
+      title: 'Casamiento al aire libre',
+      desc: 'Ceremonia frente a la arquitectura de Malabar, con pasillo central, madera natural y luz dorada.'
+    },
+    celebracion: {
+      img: 'assets/scenario-celebracion-nocturna.webp',
+      alt: 'Montaje nocturno con pista, livings y coctelería en Malabar',
+      before: 'assets/01-exterior-atardecer.webp',
+      beforeAlt: 'Espacio exterior real de Malabar al atardecer',
+      code: 'ESCENARIO 02 · CELEBRACIÓN NOCTURNA',
+      title: 'Una noche para celebrar',
+      desc: 'Pista, livings y coctelería al aire libre bajo una iluminación cálida que transforma todo el predio.'
+    },
+    corporativo: {
+      img: 'assets/scenario-corporativo.webp',
+      alt: 'Montaje de auditorio para una presentación corporativa en Malabar',
+      before: 'assets/06-ambientacion-lounge.webp',
+      beforeAlt: 'Salón real de Malabar con su ambientación habitual',
+      code: 'ESCENARIO 03 · PRESENTACIÓN CORPORATIVA',
+      title: 'Encuentro corporativo',
+      desc: 'Auditorio, escenario y soporte audiovisual en un salón cálido, profesional y conectado con la barra.'
+    },
+    cena: {
+      img: 'assets/scenario-cena-intima.webp',
+      alt: 'Montaje de mesa larga para una cena íntima en Malabar',
+      before: 'assets/06-ambientacion-lounge.webp',
+      beforeAlt: 'Salón real de Malabar con su ambientación habitual',
+      code: 'ESCENARIO 04 · CENA ÍNTIMA',
+      title: 'Cena de mesa larga',
+      desc: 'Una mesa protagonista, velas y gastronomía para un encuentro cercano dentro del salón principal.'
+    }
+  };
+
+  const atmoVisual = document.getElementById('atmosphere-visual');
+  const atmoImage = document.getElementById('atmosphere-image');
+  const atmoBefore = document.getElementById('atmosphere-before');
+  const scenarioCompare = document.getElementById('scenario-compare');
+  const atmoCode = document.getElementById('atmosphere-code');
+  const atmoTitle = document.getElementById('atmosphere-title');
+  const atmoDesc = document.getElementById('atmosphere-desc');
+  const atmoBtns = document.querySelectorAll('.atmo-btn');
+
+  let atmosphereTimer;
+  let atmosphereRequestId = 0;
+  function updateScenarioCompare(value){
+    if(!atmoVisual || !scenarioCompare) return;
+    const amount = Math.max(0, Math.min(100, Number(value)));
+    atmoVisual.style.setProperty('--compare', `${amount}%`);
+    scenarioCompare.value = amount;
+    scenarioCompare.setAttribute('aria-valuetext', `${amount}% montaje, ${100 - amount}% espacio real`);
+  }
+  if(scenarioCompare){
+    scenarioCompare.addEventListener('input', event => updateScenarioCompare(event.target.value));
+    updateScenarioCompare(scenarioCompare.value);
+  }
+  function setAtmosphere(key){
+    const data = atmospherePresets[key];
+    if(!data || !atmoVisual || !atmoImage || !atmoBefore) return;
+    const requestId = ++atmosphereRequestId;
+    window.clearTimeout(atmosphereTimer);
+    atmoVisual.classList.add('is-changing');
+    const preloadImage = src => new Promise(resolve => {
+      const image = new Image();
+      image.onload = resolve;
+      image.onerror = resolve;
+      image.src = src;
+    });
+    Promise.all([preloadImage(data.img),preloadImage(data.before)]).then(() => {
+      if(requestId !== atmosphereRequestId) return;
+      atmosphereTimer = window.setTimeout(() => {
+        atmoImage.src = data.img;
+        atmoBefore.src = data.before;
+        atmoVisual.dataset.scenario = key;
+        atmoVisual.setAttribute('aria-label', `${data.title}. Comparador entre ${data.beforeAlt} y ${data.alt}.`);
+        if(atmoCode) atmoCode.textContent = data.code;
+        if(atmoTitle) atmoTitle.textContent = data.title;
+        if(atmoDesc) atmoDesc.textContent = data.desc;
+        updateScenarioCompare(74);
+        atmoVisual.classList.remove('is-changing');
+      }, 110);
+    });
+    atmoBtns.forEach(btn => {
+      const isActive = btn.dataset.atmo === key;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+    });
+  }
+
+  atmoBtns.forEach(btn => {
+    btn.addEventListener('click', () => setAtmosphere(btn.dataset.atmo));
+  });
+
+  // Sincronizar escenario automáticamente con el tipo de evento elegido.
+  form.querySelectorAll('input[name=tipo]').forEach(input => {
+    input.addEventListener('change', () => {
+      const v = input.value;
+      if(v === 'Casamiento o civil') setAtmosphere('casamiento');
+      else if(v === 'Evento corporativo') setAtmosphere('corporativo');
+      else if(v === 'Cumpleaños o celebración') setAtmosphere('celebracion');
+      else if(v === 'Evento especial') setAtmosphere('cena');
+    });
+  });
+
+  // ==========================================
+  // FÍSICA 3D DEL PASE VIP INTERACTIVO
+  // ==========================================
+  const passCard = document.getElementById('vip-pass-card');
+  const passStage = document.getElementById('vip-pass-stage');
+  if(passStage && passCard){
+    passStage.addEventListener('mousemove', e => {
+      const rect = passCard.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateX = -(y / (rect.height / 2)) * 14;
+      const rotateY = (x / (rect.width / 2)) * 16;
+      passCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.025, 1.025, 1.025)`;
+      const glimmer = passCard.querySelector('.vip-pass-glimmer');
+      if(glimmer){
+        const px = ((e.clientX - rect.left) / rect.width) * 100;
+        const py = ((e.clientY - rect.top) / rect.height) * 100;
+        glimmer.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(255,235,175,0.45) 0%, rgba(212,175,55,0.18) 32%, transparent 70%)`;
+        glimmer.style.opacity = '1';
+      }
+    });
+    passStage.addEventListener('mouseleave', () => {
+      passCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      const glimmer = passCard.querySelector('.vip-pass-glimmer');
+      if(glimmer) glimmer.style.opacity = '0';
+    });
+  }
   </script>
 
   <!-- MOTOR DE ANIMACIONES Y CINEMÁTICA SCROLL v3 -->
@@ -948,7 +3125,23 @@
     const experiencePhoto = document.querySelector('.experience-photo img');
     const experienceSection = document.querySelector('.experience');
     const moment = document.querySelector('.moment');
+    const scenarioScrollStage = document.getElementById('scenario-scroll-stage');
+    const atmosphereStage = document.getElementById('atmosphere-stage');
     const siteMeter = document.querySelector('.site-progress-fill');
+    const chapterIndicator = document.getElementById('chapter-indicator');
+    const chapterCurrent = document.getElementById('chapter-current');
+    const chapterProgress = document.getElementById('chapter-progress');
+    const chapterLabel = document.getElementById('chapter-label');
+    const chapterSections = [
+      {node:document.getElementById('inicio'),id:'inicio',label:'Inicio'},
+      {node:document.getElementById('concepto'),id:'concepto',label:'Concepto'},
+      {node:document.getElementById('eventos'),id:'eventos',label:'Eventos'},
+      {node:document.getElementById('espacio'),id:'espacio',label:'El espacio'},
+      {node:document.getElementById('experiencia'),id:'experiencia',label:'Experiencia'},
+      {node:document.getElementById('galeria'),id:'galeria',label:'Galería'},
+      {node:document.getElementById('organizar'),id:'organizar',label:'Tu evento'}
+    ].filter(item => item.node);
+    const chapterNavLinks = Array.from(document.querySelectorAll('.nav-links a,.nav-contact'));
     const progressLabels = [
       'Un momento inolvidable',
       'Encuentros que inspiran',
@@ -959,6 +3152,7 @@
     const absTop = node => node.getBoundingClientRect().top + window.scrollY;
     const isDesktop = () => window.innerWidth > 950;
     let selectedStory = -1;
+    let selectedChapter = -1;
     let requestId = 0;
     let words = [];
 
@@ -987,8 +3181,11 @@
     const statement = intro.querySelector('.statement');
     if(!reduced.matches){
       words = wrapWords(statement);
-      const revealNodes = document.querySelectorAll('.intro .description,.intro .line-link,.section-head,.space-note,.experience-text,.lead-intro,.footer-cta-inner');
+      const standardRevealNodes = Array.from(document.querySelectorAll('.intro .description,.intro .line-link,.section-head,.space-note,.experience-text,.lead-intro,.footer-cta-inner'));
+      const mediaRevealNodes = Array.from(document.querySelectorAll('.space-photo-stage,.space-gallery,.experience-photo,.moment-content,.gallery-card,.gallery-foot,.form-shell,.event-card'));
+      const revealNodes = Array.from(new Set([...standardRevealNodes,...mediaRevealNodes]));
       revealNodes.forEach(node => node.classList.add('motion-reveal'));
+      mediaRevealNodes.forEach(node => node.classList.add('motion-reveal--media'));
       document.body.classList.add('motion-on');
       if('IntersectionObserver' in window){
         const io = new IntersectionObserver(entries => {
@@ -1023,15 +3220,34 @@
     }
     activateStory(0);
 
+    function updateChapter(vh){
+      const marker = window.scrollY + vh * .46;
+      let nextChapter = 0;
+      chapterSections.forEach((item,index) => {
+        if(absTop(item.node) <= marker) nextChapter = index;
+      });
+      if(nextChapter !== selectedChapter){
+        selectedChapter = nextChapter;
+        const active = chapterSections[nextChapter];
+        if(chapterCurrent) chapterCurrent.textContent = String(nextChapter).padStart(2,'0');
+        if(chapterLabel) chapterLabel.textContent = active.label;
+        chapterNavLinks.forEach(link => link.classList.toggle('is-active', link.getAttribute('href') === `#${active.id}`));
+      }
+      if(chapterProgress) chapterProgress.style.transform = `scaleX(${clamp(nextChapter / Math.max(1,chapterSections.length - 1))})`;
+      if(chapterIndicator) chapterIndicator.classList.toggle('is-visible', window.scrollY > vh * .35);
+    }
+
     function update(){
       const vh = window.innerHeight;
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
       if(siteMeter) siteMeter.style.transform = `scaleX(${clamp(window.scrollY/maxScroll)})`;
+      updateChapter(vh);
 
       if(reduced.matches){
         if(heroFrame) heroFrame.style.transform = '';
         if(heroContent){ heroContent.style.transform = ''; heroContent.style.opacity = ''; }
         if(galleryTrack) galleryTrack.style.transform = '';
+        if(atmosphereStage) atmosphereStage.style.transform = '';
         return;
       }
 
@@ -1040,7 +3256,6 @@
         const heroTravel = Math.max(1, heroStage.offsetHeight - vh);
         const hp = clamp((window.scrollY - absTop(heroStage)) / heroTravel);
         heroFrame.style.transform = `scale(${(1 - hp * .105).toFixed(4)})`;
-        heroFrame.style.borderRadius = `${(hp * 18).toFixed(1)}px`;
         heroContent.style.opacity = (1 - clamp((hp - .13) / .66)).toFixed(3);
         heroContent.style.transform = `translate3d(0,${Math.round(-hp * 72)}px,0)`;
 
@@ -1057,13 +3272,21 @@
         const xMax = Math.max(0, galleryTrack.scrollWidth - galleryViewport.clientWidth + Math.max(56, (innerWidth - 1460)/2) + 35);
         galleryTrack.style.transform = `translate3d(${-Math.round(xMax * gp)}px,0,0)`;
         if(galleryMeter) galleryMeter.style.transform = `scaleX(${gp.toFixed(4)})`;
+
+        // Escena 4: el simulador entra como una pieza cinematográfica y queda en foco.
+        if(scenarioScrollStage && atmosphereStage && vh >= 880){
+          const scenarioRect = scenarioScrollStage.getBoundingClientRect();
+          const sp = clamp((vh * .86 - scenarioRect.top) / (vh * .62));
+          const scale = .945 + sp * .055;
+          atmosphereStage.style.transform = `translate3d(0,${Math.round((1 - sp) * 34)}px,0) scale(${scale.toFixed(4)})`;
+        }
       } else {
         heroFrame.style.transform = '';
-        heroFrame.style.borderRadius = '';
         heroContent.style.transform = '';
         heroContent.style.opacity = '';
         galleryTrack.style.transform = '';
         if(galleryMeter) galleryMeter.style.transform = '';
+        if(atmosphereStage) atmosphereStage.style.transform = '';
       }
 
       // Progresión de contraste de palabras en la frase editorial
@@ -1117,18 +3340,58 @@
     window.addEventListener('load', schedule, {once:true});
     schedule();
 
-    // Cursor contextual informativo para desktop
+    // Cursores y atracción magnética: transformaciones compuestas, agrupadas en un solo frame.
     if(!reduced.matches && window.matchMedia('(pointer:fine)').matches){
       const cursor = document.querySelector('.motion-cursor');
+      const ambientCursor = document.querySelector('.ambient-cursor');
+      const magneticNodes = Array.from(document.querySelectorAll('.hero .button,.moment .button,.footer-cta .button,.nav-contact'));
+      magneticNodes.forEach(node => node.classList.add('magnetic-target'));
       if(cursor){
         document.querySelectorAll('.story-choice, .event-card').forEach(a => {
           a.addEventListener('pointerenter', () => cursor.classList.add('is-active'));
           a.addEventListener('pointerleave', () => cursor.classList.remove('is-active'));
         });
-        document.addEventListener('pointermove', e => {
-          cursor.style.transform = `translate3d(${Math.round(e.clientX - 46)}px,${Math.round(e.clientY - 46)}px,0) scale(1)`;
-        }, {passive:true});
       }
+      let pointerFrame = 0;
+      let pointerX = -300;
+      let pointerY = -300;
+      let pointerTarget = null;
+      let activeMagnetic = null;
+      const renderPointer = () => {
+        pointerFrame = 0;
+        if(reduced.matches){
+          if(ambientCursor) ambientCursor.classList.remove('is-visible','is-hot');
+          if(activeMagnetic) activeMagnetic.style.transform = '';
+          activeMagnetic = null;
+          return;
+        }
+        if(cursor) cursor.style.transform = `translate3d(${Math.round(pointerX - 46)}px,${Math.round(pointerY - 46)}px,0) scale(1)`;
+        if(ambientCursor){
+          ambientCursor.style.transform = `translate3d(${Math.round(pointerX - 110)}px,${Math.round(pointerY - 110)}px,0)`;
+          ambientCursor.classList.add('is-visible');
+          ambientCursor.classList.toggle('is-hot', !!(pointerTarget && pointerTarget.closest('a,button,.gallery-card,.space-gallery img,.experience-photo')));
+        }
+        const magnetic = pointerTarget ? pointerTarget.closest('.magnetic-target') : null;
+        if(activeMagnetic && activeMagnetic !== magnetic) activeMagnetic.style.transform = '';
+        activeMagnetic = magnetic;
+        if(activeMagnetic){
+          const rect = activeMagnetic.getBoundingClientRect();
+          const x = Math.max(-7,Math.min(7,(pointerX - rect.left - rect.width / 2) * .09));
+          const y = Math.max(-5,Math.min(5,(pointerY - rect.top - rect.height / 2) * .09));
+          activeMagnetic.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0)`;
+        }
+      };
+      document.addEventListener('pointermove', event => {
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        pointerTarget = event.target instanceof Element ? event.target : null;
+        if(!pointerFrame) pointerFrame = window.requestAnimationFrame(renderPointer);
+      },{passive:true});
+      document.documentElement.addEventListener('mouseleave', () => {
+        if(ambientCursor) ambientCursor.classList.remove('is-visible','is-hot');
+        if(activeMagnetic) activeMagnetic.style.transform = '';
+        activeMagnetic = null;
+      });
     }
   })();
   </script>
