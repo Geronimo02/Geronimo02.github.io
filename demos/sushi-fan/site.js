@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   const menu=window.SUSHI_FAN_MENU||{revision:'pendiente',products:[]};
-  const products=Array.isArray(menu.products)?menu.products:[];
+  const products=Array.isArray(menu.products)?menu.products.filter(product=>product.available!==false):[];
   const core=window.SushiFanCartCore;
   const $=id=>document.getElementById(id);
   const storageKey='sushifan-cart-v1',revisionKey='sushifan-menu-revision';
@@ -48,7 +48,7 @@
       const variants=p.variants?.length?p.variants:[];
       const firstAvailable=variants.find(v=>core.validPrice(v.priceCents));
       const price=core.pricedProduct(p,firstAvailable?.id||'');
-      const options=variants.length?`<select class="variant-select" aria-label="Variante de ${escapeHtml(p.name)}">${variants.map(v=>`<option value="${escapeHtml(v.id)}" ${core.validPrice(v.priceCents)?'':'disabled'}>${escapeHtml(v.name)}${core.validPrice(v.priceCents)?' · '+escapeHtml(core.money(v.priceCents)):''}</option>`).join('')}</select>`:'';
+      const options=variants.length?`<label class="variant-picker"><span>Elegí la cantidad</span><select class="variant-select" aria-label="Cantidad de piezas de ${escapeHtml(p.name)}">${variants.map(v=>`<option value="${escapeHtml(v.id)}" ${core.validPrice(v.priceCents)?'':'disabled'}>${escapeHtml(v.name)}${core.validPrice(v.priceCents)?' · '+escapeHtml(core.money(v.priceCents)):''}</option>`).join('')}</select></label>`:'';
       return `<article class="product-card" data-product="${escapeHtml(p.id)}">${menu.demo?'<span class="demo-tag">DEMO</span>':''}${p.photo?`<img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.name)}" loading="lazy">`:''}<div class="product-info"><span class="product-meta">${escapeHtml(p.pieces||p.category)}</span><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.description||'')}</p>${options}<div class="product-bottom"><strong data-price>${price?core.money(price.priceCents):'Precio a confirmar'}</strong><button type="button" data-add ${price?'':'disabled'}>Agregar al pedido</button></div></div></article>`;
     }).join('');
   }

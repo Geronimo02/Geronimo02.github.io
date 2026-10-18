@@ -1,0 +1,92 @@
+# BRAICO — Decisión de diseño B4
+**Proyecto:** Signature Web  
+**Concepto:** La esquina tiene nombre. Cada sándwich también.  
+**Dirección visual:** B — Deli editorial, gastronómica y contemporánea.
+
+## 1. Decisión principal: experiencia híbrida
+
+El módulo **«El Corte»** utilizará dos tipos de imágenes con funciones diferentes.
+
+| Estado | Recurso visual | Objetivo |
+|---|---|---|
+| Sándwich cerrado | Fotografía auténtica del producto, cuando esté disponible | Despertar el apetito y mostrar lo que se ofrece |
+| Sándwich abierto | Representación fotorrealista por capas | Explicar ingredientes y ofrecer una interacción distintiva |
+
+Mientras no tengamos fotografía auténtica autorizada, se mantendrá el recurso generado de B4, identificado como ilustrativo.
+
+## 2. Experiencia «El Corte»
+
+**Estado inicial:** aparece Carlitos armado, con iluminación gastronómica y una composición cuidada.
+
+**Interacción principal:** al seleccionar «Ver por dentro», los ingredientes se separan con una transición suave y profundidad visual.
+
+**Ingredientes del Carlitos**, según la carta de diciembre de 2025:
+- Mortadela con pistachos
+- Queso Tybo
+- Pepinillos
+- Salsa de mostaza Dijon
+- Aceite de oliva
+
+Cada ingrediente puede seleccionarse para destacarlo y consultar su descripción.
+
+**Cierre:** el usuario vuelve a la vista del sándwich armado.
+
+**Conversión:** «Sumar a mi selección» conecta con el sistema de productos de la carta. La demo no implica una compra ni un envío de pedido confirmado.
+
+## 3. Identidad visual obligatoria
+
+Se mantiene la dirección B ya aprobada:
+
+- Verde oscuro como color dominante.
+- Rojo de Braico para las acciones principales y detalles.
+- Crema para textos, superficies y contraste.
+- Fotografía gastronómica cálida.
+- Tipografía protagonista y personalidad editorial.
+- Nombres de los homenajes y referencias a la esquina Chacabuco 195.
+
+No introducir paletas nuevas, efectos tecnológicos genéricos ni componentes que desplacen el protagonismo del producto.
+
+## 4. Comportamiento y animaciones
+
+La separación de ingredientes debe sentirse como una demostración gastronómica, no como una explosión artificial.
+
+La animación tendrá una duración orientativa de 700–900 ms, con movimiento progresivo, sombras suaves y una profundidad moderada.
+
+En escritorio se permitirá una interacción sutil con el cursor. En celular, la experiencia deberá funcionar mediante botones táctiles. Con movimiento reducido activado, los ingredientes se mostrarán sin desplazamientos animados.
+
+El módulo no necesitará un motor 3D si los recortes PNG y CSS permiten alcanzar el resultado deseado.
+
+## 5. Transparencia y autenticidad
+
+La representación debe comunicar **qué ingredientes contiene el producto**, sin prometer proporciones, tamaño, presentación o apariencia exacta.
+
+Texto sugerido:
+
+*Visualización ilustrativa de ingredientes. La presentación real del producto puede variar.*
+
+No publicar imágenes generadas como fotografías del establecimiento o del producto auténtico.
+
+## 6. Activos para una versión definitiva
+
+Prioridad para obtener del negocio:
+
+- Fotografía real del Carlitos armado.
+- Fotografía del producto desde un ángulo de tres cuartos.
+- Fotografías adicionales de los ingredientes, si están disponibles.
+- Confirmación de que la composición sigue vigente.
+- Autorización para utilizar las imágenes comercialmente.
+
+Los PNG actuales pueden conservarse para la vista explicativa mientras cumplan los requisitos visuales.
+
+## 7. Criterios de aceptación
+
+La experiencia se considerará terminada cuando:
+
+1. La vista cerrada genere apetito y sea visualmente coherente con Braico.
+2. Los ingredientes puedan distinguirse fácilmente en la vista abierta.
+3. La transición funcione en escritorio y celular.
+4. El módulo mantenga el rendimiento y la accesibilidad de la web.
+5. La selección de productos continúe funcionando.
+6. Ninguna representación pueda confundirse con una fotografía auténtica sin una aclaración.
+
+**Decisión:** conservar Braico B4 como base, aplicar la estrategia híbrida y reemplazar los activos representativos por imágenes auténticas cuando estén disponibles y autorizadas.

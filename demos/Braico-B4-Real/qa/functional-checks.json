@@ -1,0 +1,236 @@
+{
+  "passed": 46,
+  "total": 46,
+  "checks": [
+    [
+      1440,
+      "Sin JS uncaught",
+      true
+    ],
+    [
+      1440,
+      "Sin overflow horizontal",
+      true
+    ],
+    [
+      1440,
+      "Las ocho representaciones cargan",
+      true
+    ],
+    [
+      1440,
+      "Siete ingredientes interactivos",
+      true
+    ],
+    [
+      1440,
+      "Abrir al 100%",
+      true
+    ],
+    [
+      1440,
+      "Abierto según accesibilidad",
+      true
+    ],
+    [
+      1440,
+      "Detalle de queso al elegir",
+      true
+    ],
+    [
+      1440,
+      "Control granular al 50%",
+      true
+    ],
+    [
+      1440,
+      "Vuelve a cerrado",
+      true
+    ],
+    [
+      1440,
+      "Añade Carlitos al carrito",
+      true
+    ],
+    [
+      1440,
+      "Filtrado de carta intacto",
+      true
+    ],
+    [
+      800,
+      "Sin JS uncaught",
+      true
+    ],
+    [
+      800,
+      "Sin overflow horizontal",
+      true
+    ],
+    [
+      800,
+      "Las ocho representaciones cargan",
+      true
+    ],
+    [
+      800,
+      "Siete ingredientes interactivos",
+      true
+    ],
+    [
+      800,
+      "Abrir al 100%",
+      true
+    ],
+    [
+      800,
+      "Abierto según accesibilidad",
+      true
+    ],
+    [
+      800,
+      "Detalle de queso al elegir",
+      true
+    ],
+    [
+      800,
+      "Control granular al 50%",
+      true
+    ],
+    [
+      800,
+      "Vuelve a cerrado",
+      true
+    ],
+    [
+      800,
+      "Añade Carlitos al carrito",
+      true
+    ],
+    [
+      800,
+      "Filtrado de carta intacto",
+      true
+    ],
+    [
+      390,
+      "Sin JS uncaught",
+      true
+    ],
+    [
+      390,
+      "Sin overflow horizontal",
+      true
+    ],
+    [
+      390,
+      "Las ocho representaciones cargan",
+      true
+    ],
+    [
+      390,
+      "Siete ingredientes interactivos",
+      true
+    ],
+    [
+      390,
+      "Abrir al 100%",
+      true
+    ],
+    [
+      390,
+      "Abierto según accesibilidad",
+      true
+    ],
+    [
+      390,
+      "Detalle de queso al elegir",
+      true
+    ],
+    [
+      390,
+      "Control granular al 50%",
+      true
+    ],
+    [
+      390,
+      "Vuelve a cerrado",
+      true
+    ],
+    [
+      390,
+      "Añade Carlitos al carrito",
+      true
+    ],
+    [
+      390,
+      "Filtrado de carta intacto",
+      true
+    ],
+    [
+      360,
+      "Sin JS uncaught",
+      true
+    ],
+    [
+      360,
+      "Sin overflow horizontal",
+      true
+    ],
+    [
+      360,
+      "Las ocho representaciones cargan",
+      true
+    ],
+    [
+      360,
+      "Siete ingredientes interactivos",
+      true
+    ],
+    [
+      360,
+      "Abrir al 100%",
+      true
+    ],
+    [
+      360,
+      "Abierto según accesibilidad",
+      true
+    ],
+    [
+      360,
+      "Detalle de queso al elegir",
+      true
+    ],
+    [
+      360,
+      "Control granular al 50%",
+      true
+    ],
+    [
+      360,
+      "Vuelve a cerrado",
+      true
+    ],
+    [
+      360,
+      "Añade Carlitos al carrito",
+      true
+    ],
+    [
+      360,
+      "Filtrado de carta intacto",
+      true
+    ],
+    [
+      "390 reduce",
+      "Cambia estado aunque tenga movimiento reducido",
+      true
+    ],
+    [
+      "390 reduce",
+      "Desactiva la transición de capas",
+      true
+    ]
+  ]
+}

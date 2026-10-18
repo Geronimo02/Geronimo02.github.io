@@ -1,0 +1,11 @@
+# Proyecto Braico — Signature / B4
+- Ciudad: Tandil
+- Modalidad: DEMO PRIVADA, no publicar
+- Plan: carta interactiva + preparación de mensaje de WhatsApp, sin recepcionar pedidos
+- Dirección aprobada: B (comercial) con B2 (fichero de homenajes) y B3 (El Corte)
+- Iteración actual: B4, «El Corte» en fotografía generada con recortes PNG por ingrediente
+- Material base: carta diciembre 2025 (enlace aportado por usuario), fotografías del PDF y logo extraído, con derechos de publicación no confirmados
+- Estado: build interactiva local probada, sin despliegue
+- Pendientes: fotografías reales y licencias; pan real, orden de armado, precios, teléfono de pedidos y horarios actualizados
+- QA: 46/46 verificaciones automáticas en Chromium en cuatro resoluciones, más control de movimiento reducido
+- **No aprobar ni publicar a producción** sin confirmación expresa del usuario.

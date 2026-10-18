@@ -1,0 +1,86 @@
+[
+  {
+    "viewport": 1440,
+    "before": {
+      "body": 1440,
+      "view": 1440,
+      "slices": 7,
+      "menu": 9
+    },
+    "after": {
+      "view": "open",
+      "value": "100",
+      "pan": 199.9296875,
+      "last": 611.6953125,
+      "photoAlpha": "0",
+      "body": 1440
+    },
+    "ingredient": "MOSTAZA DIJON",
+    "cart": "1",
+    "back": "closed",
+    "errors": []
+  },
+  {
+    "viewport": 800,
+    "before": {
+      "body": 800,
+      "view": 800,
+      "slices": 7,
+      "menu": 9
+    },
+    "after": {
+      "view": "open",
+      "value": "100",
+      "pan": 868.1734619140625,
+      "last": 1236.0390625,
+      "photoAlpha": "0",
+      "body": 800
+    },
+    "ingredient": "MOSTAZA DIJON",
+    "cart": "1",
+    "back": "closed",
+    "errors": []
+  },
+  {
+    "viewport": 390,
+    "before": {
+      "body": 390,
+      "view": 390,
+      "slices": 7,
+      "menu": 9
+    },
+    "after": {
+      "view": "open",
+      "value": "100",
+      "pan": 849.5515747070312,
+      "last": 1121.859375,
+      "photoAlpha": "0",
+      "body": 390
+    },
+    "ingredient": "MOSTAZA DIJON",
+    "cart": "1",
+    "back": "closed",
+    "errors": []
+  },
+  {
+    "viewport": 360,
+    "before": {
+      "body": 360,
+      "view": 360,
+      "slices": 7,
+      "menu": 9
+    },
+    "after": {
+      "view": "open",
+      "value": "100",
+      "pan": 818.4578247070312,
+      "last": 1090.765625,
+      "photoAlpha": "0",
+      "body": 360
+    },
+    "ingredient": "MOSTAZA DIJON",
+    "cart": "1",
+    "back": "closed",
+    "errors": []
+  }
+]

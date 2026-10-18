@@ -7,7 +7,12 @@
   const variantFor = (product,variantId) => product.variants?.find(v => v.id === variantId) || null;
   function pricedProduct(product,variantId){
     if(!product) return null;
-    if(product.variants?.length){const variant=variantFor(product,variantId);return variant && validPrice(variant.priceCents)?{product,variant,priceCents:variant.priceCents}:null;}
+    if(product.variants?.length){
+      const variant=variantFor(product,variantId);
+      if(variant && validPrice(variant.priceCents)) return {product,variant,priceCents:variant.priceCents};
+      if(!variantId && validPrice(product.priceCents)) return {product,variant:null,priceCents:product.priceCents};
+      return null;
+    }
     return !variantId && validPrice(product.priceCents)?{product,variant:null,priceCents:product.priceCents}:null;
   }
   function normalizeCart(raw,products){
