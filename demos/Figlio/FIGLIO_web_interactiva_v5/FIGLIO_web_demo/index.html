@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f5f1e9" />
+    <script>
+      try {
+        if (sessionStorage.getItem("figlio-page-transition") === "1") {
+          document.documentElement.classList.add("page-entering");
+          sessionStorage.removeItem("figlio-page-transition");
+        }
+      } catch {}
+    </script>
+    <meta
+      name="description"
+      content="FIGLIO — Impero del Dolce. Arte, cultura y gelato."
+    />
+    <title>Impero del Dolce · FIGLIO</title>
+    <link rel="icon" href="assets/figlio-sello.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Italiana&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="home">
+    <div class="page-transition" aria-hidden="true">
+      <span class="page-transition__meander page-transition__meander--top"></span>
+      <div class="page-transition__mark">
+        <img src="assets/figlio-sello.png" alt="" />
+        <span class="page-transition__wordmark">FIGLIO</span>
+        <span class="page-transition__caption">ARTE · SABOR · TRADICIÓN</span>
+      </div>
+      <span class="page-transition__meander page-transition__meander--bottom"></span>
+    </div>
+    <header class="site-header" id="top">
+      <a class="brand" href="index.html"
+        >FIGLIO<span>®</span
+        ><img
+          class="brand-seal"
+          src="assets/figlio-sello.png"
+          alt=""
+          aria-hidden="true"
+      /></a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="index.html" data-nav="home">EL IMPERO</a
+        ><a href="sabores.html" data-nav="sabores">SABORES</a
+        ><a href="dolcezze.html" data-nav="dolcezze">DOLCEZZE</a
+        ><a href="index.html#historia">CULTURA</a>
+      </nav>
+      <div class="header-right">
+        <span>ES <span class="line-small">—</span></span
+        ><button
+          type="button"
+          class="menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="scroll-stage hero-stage">
+        <section class="home-hero" id="hero">
+          <div class="hero-counter">01 <i></i></div>
+          <h1 class="giant-logo">FIGLIO</h1>
+          <img
+            class="hero-statue"
+            src="assets/coloso.png"
+            alt="El Coloso de FIGLIO"
+            fetchpriority="high"
+          />
+          <div class="hero-bottom-left reveal">
+            <h2>IMPERO<br />DEL DOLCE</h2>
+            <div class="thin-rule"></div>
+            <p class="eyebrow">
+              GELATO ARTIGIANALE<br />PER UN MONDO PIÙ BRILLANTE
+            </p>
+            <a class="text-link" href="sabores.html"
+              >EXPLORAR FIGLIO <b>⟶</b></a
+            >
+          </div>
+          <p class="hero-side-note">
+            TRADIZIONE<br />ARTE<br />PIACERE<br />SENZA CONFINI
+          </p>
+          <p class="scroll-hint">SCROLL <span>↓</span></p>
+        </section>
+      </div>
+      <div class="scroll-stage editorial-stage">
+        <section class="editorial-section reverse fruit-section" id="scene-2">
+          <div class="section-number">02<span></span></div>
+          <div class="editorial-copy reveal">
+            <p class="eyebrow">LA MATERIA PRIMA</p>
+            <h2>ITALIA<br />ENCUENTRA<br />A TANDIL</h2>
+            <div class="thin-rule"></div>
+            <p class="serif-desc">
+              La excelencia italiana se encuentra con nuestra tierra.
+              Ingredientes nobles, tradición y un territorio único dan vida a un
+              gelato con identidad propia.
+            </p>
+            <a class="text-link" href="sabores.html"
+              >NUESTROS SABORES <b>⟶</b></a
+            >
+          </div>
+          <div class="editorial-visual parallax-image">
+            <img
+              src="assets/frutas.png"
+              alt="Escultura FIGLIO"
+              loading="lazy"
+            />
+          </div>
+        </section>
+      </div>
+      <div class="scroll-stage editorial-stage">
+        <section class="editorial-section" id="scene-3">
+          <div class="section-number">03<span></span></div>
+          <div class="editorial-copy reveal">
+            <p class="eyebrow">ARTE QUE SE SABOREA</p>
+            <h2>UNA OBRA<br />DE ARTE EN<br />CADA SABOR</h2>
+            <div class="thin-rule"></div>
+            <p class="serif-desc">
+              Cada creación es un homenaje al arte, a la belleza y al placer de
+              lo simple. Gelato que transforma lo cotidiano en algo
+              extraordinario.
+            </p>
+            <a class="text-link" href="sabores.html"
+              >NUESTROS SABORES <b>⟶</b></a
+            >
+          </div>
+          <div class="editorial-visual parallax-image">
+            <img src="assets/uvas.png" alt="Escultura FIGLIO" loading="lazy" />
+          </div>
+        </section>
+      </div>
+      <div class="scroll-stage editorial-stage">
+        <section class="editorial-section reverse" id="scene-4">
+          <div class="section-number">04<span></span></div>
+          <div class="editorial-copy reveal">
+            <p class="eyebrow">LA LECHE</p>
+            <h2>PUREZA<br />QUE INSPIRA</h2>
+            <div class="thin-rule"></div>
+            <p class="serif-desc">
+              La leche, en su forma más pura, es el inicio de todo. Un
+              ingrediente noble que, en manos expertas, se transforma en algo
+              inolvidable.
+            </p>
+            <a class="text-link" href="sabores.html"
+              >EXPLORAR SABORES <b>⟶</b></a
+            >
+          </div>
+          <div class="editorial-visual parallax-image">
+            <img src="assets/leche.png" alt="Escultura FIGLIO" loading="lazy" />
+          </div>
+        </section>
+      </div>
+      <div class="scroll-stage editorial-stage">
+        <section class="editorial-section" id="scene-5">
+          <div class="section-number">05<span></span></div>
+          <div class="editorial-copy reveal">
+            <p class="eyebrow">TRADICIÓN SIN LÍMITES</p>
+            <h2>TODOS LOS<br />CAMINOS LLEVAN<br />AL SABOR</h2>
+            <div class="thin-rule"></div>
+            <p class="serif-desc">
+              Un legado que viaja, que inspira y que une culturas. Del arte
+              clásico a tu mesa, el placer no conoce fronteras.
+            </p>
+            <a class="text-link" href="dolcezze.html"
+              >DESCUBRIR DOLCEZZE <b>⟶</b></a
+            >
+          </div>
+          <div class="editorial-visual parallax-image">
+            <img src="assets/angel.png" alt="Escultura FIGLIO" loading="lazy" />
+          </div>
+        </section>
+      </div>
+      <section class="home-exit" id="historia">
+        <span class="eyebrow">UN UNIVERSO POR DESCUBRIR</span>
+        <h2>UN MUNDO<br /><em>MÁS DULCE</em><br />ES POSIBLE</h2>
+        <div class="exit-links">
+          <a href="sabores.html">EXPLORAR SABORES ⟶</a
+          ><a href="dolcezze.html">DESCUBRIR DOLCEZZE ⟶</a>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-links">
+          <a href="index.html">EL IMPERO</a><a href="sabores.html">SABORES</a
+          ><a href="dolcezze.html">DOLCEZZE</a
+          ><a href="index.html#historia">NUESTRA HISTORIA</a>
+        </div>
+        <div class="seal">
+          <img
+            src="assets/figlio-sello.png"
+            alt="Sello original FIGLIO · Impero del Dolce"
+          /><span>UN MONDO PIÙ DOLCE</span>
+        </div>
+        <div class="footer-right">
+          <span>TRADIZIONE</span><span>ARTE</span><span>PIACERE</span
+          ><span>TANDIL, ARGENTINA</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© FIGLIO — EDICIÓN DIGITAL</span
+        ><a href="#top">VOLVER ARRIBA ↑</a><span>ES / IT</span>
+      </div>
+    </footer>
+    <script src="script.js" defer></script>
+  </body>
+</html>
