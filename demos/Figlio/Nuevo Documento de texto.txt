@@ -1,0 +1,228 @@
+Prompt maestro
+Quiero que construyas una landing page premium, editorial y totalmente responsive para la marca FIGLIO, basada exactamente en el boceto visual que te paso como referencia.
+Objetivo
+Transformar el boceto en una web real, elegante y funcional, con look de lujo italiano contemporáneo, mezcla de:
+- diseño editorial premium
+- dirección de arte clásica / escultórica
+- minimalismo sofisticado
+- experiencia visual tipo marca de lujo
+La web debe verse muy cercana al boceto, respetando su composición, jerarquía, espaciados, tipografías elegantes y uso de imágenes grandes por bloques.
+Tecnología
+Quiero que lo desarrolles con:
+- HTML, CSS y JavaScript vanilla
+- o Next.js + CSS modules si prefieres estructurarlo mejor
+- sin dependencias innecesarias
+- código limpio, ordenado y fácil de editar
+- preparado para que luego pueda reemplazar imágenes y textos fácilmente
+Si usas Next.js:
+- crear componentes reutilizables
+- estructura clara por secciones
+- assets centralizados
+- estilos separados y bien nombrados
+Estética general
+La web debe transmitir:
+- lujo
+- arte
+- tradición italiana
+- pureza
+- sofisticación
+- museo + pastelería + heladería premium
+Paleta
+Usar una paleta muy parecida al boceto:
+- fondo principal: blanco cálido / marfil / crema muy claro
+- texto principal: negro elegante o gris muy oscuro
+- detalles/accent: dorado suave / beige cálido
+- azules muy suaves solo si aparecen dentro de imágenes
+- evitar colores chillones en la UI
+Tipografía
+Usar combinación de:
+- serif editorial elegante para títulos (estilo Didot / Cormorant / Playfair / Canela-like)
+- sans minimalista para navegación, labels y textos secundarios
+La tipografía debe sentirse premium y limpia.
+Estructura de la landing
+La landing debe seguir la lógica del boceto de las estatuas.
+1. Hero section
+Diseñar una sección hero de pantalla grande con:
+- menú superior minimalista
+- logo FIGLIO arriba a la izquierda
+- navegación centrada o ligeramente distribuida
+- selector de idioma y menú hamburguesa arriba a la derecha
+Elementos visuales del hero
+- texto monumental “FIGLIO” en grande de fondo
+- sobre eso, una gran estatua central recortada
+- titular principal:
+  “IMPERO DEL DOLCE”
+- subtítulo corto:
+  “Gelato artigianale per un mondo più brillante”
+- pequeños detalles editoriales como:
+  - “01”
+  - líneas finas verticales/horizontales
+  - microcopy lateral
+  - indicador “scroll”
+El hero debe ser muy limpio, aireado y con sensación de marca de lujo.
+2. Sección “Italia encuentra a Tandil”
+Bloque de dos columnas:
+- una columna visual con la imagen de las manos de mármol con frutas talladas
+- otra columna con:
+  - label pequeño
+  - título grande:
+    “ITALIA ENCUENTRA A TANDIL”
+  - párrafo editorial
+  - CTA sutil con flecha
+Debe verse exactamente en el espíritu del boceto.
+3. Sección “Una obra de arte en cada sabor”
+Bloque editorial de dos columnas:
+- lado izquierdo:
+  - numeración “03”
+  - label
+  - título:
+    “UNA OBRA DE ARTE EN CADA SABOR”
+  - texto descriptivo
+  - CTA
+- lado derecho:
+  - imagen separada de la estatua femenina con racimo de uvas
+4. Sección “Pureza que inspira”
+Bloque invertido respecto al anterior:
+- un lado con la imagen de la estatua femenina sosteniendo un cuenco
+- otro lado con:
+  - numeración “04”
+  - título:
+    “PUREZA QUE INSPIRA”
+  - texto sobre leche, nobleza e ingredientes
+  - CTA
+5. Sección “Todos los caminos llevan al sabor”
+Bloque final antes del footer:
+- lado izquierdo:
+  - numeración “05”
+  - título:
+    “TODOS LOS CAMINOS LLEVAN AL SABOR”
+  - texto descriptivo
+  - CTA
+- lado derecho:
+  - imagen del ángel de mármol con alas y corona floral
+6. Footer premium
+Footer muy limpio y editorial con:
+- links en columna izquierda:
+  - Gelato
+  - Cultura
+  - Nuestra historia
+  - Sabores
+  - Tiendas
+- sello o isotipo FIGLIO centrado
+- frase:
+  “UN MUNDO MÁS DULCE ES POSIBLE”
+- botón CTA:
+  “EXPLORAR FIGLIO”
+- redes o links secundarios a la derecha
+- idiomas abajo a la derecha
+- copyright abajo a la izquierda
+Imágenes / assets
+Voy a proporcionarte las imágenes por separado.
+Quiero que las uses como assets reales dentro de la landing, no como fondo armado completo.
+Debes usar estas imágenes como bloques individuales:
+- hero / coloso principal
+- manos con frutas
+- estatua femenina con uvas
+- estatua femenina con cuenco
+- ángel de mármol con corona
+- opcionalmente otras esculturas o relieves si aportan valor
+Importante
+- respetar encuadres elegantes
+- no deformar imágenes
+- usar object-fit: cover cuando corresponda
+- mantener una composición muy limpia
+- dar protagonismo a cada asset como pieza editorial
+Interacciones y animaciones
+La web debe empezar a sentirse viva.
+Agregar:
+Scroll suave
+- smooth scroll general
+Reveal on scroll
+- cada bloque aparece con animaciones suaves al entrar en viewport
+- fade up / fade in / slight translate
+Parallax sutil
+- en imágenes grandes, muy leve
+- nada exagerado
+Hover states
+- en CTAs y links:
+  - cambio sutil de color
+  - underline animado o flecha que se mueve levemente
+Menú
+- header sticky o semi-sticky
+- fondo muy sutil al scrollear
+- transición elegante
+Responsive
+Tiene que quedar muy bien en:
+- desktop
+- tablet
+- mobile
+En mobile:
+- mantener look premium
+- apilar secciones sin perder jerarquía
+- reducir tamaño del “FIGLIO” monumental
+- mantener títulos potentes
+- navegación simplificada con menú hamburguesa
+- cuidar mucho espaciados verticales
+Estilo de maquetación
+Quiero una maquetación:
+- minimalista
+- modular
+- limpia
+- con mucho espacio en blanco
+- muy editorial
+- inspirada en marcas premium
+Evitar:
+- sombras pesadas
+- bordes toscos
+- demasiados efectos
+- estética genérica de template
+Textos base
+Usar estos textos o placeholders muy similares:
+Hero
+- IMPERO DEL DOLCE
+- Gelato artigianale para un mundo más brillante
+Sección 02
+- LA MATERIA PRIMA
+- ITALIA ENCUENTRA A TANDIL
+- La excelencia italiana se encuentra con nuestra tierra. Ingredientes nobles, tradición y un territorio único dan vida a un gelato con identidad propia.
+Sección 03
+- ARTE QUE SE SABOREA
+- UNA OBRA DE ARTE EN CADA SABOR
+- Cada creación es un homenaje al arte, a la belleza y al placer de lo simple. Gelato que transforma lo cotidiano en algo extraordinario.
+Sección 04
+- LA LECHE
+- PUREZA QUE INSPIRA
+- La leche, en su forma más pura, es el inicio de todo. Un ingrediente noble que, en manos expertas, se transforma en algo inolvidable.
+Sección 05
+- TRADICIÓN SIN LÍMITES
+- TODOS LOS CAMINOS LLEVAN AL SABOR
+- Un legado que viaja, que inspira y que une culturas. Del arte clásico a tu mesa, el placer no conoce fronteras.
+Footer
+- UN MUNDO MÁS DULCE ES POSIBLE
+Calidad esperada
+Quiero un resultado que parezca:
+- una marca real
+- una landing premium lista para presentar
+- una web con criterio visual serio
+- no un simple wireframe
+- no una demo genérica
+Entregables
+Necesito que generes:
+1. estructura completa de la landing
+2. HTML / componentes
+3. CSS bien organizado
+4. JS para animaciones y comportamiento
+5. secciones ya conectadas y listas para correr
+6. código claro para reemplazar imágenes fácilmente
+7. comentarios mínimos útiles donde haga falta
+Extra importante
+Toma como referencia visual principal el boceto que te compartí.
+La intención no es “inspirarse vagamente”, sino traducirlo lo más fiel posible a una web funcional real, respetando:
+- composición general
+- jerarquía tipográfica
+- estilo editorial
+- sensación de lujo
+- distribución por bloques
+- ritmo visual del scroll
+Instrucción final
+Construye una primera versión completa, funcional y prolija de esta landing de FIGLIO para que pueda abrirla y verla andando de inmediato.

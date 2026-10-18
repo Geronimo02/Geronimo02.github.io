@@ -7,3 +7,8 @@ skills-lock.json
 **/.atl/
 # playwright MCP session logs
 **/.playwright-mcp/
+
+# local dependencies and generated previews
+node_modules/
+output/playwright/
+.playwright-cli/

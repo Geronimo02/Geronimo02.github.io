@@ -1,0 +1,6 @@
+FIGLIO — demo web editorial V3
+Abrir index.html en Chrome/Edge. Navegar a Sabores y Dolcezze desde el menu.
+El Coloso sobresale del hero y se superpone a la siguiente escena; esculturas independientes con animacion al scroll.
+Sello de FIGLIO en cabecera y footer.
+No es un modelo 3D real: es profundidad escenografica con capas 2D y scroll.
+Para pruebas de servidor local: python -m http.server 8000 y abrir http://localhost:8000
