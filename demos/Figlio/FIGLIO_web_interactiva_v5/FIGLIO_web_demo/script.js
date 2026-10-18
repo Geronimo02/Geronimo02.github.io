@@ -35,6 +35,80 @@
     if (event.key === "Escape") closeMenu();
   });
 
+  const root = document.documentElement;
+  const pageTransition = document.querySelector(".page-transition");
+  const transitionMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  const transitionKey = "figlio-page-transition";
+  let transitionFallback = 0;
+
+  function finishPageEntrance() {
+    clearTimeout(transitionFallback);
+    root.classList.remove("page-entering", "page-transition-ready");
+  }
+
+  if (pageTransition && root.classList.contains("page-entering")) {
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        root.classList.add("page-transition-ready");
+        pageTransition.addEventListener("transitionend", finishPageEntrance, {
+          once: true,
+        });
+        transitionFallback = setTimeout(finishPageEntrance, 850);
+      }),
+    );
+  }
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (
+      !pageTransition ||
+      !link ||
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.detail === 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      link.hasAttribute("download") ||
+      link.dataset.noTransition !== undefined ||
+      (link.target && link.target !== "_self")
+    )
+      return;
+
+    const destination = new URL(link.href, location.href);
+    const siteRoot = location.pathname.replace(/[^/]*$/, "");
+    const sameDocument =
+      destination.pathname === location.pathname &&
+      destination.search === location.search;
+    if (
+      destination.origin !== location.origin ||
+      !destination.pathname.startsWith(siteRoot) ||
+      sameDocument ||
+      root.classList.contains("page-exiting")
+    )
+      return;
+
+    event.preventDefault();
+    closeMenu();
+    root.classList.add("page-exiting");
+    try {
+      sessionStorage.setItem(transitionKey, "1");
+    } catch {}
+    setTimeout(
+      () => location.assign(destination.href),
+      transitionMotion.matches ? 130 : 680,
+    );
+  });
+
+  addEventListener("pageshow", (event) => {
+    if (!event.persisted) return;
+    root.classList.remove("page-exiting");
+    try {
+      sessionStorage.removeItem(transitionKey);
+    } catch {}
+  });
+
   const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   const mobile = matchMedia("(max-width: 800px)");
   const stages = [...document.querySelectorAll(".scroll-stage")];

@@ -4,6 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#f5f1e9" />
+    <script>
+      try {
+        if (sessionStorage.getItem("figlio-page-transition") === "1") {
+          document.documentElement.classList.add("page-entering");
+          sessionStorage.removeItem("figlio-page-transition");
+        }
+      } catch {}
+    </script>
     <meta
       name="description"
       content="FIGLIO — Impero del Dolce. Arte, cultura y gelato."
@@ -20,6 +28,15 @@
   </head>
 
   <body data-page="dolcezze">
+    <div class="page-transition" aria-hidden="true">
+      <span class="page-transition__meander page-transition__meander--top"></span>
+      <div class="page-transition__mark">
+        <img src="assets/figlio-sello.png" alt="" />
+        <span class="page-transition__wordmark">FIGLIO</span>
+        <span class="page-transition__caption">ARTE · SABOR · TRADICIÓN</span>
+      </div>
+      <span class="page-transition__meander page-transition__meander--bottom"></span>
+    </div>
     <header class="site-header" id="top">
       <a class="brand" href="index.html"
         >FIGLIO<span>®</span
