@@ -40,3 +40,6 @@ Los archivos `content/menu.json`, `content/copy.json` y `content/media-manifest.
 ## Derechos y plan B
 No hay autorización aportada para redistribuir fotos o capturas de terceros en una rama pública. Las fuentes de marca tampoco prueban que quien publica sea el titular de todas las fotos. Registrar permiso, alcance, fecha y atribución al recibirlo. Las fotos con personas reconocibles requieren revisión adicional.
 Plan B de demo: presentar referencias enlazadas en Concept y producir un fondo abstracto propio si hace falta; no generar el local, el alfajor ni el muffin como si fueran fotos del negocio. No se generaron imágenes en S2.
+
+## Assets de exploración S3
+Dos WebP generados y dos fuentes OFL en concept/assets/, procedencia en PROVENANCE.md. REPRESENTACION rotulada, no fotos reales del negocio. Incluidos en los HTML offline. Originales/licencias de fotos reales siguen pendientes.

@@ -1,0 +1,84 @@
+{
+  "business": "Negro Mercado",
+  "user_reference_urls": [],
+  "items": [
+    {
+      "id": "R01",
+      "url": "https://gails.com/",
+      "priority": "P2",
+      "kind": "visual",
+      "status": "verified",
+      "decision": "inspiration_only",
+      "observed": "Portada comercial con producto a sangre, texto superpuesto y dos accesos claros; inspección visual directa de la home.",
+      "principle": "Dominancia fotográfica y texto corto con CTA de carta.",
+      "brand_anchor": "Oferta de café y pastelería, producto como atractivo principal.",
+      "concept_path": "concept/directions/a/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "a"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar tipografía serif, rojo, fotos, marca ni composición exacta."
+    },
+    {
+      "id": "R02",
+      "url": "https://lacabra.com/pages/east-village",
+      "priority": "P2",
+      "kind": "visual",
+      "status": "verified",
+      "decision": "inspiration_only",
+      "observed": "Página de local: campo fotográfico vertical junto a texto, dirección, horario y Directions; inspeccionada sin overlays.",
+      "principle": "Vincular una invitación editorial con datos para visitar.",
+      "brand_anchor": "Esquina Avellaneda 702 y horarios publicados.",
+      "concept_path": "concept/directions/b/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "b"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar imágenes, paleta literal, logo ni atribuir su interior a Negro Mercado."
+    },
+    {
+      "id": "R03",
+      "url": "https://ui.aceternity.com/components/tabs",
+      "priority": "P2",
+      "kind": "component",
+      "status": "verified",
+      "decision": "inspiration_only",
+      "observed": "Se inspeccionó demo y se pulsó Services: estado activo en píldora, panel cambia con jerarquía por capas.",
+      "principle": "Tabs con estado visible y recambio de contenido; adaptación propia con ARIA y teclado.",
+      "brand_anchor": "Café, pastelería y vermú como entradas naturales a la carta.",
+      "concept_path": "concept/directions/a/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "a"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar código del componente, stack React, púrpura SaaS ni tarjetas apiladas."
+    },
+    {
+      "id": "R04",
+      "url": "https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partial",
+      "decision": "inspiration_only",
+      "observed": "Documentación oficial consultada sobre condiciones responsive y reduced motion; no se ejecutó un demo GSAP.",
+      "principle": "Adaptar presentación por viewport y suprimir movimiento si el sistema lo pide.",
+      "brand_anchor": "Pausa tranquila y acceso móvil claro.",
+      "concept_path": "concept/directions/a/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "a",
+        "b"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No afirmar uso de GSAP: se implementó CSS y Web Animations nativos; no se añadió la dependencia."
+    }
+  ],
+  "selection_note": "No reference marked selected until screenshot evidence exists. Sources actually inspected; implementation awaits rendering."
+}

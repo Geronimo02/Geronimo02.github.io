@@ -34,3 +34,9 @@ No hay conceptos aprobados ni rechazados para este negocio. Criterio pedido: pre
 
 ## S2 — contenido preparado
 19/10/2026, pedido: «bueno vamos con la etapa 2». Se ejecuta Signature Content. Carta transcrita con 65 registros y precios observados fechados; las abreviaturas de variantes quedan por confirmar y ningún guion se convierte en cero. Copy de siete bloques propuesto, no aprobado como texto oficial. 12 referencias con procedencia/permiso por asset. Foto de laminado inspeccionada muestra plato servido, no proceso. No carrito, checkout, reservas ni disponibilidad real en MVP. Fotos de investigación fuera del repo público; no contactar al negocio. S2 queda para revisión, no se autoaprueba S3.
+
+### S3 · continuación autorizada
+- Usuario pide seguir e insiste en assets, referencias, componentes y animación. Se inspeccionaron GAIL’s, La Cabra y Aceternity Tabs; GSAP como referencia documental.
+- Se construyen A fotográfica oscura y B editorial luminosa, con composiciones e interacción diferentes. A recomendada provisionalmente.
+- Sin originales licenciados, se generan imágenes genéricas rotuladas; no son pruebas del negocio.
+- Capturas bloqueadas por el entorno y protocolo del navegador; no se inventa QA. S3 en curso, no selección ni publicación.

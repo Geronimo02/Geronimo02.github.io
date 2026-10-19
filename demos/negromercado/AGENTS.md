@@ -10,3 +10,5 @@
 8. S2 ejecutada: leer CONTENT.md, ASSETS.md y content/{menu,copy,media-manifest}.json. No repetir transcripción ni inventar tamaño de columnas. 65 registros no equivalen a 65 productos de stock confirmado; null es dato no publicado, no cero. S2 pendiente revisión. No empezar sitio aquí.
 9. S3: cargar signature-concept, inspeccionar referencias concretas, guardar REFERENCE-APPLICATION.json y propuestas a 1440/390. No sustituir atractivo gastronómico por diagramas o índices.
 10. Actualizar estado, decisiones y resume al cerrar etapa y persistir en la rama. No marcar pruebas no ejecutadas como pass.
+
+11. S3 autorizada y dos prototipos preparados en concept/. Prevalece el estado in_progress_render_pending: NO existen capturas verificadas ni elección. Leer CONCEPT-BOARD.md y concept/screens/capture-results.json. No afirmar S3 terminada; renderizar por vía permitida antes de solicitar aprobación final de diseño.

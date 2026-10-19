@@ -37,3 +37,6 @@
 - S2 inspeccionó imagen real de muffin abierto, focca y laminado servido. No confundir caption sobre proceso con foto de manos elaborando.
 - Fotografías solo referencia sin permiso, no empaquetadas públicamente. content/ contiene datos y manifest, no un paquete fotográfico licenciado.
 - Próximo S3: activar Signature Concept tras revisión, investigar refs concretas y producir alternativas visuales sin inventar assets o hechos.
+
+## S3 · avance del 19/10/2026
+Usuario autoriza seguir. Dos conceptos y comparador offline en concept/. Referencias inspeccionadas y aplicación escrita; REFERENCE-APPLICATION.json no marca selected sin capturas. A recomendación provisional, no elegida. Imágenes generadas rotuladas REPRESENTACION; fuentes OFL adjuntas. Bloqueo técnico de render documentado en CONCEPT-BOARD.md; sin capturas ni pruebas interactivas ejecutadas. Próximo: render permitido 1440/390, revisar, corregir y presentar elección. No S4 ni deploy.

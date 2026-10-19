@@ -1,0 +1,7 @@
+{
+  "status": "not_tested",
+  "captures": [],
+  "interactive_tests": "not_run",
+  "reason": "Python Playwright absent; Node Chromium absent; official browser download unavailable; browser data URL blocked by URL policy",
+  "no_workaround_attempted": true
+}
