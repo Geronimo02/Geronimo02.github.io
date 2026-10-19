@@ -1,7 +1,7 @@
 # Retomar Negro Mercado — S1 v0.2
 
 - Actualizado 19/10/2026 tras pedido explícito de revisar Instagram/historias/Maps.
-- Studio 3.3, modo DEMO; S0 completo; S1 v0.2 aceptada por el usuario el 19/10/2026; S2 no iniciada.
+- Studio 3.3, modo DEMO; S0 completo; S1 v0.2 aceptada por el usuario el 19/10/2026; S2 preparada el 19/10/2026; revisión del usuario pendiente.
 - Repo Geronimo02/Geronimo02.github.io, demos/negromercado/.
 - Rama signature/negromercado-s0-s1-20261019; no main, merge ni deploy.
 - Leer BRAND.md, RESEARCH-REVISION.md, brand.json, SOURCES.json y DECISIONES.md.
@@ -27,8 +27,13 @@
 - Identidad digital vigente prevalece sobre cartel antiguo, aunque todavía aparezca en fotos de fachada.
 - Mercado actual/segunda sede pendientes; no priorizar ese eje por fuentes antiguas.
 - No subir fotos/capturas con información de cuentas personales o sin derechos al repo público.
-- Próximo S2: originales/logo/paleta, transcripción carta, fotos por sede/derechos, operación.
+- S2: CONTENT.md/ASSETS.md + content/menu.json, copy.json y media-manifest.json. Carta 65 registros, 7 bloques de copy, 12 referencias.
 - S3: referencias reales, 2–3 propuestas 1440/390 y elección explícita. No hay dirección aprobada.
 - Sin sitio implementado ni publicación autorizada.
 
-- Cierre solicitado por usuario: actualizar repo antes de la siguiente etapa. Investigación aceptada; ninguna dirección artística ni publicación aprobada.
+- Cierre solicitado por usuario: actualizar repo antes de la siguiente etapa. Investigación S1 aceptada; S2 preparada para revisión; ninguna dirección artística ni publicación aprobada.
+
+- S2 recuperó ambas páginas de carta; se leyeron los importes y se preservó ambigüedad de columnas. No hay stock ni variantes comerciales validados.
+- S2 inspeccionó imagen real de muffin abierto, focca y laminado servido. No confundir caption sobre proceso con foto de manos elaborando.
+- Fotografías solo referencia sin permiso, no empaquetadas públicamente. content/ contiene datos y manifest, no un paquete fotográfico licenciado.
+- Próximo S3: activar Signature Concept tras revisión, investigar refs concretas y producir alternativas visuales sin inventar assets o hechos.
