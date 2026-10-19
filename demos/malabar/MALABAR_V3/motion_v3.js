@@ -1,8 +1,7 @@
 /* MALABAR v3: scroll-linked cinematography with native browser APIs.
-   No CDN required for local playback. Respect reduced motion and mobile scrolling. */
+   No CDN required for local playback. */
 (function initMalabarMotion(){
   'use strict';
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const heroStage = document.getElementById('hero-stage');
   const heroFrame = document.querySelector('.hero-frame');
   const heroContent = document.querySelector('.hero-content');
@@ -57,7 +56,7 @@
 
   const intro=document.getElementById('concepto');
   const statement=intro.querySelector('.statement');
-  if(!reduced.matches){
+  {
     words=wrapWords(statement);
     const revealNodes=document.querySelectorAll('.intro .description,.intro .line-link,.section-head,.space-note,.experience-text,.lead-intro,.footer-cta-inner');
     revealNodes.forEach(node=>node.classList.add('motion-reveal'));
@@ -94,13 +93,6 @@
     const vh=window.innerHeight;
     const maxScroll=Math.max(1,document.documentElement.scrollHeight-vh);
     siteMeter.style.transform=`scaleX(${clamp(window.scrollY/maxScroll)})`;
-    if(reduced.matches){
-      if(heroFrame) heroFrame.style.transform='';
-      if(heroContent){heroContent.style.transform='';heroContent.style.opacity='';}
-      if(galleryTrack) galleryTrack.style.transform='';
-      return;
-    }
-
     if(isDesktop()){
       // First scene: one sticky hero, cinematic frame shrink, typography dissolves.
       const heroTravel=Math.max(1,heroStage.offsetHeight-vh);
@@ -168,17 +160,11 @@
   }
   window.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
-  if(reduced.addEventListener) reduced.addEventListener('change',()=>{
-    if(!reduced.matches && !words.length) words=wrapWords(statement);
-    document.body.classList.toggle('motion-on', !reduced.matches);
-    if(reduced.matches) document.querySelectorAll('.motion-reveal').forEach(node=>node.classList.add('is-visible'));
-    schedule();
-  });
   window.addEventListener('load',schedule,{once:true});
   schedule();
 
   // Custom cursor is informative only on clickable event choices.
-  if(!reduced.matches && window.matchMedia('(pointer:fine)').matches){
+  if(window.matchMedia('(pointer:fine)').matches){
     const cursor=document.querySelector('.motion-cursor');
     if(cursor){
       document.querySelectorAll('.story-choice,.event-card').forEach(a=>{

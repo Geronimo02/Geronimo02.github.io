@@ -4,7 +4,6 @@
   const categories = window.BRAICO_CATEGORIES || {};
   const productsById = Object.fromEntries(products.map(p=>[p.id,p]));
   const storageKey = 'braico-signature-demo-cart-v1';
-  const motionReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = s => document.querySelector(s);
   const results = $('#menu-results');
   const title = $('#results-title');
@@ -120,7 +119,7 @@
   document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>setCategory(button.dataset.filter)));
   document.querySelectorAll('[data-jump-cat]').forEach(button=>button.addEventListener('click',()=>{
     setCategory(button.dataset.jumpCat);
-    $('#menu-tools').scrollIntoView({behavior:motionReduced?'auto':'smooth',block:'start'});
+    $('#menu-tools').scrollIntoView({behavior:'smooth',block:'start'});
   }));
   document.querySelectorAll('[data-story-to-menu]').forEach(a=>a.addEventListener('click',()=>setCategory('h')));
   searchInput.addEventListener('input',()=>{
@@ -130,7 +129,7 @@
   });
   moreBtn.addEventListener('click',()=>{
     expanded=!expanded;renderMenu();
-    if(!expanded) $('#results-title').scrollIntoView({behavior:motionReduced?'auto':'smooth',block:'start'});
+    if(!expanded) $('#results-title').scrollIntoView({behavior:'smooth',block:'start'});
   });
   results.addEventListener('click',e=>{
     const button=e.target.closest('[data-add]');
@@ -252,7 +251,7 @@
     homenajePosition.textContent=`${String(homenajeIndex+1).padStart(2,'0')} / ${String(homenajeProducts.length).padStart(2,'0')}`;
     homenajeAdd.dataset.homenajeAdd=p.id;
     homenajeAdd.setAttribute('aria-label',`Agregar ${p.name} a mi selección`);
-    if(!motionReduced && scrollChips){
+    if(scrollChips){
       const card=$('#ticket-flip');
       const nameBox=card.querySelector('.counter-name-box');
       nameBox.classList.remove('b3-turning');homenajePosition.classList.remove('b3-turning');
@@ -264,7 +263,7 @@
       b.setAttribute('aria-pressed',String(active));
       if(active && scrollChips){
         const left=b.offsetLeft-homenajeIndexButtons.offsetLeft-homenajeIndexButtons.clientWidth/2+b.offsetWidth/2;
-        homenajeIndexButtons.scrollTo({left:Math.max(0,left),behavior:motionReduced?'auto':'smooth'});
+        homenajeIndexButtons.scrollTo({left:Math.max(0,left),behavior:'smooth'});
       }
     });
   }

@@ -352,7 +352,7 @@
     $('.video-card').classList.remove('is-playing');
   });
 
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if ('IntersectionObserver' in window) {
     const targets = $$('.menu-heading, .menu-visual, .product-card, .kitchen-copy, .polaroid, .local-copy h2, .local-visual, .cta-copy');
     targets.forEach((target) => target.classList.add('reveal'));
     const observer = new IntersectionObserver((entries) => {

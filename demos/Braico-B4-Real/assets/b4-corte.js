@@ -12,7 +12,6 @@ const slices=[...document.querySelectorAll('.b4-slice')];
 const keys=[...document.querySelectorAll('.b4-key')];
 const label=toggle.querySelector('.button-label');
 const pct=document.querySelector('#b4-pct');
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const detail={
  'pan-superior':['PAN SUPERIOR','El pan de la representación visual. El tipo exacto no está confirmado en la carta.'],
  'dijon':['MOSTAZA DIJON','La salsa Dijon aparece expresamente en la receta de Carlitos.'],

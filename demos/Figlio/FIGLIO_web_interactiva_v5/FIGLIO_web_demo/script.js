@@ -37,7 +37,6 @@
 
   const root = document.documentElement;
   const pageTransition = document.querySelector(".page-transition");
-  const transitionMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const transitionKey = "figlio-page-transition";
   let transitionFallback = 0;
 
@@ -95,10 +94,7 @@
     try {
       sessionStorage.setItem(transitionKey, "1");
     } catch {}
-    setTimeout(
-      () => location.assign(destination.href),
-      transitionMotion.matches ? 130 : 680,
-    );
+    setTimeout(() => location.assign(destination.href), 680);
   });
 
   addEventListener("pageshow", (event) => {
@@ -109,7 +105,6 @@
     } catch {}
   });
 
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
   const mobile = matchMedia("(max-width: 800px)");
   const stages = [...document.querySelectorAll(".scroll-stage")];
   const stageProgress = new WeakMap();
@@ -123,24 +118,9 @@
   const setVar = (el, name, value) => el?.style.setProperty(name, value);
   let frame = 0;
 
-  function resetMotion() {
-    stages.forEach((stage) => {
-      stageProgress.delete(stage);
-      stage.querySelectorAll("[style]").forEach((el) => {
-        if (
-          el.matches(
-            ".hero-statue,.giant-logo,.editorial-visual img,.editorial-copy,.product-hero-image,.flavor-scene-image img",
-          )
-        )
-          el.removeAttribute("style");
-      });
-    });
-  }
-
   function update() {
     frame = 0;
     progressBar.style.width = `${(100 * scrollY) / Math.max(1, document.documentElement.scrollHeight - innerHeight)}%`;
-    if (reduced.matches) return;
 
     const isMobile = mobile.matches;
     let animating = false;
@@ -257,10 +237,6 @@
     },
     { passive: true },
   );
-  reduced.addEventListener("change", () => {
-    resetMotion();
-    schedule();
-  });
   mobile.addEventListener("change", () => {
     stages.forEach((stage) => stageProgress.delete(stage));
     schedule();

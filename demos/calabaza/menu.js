@@ -315,8 +315,7 @@
       const target = (360 - winnerIndex * segmentDegrees) % 360;
       rotation += 360 * 5 + ((target - current + 360) % 360);
       const winner = options[winnerIndex];
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (window.innerWidth <= 800) wheel.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+      if (window.innerWidth <= 800) wheel.scrollIntoView({ behavior: "smooth", block: "center" });
       const finish = () => {
         const photo = winner.image ? el("img") : null;
         if (photo) {
@@ -339,7 +338,7 @@
         result.classList.toggle("no-photo", !photo);
         result.replaceChildren(...(photo ? [photo, copy] : [copy]));
         result.hidden = false;
-        if (window.innerWidth <= 800) result.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+        if (window.innerWidth <= 800) result.scrollIntoView({ behavior: "smooth", block: "center" });
         spinButton.disabled = false;
         spinButton.textContent = "Girar otra vez ";
         const arrow = document.createElement("span");
@@ -349,8 +348,7 @@
         spinning = false;
       };
       wheel.style.transform = `rotate(${rotation}deg)`;
-      if (reducedMotion) finish();
-      else wheel.addEventListener("transitionend", finish, { once: true });
+      wheel.addEventListener("transitionend", finish, { once: true });
     });
   }
   function changeQty(id, delta) {

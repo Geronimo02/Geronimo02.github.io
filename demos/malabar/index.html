@@ -1708,10 +1708,7 @@
     .copyright{margin-top:48px}
     body{padding-bottom:66px}
   }
-  @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
-    .scenario-ambient::before,.scenario-ambient::after{animation:none!important}
-  }
+
 
   /* SISTEMA DE MOTION Y SCROLL EDITORIAL v3 */
   html { scroll-padding-top: 88px; }
@@ -1876,39 +1873,17 @@
     .gallery-foot { justify-content:flex-start; }
     .moment::before { inset:-6%; }
   }
-  @media (prefers-reduced-motion:reduce) {
-    .hero-stage { height:auto!important; }
-    .hero-stage .hero { position:relative!important; }
-    .hero-frame,.hero-stage .hero-content,.experience-photo img,.gallery-track { transform:none!important; opacity:1!important; }
-    .hero-scroll { animation:none!important; }
-    .motion-word { opacity:1!important; transform:none!important; }
-    .motion-reveal { opacity:1!important; transform:none!important; }
-    .events { min-height:0!important; padding:70px 0 110px!important; }
-    .event-story { display:none!important; }
-    .event-grid { display:grid!important; }
-    .space-photo-frame { clip-path:none!important; }
-    .gallery { height:auto!important; padding:95px 0!important; overflow:visible!important; }
-    .gallery-pin { position:relative!important; top:auto!important; height:auto!important; overflow:visible!important; padding:0!important; }
-    .gallery-viewport { overflow-x:auto!important; scroll-snap-type:x mandatory; }
-    .gallery-track { transform:none!important; height:430px!important; }
-    .gallery-card { width:min(74vw,600px)!important; }
-    .motion-cursor { display:none!important; }
-    .ambient-cursor { display:none!important; }
-    .kinetic-track { animation:none!important; transform:none!important; }
-    .chapter-indicator,.chapter-rule i { transition:none!important; }
-    .scenario-scroll-stage { height:auto!important; margin-bottom:0!important; }
-    .scenario-scroll-stage .atmosphere-stage { position:relative!important; top:auto!important; transform:none!important; }
-  }
-  @media (min-width:951px) and (prefers-reduced-motion:no-preference) {
+
+  @media (min-width:951px) {
     .events { height:292svh; min-height:0; padding:120px 0 110px; }
     .events > .wrap { height:100%; }
   }
-  @media (min-width:951px) and (min-height:880px) and (prefers-reduced-motion:no-preference) {
+  @media (min-width:951px) and (min-height:880px) {
     .scenario-scroll-stage { height:calc(100svh + 330px); margin-bottom:42px; }
     .scenario-scroll-stage .atmosphere-stage { position:sticky; top:78px; margin-bottom:0; will-change:transform; }
   }
   @media (max-width:950px) { .events { height:auto; } .events > .wrap { height:auto; } }
-  @media (prefers-reduced-motion:reduce) { .events { height:auto!important; } .events > .wrap { height:auto!important; } }
+
   @media (max-width:600px) {
     .footer-cta h2 { font-size:clamp(42px,12vw,61px); overflow-wrap:break-word; }
   }
@@ -3107,7 +3082,6 @@
   <script>
   (function initMalabarMotion(){
     'use strict';
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const heroStage = document.getElementById('hero-stage');
     const heroFrame = document.querySelector('.hero-frame');
     const heroContent = document.querySelector('.hero-content');
@@ -3179,7 +3153,7 @@
 
     const intro = document.getElementById('concepto');
     const statement = intro.querySelector('.statement');
-    if(!reduced.matches){
+    {
       words = wrapWords(statement);
       const standardRevealNodes = Array.from(document.querySelectorAll('.intro .description,.intro .line-link,.section-head,.space-note,.experience-text,.lead-intro,.footer-cta-inner'));
       const mediaRevealNodes = Array.from(document.querySelectorAll('.space-photo-stage,.space-gallery,.experience-photo,.moment-content,.gallery-card,.gallery-foot,.form-shell,.event-card'));
@@ -3242,14 +3216,6 @@
       const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
       if(siteMeter) siteMeter.style.transform = `scaleX(${clamp(window.scrollY/maxScroll)})`;
       updateChapter(vh);
-
-      if(reduced.matches){
-        if(heroFrame) heroFrame.style.transform = '';
-        if(heroContent){ heroContent.style.transform = ''; heroContent.style.opacity = ''; }
-        if(galleryTrack) galleryTrack.style.transform = '';
-        if(atmosphereStage) atmosphereStage.style.transform = '';
-        return;
-      }
 
       if(isDesktop()){
         // Escena 1: Hero cinemático pinned, shrink de marco y fadeout de tipografía
@@ -3331,17 +3297,11 @@
 
     window.addEventListener('scroll', schedule, {passive:true});
     window.addEventListener('resize', schedule, {passive:true});
-    if(reduced.addEventListener) reduced.addEventListener('change', () => {
-      if(!reduced.matches && !words.length) words = wrapWords(statement);
-      document.body.classList.toggle('motion-on', !reduced.matches);
-      if(reduced.matches) document.querySelectorAll('.motion-reveal').forEach(node => node.classList.add('is-visible'));
-      schedule();
-    });
     window.addEventListener('load', schedule, {once:true});
     schedule();
 
     // Cursores y atracción magnética: transformaciones compuestas, agrupadas en un solo frame.
-    if(!reduced.matches && window.matchMedia('(pointer:fine)').matches){
+    if(window.matchMedia('(pointer:fine)').matches){
       const cursor = document.querySelector('.motion-cursor');
       const ambientCursor = document.querySelector('.ambient-cursor');
       const magneticNodes = Array.from(document.querySelectorAll('.hero .button,.moment .button,.footer-cta .button,.nav-contact'));
@@ -3359,12 +3319,6 @@
       let activeMagnetic = null;
       const renderPointer = () => {
         pointerFrame = 0;
-        if(reduced.matches){
-          if(ambientCursor) ambientCursor.classList.remove('is-visible','is-hot');
-          if(activeMagnetic) activeMagnetic.style.transform = '';
-          activeMagnetic = null;
-          return;
-        }
         if(cursor) cursor.style.transform = `translate3d(${Math.round(pointerX - 46)}px,${Math.round(pointerY - 46)}px,0) scale(1)`;
         if(ambientCursor){
           ambientCursor.style.transform = `translate3d(${Math.round(pointerX - 110)}px,${Math.round(pointerY - 110)}px,0)`;

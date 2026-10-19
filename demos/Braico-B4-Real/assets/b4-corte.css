@@ -67,7 +67,7 @@
 .b4-readout{max-width:none}
 }
 @media(max-width:385px){.b4-art{min-height:635px}.b4-hint{bottom:230px}.b4-slice{width:79%}.b4-explore{height:175px}.b4-key{padding:7px 2px}}
-@media(prefers-reduced-motion:reduce){.b4-slice,.b4-whole,.b4-hint{transition:none!important}}
+
 
 /* Mobile design pass #2: legible ingredient names and the detail card stay visible. */
 @media(max-width:560px){
