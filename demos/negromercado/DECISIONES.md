@@ -31,3 +31,6 @@ No hay conceptos aprobados ni rechazados para este negocio. Criterio pedido: pre
 ## Cierre S1 — aceptación del usuario
 
 19/10/2026. Mensaje: «perfecto. si queres antes de pasar a lo siguiente actualiza el repo». Se registra aceptación del relevamiento/Brand Kit revisado v0.2 y pedido de persistencia antes de S2. No constituye elección de dirección artística, autorización de merge ni publicación. S2 sigue sin iniciar.
+
+## S2 — contenido preparado
+19/10/2026, pedido: «bueno vamos con la etapa 2». Se ejecuta Signature Content. Carta transcrita con 65 registros y precios observados fechados; las abreviaturas de variantes quedan por confirmar y ningún guion se convierte en cero. Copy de siete bloques propuesto, no aprobado como texto oficial. 12 referencias con procedencia/permiso por asset. Foto de laminado inspeccionada muestra plato servido, no proceso. No carrito, checkout, reservas ni disponibilidad real en MVP. Fotos de investigación fuera del repo público; no contactar al negocio. S2 queda para revisión, no se autoaprueba S3.
