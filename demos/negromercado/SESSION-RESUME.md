@@ -1,7 +1,7 @@
 # Retomar Negro Mercado — S1 v0.2
 
 - Actualizado 19/10/2026 tras pedido explícito de revisar Instagram/historias/Maps.
-- Studio 3.3, modo DEMO; S0 completo; S1 revisada para revisión del usuario; S2 no iniciada.
+- Studio 3.3, modo DEMO; S0 completo; S1 v0.2 aceptada por el usuario el 19/10/2026; S2 no iniciada.
 - Repo Geronimo02/Geronimo02.github.io, demos/negromercado/.
 - Rama signature/negromercado-s0-s1-20261019; no main, merge ni deploy.
 - Leer BRAND.md, RESEARCH-REVISION.md, brand.json, SOURCES.json y DECISIONES.md.
@@ -30,3 +30,5 @@
 - Próximo S2: originales/logo/paleta, transcripción carta, fotos por sede/derechos, operación.
 - S3: referencias reales, 2–3 propuestas 1440/390 y elección explícita. No hay dirección aprobada.
 - Sin sitio implementado ni publicación autorizada.
+
+- Cierre solicitado por usuario: actualizar repo antes de la siguiente etapa. Investigación aceptada; ninguna dirección artística ni publicación aprobada.
