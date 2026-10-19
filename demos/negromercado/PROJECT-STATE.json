@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "business": "Negro Mercado",
+  "slug": "negromercado",
+  "source": "https://www.instagram.com/negromercado.ok/",
+  "mode": "demo",
+  "created_at": "2026-10-19T13:56:01Z",
+  "updated_at": "2026-10-19T14:00:27.010872+00:00",
+  "next_stage": "S2",
+  "persistent_destination": "github:Geronimo02/Geronimo02.github.io/demos/negromercado",
+  "stages": {
+    "S0": {
+      "status": "documented",
+      "evidence": [
+        "PROYECTO.md",
+        "PROJECT-STATE.json"
+      ]
+    },
+    "S1": {
+      "status": "provisional",
+      "evidence": [
+        "BRAND.md",
+        "brand.json",
+        "SOURCES.json",
+        "kit.html"
+      ],
+      "open_issues": [
+        "identidad gráfica exacta",
+        "operación actual",
+        "carta",
+        "horarios y teléfonos",
+        "derechos fotografías"
+      ],
+      "user_approved": false
+    },
+    "S2": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "S3": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "S4": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "S5": {
+      "status": "not_requested",
+      "evidence": []
+    }
+  },
+  "creative_gates": {
+    "G0": "not_tested",
+    "G1": "not_tested",
+    "G2": "not_tested"
+  },
+  "decisions": [
+    {
+      "date": "2026-10-19",
+      "status": "authorized_by_user",
+      "decision": "S0/S1 y persistencia en rama nueva sin main/deploy"
+    },
+    {
+      "date": "2026-10-19",
+      "status": "provisional",
+      "decision": "Avellaneda como sede base; no atribuir vigencia a segunda sede"
+    }
+  ],
+  "studio_version": "3.3",
+  "stage": "S1",
+  "branch": "signature/negromercado-s0-s1-20261019",
+  "approval_status": "S1 presentada para revisión; ninguna dirección aprobada",
+  "next_action": "Usuario revisa S1; después ejecutar Signature Content recuperando identidad y operación pendientes",
+  "publish_authorized": false,
+  "validation": {
+    "json": "pass",
+    "local_document_links": "pass",
+    "kit_render_1280_400": "not_tested",
+    "site_implementation": "not_started"
+  }
+}
