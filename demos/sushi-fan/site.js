@@ -103,7 +103,7 @@
   function initPlatosScroll(){
     const section=$('platosSection'),track=$('platosTrack');
     if(!section || !track) return;
-    const desktop=window.matchMedia('(min-width: 761px) and (prefers-reduced-motion: no-preference)');
+    const desktop=window.matchMedia('(min-width: 761px)');
     let distance=0,frame=0;
     function update(){frame=0;if(!desktop.matches)return;const left=Math.max(0,Math.min(distance,-section.getBoundingClientRect().top));track.style.transform=`translate3d(${-left}px,0,0)`;}
     function measure(){

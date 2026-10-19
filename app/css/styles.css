@@ -30,9 +30,7 @@ img { max-width:100%; display:block }
 a { color:inherit; text-decoration:none }
 button { font:inherit; cursor:pointer }
 
-@media (prefers-reduced-motion:reduce) {
-  *, *::before, *::after { animation:none !important; transition:none !important }
-}
+
 
 :focus-visible {
   outline: 2px solid var(--accent);

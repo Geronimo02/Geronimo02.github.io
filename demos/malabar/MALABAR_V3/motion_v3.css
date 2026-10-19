@@ -1,6 +1,6 @@
 /* MALABAR v3 / editorial scroll system
  * Scroll remains native. Sticky scenes and progressive transforms enhance the story.
- * Motion is disabled or simplified on narrow screens and under reduced-motion.
+ * Motion is simplified on narrow screens.
  */
 html { scroll-padding-top: 88px; }
 body { overflow-x: clip; }
@@ -135,31 +135,14 @@ section[id] { scroll-margin-top: 88px; }
   .gallery-foot { justify-content:flex-start; }
   .moment::before { inset:-6%; }
 }
-@media (prefers-reduced-motion:reduce) {
-  .hero-stage { height:auto!important; }
-  .hero-stage .hero { position:relative!important; }
-  .hero-frame,.hero-stage .hero-content,.experience-photo img,.gallery-track { transform:none!important; opacity:1!important; }
-  .hero-scroll { animation:none!important; }
-  .motion-word { opacity:1!important; transform:none!important; }
-  .motion-reveal { opacity:1!important; transform:none!important; }
-  .events { min-height:0!important; padding:70px 0 110px!important; }
-  .event-story { display:none!important; }
-  .event-grid { display:grid!important; }
-  .space-photo-frame { clip-path:none!important; }
-  .gallery { height:auto!important; padding:95px 0!important; overflow:visible!important; }
-  .gallery-pin { position:relative!important; top:auto!important; height:auto!important; overflow:visible!important; padding:0!important; }
-  .gallery-viewport { overflow-x:auto!important; scroll-snap-type:x mandatory; }
-  .gallery-track { transform:none!important; height:430px!important; }
-  .gallery-card { width:min(74vw,600px)!important; }
-  .motion-cursor { display:none!important; }
-}
+
 /* Keep the story's sticky container tall enough to reveal all four scenes. */
-@media (min-width:951px) and (prefers-reduced-motion:no-preference) {
+@media (min-width:951px) {
   .events { height:292svh; min-height:0; padding:120px 0 110px; }
   .events > .wrap { height:100%; }
 }
 @media (max-width:950px) { .events { height:auto; } .events > .wrap { height:auto; } }
-@media (prefers-reduced-motion:reduce) { .events { height:auto!important; } .events > .wrap { height:auto!important; } }
+
 @media (max-width:600px) {
   .footer-cta h2 { font-size:clamp(42px,12vw,61px); overflow-wrap:break-word; }
 }

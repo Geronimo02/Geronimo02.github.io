@@ -20,7 +20,7 @@
       if (event.key === "Escape") close();
     });
   }
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+  if ("IntersectionObserver" in window) {
     const targets = document.querySelectorAll(".branches-grid,.intro-grid,.feature-grid,.people-grid,.book-grid,.place-grid,.menu-category,.week-section,.recommendation");
     targets.forEach((target) => target.classList.add("reveal"));
     document.documentElement.classList.add("motion-ready");

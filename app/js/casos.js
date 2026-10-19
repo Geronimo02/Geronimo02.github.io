@@ -9,8 +9,7 @@
     updateProgress();
     window.addEventListener('scroll', updateProgress, { passive: true });
 
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion || !window.gsap || !window.ScrollTrigger) return;
+    if (!window.gsap || !window.ScrollTrigger) return;
 
     gsap.registerPlugin(ScrollTrigger);
 

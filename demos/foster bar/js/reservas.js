@@ -77,7 +77,7 @@
     message.value = `Hola, soy ${fields.name.value.trim()}. Quisiera consultar si hay una mesa para ${fields.people.value} ${Number(fields.people.value) === 1 ? 'persona' : 'personas'} el ${friendlyDate} a las ${fields.time.value} h en Foster Burger Bar. Sé que esta solicitud no confirma la reserva. ¡Gracias!`;
     result.hidden = false;
     copyStatus.textContent = '';
-    result.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest' });
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     result.querySelector('h4')?.setAttribute('tabindex', '-1');
     result.querySelector('h4')?.focus({ preventScroll: true });
   });

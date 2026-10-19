@@ -63,9 +63,8 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 800 && !mobileNav.hidden) closeMenu(); });
   }
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const reveals = [...document.querySelectorAll('[data-reveal]')];
-  if (!reduceMotion && 'IntersectionObserver' in window && reveals.length) {
+  if ('IntersectionObserver' in window && reveals.length) {
     const observer = new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
@@ -79,7 +78,7 @@
   const track = document.querySelector('.gallery-track');
   if (track) {
     const step = () => (track.querySelector('figure')?.getBoundingClientRect().width || 300) + 10;
-    document.querySelector('[data-gallery-prev]')?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduceMotion ? 'instant' : 'smooth' }));
-    document.querySelector('[data-gallery-next]')?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduceMotion ? 'instant' : 'smooth' }));
+    document.querySelector('[data-gallery-prev]')?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    document.querySelector('[data-gallery-next]')?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
   }
 })();

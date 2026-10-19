@@ -340,7 +340,7 @@ img{display:block;max-width:100%}[hidden]{display:none!important}
   .homage h2{font-size:clamp(45px,12vw,60px)}.visit h2{font-size:clamp(59px,13vw,68px)}
   .featured-picks{margin-left:-16px;margin-right:-16px;padding-left:16px}.menu-tools{margin:0 -16px}.filter-list{padding-left:16px}.search-wrap{padding:0 16px}.search-icon{left:29px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
 
 /* ===================================================
    BRAICO B3 | Motivo propio: una receta ilustrada en capas
@@ -350,7 +350,7 @@ img{display:block;max-width:100%}[hidden]{display:none!important}
 .nav-layers{color:var(--red-dark)!important}
 @media(max-width:1100px){.main-nav .nav-layers{display:none}}
 /* Saludo de entrada / solamente propiedades compuestas */
-@media(prefers-reduced-motion:no-preference){
+
  .hero .hero-eyebrow{animation:b3-reveal .65s .07s both}
  .hero h1 span{animation:b3-title .74s both;transform-origin:0 100%}
  .hero h1 span:nth-child(1){animation-delay:.13s}
@@ -360,7 +360,7 @@ img{display:block;max-width:100%}[hidden]{display:none!important}
  .hero-actions{animation:b3-reveal .64s .62s both}
  .hero-sandwich{animation:b3-photo .85s .34s both}
  .hero .seal{animation:b3-seal .67s .85s both}
-}
+
 @keyframes b3-title{from{opacity:0;transform:translate3d(0,37px,0) rotate(-1.3deg)}to{opacity:1;transform:translate3d(0,0,0) rotate(0)}}
 @keyframes b3-reveal{from{opacity:0;transform:translate3d(0,20px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
 @keyframes b3-photo{from{opacity:0;translate:0 52px;rotate:-4deg}to{opacity:1;translate:0 0;rotate:0deg}}
@@ -376,11 +376,11 @@ img{display:block;max-width:100%}[hidden]{display:none!important}
 .b3-animated [data-b3-reveal]:not(.b3-shown){opacity:0;transform:translate3d(0,26px,0)}
 .b3-animated [data-b3-reveal].b3-shown{opacity:1;transform:translate3d(0,0,0)}
 /* Fichero: física de sacar una ficha del archivador, sin variar texto en delay */
-@media(prefers-reduced-motion:no-preference){
+
  .counter-name-box.b3-turning h3{animation:b3-filename .4s cubic-bezier(.2,.65,.1,1) both}
  .counter-name-box.b3-turning p{animation:b3-filedesc .36s .04s ease-out both}
  .counter-folio.b3-turning{animation:b3-filename .3s ease-out both}
-}
+
 @keyframes b3-filename{from{opacity:.3;transform:translate3d(-20px,10px,0) rotateX(15deg)}to{opacity:1;transform:translate3d(0,0,0) rotateX(0)}}
 @keyframes b3-filedesc{from{opacity:0;transform:translate3d(0,10px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
 /* Profundidad delicada para las tarjetas de categorías */
@@ -447,10 +447,4 @@ img{display:block;max-width:100%}[hidden]{display:none!important}
  .ingredient-tag{font-size:7px;padding:8px 8px}
  .recipe-scratch-one{font-size:26px;left:12px;bottom:43px}
  .recipe-scratch-two{font-size:18px;right:16px;top:36px}
-}
-@media(prefers-reduced-motion:reduce){
- [data-b3-reveal],.b3-animated [data-b3-reveal]{opacity:1!important;transform:none!important;transition:none!important}
- .hero-sandwich,.hero .seal,.feature-tile{animation:none!important;transition:none!important}
- .ingredient,.recipe-art .recipe-stage{transition:none!important;will-change:auto}
- .counter-name-box.b3-turning h3,.counter-name-box.b3-turning p{animation:none!important}
 }

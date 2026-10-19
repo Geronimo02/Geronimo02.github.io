@@ -1,7 +1,6 @@
 /* BRAICO B3 / Micro-movimientos propios. No frameworks ni red. */
 (function(){
   'use strict';
-  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = window.matchMedia && window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   const $ = s => document.querySelector(s);
   const recipe = $('#recipe-stage');
@@ -9,7 +8,6 @@
   const state = $('#recipe-state');
   const label = toggle && toggle.querySelector('.button-label');
   // B4: el control del ingrediente lo gestiona b4-corte.js.
-  if (reduced) return;
   if ('IntersectionObserver' in window) {
     const sections = ['.counter-heading','.counter-stage','.recipe-copy','.recipe-art','.menu-header','.featured-picks','.homage-text','.visit-copy'];
     const nodes = sections.map(s => $(s)).filter(Boolean);

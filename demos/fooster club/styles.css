@@ -14,7 +14,7 @@
 @media(max-width:600px){.section-pad{padding-block:70px}.eyebrow{font-size:.66rem}.hero-inner{padding-top:45px;padding-bottom:350px}.home-hero{min-height:750px}.hero-copy h1{font-size:clamp(2.8rem,12.6vw,4.4rem);line-height:.96}.hero-copy>p:not(.eyebrow){font-size:.88rem;max-width:330px}.hero-ctas{gap:8px}.hero-ctas .pill{padding-inline:17px;gap:10px;min-height:44px;font-size:.65rem}.hero-photo{inset:48% -18% 0 -18%}.hero-photo img{object-position:62% center}.hero-mascot{width:90px;right:3%;bottom:53px}.wave{height:34px;border-radius:50% 50% 0 0/34px 34px 0 0}.featured-intro h2{font-size:clamp(2.8rem,10vw,4rem)}.featured-list{grid-template-columns:1fr;border-left:0}.featured-item{min-height:0;padding:20px 0;border-right:0;border-bottom:1px solid var(--line)}.featured-index{margin-bottom:11px}.featured-item p{margin-bottom:9px}.featured-price{margin-top:4px}.club h2{font-size:clamp(3.1rem,11vw,5.3rem)}.club-art{min-height:270px}.club-art img{max-height:280px}.club-art .hand-note{font-size:.7rem}.gallery{padding-top:65px}.gallery-head{display:block}.gallery-head h2{font-size:2.5rem}.gallery-head .text-link{margin-top:12px}.gallery-strip{grid-auto-columns:78%}.gallery-strip figure{height:280px}.gallery-hint{display:block}.location h2{font-size:3.5rem}.map-grid{height:220px}.footer-grid{grid-template-columns:1fr 1fr;gap:20px}.footer-grid p{grid-column:2}.footer-grid nav{grid-column:1}.footer-bottom{display:block}.footer-bottom span{display:block;margin-bottom:8px}.menu-hero,.menu-hero-inner{min-height:360px}.menu-hero-photo{inset:26% -28% 0 50%}.menu-hero:after{background:linear-gradient(90deg,var(--deep) 5%,rgba(41,8,11,.9) 50%,rgba(41,8,11,.35) 100%)}.menu-hero h1{font-size:clamp(4.1rem,16vw,6rem)}.menu-hero-inner p:not(.eyebrow){font-size:.87rem}.menu-notice{display:block;font-size:.78rem;margin-top:24px;padding:14px 17px}.menu-notice strong{display:block;margin-bottom:6px}.category-nav{width:100%;padding-left:20px;padding-right:20px}.category-link{font-size:.65rem;padding:9px 13px}.menu-content{width:calc(100% - 40px)}.menu-section{padding:55px 0}.section-heading{display:block}.section-number{display:block;margin-bottom:15px}.section-heading h2{font-size:clamp(2.7rem,10vw,4rem)}.product-grid{grid-template-columns:1fr}.product-card{min-height:105px;padding:18px 0}.menu-end{padding:70px 0}.menu-end h2{font-size:clamp(2.8rem,10vw,4rem)}.drawer{inset:auto 0 0;width:100%;height:min(90dvh,900px);border-radius:22px 22px 0 0}.cart-panel{padding:44px 22px 28px}.detail-art{min-height:185px}.detail-art img{width:170px;max-height:150px}.detail-content{padding:24px}.mobile-cart-bar:not([hidden]){position:fixed;z-index:35;bottom:0;left:0;right:0;display:block;width:100%;min-height:58px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));border:0;background:var(--orange);color:white;font-weight:700;text-transform:uppercase;box-shadow:0 -6px 25px rgba(0,0,0,.15)}body:has(.mobile-cart-bar:not([hidden])) .site-footer{padding-bottom:80px}.site-menu{padding:20px}.site-menu nav{margin:10vh 0}.site-menu nav a{font-size:clamp(2.8rem,12vw,5rem)}}
 @media(max-width:360px){.wrap{width:calc(100% - 32px)}.hero-copy h1{font-size:2.65rem}.hero-ctas .pill{font-size:.58rem;padding-inline:12px}.hero-photo{inset:52% -25% 0 -25%}.hero-mascot{width:75px}.site-menu nav a{font-size:2.5rem}.product-copy strong{font-size:1rem}.section-heading h2{font-size:2.35rem}}
 .detail-content h2{font-size:clamp(2rem,3vw,3.05rem);overflow-wrap:anywhere}.drawer{max-width:none;overflow-x:hidden}.cart-shortcut svg{width:19px;height:19px;flex:none}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
 /* Carta: fotos e interacción, compartidas por sus diálogos. */
 .detail-content h2{font-size:clamp(2rem,3vw,3.05rem);overflow-wrap:anywhere}
 .drawer{max-width:none;overflow-x:hidden}
@@ -54,7 +54,7 @@
 @media(max-width:360px){.product-card{grid-template-columns:64px 1fr 18px;gap:9px}.product-image{width:62px;height:62px}}
 
 /* Movimiento compartido por home y carta. */
-@media (prefers-reduced-motion: no-preference) {
+
   .site-menu[open] { animation: menu-enter .42s cubic-bezier(.22,1,.36,1) both; }
   .site-menu[open] nav a { animation: menu-link-enter .48s cubic-bezier(.22,1,.36,1) backwards; }
   .site-menu[open] nav a:nth-child(2) { animation-delay: 70ms; }
@@ -67,17 +67,15 @@
   .motion-enabled [data-reveal].is-visible { opacity: 1; transform: none; }
   .product-card:hover .product-image { transform: scale(1.03); }
   .product-card:active { background: rgba(231, 96, 46, .06); }
-}
+
 @keyframes menu-enter { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: none; } }
 @keyframes menu-link-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @keyframes drawer-enter { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
-@media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+@media (max-width: 600px) {
   .drawer[open] { animation-name: drawer-enter-mobile; }
 }
 @keyframes drawer-enter-mobile { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) {
-  .motion-enabled [data-reveal] { opacity: 1 !important; transform: none !important; }
-}
+
 .arrow-icon{display:inline-block;width:1.15em;height:1.15em;flex:none;vertical-align:-.16em;background:currentColor;-webkit-mask:var(--arrow-mask) center/contain no-repeat;mask:var(--arrow-mask) center/contain no-repeat}
 .arrow-icon-up-right{--arrow-mask:url("assets/icons/arrow-up-right.svg")}
 .arrow-icon-right{--arrow-mask:url("assets/icons/arrow-right.svg")}

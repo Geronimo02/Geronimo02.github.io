@@ -618,7 +618,3 @@
   0%,100% { background-position:0% 50% }
   50% { background-position:100% 50% }
 }
-
-@media (prefers-reduced-motion:reduce) {
-  .case-app-topbar > i,.orbe-preview-bookings i,.case-preview-columns span { animation:none }
-}
