@@ -2,7 +2,7 @@
 
 Signature Studio 3.3 · S1 · 19/10/2026 · DEMO · v0.2
 
-**Investigación revisada por observación directa del Instagram oficial, destacada MENÚ, carrusel de identidad, Linktree y Google Maps. Pendiente revisión del usuario; ninguna dirección artística aprobada.**
+**Investigación revisada por observación directa del Instagram oficial, destacada MENÚ, carrusel de identidad, Linktree y Google Maps. Investigación/Brand Kit v0.2 aceptados por el usuario el 19/10/2026; ninguna dirección artística aprobada.**
 
 Esta versión reemplaza las hipótesis de v0.1 que dependían de agregadores. [RESEARCH-REVISION.md](RESEARCH-REVISION.md) registra cada pantalla/URL y los límites. Datos: [brand.json](brand.json); fuentes: [SOURCES.json](SOURCES.json); lectura visual: [kit.html](kit.html).
 
@@ -80,6 +80,6 @@ Prioridad comercial: facilitar carta y elección de visita/retiro con la identid
 El antiguo eje “mercado de productores” se retira como recomendación principal hasta validar oferta. No elegir una fachada oscura como estética completa ni usar la ilustración del símbolo para llenar una infografía. No copiar el look de otra cafetería.
 
 ## Traspaso y pendientes
-S1 revisada, aún pendiente de validación del usuario. S2 no iniciada. Recuperar original del logo/fuentes/colores; transcribir carta a resolución suficiente y fechar precios; fotos y derechos por sede; verificar retiro/reservas si se desean; confirmar historia/fechas especiales y modalidad actual de atención. La carta contiene opciones/claims alimentarios; no inferir certificaciones o seguridad para alergias.
+S1 v0.2 aceptada por el usuario el 19/10/2026. S2 no iniciada. Recuperar original del logo/fuentes/colores; transcribir carta a resolución suficiente y fechar precios; fotos y derechos por sede; verificar retiro/reservas si se desean; confirmar historia/fechas especiales y modalidad actual de atención. La carta contiene opciones/claims alimentarios; no inferir certificaciones o seguridad para alergias.
 
 S3 investigará referencias reales y creará 2–3 propuestas 1440/390, con REFERENCE-APPLICATION.json y selección explícita. No hay referencia visual P1 aportada por usuario; las piezas oficiales investigadas son identidad de marca y deben respetarse. Sin arquitectura elegida, sitio ni publicación.
