@@ -3,14 +3,14 @@
     "id": "F01",
     "url": "https://www.instagram.com/negromercado.ok/",
     "tipo": "canal aportado por usuario",
-    "estado": "acceso no verificado; fetch throttled; navegación sin resultado verificable",
+    "estado": "Revisión v0.2: acceso directo en navegador exitoso; perfil, bio, menú destacado y carrusel de renovación inspeccionados",
     "consultado": "2026-10-19"
   },
   {
     "id": "F02",
     "url": "https://www.google.com/maps/place/Negro+Mercado+Cafe/@-37.3329451,-59.1334364,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95911fe92f6f1151:0x4117aaba87078d77!8m2!3d-37.3329451!4d-59.1308615!16s%2Fg%2F11qps81c06",
     "tipo": "localización aportada",
-    "estado": "enlace aportado por usuario; acceso directo no disponible; dirección contrastada con F03-F06",
+    "estado": "Revisión v0.2: ficha y fotografías abiertas directamente; identidad/dirección/contacto contrastados",
     "consultado": "2026-10-19"
   },
   {
@@ -81,6 +81,34 @@
     "url": "https://es.restaurantguru.com/Negro-Mercado-Tandil/menu",
     "tipo": "carta candidata",
     "estado": "fetch falló; no hay carta vigente verificada",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R01",
+    "url": "https://www.instagram.com/negromercado.ok/",
+    "tipo": "primaria; observación navegador",
+    "estado": "bio/feed/avatar inspeccionados",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R02",
+    "url": "https://www.instagram.com/stories/highlights/17961471578727361/",
+    "tipo": "primaria; destacada",
+    "estado": "dos páginas de carta inspeccionadas; primera indica 2 d; precios por transcribir con original",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R03",
+    "url": "https://www.instagram.com/negromercado.ok/p/DeADrQuG6z8/",
+    "tipo": "primaria; renovación de identidad",
+    "estado": "siete láminas inspeccionadas; interfaz fecha 2 de octubre",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R04",
+    "url": "https://linktr.ee/Negro_Mercado_Tandil",
+    "tipo": "primaria; link bio oficial",
+    "estado": "enlaces menú/take away y WhatsApp observados; sin enviar mensajes",
     "consultado": "2026-10-19"
   }
 ]

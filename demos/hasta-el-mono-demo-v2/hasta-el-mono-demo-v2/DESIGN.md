@@ -35,7 +35,7 @@ Afiche hero de marca → collage de producto → carta/comanda interactiva → f
 - Menú: al pasar el cursor o enfocar un renglón, actualiza la fotografía de producto; fallback con primera foto visible y lista clicable accesible.
 - Cesta: abrir/cerrar drawer con ESC y foco, selector de modalidad, control de cantidades, observaciones y copia de texto solo demostrativa.
 - Hero: entrada discreta de la imagen; sin scrolljacking, sin animaciones de fondo ni librerías pesadas.
-- `prefers-reduced-motion`: desactiva la animación.
+- Las animaciones permanecen activas con cualquier configuración de movimiento del sistema para mantener la intención visual de la demo.
 
 ## Mobile
 - Título y bandeja conservan composición editorial sin zoom horizontal.

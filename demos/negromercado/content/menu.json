@@ -1,0 +1,1485 @@
+{
+  "schema_version": "1.0",
+  "business": "Negro Mercado",
+  "captured_at": "2026-10-19",
+  "currency": "ARS",
+  "source": "https://www.instagram.com/stories/highlights/17961471578727361/",
+  "status": "transcripción de investigación; no carta comercial aprobada",
+  "source_media": "dos imágenes de 640x1138 px inspeccionadas localmente; no redistribuidas",
+  "column_legend_status": "Las abreviaturas manuscritas no se interpretan automáticamente. Conservar columnas originales; null significa guion/importe no publicado, no cero.",
+  "source_hierarchy": "La carta observada prevalece para precio/ingredientes sobre captions antiguos.",
+  "default_availability": "unknown",
+  "owner_validated": false,
+  "items": [
+    {
+      "id": "nm-001",
+      "category": "cafeteria",
+      "name": "Espresso",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 4200
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 4900
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-002",
+      "category": "cafeteria",
+      "name": "Espresso largo",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 4200
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-003",
+      "category": "cafeteria",
+      "name": "Macchiato",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 4300
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 5000
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-004",
+      "category": "cafeteria",
+      "name": "Cortado chico",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 4500
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-005",
+      "category": "cafeteria",
+      "name": "Cortado en vaso",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 4800
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-006",
+      "category": "cafeteria",
+      "name": "Magic",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 5500
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-007",
+      "category": "cafeteria",
+      "name": "Americano",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 5200
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-008",
+      "category": "cafeteria",
+      "name": "Cappuccino",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 5200
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 6500
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-009",
+      "category": "cafeteria",
+      "name": "Cappuccino italiano",
+      "description": "Chocolate amargo y canela.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 6000
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 7000
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-010",
+      "category": "cafeteria",
+      "name": "Latte",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 5200
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 6000
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-011",
+      "category": "cafeteria",
+      "name": "Flat white",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 5800
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": 6800
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-012",
+      "category": "cafeteria",
+      "name": "Mocaccino",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 6000
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 7000
+        },
+        {
+          "id": "v3",
+          "label": "columna 3 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-013",
+      "category": "agregados",
+      "name": "Leche de almendras y dátiles",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 1500
+        }
+      ],
+      "option_of": "cafetería; compatibilidad a confirmar",
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-014",
+      "category": "agregados",
+      "name": "Leche de avena",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 2000
+        }
+      ],
+      "option_of": "cafetería; compatibilidad a confirmar",
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-015",
+      "category": "filtrados",
+      "name": "Filtrado V60",
+      "description": "Dos tazas.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 9000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-016",
+      "category": "cafes-frios",
+      "name": "Aerocano",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-017",
+      "category": "cafes-frios",
+      "name": "Coffee tonic",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 7500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-018",
+      "category": "cafes-frios",
+      "name": "Iced latte",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 5500
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-019",
+      "category": "cafes-frios",
+      "name": "Vainilla latte",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 6000
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-020",
+      "category": "cafes-frios",
+      "name": "Iced flat",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": null
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 6500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-021",
+      "category": "cafes-frios",
+      "name": "Mocca",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 7000
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-022",
+      "category": "cafes-frios",
+      "name": "Red matcha latte",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 8000
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": null
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-023",
+      "category": "te",
+      "name": "Black tea",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-024",
+      "category": "te",
+      "name": "Black tea con naranjas y flores de azahar",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-025",
+      "category": "te",
+      "name": "Chai",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-026",
+      "category": "te",
+      "name": "Hibiscus",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-027",
+      "category": "te",
+      "name": "Ginger green tea",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-028",
+      "category": "bebidas-frias",
+      "name": "Pomelada con frutos rojos",
+      "description": "500 ml.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 5500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-029",
+      "category": "bebidas-frias",
+      "name": "Limonada con menta y jengibre",
+      "description": "500 ml.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 5500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-030",
+      "category": "bebidas-frias",
+      "name": "Exprimido de naranja",
+      "description": "350 / 500 ml.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "350 ml",
+          "price_ars": 5500
+        },
+        {
+          "id": "v2",
+          "label": "500 ml",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-031",
+      "category": "bebidas-frias",
+      "name": "Licuado de banana, frutilla o naranja y durazno",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-032",
+      "category": "bebidas-frias",
+      "name": "Licuado detox",
+      "description": "Espinaca, ananá, manzana verde, pepino, limón y jengibre.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 7000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-033",
+      "category": "bebidas-frias",
+      "name": "Agua con o sin gas",
+      "description": "500 ml.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 3500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-034",
+      "category": "vermu",
+      "name": "Vaso de vermú La Fuerza",
+      "description": "Rojo, blanco o primavera con soda.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 8000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-035",
+      "category": "vermu",
+      "name": "La Fuerza de compartir",
+      "description": "Botella de rojo, blanco o primavera con dos sifones.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 39000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 1,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-036",
+      "category": "pasteleria",
+      "name": "Medialuna dulce",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 2200
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-037",
+      "category": "pasteleria",
+      "name": "Medialuna con pata ahumada y provoleta",
+      "description": "Pata ahumada Las Dinas y Provoleta de Verdad.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-038",
+      "category": "pasteleria",
+      "name": "Croissant",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 5000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-039",
+      "category": "pasteleria",
+      "name": "Croissant con pata ahumada y provoleta",
+      "description": "Pata ahumada y Provoleta de Verdad.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 10000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-040",
+      "category": "pasteleria",
+      "name": "Croissant con huevo y palta",
+      "description": "Huevo, palta, rúcula y parmesano.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 14900
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-041",
+      "category": "pasteleria",
+      "name": "Cookie doble chocolate",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 5500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-042",
+      "category": "pasteleria",
+      "name": "Cookie vainilla",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 5500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-043",
+      "category": "pasteleria",
+      "name": "Pepa de frutos rojos y pistachos",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 7500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-044",
+      "category": "pasteleria",
+      "name": "Alfajor de almendras",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 7800
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-045",
+      "category": "pasteleria",
+      "name": "Muffin de zanahoria",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 5000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-046",
+      "category": "pasteleria",
+      "name": "Muffin de limón",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 6700
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-047",
+      "category": "pasteleria",
+      "name": "Brownie húmedo de chocolate 60% y nuez",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 8000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-048",
+      "category": "pasteleria",
+      "name": "Chipá",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 3000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-049",
+      "category": "pasteleria",
+      "name": "Scon de queso",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 5800
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-050",
+      "category": "tostados-y-sambuches",
+      "name": "Jamón y queso",
+      "description": "Pata ahumada Las Dinas y Provoleta de Verdad en pan de molde.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 15900
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-051",
+      "category": "tostados-y-sambuches",
+      "name": "Veggie",
+      "description": "Provoleta de Verdad, huevo a la plancha, tomates confitados y albahaca fresca en pan de molde multicereal.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 14900
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-052",
+      "category": "tostados-y-sambuches",
+      "name": "Pesto",
+      "description": "Provoleta de Verdad y pesto de albahaca, nuez y parmesano en pan de molde multicereal.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 14000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-053",
+      "category": "tostados-y-sambuches",
+      "name": "Focca crudo",
+      "description": "Jamón crudo Las Dinas, tomates confitados, rúcula fresca y manteca de hierbas en pan de focaccia.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 25900
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-054",
+      "category": "tostados-y-sambuches",
+      "name": "Focca vegana",
+      "description": "Berenjenas, zucchinis y zanahorias en escabeche, verdes, tomate fresco y pasta de morrones ahumados en pan de focaccia.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 17000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-055",
+      "category": "desayunos-y-meriendas",
+      "name": "Latte + medialuna",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 6800
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 7800
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-056",
+      "category": "desayunos-y-meriendas",
+      "name": "Latte + tostadas",
+      "description": "Opción vegana. Queso crema y dulce artesanal, pasta de maní o miel casera.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "columna 1 [CONFIRMAR leyenda]",
+          "price_ars": 8800
+        },
+        {
+          "id": "v2",
+          "label": "columna 2 [CONFIRMAR leyenda]",
+          "price_ars": 9800
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-057",
+      "category": "desayunos-y-meriendas",
+      "name": "Proteico",
+      "description": "Huevos revueltos y palta con crema de yogurt y pasta de morrones ahumados + sésamo en tostón de pan de campo. Opción keto/sin gluten anunciada; alcance a confirmar.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 12500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-058",
+      "category": "desayunos-y-meriendas",
+      "name": "Huevos turcos",
+      "description": "Salsa de yogurt, aceite rojo, queso feta de oveja y ciboulette.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 15000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-059",
+      "category": "desayunos-y-meriendas",
+      "name": "Yogurt",
+      "description": "Granola casera, banana y compota de temporada.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 14500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-060",
+      "category": "desayunos-y-meriendas",
+      "name": "French toast",
+      "description": "Crema de vainilla y naranja, compota de temporada y pistachos en pan brioche.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 15900
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-061",
+      "category": "desayunos-y-meriendas",
+      "name": "Pancakes",
+      "description": "Anunciados como keto. Pasta de maní, frutos rojos y coco rallado.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 12000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-062",
+      "category": "algo-mas-de-morfi",
+      "name": "Tortilla de papa",
+      "description": "Pasta de morrones ahumados.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 14000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-063",
+      "category": "algo-mas-de-morfi",
+      "name": "Tarta del día",
+      "description": "",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 16500
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-064",
+      "category": "algo-mas-de-morfi",
+      "name": "Omelette de espinaca y queso",
+      "description": "Crema de yogurt.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 12000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    },
+    {
+      "id": "nm-065",
+      "category": "brunch",
+      "name": "Brunch zarpado",
+      "description": "Dos latte medianos y dos jugos, o dos vermú. Yogurt con granola casera, banana y frutos rojos. Huevos turcos. Tostado a elección. French toast. Opcional sin gluten anunciado; confirmar condiciones.",
+      "variants": [
+        {
+          "id": "v1",
+          "label": "única",
+          "price_ars": 66000
+        }
+      ],
+      "option_of": null,
+      "source": "IG-MENU-20261019",
+      "source_page": 2,
+      "price_status": "observado en carta oficial; validar vigencia con negocio antes de venta",
+      "availability": null,
+      "dietary_claims_verified": false,
+      "purchase_enabled": false
+    }
+  ]
+}

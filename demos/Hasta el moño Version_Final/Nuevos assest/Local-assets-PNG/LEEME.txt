@@ -1,0 +1,31 @@
+HASTA EL MOÑO — ASSETS DE EL LOCAL
+
+21 PNG separados. Todos con transparencia excepto el fondo y la fotografía original.
+
+01 fondo grunge
+02 papel claro de la información
+03 EL LOCAL.
+04 054.
+05 subrayado rojo
+06 dirección
+07 botón CÓMO LLEGAR completo
+08 pin negro
+09 pin rojo
+10 trazos de énfasis blancos
+11 fachada original
+12 marco de fachada vacío
+13 cinta translúcida
+14 papel negro para nota
+15 ACÁ NOS / ENCONTRÁS.
+16 flecha blanca hacia el local
+17 borde de papel rasgado
+18 garabato rojo
+19 contorno del botón sin texto
+20 texto CÓMO LLEGAR por separado
+21 flecha derecha negra por separado
+
+La foto se convirtió del original del ZIP a PNG sin alterar sus píxeles. Los títulos, número, papel y anotación se recrearon a partir del boceto; algunos adornos y el marco se reutilizan de las secciones anteriores para conservar continuidad. Los textos pequeños y controles se exportaron de componentes tipográficos y vectoriales.
+
+La foto, marco y cinta están separados para cambiar el encuadre o reemplazar la fotografía. El centro del marco es transparente. Se conserva margen transparente de seguridad en los recortes: mantener proporciones al colocarlos. El titular negro se ve correctamente sobre fondo claro, y la anotación blanca sobre papel negro. El botón final debe ser un enlace HTML accesible; el PNG es su referencia visual.
+
+Texto del boceto: Av. Santamarina 54 / Tandil, Buenos Aires. Dirección heredada del material recibido; confirmar antes de publicar. No se agregan horarios ni teléfono no confirmados.

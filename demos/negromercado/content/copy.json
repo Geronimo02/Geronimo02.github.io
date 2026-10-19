@@ -1,0 +1,54 @@
+{
+  "status": "copy propuesto para revisión; no citas textuales de la marca",
+  "version": "S2-0.1",
+  "sections": {
+    "hero": {
+      "eyebrow": "Cafetería de especialidad · Pastelería · Vermutería",
+      "title": "Un café en Negro.",
+      "body": "Pastelería de la casa, algo salado y vermú. Encontranos en Avellaneda 702, Tandil.",
+      "primary_cta": {
+        "label": "Ver la carta",
+        "action": "anchor:#carta"
+      },
+      "secondary_cta": {
+        "label": "Cómo llegar",
+        "action": "external:google_maps"
+      }
+    },
+    "carta": {
+      "title": "¿Café, algo dulce o vermú?",
+      "body": "Del espresso al alfajor de almendras. Explorá la carta de Negro Mercado y elegí qué te tienta.",
+      "cta": "Consultar para llevar"
+    },
+    "oficio": {
+      "title": "Laminados, tiempo y manos.",
+      "body": "Las medialunas y otros laminados llevan fermentación y seguimiento antes de pasar por el horno. En Negro, la pastelería también se cuenta desde su elaboración.",
+      "cta": "Ver la pastelería"
+    },
+    "almendras": {
+      "title": "El alfajor que nos acompaña.",
+      "body": "El de almendras está con Negro desde sus comienzos. Una pieza que fue cambiando hasta encontrar su versión de hoy.",
+      "cta": "Encontralo en la carta"
+    },
+    "local": {
+      "title": "La esquina es Avellaneda y 9 de Julio.",
+      "body": "Café, pastelería y vermú en Avellaneda 702, Tandil. Vení al local o consultanos por take away.",
+      "cta": "Cómo llegar"
+    },
+    "contact": {
+      "title": "Para llevar, escribinos.",
+      "body": "Consultá por WhatsApp qué hay disponible y coordiná tu retiro con el local.",
+      "cta": "Consultar por WhatsApp",
+      "url": "https://wa.me/5491126587740",
+      "prefill": "Hola, Negro Mercado. Quería consultar qué tienen disponible para llevar y cómo coordinar el retiro."
+    },
+    "footer": {
+      "brand": "Negro Mercado",
+      "address": "Avellaneda 702 · Tandil",
+      "hours_week": "Lunes a viernes · 7:30 a 20:30",
+      "hours_weekend": "Sábados y domingos · 9 a 20:30",
+      "instagram": "https://www.instagram.com/negromercado.ok/",
+      "demo_label": "Propuesta de sitio para Negro Mercado · Demo no oficial."
+    }
+  }
+}

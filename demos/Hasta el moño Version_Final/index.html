@@ -11,10 +11,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;600;700;800&family=Rock+Salt&family=Special+Elite&family=Staatliches&display=swap" rel="stylesheet">
+  <script>
+    try {
+      if (!location.hash && !sessionStorage.getItem('hm-intro-seen')) {
+        document.documentElement.classList.add('intro-visible');
+        sessionStorage.setItem('hm-intro-seen', '1');
+        // La intro también se libera si el script principal o una imagen tardan demasiado.
+        setTimeout(() => document.documentElement.classList.remove('intro-visible'), 2200);
+      }
+    } catch (_) { /* El sitio sigue disponible si el almacenamiento está bloqueado. */ }
+  </script>
   <link rel="stylesheet" href="styles.css">
   <script defer src="app.js"></script>
 </head>
 <body>
+  <div class="intro-loader" aria-hidden="true">
+    <div class="intro-content">
+      <img class="intro-crown" src="Nuevos assest/Hero-assets-PNG/05-corona-roja.png" alt="">
+      <img class="intro-logo" src="Nuevos assest/Hero-assets-PNG/04-logo-original.png" alt="">
+      <p>MASA · FUEGO · BARRIO</p>
+      <span class="intro-progress"></span>
+    </div>
+  </div>
   <a class="skip-link" href="#carta">Ir a la carta</a>
 
   <header class="site-header" id="inicio">
@@ -23,7 +41,7 @@
     </a>
     <nav class="desktop-nav" aria-label="Navegación principal">
       <a href="#carta">La carta</a>
-      <a href="#cocina">La cocina</a>
+      <a href="#cocina">Nosotros</a>
       <a href="#local">El local</a>
     </nav>
     <button class="order-pill" type="button" data-open-cart aria-label="Abrir comanda de demostración">
@@ -35,78 +53,83 @@
     </button>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil" hidden>
       <a href="#carta">La carta</a>
-      <a href="#cocina">La cocina</a>
+      <a href="#cocina">Nosotros</a>
       <a href="#local">El local</a>
     </nav>
   </header>
 
   <main>
     <section class="hero poster-dark" aria-labelledby="hero-title">
-      <div class="texture" aria-hidden="true"></div>
-      <p class="demo-flag">Demo visual · carta y precios ilustrativos</p>
+      <img class="hero-bg" src="Nuevos assest/Hero-assets-PNG/01-fondo-grunge.png" alt="" aria-hidden="true">
+      <img class="hero-newsprint" src="Nuevos assest/Hero-assets-PNG/15-papel-periodico.png" alt="" aria-hidden="true">
+      <img class="hero-title-art" src="Nuevos assest/Hero-assets-PNG/03-titular-hasta-el-mono.png" alt="" aria-hidden="true" fetchpriority="high">
+      <img class="hero-food" src="Nuevos assest/Hero-assets-PNG/02-pizza-natural.png" alt="Pizza ilustrativa con una porción levantada y queso fundido" fetchpriority="high">
+      <img class="hero-crown" src="Nuevos assest/Hero-assets-PNG/05-corona-roja.png" alt="" aria-hidden="true">
+      <img class="hero-arrow" src="Nuevos assest/Hero-assets-PNG/08-flecha-blanca.png" alt="" aria-hidden="true">
+      <img class="hero-hand" src="Nuevos assest/Hero-assets-PNG/11-pizzas-empanadas-y-mas.png" alt="" aria-hidden="true">
       <div class="hero-copy">
-        <h1 id="hero-title"><span>Hasta</span><span>el Moño.</span></h1>
-        <img class="hero-crown" src="assets/graphics/crown-red.svg" alt="" aria-hidden="true">
-        <p class="hero-subtitle">Pizzas. Empanadas.<br>Así de simple.</p>
-        <img class="hero-underline" src="assets/graphics/underline-red.png" alt="" aria-hidden="true">
+        <h1 id="hero-title" class="sr-only">Hasta el Moño.</h1>
+        <img class="hero-subtitle-art" src="Nuevos assest/Hero-assets-PNG/06-pizzas-empanadas-asi-de-simple.png" alt="Pizzas. Empanadas. Así de simple.">
+        <img class="hero-underline" src="Nuevos assest/Hero-assets-PNG/12-subrayado-rojo.png" alt="" aria-hidden="true">
         <p class="hero-description">Masa real. Ingredientes que se sienten.<br>Horno, fuego y barrio.</p>
         <a class="paper-button" href="#carta">Ver la carta <span aria-hidden="true">→</span></a>
       </div>
-      <img class="hero-food" src="assets/photos/hero-pizza.png" alt="Pizza con una porción levantada y queso fundido" fetchpriority="high">
-      <img class="hero-note" src="assets/graphics/note-pizza-house.png" alt="Pizza de la casa">
-      <img class="hero-arrow" src="assets/graphics/arrow-brush-white.png" alt="" aria-hidden="true">
-      <img class="hero-stamp" src="assets/graphics/stamp-tandil-hand.png" alt="Tandil, Buenos Aires, 054">
-      <p class="hero-hand">Pizzas<br>empanadas<br>y más.</p>
-      <span class="hero-spark spark-one" aria-hidden="true"></span>
-      <span class="hero-spark spark-two" aria-hidden="true"></span>
-      <div class="hero-tear" aria-hidden="true"></div>
+      <img class="hero-stamp" src="Nuevos assest/Hero-assets-PNG/09-sello-tandil-054.png" alt="Tandil, Buenos Aires, 054">
+      <img class="hero-note" src="Nuevos assest/Hero-assets-PNG/10-etiqueta-pizza-de-la-casa.png" alt="Pizza de la casa">
+      <img class="hero-scribble" src="Nuevos assest/Hero-assets-PNG/13-garabato-rojo.png" alt="" aria-hidden="true">
+      <img class="hero-tear" src="Nuevos assest/Hero-assets-PNG/16-papel-rasgado.png" alt="" aria-hidden="true">
     </section>
 
     <section class="menu-section poster-dark" id="carta" aria-labelledby="menu-title">
-      <div class="texture" aria-hidden="true"></div>
+      <img class="menu-bg" src="Nuevos assest/Carta-assets-PNG/01-fondo-grunge.png" alt="" aria-hidden="true">
       <div class="section-heading menu-heading">
         <div>
-          <span class="section-index">02 / ELEGÍ TU ANTOJO</span>
-          <h2 id="menu-title">La carta<span>.</span></h2>
-          <img src="assets/graphics/underline-red.png" alt="" aria-hidden="true">
+          <h2 id="menu-title" class="sr-only">La carta.</h2>
+          <img class="menu-title-art" src="Nuevos assest/Carta-assets-PNG/02-titulo-la-carta.png" alt="La carta.">
+          <img class="menu-title-crown" src="Nuevos assest/Carta-assets-PNG/03-corona-blanca.png" alt="" aria-hidden="true">
+          <img class="menu-title-underline" src="Nuevos assest/Carta-assets-PNG/04-subrayado-titulo.png" alt="" aria-hidden="true">
           <p>Pizzas y empanadas hechas como nos gusta:<br>ingredientes reales, mucho sabor y cero vueltas.</p>
         </div>
-        <img class="touch-note" src="assets/graphics/touch-product.png" alt="Tocá un producto y mirá la foto">
+        <div class="touch-note" aria-hidden="true">
+          <img src="Nuevos assest/Carta-assets-PNG/15-toca-un-producto.png" alt="">
+          <img src="Nuevos assest/Carta-assets-PNG/16-flecha-blanca.png" alt="">
+        </div>
       </div>
 
       <div class="menu-tabs" role="tablist" aria-label="Filtrar productos">
-        <button class="menu-tab active" type="button" role="tab" aria-selected="true" data-filter="todos">Todos <span>06</span></button>
-        <button class="menu-tab" type="button" role="tab" aria-selected="false" data-filter="pizzas">Pizzas <span>03</span></button>
-        <button class="menu-tab" type="button" role="tab" aria-selected="false" data-filter="empanadas">Empanadas <span>03</span></button>
+        <button class="menu-tab active" type="button" role="tab" aria-selected="true" data-filter="todos">Todos</button>
+        <button class="menu-tab" type="button" role="tab" aria-selected="false" data-filter="pizzas">Pizzas</button>
+        <button class="menu-tab" type="button" role="tab" aria-selected="false" data-filter="empanadas">Empanadas</button>
       </div>
 
       <div class="menu-layout">
         <div class="menu-visual" aria-live="polite">
-          <div class="paper-backdrop" aria-hidden="true"></div>
+          <img class="menu-frame" src="Nuevos assest/Carta-assets-PNG/10-marco-papel-rasgado.png" alt="" aria-hidden="true">
           <div class="featured-photo">
-            <img id="menu-feature-image" src="assets/photos/pizza-muzza.webp" alt="Pizza real del local">
+            <img id="menu-feature-image" src="Nuevos assest/Carta-assets-PNG/09-pizza-natural.png" alt="Pizza ilustrativa de la carta">
           </div>
-          <img class="best-seller" src="assets/graphics/best-seller.png" alt="Best seller, elemento decorativo de la demo">
-          <img class="visual-tape" src="assets/graphics/tape-real.png" alt="" aria-hidden="true">
-          <div class="featured-caption">
-            <strong id="menu-feature-name">Pizza clásica</strong>
-            <span>Fotografía real del local</span>
-          </div>
+          <img class="best-seller" src="Nuevos assest/Carta-assets-PNG/11-best-seller.png" alt="" aria-hidden="true">
+          <img class="seller-crown" src="Nuevos assest/Carta-assets-PNG/12-corona-roja.png" alt="" aria-hidden="true">
+          <img class="seller-arrow" src="Nuevos assest/Carta-assets-PNG/13-flecha-roja.png" alt="" aria-hidden="true">
+          <img class="visual-tape tape-top" src="Nuevos assest/Carta-assets-PNG/14-cinta-translucida.png" alt="" aria-hidden="true">
+          <img class="visual-tape tape-bottom" src="Nuevos assest/Carta-assets-PNG/14-cinta-translucida.png" alt="" aria-hidden="true">
+          <span id="menu-feature-name" class="sr-only">Muzza clásica</span>
         </div>
 
         <div class="menu-catalogue">
-          <p class="menu-disclaimer">Carta de demostración: los nombres, variedades y precios son ilustrativos.</p>
           <div class="product-grid" id="product-grid"></div>
           <button class="catalogue-cart" type="button" data-open-cart>Ver mi comanda <span aria-hidden="true">↗</span></button>
+          <p class="menu-disclaimer">Carta de demostración: nombres, variedades y precios del boceto, pendientes de confirmar.</p>
         </div>
       </div>
     </section>
 
     <section class="kitchen-section poster-dark" id="cocina" aria-labelledby="kitchen-title">
-      <div class="texture" aria-hidden="true"></div>
+      <img class="kitchen-bg" src="Nuevos assest/Cocina-assets-PNG/01-fondo-grunge.png" alt="" aria-hidden="true">
       <div class="kitchen-copy">
-        <span class="section-index">03 / LA COCINA</span>
-        <h2 id="kitchen-title">Antes del<br>primer<br>mordisco<span>.</span></h2>
+        <h2 id="kitchen-title" class="sr-only">Antes del primer mordisco.</h2>
+        <img class="kitchen-title-art" src="Nuevos assest/Cocina-assets-PNG/02-antes-del-primer-mordisco.png" alt="Antes del primer mordisco.">
+        <img class="kitchen-title-underline" src="Nuevos assest/Cocina-assets-PNG/03-subrayado-rojo.png" alt="" aria-hidden="true">
         <p>Masa, relleno, horno.<br>Acá empieza todo.</p>
         <button class="video-launch" id="video-toggle" type="button" aria-label="Reproducir video de preparación">
           <span aria-hidden="true">▶</span> Ver el proceso
@@ -115,41 +138,51 @@
 
       <div class="kitchen-collage">
         <figure class="polaroid prep-card">
-          <img src="assets/photos/preparacion.webp" alt="Manos preparando empanadas en la cocina" loading="lazy">
-          <figcaption>Manos a la masa</figcaption>
-          <img class="tape-corner" src="assets/graphics/tape-real.png" alt="" aria-hidden="true">
+          <img class="kitchen-photo" src="Nuevos assest/Cocina-assets-PNG/13-foto-preparacion.png" alt="Preparación de empanadas en la cocina" loading="lazy">
+          <img class="kitchen-frame" src="Nuevos assest/Cocina-assets-PNG/12-marco-foto-vacio.png" alt="" aria-hidden="true">
+          <img class="tape-corner" src="Nuevos assest/Cocina-assets-PNG/11-cinta-translucida.png" alt="" aria-hidden="true">
         </figure>
         <figure class="polaroid oven-card">
-          <img src="assets/photos/empanadas-horno.webp" alt="Empanadas dorándose en el horno" loading="lazy">
-          <figcaption>Horno. Tiempo. Paciencia.</figcaption>
+          <img class="kitchen-photo" src="Nuevos assest/Cocina-assets-PNG/14-foto-empanadas-horno.png" alt="Empanadas doradas saliendo del horno" loading="lazy">
+          <img class="kitchen-frame" src="Nuevos assest/Cocina-assets-PNG/12-marco-foto-vacio.png" alt="" aria-hidden="true">
+          <img class="tape-corner" src="Nuevos assest/Cocina-assets-PNG/11-cinta-translucida.png" alt="" aria-hidden="true">
         </figure>
         <figure class="polaroid video-card">
-          <video id="craft-video" poster="assets/media/video-poster.webp" muted playsinline preload="metadata" aria-label="Video de preparación de empanadas">
+          <img class="video-poster" src="Nuevos assest/Cocina-assets-PNG/15-foto-horno-pizza.png" alt="Pizza en el horno" loading="lazy">
+          <video id="craft-video" poster="Nuevos assest/Cocina-assets-PNG/15-foto-horno-pizza.png" muted playsinline preload="metadata" aria-label="Video de preparación de empanadas">
             <source src="assets/media/empanadas.mp4" type="video/mp4">
           </video>
-          <span class="play-mark" aria-hidden="true">▶</span>
-          <figcaption>El proceso también es parte</figcaption>
+          <img class="kitchen-frame" src="Nuevos assest/Cocina-assets-PNG/12-marco-foto-vacio.png" alt="" aria-hidden="true">
+          <img class="play-mark" src="Nuevos assest/Cocina-assets-PNG/05-icono-play.png" alt="" aria-hidden="true">
         </figure>
-        <img class="kitchen-note" src="assets/graphics/process-note.png" alt="Harina, fuego y manos reales">
-        <img class="kitchen-arrow" src="assets/graphics/arrow-small.png" alt="" aria-hidden="true">
+        <img class="kitchen-note" src="Nuevos assest/Cocina-assets-PNG/07-el-proceso-tambien-es-parte.png" alt="El proceso también es parte.">
+        <img class="kitchen-arrow" src="Nuevos assest/Cocina-assets-PNG/08-flecha-hacia-horno.png" alt="" aria-hidden="true">
+        <img class="kitchen-crown" src="Nuevos assest/Cocina-assets-PNG/09-corona-roja.png" alt="" aria-hidden="true">
+        <img class="kitchen-scribble" src="Nuevos assest/Cocina-assets-PNG/10-garabato-rojo.png" alt="" aria-hidden="true">
       </div>
     </section>
 
     <section class="local-section" id="local" aria-labelledby="local-title">
+      <img class="local-bg" src="Nuevos assest/Local-assets-PNG/01-fondo-grunge.png" alt="" aria-hidden="true">
+      <img class="local-paper" src="Nuevos assest/Local-assets-PNG/02-papel-claro.png" alt="" aria-hidden="true">
       <div class="local-copy">
-        <span class="section-index">04 / SI PASÁS POR ACÁ</span>
-        <h2 id="local-title">El<br>local<br><span>054.</span></h2>
-        <img class="local-underline" src="assets/graphics/subrayado-local-rojo.svg" alt="" aria-hidden="true">
+        <h2 id="local-title" class="sr-only">El local. 054.</h2>
+        <img class="local-title-art" src="Nuevos assest/Local-assets-PNG/03-titulo-el-local.png" alt="El local.">
+        <img class="local-number-art" src="Nuevos assest/Local-assets-PNG/04-numero-054.png" alt="054.">
+        <img class="local-underline" src="Nuevos assest/Local-assets-PNG/05-subrayado-rojo.png" alt="" aria-hidden="true">
+        <img class="address-pin" src="Nuevos assest/Local-assets-PNG/08-pin-negro.png" alt="" aria-hidden="true">
         <address>Av. Santamarina 54<br>Tandil, Buenos Aires</address>
-        <p class="hours"><strong>Horarios:</strong> a confirmar antes de publicar.</p>
-        <a class="map-button" href="https://www.google.com/maps/search/?api=1&amp;query=Hasta+El+Moño+Pizzas+Tandil+Santamarina+54" target="_blank" rel="noopener noreferrer">Cómo llegar <span aria-hidden="true">↗</span></a>
-        <img class="local-stamp" src="assets/graphics/sello-tandil-054.svg" alt="Tandil 054">
+        <a class="map-button" href="https://www.google.com/maps/search/?api=1&amp;query=Hasta+El+Moño+Pizzas+Tandil+Santamarina+54" target="_blank" rel="noopener noreferrer">Cómo llegar <span aria-hidden="true">→</span></a>
       </div>
       <div class="local-visual">
-        <img class="facade" src="assets/photos/fachada.webp" alt="Fachada real de Hasta el Moño en avenida Santamarina" loading="lazy">
-        <img class="facade-frame" src="assets/graphics/marco-fachada.svg" alt="" aria-hidden="true">
-        <img class="local-pin" src="assets/graphics/pin-rojo.svg" alt="" aria-hidden="true">
-        <div class="local-paper-note">Nos encontrás<br>en Tandil <span aria-hidden="true">↗</span></div>
+        <img class="facade" src="Nuevos assest/Local-assets-PNG/11-fachada-original.png" alt="Fachada original de Hasta el Moño en avenida Santamarina" loading="lazy">
+        <img class="facade-frame" src="Nuevos assest/Local-assets-PNG/12-marco-fachada-vacio.png" alt="" aria-hidden="true">
+        <img class="facade-tape" src="Nuevos assest/Local-assets-PNG/13-cinta-translucida.png" alt="" aria-hidden="true">
+        <img class="local-pin" src="Nuevos assest/Local-assets-PNG/09-pin-rojo.png" alt="" aria-hidden="true">
+        <img class="local-pin-accent" src="Nuevos assest/Local-assets-PNG/10-enfasis-blanco.png" alt="" aria-hidden="true">
+        <img class="local-note-paper" src="Nuevos assest/Local-assets-PNG/14-papel-negro-nota.png" alt="" aria-hidden="true">
+        <img class="local-note-art" src="Nuevos assest/Local-assets-PNG/15-aca-nos-encontras.png" alt="Acá nos encontrás.">
+        <img class="local-note-arrow" src="Nuevos assest/Local-assets-PNG/16-flecha-hacia-local.png" alt="" aria-hidden="true">
       </div>
     </section>
 

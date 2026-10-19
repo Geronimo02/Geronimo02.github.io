@@ -1,35 +1,45 @@
-# Retomar Negro Mercado
+# Retomar Negro Mercado — S1 v0.2
 
-- Fecha de trabajo: 19/10/2026.
-- Sistema: Signature Studio 3.3, skills Studio y Brand Kit leídas.
-- Usuario: Gerónimo; demo premium, original, funcional, desde cero.
-- Repositorio: Geronimo02/Geronimo02.github.io.
-- Ruta: demos/negromercado/.
-- Rama: signature/negromercado-s0-s1-20261019.
-- No tocar main, no merge, no deploy, no contactar al negocio.
-- Protocolo SIGNATURE-PROYECTOS.md ya estaba en main y fue leído.
-- REGLA0.md leída; no se construyó template ni se eligió arquitectura.
-- S0 completado y documentado.
-- S1 entregada para revisión; identidad gráfica y operación provisionales.
-- Leer BRAND.md, brand.json y SOURCES.json para evidencia completa.
-- Sede de referencia: Avellaneda 702 y 9 de Julio, Tandil.
-- Cuenta aportada: instagram.com/negromercado.ok/.
-- El acceso de búsqueda a Instagram falló; navegación conectada no produjo evidencia.
-- No hay bio, enlace de carta ni feed verificados.
-- Café de especialidad respaldado por cobertura pública.
-- Vermut y productos seleccionados documentados históricamente; validar vigencia.
-- Aristegui 1216 aparece históricamente como otra sede; no mezclar activos.
-- Teléfonos y horarios contradictorios: no activar WhatsApp/llamadas ni “abierto ahora”.
-- F10: collage fotográfico inspeccionado, cartel oscuro/claro, ladrillo, carpintería oscura, madera y barra.
-- F10 no tiene derechos de redistribución acreditados; solo se guarda URL, no imagen.
-- Logo exacto, HEX, familia tipográfica, variante/isotipo pendientes.
-- Mantener logo provisionalmente; no redibujar desde una foto.
-- No inferir historia del nombre, fundación, pionero ni proveedor actual.
-- No anunciar galería activa por una mención histórica indexada.
-- Hipótesis S3: esquina/luz, selección de productos, café/vermut; ninguna elegida.
-- La dirección debe tener fotografía gastronómica/lugar y calidad comercial; evitar infografía/template.
-- S2 no iniciada: activar signature-content tras revisión del usuario.
-- Próximo: CONTENT.md y ASSETS.md, carta vigente, fotos por sede/derechos, modalidad/contacto.
-- S3 requerirá referencias realmente inspeccionadas, 2–3 propuestas y aprobación explícita.
-- No hay sitio ni preview de web; kit.html es documento de investigación.
-- Gates creativos G0-G2 no probados; no confundir con S0-S1.
+- Actualizado 19/10/2026 tras pedido explícito de revisar Instagram/historias/Maps.
+- Studio 3.3, modo DEMO; S0 completo; S1 v0.2 aceptada por el usuario el 19/10/2026; S2 preparada el 19/10/2026; revisión del usuario pendiente.
+- Repo Geronimo02/Geronimo02.github.io, demos/negromercado/.
+- Rama signature/negromercado-s0-s1-20261019; no main, merge ni deploy.
+- Leer BRAND.md, RESEARCH-REVISION.md, brand.json, SOURCES.json y DECISIONES.md.
+- v0.1 fue superada donde marcaba Instagram inaccesible, contacto desconocido o cartel como identidad principal.
+- Perfil Instagram oficial accedido directamente, con bio, feed y avatar.
+- Una destacada MENÚ visible: dos páginas inspeccionadas; primera indica 2 d.
+- No se accedió al archivo privado de historias ni se verificaron historias activas separadas.
+- Oferta oficial central: cafetería de especialidad, vermutería, pastelería.
+- Avellaneda 702/9 de Julio, Tandil; no incorporar segunda sede histórica sin validar.
+- Horario oficial: Lun–Vie 07:30–20:30; Sáb–Dom 09:00–20:30.
+- Linktree oficial: linktr.ee/Negro_Mercado_Tandil.
+- Menú/take away enlaza a destacada; WhatsApp 5491126587740 coincide con Maps.
+- No se enviaron mensajes ni se probó compra, reserva o delivery.
+- Maps declara presencial y para llevar, sin entrega a domicilio; enlace Pedir en línea no verificado.
+- Carrusel DeADrQuG6z8 inspeccionado completo (siete láminas), interfaz fecha 2 de octubre.
+- Renovación de identidad y detalles/pintura local, manteniendo café/pastelería/vermut.
+- Marca digital: wordmark minúsculo redondeado y símbolo anular con tres trazos.
+- Colores observados: crema, negro, verde, azul; marrón rojizo en menú; HEX/fuentes exactas pendientes.
+- Símbolo ya aparece en vasos de Maps feb 2024: no atribuir creación a renovación actual.
+- Alfajor de almendras ligado por marca a sus comienzos; laminados/proceso y productos detallados son anclas fuertes.
+- Fecha de comienzos declarada por marca: 21/12/2020; ver post enlazado en revisión.
+- Maps inspeccionado: interior feb 2024, esquina sept 2024, fachada publicada oct 2026.
+- Identidad digital vigente prevalece sobre cartel antiguo, aunque todavía aparezca en fotos de fachada.
+- Mercado actual/segunda sede pendientes; no priorizar ese eje por fuentes antiguas.
+- No subir fotos/capturas con información de cuentas personales o sin derechos al repo público.
+- S2: CONTENT.md/ASSETS.md + content/menu.json, copy.json y media-manifest.json. Carta 65 registros, 7 bloques de copy, 12 referencias.
+- S3: referencias reales, 2–3 propuestas 1440/390 y elección explícita. No hay dirección aprobada.
+- Sin sitio implementado ni publicación autorizada.
+
+- Cierre solicitado por usuario: actualizar repo antes de la siguiente etapa. Investigación S1 aceptada; S2 preparada para revisión; ninguna dirección artística ni publicación aprobada.
+
+- S2 recuperó ambas páginas de carta; se leyeron los importes y se preservó ambigüedad de columnas. No hay stock ni variantes comerciales validados.
+- S2 inspeccionó imagen real de muffin abierto, focca y laminado servido. No confundir caption sobre proceso con foto de manos elaborando.
+- Fotografías solo referencia sin permiso, no empaquetadas públicamente. content/ contiene datos y manifest, no un paquete fotográfico licenciado.
+- Próximo S3: activar Signature Concept tras revisión, investigar refs concretas y producir alternativas visuales sin inventar assets o hechos.
+
+## S3 · avance del 19/10/2026
+Usuario autoriza seguir. Dos conceptos y comparador offline en concept/. Referencias inspeccionadas y aplicación escrita; REFERENCE-APPLICATION.json no marca selected sin capturas. A recomendación provisional, no elegida. Imágenes generadas rotuladas REPRESENTACION; fuentes OFL adjuntas. Bloqueo técnico de render documentado en CONCEPT-BOARD.md; sin capturas ni pruebas interactivas ejecutadas. Próximo: render permitido 1440/390, revisar, corregir y presentar elección. No S4 ni deploy.
+
+## Revisión libre C · Rompé la rutina
+Usuario pidió aflojar proceso/referencias, reforzar identidad/color y probar croissant/café con scroll; aportó JPEG del símbolo. Leer concept/REVISION-02.md. C reemplaza recomendación A sin aprobación de dirección. Paleta muestreada: F5F2EB/111111/1B3A2B/506C9B. HTML autocontenido C, boceto generado y estudio MP4 de 5s. No confundir esos medios con captura/QA de navegador; render HTML sigue pendiente.

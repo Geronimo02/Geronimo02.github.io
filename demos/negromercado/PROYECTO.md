@@ -30,3 +30,12 @@ Ver bloque de estado automatico y SESSION-RESUME.md.
 
 ## Validación documental
 JSON parseable y enlaces locales del kit comprobados. Kit HTML no renderizado a 1280/400; revisión responsive/consola pendiente. No es un concepto ni un sitio implementado.
+
+## Revisión S1 v0.2 — 19/10/2026
+El usuario pidió profundizar en historias/Instagram y Maps. Se accedió directamente al perfil, destacada MENÚ (dos páginas), siete láminas de renovación de identidad, Linktree oficial y ficha/fotos de Maps. Ver RESEARCH-REVISION.md. Identidad digital vigente y café/pastelería/vermú pasan al centro; carta/horario/WhatsApp publicados están identificados. S1 permanece para revisión; S2 no iniciada. La limitación de navegación de S0/v0.1 fue resuelta en este turno.
+
+## Cierre confirmado de S1
+19/10/2026: usuario acepta el relevamiento revisado («perfecto») y pide actualizar el repo antes de la siguiente etapa. S1 v0.2 aceptada como base de investigación; pendientes de originales y contenido conservados. Próxima etapa S2 Signature Content, aún no iniciada. Sin dirección artística aprobada ni publicación autorizada.
+
+## S2 — Signature Content, 19/10/2026
+Usuario autorizó etapa 2. CONTENT.md y ASSETS.md preparados, con content/menu.json (65 registros de carta), copy.json (7 bloques) y media-manifest.json (12 referencias). Dos páginas de carta leídas; tres imágenes de producto inspeccionadas localmente. Fotografías/local/logo permanecen referencias sin paquete licenciado; no se suben fotos a este repo público. S2 para revisión; siguiente S3 Concept tras revisión. Sin sitio ni deploy.

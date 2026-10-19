@@ -1,0 +1,29 @@
+HASTA EL MOÑO — ASSETS DEL HERO
+
+21 PNG individuales. Todos tienen transparencia real salvo 01-fondo-grunge.png, que es el fondo negro completo.
+
+01 Fondo grunge
+02 Pizza ilustrativa natural, sin textos ni etiquetas
+03 Titular HASTA EL MOÑO.
+04 Logo original provisto
+05 Corona roja
+06 PIZZAS. EMPANADAS. / ASÍ DE SIMPLE.
+07 Párrafo Masa real...
+08 Flecha blanca curva
+09 Sello TANDIL / BS. AS. / 054.
+10 Papel PIZZA DE LA CASA con cinta
+11 Texto PIZZAS / EMPANADAS / Y MÁS.
+12 Subrayado rojo
+13 Garabato rojo lateral
+14 Cinta translúcida
+15 Papeles de periódico
+16 Borde de papel rasgado
+17 Botón VER LA CARTA
+18 TU COMANDA con contador 0
+19 Navegación LA CARTA
+20 Navegación EL LOCAL
+21 Navegación NOSOTROS
+
+Las piezas ilustradas se recrearon a partir del boceto aprobado. Logo, sello, textura y algunos recortes se reutilizan del material aportado. Los textos pequeños y controles se exportaron de componentes tipográficos para mantenerlos nítidos. La pizza es una representación ilustrativa, no una fotografía auténtica del negocio.
+
+Los archivos conservan márgenes transparentes de seguridad. Al colocarlos, mantener la proporción y usar object-fit:contain. Las letras blancas pueden parecer invisibles en visores con fondo blanco: colocarlas sobre el fondo oscuro. En la web final conviene mantener navegación, botones y párrafo como texto/controles HTML accesibles; sus PNG sirven como referencia o para composiciones.
