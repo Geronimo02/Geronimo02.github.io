@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0",
+  "studio_version": "3.3",
+  "marca": "Negro Mercado",
+  "slug": "negromercado",
+  "capturado": "2026-10-19",
+  "stage": "S1",
+  "status": "provisional",
+  "rubro": "Café de especialidad; vermutería y mercado documentados históricamente",
+  "ubicacion": {
+    "sede_base": "Avellaneda 702 y 9 de Julio, Tandil",
+    "confianza": "alta para identidad; operación vigente pendiente",
+    "otras_sedes": "Aristegui 1216: antecedente histórico, no confirmar vigencia"
+  },
+  "canales": {
+    "instagram": "https://www.instagram.com/negromercado.ok/",
+    "google_business": "https://www.google.com/maps/place/Negro+Mercado+Cafe/@-37.3329451,-59.1334364,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95911fe92f6f1151:0x4117aaba87078d77!8m2!3d-37.3329451!4d-59.1308615!16s%2Fg%2F11qps81c06",
+    "web": null,
+    "whatsapp": null
+  },
+  "colores": [],
+  "color_status": "Sin tokens corporativos confirmados; cartel claro/oscuro y carpintería verde oscura aparente observados en foto F10",
+  "contraste_wcag": [],
+  "tipografias": [],
+  "logos": [],
+  "logo": {
+    "recomendacion": "no tocar",
+    "estado": "provisional; master y pruebas a 32/40/96 px pendientes"
+  },
+  "servicios_o_menu": {
+    "estado": "histórico, no carta vigente",
+    "categorias": [
+      "café de especialidad",
+      "panificados y pastelería",
+      "salados",
+      "productos seleccionados",
+      "vermut"
+    ],
+    "precios": null
+  },
+  "horarios": null,
+  "contacto": {
+    "estado": "contradictorio; no activar números"
+  },
+  "tono": {
+    "estado": "propuesta",
+    "rasgos": [
+      "cercano",
+      "concreto",
+      "voseo natural",
+      "centrado en productos"
+    ]
+  },
+  "tagline_oficial": null,
+  "propuesta": {
+    "solucion": "Presentación gastronómica + carta móvil + orientación de visita",
+    "estado": "hipótesis S1",
+    "mvp": [
+      "fotografía del lugar/producto",
+      "propuesta del negocio",
+      "carta validada",
+      "ubicación",
+      "horarios validados",
+      "Instagram"
+    ],
+    "stack": null,
+    "conversion": "descubrir → conocer propuesta → revisar carta → cómo llegar",
+    "no_incluir_sin_validar": [
+      "reservas reales",
+      "pagos",
+      "WhatsApp",
+      "stock",
+      "segunda sede actual"
+    ]
+  },
+  "aprobado_por_usuario": false,
+  "fuentes": [
+    {
+      "id": "F01",
+      "url": "https://www.instagram.com/negromercado.ok/",
+      "tipo": "canal aportado por usuario",
+      "estado": "acceso no verificado; fetch throttled; navegación sin resultado verificable",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F02",
+      "url": "https://www.google.com/maps/place/Negro+Mercado+Cafe/@-37.3329451,-59.1334364,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95911fe92f6f1151:0x4117aaba87078d77!8m2!3d-37.3329451!4d-59.1308615!16s%2Fg%2F11qps81c06",
+      "tipo": "localización aportada",
+      "estado": "enlace aportado por usuario; acceso directo no disponible; dirección contrastada con F03-F06",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F03",
+      "url": "https://www.lanacion.com.ar/revista-lugares/los-mejores-lugares-para-dormir-y-comer-en-tandil-nid04102021/",
+      "tipo": "prensa gastronómica",
+      "estado": "texto abierto; evidencia histórica, no carta vigente",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F04",
+      "url": "https://es.restaurantguru.com/Negro-Mercado-Tandil",
+      "tipo": "agregador",
+      "estado": "texto abierto; horario y contacto requieren contraste primario",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F05",
+      "url": "https://www.waze.com/es/live-map/directions/ar/provincia-de-buenos-aires/tandil/negro-mercado-cafe?to=place.ChIJURFvL-kfkZURd40Hh7qqF0E",
+      "tipo": "directorio navegación",
+      "estado": "indexado; discrepancia de horarios y teléfonos entre versiones",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F06",
+      "url": "https://www.tripadvisor.es/Restaurant_Review-g312761-d22979302-Reviews-Negro_Mercado-Tandil_Province_of_Buenos_Aires_Central_Argentina.html",
+      "tipo": "directorio y reseñas",
+      "estado": "indexado; oferta e información histórica",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F07",
+      "url": "https://negozona.com/anuncios/12633",
+      "tipo": "anuncio comercial no disponible",
+      "estado": "texto abierto; corresponde a Aristegui, no trasladar claims actuales a Avellaneda",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F08",
+      "url": "https://www.eldiariodetandil.com/2023/09/20/sigue-la-semana-gastronomica-sabores-de-tandil-en-los-restaurantes-con-el-plato-solidario",
+      "tipo": "prensa local",
+      "estado": "indexado; dos domicilios en 2023, no prueba vigencia actual",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F09",
+      "url": "https://www.pagina12.com.ar/783469-las-malas-artes-que-cambiaron-todo/",
+      "tipo": "prensa cultural",
+      "estado": "extracto indexado menciona futura mudanza de galería; artículo abierto sin cuerpo completo; no verificar realización",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F10",
+      "url": "https://img02.restaurantguru.com/c4f4-Cafeteria-Negro-Mercado-Cafe-design.jpg",
+      "tipo": "collage fotográfico de terceros",
+      "estado": "descargado e inspeccionado; procedencia temporal no comprobada; sin licencia de redistribución",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F11",
+      "url": "https://www.behance.net/gallery/115437555/Content-NEGRO-MERCADO-TANDIL",
+      "tipo": "portfolio audiovisual",
+      "estado": "título y autor indexados; proyecto bloqueado 403; no atribuir autoría del branding",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "F12",
+      "url": "https://es.restaurantguru.com/Negro-Mercado-Tandil/menu",
+      "tipo": "carta candidata",
+      "estado": "fetch falló; no hay carta vigente verificada",
+      "consultado": "2026-10-19"
+    }
+  ],
+  "faltantes": [
+    "logo original y sistema visual",
+    "bio y enlaces",
+    "carta/precios vigentes",
+    "derechos y fotos por sede",
+    "horarios/contacto",
+    "historia oficial",
+    "operación actual y otras sedes"
+  ]
+}
