@@ -16,3 +16,14 @@
 | No autorizado | Merge, main, deploy, DNS, contacto al negocio, pagos | No hay autorización |
 
 No hay conceptos aprobados ni rechazados para este negocio. Criterio pedido: premium, original, funcional y representativo; fotografía y composición deben competir a alto nivel sin literalidad infográfica. S0-S5 son etapas; G0-G2 son gates creativos distintos.
+
+## Revisión v0.2 solicitada por usuario
+
+19/10/2026. Se revisaron fuentes directas Instagram/destacadas/Maps. Las filas anteriores sobre teléfono desconocido/identidad basada en cartel quedan superadas por esta revisión.
+
+- Confirmado públicamente: cafetería de especialidad, vermutería y pastelería; horarios y Avellaneda 702 en bio.
+- Confirmado públicamente: Linktree oficial con MENÚ + TAKE AWAY y WhatsApp 5491126587740, coherente con Maps. No se envió ningún mensaje.
+- Confirmado como uso visual: identidad renovada, wordmark minúsculo redondeado, símbolo propio, crema/negro/verde/azul y carta con marrón rojizo. Mantener marca; vector/fuentes/HEX exactos pendientes.
+- Corregido: cartel físico antiguo deja de ser fuente principal del branding digital. Foto de Maps publicada en oct 2026 todavía lo muestra; no inferir fecha de toma.
+- Provisional: producto/oficio y café–pastelería–vermú ganan prioridad. Mercado de productores se retira como eje principal hasta validar vigencia.
+- Pendiente: aprobación del usuario, S2, propuesta visual, derechos de activos. Ninguna selección artística nueva ni publicación.
