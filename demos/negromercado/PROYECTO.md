@@ -30,3 +30,6 @@ Ver bloque de estado automatico y SESSION-RESUME.md.
 
 ## Validación documental
 JSON parseable y enlaces locales del kit comprobados. Kit HTML no renderizado a 1280/400; revisión responsive/consola pendiente. No es un concepto ni un sitio implementado.
+
+## Revisión S1 v0.2 — 19/10/2026
+El usuario pidió profundizar en historias/Instagram y Maps. Se accedió directamente al perfil, destacada MENÚ (dos páginas), siete láminas de renovación de identidad, Linktree oficial y ficha/fotos de Maps. Ver RESEARCH-REVISION.md. Identidad digital vigente y café/pastelería/vermú pasan al centro; carta/horario/WhatsApp publicados están identificados. S1 permanece para revisión; S2 no iniciada. La limitación de navegación de S0/v0.1 fue resuelta en este turno.
