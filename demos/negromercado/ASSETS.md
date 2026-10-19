@@ -43,3 +43,6 @@ Plan B de demo: presentar referencias enlazadas en Concept y producir un fondo a
 
 ## Assets de exploración S3
 Dos WebP generados y dos fuentes OFL en concept/assets/, procedencia en PROVENANCE.md. REPRESENTACION rotulada, no fotos reales del negocio. Incluidos en los HTML offline. Originales/licencias de fotos reales siguen pendientes.
+
+## Revisión C
+Símbolo JPEG del usuario intacto; croissant-split.webp generado con alpha; direction-c-artwork.webp boceto generado; motion-study.mp4 estudio audiovisual de 5s, no captura del HTML. Fuentes ya licenciadas. Ver concept/REVISION-02.md.

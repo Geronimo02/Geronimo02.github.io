@@ -83,3 +83,6 @@ El antiguo eje “mercado de productores” se retira como recomendación princi
 S1 v0.2 aceptada por el usuario el 19/10/2026. S2 no iniciada. Recuperar original del logo/fuentes/colores; transcribir carta a resolución suficiente y fechar precios; fotos y derechos por sede; verificar retiro/reservas si se desean; confirmar historia/fechas especiales y modalidad actual de atención. La carta contiene opciones/claims alimentarios; no inferir certificaciones o seguridad para alergias.
 
 S3 investigará referencias reales y creará 2–3 propuestas 1440/390, con REFERENCE-APPLICATION.json y selección explícita. No hay referencia visual P1 aportada por usuario; las piezas oficiales investigadas son identidad de marca y deben respetarse. Sin arquitectura elegida, sitio ni publicación.
+
+## Actualización cromática y símbolo aportado
+El 19/10 el usuario aporta el símbolo en JPEG 150x150; se conserva sin redibujar en concept/assets/logo-user-original.jpg. Paleta medida en piezas de renovación: crema #F5F2EB, negro #111111, verde #1B3A2B, azul #506C9B; muestras JPEG, no manual oficial. Leer concept/palette-observed.json y REVISION-02.md. No reducir azul a gris ni mezclar inferencias con HEX oficiales.

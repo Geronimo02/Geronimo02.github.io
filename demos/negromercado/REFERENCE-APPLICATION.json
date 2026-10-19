@@ -78,7 +78,25 @@
       "implementation_status": "written_not_render_verified",
       "license_checked": "not_applicable_inspiration",
       "dont_copy": "No afirmar uso de GSAP: se implementó CSS y Web Animations nativos; no se añadió la dependencia."
+    },
+    {
+      "id": "R05",
+      "url": "https://brandmotion.in/store/chai-theory-cafe",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partial",
+      "decision": "inspiration_only",
+      "observed": "Se consultó explicación publicada de una secuencia de vertido por scroll; no se ejecutó la demo ni se compró código.",
+      "principle": "Un gesto gastronómico articula el recorrido.",
+      "brand_anchor": "Pastelería y laminados publicados por Negro Mercado; símbolo aportado y paleta muestreada.",
+      "concept_path": "concept/directions/c/index.html",
+      "concept_screen": null,
+      "implementation_status": "capas fotográficas y scroll escritos; estudio MP4 renderizado, HTML sin verificar visualmente",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar el vertido, layout, escenas, fotos ni código; se propone croissant con recorrido propio."
     }
   ],
-  "selection_note": "No reference marked selected until screenshot evidence exists. Sources actually inspected; implementation awaits rendering."
+  "selection_note": "No reference marked selected until screenshot evidence exists. Sources actually inspected; implementation awaits rendering.",
+  "active_direction": "c",
+  "revision_note": "Usuario pidió referencias como estímulo y foco en marca/movimiento/color; no cumplir cuotas."
 }

@@ -18,3 +18,6 @@ Los productos nombrados proceden de S2 y vermutería de la bio oficial. Fotograf
 El script Python de captura no pudo arrancar porque falta Playwright Python. Node Playwright existe, pero su Chromium no está instalado. La descarga oficial devolvió una página Site Unavailable en lugar del archivo. Un intento de abrir una prueba por data URL en el navegador conectado fue rechazado por política de protocolos. No se intentaron vías indirectas en ese navegador.
 
 No existen capturas reales de estos conceptos ni QA interactivo ejecutado. G0/G1/G2 no aprobados. S3 permanece en curso y S4 no empieza. Próximo paso: renderizar los HTML por una vía permitida, inspeccionar 1440/390, probar tabs/acordeón/navegación, corregir y recién entonces presentar selección final de dirección.
+
+## Revisión posterior · C
+La recomendación A queda superada por feedback: explorar una dirección única, colores fieles y gesto gastronómico. Propuesta vigente: Rompé la rutina. Leer concept/REVISION-02.md; no requiere repetir el proceso A/B. No hay dirección aprobada.

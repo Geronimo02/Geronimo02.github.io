@@ -40,3 +40,6 @@ No hay conceptos aprobados ni rechazados para este negocio. Criterio pedido: pre
 - Se construyen A fotográfica oscura y B editorial luminosa, con composiciones e interacción diferentes. A recomendada provisionalmente.
 - Sin originales licenciados, se generan imágenes genéricas rotuladas; no son pruebas del negocio.
 - Capturas bloqueadas por el entorno y protocolo del navegador; no se inventa QA. S3 en curso, no selección ni publicación.
+
+### Revisión C por feedback
+Usuario autoriza exploración libre de arte, sin rigidez del paso a paso. Se usa símbolo JPEG aportado sin redibujar. Paleta se muestrea directamente del carrusel oficial. Se desarrolla Rompé la rutina, croissant fotográfico en capas dirigido por scroll; no se afirma video real/3D. La recomendación A queda superada. Sin dirección aprobada ni deploy.

@@ -12,3 +12,5 @@
 10. Actualizar estado, decisiones y resume al cerrar etapa y persistir en la rama. No marcar pruebas no ejecutadas como pass.
 
 11. S3 autorizada y dos prototipos preparados en concept/. Prevalece el estado in_progress_render_pending: NO existen capturas verificadas ni elección. Leer CONCEPT-BOARD.md y concept/screens/capture-results.json. No afirmar S3 terminada; renderizar por vía permitida antes de solicitar aprobación final de diseño.
+
+12. Prevalece el feedback posterior del usuario: aflojar proceso y referencias, trabajar arte único, movimiento y color. C es la exploración vigente: concept/REVISION-02.md. Usar logo-user-original.jpg aportado, intacto. Paleta medida de JPEG, no oficial. No repetir aprobación de fases internas ni proceso documental para avanzar esta exploración ya autorizada. No publicar ni declarar C elegida sin aprobación.

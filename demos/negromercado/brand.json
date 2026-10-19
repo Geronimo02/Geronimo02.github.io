@@ -20,11 +20,38 @@
     "linktree": "https://linktr.ee/Negro_Mercado_Tandil",
     "menu": "https://www.instagram.com/stories/highlights/17961471578727361/"
   },
-  "colores": [],
-  "color_status": "Observados en renovación: crema, negro, azul y verde; carta con marrón rojizo. HEX pendientes; no inventar valores oficiales.",
+  "colores": [
+    {
+      "role": "cream",
+      "hex": "#F5F2EB",
+      "method": "texto claro repetido"
+    },
+    {
+      "role": "black",
+      "hex": "#111111",
+      "dominant_pixel_count": 1359637
+    },
+    {
+      "role": "green",
+      "hex": "#1B3A2B",
+      "dominant_pixel_count": 1314626
+    },
+    {
+      "role": "blue",
+      "hex": "#506C9B",
+      "dominant_pixel_count": 1320874
+    }
+  ],
+  "color_status": "muestreado de JPEG oficial; no manual oficial",
   "contraste_wcag": [],
   "tipografias": [],
-  "logos": [],
+  "logos": [
+    {
+      "path": "concept/assets/logo-user-original.jpg",
+      "source": "adjunto del usuario 19/10/2026",
+      "type": "símbolo raster 150x150, intacto; no wordmark ni vector master"
+    }
+  ],
   "logo": {
     "recomendacion": "no tocar",
     "estado": "identidad renovada observada; símbolo propio y wordmark minúsculo redondeado; vector/pruebas pequeños pendientes"

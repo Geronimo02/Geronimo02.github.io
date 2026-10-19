@@ -5,7 +5,7 @@
   "source": "https://www.instagram.com/negromercado.ok/",
   "mode": "demo",
   "created_at": "2026-10-19T13:56:01Z",
-  "updated_at": "2026-10-19T20:37:12.512403+00:00",
+  "updated_at": "2026-10-19T21:18:29.165306+00:00",
   "next_stage": "S3",
   "persistent_destination": "github:Geronimo02/Geronimo02.github.io/demos/negromercado",
   "stages": {
@@ -65,7 +65,12 @@
         "concept/board.json",
         "concept/index.html",
         "concept/directions/a/index.html",
-        "concept/directions/b/index.html"
+        "concept/directions/b/index.html",
+        "concept/REVISION-02.md",
+        "concept/palette-observed.json",
+        "concept/directions/c/index.html",
+        "concept/assets/direction-c-artwork.webp",
+        "concept/assets/motion-study.mp4"
       ],
       "user_approved": false,
       "open_issues": [
@@ -121,13 +126,18 @@
       "date": "2026-10-19",
       "status": "authorized_by_user",
       "decision": "«seguimos nomas» autoriza explorar S3; no aprobar una dirección ni publicar"
+    },
+    {
+      "date": "2026-10-19",
+      "status": "authorized_by_user",
+      "decision": "Priorizar marca/color/producto y scroll sobre proceso rígido; explorar una dirección propia. Usuario aporta símbolo JPEG."
     }
   ],
   "studio_version": "3.3",
   "stage": "S3",
   "branch": "signature/negromercado-s0-s1-20261019",
-  "approval_status": "Continuación S3 autorizada; conceptos preparados, render y selección pendientes",
-  "next_action": "Render y QA permitidos a 1440/390, correcciones y presentación para elegir dirección; no S4",
+  "approval_status": "Usuario pide exploración libre y aporta símbolo; dirección C propuesta, no aprobada",
+  "next_action": "Revisar Rompé la rutina, ajustar el gesto y verificar HTML en navegador permitido",
   "publish_authorized": false,
   "validation": {
     "json": "pass",
@@ -145,7 +155,11 @@
     ],
     "s3_static": "pass",
     "s3_visual": "not_tested",
-    "s3_interactive": "not_tested"
+    "s3_interactive": "not_tested",
+    "c_render": "not_tested",
+    "c_interactive": "not_tested",
+    "c_static": "pass"
   },
-  "revision": "S1 v0.2 · revisión directa Instagram/destacadas/Maps"
+  "revision": "S1 v0.2 · revisión directa Instagram/destacadas/Maps",
+  "active_concept": "c"
 }

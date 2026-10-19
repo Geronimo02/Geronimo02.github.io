@@ -5,7 +5,7 @@
   "selected": null,
   "selection_status": "pendiente",
   "approval_record": "",
-  "recommended": "a",
+  "recommended": "c",
   "stage_status": "in_progress_render_pending",
   "directions": [
     {
@@ -59,6 +59,28 @@
         "Original de logo y validación comercial pendientes"
       ],
       "reference_status": "Referencias inspeccionadas; aplicación escrita en código, resultado visual no verificado"
+    },
+    {
+      "id": "c",
+      "title": "Rompé la rutina",
+      "status": "exploración por feedback del usuario",
+      "concept": "Un gesto de pastelería transforma el scroll en un antojo.",
+      "layout": "Lienzo crema, gran tipo verde, producto recortado y franja azul.",
+      "narrative": "Croissant abre el antojo; capas dan paso a carta y visita.",
+      "signature": "Croissant se separa al recorrer la portada.",
+      "typography": "Bricolage Grotesque y DM Sans propuestas",
+      "imagery": "REPRESENTACION generada + símbolo JPEG original del usuario",
+      "motion": "Escena sticky; capas fotográficas con traslación/rotación por scroll; reduced motion estático",
+      "mobile": "Hero reordenado, producto ampliado y navegación desplegable",
+      "cta": "Carta, ubicación y consulta",
+      "source_priority": "marca",
+      "identity_traces": [
+        "Símbolo aportado sin deformar",
+        "Paleta extraída de piezas oficiales",
+        "Oferta café/pastelería/vermú y dirección Avellaneda"
+      ],
+      "reference_status": "inspiración libre; resultado HTML sin render verificado"
     }
-  ]
+  ],
+  "active_revision": "c"
 }

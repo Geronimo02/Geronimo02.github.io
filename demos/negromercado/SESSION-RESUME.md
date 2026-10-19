@@ -40,3 +40,6 @@
 
 ## S3 · avance del 19/10/2026
 Usuario autoriza seguir. Dos conceptos y comparador offline en concept/. Referencias inspeccionadas y aplicación escrita; REFERENCE-APPLICATION.json no marca selected sin capturas. A recomendación provisional, no elegida. Imágenes generadas rotuladas REPRESENTACION; fuentes OFL adjuntas. Bloqueo técnico de render documentado en CONCEPT-BOARD.md; sin capturas ni pruebas interactivas ejecutadas. Próximo: render permitido 1440/390, revisar, corregir y presentar elección. No S4 ni deploy.
+
+## Revisión libre C · Rompé la rutina
+Usuario pidió aflojar proceso/referencias, reforzar identidad/color y probar croissant/café con scroll; aportó JPEG del símbolo. Leer concept/REVISION-02.md. C reemplaza recomendación A sin aprobación de dirección. Paleta muestreada: F5F2EB/111111/1B3A2B/506C9B. HTML autocontenido C, boceto generado y estudio MP4 de 5s. No confundir esos medios con captura/QA de navegador; render HTML sigue pendiente.
