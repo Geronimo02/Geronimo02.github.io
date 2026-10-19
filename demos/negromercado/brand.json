@@ -5,7 +5,7 @@
   "slug": "negromercado",
   "capturado": "2026-10-19",
   "stage": "S1",
-  "status": "investigación revisada; aprobación pendiente",
+  "status": "investigación S1 v0.2 aceptada por usuario; originales y contenido pendientes",
   "rubro": "Cafetería de especialidad | Vermutería | Pastelería",
   "ubicacion": {
     "sede_base": "Avellaneda 702 y 9 de Julio, Tandil",
@@ -90,7 +90,7 @@
       "catálogo permanente de mercado"
     ]
   },
-  "aprobado_por_usuario": false,
+  "aprobado_por_usuario": true,
   "fuentes": [
     {
       "id": "F01",
@@ -218,5 +218,6 @@
     "fecha_declarada_comienzos": "21/12/2020",
     "fuente": "https://www.instagram.com/negromercado.ok/p/DNrq9soWqTA/",
     "estado": "declaración de marca visible; no entrevista histórica"
-  }
+  },
+  "approval_scope": "Brand Kit/relevamiento S1 v0.2, 2026-10-19; no dirección visual ni publicación"
 }
