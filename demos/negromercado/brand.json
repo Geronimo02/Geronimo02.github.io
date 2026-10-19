@@ -5,8 +5,8 @@
   "slug": "negromercado",
   "capturado": "2026-10-19",
   "stage": "S1",
-  "status": "provisional",
-  "rubro": "Café de especialidad; vermutería y mercado documentados históricamente",
+  "status": "investigación revisada; aprobación pendiente",
+  "rubro": "Cafetería de especialidad | Vermutería | Pastelería",
   "ubicacion": {
     "sede_base": "Avellaneda 702 y 9 de Julio, Tandil",
     "confianza": "alta para identidad; operación vigente pendiente",
@@ -16,39 +16,55 @@
     "instagram": "https://www.instagram.com/negromercado.ok/",
     "google_business": "https://www.google.com/maps/place/Negro+Mercado+Cafe/@-37.3329451,-59.1334364,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95911fe92f6f1151:0x4117aaba87078d77!8m2!3d-37.3329451!4d-59.1308615!16s%2Fg%2F11qps81c06",
     "web": null,
-    "whatsapp": null
+    "whatsapp": "https://wa.me/5491126587740",
+    "linktree": "https://linktr.ee/Negro_Mercado_Tandil",
+    "menu": "https://www.instagram.com/stories/highlights/17961471578727361/"
   },
   "colores": [],
-  "color_status": "Sin tokens corporativos confirmados; cartel claro/oscuro y carpintería verde oscura aparente observados en foto F10",
+  "color_status": "Observados en renovación: crema, negro, azul y verde; carta con marrón rojizo. HEX pendientes; no inventar valores oficiales.",
   "contraste_wcag": [],
   "tipografias": [],
   "logos": [],
   "logo": {
     "recomendacion": "no tocar",
-    "estado": "provisional; master y pruebas a 32/40/96 px pendientes"
+    "estado": "identidad renovada observada; símbolo propio y wordmark minúsculo redondeado; vector/pruebas pequeños pendientes"
   },
   "servicios_o_menu": {
-    "estado": "histórico, no carta vigente",
+    "estado": "carta destacada oficial observada; transcripción exacta S2 pendiente",
     "categorias": [
-      "café de especialidad",
-      "panificados y pastelería",
-      "salados",
-      "productos seleccionados",
-      "vermut"
+      "cafetería caliente/fría",
+      "filtrados",
+      "té",
+      "bebidas",
+      "vermut",
+      "pastelería",
+      "tostados/sándwiches",
+      "desayunos y meriendas",
+      "platos",
+      "brunch para dos"
     ],
-    "precios": null
+    "precios": "visibles en imágenes; no transcritos íntegramente"
   },
-  "horarios": null,
+  "horarios": {
+    "lunes_viernes": "07:30–20:30",
+    "sabado_domingo": "09:00–20:30",
+    "fuente": "R01",
+    "estado": "publicados por canal oficial"
+  },
   "contacto": {
-    "estado": "contradictorio; no activar números"
+    "estado": "canal oficial publicado, coherente con Maps; no se probó conversación",
+    "whatsapp": "5491126587740",
+    "telefono_maps": "011 2658-7740",
+    "fuente": "R04/R05"
   },
   "tono": {
-    "estado": "propuesta",
+    "estado": "observado en publicaciones oficiales",
     "rasgos": [
-      "cercano",
-      "concreto",
-      "voseo natural",
-      "centrado en productos"
+      "voseo",
+      "coloquial",
+      "cálido",
+      "detalle de ingredientes",
+      "humor cotidiano"
     ]
   },
   "tagline_oficial": null,
@@ -56,21 +72,22 @@
     "solucion": "Presentación gastronómica + carta móvil + orientación de visita",
     "estado": "hipótesis S1",
     "mvp": [
-      "fotografía del lugar/producto",
-      "propuesta del negocio",
-      "carta validada",
+      "fotografía producto y oficio",
+      "identidad renovada",
+      "carta por categorías",
       "ubicación",
-      "horarios validados",
-      "Instagram"
+      "horarios",
+      "Instagram",
+      "consulta WhatsApp/take away"
     ],
     "stack": null,
-    "conversion": "descubrir → conocer propuesta → revisar carta → cómo llegar",
+    "conversion": "producto y lugar → carta → visita o consulta de take away",
     "no_incluir_sin_validar": [
       "reservas reales",
       "pagos",
-      "WhatsApp",
       "stock",
-      "segunda sede actual"
+      "segunda sede actual",
+      "catálogo permanente de mercado"
     ]
   },
   "aprobado_por_usuario": false,
@@ -79,14 +96,14 @@
       "id": "F01",
       "url": "https://www.instagram.com/negromercado.ok/",
       "tipo": "canal aportado por usuario",
-      "estado": "acceso no verificado; fetch throttled; navegación sin resultado verificable",
+      "estado": "Revisión v0.2: acceso directo en navegador exitoso; perfil, bio, menú destacado y carrusel de renovación inspeccionados",
       "consultado": "2026-10-19"
     },
     {
       "id": "F02",
       "url": "https://www.google.com/maps/place/Negro+Mercado+Cafe/@-37.3329451,-59.1334364,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95911fe92f6f1151:0x4117aaba87078d77!8m2!3d-37.3329451!4d-59.1308615!16s%2Fg%2F11qps81c06",
       "tipo": "localización aportada",
-      "estado": "enlace aportado por usuario; acceso directo no disponible; dirección contrastada con F03-F06",
+      "estado": "Revisión v0.2: ficha y fotografías abiertas directamente; identidad/dirección/contacto contrastados",
       "consultado": "2026-10-19"
     },
     {
@@ -158,15 +175,48 @@
       "tipo": "carta candidata",
       "estado": "fetch falló; no hay carta vigente verificada",
       "consultado": "2026-10-19"
+    },
+    {
+      "id": "R01",
+      "url": "https://www.instagram.com/negromercado.ok/",
+      "tipo": "primaria; observación navegador",
+      "estado": "bio/feed/avatar inspeccionados",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "R02",
+      "url": "https://www.instagram.com/stories/highlights/17961471578727361/",
+      "tipo": "primaria; destacada",
+      "estado": "dos páginas de carta inspeccionadas; primera indica 2 d; precios por transcribir con original",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "R03",
+      "url": "https://www.instagram.com/negromercado.ok/p/DeADrQuG6z8/",
+      "tipo": "primaria; renovación de identidad",
+      "estado": "siete láminas inspeccionadas; interfaz fecha 2 de octubre",
+      "consultado": "2026-10-19"
+    },
+    {
+      "id": "R04",
+      "url": "https://linktr.ee/Negro_Mercado_Tandil",
+      "tipo": "primaria; link bio oficial",
+      "estado": "enlaces menú/take away y WhatsApp observados; sin enviar mensajes",
+      "consultado": "2026-10-19"
     }
   ],
   "faltantes": [
-    "logo original y sistema visual",
-    "bio y enlaces",
-    "carta/precios vigentes",
-    "derechos y fotos por sede",
-    "horarios/contacto",
-    "historia oficial",
-    "operación actual y otras sedes"
-  ]
+    "logo master/fuentes y HEX",
+    "transcripción carta a resolución suficiente",
+    "derechos/originales fotos",
+    "vigencia segunda sede",
+    "catálogo actual de mercado",
+    "modalidad de atención y reservas si se requieren"
+  ],
+  "version": "0.2",
+  "historia": {
+    "fecha_declarada_comienzos": "21/12/2020",
+    "fuente": "https://www.instagram.com/negromercado.ok/p/DNrq9soWqTA/",
+    "estado": "declaración de marca visible; no entrevista histórica"
+  }
 }
