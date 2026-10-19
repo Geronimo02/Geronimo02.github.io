@@ -1,0 +1,35 @@
+# Retomar Negro Mercado
+
+- Fecha de trabajo: 19/10/2026.
+- Sistema: Signature Studio 3.3, skills Studio y Brand Kit leídas.
+- Usuario: Gerónimo; demo premium, original, funcional, desde cero.
+- Repositorio: Geronimo02/Geronimo02.github.io.
+- Ruta: demos/negromercado/.
+- Rama: signature/negromercado-s0-s1-20261019.
+- No tocar main, no merge, no deploy, no contactar al negocio.
+- Protocolo SIGNATURE-PROYECTOS.md ya estaba en main y fue leído.
+- REGLA0.md leída; no se construyó template ni se eligió arquitectura.
+- S0 completado y documentado.
+- S1 entregada para revisión; identidad gráfica y operación provisionales.
+- Leer BRAND.md, brand.json y SOURCES.json para evidencia completa.
+- Sede de referencia: Avellaneda 702 y 9 de Julio, Tandil.
+- Cuenta aportada: instagram.com/negromercado.ok/.
+- El acceso de búsqueda a Instagram falló; navegación conectada no produjo evidencia.
+- No hay bio, enlace de carta ni feed verificados.
+- Café de especialidad respaldado por cobertura pública.
+- Vermut y productos seleccionados documentados históricamente; validar vigencia.
+- Aristegui 1216 aparece históricamente como otra sede; no mezclar activos.
+- Teléfonos y horarios contradictorios: no activar WhatsApp/llamadas ni “abierto ahora”.
+- F10: collage fotográfico inspeccionado, cartel oscuro/claro, ladrillo, carpintería oscura, madera y barra.
+- F10 no tiene derechos de redistribución acreditados; solo se guarda URL, no imagen.
+- Logo exacto, HEX, familia tipográfica, variante/isotipo pendientes.
+- Mantener logo provisionalmente; no redibujar desde una foto.
+- No inferir historia del nombre, fundación, pionero ni proveedor actual.
+- No anunciar galería activa por una mención histórica indexada.
+- Hipótesis S3: esquina/luz, selección de productos, café/vermut; ninguna elegida.
+- La dirección debe tener fotografía gastronómica/lugar y calidad comercial; evitar infografía/template.
+- S2 no iniciada: activar signature-content tras revisión del usuario.
+- Próximo: CONTENT.md y ASSETS.md, carta vigente, fotos por sede/derechos, modalidad/contacto.
+- S3 requerirá referencias realmente inspeccionadas, 2–3 propuestas y aprobación explícita.
+- No hay sitio ni preview de web; kit.html es documento de investigación.
+- Gates creativos G0-G2 no probados; no confundir con S0-S1.
