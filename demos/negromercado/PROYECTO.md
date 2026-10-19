@@ -1,25 +1,32 @@
-# Negro Mercado — Signature Studio 3.3
+# Negro Mercado — Signature Studio
 
-Fecha: 2026-10-19. Modo: DEMO. Slug: negromercado.
+- Modo: demo
+- Inicio: 2026-10-19T13:56:01Z
+- Fuente recibida: https://www.instagram.com/negromercado.ok/
+- Estado de negocio y datos aun no verificados: pendiente de Brand Kit
+- Objetivo comercial: descubrir y validar en Brand Kit
+- Carpeta persistente externa: pendiente de autorizacion
 
-## Encargo y autorizaciones
-Crear desde cero una demo premium, original, funcional y representativa por etapas. Este turno abarca S0 y S1 Brand Kit. El usuario autorizó documentación progresiva en una rama nueva del repositorio Geronimo02/Geronimo02.github.io. No autorizó publicación, merge ni modificación de main.
+## Etapas y decisiones
+Fuente de verdad estructurada: PROJECT-STATE.json.
+Las decisiones y rechazos se registran en el estado; no inventar aprobaciones.
 
-## Identidad inicial
-Instagram aportado: https://www.instagram.com/negromercado.ok/
-Ficha aportada: Negro Mercado Cafe, Tandil; coordenadas -37.3329451,-59.1308615. Sede de referencia: Avellaneda 702 y 9 de Julio, respaldada por fuentes públicas cruzadas. La vigencia de otra sede debe comprobarse por separado.
+## Proxima accion
+Ver bloque de estado automatico y SESSION-RESUME.md.
 
-## Continuidad
-Rama: signature/negromercado-s0-s1-20261019.
-Protocolo leído: demos/SIGNATURE-PROYECTOS.md, ya incorporado en main, y demos/REGLA0.md. No fue necesario recuperar PR #3.
-Leer SESSION-RESUME.md, PROJECT-STATE.json, DECISIONES.md y BRAND.md antes de retomar.
+<!-- SIGNATURE_AUTO_STATE_START -->
+## Estado actualizado automaticamente
+- Etapa siguiente: S1 (Brand kit)
+- Actualizado: 2026-10-19T13:56:01Z
+- S0: documented
+- S1: not_started
+- S2: not_started
+- S3: not_started
+- S4: not_started
+- S5: not_started
+- Decision reciente: ninguna
+- Para retoma completa: SESSION-RESUME.md
+<!-- SIGNATURE_AUTO_STATE_END -->
 
-## Estado
-S0: completado. S1: investigación en curso. S2-S4: no iniciadas. S5: no solicitado.
-No existe dirección artística aprobada ni sitio implementado.
-
-## Capacidades comprobadas
-Skills signature-studio 3.3 y brand-kit 3.3 leídas. signature-content, signature-concept, signature-web y signature-launch disponibles en el catálogo; se leerán al iniciar sus etapas. Búsqueda web y GitHub lectura/escritura disponibles. Filesystem, Python, Node y Playwright disponibles. Navegador conectado: inicialización respondió, navegación no produjo evidencia verificable. Generación de imágenes disponible, no utilizada. Impeccable/UI-UX-Pro-Max no verificadas en este catálogo; no afirmar uso.
-
-## Próximo entregable
-BRAND.md y brand.json con evidencias, modelo operativo y faltantes. Mostrar S1 al usuario antes de S2. Los gates creativos G0-G2 son distintos de las etapas S0-S5.
+## Validación documental
+JSON parseable y enlaces locales del kit comprobados. Kit HTML no renderizado a 1280/400; revisión responsive/consola pendiente. No es un concepto ni un sitio implementado.
