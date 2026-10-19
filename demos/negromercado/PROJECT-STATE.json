@@ -5,8 +5,8 @@
   "source": "https://www.instagram.com/negromercado.ok/",
   "mode": "demo",
   "created_at": "2026-10-19T13:56:01Z",
-  "updated_at": "2026-10-19T14:29:01.260Z",
-  "next_stage": "S2",
+  "updated_at": "2026-10-19T14:40:10.746Z",
+  "next_stage": "S3",
   "persistent_destination": "github:Geronimo02/Geronimo02.github.io/demos/negromercado",
   "stages": {
     "S0": {
@@ -37,8 +37,23 @@
       "approval_scope": "Investigación y Brand Kit v0.2; no dirección artística ni publicación"
     },
     "S2": {
-      "status": "not_started",
-      "evidence": []
+      "status": "review_pending",
+      "user_approved": false,
+      "evidence": [
+        "CONTENT.md",
+        "ASSETS.md",
+        "content/menu.json",
+        "content/copy.json",
+        "content/media-manifest.json"
+      ],
+      "open_issues": [
+        "leyenda columnas/variantes",
+        "vigencia comercial y validación de precios",
+        "originales y derechos de imágenes",
+        "master de identidad",
+        "foto de proceso y local actualizado"
+      ],
+      "completion_scope": "Contenido y datos de investigación preparados para explorar Concept; no producción ni venta"
     },
     "S3": {
       "status": "not_started",
@@ -80,19 +95,33 @@
       "decision": "Acepta revisión S1 v0.2 y pide guardar repo antes de la siguiente etapa",
       "evidence": "Mensaje: «perfecto. si queres antes de pasar a lo siguiente actualiza el repo»",
       "scope": "Brand Kit/investigación; no selección visual ni deploy"
+    },
+    {
+      "date": "2026-10-19",
+      "status": "authorized_by_user",
+      "decision": "Usuario pide ejecutar etapa 2; se prepara Signature Content y se detiene antes de S3"
     }
   ],
   "studio_version": "3.3",
-  "stage": "S1",
+  "stage": "S2",
   "branch": "signature/negromercado-s0-s1-20261019",
-  "approval_status": "S1 v0.2 aceptada por usuario el 2026-10-19; dirección artística pendiente",
-  "next_action": "Iniciar S2 Signature Content en la próxima etapa; no repetir investigación verificada",
+  "approval_status": "S1 aceptada; S2 para revisión; sin dirección artística aprobada",
+  "next_action": "Usuario revisa S2; activar Signature Concept en S3 con referencias visuales reales y previews 1440/390, preservando límites de activos y datos",
   "publish_authorized": false,
   "validation": {
     "json": "pass",
     "local_document_links": "pass",
     "kit_render_1280_400": "not_tested",
-    "site_implementation": "not_started"
+    "site_implementation": "not_started",
+    "s2_json": "pass",
+    "s2_checks": [
+      "65 ids únicos",
+      "precios positivos o null",
+      "fuente/página por fila",
+      "no stock ni compra confirmada",
+      "12 assets solo referencia",
+      "archivos de traspaso presentes"
+    ]
   },
   "revision": "S1 v0.2 · revisión directa Instagram/destacadas/Maps"
 }
