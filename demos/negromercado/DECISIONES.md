@@ -27,3 +27,7 @@ No hay conceptos aprobados ni rechazados para este negocio. Criterio pedido: pre
 - Corregido: cartel físico antiguo deja de ser fuente principal del branding digital. Foto de Maps publicada en oct 2026 todavía lo muestra; no inferir fecha de toma.
 - Provisional: producto/oficio y café–pastelería–vermú ganan prioridad. Mercado de productores se retira como eje principal hasta validar vigencia.
 - Pendiente: aprobación del usuario, S2, propuesta visual, derechos de activos. Ninguna selección artística nueva ni publicación.
+
+## Cierre S1 — aceptación del usuario
+
+19/10/2026. Mensaje: «perfecto. si queres antes de pasar a lo siguiente actualiza el repo». Se registra aceptación del relevamiento/Brand Kit revisado v0.2 y pedido de persistencia antes de S2. No constituye elección de dirección artística, autorización de merge ni publicación. S2 sigue sin iniciar.
