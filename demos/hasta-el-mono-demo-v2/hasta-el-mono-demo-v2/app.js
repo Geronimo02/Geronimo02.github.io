@@ -14,7 +14,7 @@
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const format = (number) => '$' + new Intl.NumberFormat('es-AR', { maximumFractionDigits: 0 }).format(number);
-  const state = { cart: {}, filter: 'todos', open: false, lastFocus: null };
+  const state = { cart: {}, filter: 'pizzas', open: false, lastFocus: null };
   const grid = $('#product-grid');
   const cartItems = $('#cart-items');
   const subtotalNode = $('#cart-subtotal');
@@ -53,27 +53,12 @@
 
   function renderProducts() {
     const visible = state.filter === 'todos' ? PRODUCTS : PRODUCTS.filter(p => p.group === state.filter);
-    grid.innerHTML = visible.map((p,i) => `
-      <article class="product-card" data-product="${p.id}" data-image="${p.image}" data-alt="${p.alt}" data-name="${p.name}" tabindex="0">
-        <span class="product-index">${String(PRODUCTS.indexOf(p)+1).padStart(2,'0')}</span>
-        <div class="product-main"><span class="product-type">${p.group.toUpperCase()} / DEMO</span><h3>${p.name}</h3><p class="product-note">${p.note}</p></div>
-        <div class="product-end"><span class="product-price"><strong>${format(p.price)}</strong><small>FICTICIO</small></span><button class="product-add" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} al pedido demo">+</button></div>
+    grid.innerHTML = visible.map((p) => `
+      <article class="product-card" data-product="${p.id}">
+        <div class="product-photo"><img src="${p.image}" alt="${p.alt}" loading="lazy"></div>
+        <div class="product-main"><h3>${p.name}</h3><p class="product-note">${p.note}</p></div>
+        <div class="product-end"><span class="product-price"><strong>${format(p.price)}</strong></span><button class="product-add" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} a la comanda de prueba">+</button></div>
       </article>`).join('');
-    const first = visible[0]; if(first) showMenuPreview(first.image,first.alt,first.name,PRODUCTS.indexOf(first)+1);
-  }
-  function showMenuPreview(path,alt,name,index){
-    const img=$('#menu-feature-image');
-    if(!img)return;
-    if(img.getAttribute('src')!==path){
-      img.classList.remove('is-changing');
-      void img.offsetWidth;
-      img.classList.add('is-changing');
-      img.setAttribute('src',path);
-      img.setAttribute('alt',alt);
-      img.onload=()=>{ img.classList.remove('is-changing'); };
-    }
-    $('#menu-feature-name').textContent=name.toUpperCase();
-    $('.image-window-index').textContent='IMAGEN '+String(index).padStart(2,'0')+' / 06';
   }
   function renderCart() {
     const entries = PRODUCTS.filter(p => state.cart[p.id] > 0);
@@ -177,14 +162,6 @@
       if (manual !== null) toast('El resumen sigue siendo una demo, no un pedido.');
     }
   }
-  const hoverProduct = (ev) => {
-    const row=ev.target.closest('[data-product]');
-    if(!row)return;
-    const p=byId[row.dataset.product];
-    if(p)showMenuPreview(p.image,p.alt,p.name,PRODUCTS.indexOf(p)+1);
-  };
-  grid.addEventListener('pointerover',hoverProduct);
-  grid.addEventListener('focusin',hoverProduct);
   grid.addEventListener('click', (ev) => {
     const button = ev.target.closest('[data-add]');
     if (button) updateQty(button.dataset.add, 1);
@@ -222,26 +199,32 @@
   copyBtn.addEventListener('click', copyOrder);
   const video = $('#craft-video');
   const toggle = $('#video-toggle');
-  toggle.addEventListener('click', async () => {
+  const videoFrame = $('.video-frame');
+  async function toggleVideo() {
     if (video.paused) {
-      try { await video.play(); toggle.innerHTML = '<span aria-hidden="true">&#10074;&#10074;</span> PAUSAR VIDEO'; toggle.setAttribute('aria-label', 'Pausar video'); }
+      try { await video.play(); videoFrame.classList.add('is-playing'); toggle.innerHTML = '<span aria-hidden="true">Ⅱ</span>'; toggle.setAttribute('aria-label', 'Pausar video'); }
       catch (_) { toast('No fue posible reproducir el video en este navegador.'); }
-    } else { video.pause(); toggle.innerHTML = '<span aria-hidden="true">&#9654;</span> VER EN ACCI&Oacute;N'; toggle.setAttribute('aria-label', 'Reproducir video de preparaci\u00f3n'); }
+    } else { video.pause(); videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶</span>'; toggle.setAttribute('aria-label', 'Reproducir video de preparación'); }
+  }
+  toggle.addEventListener('click', toggleVideo);
+  $('#video-jump').addEventListener('click', (ev) => { ev.preventDefault(); video.scrollIntoView({ behavior: 'smooth', block: 'center' }); if (video.paused) toggleVideo(); });
+  video.addEventListener('ended', () => { videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶</span>'; toggle.setAttribute('aria-label', 'Reproducir video de preparación'); });
+  const navToggle = $('#nav-toggle');
+  const siteNav = $('#site-nav');
+  navToggle.addEventListener('click', () => {
+    const opening = navToggle.getAttribute('aria-expanded') !== 'true';
+    navToggle.setAttribute('aria-expanded', String(opening));
+    navToggle.setAttribute('aria-label', opening ? 'Cerrar menú' : 'Abrir menú');
+    siteNav.classList.toggle('open', opening);
   });
-  video.addEventListener('ended', () => { toggle.innerHTML = '<span aria-hidden="true">&#9654;</span> VER EN ACCI&Oacute;N'; toggle.setAttribute('aria-label', 'Reproducir video de preparaci\u00f3n'); });
+  $$('#site-nav a').forEach(link => link.addEventListener('click', () => {
+    siteNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menú');
+  }));
   if ('IntersectionObserver' in window) {
-    const watcher = new IntersectionObserver(entries => entries.forEach(entry => { if (!entry.isIntersecting && !video.paused) { video.pause(); toggle.innerHTML = '<span aria-hidden="true">&#9654;</span> VER EN ACCI&Oacute;N'; }}));
+    const watcher = new IntersectionObserver(entries => entries.forEach(entry => { if (!entry.isIntersecting && !video.paused) { video.pause(); videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶</span>'; }}));
     watcher.observe(video);
-
-    const revealTargets = $$('.interlude-image img, .interlude-message h2, .oven-figure img, .oven-head h2, .local-photo img, .local-side h2');
-    revealTargets.forEach(node => node.classList.add('reveal-on-scroll'));
-    const revealWatcher = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealWatcher.unobserve(entry.target);
-      }
-    }), { threshold: .16 });
-    revealTargets.forEach(node => revealWatcher.observe(node));
   }
   initLoadingScreen();
   renderProducts();

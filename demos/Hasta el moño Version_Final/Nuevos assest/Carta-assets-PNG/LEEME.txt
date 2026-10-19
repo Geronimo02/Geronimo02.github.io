@@ -1,0 +1,31 @@
+HASTA EL MOÑO — ASSETS DE LA CARTA
+
+28 PNG individuales. Todos con transparencia real excepto el fondo grunge.
+
+01 fondo
+02 titular LA CARTA.
+03 corona blanca
+04 subrayado del título
+05 introducción
+06 filtro TODOS
+07 filtro PIZZAS
+08 filtro EMPANADAS
+09 pizza ilustrativa natural
+10 marco de papel rasgado, centro transparente
+11 BEST SELLER
+12 corona roja
+13 flecha roja
+14 cinta translúcida
+15 Tocá un producto / y mirá la foto
+16 flecha blanca
+17 subrayado de la nota
+18 borde rojo de selección
+19 trazos de énfasis rojos
+20 separador blanco
+21 a 26 filas de los seis productos
+27 papel de filtro sin texto
+28 pincelada roja sin texto
+
+Los recortes se recrearon a partir del boceto aprobado; pizza y algunos gráficos reutilizan los assets del hero para mantener continuidad. Los textos pequeños, filtros y marcas geométricas se exportaron de componentes tipográficos/vectoriales. Se conserva margen transparente para colocar las piezas sin cortar sus bordes.
+
+La pizza es ilustrativa. Los nombres, ingredientes y precios son los del boceto; falta validar la carta oficial. En la web final conviene que los textos y precios sean HTML editable: TEXTOS.txt contiene la copia. Los PNG permiten reconstruir visualmente el boceto o usarlo como referencia sin aplanar toda la sección.

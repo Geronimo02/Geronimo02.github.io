@@ -25,7 +25,7 @@
 ## Rendimiento y seguridad — objetivos NO medidos
 - LCP <2,5s, INP <200ms, CLS <0,1; PageSpeed objetivo 90+ perf / 95+ accesibilidad (no observado).
 - WebP responsive en `content/`; el clip MP4 no debe bloquear LCP ni reproducirse automáticamente en mobile sin consideración de datos.
-- Controles con altura >=44 px, visible focus, navegación por teclado, contraste AA, reduced-motion.
+- Controles con altura >=44 px, visible focus, navegación por teclado y contraste AA.
 - `robots noindex` en previews, CSP/HSTS y headers tras verificar hosting real.
 - No secretos, no números de WhatsApp automáticos de pedidos, sin servicios pagos sin aprobación.
 

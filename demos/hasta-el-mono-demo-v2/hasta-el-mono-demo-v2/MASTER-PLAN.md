@@ -67,7 +67,7 @@
 5. Horarios, dirección, Instagram, Maps, datos públicos confirmados. Incluir leyenda **DEMO — proyecto no oficial** en vista pública si se publica una previa autorizada.
 
 ## 7. Motion/accesibilidad
-- Logo aparece sin alterar trazos; entrada a 250 ms opacity (reduced-motion apaga).
+- Logo aparece sin alterar trazos; entrada a 250 ms opacity.
 - Fotografía de bandeja en encuadre horizontal con overlay negro de contraste; no modificar la foto original.
 - Fotos dentro de categorías con máscara suave y reveals 360 ms al scroll; solo 1–2 animaciones por pantalla.
 - Menú, filtros y botón de carrito táctiles ≥44 px; WCAG AA; LCP objetivo <2,5 s sujeto a medición futura.

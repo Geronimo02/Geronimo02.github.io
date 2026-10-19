@@ -5,39 +5,46 @@
   const PRODUCTS = [
     {
       id: 'p01', group: 'pizzas', name: 'Muzza clásica', price: 8900,
-      image: 'assets/photos/pizza-muzza.webp', alt: 'Pizza real del local fotografiada de cerca',
-      note: 'Salsa de tomate, muzza y aceitunas. Descripción de ejemplo.'
+      image: 'Nuevos assest/Carta-assets-PNG/09-pizza-natural.png', alt: 'Pizza ilustrativa con una porción levantada', cutout: true,
+      note: 'Salsa de tomate, muzza, olivas y orégano fresco.'
     },
     {
       id: 'p02', group: 'pizzas', name: 'Fugazzetta', price: 9500,
-      image: 'assets/photos/pizza-especial.webp', alt: 'Primer plano de una pizza real del local',
-      note: 'Muzza y cebolla. Variedad y precio ilustrativos.'
+      image: 'assets/photos/pizza-especial.webp', alt: 'Fotografía ilustrativa de una pizza',
+      note: 'Muzza, cebolla caramelizada y un toque de orégano.'
     },
     {
-      id: 'p03', group: 'pizzas', name: 'Pizza de la casa', price: 10500,
-      image: 'assets/photos/pizza-real.webp', alt: 'Pizza real con distintos ingredientes',
-      note: 'Selección de la casa. Consultar la carta oficial.'
+      id: 'p03', group: 'pizzas', name: 'Napolitana', price: 9800,
+      image: 'assets/photos/pizza-real.webp', alt: 'Fotografía ilustrativa de una pizza',
+      note: 'Muzza, tomate en rodajas, ajo, albahaca fresca y olivas.'
+    },
+    {
+      id: 'p04', group: 'pizzas', name: 'Cuatro quesos', price: 10500,
+      image: 'assets/photos/pizza-muzza.webp', alt: 'Fotografía ilustrativa de una pizza',
+      note: 'Muzza, provoleta, azul, parmesano y un toque de oliva.'
+    },
+    {
+      id: 'p05', group: 'pizzas', name: 'Jamón y morrones', price: 9800,
+      image: 'assets/photos/pizza-especial.webp', alt: 'Fotografía ilustrativa de una pizza',
+      note: 'Muzza, jamón cocido, morrones asados y orégano.'
     },
     {
       id: 'e01', group: 'empanadas', name: 'Empanada de carne', price: 3200,
       image: 'assets/photos/empanada-corte.webp', alt: 'Empanada real cortada con relleno a la vista',
-      note: 'Sabor y precio solo de demostración.'
-    },
-    {
-      id: 'e02', group: 'empanadas', name: 'Empanada abierta', price: 2600,
-      image: 'assets/photos/empanadas-plato.webp', alt: 'Empanadas reales servidas en un plato',
-      note: 'Variante ilustrativa; disponibilidad no confirmada.'
-    },
-    {
-      id: 'e03', group: 'empanadas', name: 'Empanada de queso', price: 2800,
-      image: 'assets/photos/empanada-queso.webp', alt: 'Empanada real cortada con queso',
-      note: 'Producto de prueba; consultar la carta oficial.'
+      note: 'Carne cortada a cuchillo, cebolla, morrón y especias.'
     }
   ];
 
   const byId = Object.fromEntries(PRODUCTS.map((product) => [product.id, product]));
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  if (document.documentElement.classList.contains('intro-visible')) {
+    const heroImage = $('.hero-food');
+    const delay = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+    const imageReady = heroImage?.decode ? heroImage.decode().catch(() => {}) : Promise.resolve();
+    Promise.all([delay(800), Promise.race([imageReady, delay(1600)])])
+      .then(() => document.documentElement.classList.remove('intro-visible'));
+  }
   const money = (value) => '$' + new Intl.NumberFormat('es-AR', { maximumFractionDigits: 0 }).format(value);
   const state = { cart: {}, filter: 'todos', selected: PRODUCTS[0].id, cartOpen: false, lastFocus: null };
 
@@ -71,6 +78,7 @@
     if (!product) return;
     state.selected = product.id;
     const image = $('#menu-feature-image');
+    image.classList.toggle('is-cutout', Boolean(product.cutout));
     if (image.getAttribute('src') !== product.image) {
       image.classList.add('is-changing');
       window.setTimeout(() => {
@@ -90,14 +98,14 @@
     grid.innerHTML = visible.map((product) => `
       <article class="product-card${product.id === state.selected ? ' selected' : ''}" data-product="${product.id}" tabindex="0" aria-label="Ver ${product.name}">
         <div class="product-main">
-          <span class="product-type">${product.group} / demo</span>
           <h3>${product.name}</h3>
           <p class="product-note">${product.note}</p>
         </div>
         <div class="product-end">
-          <span class="product-price"><strong>${money(product.price)}</strong><small>ficticio</small></span>
+          <span class="product-price"><strong>${money(product.price)}</strong></span>
           <button class="product-add" type="button" data-add="${product.id}" aria-label="Agregar ${product.name} a la comanda de prueba">+</button>
         </div>
+        <img class="selection-frame" src="Nuevos assest/Carta-assets-PNG/18-borde-seleccion-rojo.png" alt="" aria-hidden="true">
       </article>
     `).join('');
 
@@ -323,6 +331,7 @@
         videoButton.innerHTML = '<span aria-hidden="true">Ⅱ</span> Pausar proceso';
         videoButton.setAttribute('aria-label', 'Pausar video de preparación');
         playMark.hidden = true;
+        $('.video-card').classList.add('is-playing');
       } catch (_) {
         toast('No fue posible reproducir el video en este navegador.');
       }
@@ -331,6 +340,7 @@
       videoButton.innerHTML = '<span aria-hidden="true">▶</span> Ver el proceso';
       videoButton.setAttribute('aria-label', 'Reproducir video de preparación');
       playMark.hidden = false;
+      $('.video-card').classList.remove('is-playing');
     }
   }
   videoButton.addEventListener('click', toggleVideo);
@@ -339,6 +349,7 @@
     videoButton.innerHTML = '<span aria-hidden="true">▶</span> Ver el proceso';
     videoButton.setAttribute('aria-label', 'Reproducir video de preparación');
     playMark.hidden = false;
+    $('.video-card').classList.remove('is-playing');
   });
 
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
