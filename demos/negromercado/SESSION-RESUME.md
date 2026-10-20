@@ -61,3 +61,6 @@ Usuario rechaza carta 05 por volver al lenguaje anterior: seguir el logo nuevo, 
 
 ## Carta 07 · carta completa, 19/10/2026
 Usuario pide centrarse ahora en carta. Se prepara vista completa abierta, separada de la selección de homepage, con lenguaje P1 de revisión 06: logo propuesto redondeado, título la carta, azul manuscrito, café compacto, buscador, cuatro categorías y filas de pastelería en dos columnas. Ver concept/carta-07/CARTA-COMPLETA.md. Es boceto generado desktop, no HTML, captura ni controles probados. Precios de transcripción, pendientes de validar. No publicar.
+
+## Motion 08 · primera prueba de vertido
+Usuario autoriza probar café sirviéndose antes de integrar. Placa limpia coffee-start.webp inspirada en P1, sin textos/logo (REPRESENTACION). Primera herramienta rechazó por plan; se produjo prueba con HeyGen Video 1. Reproductor de conversación confirma completed y 5s. El video queda en esta conversación para revisión. No publicar enlaces ni identificadores del servicio: la revisión automática rechazó divulgarlos en repo público. No hay MP4 exportado, descarga no habilitada en respuesta. Leer concept/motion-08/MOTION.md. Falta revisión visual y exportación permitida antes de integrar; no publicar sitio. Prompt conservado.
