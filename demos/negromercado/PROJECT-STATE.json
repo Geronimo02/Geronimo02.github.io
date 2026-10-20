@@ -5,7 +5,7 @@
   "source": "https://www.instagram.com/negromercado.ok/",
   "mode": "demo",
   "created_at": "2026-10-19T13:56:01Z",
-  "updated_at": "2026-10-20T01:03:18.510100+00:00",
+  "updated_at": "2026-10-20T01:26:08.598977+00:00",
   "next_stage": "S3",
   "persistent_destination": "github:Geronimo02/Geronimo02.github.io/demos/negromercado",
   "stages": {
@@ -158,8 +158,8 @@
   "studio_version": "3.3",
   "stage": "S3",
   "branch": "signature/negromercado-s0-s1-20261019",
-  "approval_status": "Híbrido 04 es P1 aceptada. Usuario rechaza desviación de marca de carta 05. Revisión 06 corrige boceto y propone coreografía; pendiente revisión.",
-  "next_action": "Conservar exactamente lenguaje del boceto híbrido 04/revisión 06; preparar activos propios de motion y trasladar con fidelidad a HTML. Carta 05 no es implementación visual aceptada.",
+  "approval_status": "Híbrido 04/revisión 06 es base visual elegida. Usuario pide ahora carta completa. Carta 07 es boceto para revisión, no aprobada por entrega.",
+  "next_action": "Revisar pantalla de carta completa carta-07 y luego implementar con fidelidad al lenguaje P1. No reutilizar visual de menu-05.",
   "publish_authorized": false,
   "validation": {
     "json": "pass",
@@ -184,10 +184,11 @@
     "hybrid_04": "boceto generado; no HTML ni captura",
     "menu_05_static": "pass",
     "menu_05_browser": "not_tested",
-    "revision_06": "boceto generado revisado visualmente; no HTML ni animación ejecutada"
+    "revision_06": "boceto generado revisado visualmente; no HTML ni animación ejecutada",
+    "carta_07": "boceto generado, no HTML ni QA de navegador"
   },
   "revision": "S1 v0.2 · revisión directa Instagram/destacadas/Maps",
   "active_concept": "c",
   "active_visual_exploration": "concept/revision-06",
-  "active_menu_exploration": "concept/revision-06"
+  "active_menu_exploration": "concept/carta-07"
 }
