@@ -46,3 +46,6 @@ Usuario pidió aflojar proceso/referencias, reforzar identidad/color y probar cr
 
 ## C-v3 · café en la carta
 Usuario pide continuar y sumar café en carta. Prototipo C actualizado: taza ilustrativa recortada protagonista bajo «El antojo manda», entrada suave una vez al aparecer, tamaño móvil específico y reduced motion. Croissant abre menos, gira menos y separa mitades con un breve desfase. No se trata de video real. Sintaxis/recursos/enlaces comprobados; QA de navegador pendiente. No se enviaron mensajes a terceros ni se publicó. Leer concept/REVISION-03.md.
+
+## Exploración de branding · La esquina de Negro
+Usuario siente que la web todavía no transmite la marca y propone branding nuevo con los mismos colores y más onda. Se crea branding-exploration/BRANDING-PROPOSAL.md y tablero 01-la-esquina-de-negro.webp: wordmark expresivo, sello, afiche, packaging y vermú. Es propuesta generada, no identidad vigente ni mockups de material existente. No sustituir el logo real por el símbolo aproximado del render. Identidad no elegida; web C-v3 conservada, sin publicación. Próximo: revisar lenguaje de marca antes de trasladarlo a otro boceto web.
