@@ -232,13 +232,6 @@ footer{background:var(--c-coal);color:var(--c-paper);padding:72px 0 40px;margin-
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .rv.in{opacity:1;transform:none}
 
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .hero h1 .ln>span{transform:none}
-  .rv{opacity:1;transform:none}
-  .tape{display:none}
-  html{scroll-behavior:auto}
-}
 /* sumar */
 .add{font:700 18px/1 var(--f-text);width:44px;height:44px;border:2px solid var(--c-ink);border-radius:50%;background:transparent;color:var(--c-ink);cursor:pointer;transition:background .16s var(--ease),color .16s var(--ease),transform .16s var(--ease);flex:none;align-self:center}
 .add:hover{background:var(--c-ink);color:var(--c-paper)}
@@ -304,7 +297,6 @@ footer{background:var(--c-coal);color:var(--c-paper);padding:72px 0 40px;margin-
 .cmd-err{color:var(--c-bordo);font-weight:700;font-size:13px;margin-top:8px;min-height:1em}
 .prev{white-space:pre-wrap;background:#fff;border:1px solid var(--c-ink);padding:14px;font-size:13px;margin-top:14px}
 .demo-tag{display:inline-block;background:var(--c-yellow);font-weight:700;font-size:11px;letter-spacing:.08em;padding:3px 8px;text-transform:uppercase}
-@media (prefers-reduced-motion:reduce){.cmd,.ln{animation:none}}
 </style>
 </head>
 <body>
@@ -637,8 +629,6 @@ const wa = msg => 'https://wa.me/542494241071?text=' + encodeURIComponent(msg);
 ['wa-hero','wa-donde','wa-dock'].forEach(id => { const el = document.getElementById(id); if (el) el.href = wa('Hola Tano, vengo de la web. Tengo una consulta: '); });
 document.getElementById('wa-29').href = wa('Hola Tano, vengo de la web. Queremos ir el 29 por los ñoquis. Somos ');
 
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 // reveal
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
@@ -650,7 +640,7 @@ const io2 = new IntersectionObserver(es => es.forEach(e => {
 document.querySelectorAll('.cat').forEach(el => io2.observe(el));
 
 // cartel: péndulo amortiguado según velocidad de scroll
-if (!reduce) {
+if (document.getElementById('sign')) {
   const sign = document.getElementById('sign');
   let a = 0, v = 0, lastY = scrollY, running = false;
   const tick = () => {
@@ -665,7 +655,7 @@ if (!reduce) {
 }
 
 // foto con cinta en la carta
-if (!reduce && matchMedia('(hover:hover) and (min-width:901px)').matches) {
+if (matchMedia('(hover:hover) and (min-width:901px)').matches) {
   const tape = document.getElementById('tape'), ti = document.getElementById('tapeImg'), tn = document.getElementById('tapeName');
   let x = 0, y = 0, cx = 0, cy = 0, on = false;
   menu.addEventListener('pointerover', e => { const it = e.target.closest('.it[data-img]'); if (!it) return; ti.src = it.dataset.img; tn.textContent = it.dataset.name; tape.style.opacity = 1; on = true; });
@@ -711,14 +701,13 @@ function add(id, btn) {
   if (!CAT[id]) return; const l = cart.find(x => x.id === id);
   if (l) l.q++; else cart.push({ id, q: 1 });
   newId = id; render();
-  if (btn && !REDUCE) { btn.classList.remove('done'); void btn.offsetWidth; btn.classList.add('done'); fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump'); }
+  if (btn) { btn.classList.remove('done'); void btn.offsetWidth; btn.classList.add('done'); fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump'); }
   const live = document.getElementById('st'); // anuncio accesible
   btn && btn.setAttribute('aria-label', 'Sumado: ' + CAT[id].n);
 }
-const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.addEventListener('click', e => {
   const a = e.target.closest('[data-add]'); if (a) { add(a.dataset.add, a); return; }
-  if (e.target.closest('[data-pedir]')) { e.preventDefault(); if (cart.length) openCmd(); else document.getElementById('casa').scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth' }); return; }
+  if (e.target.closest('[data-pedir]')) { e.preventDefault(); if (cart.length) openCmd(); else document.getElementById('casa').scrollIntoView({ behavior: 'smooth' }); return; }
   if (e.target.closest('[data-close]')) { closeCmd(); return; }
   const inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]'), rm = e.target.closest('[data-rm]');
   if (inc) { cart[+inc.dataset.inc].q++; render(); }

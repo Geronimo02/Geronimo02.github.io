@@ -232,13 +232,6 @@ footer{background:var(--c-coal);color:var(--c-paper);padding:72px 0 40px;margin-
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .rv.in{opacity:1;transform:none}
 
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .hero h1 .ln>span{transform:none}
-  .rv{opacity:1;transform:none}
-  .tape{display:none}
-  html{scroll-behavior:auto}
-}
 /* sumar */
 .add{font:700 18px/1 var(--f-text);width:44px;height:44px;border:2px solid var(--c-ink);border-radius:50%;background:transparent;color:var(--c-ink);cursor:pointer;transition:background .16s var(--ease),color .16s var(--ease),transform .16s var(--ease);flex:none;align-self:center}
 .add:hover{background:var(--c-ink);color:var(--c-paper)}
@@ -304,7 +297,6 @@ footer{background:var(--c-coal);color:var(--c-paper);padding:72px 0 40px;margin-
 .cmd-err{color:var(--c-bordo);font-weight:700;font-size:13px;margin-top:8px;min-height:1em}
 .prev{white-space:pre-wrap;background:#fff;border:1px solid var(--c-ink);padding:14px;font-size:13px;margin-top:14px}
 .demo-tag{display:inline-block;background:var(--c-yellow);font-weight:700;font-size:11px;letter-spacing:.08em;padding:3px 8px;text-transform:uppercase}
-@media (prefers-reduced-motion:reduce){.cmd,.ln{animation:none}}
 /* hero neón (variante C) */
 .hero{background:#0E0A12}
 .hero-img.neon-bg{object-position:50% 40%;filter:saturate(.75) brightness(.7)}
@@ -322,7 +314,6 @@ footer{background:var(--c-coal);color:var(--c-paper);padding:72px 0 40px;margin-
 @keyframes buzz{0%,100%{opacity:1}50%{opacity:.88}}
 .open-neon.off{color:#ff5a4e;text-shadow:0 0 5px #ffb3ac,0 0 16px #ff2a1a,0 0 36px #e0140099;box-shadow:0 0 18px #ff2a1a55,inset 0 0 14px #ff2a1a33}
 @media(max-width:720px){.open-neon{top:84px;right:16px;padding:9px 12px}.hero{padding-top:260px}}
-@media (prefers-reduced-motion:reduce){.neon.flick,.open-neon.on,.open-neon.off{animation:none}}
 /* el Diego: recorte animado tipo sticker */
 .diego{background:#0E0A12;color:#efe6ff;position:relative;overflow:hidden}
 .diego .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
@@ -341,7 +332,6 @@ footer{background:var(--c-coal);color:var(--c-paper);padding:72px 0 40px;margin-
 .diego .chin{position:absolute;left:-6%;top:6%;transform:rotate(-10deg);background:var(--c-yellow);color:var(--c-ink);font:700 13px/1 var(--f-text);letter-spacing:.1em;text-transform:uppercase;padding:9px 14px;box-shadow:4px 4px 0 #000;z-index:2}
 .diego small.cr{display:block;margin-top:18px;font-size:11px;color:#8e8299;letter-spacing:.04em}
 @media(max-width:900px){.diego .wrap{grid-template-columns:1fr}.diego .stage{width:min(420px,100%)}.diego .chin{left:0}}
-@media (prefers-reduced-motion:reduce){.diego.in .stk{animation:none}}
 </style>
 </head>
 <body>
@@ -670,8 +660,6 @@ const wa = msg => 'https://wa.me/542494241071?text=' + encodeURIComponent(msg);
 ['wa-hero','wa-donde','wa-dock'].forEach(id => { const el = document.getElementById(id); if (el) el.href = wa('Hola Tano, vengo de la web. Tengo una consulta: '); });
 document.getElementById('wa-29').href = wa('Hola Tano, vengo de la web. Queremos ir el 29 por los ñoquis. Somos ');
 
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 // reveal
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
@@ -683,7 +671,7 @@ const io2 = new IntersectionObserver(es => es.forEach(e => {
 document.querySelectorAll('.cat').forEach(el => io2.observe(el));
 
 // cartel: péndulo amortiguado según velocidad de scroll
-if (!reduce && document.getElementById('sign')) {
+if (document.getElementById('sign')) {
   const sign = document.getElementById('sign');
   let a = 0, v = 0, lastY = scrollY, running = false;
   const tick = () => {
@@ -698,7 +686,7 @@ if (!reduce && document.getElementById('sign')) {
 }
 
 // foto con cinta en la carta
-if (!reduce && matchMedia('(hover:hover) and (min-width:901px)').matches) {
+if (matchMedia('(hover:hover) and (min-width:901px)').matches) {
   const tape = document.getElementById('tape'), ti = document.getElementById('tapeImg'), tn = document.getElementById('tapeName');
   let x = 0, y = 0, cx = 0, cy = 0, on = false;
   menu.addEventListener('pointerover', e => { const it = e.target.closest('.it[data-img]'); if (!it) return; ti.src = it.dataset.img; tn.textContent = it.dataset.name; tape.style.opacity = 1; on = true; });
@@ -744,14 +732,13 @@ function add(id, btn) {
   if (!CAT[id]) return; const l = cart.find(x => x.id === id);
   if (l) l.q++; else cart.push({ id, q: 1 });
   newId = id; render();
-  if (btn && !REDUCE) { btn.classList.remove('done'); void btn.offsetWidth; btn.classList.add('done'); fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump'); }
+  if (btn) { btn.classList.remove('done'); void btn.offsetWidth; btn.classList.add('done'); fab.classList.remove('bump'); void fab.offsetWidth; fab.classList.add('bump'); }
   const live = document.getElementById('st'); // anuncio accesible
   btn && btn.setAttribute('aria-label', 'Sumado: ' + CAT[id].n);
 }
-const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.addEventListener('click', e => {
   const a = e.target.closest('[data-add]'); if (a) { add(a.dataset.add, a); return; }
-  if (e.target.closest('[data-pedir]')) { e.preventDefault(); if (cart.length) openCmd(); else document.getElementById('casa').scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth' }); return; }
+  if (e.target.closest('[data-pedir]')) { e.preventDefault(); if (cart.length) openCmd(); else document.getElementById('casa').scrollIntoView({ behavior: 'smooth' }); return; }
   if (e.target.closest('[data-close]')) { closeCmd(); return; }
   const inc = e.target.closest('[data-inc]'), dec = e.target.closest('[data-dec]'), rm = e.target.closest('[data-rm]');
   if (inc) { cart[+inc.dataset.inc].q++; render(); }
@@ -811,7 +798,6 @@ render();
 // el Diego: entra como sticker y la copa burbujea (R3)
 (function(){ const sec = document.getElementById('diego'); if (!sec) return;
   new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { sec.classList.add('in'); o.disconnect(); } }), { threshold: .25 }).observe(sec);
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const cv = document.getElementById('fizz'), ctx = cv.getContext('2d'), B = []; let W, H, on = false;
   const GX = .745, GY = .40;                       // posición de la copa en el recorte
   const size = () => { const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * d; cv.height = H * d; ctx.setTransform(d, 0, 0, d, 0, 0); };

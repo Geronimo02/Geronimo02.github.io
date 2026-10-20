@@ -80,7 +80,6 @@ img{display:block;max-width:100%}
 .c .pedir{color:var(--yellow);box-shadow:0 0 12px #fcdc5855;border-radius:999px}
 @keyframes flick{0%{opacity:.15}8%{opacity:1}12%{opacity:.2}18%{opacity:1}40%{opacity:.6}44%{opacity:1}100%{opacity:1}}
 
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 :focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 .foot{padding:0 clamp(16px,4vw,48px) 40px;font-size:12px;color:var(--ink2)}
 </style>
@@ -180,13 +179,12 @@ img{display:block;max-width:100%}
 <p class="foot">Elegí una (o mezclá: por ejemplo A con el sello de B en los botones) y con esa se arma el prototipo completo.</p>
 
 <script>
-const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const tz = new Intl.DateTimeFormat('en-US',{timeZone:'America/Argentina/Buenos_Aires',weekday:'short',hour:'2-digit',hour12:false}).formatToParts(new Date());
 const g = t => tz.find(p => p.type===t).value, day = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')), h = +g('hour') % 24;
 const open = day !== 1 && h >= 20;
 
 // A: péndulo del cartel
-(function(){ if (REDUCED) return; const s = document.getElementById('signA'), st = document.getElementById('stageA'); let a=0,v=0,run=false;
+(function(){ const s = document.getElementById('signA'), st = document.getElementById('stageA'); let a=0,v=0,run=false;
   const tick=()=>{v+=-.06*a;v*=.9;a+=v;s.style.transform=`rotate(${a.toFixed(2)}deg)`; if(Math.abs(a)>.02||Math.abs(v)>.02) requestAnimationFrame(tick); else {run=false;s.style.transform='none';}};
   const kick=f=>{v+=f; if(!run){run=true;requestAnimationFrame(tick);}};
   st.addEventListener('pointermove',e=>{ if(Math.abs(e.movementX)>4) kick(e.movementX*.012); });

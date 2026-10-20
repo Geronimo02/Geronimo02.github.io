@@ -25,6 +25,7 @@
 - Etapa: 3 · Paso: preview lista para revisar · Próxima acción: Gero aprueba dirección/preview → pasar a demos/ del portfolio (signature-launch)
 
 ## Decisiones
+- 19/10/2026 — Las tres variantes de la demo y el prototipo mantienen animaciones, transiciones y scroll suave con ambas configuraciones de movimiento de Windows; se eliminó la dependencia de `prefers-reduced-motion` — Gero
 - 17/10/2026 — Sección "Acá se brinda por el Diego": foto que pasó Gero, recortada (rembg u2net_human_seg) y animada como sticker con burbujas en la copa — Gero
 - 17/10/2026 — Hero con el neón de la entrada (dirección C) + cartel ABIERTO en neón verde / CERRADO en neón rojo; el resto queda como A. Versión del horno guardada en site/index-horno.html — Gero
 - 17/10/2026 — Pasa a P3: el pedido se arma en la web (comanda) y se manda por WhatsApp, sin redirigir a ola.click — Gero
