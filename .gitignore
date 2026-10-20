@@ -12,3 +12,5 @@ skills-lock.json
 node_modules/
 output/playwright/
 .playwright-cli/
+demos/hasta-el-mono/dist/
+.cloudflare/
