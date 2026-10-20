@@ -136,13 +136,18 @@
       "date": "2026-10-19",
       "status": "authorized_by_user",
       "decision": "Usuario acepta continuar la base C y pide sumar un café en la carta; no autoriza publicación."
+    },
+    {
+      "date": "2026-10-19",
+      "status": "approved_for_exploration",
+      "decision": "Usuario acepta tablero de branding («siiiiiii, esto va») y pide punto medio animado/sofisticado para la web; aprobación del lenguaje, no de logo final ni publicación."
     }
   ],
   "studio_version": "3.3",
   "stage": "S3",
   "branch": "signature/negromercado-s0-s1-20261019",
-  "approval_status": "Dirección C aceptada como base para afinar; café en carta solicitado; QA de navegador pendiente",
-  "next_action": "Revisar C-v3: café protagonista en carta y apertura de croissant más contenida; verificar visual y móvil antes de cerrar",
+  "approval_status": "Usuario acepta lenguaje del tablero de branding; solicita combinación web animada y sofisticada",
+  "next_action": "Revisar boceto hybrid-04 con referencias Goodboybob/Never/Escape y luego trasladar la combinación elegida a revisión funcional",
   "publish_authorized": false,
   "validation": {
     "json": "pass",
@@ -163,8 +168,10 @@
     "s3_interactive": "not_tested",
     "c_render": "not_tested",
     "c_interactive": "not_tested",
-    "c_static": "pass"
+    "c_static": "pass",
+    "hybrid_04": "boceto generado; no HTML ni captura"
   },
   "revision": "S1 v0.2 · revisión directa Instagram/destacadas/Maps",
-  "active_concept": "c"
+  "active_concept": "c",
+  "active_visual_exploration": "concept/hybrid-04"
 }

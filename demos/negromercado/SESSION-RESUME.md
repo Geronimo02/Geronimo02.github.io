@@ -49,3 +49,6 @@ Usuario pide continuar y sumar café en carta. Prototipo C actualizado: taza ilu
 
 ## Exploración de branding · La esquina de Negro
 Usuario siente que la web todavía no transmite la marca y propone branding nuevo con los mismos colores y más onda. Se crea branding-exploration/BRANDING-PROPOSAL.md y tablero 01-la-esquina-de-negro.webp: wordmark expresivo, sello, afiche, packaging y vermú. Es propuesta generada, no identidad vigente ni mockups de material existente. No sustituir el logo real por el símbolo aproximado del render. Identidad no elegida; web C-v3 conservada, sin publicación. Próximo: revisar lenguaje de marca antes de trasladarlo a otro boceto web.
+
+## Híbrido 04 · marca expresiva / web sofisticada
+Usuario acepta lenguaje del tablero («siiiiiii, esto va») y pide combinar referencias de cafeterías con movimiento cuidado. Se buscaron y abrieron Goodboybob, Never Coffee, Escape, Pista y Wogan; principales Goodboybob/Never/Escape. Leer concept/hybrid-04/HYBRID-CONCEPT.md. web-boceto.webp muestra tres escenas (café, carta, vermú), imagen generada, no HTML/captura ni video ejecutado. C-v3 permanece como prototipo anterior; no llamarlo implementación del boceto nuevo. Movimiento propuesto con un foco por momento y lectura tranquila. Sin publicación.
