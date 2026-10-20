@@ -5,7 +5,7 @@
   "source": "https://www.instagram.com/negromercado.ok/",
   "mode": "demo",
   "created_at": "2026-10-19T13:56:01Z",
-  "updated_at": "2026-10-20T03:01:28.356620+00:00",
+  "updated_at": "2026-10-20T16:30:09.587234+00:00",
   "next_stage": "S3",
   "persistent_destination": "github:Geronimo02/Geronimo02.github.io/demos/negromercado",
   "stages": {
@@ -153,13 +153,18 @@
       "date": "2026-10-19",
       "status": "correction_requested_by_user",
       "decision": "Rechaza regresión de logo/tipografía de carta 05. Híbrido 04 adjunto es referencia P1 vinculante; pide motion de café vertiéndose, factura abriéndose y granos cayendo; Behance/Dribbble para investigar."
+    },
+    {
+      "date": "2026-10-20",
+      "status": "authorized_by_user",
+      "decision": "Usuario rechaza video automático, quiere acción controlada por scroll y autoriza Three.js. Se implementa estudio WebGL determinista, sin reutilizar ni divulgar video de servicio."
     }
   ],
   "studio_version": "3.3",
   "stage": "S3",
   "branch": "signature/negromercado-s0-s1-20261019",
   "approval_status": "Híbrido 04/revisión 06 es base visual elegida. Usuario pide ahora carta completa. Carta 07 es boceto para revisión, no aprobada por entrega.",
-  "next_action": "Revisar prueba HeyGen de vertido completada (5s), antes de integrar. Exportación no disponible en respuesta canDownload=false; no afirmar MP4 local. Conservar marca P1.",
+  "next_action": "Probar HTML de scroll-09 en navegador; evaluar vertido vinculado al scroll con marca P1 fija. No usar video automático como solución ni presentar carta raster como funcional.",
   "publish_authorized": false,
   "validation": {
     "json": "pass",
@@ -186,11 +191,18 @@
     "menu_05_browser": "not_tested",
     "revision_06": "boceto generado revisado visualmente; no HTML ni animación ejecutada",
     "carta_07": "boceto generado, no HTML ni QA de navegador",
-    "motion_08": "HeyGen completed 5s; visual review pending; not integrated"
+    "motion_08": "HeyGen completed 5s; visual review pending; not integrated",
+    "scroll_09": {
+      "shader_compile": "pass",
+      "stop_reverse_pixels": "pass",
+      "progress_math": "pass",
+      "browser_render": "not_tested",
+      "dom_interaction": "not_tested"
+    }
   },
   "revision": "S1 v0.2 · revisión directa Instagram/destacadas/Maps",
   "active_concept": "c",
   "active_visual_exploration": "concept/revision-06",
   "active_menu_exploration": "concept/carta-07",
-  "active_motion_exploration": "concept/motion-08"
+  "active_motion_exploration": "concept/scroll-09"
 }

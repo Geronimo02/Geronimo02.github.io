@@ -16,3 +16,5 @@
 12. Prevalece el feedback posterior del usuario: aflojar proceso y referencias, trabajar arte único, movimiento y color. C es la exploración vigente: concept/REVISION-02.md. Usar logo-user-original.jpg aportado, intacto. Paleta medida de JPEG, no oficial. No repetir aprobación de fases internas ni proceso documental para avanzar esta exploración ya autorizada. No publicar ni declarar C elegida sin aprobación.
 
 13. CORRECCIÓN VINCULANTE POSTERIOR: usuario rechaza regresión de carta 05 y exige seguir el híbrido 04 adjunto (nuevo logo propuesto, titulares blandos redondeados, azul manuscrito). Leer concept/revision-06/DIRECTION-LOCK.md. Revisión 06 es boceto estático, motion propuesto pendiente. No usar C ni menu-05 como dirección visual vigente ni afirmar que Bricolage reproduce el arte generado. No repetir investigación ni pedir aprobar de nuevo la P1 elegida.
+
+14. Prevalece Scroll 09: usuario quiere controlar la acción con scroll, no autoplay. Three.js autorizado. Leer concept/scroll-09/README.md; conserva P1 y no reutiliza medios restringidos de servicios. Shader GPU probado no equivale a navegador aprobado.
