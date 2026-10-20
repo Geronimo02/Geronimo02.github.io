@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0a">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="Demo visual no oficial de Hasta el Moño Tandil. Los productos y precios son ilustrativos; no se realizan pedidos reales.">
+  <title>Hasta el Moño — Demo visual</title>
+  <link rel="icon" type="image/png" href="assets/logo-blanco-original-recortado.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=hero-spin-5">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="loading-screen" id="loading-screen" role="status" aria-live="polite">
+    <img src="assets/logo-blanco-original-recortado.png" alt="Hasta el Moño" width="112" height="112">
+    <div class="loading-track"><span></span></div>
+    <span class="loading-label">PREPARANDO LA COMANDA</span>
+  </div>
+  <a class="skip" href="#carta">Ir a la carta</a>
+
+  <header class="site-header" id="inicio">
+    <a class="header-brand" href="#inicio" aria-label="Hasta el Moño, volver al inicio"><img src="assets/logo-blanco-original-recortado.png" alt="Hasta el Moño" width="78" height="78"></a>
+    <span class="header-location">54 / SANTAMARINA<br>TANDIL, ARGENTINA</span>
+    <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+      <a href="#carta">LA CARTA</a><a href="#cocina">LA COCINA</a><a href="#ubicacion">EL LOCAL</a>
+    </nav>
+    <button class="header-bag" type="button" data-open-cart aria-label="Abrir comanda de demostración"><span>LA COMANDA</span><strong class="cart-number" data-cart-count>0</strong></button>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </header>
+
+  <main>
+    <section class="hero dark-panel" aria-labelledby="hero-title">
+      <img class="hero-plate" src="assets/hero-nidos-transparent.png" alt="Nidos de masa dorada sobre pizarra" fetchpriority="high" width="1126" height="1400">
+      <h1 id="hero-title"><span>HASTA</span><span>EL MOÑO.</span></h1>
+      <img class="hero-crown" src="assets/crown-red.png" alt="" aria-hidden="true">
+      <div class="hero-left-note"><span class="scribble-arrow" aria-hidden="true">↗</span><p>UNA CARTA QUE<br>ENTRA POR LOS OJOS.</p><a href="#carta">IR A LA CARTA ↓</a></div>
+      <div class="hero-right-note"><p>PIZZAS.<br>EMPANADAS.<br>ASÍ DE SIMPLE.</p><img src="assets/underline-red.png" alt="" aria-hidden="true"></div>
+      <a class="round-link hero-round" href="#carta" aria-label="Ver la carta"><span>VER<br>CARTA</span><span aria-hidden="true">↓</span></a>
+      <div class="paper-transition" aria-hidden="true"></div>
+    </section>
+
+    <section class="menu-section paper-panel" id="carta" aria-labelledby="menu-title">
+      <div class="menu-heading"><div><h2 id="menu-title">LA CARTA</h2><img class="menu-underline" src="assets/underline-red.png" alt="" aria-hidden="true"></div><p><strong>PIZZAS, EMPANADAS<br>Y ALGO MÁS.</strong><br>Elegí lo que te gusta.<br>Sumalo a tu comanda.</p></div>
+      <div class="menu-tabs" role="tablist" aria-label="Filtrar productos">
+        <button class="menu-tab active" type="button" role="tab" aria-selected="true" data-filter="pizzas">PIZZAS</button>
+        <button class="menu-tab" type="button" role="tab" aria-selected="false" data-filter="empanadas">EMPANADAS</button>
+        <button class="menu-tab" type="button" role="tab" aria-selected="false" data-filter="todos">TODOS</button>
+      </div>
+      <div class="menu-grid" id="product-grid" aria-live="polite"></div>
+      <div class="menu-summary"><strong>TU COMANDA</strong><span><span data-cart-count>0</span> productos</span><button type="button" data-open-cart>VER COMANDA <span aria-hidden="true">→</span></button></div>
+      <p class="demo-note">Los productos y precios pertenecen a esta demo y no corresponden a una carta oficial. No se envían pedidos reales.</p>
+    </section>
+
+    <section class="kitchen-section dark-panel" id="cocina" aria-labelledby="kitchen-title">
+      <div class="kitchen-heading"><div><span class="section-eyebrow">LA COCINA</span><h2 id="kitchen-title">ANTES DEL<br>PRIMER MORDISCO.</h2></div><p>Masa, relleno, horno.<br>Acá empieza todo.<img src="assets/underline-red.png" alt="" aria-hidden="true"></p></div>
+      <div class="kitchen-gallery">
+        <figure class="kitchen-photo prep-photo"><img src="assets/preparacion.webp" alt="Empanadas crudas en bandeja antes de entrar al horno" loading="lazy" width="1280" height="1600"><figcaption>01 / LA PREPARACIÓN</figcaption></figure>
+        <figure class="kitchen-photo video-photo"><div class="video-frame"><video id="craft-video" poster="assets/empanadas-horno.webp" muted playsinline preload="none" aria-label="Video de preparación de empanadas"><source src="assets/empanadas.mp4" type="video/mp4"></video><button class="video-toggle" id="video-toggle" type="button" aria-label="Reproducir video de preparación"><span aria-hidden="true">▶</span></button></div><figcaption>02 / RECIÉN SALIDAS</figcaption></figure>
+        <figure class="kitchen-photo oven-photo"><img src="assets/horno.webp" alt="Pizza cociéndose en el horno del local" loading="lazy" width="1280" height="1600"><figcaption>03 / AL HORNO</figcaption></figure>
+      </div>
+      <a class="process-link" href="#craft-video" id="video-jump">VER EL PROCESO →</a>
+    </section>
+
+    <section class="local-section paper-panel" id="ubicacion" aria-labelledby="local-title">
+      <div class="local-content"><span class="section-eyebrow">NOS VEMOS ACÁ.</span><h2 id="local-title">EL<br>LOCAL.</h2><img class="local-underline" src="assets/underline-red.png" alt="" aria-hidden="true"><div class="local-address"><img src="assets/pin-red.svg" alt="" aria-hidden="true"><p><strong>Av. Santamarina 54</strong><br>Tandil, Buenos Aires.</p></div><p class="local-description">Pizzas, empanadas y un lugar<br>para quedarte un rato.</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Hasta+El+Mono+Pizzas+Tandil+Santamarina+54" target="_blank" rel="noopener noreferrer">CÓMO LLEGAR <span aria-hidden="true">↗</span></a><span class="local-054" aria-hidden="true">054</span></div>
+      <figure class="local-photo"><img src="assets/fachada.webp" alt="Fachada original de Hasta el Moño en Avenida Santamarina" loading="lazy" width="632" height="845"><figcaption>ACÁ NOS<br>ENCONTRÁS <span aria-hidden="true">↗</span></figcaption></figure>
+      <div class="local-bottom">HASTA EL MOÑO — TANDIL.</div>
+    </section>
+  </main>
+
+  <footer class="footer dark-panel" id="footer">
+    <div class="footer-cta"><div><span class="section-eyebrow">¿UNA MÁS?</span><h2>LA CARTA<br>TE ESPERA.</h2><img src="assets/underline-red.png" alt="" aria-hidden="true"></div><div class="footer-cta-right"><a class="round-link footer-round" href="#carta" aria-label="Ver la carta"><span>VER<br>LA CARTA</span><span aria-hidden="true">↗</span></a><p>Pizzas. Empanadas.<br>Así de simple.</p></div></div>
+    <div class="footer-info"><div class="footer-logo"><img src="assets/logo-blanco-original-recortado.png" alt="Hasta el Moño" width="118" height="118"><span>PIZZAS Y<br>EMPANADAS</span></div><div><span class="footer-label">NOS ENCONTRÁS EN</span><p><img src="assets/pin-red.svg" alt="" aria-hidden="true"><span><strong>Av. Santamarina 54</strong><br>Tandil, Buenos Aires.</span></p></div><div><span class="footer-label">SEGUINOS</span><a href="https://www.instagram.com/hastaelmoniopizzas/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div>
+    <div class="footer-wordmark">HASTA EL MOÑO.<img src="assets/crown-red.png" alt="" aria-hidden="true"></div>
+    <div class="footer-bottom"><span>© 2026 HASTA EL MOÑO. DEMO NO OFICIAL.</span><a href="#inicio">VOLVER ARRIBA ↑</a></div>
+  </footer>
+
+  <div id="cart-overlay" class="cart-overlay" hidden></div>
+  <aside id="cart-drawer" class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" inert>
+    <div class="cart-top"><div><p class="cart-mini">COMANDA / DEMO</p><h2 id="cart-title">TU COMANDA.</h2></div><button type="button" class="cart-close" id="close-cart" aria-label="Cerrar comanda">×</button></div>
+    <p class="cart-warning">NO ES UN PEDIDO REAL. No se envía a ningún comercio ni se cobra nada.</p>
+    <div id="cart-items" class="cart-items" aria-live="polite"></div>
+    <div class="cart-bottom"><fieldset class="mode-picker"><legend>MODALIDAD DE PRUEBA</legend><label><input type="radio" name="delivery-type" value="Retiro" checked><span>RETIRO</span></label><label><input type="radio" name="delivery-type" value="Delivery"><span>DELIVERY</span></label></fieldset><p class="delivery-notice">Las zonas y costos del envío no están confirmados.</p><label for="order-notes" class="notes-label">ALGUNA OBSERVACIÓN</label><textarea id="order-notes" maxlength="400" rows="3" placeholder="Ej.: sin aceitunas... (solo demo)"></textarea><div class="cart-total"><span>SUBTOTAL <small>(FICTICIO)</small></span><strong id="cart-subtotal">$0</strong></div><button id="copy-order" class="copy-button" type="button" disabled>COPIAR COMANDA DE PRUEBA →</button><p class="no-send-note">Solo se copia un resumen. No se conecta a WhatsApp.</p></div>
+  </aside>
+  <button type="button" class="mobile-cart" data-open-cart hidden><span>MI COMANDA <span data-cart-count>0</span></span><span id="mobile-cart-total">$0 →</span></button>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

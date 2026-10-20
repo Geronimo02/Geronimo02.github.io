@@ -1,8 +1,8 @@
 # Hasta el Moño — Demo P3 / edición Afiche de mostrador
 
 ## Abrir
-- **Para ver sin instalación:** descargar `hasta-el-mono-demo-v2-standalone.html` y abrir con Chrome/Edge. Las fotos, JS y CSS están incrustados.
-- **Para editar:** extraer el ZIP, abrir `index.html` / `styles.css` / `app.js` y la carpeta `assets/` en VS Code. Con Live Server o `python -m http.server 8000` se sirve localmente.
+- **Online:** https://geronimo02.github.io/demos/hasta-el-mono/
+- **Local:** abrir `index.html` con Chrome/Edge. Para editar, usar `index.html`, `styles.css`, `app.js` y `assets/` desde esta carpeta.
 
 ## Qué incluye
 Portada editorial de nombre y bandeja, galería de fotos originales, carta demo con preview interactiva, carrito, cantidades, observaciones, modo ilustrativo de retiro/delivery y copiar resumen de prueba. Pantalla de ubicación y video real.

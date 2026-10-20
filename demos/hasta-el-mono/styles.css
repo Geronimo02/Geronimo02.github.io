@@ -70,6 +70,14 @@ img,video{display:block;max-width:100%}figure,h1,h2,h3,p{margin:0}h1,h2,h3{font-
 .cart-drawer{width:100%}.cart-top{padding:20px 17px}.cart-warning{margin:12px 17px 0}.cart-items{padding:8px 17px}.cart-bottom{padding:14px 17px}.mobile-cart:not([hidden]){position:fixed;z-index:40;left:12px;right:12px;bottom:12px;display:flex;align-items:center;justify-content:space-between;padding:14px 17px;border:1px solid #666;background:var(--paper);color:var(--ink);font-weight:800;font-size:12px;box-shadow:0 8px 24px #0008}.toast{bottom:76px}}
 @media(max-width:380px){.product-card{grid-template-columns:85px minmax(0,1fr)}.product-photo{width:85px}.menu-summary>strong{font-size:13px}.menu-summary button{font-size:9px}.hero-left-note p{font-size:9px}.hero-right-note p{font-size:10px}}
 
+@media(max-width:650px){
+  .hero-plate{top:clamp(95px,calc(50vw - 115px),125px);height:clamp(520px,calc(760px - 50vw),550px)}
+  .hero h1 span:first-child{font-size:clamp(76px,24vw,100px)}
+  .hero h1 span:last-child{top:calc(5.5% + min(19.7vw,82px) + 6px);bottom:auto;left:5%;font-size:clamp(49px,15.3vw,65px)}
+  .hero-crown{right:clamp(6%,calc(56vw - 197px),15%)}
+}
+@media(min-width:481px) and (max-width:650px){.hero-crown{left:360px;right:auto}}
+
 /* Ajustes tras comparación con los cinco bocetos chill. */
 .dark-panel{background:var(--ink)}
 .dark-panel::before{content:'';position:absolute;z-index:-1;inset:0;background:url('assets/grunge-texture.png') center / cover no-repeat;opacity:.27;pointer-events:none}
