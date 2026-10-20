@@ -1,10 +1,12 @@
 # FLUJO MAESTRO: PUBLICACION DE WEBS COMERCIALES EN CLOUDFLARE
 
-**Version:** 2.0 | **Fecha de referencia y verificacion de limites:** 2026-10-20
+**Version:** 2.1 | **Fecha de referencia y verificacion de limites:** 2026-10-20
 **Destinatario:** Claude Code, Codex, Antigravity o agente de desarrollo con acceso autorizado a GitHub y Cloudflare.
 **Alcance:** despliegue y mantenimiento tecnico por tipo de servicio vendido. **NO** modificar el sistema existente de propuestas, plantillas, documentos comerciales ni precios internos.
 
-**Objetivo economico:** para una web estatica P1-P3, intentar que el unico gasto externo recurrente del cliente sea el registro/renovacion del dominio. P4 tambien puede funcionar en planes Free, pero depende del trafico, las consultas, los usuarios y los limites compartidos de la cuenta. No vender "hosting gratis garantizado": verificar cuotas y servicios externos antes de presupuestar.
+**Modelo de proyecto:** las webs de clientes son landings, no tiendas completas. Cuando la landing muestra productos, el alcance tecnico objetivo incluye un **mini panel de catalogo** para que el negocio edite productos, precios, fotos y disponibilidad: D1 para datos y R2 Standard para fotos nuevas. Una landing sin productos no necesita ese panel. El pedido puede continuar por WhatsApp; el panel no convierte la web en una tienda con pagos.
+
+**Objetivo economico:** intentar que el unico gasto externo recurrente del cliente sea el registro/renovacion del dominio. La landing estatica P1-P3 puede quedar dentro de Pages Free. El mini panel tambien puede operar dentro de cuotas Free, pero R2 requiere activar una suscripcion y puede generar cargos de uso si se excede la cuota. Verificar consumo, titularidad y servicios externos antes de presupuestar; no vender "hosting gratis garantizado".
 
 ---
 
@@ -17,12 +19,14 @@ Tu objetivo es inspeccionar la web actual, identificar el plan contratado y desp
 **Datos de esta ejecucion:**
 - Cliente/proyecto: [NOMBRE]
 - Repositorio y carpeta: [URL_REPO_Y_RUTA]
-- Plan: [P1 LANDING | P2 CATALOGO | P3 CARRITO WHATSAPP | P4 PANEL ADMIN]
+- Alcance: [P1 LANDING SIN CATALOGO | P2 + MINI PANEL P4 | P3 + MINI PANEL P4 | PILOTO SIN PANEL]
 - Estado: [DEMO VISUAL | PILOTO OPERATIVO | PRODUCCION]
 - Dominio: [DOMINIO | PENDIENTE]
 - WhatsApp comercial confirmado: [NUMERO | PENDIENTE]
 - Productos, precios, fotos y modalidad de entrega: [CONFIRMADOS | PENDIENTES POR CAMPO]
-- Panel administrativo: [NO | SI]
+- Mini panel de catalogo: [NO | SI; campos editables y quien tendra acceso]
+- Carga de fotos nuevas desde el panel: [SI | NO]
+- R2 Standard y facturacion de uso: [CUENTA/SUSCRIPCION VERIFICADAS | PENDIENTE]
 - Hosting Cloudflare: [CUENTA Y PROYECTO SI EXISTE | PENDIENTE]
 
 Audita arquitectura, archivos, rutas, dependencias, datos ficticios, reglas del repositorio, herramientas disponibles, estado de GitHub/Cloudflare y cuotas. Elige la ruta A o B, explica brevemente la decision y avanza con los cambios reversibles, pruebas y preview que ya esten autorizados por este pedido. Pide datos que falten solo si impiden avanzar. Conserva la demo original y no publiques datos ficticios como reales.
@@ -60,7 +64,7 @@ Verificar con `claude mcp list`. Ante solicitud de OAuth, autenticar en el naveg
 4. No cambiar la tecnologia del sitio sin justificacion tecnica verificada.
 5. Separar DEMO VISUAL, PILOTO OPERATIVO y PRODUCCION. Una demo visual no recibe pedidos; un piloto puede abrir el WhatsApp real solo si numero, productos y permiso para probarlo estan confirmados. Los precios no confirmados se omiten y el negocio confirma el total por chat.
 6. Nunca usar credenciales en codigo fuente, archivos publicos, prompts de salida, commits o logs. Usar secrets/bindings de Cloudflare.
-7. Antes de desplegar a produccion, modificar DNS/nameservers, migrar D1 remota, activar pedidos reales o crear un gasto, comprobar si la conversacion ya lo autorizo. Si falta autorizacion, mostrar el cambio exacto y pedirla una sola vez.
+7. Antes de desplegar a produccion, modificar DNS/nameservers, migrar D1 remota, activar pedidos reales, activar la suscripcion R2 o crear un gasto, comprobar si la conversacion ya lo autorizo. Si falta autorizacion, mostrar el cambio exacto y pedirla una sola vez.
 8. El panel no es seguro solo por esconder `/admin`. Autenticacion y autorizacion deben proteger tambien la API y cada operacion de escritura.
 9. Si falta autorizacion o la conexion de Cloudflare no puede realizar una accion, presentar los pasos manuales exactos del dashboard; nunca simularla.
 10. En cada venta entregar accesos y titularidad de dominio claros; el dominio debe quedar a nombre del cliente. Preferir cuenta Cloudflare y repo propios del cliente, con acceso delegado para mantenimiento. Si se usa una cuenta de agencia, documentar cuotas compartidas y plan de traspaso.
@@ -72,14 +76,14 @@ Verificar con `claude mcp list`. Ante solicitud de OAuth, autenticar en el naveg
 | P1 - Landing profesional | $200.000 | Landing responsive, secciones, CTA, contacto, SEO inicial | GitHub + Cloudflare Pages estatico |
 | P2 - Catalogo / carta | $250.000 | P1 + carta/categorias, fotos, precios confirmados o "consultar", consultas por producto | GitHub + Cloudflare Pages estatico |
 | P3 - Carrito y pedido por WhatsApp | $300.000 | P2 + cantidades, variantes/adicionales, carrito, observaciones, enlace WhatsApp | GitHub + Cloudflare Pages estatico; localStorage opcional |
-| P4 - Panel administrativo / catalogo | Cotizacion aparte | P3 + gestion de precios/productos, API, acceso seguro, D1, estadisticas basicas de intentos | Pages Functions + D1 (si ya existe Pages), o Worker + Static Assets + D1 (proyecto nuevo) |
+| P4 - Modulo mini panel de catalogo | Cotizacion aparte | Se suma a una landing P2/P3 aceptada: alta/edicion de productos, precios, fotos y disponibilidad; API y acceso seguro. Sin pagos ni gestion de ventas. | Pages + Functions + D1 + R2 Standard para fotos nuevas (preferido al evolucionar una demo); Worker + Static Assets + D1 + R2 si hay una razon tecnica concreta. |
 
 **Aclaraciones comerciales:**
 - SEO inicial, configuracion del hosting y publicacion se incluyen en P1-P3 dentro del alcance pactado; no prometer posicionamiento en Google.
 - Dominio: comprado por el cliente, o primer anio incluido si se pacta explicitamente; aclarar renovacion posterior.
 - Mantenimiento OPCIONAL: basico $15.000 ARS/mes (supervision y hasta 2 cambios menores), activo $30.000 ARS/mes (hasta 4 cambios menores/promociones, segun contrato). Sin plan: cambios posteriores a presupuesto. Los costos de terceros se informan por separado.
-- El modulo P4 requiere un presupuesto de implementacion y, en su caso, una cuota operativa adicional. **NO** se incluye gratuitamente en mantenimiento basico ni activo.
-- El objetivo "solo pagar el dominio" vale mientras el proyecto use los recursos incluidos en Free y no contrate otros servicios (correo con casillas, pasarela de pago, multimedia externa, etc.). Verificar consumo, limites y condiciones vigentes.
+- El mini panel P4 forma parte del alcance tecnico objetivo para landings de cliente con productos. La tabla conserva la tarifa comercial interna previa: acordar por escrito su inclusion/cotizacion y, en su caso, cuota operativa. **NO** se incluye automaticamente en mantenimiento basico ni activo; este documento no modifica precios comerciales.
+- El objetivo "solo pagar el dominio" vale mientras el proyecto use los recursos incluidos en Free y no contrate otros servicios (correo con casillas, pasarela de pago, etc.). Con carga de fotos R2, el uso superior a la cuota Free puede generar cargos aun sin cambiar de plan. Verificar consumo, limites y condiciones vigentes.
 - P3 no es una pasarela de e-commerce con pago online: prepara el pedido en WhatsApp. El negocio confirma el pedido.
 - P4 no conoce pedidos confirmados ni ventas reales solo por registrar un clic a WhatsApp. Gestionar pedidos reales requiere un flujo adicional acordado con el negocio.
 
@@ -91,9 +95,10 @@ Verificar con `claude mcp list`. Ante solicitud de OAuth, autenticar en el naveg
 | Monorepo en Pages | Maximo 5 proyectos Pages conectados al mismo repositorio; por defecto un cambio en cualquier carpeta dispara builds en todos. | Para clientes aceptados, preferir un repo por cliente. Si se conserva un monorepo, configurar *build watch paths*. |
 | Pages Functions / Workers | En Free, 100.000 invocaciones diarias compartidas entre Functions y Workers; los archivos estaticos que no invocan codigo no consumen esa cuota. | P4 puede operar gratis a bajo volumen, pero un limite alcanzado afecta funciones/API. |
 | D1 | Free: 10 bases/cuenta, 500 MB/base, 5 GB/cuenta, 5 millones de filas leidas/dia y 100.000 escritas/dia; Time Travel hasta 7 dias. | Medir consultas y almacenamiento. Si se agota la cuota diaria, D1 rechaza consultas hasta el reinicio del limite. |
+| R2 Standard para fotos del panel | Free: 10 GB-mes de almacenamiento, 1 millon de operaciones Class A/mes y 10 millones Class B/mes; salida a Internet sin cargo de egress. Requiere activar una suscripcion R2 mediante el flujo de checkout. | Permite subir fotos nuevas sin costo mientras el uso quede en la cuota. El exceso de almacenamiento u operaciones es facturable; las alertas de presupuesto **no frenan** el consumo. |
 | Dominio | Registro y renovacion anuales segun extension y registrador. | Es el costo externo esperado para P1-P3; verificar precio real de compra **y renovacion** antes de ofrecerlo. |
 
-Las cuotas de Workers y D1 corresponden a la **cuenta**, no a un presupuesto independiente por cliente dentro de una misma cuenta. El cliente puede necesitar otro servicio pago por requisitos funcionales o al superar Free. Fuentes: [Pages limits](https://developers.cloudflare.com/pages/platform/limits/), [Pages Functions pricing](https://developers.cloudflare.com/pages/functions/pricing/), [Workers limits](https://developers.cloudflare.com/workers/platform/limits/), [D1 limits](https://developers.cloudflare.com/d1/platform/limits/), [D1 pricing](https://developers.cloudflare.com/d1/platform/pricing/), [D1 Free al exceder cuota](https://developers.cloudflare.com/d1/reference/faq/), [entrada en vigor de limites diarios D1](https://developers.cloudflare.com/changelog/product/d1/), [Pages monorepos](https://developers.cloudflare.com/pages/configuration/monorepos/) y [Cloudflare Registrar](https://developers.cloudflare.com/registrar/about/). Revalidar al abrir cada proyecto real.
+Las cuotas de Workers, D1 y R2 corresponden a la **cuenta**, no a un presupuesto independiente por cliente dentro de una misma cuenta. R2 Standard tiene cuota incluida, pero es un producto de facturacion por uso: la promesa "solo dominio" es un objetivo de consumo, no un tope garantizado. Configurar alertas y revisar uso; las alertas son informativas y no evitan cargos. Fuentes: [Pages limits](https://developers.cloudflare.com/pages/platform/limits/), [Pages Functions pricing](https://developers.cloudflare.com/pages/functions/pricing/), [Workers limits](https://developers.cloudflare.com/workers/platform/limits/), [D1 limits](https://developers.cloudflare.com/d1/platform/limits/), [D1 pricing](https://developers.cloudflare.com/d1/platform/pricing/), [D1 Free al exceder cuota](https://developers.cloudflare.com/d1/reference/faq/), [entrada en vigor de limites diarios D1](https://developers.cloudflare.com/changelog/product/d1/), [R2 pricing](https://developers.cloudflare.com/r2/pricing/), [R2 get started](https://developers.cloudflare.com/r2/get-started/), [alertas de presupuesto](https://developers.cloudflare.com/billing/manage/budget-alerts/), [Pages monorepos](https://developers.cloudflare.com/pages/configuration/monorepos/) y [Cloudflare Registrar](https://developers.cloudflare.com/registrar/about/). Revalidar al abrir cada proyecto real.
 
 ## 3. DESCUBRIMIENTO OBLIGATORIO ANTES DE HACER NADA
 
@@ -103,6 +108,7 @@ Las cuotas de Workers y D1 corresponden a la **cuenta**, no a un presupuesto ind
 - Inspeccionar recursos compartidos fuera de la carpeta: fuentes, `../icons.css`, imagenes, CSS, rutas absolutas y relativas. El directorio publicado debe incluir lo que necesita para funcionar.
 - Detectar datos ficticios, fotos de referencia, precios de ejemplo, identidad no confirmada y destinatarios de WhatsApp.
 - Distinguir datos confirmados campo por campo: producto, variante, precio, foto, telefono, retiro/delivery, zona/costo de envio. No inferir un dato a partir de otro.
+- Si habra mini panel, definir quien edita, campos exactos, formatos y cantidad aproximada de fotos, y si se necesita eliminar productos/fotos. Planificar D1 para datos y R2 Standard para archivos nuevos.
 - Definir el estado real: DEMO VISUAL (sin pedidos al comercio), PILOTO OPERATIVO (prueba autorizada con WhatsApp real) o PRODUCCION (dominio y operacion final).
 - Leer reglas e instrucciones del repositorio (AGENTS.md, CLAUDE.md, REGLA0.md, etc.). Verificar skills reales, no inventar nombres.
 - Comprobar herramienta conectada: plugin oficial Cloudflare, MCP de API, Wrangler o dashboard. Revisar permisos otorgados; solicitar autenticacion si hace falta.
@@ -114,15 +120,15 @@ Las cuotas de Workers y D1 corresponden a la **cuenta**, no a un presupuesto ind
 ### 3.1 Secuencia cuando un cliente acepta una demo
 
 1. Identificar la carpeta exacta y hacer inventario de lo confirmado y lo pendiente. Guardar referencia del commit/URL de la demo aceptada.
-2. Elegir P1-P3 (Ruta A, sin D1) o P4 (Ruta B, con API, autenticacion y D1). Un carrito que solo arma WhatsApp sigue siendo P3.
+2. Para una landing sin productos, seguir Ruta A. Para una landing aceptada con catalogo, seguir Ruta A para el sitio publico y Ruta B para el mini panel P4 (API, autenticacion, D1 y R2). Una demo o piloto puede permanecer temporalmente sin panel; un carrito que solo arma WhatsApp no requiere D1 por si mismo.
 3. Preparar repo propio y limpio para el cliente; preservar la demo del portfolio. Corregir rutas para publicar desde `/`, datos ficticios, metadata y configuracion de produccion.
-4. Conectar GitHub a Cloudflare, probar la URL `pages.dev` o `workers.dev` generada y una preview de cambios. Medir uso esperado frente a cuotas Free.
+4. Conectar GitHub a Cloudflare, probar la URL `pages.dev` o `workers.dev` generada y una preview de cambios. Para P4, probar la API, el panel, D1 y subida/lectura de fotos R2 en recursos de prueba separados. Medir uso esperado frente a cuotas Free.
 5. Registrar o vincular el dominio del cliente solo con titularidad, precio de compra/renovacion y cambios DNS revisados. Probar HTTPS, web y pedidos reales autorizados.
 6. Entregar accesos, repo, dominio, instrucciones de actualizacion, estado de cuotas y responsabilidades de mantenimiento. Definir que ocurre con el enlace viejo de GitHub Pages.
 
-## 4. RUTA A: P1, P2, P3 = SITIO ESTATICO CON GITHUB + PAGES
+## 4. RUTA A: LANDING PUBLICA P1, P2, P3 CON GITHUB + PAGES
 
-**Criterio:** no hay operaciones persistentes del lado del servidor, login de admin, base de datos ni checkout real. El carrito y el mensaje a WhatsApp se calculan en el navegador.
+**Criterio:** define la web publica. Sin mini panel es completamente estatica: no hay operaciones persistentes del lado del servidor y el carrito/WhatsApp se calculan en el navegador. Con mini panel P4, conservar la landing en Pages y sumar la Ruta B: el catalogo se consulta en la API, mientras el carrito puede seguir en el navegador.
 
 ### A.1 Preparacion
 
@@ -167,14 +173,14 @@ Las cuotas de Workers y D1 corresponden a la **cuenta**, no a un presupuesto ind
 4. Confirmar SSL/HTTPS activo, redireccion canonica `www`/apex (segun decision), visitas y envio de consultas.
 5. Entregar acceso, titularidad y renovacion anual del dominio al cliente.
 
-## 5. RUTA B: P4 = SITIO CON PANEL + API + D1
+## 5. RUTA B: P4 = LANDING CON MINI PANEL + API + D1 + R2
 
-**Criterio:** el dueno debe editar precios, productos, disponibilidad o promociones sin cambios manuales de codigo; opcionalmente estadisticas basicas de intentos de pedido.
+**Criterio:** el negocio debe editar productos, precios, textos, fotos y disponibilidad desde un panel sencillo, sin tocar codigo ni GitHub. La landing y el pedido por WhatsApp siguen siendo el sitio publico; el panel administra solamente el catalogo. D1 guarda datos, R2 Standard guarda fotos nuevas.
 
 ### B.1 Elegir arquitectura de menor complejidad
 
-- Si el proyecto ya esta publicado en Cloudflare Pages y se quiere conservarlo: agregar **Pages Functions + Cloudflare D1**. No reescribir el sitio por defecto.
-- Si es un proyecto NUEVO con backend o se va a modernizar su despliegue: evaluar **Cloudflare Workers + Static Assets + D1** en un unico Worker (Cloudflare lo recomienda para nuevas aplicaciones). Tambien admite GitHub + auto-deploy mediante Workers Builds.
+- Para evolucionar una demo/landing existente: conservar **Cloudflare Pages** y agregar **Pages Functions + D1 + R2 Standard** mediante bindings. Es la ruta preferida para estos proyectos porque mantiene su HTML/CSS/JS.
+- Para un proyecto realmente nuevo cuyo servidor requiera otras funciones: evaluar **Cloudflare Workers + Static Assets + D1 + R2** en un unico Worker, con GitHub + auto-deploy mediante Workers Builds. No migrar una landing existente solo por moda.
 - Si se necesitan funciones incompatibles con Workers, evaluar alternativas justificadas (Hostinger/Node/PHP u otro proveedor) y costos antes de decidir.
 - React es una opcion de frontend, no un requisito de seguridad ni de backend. Workers/Functions usan JavaScript o TypeScript de servidor, con compatibilidad parcial de APIs Node.
 
@@ -185,30 +191,37 @@ Las cuotas de Workers y D1 corresponden a la **cuenta**, no a un presupuesto ind
 3. Crear D1 desde dashboard o Wrangler/API, previa autorizacion. Registrar nombre, ID y entorno sin exponer secretos.
 4. Conectar D1 mediante binding `DB` al Worker o la Pages Function; configurar binding para preview/produccion segun entorno. En Pages, Settings > Bindings > Add > D1; volver a desplegar.
 5. Crear migraciones SQL versionadas en Git, aplicar primero en una base local/de prueba y despues en produccion previa copia/punto de restauracion y aprobacion.
-6. Esquema minimo sugerido: `categories`, `products`, `product_variants` si aplica, `order_intent_events` anonimos, `admin_audit_logs`; no guardar informacion personal de compradores para simples metricas de clicks.
+6. Esquema minimo sugerido: `categories`, `products` (nombre, descripcion, categoria, precio o precio pendiente, disponibilidad, orden, `image_key`/`image_url`, revision), `product_variants` solo si aplican y `admin_audit_logs` si hay identidad de editor. No crear tablas de pedidos ni guardar datos personales de compradores para editar el catalogo.
 7. Guardar precios como enteros en centavos (`price_cents`) o unidad monetaria documentada. No usar numeros flotantes para importes monetarios. Verificar conversion con el carrito actual.
 8. Usar consultas preparadas y binding de parametros, validacion de tipos/rangos y errores sin exponer SQL al navegador.
 9. Gestionar cache del catalogo para que los cambios se reflejen de forma razonable; incorporar `revision`/version para avisar si el carrito tenia precios anteriores.
 10. D1 Free ofrece Time Travel limitado (actualmente hasta 7 dias): documentar un plan de backup/exportacion adicional para clientes importantes. Probar restauracion en un entorno separado antes de depender de ella.
 
+### B.2.1 Fotos nuevas con R2
+
+1. Activar R2 Standard en la cuenta del cliente solo despues de revisar el flujo de suscripcion/facturacion y la autorizacion existente. Crear bucket separado para demo y produccion; registrar nombre y bindings sin exponer credenciales.
+2. El panel sube la foto a una ruta administrativa autenticada. Validar tipo real de archivo (JPEG/PNG/WebP), tamano, dimensiones y limites por producto; generar clave aleatoria. No aceptar SVG ni confiar en el `Content-Type` declarado por el navegador. Comprimir/optimizar antes de subir cuando corresponda.
+3. Guardar el archivo en R2 mediante binding y la clave/referencia en D1. Nunca almacenar la imagen binaria en D1 ni habilitar escritura publica al bucket. Cambiar imagen debe actualizar la referencia solo tras confirmar la subida; limpiar fotos huerfanas con un proceso controlado.
+4. Para produccion, servir las fotos publicas por un subdominio del dominio del cliente vinculado al bucket, con cache y nombres versionados. `r2.dev` es para desarrollo y tiene limites; no usarlo como URL final ni dejarlo abierto si se protege el bucket. Probar que borrar/reemplazar una imagen se refleja sin mostrar una version vieja indefinidamente.
+5. Vigilar almacenamiento y operaciones R2, configurar alerta de presupuesto y explicar que es **solo informativa**. Si el cliente exige un tope de gasto inflexible, no presentar R2 de uso variable como costo garantizado cero; acordar otra forma de gestionar fotos.
+
 ### B.3 API minima
 
-- `GET /api/catalog`: consulta PUBLICA. Solo devuelve productos visibles, precios, variantes y disponibilidad, nunca campos internos.
+- `GET /api/catalog`: consulta PUBLICA. Solo devuelve productos visibles, precios confirmados o estado "consultar", variantes, disponibilidad y URL publica de foto, nunca campos internos.
 - `GET /api/admin/products`: solo administrador autenticado.
-- `PATCH /api/admin/products/:id`: solo administrador autenticado; valida cambios de nombre, precio, descripcion y disponibilidad.
-- `GET /api/admin/metrics`: solo administrador autenticado; estadisticas agregadas.
-- `POST /api/analytics/order-intent`: opcional; registra SOLO inicio/intento de pedido, con minimizacion de datos y proteccion contra abuso. No supone que WhatsApp se envio.
-- `POST /api/admin/demo/reset`: SOLO demo + autorizado. Deshabilitado completamente en produccion.
+- `POST /api/admin/products` y `PATCH /api/admin/products/:id`: solo administrador autenticado; validan nombre, descripcion, categoria, precio, disponibilidad, orden y referencia de foto. Alta solo si el alcance contratado la incluye.
+- `POST /api/admin/media`: solo administrador autenticado; valida archivo y lo sube a R2. Devuelve una referencia segura, no credenciales ni acceso de escritura publica.
+- `DELETE /api/admin/products/:id` o desactivar producto: solo si se acuerda esa funcion; preferir ocultar para evitar enlaces rotos. Borrar archivos R2 solo cuando ya no esten referenciados.
 
 No implementar endpoints de pedido confirmado por inferencia del click. Confirmacion real implica interaccion posterior con el negocio o una integracion oficial de mensajeria/procesamiento.
 
 ### B.4 Panel minimo reutilizable
 
-- Pantalla de acceso.
-- Tabla editable: producto, precio, categoria, disponibilidad.
-- Actualizacion guardada y reflejada en carta publica.
-- Metricas sencillas: productos activos e intentos de pedido por periodo; aclarar que no son ventas confirmadas.
-- Historial minimo de cambios (quien, cuando, que campo) si el mecanismo de autenticacion permite identificar al usuario.
+- Acceso solo para la persona o personas designadas por el negocio.
+- Lista de todos los productos con busqueda/filtro y edicion simple de nombre, descripcion, categoria, precio y disponibilidad.
+- Subir o reemplazar foto desde el equipo, con vista previa, progreso y mensaje de error claro; actualizar la referencia R2/D1 al guardar.
+- Cambios guardados y reflejados en la carta publica sin hacer deploy; mostrar si el precio queda pendiente/"consultar".
+- Historial minimo de cambios (quien, cuando, que campo) si el mecanismo de autenticacion permite identificar al usuario. Metricas de intentos solo si se solicitan aparte; no son ventas confirmadas.
 - Estados de carga/error, formulario validado, feedback de guardado, uso movil.
 - Mantener branding del proyecto; desarrollar logica reutilizable sin compartir datos entre clientes.
 
@@ -218,25 +231,26 @@ No implementar endpoints de pedido confirmado por inferencia del click. Confirma
 - Evaluar Cloudflare Access cuando el dominio/subdominio y el plan lo permitan, aplicando proteccion tanto al panel como a la API. Probar tambien `pages.dev` y la URL de preview: ninguna ruta alternativa debe saltarse la proteccion. Si hay Access/JWT, validar firma, audience, issuer y expiracion en el backend segun documentacion oficial, no solo la existencia de la cabecera.
 - Cloudflare permite proteger previews y `pages.dev` con Access, pero la configuracion debe probarse en cada hostname. Si la estrategia elegida no cubre alguna URL publica, cerrar esa via o implementar autenticacion auditable compatible con Workers (cookies Secure/HttpOnly/SameSite, sesion, hashing seguro, expiracion, proteccion CSRF cuando aplique y rate limiting). No entregar usuarios/contraseñas de demo publicas reutilizables en produccion.
 - Separar lectura publica de escrituras privadas; restringir CORS y metodos; validacion server-side; consultas preparadas; HTTPS; secrets en Cloudflare.
+- Proteger `POST /api/admin/media` igual que las escrituras D1; validar bytes, formato y tamano en servidor, limitar frecuencia/cantidad y no aceptar rutas de objeto decididas libremente por el cliente.
 - No exponer `database_id`, API tokens, passwords, credenciales de admin ni PII en scripts publicos. Un ID de binding no equivale a una credencial, pero tampoco justifica publicar configuraciones sensibles.
 - Pruebas negativas: anonimo no puede editar ni consultar endpoints privados; usuario sin permisos tampoco; probar intentos maliciosos.
 - Rate limiting y auditoria de cambios; minimo privilegio en permisos del plugin/MCP Cloudflare.
 
 ### B.6 Publicar la ruta B
 
-**B1 - Pages ya existente:** añadir `functions/` y binding D1 con la estructura correcta para su raiz de proyecto; probar local/previews; conectar credenciales/config por entorno, ejecutar migraciones aprobadas y publicar por Git como en Ruta A.
+**B1 - Pages ya existente:** añadir `functions/`, binding D1 y binding R2 con la estructura correcta para su raiz de proyecto; separar recursos de preview/produccion, probar local/previews, ejecutar migraciones aprobadas y publicar codigo por Git como en Ruta A. La landing puede seguir estatica, pero el catalogo se obtiene de la API.
 
-**B2 - Worker nuevo:** definir `wrangler.jsonc` con `main`, `compatibility_date`, `assets.directory` (ejemplo `./public`), binding D1 y variables por entorno; verificar compatibilidad del codigo. Conectar GitHub mediante Workers Builds, configurar rama + build/deploy, probar en `workers.dev`, desplegar automaticamente despues de merges aprobados. Confirmar dominio/certificado si aplica.
+**B2 - Worker nuevo:** definir `wrangler.jsonc` con `main`, `compatibility_date`, `assets.directory` (ejemplo `./public`), bindings D1/R2 y variables por entorno; verificar compatibilidad del codigo. Conectar GitHub mediante Workers Builds, configurar rama + build/deploy, probar en `workers.dev`, desplegar automaticamente despues de merges aprobados. Confirmar dominio/certificado si aplica.
 
-En ambos casos, el administrador modifica D1; **no necesita hacer commit en GitHub para cambiar un precio**. El codigo fuente sigue en GitHub y las modificaciones de datos viven en D1.
+En ambos casos, el administrador modifica D1 y sube fotos a R2; **no necesita hacer commit en GitHub para cambiar un precio o una imagen**. El codigo fuente sigue en GitHub; el catalogo vive en D1 y las fotos editables en R2.
 
 ## 6. ACTUALIZACIONES DESPUES DE LA ENTREGA
 
-- P1/P2/P3 sin panel: cliente solicita cambios; si hay mantenimiento se aplican dentro de su cupo, si no se cotizan. Actualizacion mediante GitHub -> Cloudflare automatico.
-- P4 con panel: cliente cambia precios/productos en `/admin` -> API valida -> D1 persiste -> carta publica lee el nuevo valor. No requiere hacer deploy ni editar GitHub para cada precio.
+- Landing sin mini panel (P1 o demo/piloto P2/P3): los cambios de contenido los hace el desarrollador y se publican mediante GitHub -> Cloudflare automatico.
+- P4 con panel: cliente cambia precios/productos/fotos en `/admin` -> API valida -> foto a R2 y datos a D1 -> carta publica lee el nuevo valor. No requiere hacer deploy ni editar GitHub para cada cambio.
 - Cambios de estructura, diseno, sistema de pedidos o seguridad del backend: versionados, probados y desplegados por GitHub; no son automaticamente "ediciones de contenido".
 - Antes de cambiar menus: revisar productos que ya estan en un carrito abierto; recalcular precios y avisar, nunca confiar solo en el total enviado por el cliente.
-- Monitorizar errores, uso y cuotas; backups, dependencias y certificaciones de seguridad segun criticidad del cliente.
+- Monitorizar errores, uso y cuotas de Functions/Workers, D1 y R2; backups/exportaciones de catalogo y fotos, dependencias y seguridad segun criticidad del cliente.
 
 ## 7. ESTADOS DE LAS DEMOS Y PASO A CLIENTE
 
@@ -255,9 +269,9 @@ En ambos casos, el administrador modifica D1; **no necesita hacer commit en GitH
 
 ### Ejemplo actual: Hasta el Moño
 
-La web `demos/hasta-el-mono/` esta compartida en GitHub Pages como **piloto operativo P3**. El usuario confirmo `5492494694718` como numero de pedidos y confirmo los productos, pero no los precios: el carrito pide precio final por WhatsApp sin mostrar importes de prueba. Este estado no implica que ya exista un proyecto Cloudflare, dominio propio o panel D1. Si el cliente acepta, auditar el contenido y la titularidad, extraer esa carpeta a un repo propio y seguir la Ruta A. No agregar D1 solo por tener carrito: se necesita cuando haya panel o datos persistentes del servidor.
+La web `demos/hasta-el-mono/` esta compartida en GitHub Pages como **piloto operativo P3**. El usuario confirmo `5492494694718` como numero de pedidos y confirmo los productos, pero no los precios: el carrito pide precio final por WhatsApp sin mostrar importes de prueba. Este estado no implica que ya exista un proyecto Cloudflare, dominio propio o panel D1/R2. Si el cliente acepta la landing con catalogo editable, auditar el contenido y la titularidad, extraer esa carpeta a un repo propio y seguir Ruta A para la web publica y Ruta B para el mini panel. El carrito por si solo no necesita D1/R2.
 
-**Ficha inicial para ejecutar este flujo si lo aceptan:** proyecto `Hasta el Moño`; origen `Geronimo02/Geronimo02.github.io`, `demos/hasta-el-mono/`; plan P3; estado PILOTO OPERATIVO; WhatsApp `5492494694718`; productos confirmados; precios pendientes; dominio y cuenta/proyecto Cloudflare pendientes de identificar. La ficha se debe volver a validar al momento de contratar.
+**Ficha inicial para ejecutar este flujo si lo aceptan:** proyecto `Hasta el Moño`; origen `Geronimo02/Geronimo02.github.io`, `demos/hasta-el-mono/`; landing P3 + mini panel P4; estado actual PILOTO OPERATIVO sin panel; WhatsApp `5492494694718`; productos confirmados; precios pendientes; dominio y cuenta/proyecto Cloudflare pendientes de identificar. La ficha se debe volver a validar al momento de contratar.
 
 ### Ejemplo concreto: Sushi Fan
 
@@ -265,7 +279,7 @@ Repo origen conocido: `Geronimo02/Geronimo02.github.io`, carpeta `demos/sushi-fa
 - Ya dispone de `index.html`, `carta.html`, `menu.js`, `cart-core.js` y `site.js` con carrito de prueba.
 - Verificar el estado actual de `menu.js` antes de usar este ejemplo; en el relevamiento inicial tenia `demo: true`, precios ilustrativos y `whatsappNumber: null`. Mantener modo demo mientras esos datos sigan sin confirmarse.
 - Hay una referencia compartida a `../icons.css`: si se publica SOLO la carpeta `demos/sushi-fan`, incluir esos iconos dentro de la carpeta de despliegue y actualizar la ruta, sin romper el portfolio.
-- Primera prueba recomendada: crear un despliegue de demo independiente. Si el cliente pide panel, presupuestar P4 y probar D1 demo, autenticacion y cambios de precios antes de produccion.
+- Primera prueba recomendada: crear un despliegue de demo independiente. Si el cliente pide mini panel, presupuestar P4 y probar D1/R2 demo, autenticacion y cambios de precios/fotos antes de produccion.
 - Conservar una copia de la demo original y documentar cualquier cambio de URL o repositorio.
 
 ## 8. CHECKLIST ANTES DE PRODUCCION
@@ -278,8 +292,9 @@ Repo origen conocido: `Geronimo02/Geronimo02.github.io`, carpeta `demos/sushi-fa
 - [ ] SEO inicial y optimizacion de imagenes verificadas.
 - [ ] P3: carrito/variantes si existen, cantidades, total solo cuando corresponda y enlace WhatsApp comprobados sin enviar un pedido no autorizado.
 - [ ] P4: accesos y API privados protegidos, con pruebas de acceso no autorizado.
-- [ ] P4: D1 + migraciones + backups + cuota/costos comprobados.
-- [ ] Cuenta Cloudflare, consumo compartido, precio de registro y renovacion del dominio, y servicios externos revisados.
+- [ ] P4: D1 + migraciones + backup/exportacion; R2 Standard + subidas/lecturas, acceso y cuotas/costos comprobados.
+- [ ] P4: fotos cargadas desde el panel, formatos/tamano validados, cache y reemplazo probados; bucket de preview separado del productivo.
+- [ ] Cuenta Cloudflare, suscripcion R2 y consumo compartido, alerta de presupuesto, precio de registro y renovacion del dominio, y servicios externos revisados. La alerta no actua como limite de gasto.
 - [ ] Preview aprobada antes de merge/despliegue productivo.
 - [ ] Dominio a nombre del cliente y DNS/correo revisados antes de modificarlo; repo y cuenta con acceso de entrega acordado.
 - [ ] SSL, enlace publico, metricas basicas y errores revisados.
@@ -291,7 +306,7 @@ Presentar siempre:
 1. **Diagnostico**: plan detectado, stack y estado real.
 2. **Decision tecnica**: Pages estatico o Pages Functions/Workers + D1, con motivo.
 3. **Cambios**: archivos creados/modificados, rama/commit/PR si existen.
-4. **Recursos Cloudflare**: nombre de proyecto, DB, bindings y entornos realmente creados; nunca inventar IDs.
+4. **Recursos Cloudflare**: nombre de proyecto, D1, bucket R2, bindings y entornos realmente creados; nunca inventar IDs.
 5. **URLs reales**: demo, preview y produccion (solo si fueron comprobadas).
 6. **QA**: pruebas ejecutadas, resultados y pendientes.
 7. **Seguridad**: autenticacion y test de accesos, manejo de secretos.
@@ -315,6 +330,9 @@ Presentar siempre:
 - D1 limits: https://developers.cloudflare.com/d1/platform/limits/
 - D1 prepared statements: https://developers.cloudflare.com/d1/worker-api/prepared-statements/
 - D1 Time Travel: https://developers.cloudflare.com/d1/reference/time-travel/
+- R2 Standard pricing y activacion: https://developers.cloudflare.com/r2/pricing/ y https://developers.cloudflare.com/r2/get-started/
+- R2 con Pages Functions y bucket publico: https://developers.cloudflare.com/pages/functions/bindings/ y https://developers.cloudflare.com/r2/buckets/public-buckets/
+- Alertas de presupuesto (informativas): https://developers.cloudflare.com/billing/manage/budget-alerts/
 - Cloudflare Access JWT: https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/
 - Plugin oficial Claude Code: https://developers.cloudflare.com/agent-setup/claude-code/
 - Plugin oficial Codex: https://developers.cloudflare.com/agent-setup/codex/
