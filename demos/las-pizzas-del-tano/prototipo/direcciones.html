@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tano — 3 direcciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Young+Serif&family=Yellowtail&display=swap" rel="stylesheet">
+<style>
+:root{--bordo:#8C0C10;--yellow:#FCDC58;--paper:#F6EAD0;--ink:#2A1A14;--ink2:#6B5A4E;--green:#1E6B3A;--coal:#1A0F0B;--night:#0E0A12}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d2c3;color:var(--ink);font:400 16px/1.5 "Courier Prime","Courier New",monospace}
+img{display:block;max-width:100%}
+.top{padding:28px clamp(16px,4vw,48px) 8px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline}
+.top h1{font:400 28px/1.1 "Young Serif",Georgia,serif}
+.top p{font-size:13px;color:var(--ink2);max-width:60ch}
+.dirs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:16px clamp(16px,4vw,48px) 48px}
+@media(max-width:1100px){.dirs{grid-template-columns:1fr}}
+.dir{background:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;min-width:0}
+.tag{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:2px solid var(--ink);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.tag b{background:var(--ink);color:#fff;padding:2px 8px}
+.stage{position:relative;height:560px;overflow:hidden}
+.spec{padding:16px 14px 18px;font-size:13px;line-height:1.5;border-top:2px solid var(--ink)}
+.spec h3{font:400 22px/1.1 "Young Serif",Georgia,serif;margin-bottom:8px}
+.spec dl{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;margin-top:10px}
+.spec dt{font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.06em;padding-top:2px}
+.sw{display:inline-block;width:14px;height:14px;border:1px solid #0003;vertical-align:-2px;margin-right:3px}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:12px 18px;font:700 13px/1 "Courier Prime",monospace;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:2px solid currentColor;cursor:pointer;background:none;color:inherit}
+
+/* ---------- A · Leña bajo el cartel de hierro ---------- */
+.a{background:var(--coal);color:var(--paper)}
+.a img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%}
+.a::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--coal) 6%,#1a0f0bcc 40%,#1a0f0b55 75%,#1a0f0b99)}
+.a .in{position:absolute;z-index:2;left:20px;right:20px;bottom:22px}
+.a h2{font:400 64px/.92 "Young Serif",Georgia,serif;letter-spacing:-.02em}
+.a h2 em{font-style:normal;color:var(--yellow)}
+.a .row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.a .pedir{background:var(--yellow);color:var(--ink);border-color:var(--ink);border-radius:999px}
+.a .sign{position:absolute;z-index:3;top:0;right:22px;width:118px;transform-origin:50% 0}
+.a .sign svg{width:100%;filter:drop-shadow(8px 14px 10px #0008)}
+.a .ticket{position:absolute;z-index:3;left:20px;top:22px;width:250px;background:var(--paper);color:var(--ink);padding:12px 14px;font-size:12px;box-shadow:5px 5px 0 #000}
+.a .ticket .r{display:flex;gap:6px;align-items:baseline}
+.a .ticket .r i{flex:1;border-bottom:2px dotted var(--ink);transform:translateY(-3px)}
+.a .ticket b{text-transform:uppercase}
+
+/* ---------- B · Flyer crema pegado al lado del horno ---------- */
+.b{background:var(--paper);color:var(--bordo)}
+.b .in{position:absolute;inset:22px 20px}
+.b .script{font:400 46px/1 "Yellowtail",cursive;transform:rotate(-6deg);display:block;color:var(--bordo);margin:6px 0 18px -4px;max-width:60%}
+.b h2{font:700 30px/1.05 "Courier Prime",monospace;letter-spacing:.02em;text-transform:uppercase}
+.b p{font-size:13px;line-height:1.45;max-width:24ch;margin-top:12px;color:var(--bordo);text-transform:uppercase}
+.b p u{text-underline-offset:3px}
+.b .photo{position:absolute;right:16px;top:150px;width:190px;transform:rotate(4deg);background:#fff;padding:8px 8px 26px;box-shadow:4px 4px 0 #0002}
+.b .photo img{width:174px;height:200px;object-fit:cover}
+.b .photo::before{content:"";position:absolute;top:-10px;left:50%;width:76px;height:20px;margin-left:-38px;background:#fcdc58aa;transform:rotate(-3deg)}
+.b .stamp{position:absolute;left:18px;bottom:26px;cursor:pointer;border:0;background:none;padding:0}
+.b .oval{display:inline-block;background:var(--green);color:var(--yellow);border:4px solid var(--yellow);outline:3px solid var(--green);border-radius:50%;padding:12px 30px;font:700 22px/1 "Courier Prime",monospace;letter-spacing:.06em;transform:rotate(-6deg)}
+.b .stamp:hover .oval,.b .stamp:focus-visible .oval{animation:stampIt .45s cubic-bezier(.2,1.6,.4,1)}
+.b .stamp small{display:block;margin-top:10px;font:700 11px/1 "Courier Prime",monospace;letter-spacing:.08em;color:var(--ink2)}
+.b .ink{position:absolute;pointer-events:none;border-radius:50%;border:3px solid var(--green);color:var(--green);font:700 12px/1 "Courier Prime",monospace;padding:10px 16px;letter-spacing:.06em;opacity:.85;transform:rotate(-8deg)}
+@keyframes stampIt{0%{transform:rotate(-6deg) scale(1.25)}60%{transform:rotate(-6deg) scale(.94)}100%{transform:rotate(-6deg) scale(1)}}
+.b .addr{position:absolute;right:18px;bottom:26px;text-align:right;font-size:11px;line-height:1.3;color:var(--ink)}
+.b .addr b{font:400 22px/1 "Young Serif",serif;color:var(--bordo);display:block;margin-bottom:4px}
+
+/* ---------- C · Neón 582 sobre la vereda de Mitre ---------- */
+.c{background:var(--night);color:#efe6ff}
+.c img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42;filter:saturate(.7)}
+.c::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--night) 10%,#0e0a12aa 50%,#0e0a1255)}
+.c .in{position:absolute;z-index:2;left:20px;right:20px;bottom:22px}
+.c .neon{font:400 66px/.95 "Yellowtail",cursive;color:#fff3b0;text-shadow:0 0 4px #fff7c8,0 0 12px var(--yellow),0 0 28px #fcdc58cc,0 0 56px #f0a21a88}
+.c .neon.flick{animation:flick 2.2s steps(1) 1 both}
+.c .n582{font:400 120px/.8 "Young Serif",serif;color:transparent;-webkit-text-stroke:2px var(--yellow);margin-top:6px;opacity:.9}
+.c .sign{position:absolute;z-index:3;top:20px;right:20px;border:3px solid currentColor;border-radius:10px;padding:10px 14px;font:700 20px/1 "Courier Prime",monospace;letter-spacing:.14em;text-transform:uppercase}
+.c .sign.on{color:#ff5a4e;text-shadow:0 0 6px #ff5a4e,0 0 18px #ff2a1a;box-shadow:0 0 14px #ff2a1a66,inset 0 0 12px #ff2a1a44}
+.c .sign.off{color:#5b4a52}
+.c .sign small{display:block;font-size:11px;letter-spacing:.06em;margin-top:6px;text-transform:none}
+.c p{font-size:13px;margin-top:14px;max-width:34ch;color:#d9cfe6}
+.c .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.c .pedir{color:var(--yellow);box-shadow:0 0 12px #fcdc5855;border-radius:999px}
+@keyframes flick{0%{opacity:.15}8%{opacity:1}12%{opacity:.2}18%{opacity:1}40%{opacity:.6}44%{opacity:1}100%{opacity:1}}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.foot{padding:0 clamp(16px,4vw,48px) 40px;font-size:12px;color:var(--ink2)}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Las Pizzas del Tano · 3 direcciones</h1>
+  <p>Cada una con su hero y su pieza firma funcionando. Datos y fotos reales del local (Google Maps del propietario y su carta de ola.click). Demo de DSFP, no es la web oficial.</p>
+</header>
+
+<main class="dirs">
+  <!-- A -->
+  <section class="dir" aria-label="Dirección A">
+    <div class="tag"><span>A · Leña bajo el cartel de hierro</span><b>recomendada</b></div>
+    <div class="stage a" id="stageA">
+      <img class="bg" alt="Horno a leña encendido con pizzas adentro" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Tfuy3P61d9Rt4Ih0GipU3DzDA9lrAgt2i4EdQc9yF76aI0-ctDk66iQBv9ZsUI_aWiCw5DnvZkmc_wmNSAC-1_w-gHbY-ChK1d484SBwatF5AQmrf9rRt7vZ6_q9FDFKdeqrn5=w900">
+      <div class="sign" id="signA" aria-hidden="true">
+        <svg viewBox="0 0 240 330"><g fill="none" stroke="#120a07" stroke-width="6" stroke-linecap="round"><path d="M120 0 V58"/><path d="M30 58 H210"/><path d="M210 58 c18 0 22 -26 4 -28 c-12 -1 -14 14 -4 16"/><path d="M30 58 c-18 0 -22 -26 -4 -28 c12 -1 14 14 4 16"/></g><g stroke="#120a07" stroke-width="3"><path d="M58 58 V98"/><path d="M182 58 V98"/></g><rect x="18" y="96" width="204" height="220" fill="#16100d" stroke="#120a07" stroke-width="5"/><rect x="30" y="108" width="180" height="196" fill="none" stroke="#F6EAD0" stroke-width="2.5"/><g fill="#F6EAD0" font-family="Young Serif, Georgia, serif" text-anchor="middle"><text x="120" y="172" font-size="34" textLength="150" lengthAdjust="spacingAndGlyphs">LAS PIZZAS</text><text x="120" y="208" font-size="18" letter-spacing="3">— DEL —</text><text x="120" y="262" font-size="54" textLength="140" lengthAdjust="spacingAndGlyphs">TANO</text></g></svg>
+      </div>
+      <div class="ticket" aria-label="Muestra de la carta">
+        <div class="r"><b>Margherita</b><i></i><span>$19.900</span></div>
+        <div class="r"><b>Fugazza</b><i></i><span>$22.800</span></div>
+        <div class="r"><b>Lionel Messi</b><i></i><span>$22.800</span></div>
+      </div>
+      <div class="in">
+        <h2>Leña,<br>masa y<br><em>Mitre 582.</em></h2>
+        <div class="row"><a class="btn pedir" href="https://laspizzasdeltano.ola.click" target="_blank" rel="noopener">Pedir</a><span class="btn" style="border-color:var(--paper)">Carta</span></div>
+      </div>
+    </div>
+    <div class="spec">
+      <h3>El cartel de la puerta + la foto del horno</h3>
+      <p>Hero oscuro con la foto del horno del local; el resto en crema con la carta escrita a máquina como sus flyers.</p>
+      <dl>
+        <dt>Firma</dt><dd>El cartel de hierro colgante que se hamaca con el scroll o el mouse (receta propia: péndulo amortiguado). Carta con puntos guía hasta el precio.</dd>
+        <dt>Datos vivos</dt><dd>R8: abierto ahora / hoy abrimos a las 20, cuenta al próximo 29 de ñoquis.</dd>
+        <dt>Color</dt><dd><span class="sw" style="background:#1A0F0B"></span><span class="sw" style="background:#F6EAD0"></span><span class="sw" style="background:#8C0C10"></span><span class="sw" style="background:#FCDC58"></span> carbón, crema, bordó, amarillo</dd>
+        <dt>Tipos</dt><dd>Young Serif + Courier Prime</dd>
+        <dt>Nivel</dt><dd>1 (vivo). Liviano en celular.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="dir" aria-label="Dirección B">
+    <div class="tag"><span>B · Flyer crema pegado al lado del horno</span></div>
+    <div class="stage b" id="stageB">
+      <div class="in">
+        <span class="script">Martes a domingo</span>
+        <h2>Pizza estilo<br>napoletano<br>y algo más</h2>
+        <p>De 20 a 00 en <u>Mitre 582</u>. El 29, <u>ñoquis</u> en plato de masa de pizza.</p>
+      </div>
+      <figure class="photo"><img alt="Pizza de pepperoni recién salida" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SuvFiYyiIxgkKJm7QyUySdHY8vpxS7w_Wx0eX2yRHs6L_kyqv0a6vb9Q-yqiCr3NhH2VxhkcmFJ8xMx3uicjP6q8QHk9I0GFrGkGKKShp_BzynIoMx85NSFX1af0GE505J1j63=w500"></figure>
+      <button class="stamp" id="stampB" type="button" aria-label="Pedir: estampa el sello">
+        <span class="oval">PEDIR</span>
+        <small>tocá el sello · deja la marca</small>
+      </button>
+      <div class="addr"><b>Tano®</b>MITRE 582<br>TANDIL, BUENOS AIRES<br>CP 7000</div>
+    </div>
+    <div class="spec">
+      <h3>La web es uno de sus flyers</h3>
+      <p>Todo en papel crema, tinta bordó, texto mecanografiado en mayúsculas y la manuscrita de "Martes 29". Fotos pegadas con cinta.</p>
+      <dl>
+        <dt>Firma</dt><dd>El óvalo verde de ÑOQUIS como sello: cada botón de pedir/agregar se estampa y deja la marca de tinta (pieza funcional con firma).</dd>
+        <dt>Datos vivos</dt><dd>R8 escrito a máquina: "HOY ABRIMOS A LAS 20".</dd>
+        <dt>Color</dt><dd><span class="sw" style="background:#F6EAD0"></span><span class="sw" style="background:#8C0C10"></span><span class="sw" style="background:#1E6B3A"></span><span class="sw" style="background:#FCDC58"></span> crema, bordó, verde óvalo, amarillo</dd>
+        <dt>Tipos</dt><dd>Courier Prime + Yellowtail (solo títulos cortos a mano)</dd>
+        <dt>Riesgo</dt><dd>Se apoya en piezas de IG que hoy no tenemos en alta.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="dir" aria-label="Dirección C">
+    <div class="tag"><span>C · Neón 582 sobre la vereda de Mitre</span></div>
+    <div class="stage c" id="stageC">
+      <img class="bg" alt="Entrada del local con el neón de Las Pizzas del Tano" src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SPwTd0lSyLHXix2OV9o7e3k3-yVUGYB_tFjH3pr6yAoTSwoC0kEAzWAkOI9s38gZIWZ5Y2pSU4WZ2k-1v_GG4pAqo_ayJn6aW673g713sAmVo4WkLRKNbwYaYNu7_ZfCWveIbe=w900">
+      <div class="sign" id="signC" role="status">—</div>
+      <div class="in">
+        <div class="neon flick" id="neonC">Las Pizzas<br>del Tano</div>
+        <div class="n582" aria-hidden="true">582</div>
+        <p>Pizza napoletana a la leña. Martes a domingo, de 20 a 00.</p>
+        <div class="row"><a class="btn pedir" href="https://laspizzasdeltano.ola.click" target="_blank" rel="noopener">Pedir</a></div>
+      </div>
+    </div>
+    <div class="spec">
+      <h3>El neón de la entrada, de noche</h3>
+      <p>La web abre de noche como el local: la foto del neón amarillo de la puerta, el número 582 calado y un cartel de ABIERTO real.</p>
+      <dl>
+        <dt>Firma</dt><dd>Cartel de neón ABIERTO/CERRADO que se prende solo con la hora de Tandil (R8 como objeto). El nombre en neón titila al entrar.</dd>
+        <dt>Color</dt><dd><span class="sw" style="background:#0E0A12"></span><span class="sw" style="background:#FCDC58"></span><span class="sw" style="background:#ff5a4e"></span> noche, amarillo neón, rojo cartel</dd>
+        <dt>Tipos</dt><dd>Yellowtail (neón) + Courier Prime</dd>
+        <dt>Riesgo</dt><dd>El bordó de la marca casi no aparece; de día se ve fuera de lugar.</dd>
+      </dl>
+    </div>
+  </section>
+</main>
+<p class="foot">Elegí una (o mezclá: por ejemplo A con el sello de B en los botones) y con esa se arma el prototipo completo.</p>
+
+<script>
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tz = new Intl.DateTimeFormat('en-US',{timeZone:'America/Argentina/Buenos_Aires',weekday:'short',hour:'2-digit',hour12:false}).formatToParts(new Date());
+const g = t => tz.find(p => p.type===t).value, day = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g('weekday')), h = +g('hour') % 24;
+const open = day !== 1 && h >= 20;
+
+// A: péndulo del cartel
+(function(){ if (REDUCED) return; const s = document.getElementById('signA'), st = document.getElementById('stageA'); let a=0,v=0,run=false;
+  const tick=()=>{v+=-.06*a;v*=.9;a+=v;s.style.transform=`rotate(${a.toFixed(2)}deg)`; if(Math.abs(a)>.02||Math.abs(v)>.02) requestAnimationFrame(tick); else {run=false;s.style.transform='none';}};
+  const kick=f=>{v+=f; if(!run){run=true;requestAnimationFrame(tick);}};
+  st.addEventListener('pointermove',e=>{ if(Math.abs(e.movementX)>4) kick(e.movementX*.012); });
+  addEventListener('wheel',e=>kick(Math.max(-1.4,Math.min(1.4,e.deltaY*.01))),{passive:true});
+  setTimeout(()=>kick(2.4),500); })();
+
+// B: sello que deja marca
+(function(){ const btn=document.getElementById('stampB'), st=document.getElementById('stageB'); let n=0;
+  btn.addEventListener('click',()=>{ const m=document.createElement('span'); m.className='ink'; m.textContent='PEDIDO';
+    const r=st.getBoundingClientRect(); m.style.left=(30+Math.random()*(r.width-160))+'px'; m.style.top=(110+Math.random()*180)+'px';
+    m.style.transform=`rotate(${-14+Math.random()*16}deg)`; st.appendChild(m); if(++n>5) st.querySelector('.ink').remove(); }); })();
+
+// C: cartel ABIERTO real
+(function(){ const s=document.getElementById('signC');
+  s.className='sign '+(open?'on':'off');
+  s.innerHTML = open ? 'Abierto<small>cerramos a las 00</small>' : (day===1 ? 'Cerrado<small>volvemos el martes, 20 h</small>' : 'Cerrado<small>hoy abrimos a las 20</small>'); })();
+</script>
+</body>
+</html>

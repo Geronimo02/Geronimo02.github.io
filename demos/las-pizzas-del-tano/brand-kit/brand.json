@@ -1,0 +1,88 @@
+{
+  "marca": "Las Pizzas del Tano (firma como \"Tano®\")",
+  "rubro": "Pizzería estilo napoletano con horno a leña, salón chico + take away + delivery",
+  "ubicacion": "Mitre 582, B7000 Tandil, Buenos Aires, Argentina",
+  "capturado": "2026-10-16",
+  "canales": {
+    "web": "sin web propia",
+    "pedidos": "https://laspizzasdeltano.ola.click",
+    "instagram": "https://www.instagram.com/laspizzasdeltano/ (verificado, 15,7 mil seguidores, 193 publicaciones al 16/10/2026)",
+    "facebook": "no relevado",
+    "tiktok": "no relevado",
+    "whatsapp": "+54 249 424-1071 (wa.me/542494241071)",
+    "google_business": "https://www.google.com/maps/place/?q=place_id:ChIJU3XHfVofkZURduZKxYC9WWw (4,7 · 599 reseñas · $10.000–20.000)"
+  },
+  "colores": [
+    {"rol": "primario", "nombre": "Bordó Tano", "hex": "#8C0C10", "rgb": "140,12,16", "hsl": "358,84%,30%", "origen": "logo (raster ola.click 475px)", "confianza": "confirmado"},
+    {"rol": "secundario", "nombre": "Amarillo cartel", "hex": "#FCDC58", "rgb": "252,220,88", "hsl": "48,96%,67%", "origen": "logo (raster ola.click 475px)", "confianza": "confirmado"},
+    {"rol": "neutro claro", "nombre": "Crema flyer", "hex": "#F6EAD0", "rgb": "246,234,208", "hsl": "41,66%,89%", "origen": "feed (flyers Sorteo 29 / La última de Leo)", "confianza": "inferido"},
+    {"rol": "neutro oscuro", "nombre": "Tinta", "hex": "#2A1A14", "rgb": "42,26,20", "hsl": "16,35%,12%", "origen": "feed (texto mecanografiado)", "confianza": "inferido"},
+    {"rol": "acento", "nombre": "Verde óvalo", "hex": "#1E6B3A", "rgb": "30,107,58", "hsl": "142,56%,27%", "origen": "feed (óvalo ÑOQUIS)", "confianza": "inferido"}
+  ],
+  "contraste_wcag": [
+    {"texto": "#FCDC58", "fondo": "#8C0C10", "ratio": "7.13", "AA": true},
+    {"texto": "#F6EAD0", "fondo": "#8C0C10", "ratio": "8.09", "AA": true},
+    {"texto": "#2A1A14", "fondo": "#F6EAD0", "ratio": "14.01", "AA": true},
+    {"texto": "#8C0C10", "fondo": "#F6EAD0", "ratio": "8.09", "AA": true},
+    {"texto": "#FCDC58", "fondo": "#1E6B3A", "ratio": "4.82", "AA": true},
+    {"texto": "#6B5A4E", "fondo": "#F6EAD0", "ratio": "5.50", "AA": true}
+  ],
+  "tipografias": [
+    {"uso": "logo IG / gorra", "familia": "serif bold de remates suaves (no identificada)", "fuente": "observado en avatar y merch", "confianza": "inferido"},
+    {"uso": "logo ola.click", "familia": "sans geométrica en mayúsculas (TANO®)", "fuente": "observado", "confianza": "inferido"},
+    {"uso": "flyers", "familia": "máquina de escribir (mono) + manuscrita a pincel", "fuente": "observado en feed", "confianza": "inferido"},
+    {"uso": "web — titulares (propuesta)", "familia": "Young Serif", "fuente": "google-fonts"},
+    {"uso": "web — texto y carta (propuesta)", "familia": "Courier Prime", "fuente": "google-fonts"}
+  ],
+  "logos": [
+    {"tipo": "wordmark sobre bordó (cuadrado)", "archivo": "https://assets.olaclick.app/companies/logos/5458c5fd-6504-43b1-b068-d1dbd7efff73.webp", "formato": "webp", "resolucion": "475x475"},
+    {"tipo": "wordmark serif en avatar circular", "archivo": "avatar de Instagram (no descargable desde la sesión)", "formato": "jpg", "resolucion": "baja"},
+    {"tipo": "cartel colgante de hierro LAS PIZZAS DEL TANO", "archivo": "foto Google Maps del propietario, feb 2024", "formato": "foto", "resolucion": "3213x5712"},
+    {"tipo": "neón LAS PIZZAS DEL TANO 582", "archivo": "foto Google Maps del propietario", "formato": "foto", "resolucion": "—"}
+  ],
+  "servicios_o_menu": "ver CONTENT.md (carta completa, 46 ítems, precios ola.click 16/10/2026)",
+  "horarios": "Martes a domingo 20:00 a 00:00. Lunes cerrado (IG + Google).",
+  "contacto": {"whatsapp": "+54 249 424-1071", "telefono": "+54 249 424-1071", "direccion": "Mitre 582, Tandil"},
+  "modalidades": ["salón", "para llevar", "delivery (ola.click)", "pedidos agendados"],
+  "pagos": ["promos válidas solo en efectivo o transferencia (ola.click)", "resto: [CONFIRMAR]"],
+  "tono": [
+    "Voseo y cercanía: 'Hace tu pedido', 'Vení a despedir a Leo con nosotros'",
+    "Futbolero e idolatría argentina: pizza 'Lionel Messi', gorra Tano en foto de Maradona, partido en proyector",
+    "Rituales: el 29 de ñoquis, sorteos, especial de la semana en pizarra",
+    "Estética de flyer mecanografiado, nada de hype",
+    "Emojis en IG para rotular (🍕 🥟 🏠), no en textos largos"
+  ],
+  "tagline": "Pizza estilo napoletano y algo más (bio de IG)",
+  "logo": {
+    "diagnostico": [
+      "Dos wordmarks distintos conviven: serif 'Tano®' (IG, gorra, flyers) y sans 'TANO®' (ola.click). No es coherente.",
+      "El avatar funciona a 96 y 40 px: palabra corta, alto contraste amarillo/bordó.",
+      "No hay isotipo; el cartel de hierro colgante y el neón con '582' son activos reconocibles que no están en el sistema.",
+      "No se encontró vector público."
+    ],
+    "recomendacion": "ordenar",
+    "razon": "El logo sirve y se lee; falta unificar en la versión serif (la que más se ve), sacar el vector y sumar versiones (negativo, monocromo).",
+    "direcciones": []
+  },
+  "diagnostico": [
+    {"brecha": "Sin web propia: buscar 'pizzería napolitana Tandil' lleva a la ficha o a ola.click genérico", "evidencia": "ninguna web en búsquedas ni en bio de IG (link a ola.click)"},
+    {"brecha": "La carta vive en ola.click con estética de plataforma (amarillo #E2BD00 de ola.click, no el de la marca)", "evidencia": "laspizzasdeltano.ola.click"},
+    {"brecha": "El 29 de ñoquis y las promos de semana se comunican solo en posts que se pierden en el feed", "evidencia": "flyer 'Sorteo 29 de ñoquis', promo 'Martes, miércoles y jueves' en ola.click"},
+    {"brecha": "Salón chico, reseñas recomiendan reservar o ir con tiempo, pero no hay canal de reserva visible", "evidencia": "reseñas Google (Lucia Carmona, Alberto Damian Pesce)"},
+    {"brecha": "Las fotos buenas del local (horno, neón, cartel) están dispersas en Google Maps", "evidencia": "galería 'Del propietario'"}
+  ],
+  "propuesta": {
+    "solucion": "Web carta propia (P2) con la identidad Tano que deriva el pedido a ola.click / WhatsApp y empuja los rituales (29 de ñoquis, promos de semana).",
+    "mvp": ["Carta completa con precios y fecha", "Estado abierto/cerrado en hora de Tandil", "Pedido por ola.click y WhatsApp con texto precargado", "Promos por día", "Cuenta regresiva al próximo 29", "Salón, horno y equipo con fotos del propietario", "Reseñas reales de Google", "Cómo llegar + horarios + schema LocalBusiness/Restaurant"],
+    "fase_2": ["Arma tu mitad y mitad → WhatsApp", "Reserva de mesa (WhatsApp o form)", "Panel para editar carta y precios (P4)", "Carrito propio WhatsApp (P3)"],
+    "flujo": ["Entra desde IG o Google", "Ve si está abierto hoy", "Recorre la carta", "Toca 'Pedir' → ola.click o WhatsApp con 'Hola, vengo de la web'"],
+    "stack": "HTML estático + CSS + JS mínimo; deploy Cloudflare Pages (Flujo Maestro P2)",
+    "pendientes_cliente": ["logo original", "fotos originales", "confirmar precios y mitades", "historia del local", "dominio"]
+  },
+  "fuentes": [
+    {"dato": "bio, horarios, dirección, seguidores, highlights", "url": "https://www.instagram.com/laspizzasdeltano/"},
+    {"dato": "carta, precios, WhatsApp, logo, modalidades", "url": "https://laspizzasdeltano.ola.click/products"},
+    {"dato": "puntaje, reseñas, teléfono, horarios, fotos del propietario", "url": "https://www.google.com/maps/place/?q=place_id:ChIJU3XHfVofkZURduZKxYC9WWw"}
+  ],
+  "faltantes": ["vector del logo", "tipografía exacta del logo", "año de apertura / historia", "medios de pago generales", "zona y costo de delivery", "dominio", "Facebook/TikTok"]
+}
