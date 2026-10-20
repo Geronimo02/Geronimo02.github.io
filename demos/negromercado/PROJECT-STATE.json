@@ -5,7 +5,7 @@
   "source": "https://www.instagram.com/negromercado.ok/",
   "mode": "demo",
   "created_at": "2026-10-19T13:56:01Z",
-  "updated_at": "2026-10-19T23:55:00Z",
+  "updated_at": "2026-10-20T00:56:47.238211+00:00",
   "next_stage": "S3",
   "persistent_destination": "github:Geronimo02/Geronimo02.github.io/demos/negromercado",
   "stages": {
@@ -70,7 +70,9 @@
         "concept/palette-observed.json",
         "concept/directions/c/index.html",
         "concept/assets/direction-c-artwork.webp",
-        "concept/assets/motion-study.mp4"
+        "concept/assets/motion-study.mp4",
+        "concept/menu-05/index.html",
+        "concept/menu-05/MENU-CONCEPT.md"
       ],
       "user_approved": false,
       "open_issues": [
@@ -141,13 +143,18 @@
       "date": "2026-10-19",
       "status": "approved_for_exploration",
       "decision": "Usuario acepta tablero de branding («siiiiiii, esto va») y pide punto medio animado/sofisticado para la web; aprobación del lenguaje, no de logo final ni publicación."
+    },
+    {
+      "date": "2026-10-19",
+      "status": "authorized_by_user",
+      "decision": "Carta con selección breve y vista completa, cuatro categorías, precios alineados y café protagonista. Usuario: «dale mandamos esa». No valida precios comerciales ni publicación."
     }
   ],
   "studio_version": "3.3",
   "stage": "S3",
   "branch": "signature/negromercado-s0-s1-20261019",
-  "approval_status": "Usuario acepta lenguaje del tablero de branding; solicita combinación web animada y sofisticada",
-  "next_action": "Revisar boceto hybrid-04 con referencias Goodboybob/Never/Escape y luego trasladar la combinación elegida a revisión funcional",
+  "approval_status": "Usuario acepta híbrido 04 y propuesta de carta; autoriza materializar exploración, no publicación",
+  "next_action": "Revisar carta 05 y llevar híbrido aprobado al sitio completo; verificar render e interacciones por vía permitida",
   "publish_authorized": false,
   "validation": {
     "json": "pass",
@@ -169,9 +176,12 @@
     "c_render": "not_tested",
     "c_interactive": "not_tested",
     "c_static": "pass",
-    "hybrid_04": "boceto generado; no HTML ni captura"
+    "hybrid_04": "boceto generado; no HTML ni captura",
+    "menu_05_static": "pass",
+    "menu_05_browser": "not_tested"
   },
   "revision": "S1 v0.2 · revisión directa Instagram/destacadas/Maps",
   "active_concept": "c",
-  "active_visual_exploration": "concept/hybrid-04"
+  "active_visual_exploration": "concept/hybrid-04",
+  "active_menu_exploration": "concept/menu-05"
 }

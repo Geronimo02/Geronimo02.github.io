@@ -52,3 +52,6 @@ Usuario siente que la web todavía no transmite la marca y propone branding nuev
 
 ## Híbrido 04 · marca expresiva / web sofisticada
 Usuario acepta lenguaje del tablero («siiiiiii, esto va») y pide combinar referencias de cafeterías con movimiento cuidado. Se buscaron y abrieron Goodboybob, Never Coffee, Escape, Pista y Wogan; principales Goodboybob/Never/Escape. Leer concept/hybrid-04/HYBRID-CONCEPT.md. web-boceto.webp muestra tres escenas (café, carta, vermú), imagen generada, no HTML/captura ni video ejecutado. C-v3 permanece como prototipo anterior; no llamarlo implementación del boceto nuevo. Movimiento propuesto con un foco por momento y lectura tranquila. Sin publicación.
+
+## Carta 05 · 19/10/2026
+El usuario acepta híbrido 04 y propuesta de carta: «dale mandamos esa». Materializada sección autocontenida en concept/menu-05/index.html (fuentes template.html/menu.js/build.py). Selección + diálogo completo con 65 registros, categorías y búsqueda global. Precios ambiguos no se convierten en tamaños: consultar variantes/desplegable con importes de columna. Precios de demo relevados, pendientes de validar. No hay render de navegador ni pruebas interactivas; estáticos pass. Leer MENU-CONCEPT.md y checks.json. Boceto generado de carta no equivale a captura HTML. C-v3 e híbrido 04 conservados, web completa híbrida todavía pendiente, no publicar.

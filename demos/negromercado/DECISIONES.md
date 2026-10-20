@@ -43,3 +43,6 @@ No hay conceptos aprobados ni rechazados para este negocio. Criterio pedido: pre
 
 ### Revisión C por feedback
 Usuario autoriza exploración libre de arte, sin rigidez del paso a paso. Se usa símbolo JPEG aportado sin redibujar. Paleta se muestrea directamente del carrusel oficial. Se desarrolla Rompé la rutina, croissant fotográfico en capas dirigido por scroll; no se afirma video real/3D. La recomendación A queda superada. Sin dirección aprobada ni deploy.
+
+## Carta 05 · 19/10/2026
+Usuario aprueba selección breve + carta completa dentro del sitio y autoriza materializar. Cuatro categorías; filas con precios, café visual protagonista, móviles con categorías accesibles. Los 65 registros se conservan. No interpretar columnas ambiguas ni afirmar precios actuales. Híbrido 04 aceptado como base visual. Sin publicación.
