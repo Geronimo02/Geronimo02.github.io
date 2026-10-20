@@ -1,6 +1,9 @@
 {
   "business": "Negro Mercado",
-  "user_reference_urls": [],
+  "user_reference_urls": [
+    "https://www.behance.net/",
+    "https://dribbble.com/"
+  ],
   "items": [
     {
       "id": "R01",
@@ -94,9 +97,66 @@
       "implementation_status": "capas fotográficas y scroll escritos; estudio MP4 renderizado, HTML sin verificar visualmente",
       "license_checked": "not_applicable_inspiration",
       "dont_copy": "No copiar el vertido, layout, escenas, fotos ni código; se propone croissant con recorrido propio."
+    },
+    {
+      "id": "R06-OLE",
+      "url": "https://www.behance.net/gallery/220571581/Caf-Ol-Brand-Motion-Identity",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partially_verified",
+      "decision": "inspiration_only",
+      "observed": "Página y secciones Custom Font/alfabeto vistas; DOM de video logo con 6s/control Pausar; no reel completo ni easing medido.",
+      "principle": "Marca y motion comparten sistema; preservar nuevo lenguaje elegido.",
+      "brand_anchor": "Especialidad café y pastelería; lenguaje de branding aceptado por usuario.",
+      "concept_path": "concept/revision-06/DIRECTION-LOCK.md",
+      "concept_screen": null,
+      "applied_to": [
+        "revision-06-motion-plan"
+      ],
+      "implementation_status": "proposed_not_implemented",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar oso, fuente, colores ni videos."
+    },
+    {
+      "id": "R06-POUR",
+      "url": "https://www.behance.net/gallery/237205459/Pouring-Coffee-Animation",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partially_verified",
+      "decision": "inspiration_only",
+      "observed": "Screenshot muestra chorro sobre taza turquesa; iframe y play; reproducción completa no verificada.",
+      "principle": "Vertido como foco corto de portada; estilo fotográfico del boceto Negro.",
+      "brand_anchor": "Especialidad café y pastelería; lenguaje de branding aceptado por usuario.",
+      "concept_path": "concept/revision-06/DIRECTION-LOCK.md",
+      "concept_screen": null,
+      "applied_to": [
+        "revision-06-motion-plan"
+      ],
+      "implementation_status": "proposed_not_implemented",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No usar CGI, colores ni video de referencia."
+    },
+    {
+      "id": "R06-BEANS",
+      "url": "https://dribbble.com/shots/5375015-Coffee-Animation",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partially_verified",
+      "decision": "inspiration_only",
+      "observed": "GIF con taza roja, salpicadura y granos en distintas escalas; dos screenshots con posiciones diferentes; autor describe flotación Matrix.",
+      "principle": "Profundidad en pocos granos como transición; caída propuesta propia, no observada como scroll.",
+      "brand_anchor": "Especialidad café y pastelería; lenguaje de branding aceptado por usuario.",
+      "concept_path": "concept/revision-06/DIRECTION-LOCK.md",
+      "concept_screen": null,
+      "applied_to": [
+        "revision-06-motion-plan"
+      ],
+      "implementation_status": "proposed_not_implemented",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar taza roja/turquesa ni GIF. No afirmar caída vertical/scroll verificados."
     }
   ],
   "selection_note": "No reference marked selected until screenshot evidence exists. Sources actually inspected; implementation awaits rendering.",
-  "active_direction": "c",
-  "revision_note": "Usuario pidió referencias como estímulo y foco en marca/movimiento/color; no cumplir cuotas."
+  "active_direction": "hybrid-04 / correction revision-06",
+  "revision_note": "P1 es boceto propio adjunto del híbrido 04; usuario rechaza desvío tipográfico/logo de menu-05. Revisión 06 corrige imagen, no implementación ni motion ejecutado."
 }

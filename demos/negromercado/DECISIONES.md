@@ -46,3 +46,6 @@ Usuario autoriza exploración libre de arte, sin rigidez del paso a paso. Se usa
 
 ## Carta 05 · 19/10/2026
 Usuario aprueba selección breve + carta completa dentro del sitio y autoriza materializar. Cuatro categorías; filas con precios, café visual protagonista, móviles con categorías accesibles. Los 65 registros se conservan. No interpretar columnas ambiguas ni afirmar precios actuales. Híbrido 04 aceptado como base visual. Sin publicación.
+
+## Corrección de marca · Revisión 06
+La carta 05 no satisface fidelidad visual: usuario lo señala expresamente. Fuente principal vinculante = híbrido 04 adjunto, con logo propuesto y titulares redondeados, azul manuscrito, crema/verde, fotos y ajedrezado breve. Corregir imagen central sin rediseñar el resto. El HTML de carta 05 queda como referencia funcional histórica, no aprobado como dirección de arte. Motion investigado en Behance/Dribbble, producción propia pendiente.
