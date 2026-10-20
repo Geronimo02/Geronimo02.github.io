@@ -271,11 +271,11 @@
     if (video.paused) {
       try { await video.play(); videoFrame.classList.add('is-playing'); toggle.innerHTML = '<span aria-hidden="true">Ⅱ</span>'; toggle.setAttribute('aria-label', 'Pausar video'); }
       catch (_) { toast('No fue posible reproducir el video en este navegador.'); }
-    } else { video.pause(); videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶</span>'; toggle.setAttribute('aria-label', 'Reproducir video de preparación'); }
+    } else { video.pause(); videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶︎</span>'; toggle.setAttribute('aria-label', 'Reproducir video de preparación'); }
   }
   toggle.addEventListener('click', toggleVideo);
   $('#video-jump').addEventListener('click', (ev) => { ev.preventDefault(); video.scrollIntoView({ behavior: 'smooth', block: 'center' }); if (video.paused) toggleVideo(); });
-  video.addEventListener('ended', () => { videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶</span>'; toggle.setAttribute('aria-label', 'Reproducir video de preparación'); });
+  video.addEventListener('ended', () => { videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶︎</span>'; toggle.setAttribute('aria-label', 'Reproducir video de preparación'); });
   const navToggle = $('#nav-toggle');
   const siteNav = $('#site-nav');
   navToggle.addEventListener('click', () => {
@@ -290,7 +290,7 @@
     navToggle.setAttribute('aria-label', 'Abrir menú');
   }));
   if ('IntersectionObserver' in window) {
-    const watcher = new IntersectionObserver(entries => entries.forEach(entry => { if (!entry.isIntersecting && !video.paused) { video.pause(); videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶</span>'; }}));
+    const watcher = new IntersectionObserver(entries => entries.forEach(entry => { if (!entry.isIntersecting && !video.paused) { video.pause(); videoFrame.classList.remove('is-playing'); toggle.innerHTML = '<span aria-hidden="true">▶︎</span>'; }}));
     watcher.observe(video);
   }
   initLoadingScreen();

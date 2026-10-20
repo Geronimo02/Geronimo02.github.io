@@ -17,6 +17,21 @@
 </head>
 
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="admin-icon-sprite" aria-hidden="true">
+    <symbol id="admin-burger" viewBox="0 0 24 24"><path d="M4 10a8 8 0 0 1 16 0H4Zm-1 3h18M5 16h14m-13 3h12a2 2 0 0 0 2-2H4a2 2 0 0 0 2 2Z"/></symbol>
+    <symbol id="admin-box" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4v10l-9 4-9-4V7Zm0 0 9 4 9-4m-9 4v10"/></symbol>
+    <symbol id="admin-chart" viewBox="0 0 24 24"><path d="M4 20V11h4v9m2 0V4h4v16m2 0v-7h4v7H2"/></symbol>
+    <symbol id="admin-tag" viewBox="0 0 24 24"><path d="M3 3h9l9 9-9 9-9-9V3Zm5 5h.01"/></symbol>
+    <symbol id="admin-star" viewBox="0 0 24 24"><path d="m12 2 3 6.4 7 .9-5.1 4.9 1.2 7-6.1-3.3-6.1 3.3 1.2-7L2 9.3l7-.9L12 2Z"/></symbol>
+    <symbol id="admin-file" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6V2Zm8 0v5h4M9 12h6m-6 4h6"/></symbol>
+    <symbol id="admin-bike" viewBox="0 0 24 24"><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="m5 17 4-8 4 8h6l-4-8H9m6 0h3"/></symbol>
+    <symbol id="admin-bag" viewBox="0 0 24 24"><path d="M4 8h16l-1 13H5L4 8Zm4 0V6a4 4 0 0 1 8 0v2"/></symbol>
+    <symbol id="admin-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></symbol>
+    <symbol id="admin-note" viewBox="0 0 24 24"><path d="M5 3h14v18H5V3Zm4 5h6m-6 4h6m-6 4h3"/></symbol>
+    <symbol id="admin-printer" viewBox="0 0 24 24"><path d="M6 9V3h12v6M6 18H3v-8h18v8h-3M6 15h12v6H6v-6Z"/></symbol>
+    <symbol id="admin-folder" viewBox="0 0 24 24"><path d="M2 5h8l2 2h10v13H2V5Z"/></symbol>
+    <symbol id="admin-pencil" viewBox="0 0 24 24"><path d="m4 16-1 5 5-1L20 8l-4-4L4 16Zm9-9 4 4"/></symbol>
+  </svg>
 
   <!-- Header Foster Club -->
   <header class="site-header">
@@ -93,7 +108,7 @@
       <strong>Demostración comercial interactiva:</strong>
       <span>
         Modificá un precio o activá/desactivá un plato. Al abrir la <strong><a href="../carta/" target="_blank"
-            style="color: var(--orange); text-decoration: underline;">Carta en vivo ↗</a></strong> en otra pestaña o
+            style="color: var(--orange); text-decoration: underline;">Carta en vivo ↗︎</a></strong> en otra pestaña o
         pantalla dividida, vas a ver cómo se actualiza al segundo sin recargar la web.
       </span>
     </div>
@@ -138,18 +153,18 @@
     <div class="category-nav-shell">
       <nav class="category-nav" aria-label="Secciones del panel">
         <button class="tab-btn active" data-tab="tab-products">
-          🍔 Gestión de productos
+          <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-burger"/></svg>Gestión de productos
           <span class="tab-count" id="16px">32</span>
         </button>
         <button class="tab-btn" data-tab="tab-orders">
-          📦 Pedidos demo
+          <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-box"/></svg>Pedidos demo
           <span class="tab-count" id="tab-count-orders">18</span>
         </button>
         <button class="tab-btn" data-tab="tab-revenue">
-          📊 Ingresos & Métricas
+          <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-chart"/></svg>Ingresos & Métricas
         </button>
         <button class="tab-btn" data-tab="tab-categories">
-          🏷️ Categorías
+          <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-tag"/></svg>Categorías
         </button>
       </nav>
     </div>
@@ -158,7 +173,7 @@
     <section class="tab-panel active" id="tab-products">
       <div class="controls-bar">
         <div class="search-box">
-          <span class="search-icon">🔍</span>
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
           <input type="text" id="search-input" placeholder="Buscar por plato, queso, salsa, bacon..."
             autocomplete="off">
         </div>
@@ -178,7 +193,7 @@
         <button type="button" class="filter-chip active" data-status-filter="all">Todos</button>
         <button type="button" class="filter-chip" data-status-filter="available">Solo disponibles</button>
         <button type="button" class="filter-chip" data-status-filter="out">Solo agotados</button>
-        <button type="button" class="filter-chip" data-status-filter="featured">Solo destacados ⭐</button>
+        <button type="button" class="filter-chip" data-status-filter="featured"><svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-star"/></svg>Solo destacados</button>
       </div>
 
       <!-- Lista de Productos -->
@@ -232,7 +247,7 @@
         </div>
         <button type="button" class="pill pill-light pill-sm" id="btn-print-report"
           style="border: 1px solid var(--line); color: var(--burgundy);">
-          📄 Simular reporte de caja
+          <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-file"/></svg>Simular reporte de caja
         </button>
       </div>
 
@@ -310,15 +325,15 @@
         <div class="channels-grid">
           <div class="channel-card">
             <div class="channel-pct" id="rev-channel-delivery">61%</div>
-            <div class="channel-label">🛵 Delivery a domicilio</div>
+            <div class="channel-label"><svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-bike"/></svg>Delivery a domicilio</div>
           </div>
           <div class="channel-card">
             <div class="channel-pct" id="rev-channel-takeaway">39%</div>
-            <div class="channel-label">🛍️ Retiro en local</div>
+            <div class="channel-label"><svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-bag"/></svg>Retiro en local</div>
           </div>
           <div class="channel-card">
             <div class="channel-pct">55% / 45%</div>
-            <div class="channel-label">💳 Mercado Pago / Efectivo</div>
+            <div class="channel-label"><svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-card"/></svg>Mercado Pago / Efectivo</div>
           </div>
         </div>
       </div>
@@ -381,7 +396,7 @@
         </div>
         <div class="ticket-meta-item">
           <span class="ticket-meta-label">Modalidad & Entrega</span>
-          <span class="ticket-meta-val" id="ticket-delivery-mode">🛵 Delivery</span>
+          <span class="ticket-meta-val" id="ticket-delivery-mode"><svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-bike"/></svg>Delivery</span>
         </div>
         <div class="ticket-meta-item">
           <span class="ticket-meta-label">Medio de pago</span>
@@ -426,7 +441,7 @@
 
       <!-- Indicaciones de Cocina -->
       <div class="ticket-kitchen-notes" id="ticket-notes-box">
-        <strong>📝 Observaciones del cliente / cocina:</strong>
+        <strong><svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-note"/></svg>Observaciones del cliente / cocina:</strong>
         <p id="ticket-notes-text">Sin cebolla en una burger, dip de salsa aparte.</p>
       </div>
 
@@ -439,10 +454,10 @@
         <div style="display: flex; gap: 8px;">
           <button type="button" class="pill pill-light pill-sm" id="btn-ticket-print"
             style="border: 1px solid var(--line); color: var(--burgundy);">
-            🖨️ Imprimir ticket
+            <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-printer"/></svg>Imprimir ticket
           </button>
           <button type="button" class="pill pill-orange pill-sm" id="btn-ticket-toggle-status">
-            ✓ Marcar como confirmado
+            ✓︎ Marcar como confirmado
           </button>
         </div>
       </div>
@@ -454,7 +469,7 @@
     <div class="modal-window">
       <div class="modal-header">
         <h3 id="modal-product-title">Editar Plato</h3>
-        <button type="button" class="modal-close-btn" data-close-modal aria-label="Cerrar">✕</button>
+        <button type="button" class="modal-close-btn" data-close-modal aria-label="Cerrar">✕︎</button>
       </div>
       <form id="form-product">
         <input type="hidden" id="prod-id" name="id">
@@ -475,12 +490,12 @@
             <div class="img-preview-actions">
               <label class="pill pill-light pill-sm"
                 style="border: 1px solid var(--line); color: var(--burgundy); cursor: pointer;">
-                📁 Subir desde tu equipo
+                <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-folder"/></svg>Subir desde tu equipo
                 <input type="file" id="prod-file-input" accept="image/*" style="display: none;">
               </label>
               <button type="button" class="pill pill-burgundy-outline pill-sm" id="btn-remove-image"
                 style="color: var(--muted); border-color: var(--line); font-size: 0.65rem;">
-                ✕ Quitar foto
+                ✕︎ Quitar foto
               </button>
             </div>
           </div>
@@ -546,7 +561,7 @@
 
         <label class="checkbox-row">
           <input type="checkbox" id="prod-featured" name="featured">
-          <span>Destacar en la carta (Badge ⭐)</span>
+          <span>Destacar en la carta <svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-star"/></svg></span>
         </label>
 
         <div class="modal-actions">
@@ -564,7 +579,7 @@
     <div class="modal-window">
       <div class="modal-header">
         <h3 id="modal-reset-title">¿Restablecer datos demo?</h3>
-        <button type="button" class="modal-close-btn" data-close-modal aria-label="Cerrar">✕</button>
+        <button type="button" class="modal-close-btn" data-close-modal aria-label="Cerrar">✕︎</button>
       </div>
       <p style="color: var(--muted); font-size: 0.92rem; margin-bottom: 22px; line-height: 1.5;">
         Esta acción recupera la carta original con los 32 platos, precios iniciales y los 18 pedidos de prueba. Ideal
@@ -580,7 +595,7 @@
 
   <!-- Toast Notificación -->
   <div class="toast-notice" id="toast-notice" role="status" aria-live="polite">
-    <span class="toast-icon">✓</span>
+    <span class="toast-icon">✓︎</span>
     <span id="toast-message">Guardado con éxito · Sincronizado con la Carta</span>
   </div>
 

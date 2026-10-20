@@ -70,7 +70,7 @@ body{background-color:var(--color-midnight);background-image:radial-gradient(cir
 .hero-script{text-shadow:0 1px 0 rgba(241,232,217,.15),0 0 14px rgba(199,119,43,.2)}
 .hero-spark{position:absolute;top:106px;right:31%;z-index:1;color:var(--color-amber);font-size:1.8rem;line-height:1;text-shadow:0 0 12px rgba(199,119,43,.32);animation:glowPulse 3.8s ease-in-out infinite}
 .brand{position:relative}
-.brand::after{content:"✦";position:absolute;right:-15px;top:12px;color:var(--color-amber);font-size:.72rem;line-height:1;text-shadow:0 0 10px rgba(199,119,43,.32)}
+.brand::after{content:"✦︎";position:absolute;right:-15px;top:12px;color:var(--color-amber);font-size:.72rem;line-height:1;text-shadow:0 0 10px rgba(199,119,43,.32)}
 .brand-name{text-shadow:0 1px 0 rgba(255,255,255,.1),0 0 15px rgba(241,232,217,.08)}
 .brand-script{text-shadow:0 1px 0 rgba(241,232,217,.16),0 0 12px rgba(199,119,43,.24)}
 .section-heading{position:relative}
@@ -78,7 +78,7 @@ body{background-color:var(--color-midnight);background-image:radial-gradient(cir
 .featured-grid,.gallery-track{position:relative}
 .feature-card,.gallery-track figure{border-color:rgba(241,232,217,.28);box-shadow:inset 0 0 0 1px rgba(27,58,46,.18)}
 .experience-copy,.reservation-content,.site-footer{position:relative}
-.experience-copy::before,.reservation-content::before,.site-footer::before{content:"✦";position:absolute;right:7%;top:8%;color:rgba(199,119,43,.55);font-size:1.15rem;text-shadow:0 0 12px rgba(199,119,43,.25)}
+.experience-copy::before,.reservation-content::before,.site-footer::before{content:"✦︎";position:absolute;right:7%;top:8%;color:rgba(199,119,43,.55);font-size:1.15rem;text-shadow:0 0 12px rgba(199,119,43,.25)}
 .reservation-content::before{right:5%;top:12%;font-size:2.6rem;opacity:.45}
 .mascot-mark{position:absolute;z-index:0;right:3%;bottom:4%;width:min(48%,220px);height:auto;opacity:.3;filter:saturate(.72) sepia(.12);pointer-events:none}
 .photo-caption::before{content:"";display:inline-block;width:24px;height:1px;margin:0 12px 3px 0;background:var(--color-amber);box-shadow:0 0 9px rgba(199,119,43,.28)}

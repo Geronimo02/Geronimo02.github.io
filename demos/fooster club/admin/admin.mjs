@@ -206,7 +206,7 @@ function renderProductsList() {
         <div class="product-details">
           <div class="product-meta-tags">
             <span class="cat-pill">${escapeHtml(catName)}</span>
-            ${p.featured ? `<span class="featured-pill">⭐ Destacado</span>` : ''}
+            ${p.featured ? `<span class="featured-pill"><svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-star"/></svg>Destacado</span>` : ''}
           </div>
           <h2 class="product-name">${escapeHtml(p.name)}</h2>
           <p class="product-desc">${escapeHtml(p.description || 'Sin descripción ingresada.')}</p>
@@ -217,7 +217,7 @@ function renderProductsList() {
           <span class="price-label-small">Precio Carta</span>
           <button type="button" class="price-clickable" data-quick-price="${p.id}" title="Clic para editar precio rápidamente">
             ${priceDisplay}
-            <span class="edit-icon-tiny">✏️</span>
+            <svg class="edit-icon-tiny admin-inline-icon" aria-hidden="true"><use href="#admin-pencil"/></svg>
           </button>
         </div>
 
@@ -230,7 +230,7 @@ function renderProductsList() {
             </span>
           </label>
           <span class="status-text-badge ${isAvailable ? 'is-available' : 'is-out'}">
-            ${isAvailable ? '● Disponible' : '✕ Agotado'}
+            ${isAvailable ? '● Disponible' : '✕︎ Agotado'}
           </span>
         </div>
 
@@ -318,12 +318,12 @@ function renderOrdersTable() {
         <td><span style="font-size: 0.74rem; color: var(--burgundy); font-weight: 700; text-transform: uppercase;">${escapeHtml(order.mode || 'Delivery')}</span></td>
         <td>
           <button type="button" class="order-status-pill ${isPending ? 'pendiente' : 'confirmado'}" data-toggle-order="${order.id}" title="Clic para alternar estado">
-            ${isPending ? '⏳ Pendiente' : '✓ Confirmado'}
+            ${isPending ? 'Pendiente' : '✓︎ Confirmado'}
           </button>
         </td>
         <td style="text-align: right;">
           <button type="button" class="order-detail-btn" data-ticket-btn="${order.id}" title="Ver ticket y comanda de cocina">
-            Ticket ↗
+            Ticket ↗︎
           </button>
         </td>
       </tr>
@@ -366,7 +366,9 @@ function openTicketModal(orderId) {
   ticketOrderId.textContent = `PEDIDO #${order.id} · FOSTER CLUB TANDIL`;
   ticketCustomerName.textContent = order.customer || 'Cliente Mostrador';
   ticketCustomerPhone.textContent = order.phone || '249 455-8912';
-  ticketDeliveryMode.textContent = order.mode === 'Delivery' ? '🛵 Delivery a domicilio' : '🛍️ Retiro por local (Takeaway)';
+  ticketDeliveryMode.innerHTML = order.mode === 'Delivery'
+    ? '<svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-bike"/></svg>Delivery a domicilio'
+    : '<svg class="admin-inline-icon" aria-hidden="true"><use href="#admin-bag"/></svg>Retiro por local (Takeaway)';
   ticketPaymentMethod.textContent = order.paymentMethod || 'Mercado Pago (QR)';
   ticketAddress.textContent = order.address || (order.mode === 'Delivery' ? 'Av. España 482, Piso 2A' : 'Mostrador Constitución 501');
 
@@ -399,7 +401,7 @@ function openTicketModal(orderId) {
 
   // Estado en botón de comanda
   const isPending = order.status === 'Pendiente';
-  btnTicketToggleStatus.textContent = isPending ? '✓ Marcar como confirmado' : '⏳ Volver a estado pendiente';
+  btnTicketToggleStatus.textContent = isPending ? '✓︎ Marcar como confirmado' : 'Volver a estado pendiente';
   btnTicketToggleStatus.className = `pill ${isPending ? 'pill-orange' : 'pill-burgundy'} pill-sm`;
 
   modalOrderDetail.classList.add('open');
@@ -424,7 +426,7 @@ if (btnTicketToggleStatus) {
 
 if (btnTicketPrint) {
   btnTicketPrint.addEventListener('click', () => {
-    showToast('🖨️ Simulando envío a impresora térmica de comandas Foster Club');
+    showToast('Simulando envío a impresora térmica de comandas Foster Club');
   });
 }
 
@@ -505,7 +507,7 @@ function renderRevenueDashboard() {
 }
 
 document.querySelector('#btn-print-report')?.addEventListener('click', () => {
-  showToast('📄 Simulación: Reporte diario de ventas generado y listo para enviar');
+  showToast('Simulación: Reporte diario de ventas generado y listo para enviar');
 });
 
 // 7. Renderizar Grid de Categorías
@@ -528,7 +530,7 @@ function renderCategoriesGrid() {
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 14px;">
           <span style="font-size: 0.78rem; color: #15803d; font-weight: 700;">● ${activeItems} disponibles</span>
           <button type="button" class="pill pill-light pill-sm" style="border: 1px solid var(--line); color: var(--burgundy);" data-filter-by-cat="${cat.id}">
-            Ver platos →
+            Ver platos →︎
           </button>
         </div>
       </div>
@@ -613,7 +615,7 @@ if (prodFileInput) {
     reader.onload = evt => {
       const base64 = evt.target.result;
       updateProductImagePreview(base64);
-      showToast('✓ Imagen cargada con éxito');
+      showToast('✓︎ Imagen cargada con éxito');
     };
     reader.readAsDataURL(file);
   });
@@ -733,7 +735,7 @@ document.querySelector('#btn-execute-reset')?.addEventListener('click', () => {
   resetDemoAll();
   closeModals();
   renderAll();
-  showToast('✓ Demo restablecida con éxito a sus valores originales');
+  showToast('✓︎ Demo restablecida con éxito a sus valores originales');
 });
 
 // 13. Sincronización en tiempo real

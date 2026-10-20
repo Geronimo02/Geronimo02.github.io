@@ -73,7 +73,7 @@
     const container=el('div','menu-empty');
     if(isPicadas){
       container.append(el('h3','','¿UNA PICADA?'),el('p','','Braico ofrece picadas, pero la carta compartida no detalla tamaños ni precios. Podés preparar una consulta sin inventar combinaciones.'));
-      const button=el('button','','PREPARAR CONSULTA POR PICADAS ↗');
+      const button=el('button','','PREPARAR CONSULTA POR PICADAS ↗︎');
       button.type='button';button.addEventListener('click',()=>{
         noteField.value='Quisiera consultar por las picadas disponibles, tamaños y precios.';
         openCart();
@@ -82,7 +82,7 @@
       container.append(button);
     }else{
       container.append(el('h3','','NO ENCONTRAMOS ESA COMBINACIÓN.'),el('p','','Probá buscando otro nombre o volvé a las categorías de la carta.'));
-      const button=el('button','','VOLVER A LOS HOMENAJES ↗');
+      const button=el('button','','VOLVER A LOS HOMENAJES ↗︎');
       button.type='button';button.addEventListener('click',()=>{searchInput.value='';setCategory('h');});
       container.append(button);
     }
@@ -110,7 +110,7 @@
     moreWrap.hidden=!(data.length>9 && !searchText);
     moreBtn.innerHTML='';
     moreBtn.append(document.createTextNode(expanded?'VER MENOS':'VER LAS '+data.length+' OPCIONES'));
-    moreBtn.append(el('span','','↘'));
+    moreBtn.append(el('span','','↘︎'));
   }
   function setCategory(cat){
     if(!categories[cat])return;
@@ -149,7 +149,7 @@
     const entries=Object.entries(cart).filter(([id,qty])=>productsById[id]&&qty>0);
     if(!entries.length){
       const empty=el('div','cart-empty');
-      empty.append(el('div','empty-glyph','✳'),el('h3','','TODA BUENA ELECCIÓN EMPIEZA ACÁ.'),el('p','','Sumá algún sándwich de la carta para preparar tu consulta.'));
+      empty.append(el('div','empty-glyph','✳︎'),el('h3','','TODA BUENA ELECCIÓN EMPIEZA ACÁ.'),el('p','','Sumá algún sándwich de la carta para preparar tu consulta.'));
       cartItems.append(empty);
     }else{
       entries.forEach(([id,qty])=>{

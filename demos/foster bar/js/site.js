@@ -8,7 +8,7 @@
     instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>'
   };
   const icon = name => `<svg class="site-icon site-icon-${name}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${iconPaths[name]}</svg>`;
-  const glyphs = { '↗': 'diagonal', '↓': 'down' };
+  const glyphs = { '↗︎': 'diagonal', '↓︎': 'down' };
   document.querySelectorAll('span[aria-hidden="true"]').forEach(el => {
     const name = el.classList.contains('calendar-icon') ? 'calendar' : glyphs[el.textContent.trim()];
     if (name) el.innerHTML = icon(name);
@@ -18,8 +18,8 @@
   });
   document.querySelectorAll('.header-instagram').forEach(el => { el.innerHTML = icon('instagram'); });
   document.querySelectorAll('.footer-columns a, .interior-intro a, .reserve-intro a').forEach(el => {
-    if (el.textContent.trim().endsWith('↗')) {
-      el.textContent = el.textContent.replace(/\s*↗\s*$/, '');
+    if (el.textContent.trim().endsWith('↗︎')) {
+      el.textContent = el.textContent.replace(/\s*↗︎\s*$/, '');
       const arrow = document.createElement('span');
       arrow.setAttribute('aria-hidden', 'true');
       arrow.innerHTML = icon('diagonal');

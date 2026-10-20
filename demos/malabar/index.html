@@ -595,10 +595,12 @@
     transition:background-color .22s ease,border-color .22s ease,color .22s ease,transform .22s ease;
   }
   .shift-icon{
-    font-size:20px;
-    line-height:1;
+    display:inline-flex;
+    width:22px;
+    height:22px;
     flex:none;
   }
+  .shift-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .shift-text strong{
     display:block;
     font-size:12px;
@@ -701,7 +703,7 @@
     transition:background-color .2s ease,border-color .2s ease,color .2s ease;
   }
   .service-indicator::after{
-    content:'✓';
+    content:'✓︎';
     font-size:12px;
     font-weight:900;
     color:var(--cream);
@@ -825,7 +827,7 @@
     transition:background-color .2s ease,border-color .2s ease,color .2s ease;
   }
   .consent-box::after{
-    content:'✓';
+    content:'✓︎';
     font-size:11px;
     font-weight:900;
     color:var(--cream);
@@ -1931,7 +1933,7 @@
             <p class="hero-subtext">Eventos sociales y corporativos en un entorno privilegiado de Tandil.</p>
           </div>
           <div class="hero-bottom">
-            <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗</span></a>
+            <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗︎</span></a>
             <a href="#espacio" class="button outline-light">Conocé el espacio <span class="arr arr-down" aria-hidden="true"></span></a>
           </div>
         </div>
@@ -1946,7 +1948,7 @@
         <div>
           <h2 class="statement">Un lugar que transforma <em>cada encuentro</em> en algo para recordar.</h2>
           <p class="description">Entre arquitectura contemporánea y naturaleza, Malabar ofrece un escenario distinto para reunirse, celebrar y compartir. Un espacio con personalidad para que cada ocasión tenga su propia historia.</p>
-          <a href="#espacio" class="line-link">Descubrí Malabar <span class="arr">↗</span></a>
+          <a href="#espacio" class="line-link">Descubrí Malabar <span class="arr">↗︎</span></a>
         </div>
       </div>
     </section>
@@ -1969,10 +1971,10 @@
         <div class="event-story" aria-label="Descubrí eventos mientras recorres la página">
           <div class="event-story-choices">
             <div class="event-story-overline">ELEGÍ EL MOTIVO. NOSOTROS PONEMOS EL ESCENARIO.</div>
-            <a href="#organizar" class="story-choice is-active" data-event="Casamiento o civil" aria-current="step"><small>01</small><strong>Casamientos<br>y civiles</strong><span class="story-cta" aria-hidden="true">↗</span></a>
-            <a href="#organizar" class="story-choice" data-event="Evento corporativo"><small>02</small><strong>Eventos<br>corporativos</strong><span class="story-cta" aria-hidden="true">↗</span></a>
-            <a href="#organizar" class="story-choice" data-event="Cumpleaños o celebración"><small>03</small><strong>Cumpleaños y<br>celebraciones</strong><span class="story-cta" aria-hidden="true">↗</span></a>
-            <a href="#organizar" class="story-choice" data-event="Evento especial"><small>04</small><strong>Eventos<br>especiales</strong><span class="story-cta" aria-hidden="true">↗</span></a>
+            <a href="#organizar" class="story-choice is-active" data-event="Casamiento o civil" aria-current="step"><small>01</small><strong>Casamientos<br>y civiles</strong><span class="story-cta" aria-hidden="true">↗︎</span></a>
+            <a href="#organizar" class="story-choice" data-event="Evento corporativo"><small>02</small><strong>Eventos<br>corporativos</strong><span class="story-cta" aria-hidden="true">↗︎</span></a>
+            <a href="#organizar" class="story-choice" data-event="Cumpleaños o celebración"><small>03</small><strong>Cumpleaños y<br>celebraciones</strong><span class="story-cta" aria-hidden="true">↗︎</span></a>
+            <a href="#organizar" class="story-choice" data-event="Evento especial"><small>04</small><strong>Eventos<br>especiales</strong><span class="story-cta" aria-hidden="true">↗︎</span></a>
             <div class="story-bottom"><span>DESLIZÁ PARA DESCUBRIR <span class="arr arr-down" aria-hidden="true"></span></span><span class="story-live-index">01 / 04</span></div>
           </div>
           <figure class="event-story-frame">
@@ -1986,10 +1988,10 @@
 
         <!-- Grilla para Mobile / Tablet -->
         <div class="event-grid">
-          <a class="event-card" href="#organizar" data-event="Casamiento o civil"><div class="event-card-content"><div><span>01 · Momentos únicos</span><h3>Casamientos<br>y civiles</h3></div><div class="circle-arrow">↗</div></div></a>
-          <a class="event-card" href="#organizar" data-event="Evento corporativo"><div class="event-card-content"><div><span>02 · Encuentros con propósito</span><h3>Eventos<br>corporativos</h3></div><div class="circle-arrow">↗</div></div></a>
-          <a class="event-card" href="#organizar" data-event="Cumpleaños o celebración"><div class="event-card-content"><div><span>03 · Historias para brindar</span><h3>Cumpleaños<br>y celebraciones</h3></div><div class="circle-arrow">↗</div></div></a>
-          <a class="event-card" href="#organizar" data-event="Evento especial"><div class="event-card-content"><div><span>04 · Ideas sin etiquetas</span><h3>Eventos<br>especiales</h3></div><div class="circle-arrow">↗</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Casamiento o civil"><div class="event-card-content"><div><span>01 · Momentos únicos</span><h3>Casamientos<br>y civiles</h3></div><div class="circle-arrow">↗︎</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Evento corporativo"><div class="event-card-content"><div><span>02 · Encuentros con propósito</span><h3>Eventos<br>corporativos</h3></div><div class="circle-arrow">↗︎</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Cumpleaños o celebración"><div class="event-card-content"><div><span>03 · Historias para brindar</span><h3>Cumpleaños<br>y celebraciones</h3></div><div class="circle-arrow">↗︎</div></div></a>
+          <a class="event-card" href="#organizar" data-event="Evento especial"><div class="event-card-content"><div><span>04 · Ideas sin etiquetas</span><h3>Eventos<br>especiales</h3></div><div class="circle-arrow">↗︎</div></div></a>
         </div>
       </div>
     </section>
@@ -2006,7 +2008,7 @@
           <img loading="lazy" src="assets/06-ambientacion-lounge.webp" alt="Salón de Malabar con mobiliario y ambientación">
           <img loading="lazy" src="assets/01-exterior-atardecer.webp" alt="Fachada y entorno de Malabar al atardecer">
         </div>
-        <div class="space-note"><p>La calidez de los materiales, la luz del entorno y un diseño cuidado crean el marco perfecto para disfrutar cada instante.</p><a href="#organizar" class="line-link">Consultar disponibilidad <span class="arr">↗</span></a></div>
+        <div class="space-note"><p>La calidez de los materiales, la luz del entorno y un diseño cuidado crean el marco perfecto para disfrutar cada instante.</p><a href="#organizar" class="line-link">Consultar disponibilidad <span class="arr">↗︎</span></a></div>
       </div>
     </section>
 
@@ -2019,7 +2021,7 @@
     </section>
 
     <!-- BANNER EMOCIONAL -->
-    <section class="moment"><div class="moment-content"><p>EL LUGAR. EL MOMENTO. TU HISTORIA.</p><h2>Hay celebraciones que <span class="gold-shimmer">no se olvidan.</span></h2><a href="#organizar" class="button light">Hacé que suceda <span class="arr">↗</span></a></div></section>
+    <section class="moment"><div class="moment-content"><p>EL LUGAR. EL MOMENTO. TU HISTORIA.</p><h2>Hay celebraciones que <span class="gold-shimmer">no se olvidan.</span></h2><a href="#organizar" class="button light">Hacé que suceda <span class="arr">↗︎</span></a></div></section>
 
     <div class="kinetic-band kinetic-band--gold kinetic-band--reverse" aria-hidden="true">
       <div class="kinetic-track">
@@ -2040,7 +2042,7 @@
             <figure class="gallery-card" role="listitem"><img loading="lazy" src="assets/02-exterior-panorama.webp" alt="Vista exterior de Malabar al atardecer"><figcaption><strong>Un escenario diferente</strong><small>05 / 05</small></figcaption></figure>
           </div>
         </div>
-        <div class="wrap gallery-foot"><div class="gallery-meter" aria-hidden="true"><i></i></div><span class="gallery-label">SCROLL / EXPLORÁ LOS MOMENTOS</span><a class="line-link" href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Ver Instagram <span class="arr">↗</span></a></div>
+        <div class="wrap gallery-foot"><div class="gallery-meter" aria-hidden="true"><i></i></div><span class="gallery-label">SCROLL / EXPLORÁ LOS MOMENTOS</span><a class="line-link" href="https://www.instagram.com/malabareventos_/" target="_blank" rel="noopener noreferrer">Ver Instagram <span class="arr">↗︎</span></a></div>
       </div>
     </section>
 
@@ -2289,7 +2291,7 @@
                   <label class="shift-card">
                     <input type="radio" name="turno" value="Durante el día">
                     <div class="shift-card-inner">
-                      <span class="shift-icon" aria-hidden="true">☀️</span>
+                      <span class="shift-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
                       <div class="shift-text">
                         <strong>Durante el día</strong>
                         <small>12:00 a 18:00 hs · Luz y parque</small>
@@ -2299,7 +2301,7 @@
                   <label class="shift-card">
                     <input type="radio" name="turno" value="Tarde">
                     <div class="shift-card-inner">
-                      <span class="shift-icon" aria-hidden="true">🌅</span>
+                      <span class="shift-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 18h20M4 21h16M5 18a7 7 0 0 1 14 0M12 2v2m-7 3 1.5 1.5M2 12h2m16 0h2m-3-5-1.5 1.5"/></svg></span>
                       <div class="shift-text">
                         <strong>Atardecer / Tarde</strong>
                         <small>17:00 a 23:00 hs · Golden hour</small>
@@ -2309,7 +2311,7 @@
                   <label class="shift-card">
                     <input type="radio" name="turno" value="Noche" checked>
                     <div class="shift-card-inner">
-                      <span class="shift-icon" aria-hidden="true">🌙</span>
+                      <span class="shift-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.2 15.3A8.5 8.5 0 0 1 8.7 3.8 8.5 8.5 0 1 0 20.2 15.3Z"/></svg></span>
                       <div class="shift-text">
                         <strong>Noche & Fiesta</strong>
                         <small>21:00 a 05:00 hs · Luces y pista</small>
@@ -2319,7 +2321,7 @@
                   <label class="shift-card">
                     <input type="radio" name="turno" value="A definir">
                     <div class="shift-card-inner">
-                      <span class="shift-icon" aria-hidden="true">⏳</span>
+                      <span class="shift-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2h12M6 22h12M7 2v4c0 3 5 4 5 6s-5 3-5 6v4m10-20v4c0 3-5 4-5 6s5 3 5 6v4"/></svg></span>
                       <div class="shift-text">
                         <strong>A coordinar</strong>
                         <small>Flexible según fecha</small>
@@ -2505,8 +2507,8 @@
             </div>
 
             <div class="form-actions">
-              <button class="button ghost" type="button" id="prev" disabled>← Anterior</button>
-              <button class="button dark" type="button" id="next">Continuar <span class="arr">↗</span></button>
+              <button class="button ghost" type="button" id="prev" disabled>←︎ Anterior</button>
+              <button class="button dark" type="button" id="next">Continuar <span class="arr">↗︎</span></button>
             </div>
             <div id="error" class="error" role="alert" aria-live="polite"></div>
           </form>
@@ -2536,7 +2538,7 @@
                   <div class="vip-pass-glimmer" aria-hidden="true"></div>
                   <div class="vip-pass-top">
                     <div class="vip-pass-brand">
-                      <span class="vip-crest" aria-hidden="true">✦</span>
+                      <span class="vip-crest" aria-hidden="true">✦︎</span>
                       <span class="vip-pass-name">MALABAR</span>
                       <span class="vip-pass-sub">PRIVATE ACCESS</span>
                     </div>
@@ -2575,7 +2577,7 @@
                   </div>
                 </div>
                 <div class="vip-pass-hint">
-                  <span>✦ Mové el cursor sobre la tarjeta para apreciar el reflejo de foil dorado metálico</span>
+                  <span>✦︎ Mové el cursor sobre la tarjeta para apreciar el reflejo de foil dorado metálico</span>
                 </div>
               </div>
 
@@ -2622,14 +2624,14 @@
                     <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.63C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.22 7.38C9.03 7.38 8.84 7.39 8.67 7.46C8.5 7.53 8.35 7.64 8.23 7.8C8.11 7.96 7.6 8.44 7.6 9.42C7.6 10.4 8.31 11.35 8.41 11.49C8.51 11.63 9.79 13.61 11.77 14.47C13.42 15.18 13.76 15.04 14.11 15.01C14.47 14.98 15.26 14.54 15.42 14.09C15.58 13.64 15.58 13.25 15.54 13.18C15.49 13.11 15.35 13.07 15.14 12.96C14.93 12.85 13.9 12.35 13.71 12.28C13.52 12.21 13.38 12.18 13.24 12.39C13.1 12.6 12.7 13.1 12.58 13.24C12.46 13.38 12.34 13.4 12.13 13.3C11.92 13.2 11.25 12.98 10.45 12.27C9.83 11.71 9.41 11.03 9.3 10.82C9.18 10.61 9.28 10.5 9.39 10.39C9.49 10.29 9.61 10.13 9.72 10C9.83 9.87 9.87 9.77 9.94 9.63C10.01 9.49 9.98 9.37 9.92 9.26C9.87 9.15 9.41 8.02 9.22 7.38Z"/>
                   </svg>
                   <span>Abrir consulta en WhatsApp</span>
-                  <span class="arr">↗</span>
+                  <span class="arr">↗︎</span>
                 </a>
                 <button class="button-secondary-pro" type="button" id="copy">
                   <span>Copiar mensaje para WhatsApp</span>
-                  <span class="arr">↗</span>
+                  <span class="arr">↗︎</span>
                 </button>
                 <button class="button-link-pro" type="button" id="edit-form-btn">
-                  <span>← Modificar respuestas del evento</span>
+                  <span>←︎ Modificar respuestas del evento</span>
                 </button>
               </div>
 
@@ -2649,7 +2651,7 @@
             <p class="eyebrow">TU EXPERIENCIA COMIENZA ACÁ</p>
             <h2>Lo extraordinario<br>se celebra.</h2>
           </div>
-          <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗</span></a>
+          <a href="#organizar" class="button light">Organizá tu evento <span class="arr">↗︎</span></a>
         </div>
         <div class="footer-bottom">
           <div>
@@ -2682,7 +2684,7 @@
     </section>
   </main>
 
-  <div class="motion-cursor" aria-hidden="true">ELEGIR ↗</div>
+  <div class="motion-cursor" aria-hidden="true">ELEGIR ↗︎</div>
   <div class="ambient-cursor" aria-hidden="true"></div>
   <div class="mobile-fixed"><a href="#organizar" class="button dark">Organizá tu evento <span class="arr" aria-hidden="true"></span></a></div>
 
@@ -2744,7 +2746,7 @@
 
     stepCount.textContent = `PASO 0${s+1} / 04`;
     prev.disabled = s === 0;
-    next.innerHTML = s === 3 ? 'Preparar mi consulta <span class="arr">↗</span>' : 'Continuar <span class="arr">↗</span>';
+    next.innerHTML = s === 3 ? 'Preparar mi consulta <span class="arr">↗︎</span>' : 'Continuar <span class="arr">↗︎</span>';
     error.textContent = '';
     form.hidden = false;
     summaryEl.hidden = true;
@@ -2853,20 +2855,20 @@
 
       // Generar mensaje estructurado de WhatsApp
       const lines = [
-        `Hola, equipo de MALABAR 👋`,
+        `Hola, equipo de MALABAR`,
         `Quisiera consultar disponibilidad y presupuesto para un evento en el salón:`,
         ``,
-        `📋 *PASE VIP REGISTRADO:* #${folioId}`,
-        `✨ *OCASIÓN:* ${tipoCompleto}`,
-        `📅 *FECHA ESTIMADA:* ${fechaVal}`,
-        `👥 *INVITADOS:* ${invitadosVal} personas`,
-        `☀️ *TURNO:* ${turnoVal}`,
+        `*PASE VIP REGISTRADO:* #${folioId}`,
+        `*OCASIÓN:* ${tipoCompleto}`,
+        `*FECHA ESTIMADA:* ${fechaVal}`,
+        `*INVITADOS:* ${invitadosVal} personas`,
+        `*TURNO:* ${turnoVal}`,
         ``,
-        `🍷 *SERVICIOS DE INTERÉS:*`,
+        `*SERVICIOS DE INTERÉS:*`,
         ...((serviciosList.length ? serviciosList : ['A asesorar integralmente']).map(v => `• ${v}`)),
-        ...(detallesVal ? [``, `📝 *DETALLES ADICIONALES:*`, detallesVal] : []),
+        ...(detallesVal ? [``, `*DETALLES ADICIONALES:*`, detallesVal] : []),
         ``,
-        `👤 *DATOS DE CONTACTO:*`,
+        `*DATOS DE CONTACTO:*`,
         `Nombre: ${nombreVal}`,
         `Teléfono: ${telVal}`,
         ``,
@@ -2913,7 +2915,7 @@
       }
       const copyBtn = document.getElementById('copy');
       const originalHtml = copyBtn.innerHTML;
-      copyBtn.innerHTML = '<span>¡Mensaje copiado al portapapeles! ✓</span>';
+      copyBtn.innerHTML = '<span>¡Mensaje copiado al portapapeles! ✓︎</span>';
       setTimeout(() => { copyBtn.innerHTML = originalHtml; }, 3000);
     } catch(e) {
       window.prompt('Copiá tu consulta:', text);

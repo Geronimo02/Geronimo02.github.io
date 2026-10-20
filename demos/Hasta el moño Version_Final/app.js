@@ -117,7 +117,7 @@
     const totalCount = countItems();
     $$('[data-cart-count]').forEach((node) => { node.textContent = String(totalCount); });
     subtotalNode.textContent = money(subtotal());
-    $('#mobile-cart-total').textContent = money(subtotal()) + ' ↗';
+    $('#mobile-cart-total').textContent = money(subtotal()) + ' ↗︎';
     mobileCart.hidden = totalCount === 0 || state.cartOpen;
     copyButton.disabled = totalCount === 0;
 
@@ -225,8 +225,8 @@
         if (!copied) throw new Error('Clipboard unavailable');
       }
       toast('Resumen demo copiado. No se envió a nadie.');
-      copyButton.textContent = 'Comanda demo copiada ✓';
-      window.setTimeout(() => { copyButton.innerHTML = 'Copiar comanda de prueba <span aria-hidden="true">↗</span>'; }, 1900);
+      copyButton.textContent = 'Comanda demo copiada ✓︎';
+      window.setTimeout(() => { copyButton.innerHTML = 'Copiar comanda de prueba <span aria-hidden="true">↗︎</span>'; }, 1900);
     } catch (_) {
       window.prompt('Copiá este resumen de demostración:', summary);
     }
@@ -337,7 +337,7 @@
       }
     } else {
       video.pause();
-      videoButton.innerHTML = '<span aria-hidden="true">▶</span> Ver el proceso';
+      videoButton.innerHTML = '<span aria-hidden="true">▶︎</span> Ver el proceso';
       videoButton.setAttribute('aria-label', 'Reproducir video de preparación');
       playMark.hidden = false;
       $('.video-card').classList.remove('is-playing');
@@ -346,7 +346,7 @@
   videoButton.addEventListener('click', toggleVideo);
   $('.video-card').addEventListener('click', toggleVideo);
   video.addEventListener('ended', () => {
-    videoButton.innerHTML = '<span aria-hidden="true">▶</span> Ver el proceso';
+    videoButton.innerHTML = '<span aria-hidden="true">▶︎</span> Ver el proceso';
     videoButton.setAttribute('aria-label', 'Reproducir video de preparación');
     playMark.hidden = false;
     $('.video-card').classList.remove('is-playing');

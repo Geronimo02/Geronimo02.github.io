@@ -18,6 +18,10 @@
   --motion-ease: cubic-bezier(.22, 1, .36, 1);
 }
 
+.admin-icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.admin-icon-sprite symbol { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.admin-inline-icon { display: inline-block; width: 1.15em; height: 1.15em; margin-right: .35em; vertical-align: -.18em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -592,7 +596,8 @@ h1, h2, h3 {
   top: 50%;
   transform: translateY(-50%);
   color: var(--muted);
-  font-size: 0.9rem;
+  width: 17px;
+  height: 17px;
 }
 
 .category-filter-chips {
