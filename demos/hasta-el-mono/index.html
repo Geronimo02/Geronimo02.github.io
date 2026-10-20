@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0b0a">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="description" content="Demo visual no oficial de Hasta el Moño Tandil. Los productos y precios son ilustrativos; no se realizan pedidos reales.">
-  <title>Hasta el Moño — Demo visual</title>
+  <meta name="description" content="Carta de Hasta el Moño Tandil. Armá tu pedido y consultá disponibilidad y precio final por WhatsApp.">
+  <title>Hasta el Moño — Pizzas y empanadas en Tandil</title>
   <link rel="icon" type="image/png" href="assets/logo-blanco-original-recortado.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=hero-spin-5">
+  <script defer src="checkout.js"></script>
   <script defer src="app.js"></script>
 </head>
-<body>
+<body data-order-phone="5492494694718" data-products-confirmed="true">
   <div class="loading-screen" id="loading-screen" role="status" aria-live="polite">
     <img src="assets/logo-blanco-original-recortado.png" alt="Hasta el Moño" width="112" height="112">
     <div class="loading-track"><span></span></div>
@@ -28,7 +29,7 @@
     <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
       <a href="#carta">LA CARTA</a><a href="#cocina">LA COCINA</a><a href="#ubicacion">EL LOCAL</a>
     </nav>
-    <button class="header-bag" type="button" data-open-cart aria-label="Abrir comanda de demostración"><span>LA COMANDA</span><strong class="cart-number" data-cart-count>0</strong></button>
+    <button class="header-bag" type="button" data-open-cart aria-label="Abrir comanda"><span>LA COMANDA</span><strong class="cart-number" data-cart-count>0</strong></button>
     <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú"><span></span><span></span><span></span></button>
   </header>
 
@@ -51,8 +52,8 @@
         <button class="menu-tab" type="button" role="tab" aria-selected="false" data-filter="todos">TODOS</button>
       </div>
       <div class="menu-grid" id="product-grid" aria-live="polite"></div>
-      <div class="menu-summary"><strong>TU COMANDA</strong><span><span data-cart-count>0</span> productos</span><button type="button" data-open-cart>VER COMANDA <span aria-hidden="true">→</span></button></div>
-      <p class="demo-note">Los productos y precios pertenecen a esta demo y no corresponden a una carta oficial. No se envían pedidos reales.</p>
+      <div class="menu-summary"><strong>TU COMANDA</strong><span><span data-cart-count>0</span> <span id="cart-summary-label">productos</span></span><button type="button" data-open-cart>VER COMANDA <span aria-hidden="true">→</span></button></div>
+      <p class="demo-note">El local confirma disponibilidad, precios y costo de envío por WhatsApp.</p>
     </section>
 
     <section class="kitchen-section dark-panel" id="cocina" aria-labelledby="kitchen-title">
@@ -76,17 +77,37 @@
     <div class="footer-cta"><div><span class="section-eyebrow">¿UNA MÁS?</span><h2>LA CARTA<br>TE ESPERA.</h2><img src="assets/underline-red.png" alt="" aria-hidden="true"></div><div class="footer-cta-right"><a class="round-link footer-round" href="#carta" aria-label="Ver la carta"><span>VER<br>LA CARTA</span><span aria-hidden="true">↗</span></a><p>Pizzas. Empanadas.<br>Así de simple.</p></div></div>
     <div class="footer-info"><div class="footer-logo"><img src="assets/logo-blanco-original-recortado.png" alt="Hasta el Moño" width="118" height="118"><span>PIZZAS Y<br>EMPANADAS</span></div><div><span class="footer-label">NOS ENCONTRÁS EN</span><p><img src="assets/pin-red.svg" alt="" aria-hidden="true"><span><strong>Av. Santamarina 54</strong><br>Tandil, Buenos Aires.</span></p></div><div><span class="footer-label">SEGUINOS</span><a href="https://www.instagram.com/hastaelmoniopizzas/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div>
     <div class="footer-wordmark">HASTA EL MOÑO.<img src="assets/crown-red.png" alt="" aria-hidden="true"></div>
-    <div class="footer-bottom"><span>© 2026 HASTA EL MOÑO. DEMO NO OFICIAL.</span><a href="#inicio">VOLVER ARRIBA ↑</a></div>
+    <div class="footer-bottom"><span>© 2026 HASTA EL MOÑO. PEDIDOS SUJETOS A CONFIRMACIÓN.</span><a href="#inicio">VOLVER ARRIBA ↑</a></div>
   </footer>
 
   <div id="cart-overlay" class="cart-overlay" hidden></div>
   <aside id="cart-drawer" class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" inert>
-    <div class="cart-top"><div><p class="cart-mini">COMANDA / DEMO</p><h2 id="cart-title">TU COMANDA.</h2></div><button type="button" class="cart-close" id="close-cart" aria-label="Cerrar comanda">×</button></div>
-    <p class="cart-warning">NO ES UN PEDIDO REAL. No se envía a ningún comercio ni se cobra nada.</p>
+    <div class="cart-top"><div><p class="cart-mini">PEDIDO ONLINE</p><h2 id="cart-title">TU COMANDA.</h2></div><button type="button" class="cart-close" id="close-cart" aria-label="Cerrar comanda">×</button></div>
+    <p class="cart-warning">Revisá el pedido en WhatsApp y tocá Enviar para mandarlo al local.</p>
     <div id="cart-items" class="cart-items" aria-live="polite"></div>
-    <div class="cart-bottom"><fieldset class="mode-picker"><legend>MODALIDAD DE PRUEBA</legend><label><input type="radio" name="delivery-type" value="Retiro" checked><span>RETIRO</span></label><label><input type="radio" name="delivery-type" value="Delivery"><span>DELIVERY</span></label></fieldset><p class="delivery-notice">Las zonas y costos del envío no están confirmados.</p><label for="order-notes" class="notes-label">ALGUNA OBSERVACIÓN</label><textarea id="order-notes" maxlength="400" rows="3" placeholder="Ej.: sin aceitunas... (solo demo)"></textarea><div class="cart-total"><span>SUBTOTAL <small>(FICTICIO)</small></span><strong id="cart-subtotal">$0</strong></div><button id="copy-order" class="copy-button" type="button" disabled>COPIAR COMANDA DE PRUEBA →</button><p class="no-send-note">Solo se copia un resumen. No se conecta a WhatsApp.</p></div>
+    <form id="checkout-form" class="cart-bottom" novalidate>
+      <div class="checkout-fields">
+      <label class="checkout-label" for="customer-name">TU NOMBRE</label>
+      <input id="customer-name" class="checkout-input" name="customer-name" autocomplete="name" maxlength="80" placeholder="¿A nombre de quién?" required>
+      <fieldset class="mode-picker"><legend>¿CÓMO LO RECIBÍS?</legend><label><input type="radio" name="delivery-type" value="pickup" checked><span>RETIRO</span></label><label><input type="radio" name="delivery-type" value="delivery"><span>DELIVERY</span></label></fieldset>
+      <div id="delivery-fields" class="delivery-fields" hidden>
+        <label class="checkout-label" for="delivery-address">DIRECCIÓN DE ENTREGA</label>
+        <input id="delivery-address" class="checkout-input" name="delivery-address" autocomplete="street-address" maxlength="160" placeholder="Calle, altura, piso o referencia">
+        <p class="delivery-notice">El local confirma la zona y el costo de envío por WhatsApp.</p>
+      </div>
+      <label for="order-notes" class="checkout-label">OBSERVACIONES (OPCIONAL)</label>
+      <textarea id="order-notes" maxlength="400" rows="3" placeholder="Ej.: sin aceitunas, tocar timbre..."></textarea>
+      <div class="cart-total"><span>PRECIO FINAL <small>Lo confirma el local</small></span><strong id="cart-subtotal">A confirmar</strong></div>
+      </div>
+      <div class="checkout-actions">
+      <p id="checkout-error" class="checkout-error" role="alert" hidden></p>
+      <button id="send-order" class="copy-button" type="submit" disabled>CONTINUAR EN WHATSAPP →</button>
+      <button id="copy-order" class="copy-order-secondary" type="button" disabled>COPIAR RESUMEN</button>
+      <p id="checkout-help" class="no-send-note">Se abre WhatsApp con tu pedido listo. El local confirma disponibilidad y precio final.</p>
+      </div>
+    </form>
   </aside>
-  <button type="button" class="mobile-cart" data-open-cart hidden><span>MI COMANDA <span data-cart-count>0</span></span><span id="mobile-cart-total">$0 →</span></button>
+  <button type="button" class="mobile-cart" data-open-cart hidden><span>MI COMANDA <span data-cart-count>0</span></span><span id="mobile-cart-total">0 productos →</span></button>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

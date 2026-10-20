@@ -1,6 +1,8 @@
 # Hasta el Moño — CONTENT.md (Signature Content)
 
-**Relevado/actualizado:** 17/10/2026 · **Estado:** DEMO interna sin autorizar publicación · **Objetivo:** foto real + carta clara + pedido armado.
+**Relevado/actualizado:** 17/10/2026 · **Objetivo:** foto real + carta clara + pedido armado.
+
+**Actualización 20/10/2026:** el usuario confirmó que los productos publicados son reales y que `5492494694718` es el número para pedidos. Los precios siguen sin confirmar; se quitaron los importes de la web y del mensaje. Las notas de relevamiento y restricciones que siguen describen el estado inicial de la demo.
 
 ## Datos públicos del negocio
 - Nombre: Hasta el Moño Pizzas y Empanadas, Tandil.

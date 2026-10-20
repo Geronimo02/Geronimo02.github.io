@@ -112,3 +112,19 @@ img,video{display:block;max-width:100%}figure,h1,h2,h3,p{margin:0}h1,h2,h3{font-
 .loading-screen{background-image:linear-gradient(#0b0b0ac9,#0b0b0ac9),url('assets/grunge-texture.png')}
 .footer-cta h2{white-space:nowrap}
 @media(min-width:851px){.footer-cta h2{font-size:clamp(90px,11.5vw,225px)}}
+
+/* Datos del pedido antes de abrir WhatsApp. */
+#checkout-form{display:flex;flex-direction:column;max-height:min(64vh,590px);overflow:hidden}
+.checkout-fields{min-height:0;overflow-y:auto;padding-right:2px}
+.checkout-actions{flex:0 0 auto;padding-top:10px;background:var(--paper)}
+.checkout-label{display:block;margin:14px 0 7px;font-size:10px;font-weight:800;letter-spacing:.1em}
+.checkout-input{display:block;width:100%;min-height:43px;padding:10px;border:1px solid #777;background:#fffdfa;color:var(--ink);font-size:13px}
+.checkout-input[aria-invalid="true"]{border-color:#c91427;outline:2px solid #c91427}
+#checkout-form .mode-picker{margin-top:17px}
+.delivery-fields{margin-top:5px}
+.delivery-fields .delivery-notice{margin:6px 0 0}
+.checkout-error{margin:0 0 10px;color:#af1022;font-size:12px;font-weight:800;line-height:1.3}
+.copy-order-secondary{display:block;width:100%;margin-top:9px;padding:11px;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:11px;font-weight:800;letter-spacing:.05em}
+.copy-order-secondary:disabled{opacity:.45}
+.copy-order-secondary:not(:disabled):hover{background:#d8cbb7}
+#checkout-help{line-height:1.4}

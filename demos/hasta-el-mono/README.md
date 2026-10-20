@@ -1,14 +1,17 @@
-# Hasta el Moño — Demo P3 / edición Afiche de mostrador
+# Hasta el Moño — edición Afiche de mostrador
 
 ## Abrir
 - **Online:** https://geronimo02.github.io/demos/hasta-el-mono/
 - **Local:** abrir `index.html` con Chrome/Edge. Para editar, usar `index.html`, `styles.css`, `app.js` y `assets/` desde esta carpeta.
 
 ## Qué incluye
-Portada editorial de nombre y bandeja, galería de fotos originales, carta demo con preview interactiva, carrito, cantidades, observaciones, modo ilustrativo de retiro/delivery y copiar resumen de prueba. Pantalla de ubicación y video real.
+Portada editorial de nombre y bandeja, galería de fotos originales, carta interactiva, carrito con cantidades, retiro o delivery, datos del cliente, observaciones y pedido por WhatsApp. Pantalla de ubicación y video real.
+
+## Pedido por WhatsApp
+El carrito prepara un mensaje con nombre, productos, cantidades, modalidad, dirección de delivery y observaciones para `5492494694718`, número de pedidos confirmado por el usuario. En `index.html`, `data-order-phone` indica el número internacional y `data-products-confirmed` habilita el botón. La persona revisa el mensaje y toca **Enviar** dentro de WhatsApp. También puede copiar el resumen.
 
 ## Importante
-Los nombres y precios son FICTICIOS. No se realizan pedidos, no hay botón de WhatsApp habilitado, no se conectan pagos. Esto es una propuesta visual no oficial preparada a partir de material aportado por el usuario; no supone autorización de publicación de marca por parte del negocio.
+El usuario confirmó los productos, pero no los precios. La página no muestra importes ni los incluye en el mensaje; el local confirma disponibilidad, precio final y costo de envío. No se conectan pagos. Las fotos no se adjuntan al mensaje de WhatsApp. El diseño se preparó a partir de material aportado por el usuario.
 
 ## Archivos
 - `DESIGN.md`: dirección de arte específica y decisiones.

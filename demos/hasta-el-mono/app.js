@@ -1,19 +1,25 @@
 (() => {
   'use strict';
-  // This is an offline-only demonstration. There is deliberately no order endpoint,
-  // payment integration, WhatsApp handoff, or analytics/tracking request.
+  // La carta y el número receptor se habilitan solo al confirmar los datos con el local.
+  const checkout = window.HastaCheckout;
+  const ORDER_PHONE = document.body.dataset.orderPhone || '';
+  const PRODUCTS_CONFIRMED = document.body.dataset.productsConfirmed === 'true';
+  let ORDER_ENABLED = false;
+  if (PRODUCTS_CONFIRMED) {
+    try { checkout.buildWhatsAppUrl(ORDER_PHONE, ''); ORDER_ENABLED = true; }
+    catch (_) { /* El botón queda deshabilitado hasta confirmar el número. */ }
+  }
   const PRODUCTS = [
-    { id: 'p01', group: 'pizzas', name: 'Pizza cl\u00e1sica', price: 12000, image: 'assets/pizza-muzza.webp', alt: 'Pizza real del local fotografiada sobre una base redonda', note: 'Variedad de ejemplo, no verificada en carta.' },
-    { id: 'p02', group: 'pizzas', name: 'Pizza especial', price: 15700, image: 'assets/pizza-especial.webp', alt: 'Primer plano de pizza del local con ingredientes', note: 'Nombre y precio ilustrativos.' },
-    { id: 'p03', group: 'pizzas', name: 'Pizza de la casa', price: 16500, image: 'assets/horno.webp', alt: 'Pizza real del local vista dentro del horno', note: 'Propuesta de prueba, consultar carta oficial.' },
-    { id: 'e01', group: 'empanadas', name: 'Empanada tradicional', price: 2300, image: 'assets/empanada-corte.webp', alt: 'Empanada real del local cortada, con relleno a la vista', note: 'Sabor y precio solo de demostraci\u00f3n.' },
-    { id: 'e02', group: 'empanadas', name: 'Empanada abierta', price: 2600, image: 'assets/empanadas-plato.webp', alt: 'Empanadas abiertas del local en un plato', note: 'Variante ilustrativa, sin disponibilidad confirmada.' },
-    { id: 'e03', group: 'empanadas', name: 'Empanada de queso', price: 2500, image: 'assets/empanada-queso.webp', alt: 'Empanada real del local cortada con queso', note: 'Producto de prueba, consultar carta oficial.' }
+    { id: 'p01', group: 'pizzas', name: 'Pizza cl\u00e1sica', image: 'assets/pizza-muzza.webp', alt: 'Pizza real del local fotografiada sobre una base redonda' },
+    { id: 'p02', group: 'pizzas', name: 'Pizza especial', image: 'assets/pizza-especial.webp', alt: 'Primer plano de pizza del local con ingredientes' },
+    { id: 'p03', group: 'pizzas', name: 'Pizza de la casa', image: 'assets/horno.webp', alt: 'Pizza real del local vista dentro del horno' },
+    { id: 'e01', group: 'empanadas', name: 'Empanada tradicional', image: 'assets/empanada-corte.webp', alt: 'Empanada real del local cortada, con relleno a la vista' },
+    { id: 'e02', group: 'empanadas', name: 'Empanada abierta', image: 'assets/empanadas-plato.webp', alt: 'Empanadas abiertas del local en un plato' },
+    { id: 'e03', group: 'empanadas', name: 'Empanada de queso', image: 'assets/empanada-queso.webp', alt: 'Empanada real del local cortada con queso' }
   ];
   const byId = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-  const format = (number) => '$' + new Intl.NumberFormat('es-AR', { maximumFractionDigits: 0 }).format(number);
   const state = { cart: {}, filter: 'pizzas', open: false, lastFocus: null };
   const grid = $('#product-grid');
   const cartItems = $('#cart-items');
@@ -22,6 +28,12 @@
   const overlay = $('#cart-overlay');
   const noteField = $('#order-notes');
   const copyBtn = $('#copy-order');
+  const sendBtn = $('#send-order');
+  const orderForm = $('#checkout-form');
+  const customerNameField = $('#customer-name');
+  const addressField = $('#delivery-address');
+  const deliveryFields = $('#delivery-fields');
+  const checkoutError = $('#checkout-error');
   const mobile = $('.mobile-cart');
   const toastNode = $('#toast');
   let toastTimeout;
@@ -49,34 +61,35 @@
     toastTimeout = window.setTimeout(() => toastNode.classList.remove('visible'), 2400);
   }
   function count() { return Object.values(state.cart).reduce((total, qty) => total + qty, 0); }
-  function subtotal() { return PRODUCTS.reduce((total, item) => total + item.price * (state.cart[item.id] || 0), 0); }
 
   function renderProducts() {
     const visible = state.filter === 'todos' ? PRODUCTS : PRODUCTS.filter(p => p.group === state.filter);
     grid.innerHTML = visible.map((p) => `
       <article class="product-card" data-product="${p.id}">
         <div class="product-photo"><img src="${p.image}" alt="${p.alt}" loading="lazy"></div>
-        <div class="product-main"><h3>${p.name}</h3><p class="product-note">${p.note}</p></div>
-        <div class="product-end"><span class="product-price"><strong>${format(p.price)}</strong></span><button class="product-add" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} a la comanda de prueba">+</button></div>
+        <div class="product-main"><h3>${p.name}</h3><p class="product-note">Disponibilidad a confirmar con el local.</p></div>
+        <div class="product-end"><span class="product-price"><strong>Consultar</strong></span><button class="product-add" type="button" data-add="${p.id}" aria-label="Agregar ${p.name} a la comanda">+</button></div>
       </article>`).join('');
   }
   function renderCart() {
     const entries = PRODUCTS.filter(p => state.cart[p.id] > 0);
     const totalCount = count();
     $$('[data-cart-count]').forEach(node => { node.textContent = String(totalCount); });
-    subtotalNode.textContent = format(subtotal());
-    $('#mobile-cart-total').textContent = format(subtotal()) + ' \u2197';
+    $('#cart-summary-label').textContent = totalCount === 1 ? 'producto' : 'productos';
+    subtotalNode.textContent = 'A confirmar';
+    $('#mobile-cart-total').textContent = totalCount + (totalCount === 1 ? ' producto \u2197' : ' productos \u2197');
     mobile.hidden = totalCount === 0 || state.open;
     copyBtn.disabled = totalCount === 0;
+    sendBtn.disabled = totalCount === 0 || !ORDER_ENABLED;
     cartItems.innerHTML = entries.length ? entries.map(p => `
       <article class="cart-line-item" data-cart-item="${p.id}">
         <img src="${p.image}" alt="" width="74" height="79">
-        <div class="cart-item-content"><h3>${p.name}</h3><p>Art\u00edculo de ejemplo \u00b7 ${format(p.price)} c/u</p>
-          <div class="cart-item-row"><div class="stepper"><button data-decrease="${p.id}" type="button" aria-label="Quitar una unidad de ${p.name}">\u2212</button><output aria-label="Cantidad">${state.cart[p.id]}</output><button data-increase="${p.id}" type="button" aria-label="Sumar una unidad de ${p.name}">+</button></div><strong>${format(p.price * state.cart[p.id])}</strong></div>
+        <div class="cart-item-content"><h3>${p.name}</h3><p>Precio a confirmar</p>
+          <div class="cart-item-row"><div class="stepper"><button data-decrease="${p.id}" type="button" aria-label="Quitar una unidad de ${p.name}">\u2212</button><output aria-label="Cantidad">${state.cart[p.id]}</output><button data-increase="${p.id}" type="button" aria-label="Sumar una unidad de ${p.name}">+</button></div><strong>Consultar</strong></div>
           <button data-remove="${p.id}" class="remove-item" type="button">Quitar producto</button>
         </div>
       </article>
-    `).join('') : `<div class="cart-empty"><span class="cart-empty-icon" aria-hidden="true">\u25ce</span><h3>AC\u00c1 TODAV\u00cdA NO HAY NADA.</h3><p>Eleg\u00ed algunos productos de la carta de ejemplo para probar c\u00f3mo se arma el pedido.</p></div>`;
+    `).join('') : `<div class="cart-empty"><span class="cart-empty-icon" aria-hidden="true">\u25ce</span><h3>AC\u00c1 TODAV\u00cdA NO HAY NADA.</h3><p>${PRODUCTS_CONFIRMED ? 'Elegí productos de la carta para armar tu pedido.' : 'Elegí algunos productos de la carta de ejemplo para probar cómo se arma el pedido.'}</p></div>`;
   }
   function bumpCart() {
     $$('.cart-number').forEach(node => {
@@ -93,7 +106,7 @@
     renderCart();
     if (change > 0) {
       bumpCart();
-      if (!state.open) toast('Agregado a tu pedido de demostraci\u00f3n');
+      if (!state.open) toast(PRODUCTS_CONFIRMED ? 'Agregado a tu pedido' : 'Agregado a la comanda de prueba');
     }
   }
   function openCart() {
@@ -124,20 +137,58 @@
     if (state.lastFocus && typeof state.lastFocus.focus === 'function') state.lastFocus.focus();
   }
   function orderText() {
-    const details = PRODUCTS.filter(p => state.cart[p.id] > 0).map(p => `- ${state.cart[p.id]} x ${p.name} [EJEMPLO] (${format(state.cart[p.id] * p.price)})`).join('\n');
-    const delivery = $('input[name="delivery-type"]:checked').value;
-    const notes = noteField.value.trim();
-    return [
-      'HASTA EL MO\u00d1O - PEDIDO DE PRUEBA',
-      '*** DEMO INTERNA / NO ENVIAR AL NEGOCIO ***',
-      'Productos, variantes y precios completamente ficticios.', '',
-      details, '',
-      `Subtotal de ejemplo: ${format(subtotal())}`,
-      `Modalidad a modo de ejemplo: ${delivery}`,
-      'No se incluye costo de env\u00edo ni se verific\u00f3 disponibilidad.',
-      notes ? `Observaciones: ${notes}` : '', '',
-      'Este texto sirve para revisar el funcionamiento del carrito. NO es un pedido real.'
-    ].filter(Boolean).join('\n');
+    const items = PRODUCTS.filter(p => state.cart[p.id] > 0).map(p => ({
+      name: p.name,
+      quantity: state.cart[p.id],
+    }));
+    if (!PRODUCTS_CONFIRMED) {
+      return [
+        'HASTA EL MO\u00d1O - SELECCI\u00d3N DE PRUEBA',
+        'La carta actual contiene productos de ejemplo. NO enviar como pedido real.',
+        ...items.map(item => `${item.quantity} x ${item.name}`)
+      ].join('\n');
+    }
+    return checkout.buildOrderMessage({
+      customerName: customerNameField.value,
+      fulfillment: $('input[name="delivery-type"]:checked').value,
+      address: addressField.value,
+      notes: noteField.value,
+      items
+    });
+  }
+
+  function updateDeliveryFields() {
+    const delivery = $('input[name="delivery-type"]:checked').value === 'delivery';
+    deliveryFields.hidden = !delivery;
+    addressField.required = delivery;
+  }
+
+  function sendOrder(event) {
+    event.preventDefault();
+    if (!ORDER_ENABLED || count() === 0) return;
+    const items = PRODUCTS.filter(p => state.cart[p.id] > 0).map(p => ({ name: p.name, quantity: state.cart[p.id] }));
+    const errors = checkout.validateOrder({
+      customerName: customerNameField.value,
+      fulfillment: $('input[name="delivery-type"]:checked').value,
+      address: addressField.value,
+      items
+    });
+    checkoutError.hidden = true;
+    customerNameField.removeAttribute('aria-invalid');
+    addressField.removeAttribute('aria-invalid');
+    if (Object.keys(errors).length) {
+      checkoutError.textContent = Object.values(errors)[0];
+      checkoutError.hidden = false;
+      if (errors.customerName) { customerNameField.setAttribute('aria-invalid', 'true'); customerNameField.focus(); }
+      else if (errors.address) { addressField.setAttribute('aria-invalid', 'true'); addressField.focus(); }
+      return;
+    }
+    try {
+      window.open(checkout.buildWhatsAppUrl(ORDER_PHONE, orderText()), '_blank', 'noopener,noreferrer');
+    } catch (_) {
+      checkoutError.textContent = 'No se pudo abrir WhatsApp. Revisá el número del local.';
+      checkoutError.hidden = false;
+    }
   }
   async function copyOrder() {
     if (count() === 0) return;
@@ -153,13 +204,13 @@
         node.remove();
         if (!ok) throw new Error('Clipboard unavailable');
       }
-      toast('Resumen de prueba copiado. No se envi\u00f3 a nadie.');
-      copyBtn.textContent = 'RESUMEN DEMO COPIADO \u2713';
-      window.setTimeout(() => { copyBtn.innerHTML = 'COPIAR COMANDA DE PRUEBA <span aria-hidden="true">\u2197</span>';  }, 2100);
+      toast('Resumen copiado. No se envió a nadie.');
+      copyBtn.textContent = 'RESUMEN COPIADO \u2713';
+      window.setTimeout(() => { copyBtn.textContent = 'COPIAR RESUMEN'; }, 2100);
     } catch (_) {
       // Browser may disallow clipboard on file://. Show a selectable text instead.
-      const manual = window.prompt('Copi\u00e1 este resumen de demostraci\u00f3n:', value);
-      if (manual !== null) toast('El resumen sigue siendo una demo, no un pedido.');
+      const manual = window.prompt('Copiá este resumen:', value);
+      if (manual !== null) toast('Resumen listo para copiar.');
     }
   }
   grid.addEventListener('click', (ev) => {
@@ -197,6 +248,22 @@
     }
   });
   copyBtn.addEventListener('click', copyOrder);
+  orderForm.addEventListener('submit', sendOrder);
+  $$('input[name="delivery-type"]').forEach(input => input.addEventListener('change', updateDeliveryFields));
+  [customerNameField, addressField].forEach(input => input.addEventListener('input', () => {
+    input.removeAttribute('aria-invalid');
+    checkoutError.hidden = true;
+  }));
+  updateDeliveryFields();
+  if (ORDER_ENABLED) {
+    $('.cart-mini').textContent = 'PEDIDO ONLINE';
+    $('.header-bag').setAttribute('aria-label', 'Abrir comanda');
+    $('.cart-warning').textContent = 'Revisá el pedido en WhatsApp y tocá Enviar para mandarlo al local.';
+    $('#checkout-help').textContent = 'Se abre WhatsApp con tu pedido listo. El local confirma disponibilidad y precio final.';
+    $('.demo-note').textContent = 'El local confirma disponibilidad, precios y costo de envío por WhatsApp.';
+  } else if (PRODUCTS_CONFIRMED) {
+    $('#checkout-help').textContent = 'Falta confirmar el número de WhatsApp para habilitar los pedidos.';
+  }
   const video = $('#craft-video');
   const toggle = $('#video-toggle');
   const videoFrame = $('.video-frame');
