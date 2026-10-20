@@ -43,3 +43,6 @@ Usuario autoriza seguir. Dos conceptos y comparador offline en concept/. Referen
 
 ## Revisión libre C · Rompé la rutina
 Usuario pidió aflojar proceso/referencias, reforzar identidad/color y probar croissant/café con scroll; aportó JPEG del símbolo. Leer concept/REVISION-02.md. C reemplaza recomendación A sin aprobación de dirección. Paleta muestreada: F5F2EB/111111/1B3A2B/506C9B. HTML autocontenido C, boceto generado y estudio MP4 de 5s. No confundir esos medios con captura/QA de navegador; render HTML sigue pendiente.
+
+## C-v3 · café en la carta
+Usuario pide continuar y sumar café en carta. Prototipo C actualizado: taza ilustrativa recortada protagonista bajo «El antojo manda», entrada suave una vez al aparecer, tamaño móvil específico y reduced motion. Croissant abre menos, gira menos y separa mitades con un breve desfase. No se trata de video real. Sintaxis/recursos/enlaces comprobados; QA de navegador pendiente. No se enviaron mensajes a terceros ni se publicó. Leer concept/REVISION-03.md.

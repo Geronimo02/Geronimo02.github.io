@@ -5,7 +5,7 @@
   "source": "https://www.instagram.com/negromercado.ok/",
   "mode": "demo",
   "created_at": "2026-10-19T13:56:01Z",
-  "updated_at": "2026-10-19T21:18:29.165306+00:00",
+  "updated_at": "2026-10-19T23:55:00Z",
   "next_stage": "S3",
   "persistent_destination": "github:Geronimo02/Geronimo02.github.io/demos/negromercado",
   "stages": {
@@ -131,13 +131,18 @@
       "date": "2026-10-19",
       "status": "authorized_by_user",
       "decision": "Priorizar marca/color/producto y scroll sobre proceso rígido; explorar una dirección propia. Usuario aporta símbolo JPEG."
+    },
+    {
+      "date": "2026-10-19",
+      "status": "authorized_by_user",
+      "decision": "Usuario acepta continuar la base C y pide sumar un café en la carta; no autoriza publicación."
     }
   ],
   "studio_version": "3.3",
   "stage": "S3",
   "branch": "signature/negromercado-s0-s1-20261019",
-  "approval_status": "Usuario pide exploración libre y aporta símbolo; dirección C propuesta, no aprobada",
-  "next_action": "Revisar Rompé la rutina, ajustar el gesto y verificar HTML en navegador permitido",
+  "approval_status": "Dirección C aceptada como base para afinar; café en carta solicitado; QA de navegador pendiente",
+  "next_action": "Revisar C-v3: café protagonista en carta y apertura de croissant más contenida; verificar visual y móvil antes de cerrar",
   "publish_authorized": false,
   "validation": {
     "json": "pass",

@@ -2,9 +2,9 @@
   "version": "1",
   "business": "Negro Mercado",
   "mode": "demo",
-  "selected": null,
-  "selection_status": "pendiente",
-  "approval_record": "",
+  "selected": "c",
+  "selection_status": "base_aceptada_para_ajustes",
+  "approval_record": "Usuario: «ahora nos vamos entendiendo un poco más» y «dale... agregaría un café en la parte de la carta». Alcance: continuar y afinar C, no cierre de QA ni publicación.",
   "recommended": "c",
   "stage_status": "in_progress_render_pending",
   "directions": [

@@ -46,3 +46,6 @@ Dos WebP generados y dos fuentes OFL en concept/assets/, procedencia en PROVENAN
 
 ## Revisión C
 Símbolo JPEG del usuario intacto; croissant-split.webp generado con alpha; direction-c-artwork.webp boceto generado; motion-study.mp4 estudio audiovisual de 5s, no captura del HTML. Fuentes ya licenciadas. Ver concept/REVISION-02.md.
+
+## Café de carta C-v3
+concept/assets/menu-coffee.webp: 900×900, alpha, generado para la demo; REPRESENTACION, no foto real del producto del local. Flat white en taza y plato crema, sin logo generado. Rótulo contextual junto a imagen. Procedencia y prompt en concept/REVISION-03.md.
