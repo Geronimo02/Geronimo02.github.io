@@ -159,17 +159,6 @@
           ? ease(clamp((progress - 0.84) / 0.16))
           : outro;
         statue.style.opacity = String(1 - statueOutro);
-        const giant = stage.querySelector(".giant-logo");
-        setVar(
-          giant,
-          "--logo-shift-y",
-          `${isMobile ? -progress * 48 : progress * 38}px`,
-        );
-        if (giant) {
-          giant.style.opacity = isMobile
-            ? String(1 - ease(clamp((progress - 0.05) / 0.38)))
-            : "1";
-        }
       }
 
       const section = stage.querySelector(".editorial-section");
