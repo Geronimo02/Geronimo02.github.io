@@ -1,23 +1,19 @@
 # Hasta el Moño — edición Afiche de mostrador
 
 ## Abrir
-- **Online (Cloudflare):** https://hasta-el-mono.pages.dev/
+- **Demo actual (Cloudflare):** https://hasta-el-mono-web.pages.dev/
+- **Piloto anterior (Cloudflare):** https://hasta-el-mono.pages.dev/
 - **Enlace anterior (GitHub Pages):** https://geronimo02.github.io/demos/hasta-el-mono/
 - **Local:** abrir `index.html` con Chrome/Edge. Para editar, usar `index.html`, `styles.css`, `app.js` y `assets/` desde esta carpeta.
 
-## Cloudflare Pages
-- Proyecto: `hasta-el-mono`, conectado a `Geronimo02/Geronimo02.github.io` (`main`).
-- URL del piloto: https://hasta-el-mono.pages.dev/
-- Carpeta raíz de compilación: `demos/hasta-el-mono`.
-- Comando de compilación: `node build-pages.mjs`; salida: `dist`.
-- La salida pública incluye solo los archivos del sitio y `assets/`; excluye bocetos, capturas y notas internas.
-- Los cambios en esta carpeta activan el despliegue automático. El mini panel, D1 y R2 todavía no forman parte de este piloto.
+## Repositorio y despliegue actuales
+- Fuente de la demo: repositorio privado `Geronimo02/hasta-el-mono`, rama `main`; [abrir en GitHub](https://github.com/Geronimo02/hasta-el-mono). Esta carpeta del portfolio queda como copia de referencia.
+- Proyecto Cloudflare Pages: `hasta-el-mono-web`, con despliegue automático desde el repositorio propio. Raíz de compilación `.`, comando `node build-pages.mjs`, salida `dist`.
+- El proyecto anterior `hasta-el-mono` sigue publicado desde el portfolio en https://hasta-el-mono.pages.dev/, con los despliegues automáticos pausados. Los cambios para la demo actual se hacen en el repositorio nuevo.
+- La salida pública contiene solo los archivos del sitio y `assets/`. El mini panel, D1 y R2 todavía no forman parte de esta demo.
 
-## Pasar de demo a cliente
-1. Guardar el enlace y commit de la demo aceptada. Copiar esta carpeta a un repositorio GitHub exclusivo para Hasta el Moño, con los archivos del sitio en la raíz. Mantener la demo del portfolio como referencia.
-2. Dar acceso a la integración de Cloudflare al repositorio nuevo. GitHub permite incorporarlo a los repositorios seleccionados; el acceso a **todos** los repositorios es opcional.
-3. Crear un proyecto Pages nuevo conectado a la rama `main` de ese repo. Usar raíz de compilación `.`, comando `node build-pages.mjs` y salida `dist`. El proyecto piloto actual sigue ligado al repositorio del portfolio.
-4. Antes de usar el dominio del cliente, validar precios, fotos, condiciones de entrega, datos de contacto y titularidad. Si se contrata el mini panel, agregarlo a ese proyecto con D1 y R2; las ediciones hechas desde el panel no requieren commits.
+## Si el cliente acepta
+Confirmar precios, fotos, condiciones de entrega, datos de contacto, dominio y titularidad. Si se contrata el mini panel, agregarlo al proyecto independiente con D1 y R2; las ediciones hechas desde el panel no requieren commits.
 
 ## Qué incluye
 Portada editorial de nombre y bandeja, galería de fotos originales, carta interactiva, carrito con cantidades, retiro o delivery, datos del cliente, observaciones y pedido por WhatsApp. Pantalla de ubicación y video real.
