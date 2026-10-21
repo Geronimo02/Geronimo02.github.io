@@ -2,14 +2,13 @@
 
 ## Abrir
 - **Demo actual (Cloudflare):** https://hasta-el-mono-web.pages.dev/
-- **Piloto anterior (Cloudflare):** https://hasta-el-mono.pages.dev/
 - **Enlace anterior (GitHub Pages):** https://geronimo02.github.io/demos/hasta-el-mono/
 - **Local:** abrir `index.html` con Chrome/Edge. Para editar, usar `index.html`, `styles.css`, `app.js` y `assets/` desde esta carpeta.
 
 ## Repositorio y despliegue actuales
 - Fuente de la demo: repositorio privado `Geronimo02/hasta-el-mono`, rama `main`; [abrir en GitHub](https://github.com/Geronimo02/hasta-el-mono). Esta carpeta del portfolio queda como copia de referencia.
 - Proyecto Cloudflare Pages: `hasta-el-mono-web`, con despliegue automático desde el repositorio propio. Raíz de compilación `.`, comando `node build-pages.mjs`, salida `dist`.
-- El proyecto anterior `hasta-el-mono` sigue publicado desde el portfolio en https://hasta-el-mono.pages.dev/, con los despliegues automáticos pausados. Los cambios para la demo actual se hacen en el repositorio nuevo.
+- El proyecto anterior `hasta-el-mono` de Cloudflare fue eliminado. Los cambios para la demo actual se hacen en el repositorio nuevo.
 - La salida pública contiene solo los archivos del sitio y `assets/`. El mini panel, D1 y R2 todavía no forman parte de esta demo.
 
 ## Si el cliente acepta
