@@ -151,6 +151,7 @@ Las cuotas de Workers, D1 y R2 corresponden a la **cuenta**, no a un presupuesto
 4. Para Vite/React compilado, usar el build verificado del proyecto (comunmente `npm run build`, salida `dist`). No asumir Vite si la web es HTML puro.
 5. Ejecutar primer deploy y verificar URL real `*.pages.dev`; no inventarla.
 6. Comprobar que push a rama de produccion actualiza la web; probar una rama de preview sin afectar produccion.
+   Si el proyecto queda conectado a Git pero el push no crea un deployment, no afirmar que la automatizacion funciona. Verificar en GitHub el acceso de la app y en Pages los controles de rama. Mientras se resuelve, `cf pages deployments create NOMBRE_PROYECTO --branch main` permite publicar el commit actual; comprobar su estado con `cf pages deployments list --project-name NOMBRE_PROYECTO`. Reinstalar una app compartida solo tras revisar los demas proyectos que dependen de ella.
 7. Si el MCP no puede conectar la integracion Git, dejar guia/manual de dashboard; no sustituir automaticamente por Direct Upload. La conexion Git y Direct Upload son modalidades diferentes.
 8. Si se mueve una demo desde una URL bajo `/demos/.../` a la raiz de un dominio, revisar enlaces y assets con rutas absolutas, `canonical`, redirecciones y cualquier enlace compartido. La URL vieja puede seguir en GitHub Pages como demo o redirigir a la nueva segun lo acordado.
 
