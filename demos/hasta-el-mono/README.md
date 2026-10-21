@@ -1,11 +1,13 @@
 # Hasta el Moño — edición Afiche de mostrador
 
 ## Abrir
-- **Online:** https://geronimo02.github.io/demos/hasta-el-mono/
+- **Online (Cloudflare):** https://hasta-el-mono.pages.dev/
+- **Enlace anterior (GitHub Pages):** https://geronimo02.github.io/demos/hasta-el-mono/
 - **Local:** abrir `index.html` con Chrome/Edge. Para editar, usar `index.html`, `styles.css`, `app.js` y `assets/` desde esta carpeta.
 
 ## Cloudflare Pages
 - Proyecto: `hasta-el-mono`, conectado a `Geronimo02/Geronimo02.github.io` (`main`).
+- URL del piloto: https://hasta-el-mono.pages.dev/
 - Carpeta raíz de compilación: `demos/hasta-el-mono`.
 - Comando de compilación: `node build-pages.mjs`; salida: `dist`.
 - La salida pública incluye solo los archivos del sitio y `assets/`; excluye bocetos, capturas y notas internas.
