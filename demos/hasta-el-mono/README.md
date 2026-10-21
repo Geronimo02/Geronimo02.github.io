@@ -4,6 +4,13 @@
 - **Online:** https://geronimo02.github.io/demos/hasta-el-mono/
 - **Local:** abrir `index.html` con Chrome/Edge. Para editar, usar `index.html`, `styles.css`, `app.js` y `assets/` desde esta carpeta.
 
+## Cloudflare Pages
+- Proyecto: `hasta-el-mono`, conectado a `Geronimo02/Geronimo02.github.io` (`main`).
+- Carpeta raíz de compilación: `demos/hasta-el-mono`.
+- Comando de compilación: `node build-pages.mjs`; salida: `dist`.
+- La salida pública incluye solo los archivos del sitio y `assets/`; excluye bocetos, capturas y notas internas.
+- Los cambios en esta carpeta activan el despliegue automático. El mini panel, D1 y R2 todavía no forman parte de este piloto.
+
 ## Qué incluye
 Portada editorial de nombre y bandeja, galería de fotos originales, carta interactiva, carrito con cantidades, retiro o delivery, datos del cliente, observaciones y pedido por WhatsApp. Pantalla de ubicación y video real.
 
