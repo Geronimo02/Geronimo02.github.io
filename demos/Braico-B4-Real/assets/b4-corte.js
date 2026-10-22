@@ -47,7 +47,7 @@ function move(value){
  whole.style.transform=`translate(-50%,-50%) scale(${(1-factor*.15).toFixed(3)})`;
  const alpha=Math.min(1,Math.max(0,(factor-.04)*2.2));
  slices.forEach(el=>{
-  const fit=window.innerWidth<=560?.66:(window.innerWidth<=850?.89:1);
+  const fit=window.innerWidth<=560?.84:(window.innerWidth<=850?.89:1);
   const x=Number(el.dataset.x)*factor*fit;
   const y=Number(el.dataset.y)*factor*fit;
   el.style.opacity=String(alpha);

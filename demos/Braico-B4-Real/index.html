@@ -33,7 +33,8 @@
       </a>
       <nav aria-label="Navegación principal" class="main-nav">
         <a href="#carta">LA CARTA</a>
-        <a href="#homenajes">LOS HOMENAJES</a><a href="#el-corte" class="nav-layers">EL CORTE ↗︎</a>
+        <a href="#homenajes">LOS HOMENAJES</a>
+        <a href="#catering">CATERING</a>
         <a href="#la-esquina">LA ESQUINA</a>
       </nav>
       <button type="button" class="header-cart" id="open-cart" aria-haspopup="dialog" aria-controls="cart-panel">
@@ -58,7 +59,7 @@
         <div class="hero-media">
           <div class="red-stripe" aria-hidden="true"></div>
           <figure class="hero-sandwich" id="hero-tilt" data-tilt aria-label="Fotografía auténtica de la carta de Braico">
-            <img src="./assets/sandwich-homenaje-1.webp" alt="Sándwich fotografiado en la carta de Braico de diciembre de 2025" width="1400" height="1050" fetchpriority="high" />
+            <img class="real-sandwich-photo" src="./img/Imagen de ChatGPT 22 oct 2026, 12_52_58-6.png" alt="Sándwich Osvaldo de Braico, fotografiado para la carta de referencia" width="1024" height="1536" fetchpriority="high" />
           </figure>
           <div class="seal" id="seal-depth" aria-label="18 sándwiches homenaje en la carta de 2025"><strong>18</strong><span>HOMENAJES<br>CON NOMBRE</span></div>
           <span class="photo-index">FOTO / CARTA ORIGINAL 2025</span>
@@ -94,75 +95,56 @@
                 <button type="button" id="homenaje-add" class="counter-add">SUMAR ESTE HOMENAJE <span aria-hidden="true">+</span></button>
                 <p>Sin precios publicados como vigentes.<br>Consulta sin compromiso.</p>
               </div>
+              <div class="recipe-actions b4-actions">
+                <button id="recipe-toggle" class="recipe-toggle" type="button" aria-pressed="false" aria-controls="recipe-stage" aria-label="Separar las capas del Carlitos"><span class="button-label">ABRIR EL CARLITOS</span><span class="button-symbol" aria-hidden="true">↗︎</span></button>
+              </div>
+              <div class="b4-readout"><div class="b4-readout-top"><span>CONTROL DE CAPAS</span><strong id="b4-pct">00%</strong></div>
+                <input id="b4-slider" type="range" min="0" max="100" step="1" value="0" aria-label="Separar progresivamente las capas del sándwich Carlitos" />
+                <div class="b4-range-label"><span>ARMADO</span><span>DESARMADO</span></div>
+              </div>
             </div>
             <div class="counter-paper-footer"><span>DESDE LA ESQUINA MÁS LINDA</span><span>01 — CARTA 2025</span></div>
           </div>
-          <div class="counter-art" aria-label="Fotografía de referencia de la carta y señal de la esquina">
-            <div class="counter-art-street"><span>25 DE MAYO</span><b>×</b><span>CHACABUCO</span></div>
-            <div class="counter-art-photo"><img src="./assets/sandwich-charcuteria.webp" alt="Sándwich fotografiado para la carta de Braico; imagen ilustrativa, no corresponde necesariamente a la receta seleccionada" loading="lazy" width="820" height="615"></div>
-            <div class="counter-art-stamp"><strong>195</strong><span>TANDIL<br>ESQUINA</span></div>
-            <span class="counter-art-caption">FOTO ILUSTRATIVA / CARTA DE BRAICO 2025</span>
+          <div class="recipe-art b4-art" id="recipe-stage" data-view="closed" aria-label="Animación interactiva de las capas de Carlitos">
+            <div class="recipe-arttop"><span>BRAICO / TANDIL</span><span>ESTUDIO DE INGREDIENTES / 2026</span></div>
+            <div class="b4-halo" aria-hidden="true"></div>
+            <div class="b4-photo-scene" id="b4-scene">
+              <div class="b4-base-shadow" aria-hidden="true"></div>
+              <img class="b4-whole" id="b4-whole" src="./assets/layers/Bocadillo artesanal de mortadela, queso y pistacho.png" alt="Representación generada de un sándwich inspirado en los ingredientes de Carlitos" draggable="false" />
+              <div class="b4-slices" id="b4-slices">
+                <button class="b4-slice" type="button" data-layer="pan-superior" data-x="-4" data-y="-199" tabindex="-1" aria-hidden="true" style="--order:1"><img src="./assets/layers/Mitad superior de pan rústico-1.png" alt="" draggable="false"></button>
+                <button class="b4-slice" type="button" data-layer="dijon" data-x="-2" data-y="-128" tabindex="-1" aria-hidden="true" style="--order:2"><img src="./assets/layers/Cinta dorada de mostaza Dijon-7.png" alt="" draggable="false"></button>
+                <button class="b4-slice" type="button" data-layer="pepinillos" data-x="-12" data-y="-60" tabindex="-1" aria-hidden="true" style="--order:3"><img src="./assets/layers/Rodajas de pepinillo encurtido-6.png" alt="" draggable="false"></button>
+                <button class="b4-slice" type="button" data-layer="mortadela-pistachos" data-x="6" data-y="6" tabindex="-1" aria-hidden="true" style="--order:4"><img src="./assets/layers/Mortadela plegada con pistachos-3.png" alt="" draggable="false"></button>
+                <button class="b4-slice" type="button" data-layer="queso-tybo" data-x="-5" data-y="73" tabindex="-1" aria-hidden="true" style="--order:5"><img src="./assets/layers/Lonchas de queso Tybo superpuestas-5.png" alt="" draggable="false"></button>
+                <button class="b4-slice" type="button" data-layer="aceite-oliva" data-x="4" data-y="140" tabindex="-1" aria-hidden="true" style="--order:6"><img src="./assets/layers/Gotas de aceite de oliva dorado-4.png" alt="" draggable="false"></button>
+                <button class="b4-slice" type="button" data-layer="pan-inferior" data-x="0" data-y="200" tabindex="-1" aria-hidden="true" style="--order:7"><img src="./assets/layers/Mitad inferior de pan rústico artesanal-2.png" alt="" draggable="false"></button>
+              </div>
+            </div>
+            <aside class="b4-explore" aria-label="Detalle interactivo de los ingredientes">
+              <span class="b4-explore-head">ANATOMÍA / CARLITOS <span aria-hidden="true">↙︎</span></span>
+              <div class="b4-keys" id="b4-keys">
+                <button class="b4-key" type="button" data-key="pan-superior" aria-pressed="false"><span>01</span><b>PAN SUPERIOR</b></button>
+                <button class="b4-key" type="button" data-key="dijon" aria-pressed="false"><span>02</span><b>MOSTAZA DIJON</b></button>
+                <button class="b4-key" type="button" data-key="pepinillos" aria-pressed="false"><span>03</span><b>PEPINILLOS</b></button>
+                <button class="b4-key" type="button" data-key="mortadela-pistachos" aria-pressed="true"><span>04</span><b>MORTADELA CON PISTACHOS</b></button>
+                <button class="b4-key" type="button" data-key="queso-tybo" aria-pressed="false"><span>05</span><b>QUESO TYBO</b></button>
+                <button class="b4-key" type="button" data-key="aceite-oliva" aria-pressed="false"><span>06</span><b>ACEITE DE OLIVA</b></button>
+                <button class="b4-key" type="button" data-key="pan-inferior" aria-pressed="false"><span>07</span><b>BASE DE PAN</b></button>
+              </div>
+              <div class="b4-ingredient-detail" aria-live="polite"><small id="b4-detail-index">04 / 07</small><strong id="b4-detail-name">MORTADELA CON PISTACHOS</strong><p id="b4-detail-text">El ingrediente protagonista que le da identidad a Carlitos.</p></div>
+            </aside>
+            <div class="b4-hint" id="b4-hint">DESLIZÁ EL CONTROL O TOCÁ «ABRIR» <span aria-hidden="true">↗︎</span></div>
+            <div class="recipe-artbottom"><span>REPRESENTACIÓN VISUAL · NO FOTO DEL LOCAL</span><span class="recipe-state" id="recipe-state" aria-live="polite">RECETA / CERRADA</span></div>
           </div>
         </div>
         <div class="counter-chooser">
           <div class="counter-controls"><span>ELEGÍ POR NOMBRE</span><div class="counter-arrows"><button type="button" id="homenaje-prev" aria-label="Ver homenaje anterior">←︎</button><button type="button" id="homenaje-next" aria-label="Ver siguiente homenaje">→︎</button></div></div>
           <div class="counter-names" id="homenaje-names" role="group" aria-label="Elegir uno de los 18 homenajes"></div>
         </div>
-        <p class="counter-disclaimer">Los nombres, ingredientes y cantidad de homenajes provienen de la carta de diciembre de 2025. No se atribuyen historias individuales que el negocio no haya confirmado. Fotografías para demo privada.</p>
+        <p class="counter-disclaimer">Los nombres, ingredientes y cantidad de homenajes provienen de la carta de diciembre de 2025. No se atribuyen historias individuales que el negocio no haya confirmado. La animación de capas es una demostración conceptual para esta demo privada.</p>
       </div>
     </section>
-
-
-    <!-- B4 / Asset kit PNG transparentes creados para prototipo, NO fotografías verificadas de Braico. -->
-    <section class="recipe-story b4-story" id="el-corte" aria-labelledby="recipe-story-title">
-      <div class="recipe-topline"><span>EDICIÓN BRAICO · ESQUINA 195</span><span>LA RECETA EN CAPAS / 001</span></div>
-      <div class="container recipe-layout b4-layout">
-        <div class="recipe-copy">
-          <p class="recipe-eyebrow"><span aria-hidden="true">✳︎</span> EL CORTE / UN HOMENAJE POR DENTRO</p>
-          <h2 id="recipe-story-title">EL ARTE<br>DE UN<br><em>BUEN<br>CORTE.</em></h2>
-          <div class="recipe-presentation"><span class="recipe-folio">01 / 18</span><div><strong>CARLITOS</strong><p>Mortadela con pistachos, queso Tybo, pepinillos, mostaza Dijon y aceite de oliva. Una receta con nombre propio.</p></div></div>
-          <div class="recipe-actions b4-actions">
-            <button id="recipe-toggle" class="recipe-toggle" type="button" aria-pressed="false" aria-controls="recipe-stage" aria-label="Separar los ingredientes representados del Carlitos"><span class="button-label">ABRIR EL CARLITOS</span><span class="button-symbol" aria-hidden="true">↗︎</span></button>
-            <button id="recipe-add" class="recipe-add" type="button">SUMAR CARLITOS A MI SELECCIÓN <span aria-hidden="true">+</span></button>
-          </div>
-          <div class="b4-readout"><div class="b4-readout-top"><span>CONTROL DE CAPAS</span><strong id="b4-pct">00%</strong></div>
-            <input id="b4-slider" type="range" min="0" max="100" step="1" value="0" aria-label="Separar progresivamente las capas del sándwich Carlitos" />
-            <div class="b4-range-label"><span>ARMADO</span><span>DESARMADO</span></div>
-          </div>
-          <p class="recipe-note">*Demostración conceptual fotorrealista con recortes PNG generados. No representa una fotografía oficial ni verifica el armado real de Braico; el pan también es ilustrativo. Productos y nombres según carta de diciembre de 2025.</p>
-        </div>
-        <div class="recipe-art b4-art" id="recipe-stage" data-view="closed">
-          <div class="recipe-arttop"><span>BRAICO / TANDIL</span><span>ESTUDIO DE INGREDIENTES / 2026</span></div>
-          <div class="b4-halo" aria-hidden="true"></div>
-          <div class="b4-photo-scene" id="b4-scene">
-            <div class="b4-base-shadow" aria-hidden="true"></div>
-            <img class="b4-whole" id="b4-whole" src="./assets/layers/carlitos-entero.png" alt="Representación generada de un sándwich inspirado en los ingredientes de Carlitos" draggable="false" />
-            <div class="b4-slices" id="b4-slices">              <button class="b4-slice" type="button" data-layer="pan-superior" data-x="-4" data-y="-199" tabindex="-1" aria-hidden="true" style="--order:1"><img src="./assets/layers/pan-superior.png" alt="" draggable="false"></button>
-              <button class="b4-slice" type="button" data-layer="dijon" data-x="-2" data-y="-128" tabindex="-1" aria-hidden="true" style="--order:2"><img src="./assets/layers/dijon.png" alt="" draggable="false"></button>
-              <button class="b4-slice" type="button" data-layer="pepinillos" data-x="-12" data-y="-60" tabindex="-1" aria-hidden="true" style="--order:3"><img src="./assets/layers/pepinillos.png" alt="" draggable="false"></button>
-              <button class="b4-slice" type="button" data-layer="mortadela-pistachos" data-x="6" data-y="6" tabindex="-1" aria-hidden="true" style="--order:4"><img src="./assets/layers/mortadela-pistachos.png" alt="" draggable="false"></button>
-              <button class="b4-slice" type="button" data-layer="queso-tybo" data-x="-5" data-y="73" tabindex="-1" aria-hidden="true" style="--order:5"><img src="./assets/layers/queso-tybo.png" alt="" draggable="false"></button>
-              <button class="b4-slice" type="button" data-layer="aceite-oliva" data-x="4" data-y="140" tabindex="-1" aria-hidden="true" style="--order:6"><img src="./assets/layers/aceite-oliva.png" alt="" draggable="false"></button>
-              <button class="b4-slice" type="button" data-layer="pan-inferior" data-x="0" data-y="200" tabindex="-1" aria-hidden="true" style="--order:7"><img src="./assets/layers/pan-inferior.png" alt="" draggable="false"></button></div>
-          </div>
-          <aside class="b4-explore" aria-label="Detalle interactivo de los ingredientes">
-            <span class="b4-explore-head">ANATOMÍA / CARLITOS <span aria-hidden="true">↙︎</span></span>
-            <div class="b4-keys" id="b4-keys">                  <button class="b4-key" type="button" data-key="pan-superior" aria-pressed="false"><span>01</span><b>PAN SUPERIOR</b></button>
-                  <button class="b4-key" type="button" data-key="dijon" aria-pressed="false"><span>02</span><b>MOSTAZA DIJON</b></button>
-                  <button class="b4-key" type="button" data-key="pepinillos" aria-pressed="false"><span>03</span><b>PEPINILLOS</b></button>
-                  <button class="b4-key" type="button" data-key="mortadela-pistachos" aria-pressed="true"><span>04</span><b>MORTADELA CON PISTACHOS</b></button>
-                  <button class="b4-key" type="button" data-key="queso-tybo" aria-pressed="false"><span>05</span><b>QUESO TYBO</b></button>
-                  <button class="b4-key" type="button" data-key="aceite-oliva" aria-pressed="false"><span>06</span><b>ACEITE DE OLIVA</b></button>
-                  <button class="b4-key" type="button" data-key="pan-inferior" aria-pressed="false"><span>07</span><b>BASE DE PAN</b></button></div>
-            <div class="b4-ingredient-detail" aria-live="polite"><small id="b4-detail-index">04 / 07</small><strong id="b4-detail-name">MORTADELA CON PISTACHOS</strong><p id="b4-detail-text">El ingrediente protagonista que le da identidad a Carlitos.</p></div>
-          </aside>
-          <div class="b4-hint" id="b4-hint">DESLIZÁ EL CONTROL O TOCÁ «ABRIR» <span aria-hidden="true">↗︎</span></div>
-          <div class="recipe-artbottom"><span>REPRESENTACIÓN VISUAL · NO FOTO DEL LOCAL</span><span class="recipe-state" id="recipe-state" aria-live="polite">RECETA / CERRADA</span></div>
-        </div>
-      </div>
-      <div class="recipe-bottomline"><span>✳︎ &nbsp; UN CARLITOS ES UN CARLITOS.</span><span>MORTADELA · TYBO · PEPINILLOS · DIJON · OLIVA</span></div>
-    </section>
-
     <section class="menu" id="carta" aria-labelledby="menu-title">
       <div class="container">
         <div class="menu-header">
@@ -179,17 +161,17 @@
         </div>
         <div class="featured-picks" aria-label="Explorar las categorías de Braico">
           <button type="button" class="feature-tile feature-h" data-jump-cat="h" aria-label="Ver los sandwiches homenaje">
-            <img src="./assets/sandwich-relleno.webp" width="807" height="605" alt="" loading="lazy" />
+            <img class="real-sandwich-photo" src="./img/Imagen de ChatGPT 22 oct 2026, 12_52_53-1.png" width="1024" height="1536" alt="Sándwich Mirta de Braico" loading="lazy" />
             <span class="feature-top"><span>01 / LOS HOMENAJES</span><span aria-hidden="true">↗︎</span></span>
             <span class="feature-bottom">CON NOMBRE<br>PROPIO.</span>
           </button>
           <button type="button" class="feature-tile feature-m" data-jump-cat="m" aria-label="Ver los sandwiches de miga">
-            <img src="./assets/miga-triples.webp" width="820" height="615" alt="" loading="lazy" />
+            <img class="real-sandwich-photo" src="./img/Imagen de ChatGPT 22 oct 2026, 12_52_56-4.png" width="1024" height="1536" alt="Sándwich Sir Paul de Braico" loading="lazy" />
             <span class="feature-top"><span>02 / SÁNDWICHES DE MIGA</span><span aria-hidden="true">↗︎</span></span>
             <span class="feature-bottom">LOS DE<br>SIEMPRE.</span>
           </button>
           <button type="button" class="feature-tile feature-c" data-jump-cat="c" aria-label="Ver sandwiches calientes">
-            <img src="./assets/sandwich-tibia.webp" width="807" height="605" alt="" loading="lazy" />
+            <img class="real-sandwich-photo" src="./img/Imagen de ChatGPT 22 oct 2026, 12_52_55-3.png" width="1024" height="1536" alt="Sándwich Cacho de Braico" loading="lazy" />
             <span class="feature-top"><span>03 / CALIENTES</span><span aria-hidden="true">↗︎</span></span>
             <span class="feature-bottom">AL PASO<br>Y LISTO.</span>
           </button>
@@ -226,12 +208,54 @@
           </div>
         </div>
         <div class="homage-gallery">
-          <figure class="homage-shot shot-one"><img src="./assets/mostrador-fiambres.webp" width="615" height="820" alt="Mostrador de productos fotografiado para la carta Braico de 2025" loading="lazy" /><figcaption>01 / DEL MOSTRADOR</figcaption></figure>
-          <figure class="homage-shot shot-two"><img src="./assets/bagel.webp" width="360" height="480" alt="Sándwich de Braico fotografiado para la carta 2025" loading="lazy" /><figcaption>02 / DEL MENÚ</figcaption></figure>
+          <figure class="homage-shot shot-one"><img class="real-sandwich-photo" src="./img/Imagen de ChatGPT 22 oct 2026, 12_52_59-7.png" width="1024" height="1536" alt="Sándwich Don Pepe de Braico" loading="lazy" /><figcaption>01 / DON PEPE</figcaption></figure>
+          <figure class="homage-shot shot-two"><img class="real-sandwich-photo" src="./img/Imagen de ChatGPT 22 oct 2026, 12_52_58-5.png" width="1024" height="1536" alt="Sándwich Pichi de Braico" loading="lazy" /><figcaption>02 / PICHI</figcaption></figure>
           <span class="homage-deco" aria-hidden="true">✳︎</span>
         </div>
       </div>
       <div class="homage-border" aria-hidden="true"></div>
+    </section>
+
+    <section class="catering" id="catering" aria-labelledby="catering-title">
+      <div class="container catering-inner">
+        <div class="catering-copy">
+          <p class="eyebrow eyebrow-dark"><span class="mini-square"></span> PARA COMPARTIR / 05</p>
+          <h2 id="catering-title">BRAICO<br><em>EN TU EVENTO.</em></h2>
+          <p>¿Tenés un cumple, una reunión o un evento? Armá una consulta de catering y contanos qué estás preparando. El equipo de Braico te confirma opciones, disponibilidad y presupuesto.</p>
+          <small class="catering-note">LA CONSULTA SE ABRE EN WHATSAPP · NO SE CONFIRMA NINGÚN PEDIDO DESDE ESTA DEMO.</small>
+        </div>
+        <form class="catering-form" id="catering-form">
+          <div class="catering-form-grid">
+            <label>TIPO DE EVENTO
+              <select name="event" required>
+                <option value="">Elegí una opción</option>
+                <option>Cumpleaños</option>
+                <option>Reunión de trabajo</option>
+                <option>Evento corporativo</option>
+                <option>Celebración</option>
+                <option>Otro evento</option>
+              </select>
+            </label>
+            <label>FECHA ESTIMADA
+              <input type="date" name="date" required />
+            </label>
+            <label>CANTIDAD DE PERSONAS
+              <input type="number" name="guests" min="1" max="999" placeholder="Ej.: 30" required />
+            </label>
+            <label>NOMBRE
+              <input type="text" name="name" maxlength="80" placeholder="Tu nombre" required />
+            </label>
+            <label>WHATSAPP / TELÉFONO
+              <input type="tel" name="contact" maxlength="40" placeholder="Ej.: 249 4..." required />
+            </label>
+            <label class="full">¿QUÉ TE GUSTARÍA CONSULTAR?
+              <textarea name="details" maxlength="500" rows="3" placeholder="Ej.: opciones de sándwiches, picadas y bebidas"></textarea>
+            </label>
+          </div>
+          <button class="catering-submit" type="submit">ARMAR CONSULTA POR WHATSAPP <span aria-hidden="true">↗︎</span></button>
+          <p class="catering-status" id="catering-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
 
     <section class="visit" id="la-esquina" aria-labelledby="visit-title">
@@ -266,15 +290,39 @@
 
   <div class="cart-scrim" id="cart-scrim" hidden></div>
   <aside class="cart-panel" id="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-heading" aria-hidden="true" hidden>
-    <div class="cart-heading"><div><p>ESTÁS ARMANDO...</p><h2 id="cart-heading">TU SELECCIÓN<span>.</span></h2></div><button type="button" class="cart-close" id="close-cart" aria-label="Cerrar selección">×</button></div>
+    <div class="cart-heading"><div><p>ESTÁS ARMANDO...</p><h2 id="cart-heading">TU SELECCIÓN<span>.</span></h2><div class="cart-progress" aria-label="Progreso de la consulta"><span class="cart-progress-dot is-active"></span><span class="cart-progress-line"></span><span class="cart-progress-dot"></span><span class="cart-progress-line"></span><span class="cart-progress-dot"></span></div></div><button type="button" class="cart-close" id="close-cart" aria-label="Cerrar selección">×</button></div>
     <div class="cart-body">
-      <div class="cart-info">DEMO INTERACTIVA · LOS PRECIOS Y LA RECEPCIÓN DE PEDIDOS ESTÁN SIN CONFIRMAR.</div>
+      <div class="cart-info"><strong id="cart-live-status">1 · ELEGÍ TUS PRODUCTOS</strong><span>PRECIOS Y DISPONIBILIDAD A CONFIRMAR</span></div>
       <div id="cart-items" class="cart-items" aria-live="polite"></div>
-      <label class="order-note-label" for="order-note">¿ALGUNA INDICACIÓN PARA TU CONSULTA?</label>
-      <textarea id="order-note" placeholder="Ej.: ¿Tienen disponibilidad para hoy?" maxlength="500" rows="3"></textarea>
+      <form id="order-details">
+        <div class="order-fields">
+          <label for="order-name">NOMBRE
+            <input id="order-name" name="name" type="text" placeholder="Tu nombre" maxlength="80" required />
+          </label>
+          <label for="order-phone">WHATSAPP / TELÉFONO
+            <input id="order-phone" name="phone" type="tel" placeholder="Ej.: 249 4..." maxlength="40" required />
+          </label>
+          <label for="order-method">MODALIDAD
+            <select id="order-method" name="method" required>
+              <option value="">Elegí una opción</option>
+              <option value="Retiro por el local">Retiro por el local</option>
+              <option value="Envío a domicilio">Envío a domicilio</option>
+            </select>
+          </label>
+          <label for="order-when">¿PARA CUÁNDO?
+            <input id="order-when" name="when" type="text" placeholder="Ej.: sábado 21, 20:30 hs" maxlength="80" required />
+          </label>
+          <label class="order-field-full" for="order-address">DIRECCIÓN
+            <input id="order-address" name="address" type="text" placeholder="Completá solo si pedís envío" maxlength="160" />
+          </label>
+        </div>
+        <label class="order-note-label" for="order-note">¿ALGUNA INDICACIÓN PARA TU CONSULTA?</label>
+        <textarea id="order-note" name="note" placeholder="Ej.: gustos, cantidades, alergias o disponibilidad" maxlength="500" rows="3"></textarea>
+      </form>
     </div>
     <div class="cart-actions">
       <div class="cart-summary"><span>PRODUCTOS SELECCIONADOS</span><strong id="cart-qty">0</strong></div>
+      <p class="cart-ready" id="cart-ready" aria-live="polite">Completá tus datos para preparar la consulta.</p>
       <button type="button" id="copy-order" class="btn-copy">COPIAR MENSAJE DE CONSULTA <span aria-hidden="true">↗︎</span></button>
       <a id="share-order" class="share-order" href="#" target="_blank" rel="noopener noreferrer">COMPARTIR POR WHATSAPP <span aria-hidden="true">↗︎</span></a>
       <p class="cart-warning">No se envía ninguna compra a Braico desde esta demo. WhatsApp abre sin destinatario: elegís a quién compartirlo.</p>

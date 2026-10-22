@@ -18,6 +18,12 @@
   const copyBtn = $('#copy-order');
   const shareLink = $('#share-order');
   const toast = $('#toast');
+  const orderDetails = $('#order-details');
+  const orderMethod = $('#order-method');
+  const orderAddress = $('#order-address');
+  const cartLiveStatus = $('#cart-live-status');
+  const cartReady = $('#cart-ready');
+  const progressDots = [...document.querySelectorAll('.cart-progress-dot')];
   let currentCategory = 'h';
   let expanded = false;
   let searchText = '';
@@ -143,18 +149,21 @@
   }
   function renderCart(){
     const q=quantity();
+    syncOrderFields();
     document.querySelectorAll('[data-cart-count]').forEach(el=>el.textContent=q);
     $('#cart-qty').textContent=q;
     cartItems.replaceChildren();
     const entries=Object.entries(cart).filter(([id,qty])=>productsById[id]&&qty>0);
+    const hasProducts=entries.length>0;
     if(!entries.length){
       const empty=el('div','cart-empty');
       empty.append(el('div','empty-glyph','✳︎'),el('h3','','TODA BUENA ELECCIÓN EMPIEZA ACÁ.'),el('p','','Sumá algún sándwich de la carta para preparar tu consulta.'));
       cartItems.append(empty);
     }else{
+      const animateItems=!orderDetails.contains(document.activeElement);
       entries.forEach(([id,qty])=>{
         const product=productsById[id];
-        const card=el('div','cart-item');
+        const card=el('div',animateItems?'cart-item cart-item-new':'cart-item');
         const details=el('div','');
         details.append(el('h3','',product.name),el('span','','PRECIO A CONFIRMAR'));
         const controls=el('div','qty-controls');
@@ -164,13 +173,26 @@
         card.append(details,controls);cartItems.append(card);
       });
     }
-    copyBtn.disabled=!(entries.length||noteField.value.trim());
-    if(entries.length||noteField.value.trim()){
+    const ready=hasProducts && orderDetails.checkValidity();
+    const filledFields=[...orderDetails.elements].filter(field=>field.name && field.value.trim()).length;
+    const detailsStep=filledFields >= 4;
+    progressDots.forEach((dot,index)=>dot.classList.toggle('is-active',index===0 || (index===1 && hasProducts) || (index===2 && ready)));
+    cartLiveStatus.textContent=hasProducts ? `${q} ${q===1?'PRODUCTO':'PRODUCTOS'} · DATOS DEL PEDIDO` : 'ELEGÍ TUS PRODUCTOS PARA EMPEZAR';
+    cartReady.textContent=ready?'¡Listo! Revisá la consulta y compartila por WhatsApp.':detailsStep?'Falta completar algún dato obligatorio.':'Completá tus datos para preparar la consulta.';
+    cartReady.classList.toggle('is-complete',ready);
+    copyBtn.disabled=!ready;
+    if(ready){
       shareLink.removeAttribute('aria-disabled');
       shareLink.href='https://api.whatsapp.com/send?text='+encodeURIComponent(orderMessage());
     }else{
       shareLink.setAttribute('aria-disabled','true');shareLink.removeAttribute('href');
     }
+  }
+  function syncOrderFields(){
+    const delivery=orderMethod.value==='Envío a domicilio';
+    orderAddress.closest('label').hidden=!delivery;
+    orderAddress.required=delivery;
+    orderAddress.placeholder=delivery?'Calle, número, barrio y localidad':'Completá solo si pedís envío';
   }
   cartItems.addEventListener('click',e=>{
     const btn=e.target.closest('[data-inc],[data-dec]');if(!btn)return;
@@ -181,15 +203,22 @@
   });
   function orderMessage(){
     const entries=Object.entries(cart).filter(([id,q])=>productsById[id]&&q>0);
-    const lines=['Hola, quería consultar por estos productos de Braico (carta de referencia: diciembre 2025):'];
+    const data=new FormData(orderDetails);
+    const lines=['Hola, quería consultar por estos productos de Braico (carta de referencia: diciembre 2025):','',
+      `Nombre: ${data.get('name')}`,
+      `WhatsApp / teléfono: ${data.get('phone')}`,
+      `Modalidad: ${data.get('method')}`,
+      `Para cuándo: ${data.get('when')}`];
+    if(data.get('address'))lines.push(`Dirección: ${data.get('address')}`);
+    lines.push('','DETALLE DEL PEDIDO:');
     if(entries.length){entries.forEach(([id,q])=>lines.push(`• ${q} x ${productsById[id].name}`));}
-    const notes=noteField.value.trim();if(notes)lines.push('',`Consulta adicional: ${notes}`);
+    const notes=noteField.value.trim();if(notes)lines.push('',`Indicaciones: ${notes}`);
     lines.push('','¿Me confirman disponibilidad, precios actualizados y cómo puedo hacer el pedido? ¡Gracias!');
     return lines.join('\n');
   }
   async function copyMessage(){
+    if(!orderDetails.reportValidity() || !quantity())return;
     const text=orderMessage();
-    if(!(quantity()||noteField.value.trim()))return;
     let done=false;
     if(navigator.clipboard && window.isSecureContext){
       try {await navigator.clipboard.writeText(text);done=true;}catch (_){}
@@ -203,8 +232,9 @@
     notice(done?'Mensaje copiado. Elegí un contacto para enviarlo.':'No se pudo copiar automáticamente. Seleccioná el texto desde WhatsApp.');
   }
   copyBtn.addEventListener('click',copyMessage);
-  noteField.addEventListener('input',renderCart);
-  function focusables(){return Array.from(cartPanel.querySelectorAll('button:not(:disabled),a[href],textarea')).filter(n=>n.offsetParent!==null && n.getAttribute('aria-disabled')!=='true');}
+  orderDetails.addEventListener('input',renderCart);
+  orderMethod.addEventListener('change',renderCart);
+  function focusables(){return Array.from(cartPanel.querySelectorAll('button:not(:disabled),a[href],input,select,textarea')).filter(n=>n.offsetParent!==null && n.getAttribute('aria-disabled')!=='true');}
   function dialogKey(e){
     if(e.key==='Escape'){closeCart();return;}
     if(e.key!=='Tab')return;
@@ -230,7 +260,7 @@
   scrim.addEventListener('click',closeCart);
   // Proteger demo contra una falsa confirmación de pedido.
   shareLink.addEventListener('click',e=>{
-    if(shareLink.getAttribute('aria-disabled')==='true'){e.preventDefault();return;}
+    if(shareLink.getAttribute('aria-disabled')==='true' || !orderDetails.reportValidity() || !quantity()){e.preventDefault();return;}
     // El enlace de compartir no contiene ningún número de destino.
     shareLink.href='https://api.whatsapp.com/send?text='+encodeURIComponent(orderMessage());
   });
@@ -277,6 +307,31 @@
   $('#homenaje-next').addEventListener('click',()=>{homenajeIndex=(homenajeIndex+1)%homenajeProducts.length;renderHomenaje(true);});
   homenajeAdd.addEventListener('click',()=>addProduct(homenajeProducts[homenajeIndex].id));
   renderHomenaje();
+  const cateringForm=$('#catering-form');
+  const cateringStatus=$('#catering-status');
+  if(cateringForm){
+    cateringForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      if(!cateringForm.reportValidity())return;
+      const data=new FormData(cateringForm);
+      const date=String(data.get('date')||'').split('-').reverse().join('/');
+      const lines=[
+        'Hola, quería consultar por catering en Braico.',
+        '',
+        `Tipo de evento: ${data.get('event')}`,
+        `Fecha estimada: ${date}`,
+        `Cantidad de personas: ${data.get('guests')}`,
+        `Nombre: ${data.get('name')}`,
+        `Contacto: ${data.get('contact')}`
+      ];
+      const details=String(data.get('details')||'').trim();
+      if(details)lines.push(`Consulta: ${details}`);
+      lines.push('','¿Me cuentan qué opciones, disponibilidad y presupuesto tienen? ¡Gracias!');
+      const whatsappUrl='https://api.whatsapp.com/send?text='+encodeURIComponent(lines.join('\n'));
+      cateringStatus.textContent='Abriendo WhatsApp con tu consulta…';
+      window.open(whatsappUrl,'_blank','noopener,noreferrer');
+    });
+  }
   const recipeAdd=$('#recipe-add');
   if(recipeAdd)recipeAdd.addEventListener('click',()=>addProduct('h-carlitos'));
   renderMenu();renderCart();
