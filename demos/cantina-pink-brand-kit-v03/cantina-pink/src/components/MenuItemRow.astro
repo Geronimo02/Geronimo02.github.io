@@ -1,0 +1,39 @@
+---
+import Pending from './Pending.astro';
+import { formatPrice, splitPending, type MenuItem } from '../lib/menu';
+
+interface Props { item: MenuItem; headingLevel?: 'h3' | 'h4' }
+const { item, headingLevel: H = 'h3' } = Astro.props;
+const desc = splitPending(item.description);
+---
+<article class="item" id={`plato-${item.id}`}>
+  <div class="head">
+    <H class="name">{item.name}</H>
+    <span class="dots" aria-hidden="true"></span>
+    <p class="price">
+      <span class="visually-hidden">Precio: </span>{formatPrice(item.price)}
+      {item.unit && <small> {item.unit}</small>}
+    </p>
+  </div>
+  {(desc.text || desc.pending) && (
+    <p class="desc">{desc.text} {desc.pending && <Pending note={`Completar datos de "${item.name}" con la carta oficial.`} />}</p>
+  )}
+  {(item.tags.length > 0 || !item.priceVerified) && (
+    <p class="meta">
+      {item.tags.map((t) => <span class="tag">{t}</span>)}
+      {!item.priceVerified && item.price !== null && <Pending label="PRECIO DE EJEMPLO" note="Precio sin verificar con la carta oficial." />}
+    </p>
+  )}
+  <slot />
+</article>
+
+<style>
+  .item { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+  .head { display: flex; align-items: baseline; gap: 10px; }
+  .name { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; line-height: 1.2; letter-spacing: -.01em; min-width: 0; }
+  .dots { flex: 1; min-width: 16px; border-bottom: 2px dotted var(--line-strong); transform: translateY(-5px); }
+  .price { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; white-space: nowrap; color: var(--wine); text-align: right; }
+  .price small { display: block; font-family: var(--font-body); font-weight: 500; font-size: .75rem; color: var(--ink); }
+  .desc { color: var(--ink); max-width: 56ch; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+</style>

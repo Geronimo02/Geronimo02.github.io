@@ -1,0 +1,78 @@
+---
+import Icon from './Icon.astro';
+import Pending from './Pending.astro';
+import { business, hoursTable } from '../lib/hours';
+import { whatsappUrl, telUrl } from '../lib/contact';
+
+const wa = whatsappUrl();
+const year = new Date().getFullYear();
+---
+<footer class="site-footer on-dark">
+  <div class="mantel mantel-band" data-tender aria-hidden="true"></div>
+  <div class="placa body">
+    <div class="container grid">
+      <div class="address">
+        <p class="kicker">Dónde estamos</p>
+        <p class="street">San Martín 501</p>
+        <p class="corner">esquina Yrigoyen · Tandil</p>
+        <a class="btn btn--cream" href={business.mapsUrl} target="_blank" rel="noopener">
+          <Icon name="mapa" /> Abrir en el mapa
+        </a>
+      </div>
+
+      <div class="col">
+        <h2 class="kicker">Horarios {!business.hours.verified && <Pending label="VERIFICAR" note="Horario tomado de Restaurant Guru; confirmar con las dueñas." />}</h2>
+        <dl class="hours">
+          {hoursTable().map((h) => (
+            <div><dt>{h.days}</dt><dd>{h.shifts.join(' · ')}</dd></div>
+          ))}
+        </dl>
+        <p class="status" data-open-status></p>
+      </div>
+
+      <div class="col">
+        <h2 class="kicker">Hablemos</h2>
+        <ul class="contact">
+          <li>
+            {wa ? (
+              <a href={wa} target="_blank" rel="noopener"><Icon name="whatsapp" /> WhatsApp</a>
+            ) : (
+              <span class="muted"><Icon name="whatsapp" /> WhatsApp <Pending note="Falta el número de WhatsApp del local." /></span>
+            )}
+          </li>
+          <li>
+            <a href={telUrl()}><Icon name="telefono" /> {business.phone.display}</a>
+            {!business.phone.verified && <Pending label="VERIFICAR" note="Teléfono publicado por terceros; confirmar." />}
+          </li>
+          <li><a href={business.instagram.url} target="_blank" rel="noopener"><Icon name="instagram" /> @{business.instagram.handle}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container legal">
+      <p>Cantina Pink · Tandil, desde {business.foundedYear}. Pedidos solo para retirar en el local, pagos con Mercado Pago.</p>
+      <p>© {year}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { margin-top: auto; }
+  .body { padding: 64px 0 32px; }
+  .grid { display: grid; gap: 48px; }
+  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } .address { grid-column: 1 / -1; } }
+  @media (min-width: 1200px) { .grid { grid-template-columns: 1.6fr 1fr 1fr; } .address { grid-column: auto; } }
+  .street { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 7.5vw, 5.5rem); line-height: .95; letter-spacing: -.03em; margin-top: 12px; }
+  .corner { font-size: 1.125rem; margin: 8px 0 24px; }
+  .col h2 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .hours div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid rgba(255, 247, 233, .25); }
+  .hours dt { font-weight: 700; }
+  .hours dd { margin: 0; text-align: right; }
+  .status { margin-top: 14px; font-weight: 700; }
+  .status:empty { display: none; }
+  .contact { list-style: none; display: grid; gap: 4px; }
+  .contact li { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .contact a, .contact .muted { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-weight: 700; }
+  .muted { opacity: .9; }
+  .legal { margin-top: 64px; padding-top: 20px; border-top: 1px solid rgba(255, 247, 233, .25); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: .875rem; }
+</style>

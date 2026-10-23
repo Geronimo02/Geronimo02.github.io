@@ -1,0 +1,9 @@
+{
+  "name": "Cantina Pink",
+  "short_name": "Cantina Pink",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FFF7E9",
+  "theme_color": "#741F25",
+  "icons": [{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+}

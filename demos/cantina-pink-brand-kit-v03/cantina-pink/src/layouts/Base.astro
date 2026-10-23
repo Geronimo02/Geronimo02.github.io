@@ -1,0 +1,107 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '@fontsource-variable/fraunces/wght.css';
+import '@fontsource/dm-sans/latin-400.css';
+import '@fontsource/dm-sans/latin-500.css';
+import '@fontsource/dm-sans/latin-700.css';
+import frauncesLatin from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
+import '../../design-tokens.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { business, openingHoursSchema } from '../lib/hours';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  chrome?: boolean;
+  transitions?: boolean;
+}
+
+const {
+  title,
+  description = 'Cantina Pink, en San Martín 501 esquina Yrigoyen, Tandil. Pizzas para compartir, milanesas XL, pastas y picadas. Mirá la carta y pedí para retirar.',
+  ogImage = '/og.png',
+  noindex = false,
+  chrome = true,
+  transitions = true,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · Cantina Pink, Tandil` : 'Cantina Pink · Pizzas, milanesas y pastas en Tandil';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(ogImage, Astro.site);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: business.name,
+  url: Astro.site?.toString(),
+  image: ogUrl.toString(),
+  telephone: business.phone.e164,
+  servesCuisine: ['Pizzas', 'Milanesas', 'Pastas', 'Cocina argentina'],
+  priceRange: '$$',
+  menu: new URL('/carta', Astro.site).toString(),
+  acceptsReservations: false,
+  foundingDate: String(business.foundedYear),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: business.address.street,
+    addressLocality: business.address.city,
+    addressRegion: business.address.region,
+    postalCode: business.address.postalCode,
+    addressCountry: business.address.country,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: business.geo.lat, longitude: business.geo.lng },
+  openingHoursSpecification: openingHoursSchema(),
+  sameAs: [business.instagram.url],
+};
+---
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#741F25" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Cantina Pink" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Cantina Pink, Tandil: mantel a cuadros y platos para compartir" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      document.addEventListener('astro:after-swap', () => document.documentElement.classList.add('js'));
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <slot name="head" />
+    {transitions && <ClientRouter fallback="swap" />}
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    {chrome && <Header />}
+    <main id="contenido" tabindex="-1">
+      <slot />
+    </main>
+    {chrome && <Footer />}
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

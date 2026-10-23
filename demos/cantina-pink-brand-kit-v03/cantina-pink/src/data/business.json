@@ -1,0 +1,64 @@
+{
+  "_ayuda": "Datos del local. Lo que dice verified:false se muestra con la marca [COMPLETAR] hasta que las dueñas lo confirmen.",
+  "name": "Cantina Pink",
+  "legalName": null,
+  "foundedYear": 2019,
+  "address": {
+    "street": "San Martín 501",
+    "corner": "esquina Yrigoyen",
+    "city": "Tandil",
+    "region": "Buenos Aires",
+    "postalCode": "B7000",
+    "country": "AR",
+    "verified": true
+  },
+  "geo": {
+    "lat": -37.3256,
+    "lng": -59.1355,
+    "verified": false,
+    "_nota": "[COMPLETAR] Coordenadas aproximadas; tomar las exactas del pin de Google Maps del local."
+  },
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cantina+Pink+San+Mart%C3%ADn+501+Tandil",
+  "phone": {
+    "display": "249 444-0808",
+    "e164": "+542494440808",
+    "verified": false
+  },
+  "whatsapp": {
+    "e164": null,
+    "verified": false,
+    "_nota": "[COMPLETAR] Número de WhatsApp para consultas y pedidos. Sin número, el botón muestra el placeholder."
+  },
+  "instagram": {
+    "handle": "cantina_pink",
+    "url": "https://www.instagram.com/cantina_pink/",
+    "verified": true
+  },
+  "email": {
+    "orders": null,
+    "_nota": "[COMPLETAR] Mail donde las dueñas reciben los pedidos pagados (se configura como secret ORDERS_EMAIL_TO)."
+  },
+  "hours": {
+    "verified": false,
+    "_nota": "[VERIFICAR] Horario publicado por Restaurant Guru (11/10/2026). 0 = domingo. Turnos en formato 24 h; '24:00' es medianoche.",
+    "timezone": "America/Argentina/Buenos_Aires",
+    "week": [
+      { "day": 0, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] },
+      { "day": 1, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] },
+      { "day": 2, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] },
+      { "day": 3, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] },
+      { "day": 4, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] },
+      { "day": 5, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] },
+      { "day": 6, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] }
+    ],
+    "closedDates": []
+  },
+  "pickup": {
+    "_ayuda": "Retiro en el local. slotMinutes: cada cuánto hay turno. leadMinutes: tiempo mínimo de preparación. daysAhead: cuántos días se puede reservar a futuro. lastSlotBeforeCloseMinutes: último turno antes del cierre.",
+    "slotMinutes": 15,
+    "leadMinutes": 40,
+    "daysAhead": 3,
+    "lastSlotBeforeCloseMinutes": 15
+  },
+  "showPendingMarkers": true
+}

@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { Recorte } from '../lib/menu';
+
+// Si existe un PNG/WebP/AVIF sin fondo con el mismo nombre en src/assets/recortes/, se usa ese.
+// Las ilustraciones .svg son placeholders hasta tener los recortes reales.
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/recortes/*.{png,webp,avif,svg}', { eager: true });
+
+interface Props {
+  name: Recorte;
+  alt: string;
+  sizes?: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  priority?: boolean;
+}
+const { name, alt, sizes = '(min-width: 960px) 320px, 45vw', class: className, loading = 'lazy', priority = false } = Astro.props;
+const pick = (ext: string) => files[`../assets/recortes/${name}.${ext}`]?.default;
+const raster = pick('avif') ?? pick('webp') ?? pick('png');
+const svg = pick('svg');
+---
+{raster ? (
+  <Image
+    src={raster}
+    alt={alt}
+    widths={[240, 400, 640, 960]}
+    sizes={sizes}
+    format="webp"
+    class={className}
+    loading={priority ? 'eager' : loading}
+    fetchpriority={priority ? 'high' : 'auto'}
+    data-recorte={name}
+  />
+) : svg ? (
+  <img
+    src={svg.src}
+    width={svg.width}
+    height={svg.height}
+    alt={alt}
+    class={className}
+    loading={priority ? 'eager' : loading}
+    decoding="async"
+    data-recorte={name}
+    data-placeholder="ilustración provisoria"
+  />
+) : null}

@@ -1,0 +1,74 @@
+[
+  {
+    "route": "/",
+    "width": 390,
+    "file": "inicio-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/",
+    "width": 768,
+    "file": "inicio-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/",
+    "width": 1024,
+    "file": "inicio-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/",
+    "width": 1440,
+    "file": "inicio-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/sistema",
+    "width": 390,
+    "file": "sistema-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/sistema",
+    "width": 768,
+    "file": "sistema-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/sistema",
+    "width": 1024,
+    "file": "sistema-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/sistema",
+    "width": 1440,
+    "file": "sistema-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  }
+]

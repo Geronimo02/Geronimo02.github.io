@@ -1,0 +1,15 @@
+---
+import { business } from '../lib/hours';
+
+interface Props {
+  /** Qué falta, para quien mira la web en revisión. */
+  note: string;
+  label?: string;
+}
+const { note, label = 'COMPLETAR' } = Astro.props;
+---
+{business.showPendingMarkers && (
+  <span class="pending" title={note}>
+    [{label}]<span class="visually-hidden">: {note}</span>
+  </span>
+)}

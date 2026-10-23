@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import Recorte from '../components/Recorte.astro';
+import PhotoSlot from '../components/PhotoSlot.astro';
+import MenuItemRow from '../components/MenuItemRow.astro';
+import Pending from '../components/Pending.astro';
+import Icon from '../components/Icon.astro';
+import { findItem } from '../lib/menu';
+
+const colors = [
+  { token: '--ink', hex: '#3B1719', on: 'cream' },
+  { token: '--wine', hex: '#741F25', on: 'cream' },
+  { token: '--red', hex: '#A12B2B', on: 'cream' },
+  { token: '--green', hex: '#4A6244', on: 'cream' },
+  { token: '--paper', hex: '#E8D8BF', on: 'ink' },
+  { token: '--cream', hex: '#FFF7E9', on: 'ink' },
+];
+const sample = [findItem('noquis-salsa-rosa')!, findItem('pizza-libre')!, findItem('milanesa-xl')!];
+---
+<Base title="Sistema visual" noindex>
+  <div class="container page">
+    <p class="kicker">Uso interno · no indexada</p>
+    <h1 class="display-xl">Sistema visual</h1>
+    <p class="lead">Tokens y componentes base de la web. Contrato completo en DESIGN.md.</p>
+
+    <section>
+      <h2 class="display-m">Color</h2>
+      <ul class="swatches">
+        {colors.map((c) => (
+          <li style={`background:${c.hex};color:var(--${c.on})`}><strong>{c.token}</strong><span>{c.hex}</span></li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="display-m">Tipografía</h2>
+      <p class="display-xl">Una mesa chica para semejante hambre.</p>
+      <p class="display-l">Lo difícil no es elegir.</p>
+      <p class="display-m">Es dejar algo en el plato.</p>
+      <p class="kicker">Kicker · DM Sans 700</p>
+      <p>Texto DM Sans 400, 1rem/1.6. Pizzas para compartir, milanesas XL, pastas y esos platos que se disfrutan sin apuro.</p>
+    </section>
+
+    <section>
+      <h2 class="display-m">Botones</h2>
+      <div class="row">
+        <a class="btn btn--wine" href="#">Ver la carta</a>
+        <a class="btn btn--red" href="#"><Icon name="bolsa" /> Pedir para retirar</a>
+        <a class="btn btn--outline" href="#">Cómo llegar</a>
+        <button class="btn btn--wine" disabled>Deshabilitado</button>
+      </div>
+      <div class="row on-dark placa pad">
+        <a class="btn btn--cream" href="#">Sobre vino</a>
+        <a class="btn btn--outline" href="#">Contorno</a>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="display-m">Mantel y placa</h2>
+      <div class="mantel mantel-band" aria-hidden="true"></div>
+      <div class="placa pad plaque-demo">
+        <p class="display-l">PASTA LIBRE</p>
+        <span class="price-pill"><small>por</small> $19.900</span>
+      </div>
+      <div class="row"><span class="sello">Menú del día</span><span class="tag">para compartir</span><Pending note="Ejemplo de placeholder." /></div>
+    </section>
+
+    <section>
+      <h2 class="display-m">Recortes (ilustraciones provisorias)</h2>
+      <ul class="recortes mantel mantel--soft">
+        {(['pizza', 'pasta', 'milanesa', 'empanada', 'flan'] as const).map((r) => (
+          <li><Recorte name={r} alt={r} /></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="two">
+      <PhotoSlot alt="Pasta servida en pan" brief="pasta en pan, primer plano cálido, 4:5" recorte="pasta" />
+      <div>
+        <h2 class="display-m">Fila de carta</h2>
+        {sample.map((i) => <MenuItemRow item={i} />)}
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page { padding: 48px 0 96px; display: grid; gap: 64px; }
+  section { display: grid; gap: 16px; }
+  .swatches { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .swatches li { padding: 16px; min-height: 120px; border-radius: var(--radius-sm); display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--line); }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .pad { padding: 24px; border-radius: var(--radius-sm); }
+  .plaque-demo { display: grid; justify-items: start; gap: 16px; }
+  .recortes { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; padding: 24px; border-radius: var(--radius-sm); }
+  .two { display: grid; gap: 32px; }
+  @media (min-width: 960px) { .two { grid-template-columns: 1fr 1fr; align-items: start; } }
+</style>

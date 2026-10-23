@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo/cantina-pink-logo.jpg';
+
+interface Props { size?: number; class?: string; eager?: boolean }
+const { size = 72, class: className, eager = false } = Astro.props;
+---
+<!-- Logo original sin retoques. [COMPLETAR] reemplazar por PNG/SVG master: la referencia es de 150 px. -->
+<Image
+  src={logo}
+  alt="Cantina Pink"
+  width={size}
+  height={size}
+  densities={[1, 2]}
+  format="webp"
+  quality={90}
+  class:list={['logo', className]}
+  loading={eager ? 'eager' : 'lazy'}
+/>
+<style>
+  .logo { border-radius: var(--radius-sm); }
+</style>

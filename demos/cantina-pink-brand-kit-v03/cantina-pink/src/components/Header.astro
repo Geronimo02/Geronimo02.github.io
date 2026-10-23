@@ -1,0 +1,150 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { business, hoursTable } from '../lib/hours';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  { href: '/carta', label: 'La carta' },
+  { href: '/ubicacion', label: 'Cómo llegar' },
+];
+const isCurrent = (href: string) => path === href || path.startsWith(href + '/');
+---
+<header class="site-header">
+  <div class="container bar">
+    <a href="/" class="brand" aria-label="Cantina Pink, ir al inicio">
+      <Logo size={64} eager />
+    </a>
+
+    <nav class="nav-desktop" aria-label="Principal">
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <a href="/carta#pedido" class="btn btn--red order-btn" data-cart-link>
+        <Icon name="bolsa" />
+        <span>Pedir<span class="hide-sm"> para retirar</span></span>
+        <span class="cart-count" data-cart-count hidden aria-label="productos en el pedido"></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" data-menu-open>
+        <Icon name="menu" size={26} />
+        <span class="visually-hidden">Abrir menú</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="nav-panel" class="nav-panel placa on-dark" role="dialog" aria-modal="true" aria-label="Menú" hidden data-menu-panel>
+    <div class="panel-top container">
+      <span class="kicker">Cantina Pink · Tandil</span>
+      <button class="menu-close" type="button" data-menu-close>
+        <Icon name="cerrar" size={28} />
+        <span class="visually-hidden">Cerrar menú</span>
+      </button>
+    </div>
+    <nav class="container" aria-label="Principal, móvil">
+      <ul class="panel-links">
+        <li><a href="/" aria-current={path === '/' ? 'page' : undefined}>Inicio</a></li>
+        {links.map((l) => (
+          <li><a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a></li>
+        ))}
+        <li><a href="/carta#pedido">Pedir para retirar</a></li>
+      </ul>
+      <div class="panel-foot">
+        <p>{business.address.street}, {business.address.corner}</p>
+        <p class="status" data-open-status>{hoursTable().map((h) => `${h.days}: ${h.shifts.join(' y ')}`).join(' · ')}</p>
+        <a href={business.instagram.url} rel="noopener" target="_blank">@{business.instagram.handle}</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  function setupMenu() {
+    const openBtn = document.querySelector<HTMLButtonElement>('[data-menu-open]');
+    const panel = document.querySelector<HTMLElement>('[data-menu-panel]');
+    const closeBtn = document.querySelector<HTMLButtonElement>('[data-menu-close]');
+    if (!openBtn || !panel || !closeBtn || openBtn.dataset.bound) return;
+    openBtn.dataset.bound = '1';
+
+    const focusables = () => [...panel.querySelectorAll<HTMLElement>('a, button')];
+    const close = () => {
+      panel.hidden = true;
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+      openBtn.focus();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') return close();
+      if (e.key !== 'Tab') return;
+      const f = focusables();
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+    openBtn.addEventListener('click', () => {
+      panel.hidden = false;
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.documentElement.style.overflow = 'hidden';
+      document.addEventListener('keydown', onKey);
+      closeBtn.focus();
+    });
+    closeBtn.addEventListener('click', close);
+    panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+      panel.hidden = true;
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+      document.removeEventListener('keydown', onKey);
+    }));
+  }
+  document.addEventListener('astro:page-load', setupMenu);
+</script>
+
+<style>
+  .site-header { background: var(--paper); border-bottom: 1px solid var(--line); position: relative; z-index: 20; }
+  .bar { display: flex; align-items: center; gap: 16px; min-height: var(--header-h); }
+  .brand { display: block; flex: none; border-radius: var(--radius-sm); }
+  .brand :global(.logo) { width: 56px; height: 56px; }
+  @media (min-width: 640px) { .brand :global(.logo) { width: 64px; height: 64px; } }
+
+  .nav-desktop { display: none; margin-left: 24px; }
+  .nav-desktop ul { display: flex; gap: 28px; list-style: none; }
+  .nav-desktop a { font-weight: 700; text-decoration: none; padding: 12px 0; display: inline-block; background: linear-gradient(var(--red), var(--red)) left bottom / 0 3px no-repeat; transition: background-size var(--motion-short) var(--ease-out); }
+  .nav-desktop a:hover, .nav-desktop a[aria-current='page'] { background-size: 100% 3px; }
+
+  .actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+  .order-btn { position: relative; padding-inline: 18px; }
+  .hide-sm { display: none; }
+  .cart-count {
+    min-width: 24px; height: 24px; padding: 0 6px; border-radius: var(--radius-pill);
+    background: var(--cream); color: var(--wine); font-size: .8125rem; font-weight: 700;
+    display: inline-grid; place-items: center;
+  }
+  .cart-count[hidden] { display: none; }
+  .menu-toggle, .menu-close {
+    width: 48px; height: 48px; display: grid; place-items: center; border-radius: var(--radius-pill);
+    background: transparent; border: 2px solid currentColor; cursor: pointer;
+  }
+
+  @media (min-width: 760px) {
+    .nav-desktop { display: block; }
+    .menu-toggle { display: none; }
+    .hide-sm { display: inline; }
+  }
+
+  .nav-panel { position: fixed; inset: 0; z-index: 50; overflow-y: auto; display: flex; flex-direction: column; padding-bottom: 32px; }
+  .nav-panel[hidden] { display: none; }
+  .panel-top { display: flex; justify-content: space-between; align-items: center; min-height: var(--header-h); }
+  .panel-links { list-style: none; margin-top: 24px; display: grid; gap: 4px; }
+  .panel-links a {
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 12vw, 4rem); line-height: 1.1;
+    text-decoration: none; display: inline-block; padding: 4px 0;
+  }
+  .panel-links a[aria-current='page'] { text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: .12em; }
+  .panel-foot { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255, 247, 233, .3); display: grid; gap: 6px; }
+  .panel-foot a { display: inline-block; padding: 10px 0; font-weight: 700; }
+</style>

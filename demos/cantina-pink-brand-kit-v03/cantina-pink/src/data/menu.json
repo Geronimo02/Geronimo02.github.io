@@ -1,0 +1,96 @@
+{
+  "_ayuda": "Carta de Cantina Pink. Para cambiar un precio, editá 'price' (en pesos, sin puntos). price: null muestra 'Consultar'. priceVerified:false agrega la marca [COMPLETAR]. online:true = se puede pedir para retirar. mesa:true = aparece en la carta de las mesas (/mesa).",
+  "updatedAt": "2026-10-23",
+  "verified": false,
+  "currency": "ARS",
+  "dailySpecial": {
+    "active": true,
+    "label": "Menú del día",
+    "itemId": "noquis-salsa-rosa",
+    "note": "[COMPLETAR] Plato del día real. Se cambia acá eligiendo el id de un plato.",
+    "verified": false
+  },
+  "categories": [
+    {
+      "id": "pizzas",
+      "name": "Pizzas",
+      "kicker": "Al molde, para el centro de la mesa",
+      "items": [
+        { "id": "pizza-libre", "name": "Pizza libre", "description": "Van saliendo pizzas hasta que digas basta. [COMPLETAR] condiciones y variedades incluidas.", "price": null, "priceVerified": false, "unit": "por persona", "online": false, "mesa": true, "tags": ["solo en el local", "para compartir"], "image": "pizza" },
+        { "id": "pizza-muzzarella", "name": "Muzzarella", "description": "Salsa de tomate, muzzarella y aceitunas verdes.", "price": 16500, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": "pizza" },
+        { "id": "pizza-especial", "name": "Especial", "description": "Muzzarella, jamón cocido, morrones asados y aceitunas.", "price": 19800, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": "pizza" },
+        { "id": "pizza-huevos", "name": "Con huevos fritos", "description": "Muzzarella, jamón y huevos fritos encima. [COMPLETAR] nombre en la carta.", "price": 20500, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": "pizza" },
+        { "id": "pizza-fugazzeta", "name": "Fugazzeta", "description": "Cebolla, muzzarella y orégano.", "price": 18200, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": null }
+      ]
+    },
+    {
+      "id": "milanesas",
+      "name": "Milanesas",
+      "kicker": "Tamaño cantina, o sea grandes",
+      "items": [
+        { "id": "milanesa-libre", "name": "Milanesa libre", "description": "Milanesas sin límite. [COMPLETAR] guarnición y condiciones.", "price": 19900, "priceVerified": false, "unit": "por persona", "online": false, "mesa": true, "tags": ["solo en el local"], "image": "milanesa", "_fuente": "Precio visto en una pieza del feed; confirmar vigencia." },
+        { "id": "milanesa-xl", "name": "Milanesa XL para compartir", "description": "Una milanesa que cubre el plato y un poco más. Con papas fritas. [COMPLETAR] para cuántas personas.", "price": 28500, "priceVerified": false, "online": true, "mesa": true, "tags": ["para compartir"], "image": "milanesa" },
+        { "id": "milanesa-napolitana", "name": "Napolitana con fritas", "description": "Salsa, jamón, muzzarella y papas fritas.", "price": 17900, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": "milanesa" },
+        { "id": "milanesa-caballo", "name": "A caballo con fritas", "description": "Dos huevos fritos arriba y papas fritas.", "price": 17400, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": "milanesa" }
+      ]
+    },
+    {
+      "id": "pastas",
+      "name": "Pastas",
+      "kicker": "Algunas vienen adentro del pan",
+      "items": [
+        { "id": "pasta-libre", "name": "Pasta libre", "description": "Pasta hasta que no puedas más. [COMPLETAR] variedades y salsas incluidas.", "price": 19900, "priceVerified": false, "unit": "por persona", "online": false, "mesa": true, "tags": ["solo en el local"], "image": "pasta", "_fuente": "Precio visto en una pieza del feed; confirmar vigencia." },
+        { "id": "noquis-salsa-rosa", "name": "Ñoquis con salsa rosa", "description": "Ñoquis de papa con salsa rosa. Y el 29, ya sabés.", "price": 14900, "priceVerified": false, "online": true, "mesa": true, "tags": ["del día"], "image": "pasta", "_fuente": "Precio visto en la pieza '29 de ñoquis' del feed; confirmar vigencia." },
+        { "id": "pasta-en-pan", "name": "Pasta en pan", "description": "Pan de campo ahuecado, relleno de pasta con estofado. [COMPLETAR] nombre y variedades.", "price": 18900, "priceVerified": false, "online": true, "mesa": true, "tags": ["de la casa"], "image": "pasta" },
+        { "id": "sorrentinos", "name": "Sorrentinos con estofado", "description": "Sorrentinos de jamón y queso con estofado de carne.", "price": 17500, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": null }
+      ]
+    },
+    {
+      "id": "carnes",
+      "name": "Carnes y pescados",
+      "kicker": "Del horno y de la plancha",
+      "items": [
+        { "id": "duo-carnes", "name": "Dúo de carnes al horno", "description": "Bondiola y colita de cuadril, con fritas. [COMPLETAR] corte y guarnición vigentes.", "price": 24500, "priceVerified": false, "online": true, "mesa": true, "tags": ["para compartir"], "image": null },
+        { "id": "pescado-del-dia", "name": "Pescado del día", "description": "[COMPLETAR] Pescado y preparación según el día.", "price": null, "priceVerified": false, "online": false, "mesa": true, "tags": ["del día"], "image": null }
+      ]
+    },
+    {
+      "id": "empanadas",
+      "name": "Empanadas",
+      "kicker": "Para arrancar mientras llega lo otro",
+      "items": [
+        { "id": "empanada-carne", "name": "Carne cortada a cuchillo", "description": "Al horno.", "price": 2200, "priceVerified": false, "unit": "la unidad", "online": true, "mesa": true, "tags": [], "image": "empanada" },
+        { "id": "empanada-jyq", "name": "Jamón y queso", "description": "Al horno.", "price": 2000, "priceVerified": false, "unit": "la unidad", "online": true, "mesa": true, "tags": [], "image": "empanada" },
+        { "id": "empanadas-docena", "name": "Docena surtida", "description": "Doce, mezcladas como quieras. Avisanos los gustos en la nota del pedido.", "price": 22800, "priceVerified": false, "online": true, "mesa": false, "tags": ["para compartir"], "image": "empanada" }
+      ]
+    },
+    {
+      "id": "picadas-sandwiches",
+      "name": "Picadas y sándwiches",
+      "kicker": "Tandilenses, obvio",
+      "items": [
+        { "id": "picada-tandilense", "name": "Picada tandilense", "description": "Fiambres y quesos de la zona. [COMPLETAR] composición y para cuántos.", "price": 26000, "priceVerified": false, "online": true, "mesa": true, "tags": ["para compartir"], "image": null },
+        { "id": "sandwich-milanesa", "name": "Sándwich de milanesa", "description": "En pan casero, con lechuga, tomate, jamón, queso y huevo. Con fritas.", "price": 16800, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": null }
+      ]
+    },
+    {
+      "id": "postres",
+      "name": "Postres",
+      "kicker": "Siempre hay lugar",
+      "items": [
+        { "id": "flan", "name": "Flan casero", "description": "Con dulce de leche y crema.", "price": 6500, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": "flan" },
+        { "id": "torta-del-dia", "name": "Torta del día", "description": "[COMPLETAR] Según lo que salga de la cocina.", "price": 7200, "priceVerified": false, "online": true, "mesa": true, "tags": ["del día"], "image": null }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "name": "Bebidas",
+      "kicker": "Para bajar todo lo anterior",
+      "items": [
+        { "id": "gaseosa", "name": "Gaseosa 1,5 L", "description": "[COMPLETAR] marcas disponibles.", "price": 5200, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": null },
+        { "id": "cerveza-litro", "name": "Cerveza 1 L", "description": "[COMPLETAR] marcas disponibles.", "price": 6800, "priceVerified": false, "online": true, "mesa": true, "tags": [], "image": null },
+        { "id": "vino-tinto", "name": "Vino tinto de la casa", "description": "Botella. [COMPLETAR] etiqueta.", "price": 12000, "priceVerified": false, "online": false, "mesa": true, "tags": ["solo en el local"], "image": null }
+      ]
+    }
+  ]
+}

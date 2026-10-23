@@ -1,0 +1,25 @@
+/* Cantina Pink v0.3 — propuesta, no sistema oficial. Fuente: capturas y logo recibidos 23/10/2026. */
+:root {
+  --ink:#3B1719; --paper:#E8D8BF; --red:#A12B2B; --wine:#741F25; --green:#4A6244; --cream:#FFF7E9;
+  --wine-hover:#56171B; --font-display:'Fraunces',Georgia,serif; --font-body:'DM Sans',Arial,sans-serif;
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px;
+  --space-12:48px; --space-16:64px; --space-24:96px;
+  --radius-sm:8px; --radius-card:16px; --radius-pill:999px;
+  --content-width:1200px; --gutter:20px; --ease-out:cubic-bezier(.22,1,.36,1);
+  --motion-short:180ms; --motion-long:420ms;
+}
+@media(min-width:640px){:root{--gutter:32px}}
+@media(min-width:960px){:root{--gutter:48px}}
+html{background:var(--cream);color:var(--ink)}
+body{font-family:var(--font-body);font-size:1rem;line-height:1.6}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.025em}
+h1{font-size:clamp(3rem,7vw,6.25rem);line-height:.98}
+h2{font-size:clamp(2.25rem,5vw,4rem);line-height:1.03}
+h3{font-size:1.5rem;line-height:1.15}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.button-primary{min-height:48px;padding:10px 24px;border-radius:var(--radius-pill);background:var(--wine);color:var(--cream);border:0;cursor:pointer}
+.button-primary:hover{background:var(--wine-hover)}
+.button-primary:disabled{opacity:.5;cursor:not-allowed}
+.gingham{background-color:var(--cream);background-image:linear-gradient(90deg,rgba(161,43,43,.20) 50%,transparent 50%),linear-gradient(rgba(161,43,43,.20) 50%,transparent 50%);background-size:76px 76px}
+@media(max-width:639px){.gingham{background-size:48px 48px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}

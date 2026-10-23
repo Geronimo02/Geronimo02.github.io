@@ -1,0 +1,83 @@
+{
+  "brand": "Cantina Pink",
+  "version": "0.3",
+  "researched_at": "2026-10-23",
+  "approval_status": "proposed_not_approved",
+  "instagram": "https://www.instagram.com/cantina_pink/",
+  "identity": {
+    "city": "Tandil",
+    "address": "San Martin 501 esquina Yrigoyen",
+    "telephone_public_unconfirmed": "249 444-0808",
+    "sources": [
+      "https://www.tandil.tur.ar/gastronomia-cantina-pink-47",
+      "https://es.restaurantguru.com/Pink-Pizzas-y-Pastas-Tandil"
+    ]
+  },
+  "philosophy": {
+    "core": "Mesa abundante, humor directo y cantina de encuentro",
+    "status": "inferred_and_proposed",
+    "tagline": "Veni con hambre. Lo demas lo vemos aca.",
+    "tagline_status": "proposed_not_original"
+  },
+  "palette": {
+    "status": "estimated_from_supplied_brand_assets_not_official",
+    "ink": "#3B1719",
+    "paper": "#E8D8BF",
+    "red": "#A12B2B",
+    "wine": "#741F25",
+    "green": "#4A6244",
+    "cream": "#FFF7E9"
+  },
+  "contrast_ratios": {
+    "ink_on_cream": 14.92,
+    "ink_on_paper": 11.35,
+    "cream_on_wine": 10.04,
+    "cream_on_red": 6.81,
+    "cream_on_green": 6.32,
+    "wine_on_paper": 7.64,
+    "red_on_paper": 5.18
+  },
+  "typography": {
+    "display": "Fraunces",
+    "body": "DM Sans",
+    "status": "proposed_not_original",
+    "font_sources": [
+      "https://fonts.google.com/specimen/Fraunces",
+      "https://fonts.google.com/specimen/DM+Sans"
+    ]
+  },
+  "menu": {
+    "verified": false,
+    "categories": [],
+    "items": [],
+    "source": null
+  },
+  "functionality": {
+    "priority_mvp": [
+      "public_menu_after_official_data",
+      "location",
+      "contact_to_authorized_channel"
+    ],
+    "needs_validation": [
+      "ordering",
+      "reservations",
+      "delivery",
+      "hours",
+      "specials",
+      "prices"
+    ]
+  },
+  "assets": {
+    "feed_screenshot": "assets/instagram-grid-reference.png",
+    "logo_low_resolution": "assets/logo-instagram-reference.jpg"
+  },
+  "pending": [
+    "official_vector_logo",
+    "complete_instagram_post_captions",
+    "official_menu_with_prices",
+    "confirm_hours",
+    "confirm_contact_channels",
+    "permission_to_use_photography",
+    "approval_of_creative_direction"
+  ]
+}

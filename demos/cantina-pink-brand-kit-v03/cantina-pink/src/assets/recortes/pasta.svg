@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <circle cx="200" cy="200" r="194" fill="#f7f1e6"/>
+  <circle cx="200" cy="200" r="194" fill="none" stroke="#dccfb8" stroke-width="3"/>
+  <circle cx="200" cy="200" r="168" fill="none" stroke="#e8dcc6" stroke-width="2"/>
+  <path d="M200 52c50-2 92 20 120 58 26 36 30 86 12 128-18 44-62 76-112 82-52 6-104-16-130-60-26-42-22-100 8-140 26-36 60-66 102-68z" fill="#c4873a"/>
+  <path d="M200 64c46-1 84 20 108 54 22 32 26 76 10 114-16 38-54 66-98 72-46 6-92-14-116-52-22-38-20-88 6-124 22-32 52-62 90-64z" fill="#e2b06a"/>
+  <g fill="#f0cc8a" opacity=".7">
+    <ellipse cx="120" cy="120" rx="18" ry="8" transform="rotate(-40 120 120)"/>
+    <ellipse cx="300" cy="150" rx="16" ry="7" transform="rotate(50 300 150)"/>
+    <ellipse cx="280" cy="300" rx="18" ry="7" transform="rotate(-35 280 300)"/>
+    <ellipse cx="110" cy="270" rx="15" ry="7" transform="rotate(40 110 270)"/>
+  </g>
+  <circle cx="202" cy="198" r="104" fill="#8f3a22"/>
+  <circle cx="202" cy="198" r="98" fill="#a8432a"/>
+  <g fill="#6b2a1c">
+    <path d="M160 170c6-8 20-6 22 4 2 10-8 16-17 13-7-3-9-11-5-17z"/>
+    <path d="M236 222c6-8 20-6 22 4 2 10-8 16-17 13-7-3-9-11-5-17z"/>
+    <path d="M212 140c5-6 16-5 18 3 2 8-6 13-13 11-6-2-8-9-5-14z"/>
+    <path d="M150 240c5-6 16-5 18 3 2 8-6 13-13 11-6-2-8-9-5-14z"/>
+  </g>
+  <g fill="#f0d394" stroke="#d1aa60" stroke-width="2">
+    <ellipse cx="190" cy="196" rx="15" ry="11" transform="rotate(20 190 196)"/>
+    <ellipse cx="222" cy="182" rx="15" ry="11" transform="rotate(-30 222 182)"/>
+    <ellipse cx="176" cy="226" rx="15" ry="11" transform="rotate(60 176 226)"/>
+    <ellipse cx="214" cy="244" rx="15" ry="11" transform="rotate(10 214 244)"/>
+    <ellipse cx="248" cy="196" rx="15" ry="11" transform="rotate(80 248 196)"/>
+    <ellipse cx="160" cy="196" rx="14" ry="10" transform="rotate(-50 160 196)"/>
+    <ellipse cx="200" cy="150" rx="14" ry="10" transform="rotate(5 200 150)"/>
+    <ellipse cx="242" cy="236" rx="13" ry="10" transform="rotate(-20 242 236)"/>
+  </g>
+  <g stroke="#c39a52" stroke-width="1.5" opacity=".8">
+    <path d="M182 192l16 8M214 180l16 4M170 222l12 10M206 242l16 4"/>
+  </g>
+  <g fill="#4a6244">
+    <circle cx="198" cy="212" r="3.5"/><circle cx="232" cy="208" r="3"/><circle cx="182" cy="176" r="3"/>
+    <circle cx="214" cy="164" r="3.5"/><circle cx="166" cy="244" r="3"/><circle cx="236" cy="256" r="3"/>
+    <circle cx="256" cy="176" r="3"/><circle cx="150" cy="214" r="3"/><circle cx="224" cy="226" r="2.5"/>
+  </g>
+</svg>
