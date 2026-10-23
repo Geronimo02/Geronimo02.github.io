@@ -16,7 +16,7 @@ const desc = splitPending(item.description);
     </p>
   </div>
   {(desc.text || desc.pending) && (
-    <p class="desc">{desc.text} {desc.pending && <Pending note={`Completar datos de "${item.name}" con la carta oficial.`} />}</p>
+    <p class="desc">{desc.text} {desc.pending && <Pending note={`${item.name}: falta ${desc.note || 'descripción'}`} />}</p>
   )}
   {(item.tags.length > 0 || !item.priceVerified) && (
     <p class="meta">

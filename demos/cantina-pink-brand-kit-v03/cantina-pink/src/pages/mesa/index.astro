@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import Logo from '../../components/Logo.astro';
+import MenuCategory from '../../components/MenuCategory.astro';
+import Pending from '../../components/Pending.astro';
+import { menu, dailySpecialItem, formatPrice, splitPending } from '../../lib/menu';
+import { business } from '../../lib/hours';
+
+const cats = menu.categories
+  .map((c) => ({ c, items: c.items.filter((i) => i.mesa) }))
+  .filter((x) => x.items.length);
+const special = dailySpecialItem();
+---
+<Base
+  title="Carta en la mesa"
+  description="La carta de Cantina Pink para mirar desde la mesa: pizzas, milanesas, pastas, empanadas, postres y bebidas."
+  lite
+>
+  <header class="m-top">
+    <div class="m-bar container">
+      <Logo size={48} eager />
+      <div>
+        <h1 class="m-title">La carta</h1>
+        <p class="m-sub">Elegí tranquilo y pedile a quien te atiende.</p>
+      </div>
+    </div>
+    <nav class="m-nav" aria-label="Categorías de la carta">
+      <ul class="m-chips container" data-allow-overflow>
+        {cats.map(({ c }) => <li><a href={`#cat-${c.id}`}>{c.name}</a></li>)}
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container m-body">
+    {special && (
+      <aside class="m-special placa on-dark" aria-label={menu.dailySpecial.label}>
+        <p class="sello">{menu.dailySpecial.label}</p>
+        <p class="m-special-name">{special.name}</p>
+        <p>{splitPending(special.description).text}</p>
+        <p class="m-special-price">
+          <span class="price-pill">{formatPrice(special.price)}</span>
+          {!menu.dailySpecial.verified && <Pending note={menu.dailySpecial.note} />}
+        </p>
+      </aside>
+    )}
+
+    {!menu.verified && (
+      <p class="m-warn"><Pending note="La carta y los precios son de ejemplo hasta cargar la carta oficial." /> Carta y precios de ejemplo, falta la carta oficial.</p>
+    )}
+
+    {cats.map(({ c, items }, i) => <MenuCategory category={c} items={items} index={i} />)}
+
+    <footer class="m-foot">
+      <div class="mantel mantel-band--thin" aria-hidden="true"></div>
+      <p class="m-foot-title">¿Te quedaste con ganas?</p>
+      <p>Pedí para retirar desde <a href="/carta">la carta online</a>, o seguinos en <a href={business.instagram.url} target="_blank" rel="noopener">@{business.instagram.handle}</a>.</p>
+      <p class="m-foot-small">Cantina Pink · {business.address.street}, {business.address.corner} · Tandil</p>
+    </footer>
+  </div>
+</Base>
+
+<style>
+  .m-top { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+  .m-bar { display: flex; align-items: center; gap: 14px; padding: 10px 0 8px; }
+  .m-bar :global(.logo) { width: 48px; height: 48px; flex: none; }
+  .m-title { font-family: var(--font-display); font-size: 1.625rem; line-height: 1; }
+  .m-sub { font-size: .875rem; }
+  .m-nav { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .m-nav::-webkit-scrollbar { display: none; }
+  .m-chips { list-style: none; display: flex; gap: 8px; padding: 4px 0 12px; width: max-content; min-width: min(100% - 2 * var(--gutter), var(--content-width)); }
+  .m-chips a {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: var(--radius-pill);
+    background: var(--cream); border: 1.5px solid var(--ink); font-weight: 700; font-size: .9375rem; text-decoration: none; white-space: nowrap;
+  }
+  .m-chips a:hover { background: var(--wine); color: var(--cream); border-color: var(--wine); }
+
+  .m-body { padding: 24px 0 48px; max-width: 760px; }
+  .m-special { border-radius: var(--radius-sm); padding: 22px 20px; display: grid; gap: 8px; justify-items: start; }
+  .m-special-name { font-family: var(--font-display); font-weight: 800; font-size: 1.75rem; line-height: 1.05; text-transform: uppercase; margin-top: 6px; }
+  .m-special-price { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 1.25rem; margin-top: 4px; }
+  .m-warn { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: .875rem; }
+
+  .m-body :global(.cat) { scroll-margin-top: 130px; }
+  .m-foot { margin-top: 56px; display: grid; gap: 10px; }
+  .m-foot .mantel { margin-bottom: 16px; border-radius: var(--radius-sm); }
+  .m-foot-title { font-family: var(--font-display); font-weight: 800; font-size: 1.75rem; }
+  .m-foot-small { font-size: .875rem; margin-top: 8px; }
+</style>

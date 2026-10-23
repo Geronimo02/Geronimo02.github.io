@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+---
+<Base title="QR para las mesas" noindex lite>
+  <div class="sheet">
+    <p class="help no-print">Tarjeta de mesa lista para imprimir (A6, 105 × 148 mm). Para imprenta usá el <a href="/qr/mesa-qr.svg" download>QR en SVG</a> o el <a href="/qr/mesa-qr.png" download>PNG de 3000 px</a>. <button type="button" onclick="print()">Imprimir</button></p>
+    <article class="card">
+      <div class="band mantel" aria-hidden="true"></div>
+      <Logo size={88} eager />
+      <h1>La carta, acá.</h1>
+      <img src="/qr/mesa-qr.svg" width="600" height="600" alt="Código QR que abre la carta de Cantina Pink" class="qr" />
+      <p class="scan">Escaneá con la cámara del celu</p>
+      <p class="foot">Pedile a quien te atiende · @cantina_pink</p>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .sheet { min-height: 100dvh; display: grid; place-items: center; gap: 24px; padding: 24px; background: var(--paper); }
+  .help { max-width: 52ch; text-align: center; font-size: .9375rem; }
+  .help button { font: inherit; font-weight: 700; margin-left: 6px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--ink); background: var(--cream); cursor: pointer; }
+  .card {
+    width: 105mm; height: 148mm; background: var(--cream); border-radius: 4mm; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3mm; padding: 0 8mm 7mm;
+    box-shadow: 0 2px 0 rgba(59, 23, 25, .2);
+  }
+  .band { --cell: 4mm; width: calc(100% + 16mm); height: 12mm; flex: none; margin-bottom: 2mm; }
+  .card :global(.logo) { width: 22mm; height: 22mm; }
+  h1 { font-family: var(--font-display); font-weight: 800; font-size: 9mm; line-height: 1; color: var(--wine); }
+  .qr { width: 60mm; height: 60mm; }
+  .scan { font-weight: 700; font-size: 4mm; }
+  .foot { font-size: 3.2mm; margin-top: auto; }
+  @media screen and (max-width: 480px) { .sheet { padding: 16px; } .card { zoom: .82; } }
+  @media print {
+    @page { size: A6; margin: 0; }
+    .no-print { display: none; }
+    .sheet { padding: 0; min-height: 0; background: none; }
+    .card { box-shadow: none; border-radius: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>

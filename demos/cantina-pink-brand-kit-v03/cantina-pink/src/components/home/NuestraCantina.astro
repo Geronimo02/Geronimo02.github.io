@@ -1,0 +1,78 @@
+---
+import Pending from '../Pending.astro';
+import Icon from '../Icon.astro';
+import { whatsappUrl, telUrl } from '../../lib/contact';
+import { business } from '../../lib/hours';
+
+const wa = whatsappUrl('Hola Cantina Pink! Somos un grupo y queríamos consultar por una mesa.');
+const fotos = [
+  { label: 'La esquina', brief: 'exterior y cartel en horario de atención, 3:2' },
+  { label: 'La mesa llena', brief: 'mesa con platos insignia y gente compartiendo (con permiso), 4:5' },
+  { label: 'El salón', brief: 'detalle del local y los manteles, 4:5' },
+];
+---
+<section class="nc" aria-labelledby="nc-title">
+  <div class="mantel mantel-band--thin" data-tender aria-hidden="true"></div>
+  <div class="container nc-grid">
+    <div class="story">
+      <p class="kicker">Nuestra cantina</p>
+      <h2 id="nc-title" class="display-l">La buena comida se comparte.</h2>
+      <p class="lead">Abrimos en {business.foundedYear} en la esquina de San Martín e Yrigoyen, para juntarse a almorzar o cenar sin mirar el reloj.</p>
+      <p>Por eso las porciones vienen como vienen y las pizzas se piden para el centro. Si sobra, te lo llevás. Si no sobra, también está bien.</p>
+    </div>
+
+    <ul class="fotos" aria-label="Fotos del local (pendientes)">
+      {fotos.map((f, i) => (
+        <li class:list={['foto', `foto-${i + 1}`]}>
+          <span class="foto-label">{f.label}</span>
+          <span class="foto-note"><Pending note={`Foto original: ${f.brief}`} /></span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="container">
+    <aside class="grupos placa on-dark" aria-labelledby="grupos-title">
+      <div>
+        <h2 id="grupos-title" class="display-m">¿Venís con un grupo?</h2>
+        <p>Consultanos y organizamos la mesa. Cumpleaños, despedidas, la previa de algo o el después de algo.</p>
+      </div>
+      <div class="grupos-cta">
+        {wa ? (
+          <a class="btn btn--cream" href={wa} target="_blank" rel="noopener"><Icon name="whatsapp" /> Consultar por WhatsApp</a>
+        ) : (
+          <a class="btn btn--cream" href={telUrl()}><Icon name="telefono" /> Llamanos al {business.phone.display}</a>
+        )}
+        {!wa && <Pending note="Cuando esté el número de WhatsApp, este botón pasa a abrir WhatsApp con el mensaje armado." />}
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .nc { padding: 0 0 80px; }
+  .nc-grid { display: grid; gap: 40px; padding: 72px 0 56px; }
+  .story { display: grid; gap: 18px; align-content: start; }
+  .story p:not(.kicker):not(.lead) { max-width: 46ch; }
+
+  .fotos { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .foto {
+    position: relative; border-radius: var(--radius-sm); background: var(--paper); border: 1px solid var(--line);
+    display: flex; flex-direction: column; justify-content: space-between; padding: 14px; min-height: 180px;
+  }
+  .foto-1 { grid-column: 1 / -1; aspect-ratio: 3 / 2; min-height: 0; }
+  .foto-2, .foto-3 { aspect-ratio: 4 / 5; min-height: 0; }
+  .foto-label { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; color: var(--wine); }
+
+  @media (min-width: 960px) {
+    .nc-grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; }
+    .fotos { grid-template-columns: 1.2fr 1fr; grid-template-rows: auto auto; }
+    .foto-1 { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: 4 / 5; }
+    .foto-2, .foto-3 { aspect-ratio: 4 / 3; }
+  }
+
+  .grupos { border-radius: var(--radius-sm); padding: 32px 24px; display: grid; gap: 24px; align-items: center; }
+  .grupos p { margin-top: 8px; max-width: 48ch; }
+  .grupos-cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  @media (min-width: 960px) { .grupos { grid-template-columns: 1fr auto; padding: 40px 48px; } }
+</style>

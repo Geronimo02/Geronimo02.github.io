@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import MenuCategory from '../../components/MenuCategory.astro';
+import Pending from '../../components/Pending.astro';
+import { menu } from '../../lib/menu';
+
+const cats = menu.categories.map((c) => ({ c, items: c.items }));
+---
+<Base title="La carta" description="Carta de Cantina Pink en Tandil: pizzas, milanesas XL, pastas, empanadas, picadas, postres y bebidas. Pedí online y retirá en San Martín 501.">
+  <section class="container carta-head">
+    <p class="kicker">La carta</p>
+    <h1 class="display-xl">Mirá la carta. Después hablamos de compartir.</h1>
+    {!menu.verified && <p class="warn"><Pending note="Carta y precios de ejemplo hasta cargar la carta oficial." /> Carta y precios de ejemplo.</p>}
+    <nav aria-label="Categorías">
+      <ul class="chips">
+        {cats.map(({ c }) => <li><a href={`#cat-${c.id}`}>{c.name}</a></li>)}
+      </ul>
+    </nav>
+  </section>
+
+  <div class="container carta-body">
+    <div class="list">
+      {cats.map(({ c, items }, i) => <MenuCategory category={c} items={items} index={i} />)}
+    </div>
+    <aside id="pedido" class="pedido-box placa on-dark">
+      <p class="kicker">Tu pedido</p>
+      <p class="display-m">Pedidos online en la próxima fase.</p>
+      <p>Acá va el carrito con retiro en el local y pago con Mercado Pago.</p>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .carta-head { padding: 48px 0 24px; display: grid; gap: 18px; }
+  .carta-head h1 { max-width: 14ch; }
+  .warn { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: .875rem; }
+  .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: var(--radius-pill); border: 1.5px solid var(--ink); font-weight: 700; text-decoration: none; }
+  .chips a:hover { background: var(--wine); color: var(--cream); border-color: var(--wine); }
+  .carta-body { display: grid; gap: 40px; padding-bottom: 96px; }
+  .pedido-box { border-radius: var(--radius-sm); padding: 24px; display: grid; gap: 10px; align-self: start; }
+  @media (min-width: 960px) {
+    .carta-body { grid-template-columns: 1fr 360px; gap: 56px; }
+    .pedido-box { position: sticky; top: 24px; margin-top: 40px; }
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import Recorte from '../Recorte.astro';
+import Pending from '../Pending.astro';
+import { findItem, formatPrice, type Recorte as R } from '../../lib/menu';
+
+interface Placa { itemId: string; title: string; line: string; recorte?: R; tag?: string }
+const placas: Placa[] = [
+  { itemId: 'pasta-libre', title: 'Pasta libre', line: 'Hasta que no puedas más. El plato vacío vuelve lleno.', recorte: 'pasta', tag: 'solo en el local' },
+  { itemId: 'milanesa-xl', title: 'Milanesa XL', line: 'Cubre el plato y un poco más. Para compartir, en teoría.', recorte: 'milanesa' },
+  { itemId: 'pizza-libre', title: 'Pizza libre', line: 'Van saliendo pizzas hasta que alguien diga basta.', recorte: 'pizza', tag: 'solo en el local' },
+  { itemId: 'noquis-salsa-rosa', title: 'El 29, ñoquis', line: 'Billete abajo del plato opcional. Los ñoquis, no.' },
+];
+const data = placas.map((p) => ({ ...p, item: findItem(p.itemId)! }));
+---
+<section class="esp" aria-labelledby="esp-title">
+  <div class="container">
+    <header class="esp-head">
+      <p class="kicker">Lo de la casa</p>
+      <h2 id="esp-title" class="display-l">Lo difícil no es elegir. Es dejar algo en el plato.</h2>
+    </header>
+
+    <ul class="grid">
+      {data.map((p, i) => (
+        <li class:list={['card placa on-dark', `card-${i + 1}`]} data-reveal style={`--reveal-delay:${i * 80}ms`}>
+          <a href={`/carta#plato-${p.itemId}`} class="card-link">
+            <h3 class="card-title">{p.title}</h3>
+            <p class="card-line">{p.line}</p>
+            <p class="card-price">
+              <span class="price-pill">
+                {formatPrice(p.item.price)}
+                {p.item.price !== null && p.item.unit && <small>{p.item.unit}</small>}
+              </span>
+              {!p.item.priceVerified && <Pending label={p.item.price === null ? 'COMPLETAR' : 'VERIFICAR'} note={`Precio de ${p.item.name} sin confirmar.`} />}
+            </p>
+            {p.tag && <span class="tag card-tag">{p.tag}</span>}
+          </a>
+          {p.recorte
+            ? <Recorte name={p.recorte} alt="" class="card-img" sizes="(min-width: 960px) 300px, 50vw" />
+            : <span class="card-29" aria-hidden="true">29</span>}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .esp { padding: 72px 0; }
+  .esp-head { display: grid; gap: 12px; margin-bottom: 40px; max-width: 18ch; }
+  .esp-head h2 { max-width: 16ch; }
+  @media (min-width: 960px) { .esp-head { max-width: none; } .esp-head h2 { max-width: 20ch; } }
+
+  .grid { list-style: none; display: grid; gap: 16px; }
+  .card { position: relative; border-radius: var(--radius-sm); overflow: hidden; min-height: 280px; isolation: isolate; }
+  .card-link { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; height: 100%; padding: 28px 24px; text-decoration: none; }
+  .card-link:hover .card-title { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .1em; }
+  .card-title { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(2.25rem, 6vw, 3.5rem); line-height: .95; letter-spacing: -.01em; max-width: 8ch; }
+  .card-line { max-width: min(24ch, 60%); font-size: 1rem; }
+  .card-price { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: auto; font-size: 1.25rem; }
+  .card-tag { border-color: rgba(255, 247, 233, .55); color: var(--cream); }
+  .card :global(.card-img) { position: absolute; z-index: 1; width: 56%; right: -16%; bottom: -24%; transform: rotate(-12deg); transition: transform var(--motion-long) var(--ease-out); pointer-events: none; }
+  .card:hover :global(.card-img) { transform: rotate(-4deg) scale(1.04); }
+  .card-29 {
+    position: absolute; z-index: 1; right: -4%; bottom: -22%; pointer-events: none;
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(11rem, 34vw, 18rem); line-height: 1;
+    color: transparent; -webkit-text-stroke: 3px rgba(255, 247, 233, .45);
+  }
+
+  @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 960px) {
+    .grid { grid-template-columns: repeat(12, 1fr); grid-auto-rows: minmax(260px, auto); }
+    .card-1 { grid-column: 1 / span 7; grid-row: span 2; }
+    .card-1 .card-title { font-size: clamp(3.5rem, 6vw, 5.5rem); }
+    .card-1 :global(.card-img) { width: 58%; right: -6%; bottom: -10%; }
+    .card-2 { grid-column: 8 / span 5; }
+    .card-3 { grid-column: 8 / span 5; }
+    .card-4 { grid-column: 1 / -1; min-height: 220px; }
+    .card-4 .card-29 { right: 4%; bottom: -34%; font-size: 20rem; }
+    .card-2 :global(.card-img), .card-3 :global(.card-img) { width: 50%; right: -10%; bottom: -22%; }
+  }
+  @media (prefers-reduced-motion: reduce) { .card :global(.card-img) { transition: none; } }
+</style>

@@ -43,10 +43,11 @@ export function formatPrice(value: number | null): string {
   return '$' + Math.round(value).toLocaleString('es-AR');
 }
 
-/** Separa el texto visible del marcador [COMPLETAR] para poder renderizarlo como placeholder. */
-export function splitPending(text: string): { text: string; pending: boolean } {
-  const pending = text.includes(PENDING);
-  return { text: text.replace(PENDING, '').replace(/\s{2,}/g, ' ').trim(), pending };
+/** En las descripciones, lo que sigue a [COMPLETAR] es una nota interna: no se muestra como texto. */
+export function splitPending(text: string): { text: string; pending: boolean; note: string } {
+  const i = text.indexOf(PENDING);
+  if (i === -1) return { text: text.trim(), pending: false, note: '' };
+  return { text: text.slice(0, i).trim(), pending: true, note: text.slice(i + PENDING.length).trim() };
 }
 
 export const dailySpecialItem = (): MenuItem | undefined =>

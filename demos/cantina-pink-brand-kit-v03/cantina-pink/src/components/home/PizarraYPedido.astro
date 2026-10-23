@@ -1,0 +1,68 @@
+---
+import Recorte from '../Recorte.astro';
+import Pending from '../Pending.astro';
+import Icon from '../Icon.astro';
+import { menu, dailySpecialItem, formatPrice, isOrderable, splitPending } from '../../lib/menu';
+import { business } from '../../lib/hours';
+
+const special = dailySpecialItem();
+const pasos = [
+  { t: 'Elegí de la carta', d: 'Sumá lo que quieras al pedido. Las cosas "libres" son para comer acá, eso no viaja.' },
+  { t: 'Pagá con Mercado Pago', d: 'Tarjeta, débito o dinero en cuenta. Te confirmamos el pedido apenas entra el pago.' },
+  { t: 'Pasá a buscarlo', d: `Elegís día y horario de retiro. Te esperamos en ${business.address.street}, ${business.address.corner}.` },
+];
+---
+<section class="pp" aria-labelledby="pp-title">
+  <div class="container pp-grid">
+    {special && (
+      <article class="pizarra placa on-dark" data-reveal aria-labelledby="pizarra-title">
+        <p class="sello">{menu.dailySpecial.label}</p>
+        <h2 id="pizarra-title" class="pizarra-title">{special.name}</h2>
+        <p class="pizarra-desc">{splitPending(special.description).text}</p>
+        <p class="pizarra-price">
+          <span class="price-pill">{formatPrice(special.price)}</span>
+          {!menu.dailySpecial.verified && <Pending note={menu.dailySpecial.note} />}
+        </p>
+        {isOrderable(special) && (
+          <a class="btn btn--cream" href={`/carta#plato-${special.id}`}>Pedilo para retirar <Icon name="flecha" size={20} /></a>
+        )}
+        <Recorte name={special.image ?? 'pasta'} alt="" class="pizarra-img" />
+      </article>
+    )}
+
+    <div class="pedido">
+      <p class="kicker">Para llevar</p>
+      <h2 id="pp-title" class="display-l">Pedí, pagá y pasá a buscarlo.</h2>
+      <ol class="steps">
+        {pasos.map((p, i) => (
+          <li data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            <span class="num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div><h3>{p.t}</h3><p>{p.d}</p></div>
+          </li>
+        ))}
+      </ol>
+      <a class="btn btn--red" href="/carta#pedido"><Icon name="bolsa" /> Armar mi pedido</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pp { padding: 72px 0; }
+  .pp-grid { display: grid; gap: 56px; align-items: start; }
+  @media (min-width: 960px) { .pp-grid { grid-template-columns: 5fr 7fr; gap: 64px; } }
+
+  .pizarra { position: relative; overflow: hidden; border-radius: var(--radius-sm); padding: 32px 24px 40px; display: grid; gap: 14px; justify-items: start; min-height: 420px; isolation: isolate; }
+  .pizarra > :not(:global(.pizarra-img)) { position: relative; z-index: 2; }
+  .pizarra-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1; text-transform: uppercase; max-width: 10ch; margin-top: 8px; }
+  .pizarra-desc { max-width: 26ch; }
+  .pizarra-price { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 1.375rem; }
+  .pizarra :global(.pizarra-img) { position: absolute; z-index: 1; width: 64%; right: -18%; bottom: -16%; transform: rotate(14deg); }
+
+  .pedido { display: grid; gap: 24px; justify-items: start; }
+  .steps { list-style: none; display: grid; width: 100%; }
+  .steps li { display: grid; grid-template-columns: auto 1fr; gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
+  .steps li:last-child { border-bottom: 1px solid var(--line); }
+  .num { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.75rem, 6vw, 4rem); line-height: .85; color: var(--red); min-width: 2ch; }
+  .steps h3 { font-family: var(--font-display); font-size: 1.375rem; line-height: 1.2; margin-bottom: 4px; }
+  .steps p { max-width: 46ch; }
+</style>

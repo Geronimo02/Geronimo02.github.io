@@ -1,0 +1,37 @@
+---
+// Solo ofertas confirmadas por la fuente turística (BRAND.md §1) y la dirección.
+const hechos = ['Pizza libre', 'Milanesas XL para compartir', 'Pastas', 'Empanadas', 'Picadas tandilenses', 'San Martín 501', 'Desde 2019'];
+---
+<div class="cinta placa on-dark">
+  <p class="visually-hidden">Pizza libre, milanesas XL para compartir, pastas, empanadas, picadas tandilenses.</p>
+  <div class="track" aria-hidden="true">
+    {[0, 1].map(() => (
+      <ul>
+        {hechos.map((h) => <li>{h}</li>)}
+      </ul>
+    ))}
+  </div>
+</div>
+
+<style>
+  .cinta { overflow: hidden; padding: 14px 0; border-block: 2px solid var(--ink); }
+  .track { display: flex; width: max-content; animation: correr 38s linear infinite; }
+  .cinta:hover .track { animation-play-state: paused; }
+  ul { list-style: none; display: flex; flex: none; }
+  li {
+    display: flex; align-items: center; white-space: nowrap;
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(1.125rem, 2.4vw, 1.5rem); text-transform: uppercase; letter-spacing: .02em;
+  }
+  li::after { content: ''; width: 12px; height: 12px; margin-inline: 28px; background: var(--cream); transform: rotate(45deg); flex: none; }
+  @keyframes correr { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .track { animation: none; width: 100%; padding-inline: var(--gutter); }
+    ul + ul { display: none; }
+    ul { flex: 1 1 auto; flex-wrap: wrap; justify-content: center; row-gap: 8px; }
+    li { font-size: clamp(1rem, 4.4vw, 1.5rem); }
+    li::after { margin-inline: 14px; width: 9px; height: 9px; }
+    li:last-child::after { display: none; }
+    .track { min-width: 0; }
+    ul { min-width: 0; max-width: 100%; }
+  }
+</style>

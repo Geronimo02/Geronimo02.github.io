@@ -1,0 +1,29 @@
+---
+import MenuItemRow from './MenuItemRow.astro';
+import type { MenuCategory, MenuItem } from '../lib/menu';
+
+interface Props { category: MenuCategory; items: MenuItem[]; index: number }
+const { category, items, index } = Astro.props;
+---
+<section class="cat" id={`cat-${category.id}`} aria-labelledby={`cat-${category.id}-title`}>
+  <header class="cat-head">
+    <span class="cat-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+    <div>
+      <h2 id={`cat-${category.id}-title`} class="cat-title">{category.name}</h2>
+      <p class="cat-kicker">{category.kicker}</p>
+    </div>
+  </header>
+  <div class="cat-items">
+    {items.map((item) => (
+      <MenuItemRow item={item} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .cat { scroll-margin-top: 72px; padding: 40px 0 8px; }
+  .cat-head { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: end; padding-bottom: 14px; border-bottom: 3px solid var(--ink); }
+  .cat-num { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 9vw, 4.5rem); line-height: .8; color: var(--red); }
+  .cat-title { font-family: var(--font-display); font-size: clamp(1.875rem, 5vw, 2.5rem); line-height: 1; }
+  .cat-kicker { margin-top: 4px; font-size: .9375rem; }
+</style>

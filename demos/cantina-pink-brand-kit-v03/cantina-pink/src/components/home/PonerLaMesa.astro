@@ -1,0 +1,139 @@
+---
+import Recorte from '../Recorte.astro';
+import type { Recorte as R } from '../../lib/menu';
+
+// Posición final sobre la mesa (en % de un cuadrado) y desde dónde llega cada plato.
+// from: desplazamiento inicial en vw/vh, giro y escala. win: tramo del scroll (0–1) en el que llega.
+interface Plato { name: R; x: number; y: number; w: number; rot: number; from: [number, number, number, number]; win: [number, number]; z: number }
+const platos: Plato[] = [
+  { name: 'flan',     x: 2,  y: 4,  w: 28, rot: 0,   from: [-60, -70, -40, 1.2], win: [0.10, 0.34], z: 1 },
+  { name: 'empanada', x: 62, y: 0,  w: 36, rot: 8,   from: [70, -80, 35, 1.3],   win: [0.20, 0.44], z: 1 },
+  { name: 'pasta',    x: 0,  y: 52, w: 40, rot: -6,  from: [-90, 30, -30, 1.3],  win: [0.30, 0.58], z: 2 },
+  { name: 'milanesa', x: 58, y: 54, w: 42, rot: 10,  from: [90, 40, 45, 1.3],    win: [0.40, 0.68], z: 2 },
+  { name: 'pizza',    x: 26, y: 22, w: 48, rot: 0,   from: [0, -120, 90, 1.5],   win: [0.54, 0.84], z: 3 },
+];
+const pasos = ['Se tiende el mantel.', 'Llegan las empanadas, la pasta y la milanesa.', 'Y la pizza al medio, como corresponde.'];
+---
+<section class="pm" data-pm aria-labelledby="pm-title">
+  <div class="pm-sticky">
+    <div class="pm-table mantel" data-pm-table aria-hidden="true"></div>
+
+    <div class="pm-copy">
+      <p class="kicker">Así es la cosa</p>
+      <h2 id="pm-title" class="display-m">Una mesa chica para semejante hambre.</h2>
+      <ol class="pm-steps">
+        {pasos.map((p, i) => <li data-pm-step={i}>{p}</li>)}
+      </ol>
+    </div>
+
+    <div class="pm-plates" aria-hidden="true">
+      {platos.map((p) => (
+        <div
+          class="pm-plate"
+          data-pm-plate
+          data-from={p.from.join(',')}
+          data-win={p.win.join(',')}
+          data-rot={p.rot}
+          style={`left:${p.x}%;top:${p.y}%;width:${p.w}%;z-index:${p.z};transform:rotate(${p.rot}deg)`}
+        >
+          <Recorte name={p.name} alt="" sizes="(min-width: 960px) 360px, 45vw" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+  function setup() {
+    const section = document.querySelector<HTMLElement>('[data-pm]');
+    if (!section || section.dataset.bound) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    section.dataset.bound = '1';
+    section.classList.add('is-animated');
+
+    const table = section.querySelector<HTMLElement>('[data-pm-table]')!;
+    const steps = [...section.querySelectorAll<HTMLElement>('[data-pm-step]')];
+    const plates = [...section.querySelectorAll<HTMLElement>('[data-pm-plate]')].map((el) => {
+      const [dx, dy, r, s] = el.dataset.from!.split(',').map(Number);
+      const [a, b] = el.dataset.win!.split(',').map(Number);
+      return { el, dx, dy, r, s, a, b, rot: Number(el.dataset.rot) };
+    });
+
+    let target = 0, current = 0, raf = 0, visible = false;
+    const amp = () => (innerWidth < 640 ? 0.4 : 1);
+
+    const measure = () => {
+      const rect = section.getBoundingClientRect();
+      const total = section.offsetHeight - innerHeight;
+      target = total > 0 ? clamp(-rect.top / total) : 1;
+    };
+
+    const render = (p: number) => {
+      const k = amp();
+      table.style.transform = `scaleX(${easeOut(clamp(p / 0.14))})`;
+      for (const pl of plates) {
+        const t = easeOut(clamp((p - pl.a) / (pl.b - pl.a)));
+        const inv = 1 - t;
+        pl.el.style.opacity = String(clamp(t * 2.5));
+        pl.el.style.transform =
+          `translate(${pl.dx * inv * k}vw, ${pl.dy * inv * k}vh) rotate(${pl.rot + pl.r * inv}deg) scale(${1 + (pl.s - 1) * inv})`;
+      }
+      const stage = p < 0.18 ? 0 : p < 0.56 ? 1 : 2;
+      steps.forEach((s, i) => s.classList.toggle('is-active', i === stage));
+    };
+
+    const tick = () => {
+      current += (target - current) * 0.12;
+      if (Math.abs(target - current) < 0.0005) current = target;
+      render(current);
+      raf = visible && current !== target ? requestAnimationFrame(tick) : 0;
+    };
+    const kick = () => { measure(); if (!raf && visible) raf = requestAnimationFrame(tick); };
+
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; kick(); }, { rootMargin: '20% 0px' }).observe(section);
+    addEventListener('scroll', kick, { passive: true });
+    addEventListener('resize', kick);
+    measure();
+    current = target;
+    render(current);
+  }
+  document.addEventListener('astro:page-load', setup);
+</script>
+
+<style>
+  .pm { position: relative; }
+  .pm-sticky { position: relative; overflow: hidden; min-height: 100svh; display: grid; }
+  .pm-table { position: absolute; inset: 0; transform-origin: left center; }
+  .pm-copy {
+    position: relative; z-index: 5; align-self: start;
+    margin: 20px var(--gutter) 0; padding: 20px 22px; max-width: 30rem;
+    background: var(--cream); border-radius: var(--radius-sm); border: 2px solid var(--ink);
+    display: grid; gap: 10px;
+  }
+  .pm-steps { list-style: none; display: grid; gap: 4px; counter-reset: paso; }
+  .pm-steps li { counter-increment: paso; display: flex; gap: 10px; font-size: .9375rem; color: var(--ink); }
+  .pm-steps li::before { content: counter(paso, decimal-leading-zero); font-family: var(--font-display); font-weight: 800; color: var(--red); min-width: 2ch; }
+
+  .pm-plates {
+    position: absolute; z-index: 2; aspect-ratio: 1;
+    width: min(88vw, 56svh); left: 50%; bottom: 4svh; translate: -50% 0;
+  }
+  .pm-plate { position: absolute; will-change: transform, opacity; }
+  .pm-plate :global(img) { width: 100%; height: auto; filter: drop-shadow(0 14px 0 rgba(59, 23, 25, .14)); }
+
+  /* Con JS y movimiento permitido: sección alta con escena fija mientras se recorre. */
+  .pm.is-animated { height: 210vh; }
+  .pm.is-animated .pm-sticky { position: sticky; top: 0; height: 100svh; min-height: 0; }
+  .pm.is-animated .pm-steps li { opacity: .7; transition: opacity var(--motion-short); }
+  .pm.is-animated .pm-steps li.is-active { opacity: 1; font-weight: 700; }
+
+  @media (min-width: 960px) {
+    .pm.is-animated { height: 250vh; }
+    .pm-sticky { align-items: center; }
+    .pm-copy { align-self: center; margin-left: max(var(--gutter), calc((100vw - var(--content-width)) / 2)); padding: 32px; }
+    .pm-plates { width: min(54vw, 84svh); left: auto; right: 4vw; bottom: auto; top: 50%; translate: 0 -50%; }
+  }
+</style>

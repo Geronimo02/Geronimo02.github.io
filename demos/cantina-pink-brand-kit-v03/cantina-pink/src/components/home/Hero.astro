@@ -1,0 +1,68 @@
+---
+import Recorte from '../Recorte.astro';
+import Pending from '../Pending.astro';
+import Icon from '../Icon.astro';
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-grid">
+    <div class="copy">
+      <p class="kicker">San Martín 501 · Tandil · desde 2019</p>
+      <h1 id="hero-title" class="display-xl">Hay lugar para todos en la mesa.</h1>
+      <p class="lead">Pizzas para compartir, milanesas XL, pastas y esos platos que se disfrutan sin apuro. Vení a comer o pedí para retirar.</p>
+      <div class="ctas">
+        <a class="btn btn--wine" href="/carta">Ver la carta <Icon name="flecha" size={20} /></a>
+        <a class="btn btn--outline" href="/ubicacion">Cómo llegar</a>
+      </div>
+      <p class="status"><Icon name="reloj" size={18} /> <span data-open-status>12 a 15 h y 20 a 00 h</span></p>
+    </div>
+
+    <div class="visual">
+      <div class="table mantel" aria-hidden="true"></div>
+      <Recorte name="pasta" alt="Pasta servida adentro de un pan de campo, vista desde arriba" class="main" priority sizes="(min-width: 960px) 520px, 80vw" />
+      <Recorte name="pizza" alt="" class="side side-pizza" sizes="(min-width: 960px) 260px, 40vw" />
+      <Recorte name="empanada" alt="" class="side side-emp" sizes="(min-width: 960px) 220px, 34vw" />
+      <ul class="labels" aria-label="Algunos platos de la casa">
+        <li data-reveal style="--reveal-delay:120ms">Pasta en pan</li>
+        <li data-reveal style="--reveal-delay:240ms">Pizza libre</li>
+        <li data-reveal style="--reveal-delay:360ms">Empanadas</li>
+      </ul>
+      <p class="ph-note"><Pending note="Foto original del hero: mesa con platos insignia, horizontal 16:9 o 4:5 para celular." /> Ilustración provisoria</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: 32px 0 56px; overflow: hidden; }
+  .hero-grid { display: grid; gap: 40px; align-items: center; }
+  .copy { display: grid; gap: 20px; justify-items: start; }
+  .copy h1 { max-width: 11ch; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-size: .9375rem; font-weight: 700; }
+
+  .visual { position: relative; aspect-ratio: 1; width: 100%; margin-inline: auto; max-width: 560px; }
+  .table { position: absolute; inset: 6% 0 0 0; border-radius: var(--radius-sm); }
+  .visual :global(.main) {
+    position: absolute; left: 14%; top: 14%; width: 72%; z-index: 2;
+    filter: drop-shadow(0 18px 0 rgba(59, 23, 25, .12));
+  }
+  .visual :global(.side) { position: absolute; z-index: 1; filter: drop-shadow(0 14px 0 rgba(59, 23, 25, .12)); }
+  .visual :global(.side-pizza) { width: 40%; right: -12%; top: -2%; }
+  .visual :global(.side-emp) { width: 36%; left: -10%; bottom: -4%; transform: rotate(-8deg); }
+
+  .labels { list-style: none; position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+  .labels li {
+    position: absolute; background: var(--cream); color: var(--ink);
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(.9375rem, 1.6vw, 1.125rem);
+    padding: 6px 14px; border-radius: var(--radius-pill); border: 2px solid var(--ink); white-space: nowrap;
+  }
+  .labels li:nth-child(1) { left: 4%; top: 30%; }
+  .labels li:nth-child(2) { right: 2%; top: 38%; }
+  .labels li:nth-child(3) { right: 12%; bottom: 10%; }
+  .ph-note { position: absolute; left: 0; bottom: -40px; display: flex; gap: 8px; align-items: center; font-size: .8125rem; }
+
+  @media (min-width: 960px) {
+    .hero { padding: 48px 0 104px; }
+    .hero-grid { grid-template-columns: 5fr 7fr; gap: 48px; }
+    .visual { max-width: none; width: 108%; }
+  }
+</style>

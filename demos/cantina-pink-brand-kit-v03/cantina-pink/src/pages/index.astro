@@ -1,15 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
+import Hero from '../components/home/Hero.astro';
+import Cinta from '../components/home/Cinta.astro';
+import Especialidades from '../components/home/Especialidades.astro';
+import PonerLaMesa from '../components/home/PonerLaMesa.astro';
+import PizarraYPedido from '../components/home/PizarraYPedido.astro';
+import NuestraCantina from '../components/home/NuestraCantina.astro';
 ---
 <Base>
-  <section class="container intro">
-    <p class="kicker">San Martín 501 · Tandil</p>
-    <h1 class="display-xl">Hay lugar para todos en la mesa.</h1>
-    <p class="lead">Inicio en construcción (fase 2). Mientras tanto, mirá el sistema visual.</p>
-    <a class="btn btn--wine" href="/sistema">Ver sistema</a>
-  </section>
+  <Hero />
+  <div class="mantel mantel-band" data-tender aria-hidden="true"></div>
+  <Cinta />
+  <Especialidades />
+  <PonerLaMesa />
+  <PizarraYPedido />
+  <NuestraCantina />
 </Base>
-
-<style>
-  .intro { padding: 64px 0 96px; display: grid; gap: 20px; justify-items: start; }
-</style>

@@ -17,7 +17,8 @@ interface Props {
   ogImage?: string;
   noindex?: boolean;
   chrome?: boolean;
-  transitions?: boolean;
+  /** Página liviana (QR de mesa): sin header/footer, sin transiciones y sin JS del sitio. */
+  lite?: boolean;
 }
 
 const {
@@ -25,8 +26,8 @@ const {
   description = 'Cantina Pink, en San Martín 501 esquina Yrigoyen, Tandil. Pizzas para compartir, milanesas XL, pastas y picadas. Mirá la carta y pedí para retirar.',
   ogImage = '/og.png',
   noindex = false,
-  chrome = true,
-  transitions = true,
+  lite = false,
+  chrome = !lite,
 } = Astro.props;
 
 const fullTitle = title ? `${title} · Cantina Pink, Tandil` : 'Cantina Pink · Pizzas, milanesas y pastas en Tandil';
@@ -85,13 +86,15 @@ const schema = {
     <meta property="og:image:alt" content="Cantina Pink, Tandil: mantel a cuadros y platos para compartir" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <script is:inline>
-      document.documentElement.classList.add('js');
-      document.addEventListener('astro:after-swap', () => document.documentElement.classList.add('js'));
-    </script>
+    {!lite && (
+      <script is:inline>
+        document.documentElement.classList.add('js');
+        document.addEventListener('astro:after-swap', () => document.documentElement.classList.add('js'));
+      </script>
+    )}
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <slot name="head" />
-    {transitions && <ClientRouter fallback="swap" />}
+    {!lite && <ClientRouter fallback="swap" />}
   </head>
   <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -100,8 +103,6 @@ const schema = {
       <slot />
     </main>
     {chrome && <Footer />}
-    <script>
-      import '../scripts/site.ts';
-    </script>
+    {!lite && <script src="../scripts/site.ts"></script>}
   </body>
 </html>

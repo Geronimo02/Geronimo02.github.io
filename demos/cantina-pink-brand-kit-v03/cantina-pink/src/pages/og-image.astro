@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import Recorte from '../components/Recorte.astro';
+---
+<Base title="OG" noindex lite>
+  <div class="og">
+    <div class="left placa">
+      <Logo size={120} eager />
+      <p class="title">Hay lugar para todos en la mesa.</p>
+      <p class="sub">San Martín 501 · Tandil</p>
+    </div>
+    <div class="right mantel">
+      <Recorte name="pizza" alt="" priority class="pz" />
+      <Recorte name="pasta" alt="" priority class="pa" />
+      <Recorte name="milanesa" alt="" priority class="mi" />
+    </div>
+  </div>
+</Base>
+
+<style>
+  :global(.skip-link) { display: none; }
+  .og { width: 1200px; height: 630px; display: grid; grid-template-columns: 560px 640px; overflow: hidden; }
+  .left { padding: 56px; display: flex; flex-direction: column; gap: 24px; }
+  .left :global(.logo) { width: 120px; height: 120px; }
+  .title { font-family: var(--font-display); font-weight: 800; font-size: 76px; line-height: .95; letter-spacing: -.02em; margin-top: auto; }
+  .sub { font-weight: 700; font-size: 24px; letter-spacing: .08em; text-transform: uppercase; }
+  .right { position: relative; --cell: 40px; }
+  .right :global(img) { position: absolute; filter: drop-shadow(0 16px 0 rgba(59, 23, 25, .16)); }
+  .right :global(.pz) { width: 380px; left: 150px; top: 40px; z-index: 2; }
+  .right :global(.pa) { width: 300px; left: -40px; top: 330px; }
+  .right :global(.mi) { width: 320px; left: 380px; top: 340px; }
+</style>

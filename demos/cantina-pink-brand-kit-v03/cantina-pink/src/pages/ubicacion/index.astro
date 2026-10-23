@@ -1,0 +1,133 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Pending from '../../components/Pending.astro';
+import { business, hoursTable } from '../../lib/hours';
+import { whatsappUrl, telUrl } from '../../lib/contact';
+
+const wa = whatsappUrl();
+const embed = `https://www.google.com/maps?q=${encodeURIComponent('Cantina Pink, San Martín 501, Tandil')}&output=embed`;
+---
+<Base title="Cómo llegar y horarios" description="Cantina Pink está en San Martín 501, esquina Yrigoyen, Tandil. Horarios, mapa, WhatsApp e Instagram.">
+  <section class="container u-head">
+    <p class="kicker">Cómo llegar</p>
+    <h1 class="display-xl">Vení con hambre. Lo demás lo vemos acá.</h1>
+  </section>
+
+  <section class="container u-grid" aria-label="Mapa y datos">
+    <div class="map-wrap" data-map>
+      <svg class="esquema" viewBox="0 0 600 450" role="img" aria-labelledby="esq-title">
+        <title id="esq-title">Esquema de la esquina de San Martín e Yrigoyen, donde está Cantina Pink (no a escala)</title>
+        <rect width="600" height="450" fill="#E8D8BF" />
+        <g fill="#F4EAD8">
+          <rect x="20" y="20" width="200" height="140" rx="6" /><rect x="300" y="20" width="280" height="140" rx="6" />
+          <rect x="20" y="240" width="200" height="190" rx="6" /><rect x="380" y="240" width="200" height="190" rx="6" />
+        </g>
+        <rect x="300" y="240" width="60" height="190" fill="#F4EAD8" />
+        <g fill="#FFF7E9">
+          <rect x="0" y="170" width="600" height="60" /><rect x="230" y="0" width="60" height="450" />
+        </g>
+        <g stroke="#3B1719" stroke-opacity=".25" stroke-width="2" stroke-dasharray="10 10">
+          <line x1="0" y1="200" x2="600" y2="200" /><line x1="260" y1="0" x2="260" y2="450" />
+        </g>
+        <g font-family="DM Sans, Arial, sans-serif" font-weight="700" font-size="16" fill="#3B1719" letter-spacing="2">
+          <text x="440" y="206">SAN MARTÍN</text>
+          <text x="254" y="420" transform="rotate(-90 254 420)">YRIGOYEN</text>
+        </g>
+        <g transform="translate(300 240)">
+          <rect width="80" height="80" fill="#741F25" rx="4" />
+          <g fill="#FFF7E9" opacity=".2">
+            <rect width="20" height="20" /><rect x="40" width="20" height="20" /><rect x="20" y="20" width="20" height="20" /><rect x="60" y="20" width="20" height="20" />
+            <rect y="40" width="20" height="20" /><rect x="40" y="40" width="20" height="20" /><rect x="20" y="60" width="20" height="20" /><rect x="60" y="60" width="20" height="20" />
+          </g>
+        </g>
+        <g transform="translate(340 252)">
+          <path d="M0 0c-14-18-22-30-22-42a22 22 0 0 1 44 0c0 12-8 24-22 42z" fill="#A12B2B" stroke="#FFF7E9" stroke-width="3" transform="translate(0 -6)" />
+          <circle cx="0" cy="-48" r="7" fill="#FFF7E9" />
+        </g>
+        <g transform="translate(392 300)">
+          <rect width="172" height="44" rx="22" fill="#FFF7E9" stroke="#3B1719" stroke-width="2" />
+          <text x="86" y="29" text-anchor="middle" font-family="Fraunces Variable, Georgia, serif" font-weight="800" font-size="20" fill="#741F25">Cantina Pink</text>
+        </g>
+      </svg>
+      <div class="map-actions">
+        <button type="button" class="btn btn--wine" data-map-load data-src={embed}>Ver mapa interactivo</button>
+        <a class="btn btn--outline" href={business.mapsUrl} target="_blank" rel="noopener"><Icon name="mapa" /> Abrir en Google Maps</a>
+      </div>
+      <p class="map-note">El mapa interactivo carga Google Maps solo si lo pedís. <Pending note="Confirmar el pin exacto del local en Google Maps." label="VERIFICAR" /></p>
+    </div>
+
+    <div class="info">
+      <div class="block">
+        <h2 class="display-m">Dirección</h2>
+        <p class="addr">{business.address.street}, {business.address.corner}<br />{business.address.city}, {business.address.region}</p>
+      </div>
+
+      <div class="block">
+        <h2 class="display-m">Horarios {!business.hours.verified && <Pending label="VERIFICAR" note="Horario publicado por terceros; confirmar con las dueñas." />}</h2>
+        <dl class="hours">
+          {hoursTable().map((h) => <div><dt>{h.days}</dt><dd>{h.shifts.join(' · ')}</dd></div>)}
+        </dl>
+        <p class="open" data-open-status></p>
+        <p class="small">Retiro de pedidos online dentro de este horario.</p>
+      </div>
+
+      <div class="block">
+        <h2 class="display-m">Contacto</h2>
+        <div class="contact">
+          {wa ? (
+            <a class="btn btn--red" href={wa} target="_blank" rel="noopener"><Icon name="whatsapp" /> WhatsApp</a>
+          ) : (
+            <span class="btn btn--red" aria-disabled="true"><Icon name="whatsapp" /> WhatsApp</span>
+          )}
+          <a class="btn btn--outline" href={telUrl()}><Icon name="telefono" /> {business.phone.display}</a>
+          <a class="btn btn--outline" href={business.instagram.url} target="_blank" rel="noopener"><Icon name="instagram" /> Instagram</a>
+        </div>
+        {!wa && <p class="small"><Pending note="Falta el número de WhatsApp; el botón se activa solo al cargarlo en business.json." /> WhatsApp se activa cuando cargues el número.</p>}
+        {!business.phone.verified && <p class="small"><Pending label="VERIFICAR" note="Teléfono publicado por terceros." /> Teléfono a confirmar.</p>}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  function setupMap() {
+    const btn = document.querySelector<HTMLButtonElement>('[data-map-load]');
+    if (!btn || btn.dataset.bound) return;
+    btn.dataset.bound = '1';
+    btn.addEventListener('click', () => {
+      const wrap = btn.closest('[data-map]')!;
+      const iframe = document.createElement('iframe');
+      iframe.src = btn.dataset.src!;
+      iframe.title = 'Mapa de Google con la ubicación de Cantina Pink';
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      iframe.className = 'map-frame';
+      wrap.querySelector('.esquema')!.replaceWith(iframe);
+      btn.remove();
+      iframe.focus();
+    });
+  }
+  document.addEventListener('astro:page-load', setupMap);
+</script>
+
+<style>
+  .u-head { padding: 48px 0 32px; display: grid; gap: 16px; }
+  .u-head h1 { max-width: 13ch; }
+  .u-grid { display: grid; gap: 48px; padding-bottom: 96px; }
+  @media (min-width: 960px) { .u-grid { grid-template-columns: 7fr 5fr; gap: 56px; align-items: start; } }
+  .map-wrap { display: grid; gap: 14px; }
+  .esquema, .map-wrap :global(.map-frame) { width: 100%; aspect-ratio: 4 / 3; height: auto; border-radius: var(--radius-sm); border: 2px solid var(--ink); }
+  .map-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .map-note, .small { font-size: .875rem; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .info { display: grid; gap: 36px; }
+  .block { display: grid; gap: 12px; }
+  .block h2 { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .addr { font-size: 1.25rem; line-height: 1.4; }
+  .hours div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .hours dt { font-weight: 700; }
+  .hours dd { margin: 0; }
+  .open { font-weight: 700; color: var(--wine); }
+  .open:empty { display: none; }
+  .contact { display: flex; flex-wrap: wrap; gap: 10px; }
+</style>
