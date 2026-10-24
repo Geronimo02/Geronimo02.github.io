@@ -3,6 +3,7 @@ import { load, save, setQty, setNote, clearLines, countOf, MAX_QTY, type CartSta
 import { findItem, isOrderable, formatPrice, type MenuItem } from '../lib/menu';
 import { business, pickupDays, canAsap, openStatus, formatPickup, isValidPickup } from '../lib/hours';
 import { isSoldOut } from '../lib/overrides';
+import { plateFor, initials, MAX_PLATES, plateSize, plateTilt } from '../lib/mesa';
 import { buildMessage, newOrderId, validate, waLink, totalsOf, money, MAX_WA_URL, type OrderData } from '../lib/order';
 import '../styles/carrito.css';
 
@@ -95,6 +96,19 @@ export default function Carrito({ wa }: Props) {
   const lines = useMemo(() => (s?.lines ?? [])
     .map((l) => ({ item: findItem(l.id) as MenuItem | undefined, qty: l.qty, note: l.note }))
     .filter((l): l is { item: MenuItem; qty: number; note: string | undefined } => !!l.item && isOrderable(l.item)), [s]);
+
+  // "Tu mesa": una unidad = un plato. Los platos nuevos "caen" sobre el mantel; los que ya estaban no se vuelven a animar.
+  const prevQty = useRef<Record<string, number> | null>(null);
+  useEffect(() => {
+    if (s) prevQty.current = Object.fromEntries(lines.map((l) => [l.item.id, l.qty]));
+  });
+  const plates = useMemo(() => lines.flatMap(({ item, qty }) => {
+    const art = plateFor(item);
+    return Array.from({ length: qty }, (_, k) => ({ key: `${item.id}-${k}`, id: item.id, k, name: item.name, src: art.src }));
+  }), [lines]);
+  const shownPlates = plates.slice(0, MAX_PLATES);
+  const hiddenPlates = plates.length - shownPlates.length;
+  const plateD = plateSize(shownPlates.length);
 
   const count = s ? countOf(s) : 0;
   const mode: Mode = s?.mode === 'delivery' && D.enabled ? 'delivery' : 'retiro';
@@ -197,8 +211,18 @@ export default function Carrito({ wa }: Props) {
     <section class="pedido" aria-labelledby="pedido-title">
       <header class="pedido-head">
         <p class="kicker">Tu pedido</p>
-        <h2 id="pedido-title" class="display-m">Armá tu pedido</h2>
+        <h2 id="pedido-title" class="display-m">Armá tu mesa</h2>
       </header>
+
+      <div class="mesa-table mantel mantel--soft" data-mesa-target aria-hidden="true">
+        {shownPlates.length === 0 && <p class="mesa-empty"><span>Tu mesa está vacía</span></p>}
+        {shownPlates.map((pl) => (
+          <span key={pl.key} class={`plate-sm${prevQty.current !== null && pl.k >= (prevQty.current[pl.id] ?? 0) ? ' is-new' : ''}`} style={`--d:${plateD}px;--rot:${plateTilt(pl.id, pl.k)}deg`}>
+            {pl.src ? <img src={pl.src} alt="" width={plateD} height={plateD} decoding="async" /> : <b>{initials(pl.name)}</b>}
+          </span>
+        ))}
+        {hiddenPlates > 0 && <span class="mesa-count">+{hiddenPlates} más</span>}
+      </div>
 
       {!status.open && (
         <p class="banner" role="note"><strong>Ahora estamos cerrados.</strong> {status.label.replace('Cerrado · ', '')}. Podés dejar el pedido programado para más tarde.</p>

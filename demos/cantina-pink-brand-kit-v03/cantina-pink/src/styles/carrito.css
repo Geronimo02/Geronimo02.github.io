@@ -124,3 +124,15 @@ html:has(dialog[open]) { overflow: hidden; }
 .pedido input[type='date'] { width: 100%; min-height: 48px; padding: 10px 14px; font: inherit; color: var(--ink); background: #fff; border: 2.5px solid var(--ink); border-radius: var(--radius-sm); box-shadow: 3px 3px 0 var(--ink); }
 .pedido select:disabled, .pedido input:disabled { opacity: .55; cursor: not-allowed; }
 .line-sold { color: #8B1D1D; font-weight: 800; font-family: var(--font-body); font-size: .8125rem; letter-spacing: .04em; text-transform: uppercase; }
+
+/* Tu mesa: el pedido visto desde arriba */
+.mesa-table { position: relative; min-height: 150px; padding: 14px 10px 20px; display: flex; flex-wrap: wrap; justify-content: center; align-content: center; gap: 2px 4px; border: 3px solid var(--ink); border-radius: var(--radius-sm); box-shadow: 4px 4px 0 var(--ink); overflow: hidden; }
+.plate-sm { position: relative; z-index: 1; flex: none; width: var(--d); aspect-ratio: 1; border-radius: 50%; border: 3px solid var(--cream); box-shadow: 0 5px 0 rgba(59, 23, 25, .32); background: #fff; overflow: hidden; display: grid; place-items: center; rotate: var(--rot); transition: width var(--motion-long) var(--ease-out); }
+.plate-sm img { width: 100%; height: 100%; object-fit: cover; }
+.plate-sm b { font-family: var(--font-display); font-weight: 800; font-size: calc(var(--d) * .32); color: var(--wine); }
+.plate-sm.is-new { animation: plato-cae 560ms cubic-bezier(.34, 1.45, .64, 1) 420ms both; }
+@keyframes plato-cae { from { transform: translateY(-70px) scale(1.55); opacity: 0; } 55% { opacity: 1; } to { transform: none; opacity: 1; } }
+.mesa-empty { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; margin: 0; pointer-events: none; }
+.mesa-empty span { background: var(--cream); border: 2.5px dashed var(--line-strong); border-radius: var(--radius-pill); padding: 6px 16px; font-family: var(--font-display); font-weight: 800; }
+.mesa-count { position: absolute; z-index: 3; right: 8px; bottom: 8px; background: var(--cream); border: 2px solid var(--ink); border-radius: var(--radius-pill); padding: 1px 10px; font-weight: 700; font-size: .8125rem; }
+@media (prefers-reduced-motion: reduce) { .plate-sm.is-new { animation: none; } .plate-sm { transition: none; } }

@@ -187,3 +187,6 @@ a:hover { text-decoration-thickness: 3px; }
 .stepper--sm output { font-size: 1.0625rem; }
 
 .soldout-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: var(--radius-pill); border: 2.5px dashed var(--ink); background: var(--paper); font-weight: 700; color: var(--ink); }
+
+/* Plato que vuela desde "Agregar" hasta la mesa */
+.fly-plate { position: fixed; left: 0; top: 0; z-index: 70; width: 64px; height: 64px; border-radius: 50%; border: 3px solid var(--cream); box-shadow: 0 6px 0 rgba(59, 23, 25, .35); background: #fff center / cover no-repeat; display: grid; place-items: center; pointer-events: none; font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; color: var(--wine); will-change: transform; }

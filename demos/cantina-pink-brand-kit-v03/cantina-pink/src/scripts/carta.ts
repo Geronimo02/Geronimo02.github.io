@@ -38,6 +38,36 @@ function render() {
   });
 }
 
+/** El plato vuela desde el botón hasta "Tu mesa" (escritorio) o hasta la barra del pedido (celular). */
+function fly(box: HTMLElement) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('animate' in Element.prototype)) return;
+  const from = box.getBoundingClientRect();
+  const size = 64;
+  const mesa = innerWidth >= 960 ? document.querySelector<HTMLElement>('[data-mesa-target]')?.getBoundingClientRect() : undefined;
+  const visible = !!mesa && mesa.bottom > 0 && mesa.top < innerHeight;
+  const x0 = from.left + Math.min(from.width, 120) / 2 - size / 2;
+  const y0 = from.top + from.height / 2 - size / 2;
+  const x1 = visible ? mesa!.left + mesa!.width / 2 - size / 2 : innerWidth / 2 - size / 2;
+  const y1 = visible ? mesa!.top + mesa!.height / 2 - size / 2 : innerHeight - 70;
+  const el = document.createElement('div');
+  el.className = 'fly-plate';
+  el.setAttribute('aria-hidden', 'true');
+  const thumb = box.dataset.thumb;
+  if (thumb) el.style.backgroundImage = `url(${thumb})`;
+  else el.textContent = box.dataset.initials ?? '';
+  document.body.appendChild(el);
+  const midX = (x0 + x1) / 2;
+  const midY = Math.min(y0, y1) - 70;
+  el.animate(
+    [
+      { transform: `translate(${x0}px, ${y0}px) scale(1) rotate(0deg)`, opacity: 1 },
+      { transform: `translate(${midX}px, ${midY}px) scale(1.15) rotate(140deg)`, opacity: 1, offset: 0.45 },
+      { transform: `translate(${x1}px, ${y1}px) scale(.55) rotate(300deg)`, opacity: 0.9 },
+    ],
+    { duration: 680, easing: 'cubic-bezier(.4, 0, .3, 1)' },
+  ).finished.then(() => el.remove(), () => el.remove());
+}
+
 function onClick(e: Event) {
   const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-act]');
   const box = btn?.closest<HTMLElement>('[data-add]');
@@ -46,7 +76,7 @@ function onClick(e: Event) {
   const name = box.dataset.name ?? 'Producto';
   let state = load();
   const before = qtyOf(state, id);
-  if (btn.dataset.act === 'add' || btn.dataset.act === 'inc') state = addOne(state, id);
+  if (btn.dataset.act === 'add' || btn.dataset.act === 'inc') { state = addOne(state, id); fly(box); }
   else if (btn.dataset.act === 'dec') state = setQty(state, id, before - 1);
   save(state);
   const after = qtyOf(state, id);

@@ -2,11 +2,13 @@
 import Pending from './Pending.astro';
 import Foto from './Foto.astro';
 import { foto as hasFoto, type FotoName } from '../lib/fotos';
+import { plateFor, initials } from '../lib/mesa';
 import { formatPrice, splitPending, isOrderable, type MenuItem } from '../lib/menu';
 
 interface Props { item: MenuItem; headingLevel?: 'h3' | 'h4'; photos?: boolean; ordering?: boolean }
 const { item, headingLevel: H = 'h3', photos = false, ordering = false } = Astro.props;
 const canOrder = ordering && isOrderable(item);
+const plate = plateFor(item);
 const showPhoto = photos && item.foto && hasFoto(item.foto);
 const desc = splitPending(item.description);
 ---
@@ -32,7 +34,7 @@ const desc = splitPending(item.description);
   )}
   <p class="soldout" data-soldout-for={item.id} hidden>Agotado por hoy</p>
   {canOrder && (
-    <div class="add" data-add={item.id} data-name={item.name}>
+    <div class="add" data-add={item.id} data-name={item.name} data-thumb={plate.src ?? ''} data-initials={initials(item.name)}>
       <button type="button" class="btn btn--wine add-btn" data-act="add" aria-label={`Agregar ${item.name} al pedido`}>Agregar</button>
     </div>
   )}

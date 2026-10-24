@@ -15,6 +15,8 @@ export interface MenuItem {
   image: Recorte | null;
   /** Nombre de una foto real en src/assets/fotos (sin extensión). */
   foto?: string;
+  /** Id de la categoría; se completa al cargar la carta. */
+  category?: string;
 }
 
 export interface MenuCategory {
@@ -31,6 +33,8 @@ export const menu = menuData as unknown as {
   dailySpecial: { active: boolean; label: string; itemId: string; note: string; verified: boolean };
   categories: MenuCategory[];
 };
+
+for (const c of menu.categories) for (const i of c.items) i.category = c.id;
 
 export const PENDING = '[COMPLETAR]';
 

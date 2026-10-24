@@ -82,6 +82,12 @@ Sin pago online ni servidor: el pedido se arma en el navegador y sale por WhatsA
 - **Grupos (/grupos):** formulario que arma una consulta de mesa (personas, día, hora dentro del horario, ocasión, intereses, alergias) y la manda por WhatsApp. Es una consulta, no una reserva confirmada.
 - **Panel (/admin):** contraseña (secret ADMIN_PASSWORD), precios del día, productos agotados y una promo editable. Se guarda en un almacén KV con dos funciones de Cloudflare; el navegador aplica los cambios sobre la carta base, así que si el servidor falla la web sigue con `menu.json`. Lo que llega se valida en servidor y se vuelve a validar en el navegador.
 
+## Tu mesa (lo más propio del sitio)
+El pedido es una **mesa vista desde arriba**: cada unidad que sumás es un plato redondo sobre el mantel. Con foto real si el producto la tiene, ilustración de su categoría si no, y plato liso con iniciales si tampoco. Al tocar "Agregar", el plato **vuela** desde el botón hasta la mesa (escritorio) o hasta la barra del pedido (celular) y recién después cae sobre el mantel. Máximo 16 platos dibujados; el resto se resume en "+N más". Con movimiento reducido no vuela nada, el plato simplemente aparece. Miniaturas livianas (200 px, ~8 KB) generadas con `scripts/prepare-mesa.mjs` en `public/mesa/`. El panel del pedido acompaña al bajar por la carta (sticky).
+
+## Medidor de queso
+Sección "¿Cuánto queso?" a partir de las tres últimas fotos de su carrusel. Un deslizador (0 a 300 g) funde la salsa en el queso y el queso en la montaña; al pasarse de 90 aparece el sello "Demasiado queso" y el plato tiembla. Frases de veredicto en voz de marca. Se maneja con teclado (flechas, Inicio, Fin) y con lector de pantalla (\`aria-describedby\` al veredicto).
+
 ## Fotografía
 Platos siempre **en círculo** sobre el mantel (como se ven desde arriba), con borde crema y sombra dura. Fotos rectangulares con borde de tinta y leve inclinación. Textos y logos pegados en las piezas originales se recortan y se reescriben como HTML editable. Hero: foto de la mesa de milanesas, 4:5 inclinada 2°.
 
