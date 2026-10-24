@@ -5,7 +5,7 @@ import { buildMessage, validate, totalsOf, money, newOrderId, waLink, MAX_WA_URL
 
 const base = {
   orderId: 'CP-2310-A7K', createdLabel: 'el jueves 23/10 a las 21:08 h', mode: 'retiro', whenLabel: 'viernes 24/10 a las 21:15 h',
-  name: 'Juan Pérez', phone: '249 123-4567', street: '', ref: '', payment: 'Efectivo', cashWith: null, notes: '',
+  name: 'Juan Pérez', street: '', ref: '', payment: 'Efectivo', cashWith: null, notes: '',
   lines: [
     { name: 'Muzzarella', qty: 2, unitPrice: 16500, note: 'sin aceitunas' },
     { name: 'Milanesa XL para compartir', qty: 1, unitPrice: 28500 },
@@ -34,7 +34,7 @@ test('delivery con envío fijo y gratis', () => {
 
 test('mensaje de retiro incluye todo el detalle', () => {
   const m = buildMessage(base);
-  for (const frag of ['PEDIDO WEB - CANTINA PINK', 'CP-2310-A7K', 'Nombre: Juan Pérez', 'Teléfono: 249 123-4567', 'RETIRO EN EL LOCAL',
+  for (const frag of ['PEDIDO WEB - CANTINA PINK', 'CP-2310-A7K', 'Nombre: Juan Pérez', 'RETIRO EN EL LOCAL',
     'San Martín 501', 'viernes 24/10 a las 21:15 h', '1) 2 x Muzzarella', '$16.500 c/u = $33.000', 'Aclaración: sin aceitunas',
     '2) 1 x Milanesa XL para compartir', 'Productos: 3', 'Subtotal: $61.500', '*TOTAL: $61.500*', 'Efectivo (se abona al retirar)']) {
     assert.ok(m.includes(frag), 'falta: ' + frag + '\n' + m);
@@ -96,12 +96,12 @@ test('id de pedido con formato y sin caracteres ambiguos', () => {
   assert.ok(!/[01OI]/.test(id.slice(8)));
 });
 
-const ok = { lineCount: 2, mode: 'retiro', name: 'Ana', phone: '249 444-0808', street: '', whenOk: true, payment: 'Efectivo', paymentOptions: ['Efectivo', 'Transferencia'], cashWith: null, subtotal: 30000, minOrder: null };
+const ok = { lineCount: 2, mode: 'retiro', name: 'Ana', street: '', whenOk: true, payment: 'Efectivo', paymentOptions: ['Efectivo', 'Transferencia'], cashWith: null, subtotal: 30000, minOrder: null };
 
 test('pedido válido sin errores', () => assert.deepEqual(validate(ok), {}));
-test('valida carrito vacío, nombre, teléfono, horario y pago', () => {
-  const e = validate({ ...ok, lineCount: 0, name: ' ', phone: '12', whenOk: false, payment: '' });
-  assert.deepEqual(Object.keys(e).sort(), ['lines', 'name', 'payment', 'phone', 'when']);
+test('valida carrito vacío, nombre, horario y pago', () => {
+  const e = validate({ ...ok, lineCount: 0, name: ' ', whenOk: false, payment: '' });
+  assert.deepEqual(Object.keys(e).sort(), ['lines', 'name', 'payment', 'when']);
 });
 test('delivery exige dirección', () => {
   assert.ok(validate({ ...ok, mode: 'delivery', street: 'Sol' }).street);
@@ -121,4 +121,10 @@ test('productos agotados bloquean el envío con un mensaje claro', () => {
   assert.ok(e.soldout.includes('Milanesa XL, Flan casero'));
   assert.equal(validate({ ...ok, soldOutNames: [] }).soldout, undefined);
   assert.equal(validate(ok).soldout, undefined);
+});
+
+test('ya no se pide teléfono: el mensaje no lo incluye y la validación no lo exige', () => {
+  assert.ok(!buildMessage(base).includes('Teléfono'));
+  assert.equal(validate({ ...ok, phone: '' }).phone, undefined);
+  assert.deepEqual(validate(ok), {});
 });

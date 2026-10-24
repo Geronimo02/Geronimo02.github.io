@@ -8,7 +8,6 @@ export interface OrderData {
   mode: 'retiro' | 'delivery';
   whenLabel: string;
   name: string;
-  phone: string;
   street: string;
   ref: string;
   payment: string;
@@ -51,7 +50,6 @@ export function buildMessage(o: OrderData): string {
 
   out.push('👤 *CLIENTE*');
   out.push(`Nombre: ${clean(o.name)}`);
-  out.push(`Teléfono: ${clean(o.phone)}`);
   out.push(RULE);
 
   if (o.mode === 'retiro') {
@@ -105,13 +103,12 @@ export function waLink(e164: string, text: string): string {
   return `https://wa.me/${e164.replace(/\D/g, '')}?text=${encodeURIComponent(text)}`;
 }
 
-export type Errors = Partial<Record<'soldout' | 'lines' | 'name' | 'phone' | 'street' | 'when' | 'payment' | 'cashWith' | 'min', string>>;
+export type Errors = Partial<Record<'soldout' | 'lines' | 'name' | 'street' | 'when' | 'payment' | 'cashWith' | 'min', string>>;
 
 export interface ValidateInput {
   lineCount: number;
   mode: 'retiro' | 'delivery';
   name: string;
-  phone: string;
   street: string;
   whenOk: boolean;
   payment: string;
@@ -128,8 +125,6 @@ export function validate(v: ValidateInput): Errors {
   if (v.soldOutNames && v.soldOutNames.length > 0) e.soldout = `Se agotó por hoy: ${v.soldOutNames.join(', ')}. Sacalo del pedido para seguir.`;
   if (v.lineCount === 0) e.lines = 'Agregá al menos un producto desde la carta.';
   if (v.name.trim().length < 2) e.name = 'Decinos tu nombre para llamarte cuando esté listo.';
-  const digits = v.phone.replace(/\D/g, '');
-  if (digits.length < 8 || digits.length > 15) e.phone = 'Ingresá un teléfono válido, con código de área.';
   if (v.mode === 'delivery' && v.street.trim().length < 5) e.street = 'Escribí la calle, número y, si hay, piso o depto.';
   if (!v.whenOk) e.when = v.mode === 'retiro' ? 'Elegí el día y la hora de retiro.' : 'Elegí el día y la hora de entrega.';
   if (!v.payment || !v.paymentOptions.includes(v.payment)) e.payment = 'Elegí cómo vas a pagar.';

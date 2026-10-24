@@ -25,7 +25,7 @@ for (const [w, h, label] of [[1440, 900, 'escritorio'], [390, 844, 'celular']]) 
   await p.getByRole('button', { name: /Enviar pedido por WhatsApp/ }).click();
   await p.waitForTimeout(300);
   await check(p, `${label}: delivery con errores de validación`);
-  await p.fill('#f-name', 'Ana'); await p.fill('#f-phone', '249 444 0808'); await p.fill('#f-street', 'Rivadavia 123');
+  await p.fill('#f-name', 'Ana'); await p.fill('#f-street', 'Rivadavia 123');
   await p.selectOption('#f-when', { index: 1 }); await p.getByLabel('Efectivo').check();
   await p.getByRole('button', { name: 'Copiar pedido' }).click();
   await p.waitForTimeout(300);

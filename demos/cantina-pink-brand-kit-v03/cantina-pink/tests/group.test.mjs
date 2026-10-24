@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildGroupMessage, validateGroup, newConsultId } from '../src/lib/group.ts';
 
-const base = { consultId: 'GR-2310-K7M', createdLabel: 'el jueves 23/10 a las 21:08 h', name: 'Ana López', phone: '249 444-0808', people: 12, dayLabel: 'sábado 25/10', time: '21:00', occasion: 'Cumpleaños', interests: ['Pizza libre', 'Milanesas XL para compartir'], dietary: '', notes: '' };
+const base = { consultId: 'GR-2310-K7M', createdLabel: 'el jueves 23/10 a las 21:08 h', name: 'Ana López', people: 12, dayLabel: 'sábado 25/10', time: '21:00', occasion: 'Cumpleaños', interests: ['Pizza libre', 'Milanesas XL para compartir'], dietary: '', notes: '' };
 
 test('mensaje completo de consulta', () => {
   const m = buildGroupMessage({ ...base, dietary: '2 celíacos', notes: 'Llevamos torta' });
@@ -19,11 +19,11 @@ test('el formato de WhatsApp del usuario no rompe el mensaje', () => assert.ok(b
 
 test('id de consulta', () => assert.match(newConsultId(new Date(2026, 9, 23), () => 0.3), /^GR-2310-[A-Z2-9]{3}$/));
 
-const ok = { name: 'Ana', phone: '249 444 0808', people: 8, date: '2026-10-25', time: '21:00', occasion: 'Cumpleaños', timeOptions: ['20:00', '21:00'], today: '2026-10-23', maxDate: '2027-02-20' };
+const ok = { name: 'Ana', people: 8, date: '2026-10-25', time: '21:00', occasion: 'Cumpleaños', timeOptions: ['20:00', '21:00'], today: '2026-10-23', maxDate: '2027-02-20' };
 
 test('consulta válida', () => assert.deepEqual(validateGroup(ok), {}));
 
-test('valida campos vacíos', () => assert.deepEqual(Object.keys(validateGroup({ ...ok, name: '', phone: '1', people: null, occasion: '' })).sort(), ['name', 'occasion', 'people', 'phone']));
+test('valida campos vacíos', () => assert.deepEqual(Object.keys(validateGroup({ ...ok, name: '', people: null, occasion: '' })).sort(), ['name', 'occasion', 'people']));
 
 test('mínimo 2 y máximo 80 personas', () => {
   assert.ok(validateGroup({ ...ok, people: 1 }).people);

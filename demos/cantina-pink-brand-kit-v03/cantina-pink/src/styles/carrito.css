@@ -136,3 +136,12 @@ html:has(dialog[open]) { overflow: hidden; }
 .mesa-empty span { background: var(--cream); border: 2.5px dashed var(--line-strong); border-radius: var(--radius-pill); padding: 6px 16px; font-family: var(--font-display); font-weight: 800; }
 .mesa-count { position: absolute; z-index: 3; right: 8px; bottom: 8px; background: var(--cream); border: 2px solid var(--ink); border-radius: var(--radius-pill); padding: 1px 10px; font-weight: 700; font-size: .8125rem; }
 @media (prefers-reduced-motion: reduce) { .plate-sm.is-new { animation: none; } .plate-sm { transition: none; } }
+
+/* Formulario corto: chips de pago y "más opciones" plegado */
+.choices--row { display: flex; flex-wrap: wrap; gap: 8px; }
+.choice--chip { min-height: 48px; align-items: center; padding: 8px 14px; flex: 0 1 auto; }
+.choice--chip input { margin: 0; }
+.more { border: 2px solid var(--line-strong); border-radius: var(--radius-sm); padding: 2px 14px; }
+.more summary { cursor: pointer; font-weight: 700; min-height: 48px; display: flex; align-items: center; gap: 6px; }
+.more summary small { font-weight: 500; font-size: .8125rem; }
+.more-body { display: grid; gap: 12px; padding: 4px 0 14px; }

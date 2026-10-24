@@ -3,13 +3,19 @@ import Foto from '../Foto.astro';
 import Icon from '../Icon.astro';
 import type { FotoName } from '../../lib/fotos';
 
-interface Paso { foto: FotoName; kicker: string; titulo: string; nota?: string }
-const pasos: Paso[] = [
-  { foto: 'pasta-1-vacio', kicker: 'Paso 1', titulo: 'Un pan. Vacío.', nota: 'Todavía no hay nada adentro. Alguien tiene que hacerse cargo.' },
-  { foto: 'pasta-2-pasta', kicker: 'Paso 2', titulo: 'Agregale la pasta.', nota: 'Fideos tirados, al dente, con perejil.' },
-  { foto: 'pasta-3-salsa', kicker: 'Paso 3', titulo: 'Ahora la salsa.', nota: 'Sin miedo. El pan sabe lo que hace.' },
-  { foto: 'pasta-4-queso', kicker: 'Paso 4', titulo: 'Y queso. Ahora sí, a disfrutar.', nota: 'Esto ya se puede comer.' },
-  { foto: 'pasta-5-montana', kicker: 'Paso 5', titulo: 'No. Bueno, era un poco menos.', nota: 'Pedí queso como si nadie te mirara.' },
+// Cinco fotos, cuatro pasos: los tres primeros avanzan con el scroll; el cuarto (el queso) lo maneja la persona con el deslizador.
+const frames: { foto: FotoName; label: string }[] = [
+  { foto: 'pasta-1-vacio', label: 'Un pan vacío' },
+  { foto: 'pasta-2-pasta', label: 'Con pasta' },
+  { foto: 'pasta-3-salsa', label: 'Con salsa' },
+  { foto: 'pasta-4-queso', label: 'Con queso' },
+  { foto: 'pasta-5-montana', label: 'Con demasiado queso' },
+];
+const pasos = [
+  { kicker: 'Paso 1 de 4', titulo: 'Un pan. Vacío.', nota: 'Todavía no hay nada adentro. Alguien tiene que hacerse cargo.' },
+  { kicker: 'Paso 2 de 4', titulo: 'Agregale la pasta.', nota: 'Fideos tirados, al dente, con perejil.' },
+  { kicker: 'Paso 3 de 4', titulo: 'Ahora la salsa.', nota: 'Sin miedo. El pan sabe lo que hace.' },
+  { kicker: 'Paso 4 de 4', titulo: '¿Cuánto queso?', nota: '' },
 ];
 ---
 <section class="pp" id="pasta-en-pan" data-pasta aria-labelledby="pp-title">
@@ -17,77 +23,145 @@ const pasos: Paso[] = [
     <div class="pp-copy">
       <p class="kicker">Pasta en pan</p>
       <h2 id="pp-title" class="display-l">Armá tu pasta en pan.</h2>
-      <div class="pp-captions" aria-live="polite">
+
+      <div class="pp-captions">
         {pasos.map((p, i) => (
-          <div class:list={['cap', i === 0 && 'is-active']} data-pasta-cap={i}>
-            <p class="cap-kicker">{p.kicker} de {pasos.length}</p>
+          <div class:list={['cap', i === 0 && 'is-active']} data-pasta-cap={i} inert={i !== 0}>
+            <p class="cap-kicker">{p.kicker}</p>
             <p class="cap-title">{p.titulo}</p>
             {p.nota && <p class="cap-note">{p.nota}</p>}
+            {i === 3 && (
+              <div class="q">
+                <label for="queso-range" class="visually-hidden">Cantidad de queso rallado sobre la pasta en pan</label>
+                <input id="queso-range" type="range" min="0" max="100" step="1" value="45" data-queso-range aria-describedby="queso-verdict" />
+                <div class="q-ends" aria-hidden="true"><span>Nada</span><span>Demasiado</span></div>
+                <p class="q-line">
+                  <span class="q-grams" aria-hidden="true"><span data-queso-g>135</span> g</span>
+                  <span id="queso-verdict" class="q-verdict" data-queso-verdict>Como corresponde.</span>
+                </p>
+                <a class="btn btn--wine q-cta" href="/carta#plato-pasta-en-pan">Pedirla <Icon name="flecha" size={18} /></a>
+              </div>
+            )}
           </div>
         ))}
       </div>
+
       <ol class="dots" aria-hidden="true">
         {pasos.map((_, i) => <li class:list={[i === 0 && 'is-active']} data-pasta-dot={i}></li>)}
       </ol>
-      <a class="btn btn--wine" href="/carta#cat-pastas">Ver las pastas <Icon name="flecha" size={20} /></a>
+
+      <div class="pp-nav" data-pasta-nav hidden>
+        <button type="button" class="btn btn--outline" data-pasta-prev>← Anterior</button>
+        <button type="button" class="btn btn--wine" data-pasta-next>Siguiente →</button>
+      </div>
     </div>
 
     <div class="pp-stage">
       <div class="plate" data-pasta-plate>
-        {pasos.map((p, i) => (
+        {frames.map((f, i) => (
           <div class:list={['frame', i === 0 && 'is-active']} data-pasta-frame={i}>
-            <Foto name={p.foto} alt={i === 0 ? 'Pan de campo ahuecado que va llenándose de pasta, salsa y queso' : ''} widths={[400, 640, 900]} sizes="(min-width: 960px) 560px, 86vw" />
+            <Foto name={f.foto} alt={i === 0 ? 'Pan de campo ahuecado que va llenándose de pasta, salsa y queso' : ''} low={i > 1} widths={[400, 640, 900]} sizes="(min-width: 960px) 560px, 86vw" />
           </div>
         ))}
       </div>
-      <p class="stamp sello" data-pasta-stamp>Demasiado queso</p>
+      <p class="stamp sello" data-pasta-stamp aria-hidden="true">Demasiado queso</p>
     </div>
   </div>
 
   <ol class="pp-static">
-    {pasos.map((p) => (
+    {frames.map((f) => (
       <li>
-        <Foto name={p.foto} alt={p.titulo} widths={[320, 520]} sizes="240px" />
-        <p class="cap-kicker">{p.kicker}</p>
-        <p class="cap-title">{p.titulo}</p>
+        <Foto name={f.foto} alt={f.label} low widths={[320, 520]} sizes="240px" />
+        <p class="cap-title">{f.label}</p>
       </li>
     ))}
   </ol>
+  <p class="visually-hidden" role="status" aria-live="polite" data-pasta-status></p>
 </section>
 
 <script>
+  const clamp = (v: number) => Math.min(1, Math.max(0, v));
+  const verdict = (v: number) =>
+    v < 10 ? 'Sin queso. Respetamos, pero no entendemos.'
+    : v < 35 ? 'Un toque, para no abusar.'
+    : v < 65 ? 'Como corresponde.'
+    : v < 90 ? 'Se te fue la mano. Nos gusta.'
+    : 'NO. Bueno, era un poco menos.';
+
   function setup() {
     const section = document.querySelector<HTMLElement>('[data-pasta]');
     if (!section || section.dataset.bound) return;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     section.dataset.bound = '1';
-    section.classList.add('is-animated');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    section.classList.add(reduced ? 'is-manual' : 'is-animated');
 
     const frames = [...section.querySelectorAll<HTMLElement>('[data-pasta-frame]')];
     const caps = [...section.querySelectorAll<HTMLElement>('[data-pasta-cap]')];
     const dots = [...section.querySelectorAll<HTMLElement>('[data-pasta-dot]')];
     const plate = section.querySelector<HTMLElement>('[data-pasta-plate]')!;
     const stamp = section.querySelector<HTMLElement>('[data-pasta-stamp]')!;
-    const n = frames.length;
-    let active = -1, raf = 0;
+    const status = section.querySelector<HTMLElement>('[data-pasta-status]')!;
+    const range = section.querySelector<HTMLInputElement>('[data-queso-range]')!;
+    const grams = section.querySelector<HTMLElement>('[data-queso-g]')!;
+    const words = section.querySelector<HTMLElement>('[data-queso-verdict]')!;
+    const nav = section.querySelector<HTMLElement>('[data-pasta-nav]')!;
+    const prev = section.querySelector<HTMLButtonElement>('[data-pasta-prev]')!;
+    const next = section.querySelector<HTMLButtonElement>('[data-pasta-next]')!;
+    const titles = caps.map((c) => c.querySelector('.cap-title')!.textContent ?? '');
+    const LAST = caps.length - 1;
+    let step = -1;
+    let lastWords = '';
 
-    const set = (i: number) => {
-      if (i === active) return;
-      active = i;
-      frames.forEach((f, k) => f.classList.toggle('is-active', k === i));
-      caps.forEach((c, k) => c.classList.toggle('is-active', k === i));
-      dots.forEach((d, k) => d.classList.toggle('is-active', k <= i));
-      stamp.classList.toggle('is-on', i === n - 1);
-      plate.classList.remove('bump'); void plate.offsetWidth; plate.classList.add('bump');
+    const cheese = () => {
+      const v = Number(range.value);
+      if (step === LAST) {
+        frames[3].style.opacity = String(clamp(v / 50));
+        frames[4].style.opacity = String(clamp((v - 50) / 50));
+      }
+      grams.textContent = String(Math.round(v * 3));
+      const w = verdict(v);
+      if (w !== lastWords) { words.textContent = w; lastWords = w; }
+      const over = step === LAST && v >= 90;
+      stamp.classList.toggle('is-on', over);
+      plate.classList.toggle('shake', over);
+      range.style.setProperty('--fill', `${v}%`);
     };
 
+    const show = (i: number) => {
+      if (i === step) return;
+      step = i;
+      frames.forEach((f, k) => {
+        const on = i < LAST ? k === i : k >= 2;
+        f.classList.toggle('is-active', on);
+        if (!(i === LAST && k >= 3)) f.style.removeProperty('opacity');
+      });
+      caps.forEach((c, k) => { c.classList.toggle('is-active', k === i); c.inert = k !== i; });
+      dots.forEach((d, k) => d.classList.toggle('is-active', k <= i));
+      plate.classList.remove('bump'); void plate.offsetWidth; plate.classList.add('bump');
+      status.textContent = titles[i];
+      prev.disabled = i === 0;
+      next.disabled = i === LAST;
+      cheese();
+    };
+
+    range.addEventListener('input', cheese);
+
+    if (reduced) {
+      // Sin movimiento: no hay escena fija ni scroll que avance solo; se pasa de paso con los botones.
+      nav.hidden = false;
+      prev.addEventListener('click', () => show(Math.max(0, step - 1)));
+      next.addEventListener('click', () => show(Math.min(LAST, step + 1)));
+      show(0);
+      return;
+    }
+
+    let raf = 0;
     const update = () => {
       raf = 0;
       const r = section.getBoundingClientRect();
       const total = section.offsetHeight - innerHeight;
       const p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
-      set(Math.min(n - 1, Math.floor(p * n * 0.999)));
-      plate.style.setProperty('--turn', `${(p * 14 - 4).toFixed(2)}deg`);
+      show(p < 0.22 ? 0 : p < 0.44 ? 1 : p < 0.66 ? 2 : 3);
     };
     const kick = () => { if (!raf) raf = requestAnimationFrame(update); };
     addEventListener('scroll', kick, { passive: true });
@@ -102,38 +176,58 @@ const pasos: Paso[] = [
   .pp-sticky { position: relative; display: grid; gap: 28px; padding: 56px var(--gutter) 64px; align-items: center; overflow: hidden; }
   .pp-copy { position: relative; z-index: 2; display: grid; gap: 14px; justify-items: start; padding: 22px; background: var(--cream); border: 3px solid var(--ink); border-radius: var(--radius-sm); box-shadow: 8px 8px 0 var(--ink); max-width: 34rem; }
   .pp-copy h2 { font-size: clamp(1.875rem, 4.4vw, 3.25rem); }
-  .pp-captions { display: grid; min-height: 9.5rem; width: 100%; }
-  .cap { grid-area: 1 / 1; display: grid; align-content: start; gap: 6px; opacity: 0; transform: translateY(10px); transition: opacity var(--motion-short), transform var(--motion-long) var(--ease-out); pointer-events: none; }
-  .cap.is-active { opacity: 1; transform: none; pointer-events: auto; }
+  .pp-captions { display: grid; width: 100%; }
+  .cap { grid-area: 1 / 1; display: grid; align-content: start; gap: 6px; opacity: 0; transform: translateY(10px); transition: opacity var(--motion-short), transform var(--motion-long) var(--ease-out); pointer-events: none; visibility: hidden; }
+  .cap.is-active { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
   .cap-kicker { font-weight: 700; font-size: .8125rem; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
   .cap-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.375rem, 3vw, 2rem); line-height: 1.08; }
   .cap-note { max-width: 36ch; }
   .dots { list-style: none; display: flex; gap: 8px; }
-  .dots li { width: 28px; height: 8px; border-radius: 99px; background: var(--line-strong); transition: background var(--motion-short); }
+  .dots li { width: 34px; height: 8px; border-radius: 99px; background: var(--line-strong); transition: background var(--motion-short); }
   .dots li.is-active { background: var(--red); }
+  .pp-nav { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pp-nav[hidden] { display: none; }
+
+  /* El cuarto paso: el deslizador de queso */
+  .q { display: grid; gap: 6px; margin-top: 4px; }
+  .q-ends { display: flex; justify-content: space-between; font-size: .8125rem; font-weight: 700; }
+  .q-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; }
+  .q-grams { font-family: var(--font-display); font-weight: 800; font-size: 2.25rem; line-height: 1; color: var(--wine); }
+  .q-grams span { font-variant-numeric: tabular-nums; }
+  .q-verdict { font-family: var(--font-display); font-weight: 700; font-size: 1.1875rem; line-height: 1.15; }
+  .q-cta { justify-self: start; margin-top: 6px; min-height: 46px; padding-block: 6px; }
+  input[type='range'] { --fill: 45%; -webkit-appearance: none; appearance: none; width: 100%; height: 44px; background: transparent; cursor: pointer; }
+  input[type='range']::-webkit-slider-runnable-track { height: 16px; border-radius: 99px; border: 2.5px solid var(--ink); background: linear-gradient(90deg, var(--wine) var(--fill), #fff var(--fill)); }
+  input[type='range']::-moz-range-track { height: 11px; border-radius: 99px; border: 2.5px solid var(--ink); background: #fff; }
+  input[type='range']::-moz-range-progress { height: 11px; border-radius: 99px; background: var(--wine); }
+  input[type='range']::-webkit-slider-thumb { -webkit-appearance: none; width: 40px; height: 40px; margin-top: -14px; border-radius: 50%; background: var(--cream); border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+  input[type='range']::-moz-range-thumb { width: 34px; height: 34px; border-radius: 50%; background: var(--cream); border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+  input[type='range']:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 99px; }
 
   .pp-stage { position: relative; display: grid; place-items: center; }
-  .plate { position: relative; width: min(86vw, 560px); aspect-ratio: 1; border-radius: 50%; border: 6px solid var(--cream); box-shadow: 0 16px 0 rgba(59, 23, 25, .28); overflow: hidden; background: var(--paper); rotate: var(--turn, 0deg); }
+  .plate { position: relative; width: min(86vw, 560px); aspect-ratio: 1; border-radius: 50%; border: 6px solid var(--cream); box-shadow: 0 16px 0 rgba(59, 23, 25, .28); overflow: hidden; background: var(--paper); }
   .frame { position: absolute; inset: 0; opacity: 0; scale: 1.06; transition: opacity 380ms var(--ease-out), scale 700ms var(--ease-out); }
   .frame.is-active { opacity: 1; scale: 1; }
   .frame :global(img) { width: 100%; height: 100%; object-fit: cover; }
   .plate.bump { animation: bump 460ms cubic-bezier(.34, 1.56, .64, 1); }
+  .plate.shake { animation: temblar 380ms linear infinite; }
   @keyframes bump { 0% { transform: scale(.95); } 100% { transform: none; } }
+  @keyframes temblar { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-1.4deg) translateX(-2px); } 75% { transform: rotate(1.4deg) translateX(2px); } }
   .stamp { position: absolute; right: 2%; bottom: 4%; z-index: 3; font-size: 1.0625rem; opacity: 0; scale: .5; transition: opacity 200ms, scale 420ms cubic-bezier(.34, 1.56, .64, 1); }
   .stamp.is-on { opacity: 1; scale: 1; }
 
-  /* Sin movimiento: tira de cinco fotos */
-  .pp-static { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; padding: 0 var(--gutter) 56px; background: var(--cream); }
+  /* Sin JavaScript: tira de fotos */
+  .pp-static { list-style: none; display: none; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; padding: 0 var(--gutter) 56px; background: var(--cream); }
   .pp-static li { display: grid; gap: 4px; }
   .pp-static :global(img) { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 4px solid var(--cream); box-shadow: 0 6px 0 rgba(59, 23, 25, .25); }
-  .pp-static .cap-title { font-size: 1.125rem; }
+  .pp-static .cap-title { font-size: 1.0625rem; }
+  :global(html:not(.js)) .pp-static { display: grid; }
+  :global(html:not(.js)) .pp-stage, :global(html:not(.js)) .pp-captions, :global(html:not(.js)) .dots { display: none; }
 
+  /* Con scroll: escena fija mientras se recorre */
   .pp.is-animated { height: 330vh; }
   .pp.is-animated .pp-sticky { position: sticky; top: 0; height: 100svh; padding-block: 24px; align-content: center; }
-  .pp.is-animated .pp-static { display: none; }
-  .pp:not(.is-animated) .cap { opacity: 1; transform: none; position: static; }
-  .pp:not(.is-animated) .pp-captions, .pp:not(.is-animated) .dots, .pp:not(.is-animated) .pp-stage, .pp:not(.is-animated) .pp-copy .btn { display: none; }
-  .pp:not(.is-animated) .pp-copy { max-width: none; box-shadow: none; }
+  .pp.is-manual .pp-sticky { padding-block: 40px; }
 
   @media (min-width: 960px) {
     .pp-sticky { grid-template-columns: 5fr 6fr; gap: 56px; padding-inline: max(var(--gutter), calc((100vw - var(--content-width)) / 2)); }
@@ -143,10 +237,11 @@ const pasos: Paso[] = [
   @media (max-width: 959px) {
     .pp.is-animated .pp-sticky { align-content: start; padding-top: 16px; gap: 14px; }
     .pp-copy { padding: 16px; box-shadow: 5px 5px 0 var(--ink); gap: 8px; }
-    .pp-copy h2 { font-size: 1.625rem; }
-    .pp-captions { min-height: 6.4rem; }
+    .pp-copy h2 { font-size: 1.5rem; }
     .cap-note { display: none; }
-    .plate { width: min(78vw, 46svh); }
+    .q-grams { font-size: 1.75rem; }
+    .plate { width: min(78vw, 40svh); }
   }
-  @media (prefers-reduced-motion: reduce) { .frame, .cap, .stamp, .dots li { transition: none; } .plate.bump { animation: none; } }
+  @media (max-width: 959px) and (max-height: 720px) { .plate { width: min(70vw, 30svh); } }
+  @media (prefers-reduced-motion: reduce) { .frame, .cap, .stamp, .dots li { transition: none; } .plate.bump, .plate.shake { animation: none; } }
 </style>

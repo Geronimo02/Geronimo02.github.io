@@ -12,7 +12,6 @@ export interface CartState {
   whenKind: WhenKind;
   slot: string;
   name: string;
-  phone: string;
   street: string;
   ref: string;
   payment: string;
@@ -23,7 +22,7 @@ export interface CartState {
 export const MAX_QTY = 30;
 
 export const emptyState = (): CartState => ({
-  lines: [], mode: 'retiro', whenKind: 'slot', slot: '', name: '', phone: '', street: '', ref: '', payment: '', cashWith: '', notes: '',
+  lines: [], mode: 'retiro', whenKind: 'slot', slot: '', name: '', street: '', ref: '', payment: '', cashWith: '', notes: '',
 });
 
 const str = (v: unknown, max = 300) => (typeof v === 'string' ? v.slice(0, max) : '');
@@ -45,7 +44,7 @@ export function load(): CartState {
       lines,
       mode: d.mode === 'delivery' ? 'delivery' : 'retiro',
       whenKind: d.whenKind === 'asap' ? 'asap' : 'slot',
-      slot: str(d.slot, 40), name: str(d.name, 80), phone: str(d.phone, 30), street: str(d.street, 160),
+      slot: str(d.slot, 40), name: str(d.name, 80), street: str(d.street, 160),
       ref: str(d.ref, 200), payment: str(d.payment, 60), cashWith: str(d.cashWith, 20), notes: str(d.notes, 500),
     };
   } catch {

@@ -8,7 +8,6 @@ export interface GroupData {
   consultId: string;
   createdLabel: string;
   name: string;
-  phone: string;
   people: number;
   dayLabel: string;
   time: string;
@@ -35,7 +34,6 @@ export function buildGroupMessage(g: GroupData): string {
   out.push(RULE);
   out.push('👤 *CONTACTO*');
   out.push(`Nombre: ${clean(g.name)}`);
-  out.push(`Teléfono: ${clean(g.phone)}`);
   out.push(RULE);
   out.push('🍽️ *LA MESA*');
   out.push(`Somos: ${g.people} ${g.people === 1 ? 'persona' : 'personas'}`);
@@ -62,18 +60,16 @@ export function buildGroupMessage(g: GroupData): string {
   return out.join('\n');
 }
 
-export type GroupErrors = Partial<Record<'name' | 'phone' | 'people' | 'date' | 'time' | 'occasion', string>>;
+export type GroupErrors = Partial<Record<'name' | 'people' | 'date' | 'time' | 'occasion', string>>;
 
 export interface GroupInput {
-  name: string; phone: string; people: number | null; date: string; time: string; occasion: string;
+  name: string; people: number | null; date: string; time: string; occasion: string;
   timeOptions: string[]; today: string; maxDate: string;
 }
 
 export function validateGroup(v: GroupInput): GroupErrors {
   const e: GroupErrors = {};
   if (v.name.trim().length < 2) e.name = 'Decinos tu nombre para poder contestarte.';
-  const digits = v.phone.replace(/\D/g, '');
-  if (digits.length < 8 || digits.length > 15) e.phone = 'Ingresá un teléfono válido, con código de área.';
   if (v.people === null || !Number.isInteger(v.people) || v.people < 2) e.people = 'Contanos cuántas personas son (desde 2).';
   else if (v.people > 80) e.people = 'Para más de 80 personas escribinos directo por WhatsApp o llamanos.';
   if (!v.date || v.date < v.today) e.date = 'Elegí un día desde hoy en adelante.';

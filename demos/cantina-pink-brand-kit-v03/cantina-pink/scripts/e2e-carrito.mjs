@@ -63,24 +63,28 @@ const add = async (page, id, times = 1) => {
   const waBtn = page.getByRole('button', { name: /Enviar pedido por WhatsApp/ });
   await waBtn.click();
   assert.ok(await page.locator('.err--box').isVisible());
-  for (const t of ['tu nombre', 'teléfono válido', 'día y la hora de retiro', 'cómo vas a pagar']) {
-    assert.ok((await page.locator('.cart-panel').innerText()).includes(t), 'falta error: ' + t);
-  }
+  const txt = await page.locator('.cart-panel').innerText();
+  assert.ok(txt.includes('tu nombre'));
+  for (const t of ['teléfono', 'día y la hora', 'cómo vas a pagar']) assert.ok(!txt.includes(t), 'no debería pedir: ' + t);
   await page.waitForFunction(() => document.activeElement?.id === 'f-name', null, { timeout: 2000 });
   assert.equal(waUrls.length, 0);
-  ok('enviar con datos faltantes muestra los errores, enfoca el primero y no abre WhatsApp');
+  ok('enviar sin nombre marca solo el nombre, enfoca el campo y no abre WhatsApp');
+
+  assert.equal(await page.inputValue('#f-when'), 'asap');
+  assert.equal(await page.getByLabel('Efectivo').isChecked(), true);
+  assert.equal(await page.getByLabel(/Retiro en el local/).isChecked(), true);
+  assert.equal(await page.locator('#f-phone').count(), 0);
+  ok('por defecto viene resuelto (retiro, lo antes posible, efectivo) y no se pide teléfono');
 
   await page.fill('#f-name', 'Juan Pérez');
-  await page.fill('#f-phone', '249 123-4567');
-  const hours = await page.locator('#f-when option').allInnerTexts();
-  assert.ok(hours.length > 1);
   await page.selectOption('#f-when', { index: 1 });
-  await page.getByLabel('Efectivo').check();
+  assert.ok(/\d\d:\d\d h$/.test((await page.locator('#f-when option:checked').innerText()).trim()));
+  await page.locator('.more summary').click();
   await page.fill('#f-cash', '70000');
   await page.locator('.line-note summary').first().click();
   await page.locator('.line-note input').first().fill('sin aceitunas');
   await page.fill('textarea', 'Traer cubiertos');
-  ok('se completan retiro, datos, pago, aclaración de línea y aclaraciones generales');
+  ok('se completan nombre, horario, vuelto, aclaración de línea y aclaraciones generales');
 
   const preview = await page.locator('.preview').evaluate((d) => { d.open = true; return d.querySelector('pre').innerText; });
   for (const f of ['PEDIDO WEB - CANTINA PINK', 'Nombre: Juan Pérez', 'RETIRO EN EL LOCAL', 'San Martín 501', 'Aclaración: sin aceitunas', 'Productos: 2', 'Subtotal: $45.000', '*TOTAL: $45.000*', 'Efectivo (se abona al retirar)', 'vuelto $25.000', 'Traer cubiertos']) {
@@ -113,12 +117,12 @@ const add = async (page, id, times = 1) => {
   // Delivery
   await page.getByLabel(/Delivery/).check();
   assert.equal(await page.locator('#f-street').count(), 1);
-  assert.equal(await page.getByLabel('Efectivo').isChecked(), false, 'al cambiar de modalidad se limpia el pago');
+  assert.equal(await page.getByLabel('Efectivo').isChecked(), true, 'al cambiar de modalidad el pago vuelve al valor por defecto');
   await page.getByLabel('Transferencia').check();
-  await page.selectOption('#f-when', { index: 1 }).catch(() => {});
   await page.getByRole('button', { name: /Enviar pedido por WhatsApp/ }).click();
   assert.ok((await page.locator('.cart-panel').innerText()).includes('calle, número'));
   await page.fill('#f-street', 'Rivadavia 123, 2° B');
+  await page.evaluate(() => { document.querySelector('.more').open = true; });
   await page.fill('#f-ref', 'Portón negro');
   await page.waitForFunction(() => document.querySelector('.preview pre')?.innerText.includes('Referencias: Portón negro'), null, { timeout: 3000 });
   const prev2 = await page.locator('.preview pre').innerText();
@@ -136,8 +140,8 @@ const add = async (page, id, times = 1) => {
   ok('al recargar se conservan el pedido y los datos');
 
   // Lo antes posible con el local abierto
-  assert.equal(await page.getByLabel(/Lo antes posible/).isDisabled(), false);
-  ok('con el local abierto se puede pedir "lo antes posible"');
+  assert.equal(await page.locator('#f-when option[value="asap"]').count(), 1);
+  ok('con el local abierto se ofrece "lo antes posible"');
 
   await page.getByRole('button', { name: 'Vaciar pedido' }).last().click();
   assert.ok((await page.locator('.empty').innerText()).includes('Todavía no hay nada'));
@@ -157,11 +161,12 @@ const add = async (page, id, times = 1) => {
   await page.waitForSelector('.cart-panel');
   await add(page, 'pizza-muzzarella');
   assert.ok((await page.locator('.banner').innerText()).includes('Ahora estamos cerrados'));
-  assert.equal(await page.getByLabel(/Lo antes posible/).isDisabled(), true);
-  ok('cerrado: aviso visible y "lo antes posible" deshabilitado');
-  const first = await page.locator('#f-when option').nth(1).innerText();
-  assert.ok(/^\d\d:\d\d h$/.test(first));
-  ok('se pueden elegir turnos programados');
+  assert.equal(await page.locator('#f-when option[value="asap"]').count(), 0);
+  ok('cerrado: aviso visible y no se ofrece "lo antes posible"');
+  const first = (await page.locator('#f-when option').first().innerText()).trim();
+  assert.ok(/\d\d:\d\d h$/.test(first), first);
+  assert.ok((await page.locator('#f-when').inputValue()).length > 5);
+  ok('queda preseleccionado el primer turno disponible (no hay que elegir nada)');
   assert.deepEqual(errors, []);
   await ctx.close();
 }

@@ -18,8 +18,8 @@ const WaIcon = () => (
   </svg>
 );
 
-const FIELD_ORDER = ['name', 'phone', 'people', 'date', 'time', 'occasion'] as const;
-const FIELD_ID: Record<string, string> = { name: 'g-name', phone: 'g-phone', people: 'g-people', date: 'g-date', time: 'g-time', occasion: 'g-occasion' };
+const FIELD_ORDER = ['name', 'people', 'date', 'time', 'occasion'] as const;
+const FIELD_ID: Record<string, string> = { name: 'g-name', people: 'g-people', date: 'g-date', time: 'g-time', occasion: 'g-occasion' };
 
 async function copyText(text: string): Promise<boolean> {
   try { await navigator.clipboard.writeText(text); return true; } catch {
@@ -37,7 +37,6 @@ export default function GrupoForm({ wa }: Props) {
   const today = todayYmd();
   const maxDate = todayYmd(new Date(Date.now() + 120 * 86_400_000));
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
   const [people, setPeople] = useState(8);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -51,10 +50,10 @@ export default function GrupoForm({ wa }: Props) {
   const consultId = useRef(newConsultId());
 
   // Si ya cargó datos en el pedido, los reutilizamos.
-  useEffect(() => { const c = loadCart(); if (c.name) setName(c.name); if (c.phone) setPhone(c.phone); }, []);
+  useEffect(() => { const c = loadCart(); if (c.name) setName(c.name); }, []);
 
   const timeOptions = date ? slotsForDate(date) : [];
-  const errors = validateGroup({ name, phone, people, date, time, occasion, timeOptions, today, maxDate });
+  const errors = validateGroup({ name, people, date, time, occasion, timeOptions, today, maxDate });
   const hasErrors = Object.keys(errors).length > 0;
   const err = (k: string) => (attempted ? (errors as Record<string, string>)[k] : undefined);
   const errEl = (k: string) => (err(k) ? <p class="err" id={`ge-${k}`}>{err(k)}</p> : null);
@@ -63,7 +62,6 @@ export default function GrupoForm({ wa }: Props) {
     consultId: consultId.current,
     createdLabel: 'el ' + formatPickup(new Date().toISOString()),
     name: name.trim() || (placeholder ? '(sin completar)' : ''),
-    phone: phone.trim() || (placeholder ? '(sin completar)' : ''),
     people,
     dayLabel: date ? dayLabel(date) : '(sin elegir)',
     time: time || (placeholder ? '(sin elegir)' : ''),
@@ -110,10 +108,6 @@ export default function GrupoForm({ wa }: Props) {
           <input id="g-name" type="text" autocomplete="name" maxLength={80} value={name} aria-invalid={!!err('name')} aria-describedby={err('name') ? 'ge-name' : undefined} onInput={(e) => changed(setName)((e.target as HTMLInputElement).value)} />
         </label>
         {errEl('name')}
-        <label class="fld"><span>Teléfono (con código de área)</span>
-          <input id="g-phone" type="tel" inputMode="tel" autocomplete="tel" maxLength={30} placeholder="249 123-4567" value={phone} aria-invalid={!!err('phone')} aria-describedby={err('phone') ? 'ge-phone' : undefined} onInput={(e) => changed(setPhone)((e.target as HTMLInputElement).value)} />
-        </label>
-        {errEl('phone')}
       </fieldset>
 
       <fieldset class="field">

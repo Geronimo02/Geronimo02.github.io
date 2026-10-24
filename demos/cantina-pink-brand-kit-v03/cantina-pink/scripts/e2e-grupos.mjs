@@ -27,7 +27,7 @@ for (const [w, h, label] of [[1440, 900, 'escritorio'], [390, 844, 'celular']]) 
   await page.getByRole('button', { name: 'Enviar consulta por WhatsApp' }).click();
   await page.waitForFunction(() => document.activeElement?.id === 'g-name', null, { timeout: 2000 });
   const txt = await page.locator('.grupo').innerText();
-  for (const t of ['nombre', 'teléfono válido', 'Elegí un día', 'Elegí la ocasión']) assert.ok(txt.includes(t), 'falta: ' + t);
+  for (const t of ['nombre', 'Elegí un día', 'Elegí la ocasión']) assert.ok(txt.includes(t), 'falta: ' + t);
   assert.equal(waUrls.length, 0);
   ok('enviar vacío marca los errores, enfoca el nombre y no abre WhatsApp');
 
@@ -39,7 +39,6 @@ for (const [w, h, label] of [[1440, 900, 'escritorio'], [390, 844, 'celular']]) 
 
   await page.getByRole('button', { name: 'Una persona más' }).click();
   await page.fill('#g-name', 'Ana López');
-  await page.fill('#g-phone', '249 444 0808');
   const d = new Date(Date.now() + 3 * 86400e3);
   const ymd = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   await page.fill('#g-date', ymd);

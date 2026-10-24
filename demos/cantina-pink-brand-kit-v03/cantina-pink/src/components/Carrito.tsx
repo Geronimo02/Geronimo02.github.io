@@ -25,8 +25,8 @@ const WaIcon = () => (
   </svg>
 );
 
-const FIELD_ORDER = ['soldout', 'lines', 'name', 'phone', 'street', 'when', 'payment', 'cashWith', 'min'] as const;
-const FIELD_ID: Record<string, string> = { soldout: 'cart-lines', lines: 'cart-lines', name: 'f-name', phone: 'f-phone', street: 'f-street', when: 'f-when', payment: 'f-pay-0', cashWith: 'f-cash', min: 'cart-lines' };
+const FIELD_ORDER = ['soldout', 'lines', 'name', 'street', 'when', 'payment', 'cashWith', 'min'] as const;
+const FIELD_ID: Record<string, string> = { soldout: 'cart-lines', lines: 'cart-lines', name: 'f-name', street: 'f-street', when: 'f-when', payment: 'f-pay-0', cashWith: 'f-cash', min: 'cart-lines' };
 
 const onlyDigits = (v: string) => v.replace(/\D/g, '');
 
@@ -39,7 +39,6 @@ export default function Carrito({ wa }: Props) {
   const [sent, setSent] = useState<{ orderId: string; url: string | null; text: string } | null>(null);
   const [announce, setAnnounce] = useState('');
   const [, setTick] = useState(0);
-  const [day, setDay] = useState('');
   const dlg = useRef<HTMLDialogElement>(null);
   const orderId = useRef(newOrderId());
 
@@ -120,18 +119,22 @@ export default function Carrito({ wa }: Props) {
   const fee = mode === 'delivery' ? (D.freeOver !== null && subtotal >= D.freeOver ? 0 : D.fee) : 0;
   const payOptions = PAY[mode];
   const cashWithNum = s && s.cashWith ? Number(onlyDigits(s.cashWith)) || null : null;
-  const whenKind = s?.whenKind === 'asap' && asapOk ? 'asap' : 'slot';
-  const whenOk = whenKind === 'asap' ? asapOk : !!s && isValidPickup(s.slot, now, lead);
+
+  // Todo viene resuelto por defecto: así solo hace falta el nombre (y la dirección si es delivery).
+  // Cuándo: "lo antes posible" si el local está abierto; si no, el primer turno disponible.
+  const firstSlot = days[0]?.slots[0]?.value ?? '';
+  const slotValid = !!s && s.whenKind === 'slot' && isValidPickup(s.slot, now, lead);
+  const whenValue = s?.whenKind === 'asap' && asapOk ? 'asap' : slotValid ? s!.slot : asapOk ? 'asap' : firstSlot;
+  const whenOk = whenValue !== '';
+  const whenLabel = whenValue === 'asap' ? 'Lo antes posible (confirmenme el tiempo)' : whenValue ? formatPickup(whenValue) : '(sin elegir)';
+  // Pago: la primera opción de la modalidad, salvo que haya elegido otra.
+  const payment = s && payOptions.includes(s.payment) ? s.payment : payOptions[0];
   const errors = s ? validate({
-    lineCount: lines.length, mode, name: s.name, phone: s.phone, street: s.street, whenOk, payment: s.payment,
-    paymentOptions: payOptions, cashWith: s.payment.startsWith('Efectivo') ? cashWithNum : null, subtotal, minOrder: D.minOrder,
+    lineCount: lines.length, mode, name: s.name, street: s.street, whenOk, payment,
+    paymentOptions: payOptions, cashWith: payment.startsWith('Efectivo') ? cashWithNum : null, subtotal, minOrder: D.minOrder,
     soldOutNames: lines.filter((l) => isSoldOut(l.item.id)).map((l) => l.item.name),
   }) : {};
   const hasErrors = Object.keys(errors).length > 0;
-
-  // Día seleccionado: el del turno elegido, o el primero disponible.
-  const slotDay = s?.slot ? s.slot.slice(0, 10) : '';
-  const currentDay = days.find((d) => d.ymd === (day || slotDay)) ?? days[0];
 
   const update = (patch: Partial<CartState> | ((p: CartState) => CartState)) => {
     if (!s) return;
@@ -145,13 +148,12 @@ export default function Carrito({ wa }: Props) {
     orderId: orderId.current,
     createdLabel: 'el ' + formatPickup(now.toISOString()),
     mode,
-    whenLabel: whenKind === 'asap' ? 'Lo antes posible (confirmenme el tiempo)' : s && s.slot ? formatPickup(s.slot) : '(sin elegir)',
+    whenLabel,
     name: s?.name.trim() || (placeholder ? '(sin completar)' : ''),
-    phone: s?.phone.trim() || (placeholder ? '(sin completar)' : ''),
     street: s?.street ?? '',
     ref: s?.ref ?? '',
-    payment: s?.payment || (placeholder ? '(sin elegir)' : ''),
-    cashWith: s?.payment.startsWith('Efectivo') ? cashWithNum : null,
+    payment,
+    cashWith: payment.startsWith('Efectivo') ? cashWithNum : null,
     notes: s?.notes ?? '',
     lines: lines.map((l) => ({ name: l.item.name, qty: l.qty, unitPrice: l.item.price ?? 0, note: l.note })),
     deliveryFee: fee,
@@ -290,36 +292,24 @@ export default function Carrito({ wa }: Props) {
           </fieldset>
 
           <fieldset class="field" aria-describedby={err('when') ? 'e-when' : undefined}>
-            <legend>{mode === 'retiro' ? '¿Cuándo pasás a retirar?' : '¿Cuándo querés que llegue?'}</legend>
-            <div class="choices choices--stack">
-              <label class={`choice choice--slim${whenKind === 'asap' ? ' is-on' : ''}${asapOk ? '' : ' is-off'}`}>
-                <input type="radio" name="when" disabled={!asapOk} checked={whenKind === 'asap'} onChange={() => update({ whenKind: 'asap' })} />
-                <span><strong>Lo antes posible</strong><small>{asapOk ? 'Te confirmamos el tiempo por WhatsApp' : 'Disponible cuando el local está abierto'}</small></span>
-              </label>
-              <label class={`choice choice--slim${whenKind === 'slot' ? ' is-on' : ''}`}>
-                <input type="radio" name="when" checked={whenKind === 'slot'} onChange={() => update({ whenKind: 'slot' })} />
-                <span><strong>Elegir día y hora</strong></span>
-              </label>
-            </div>
-            {whenKind === 'slot' && (days.length === 0 ? (
+            <legend>{mode === 'retiro' ? '¿Cuándo lo retirás?' : '¿Cuándo lo querés en tu casa?'}</legend>
+            {days.length === 0 && !asapOk ? (
               <p class="note">No hay horarios disponibles en los próximos días. Escribinos por WhatsApp.</p>
             ) : (
-              <div class="row2">
-                <label class="fld"><span>Día</span>
-                  <select value={currentDay?.ymd} onChange={(e) => { setDay((e.target as HTMLSelectElement).value); update({ slot: '' }); }}>
-                    {days.map((d) => <option value={d.ymd} key={d.ymd}>{d.label}</option>)}
-                  </select>
-                </label>
-                <label class="fld"><span>Hora</span>
-                  <select id="f-when" value={s.slot} aria-invalid={!!err('when')} onChange={(e) => update({ slot: (e.target as HTMLSelectElement).value })}>
-                    <option value="">Elegí…</option>
-                    {currentDay?.slots.map((x) => <option value={x.value} key={x.value}>{x.label} h</option>)}
-                  </select>
-                </label>
-              </div>
-            ))}
+              <label class="fld">
+                <span class="visually-hidden">Día y hora</span>
+                <select id="f-when" value={whenValue} aria-invalid={!!err('when')} onChange={(e) => { const v = (e.target as HTMLSelectElement).value; update(v === 'asap' ? { whenKind: 'asap', slot: '' } : { whenKind: 'slot', slot: v }); }}>
+                  {asapOk && <option value="asap">Lo antes posible</option>}
+                  {days.map((d) => (
+                    <optgroup label={d.label} key={d.ymd}>
+                      {d.slots.map((x) => <option value={x.value} key={x.value}>{d.label} · {x.label} h</option>)}
+                    </optgroup>
+                  ))}
+                </select>
+              </label>
+            )}
             {errEl('when')}
-            {!business.hours.verified && <p class="small"><Pend note="Horario del local sin confirmar." /> Los horarios se confirman con el local.</p>}
+            <p class="small">{whenValue === 'asap' ? 'Te confirmamos el tiempo por WhatsApp.' : 'El local te confirma el horario por WhatsApp.'} {!business.hours.verified && <Pend note="Horario del local sin confirmar." />}</p>
           </fieldset>
 
           <fieldset class="field">
@@ -328,48 +318,51 @@ export default function Carrito({ wa }: Props) {
               <input id="f-name" type="text" autocomplete="name" maxLength={80} value={s.name} aria-invalid={!!err('name')} aria-describedby={err('name') ? 'e-name' : undefined} onInput={(e) => update({ name: (e.target as HTMLInputElement).value })} />
             </label>
             {errEl('name')}
-            <label class="fld"><span>Teléfono (con código de área)</span>
-              <input id="f-phone" type="tel" inputMode="tel" autocomplete="tel" maxLength={30} placeholder="249 123-4567" value={s.phone} aria-invalid={!!err('phone')} aria-describedby={err('phone') ? 'e-phone' : undefined} onInput={(e) => update({ phone: (e.target as HTMLInputElement).value })} />
-            </label>
-            {errEl('phone')}
             {mode === 'delivery' && (
               <>
                 <label class="fld"><span>Dirección de entrega</span>
                   <input id="f-street" type="text" autocomplete="street-address" maxLength={160} placeholder="Calle, número, piso o depto" value={s.street} aria-invalid={!!err('street')} aria-describedby={err('street') ? 'e-street' : undefined} onInput={(e) => update({ street: (e.target as HTMLInputElement).value })} />
                 </label>
                 {errEl('street')}
-                <label class="fld"><span>Referencias (opcional)</span>
-                  <input id="f-ref" type="text" maxLength={200} placeholder="Portón negro, timbre 2, entre calles…" value={s.ref} onInput={(e) => update({ ref: (e.target as HTMLInputElement).value })} />
-                </label>
               </>
             )}
           </fieldset>
 
           <fieldset class="field" aria-describedby={err('payment') ? 'e-payment' : undefined}>
-            <legend>{mode === 'retiro' ? 'Cómo pagás al retirar' : 'Cómo pagás al recibir'}</legend>
-            <div class="choices choices--stack">
+            <legend>{mode === 'retiro' ? 'Pagás al retirar' : 'Pagás al recibir'}</legend>
+            <div class="choices choices--row">
               {payOptions.map((o, i) => (
-                <label class={`choice choice--slim${s.payment === o ? ' is-on' : ''}`} key={o}>
-                  <input id={`f-pay-${i}`} type="radio" name="payment" value={o} checked={s.payment === o} onChange={() => update({ payment: o })} />
+                <label class={`choice choice--chip${payment === o ? ' is-on' : ''}`} key={o}>
+                  <input id={`f-pay-${i}`} type="radio" name="payment" value={o} checked={payment === o} onChange={() => update({ payment: o })} />
                   <span><strong>{o}</strong></span>
                 </label>
               ))}
             </div>
             {errEl('payment')}
-            {s.payment.startsWith('Efectivo') && (
-              <>
-                <label class="fld"><span>¿Con cuánto abonás? (opcional, para llevar el vuelto)</span>
-                  <input id="f-cash" type="text" inputMode="numeric" maxLength={9} placeholder="Ej: 50000" value={s.cashWith} aria-invalid={!!err('cashWith')} onInput={(e) => update({ cashWith: onlyDigits((e.target as HTMLInputElement).value) })} />
-                </label>
-                {errEl('cashWith')}
-              </>
-            )}
-            <p class="small">El pago se hace en persona: no se cobra nada online. {!PAY.verified && <Pend note="Medios de pago sin confirmar." />}</p>
+            <p class="small">Se paga en persona, no se cobra nada online. {!PAY.verified && <Pend note="Medios de pago sin confirmar." />}</p>
           </fieldset>
 
-          <label class="fld"><span>Aclaraciones generales (opcional)</span>
-            <textarea rows={3} maxLength={500} placeholder="Alergias, traer cubiertos, cortar en porciones…" value={s.notes} onInput={(e) => update({ notes: (e.target as HTMLTextAreaElement).value })} />
-          </label>
+          <details class="more" open={!!(s.notes || s.ref || s.cashWith)}>
+            <summary>Más opciones <small>(vuelto, referencias, aclaraciones)</small></summary>
+            <div class="more-body">
+              {payment.startsWith('Efectivo') && (
+                <>
+                  <label class="fld"><span>¿Con cuánto abonás? (para llevar el vuelto)</span>
+                    <input id="f-cash" type="text" inputMode="numeric" maxLength={9} placeholder="Ej: 50000" value={s.cashWith} aria-invalid={!!err('cashWith')} onInput={(e) => update({ cashWith: onlyDigits((e.target as HTMLInputElement).value) })} />
+                  </label>
+                  {errEl('cashWith')}
+                </>
+              )}
+              {mode === 'delivery' && (
+                <label class="fld"><span>Referencias de la dirección</span>
+                  <input id="f-ref" type="text" maxLength={200} placeholder="Portón negro, timbre 2, entre calles…" value={s.ref} onInput={(e) => update({ ref: (e.target as HTMLInputElement).value })} />
+                </label>
+              )}
+              <label class="fld"><span>Aclaraciones generales</span>
+                <textarea rows={3} maxLength={500} placeholder="Alergias, traer cubiertos, cortar en porciones…" value={s.notes} onInput={(e) => update({ notes: (e.target as HTMLTextAreaElement).value })} />
+              </label>
+            </div>
+          </details>
 
           <dl class="sum" aria-label="Resumen del pedido">
             <div><dt>Subtotal</dt><dd>{money(totals.subtotal)}</dd></div>
