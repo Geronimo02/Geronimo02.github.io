@@ -13,6 +13,8 @@ export interface MenuItem {
   mesa: boolean;
   tags: string[];
   image: Recorte | null;
+  /** Nombre de una foto real en src/assets/fotos (sin extensión). */
+  foto?: string;
 }
 
 export interface MenuCategory {

@@ -1,0 +1,61 @@
+---
+import Foto from '../Foto.astro';
+import type { FotoName } from '../../lib/fotos';
+
+// Copy propuesto en la voz de la marca; cada razón se apoya en algo confirmado (BRAND.md §1) o visible en sus fotos.
+interface Razon { titulo: string; texto: string; foto: FotoName; pos?: string; tilt: number }
+const razones: Razon[] = [
+  { titulo: 'La pizza no se termina sola. Se termina con ayuda.', texto: 'Pizza libre: ir por la próxima porción no es de mala educación.', foto: 'pizza-jamon-mano', pos: '50% 60%', tilt: -2 },
+  { titulo: 'Una milanesa que no entra en el plato.', texto: 'Las XL son para compartir. Cada tanto alguien lo intenta solo.', foto: 'milanesa-caballo', pos: '60% 60%', tilt: 2 },
+  { titulo: 'El pan también se come.', texto: 'La pasta viene adentro de un pan de campo. Con cuchara y con las manos.', foto: 'pasta-3-salsa', tilt: -1.5 },
+  { titulo: 'Se comparte todo, hasta la esquina.', texto: 'San Martín e Yrigoyen, desde 2019. Si venís con un grupo, avisanos y armamos la mesa.', foto: 'mesa-milanesas', pos: '50% 40%', tilt: 1.5 },
+  { titulo: 'Después de la carta, hablamos.', texto: 'Mirá todo lo que hay y volvé cuando quieras. Siempre sobra algo para el día siguiente.', foto: 'empanada-salsa', pos: '30% 50%', tilt: -2.5 },
+];
+---
+<section class="rz" aria-labelledby="rz-title">
+  <div class="container">
+    <header class="head">
+      <p class="kicker">Para que vengas</p>
+      <h2 id="rz-title" class="display-l">Cinco razones. Seis, si contás el mantel.</h2>
+    </header>
+    <ol class="list">
+      {razones.map((r, i) => (
+        <li class="row" data-reveal={i % 2 ? 'right' : 'left'}>
+          <span class="n" aria-hidden="true">{i + 1}</span>
+          <div class="txt">
+            <h3>{r.titulo}</h3>
+            <p>{r.texto}</p>
+          </div>
+          <figure class="ph" style={`--tilt:${r.tilt}deg`}>
+            <Foto name={r.foto} alt="" position={r.pos ?? 'center'} widths={[320, 520, 800]} sizes="(min-width: 960px) 260px, 38vw" />
+          </figure>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .rz { padding: 80px 0; }
+  .head { display: grid; gap: 12px; margin-bottom: 32px; max-width: 18ch; }
+  .list { list-style: none; border-top: 3px solid var(--ink); }
+  .row {
+    display: grid; grid-template-columns: auto 1fr; grid-template-areas: 'n txt' 'n ph'; gap: 8px 18px;
+    padding: 24px 0; border-bottom: 1px solid var(--line-strong); align-items: center;
+  }
+  .n { grid-area: n; align-self: start; font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 12vw, 6.5rem); line-height: .8; color: var(--red); min-width: 1ch; transition: transform var(--motion-long) var(--ease-out); }
+  .txt { grid-area: txt; display: grid; gap: 6px; }
+  .txt h3 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.375rem, 3.4vw, 2.25rem); line-height: 1.05; letter-spacing: -.015em; max-width: 22ch; }
+  .txt p { max-width: 44ch; }
+  .ph { grid-area: ph; margin: 8px 0 0; width: min(100%, 320px); aspect-ratio: 16 / 10; border-radius: var(--radius-sm); overflow: hidden; border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); rotate: var(--tilt); transition: rotate var(--motion-long) var(--ease-out), transform var(--motion-long) var(--ease-out); }
+  .ph :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .row:hover .n { transform: rotate(-6deg) scale(1.08); }
+  .row:hover .ph { rotate: 0deg; transform: scale(1.04); }
+
+  @media (min-width: 760px) {
+    .row { grid-template-columns: 7rem 1fr 280px; grid-template-areas: 'n txt ph'; gap: 28px; padding: 32px 0; }
+    .ph { margin: 0; width: 100%; }
+  }
+  @media (min-width: 960px) { .head { max-width: none; } .head h2 { max-width: 20ch; } }
+  @media (prefers-reduced-motion: reduce) { .n, .ph { transition: none; } .row:hover .n, .row:hover .ph { transform: none; } }
+</style>

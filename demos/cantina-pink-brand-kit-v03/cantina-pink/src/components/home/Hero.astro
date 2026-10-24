@@ -1,68 +1,89 @@
 ---
-import Recorte from '../Recorte.astro';
-import Pending from '../Pending.astro';
+import Foto from '../Foto.astro';
 import Icon from '../Icon.astro';
+
+const titular = 'Hay lugar para todos en la mesa.'.split(' ');
 ---
 <section class="hero" aria-labelledby="hero-title">
+  <div class="ghost" aria-hidden="true"></div>
   <div class="container hero-grid">
     <div class="copy">
-      <p class="kicker">San Martín 501 · Tandil · desde 2019</p>
-      <h1 id="hero-title" class="display-xl">Hay lugar para todos en la mesa.</h1>
-      <p class="lead">Pizzas para compartir, milanesas XL, pastas y esos platos que se disfrutan sin apuro. Vení a comer o pedí para retirar.</p>
-      <div class="ctas">
+      <p class="kicker rise" style="--d:0ms">San Martín 501 · Tandil · desde 2019</p>
+      <h1 id="hero-title" class="display-xl words">
+        {titular.map((w, i) => <><span class="w"><span style={`--i:${i}`}>{w}</span></span>{' '}</>)}
+      </h1>
+      <p class="lead rise" style="--d:620ms">Pizzas para compartir, milanesas XL, pastas y esos platos que se disfrutan sin apuro. Vení a comer o pedí para retirar.</p>
+      <div class="ctas rise" style="--d:760ms">
         <a class="btn btn--wine" href="/carta">Ver la carta <Icon name="flecha" size={20} /></a>
         <a class="btn btn--outline" href="/ubicacion">Cómo llegar</a>
       </div>
-      <p class="status"><Icon name="reloj" size={18} /> <span data-open-status>12 a 15 h y 20 a 00 h</span></p>
+      <p class="status rise" style="--d:880ms"><Icon name="reloj" size={18} /> <span data-open-status>12 a 15 h y 20 a 00 h</span></p>
     </div>
 
     <div class="visual">
-      <div class="table mantel" aria-hidden="true"></div>
-      <Recorte name="pasta" alt="Pasta servida adentro de un pan de campo, vista desde arriba" class="main" priority sizes="(min-width: 960px) 520px, 80vw" />
-      <Recorte name="pizza" alt="" class="side side-pizza" sizes="(min-width: 960px) 260px, 40vw" />
-      <Recorte name="empanada" alt="" class="side side-emp" sizes="(min-width: 960px) 220px, 34vw" />
-      <ul class="labels" aria-label="Algunos platos de la casa">
-        <li data-reveal style="--reveal-delay:120ms">Pasta en pan</li>
-        <li data-reveal style="--reveal-delay:240ms">Pizza libre</li>
-        <li data-reveal style="--reveal-delay:360ms">Empanadas</li>
-      </ul>
-      <p class="ph-note"><Pending note="Foto original del hero: mesa con platos insignia, horizontal 16:9 o 4:5 para celular." /> Ilustración provisoria</p>
+      <div class="frame">
+        <Foto name="mesa-milanesas" priority sizes="(min-width: 960px) 46vw, 90vw" widths={[360, 560, 800, 1100, 1500]} position="50% 55%" class="photo" />
+      </div>
+      <p class="sticker s1" style="--r1:-6deg; --r0:-30deg; --d:1000ms">Milanesas XL</p>
+      <p class="sticker s2" style="--r1:5deg; --r0:25deg; --d:1150ms">Para compartir</p>
+      <p class="sticker s3 sticker--red" style="--r1:-3deg; --r0:-20deg; --d:1300ms">Pizza libre</p>
     </div>
   </div>
 </section>
 
 <style>
-  .hero { padding: 32px 0 56px; overflow: hidden; }
-  .hero-grid { display: grid; gap: 40px; align-items: center; }
+  .hero { position: relative; padding: 32px 0 64px; overflow: hidden; }
+  .ghost::before { content: 'A LA MESA'; }
+  .ghost {
+    position: absolute; right: -2%; bottom: -3%; z-index: 0; pointer-events: none; user-select: none;
+    font-family: var(--font-display); font-weight: 800; line-height: .8; white-space: nowrap;
+    font-size: clamp(6rem, 26vw, 21rem); letter-spacing: -.04em;
+    color: var(--paper); opacity: .8;
+  }
+  .hero-grid { position: relative; z-index: 1; display: grid; gap: 48px; align-items: center; }
   .copy { display: grid; gap: 20px; justify-items: start; }
   .copy h1 { max-width: 11ch; }
-  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 4px; }
   .status { display: inline-flex; align-items: center; gap: 8px; font-size: .9375rem; font-weight: 700; }
+  .rise { animation: aparecer 700ms var(--ease-out) var(--d, 0ms) both; }
 
-  .visual { position: relative; aspect-ratio: 1; width: 100%; margin-inline: auto; max-width: 560px; }
-  .table { position: absolute; inset: 6% 0 0 0; border-radius: var(--radius-sm); }
-  .visual :global(.main) {
-    position: absolute; left: 14%; top: 14%; width: 72%; z-index: 2;
-    filter: drop-shadow(0 18px 0 rgba(59, 23, 25, .12));
+  .visual { position: relative; max-width: 560px; width: 100%; margin-inline: auto; }
+  .frame {
+    aspect-ratio: 4 / 5; border-radius: var(--radius-sm); overflow: hidden; border: 3px solid var(--ink);
+    box-shadow: 10px 10px 0 var(--ink); rotate: 2deg; background: var(--paper);
+    animation: foto-in 800ms var(--ease-out) both;
   }
-  .visual :global(.side) { position: absolute; z-index: 1; filter: drop-shadow(0 14px 0 rgba(59, 23, 25, .12)); }
-  .visual :global(.side-pizza) { width: 40%; right: -12%; top: -2%; }
-  .visual :global(.side-emp) { width: 36%; left: -10%; bottom: -4%; transform: rotate(-8deg); }
+  .frame :global(.photo) { width: 100%; height: 100%; object-fit: cover; }
+  @keyframes foto-in { from { rotate: -3deg; scale: 1.05; } to { rotate: 2deg; scale: 1; } }
 
-  .labels { list-style: none; position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-  .labels li {
-    position: absolute; background: var(--cream); color: var(--ink);
-    font-family: var(--font-display); font-weight: 800; font-size: clamp(.9375rem, 1.6vw, 1.125rem);
-    padding: 6px 14px; border-radius: var(--radius-pill); border: 2px solid var(--ink); white-space: nowrap;
+  .sticker {
+    position: absolute; z-index: 2; margin: 0; padding: 8px 16px; border-radius: var(--radius-pill);
+    background: var(--cream); color: var(--ink); border: 2.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink);
+    font-family: var(--font-display); font-weight: 800; font-size: clamp(1rem, 1.8vw, 1.25rem); white-space: nowrap;
+    animation: pop 560ms cubic-bezier(.34, 1.56, .64, 1) var(--d, 0ms) both;
   }
-  .labels li:nth-child(1) { left: 4%; top: 30%; }
-  .labels li:nth-child(2) { right: 2%; top: 38%; }
-  .labels li:nth-child(3) { right: 12%; bottom: 10%; }
-  .ph-note { position: absolute; left: 0; bottom: -40px; display: flex; gap: 8px; align-items: center; font-size: .8125rem; }
+  .sticker--red { background: var(--red); color: var(--cream); }
+  .s1 { left: -4%; top: 10%; }
+  .s2 { right: -3%; top: 46%; }
+  .s3 { left: 6%; bottom: 7%; }
 
   @media (min-width: 960px) {
-    .hero { padding: 48px 0 104px; }
-    .hero-grid { grid-template-columns: 5fr 7fr; gap: 48px; }
-    .visual { max-width: none; width: 108%; }
+    .hero { padding: 56px 0 112px; }
+    .hero-grid { grid-template-columns: 6fr 5fr; gap: 64px; }
+    .visual { max-width: none; }
+    .s1 { left: -10%; }
+    .s2 { right: -6%; }
+  }
+
+  /* Parallax suave de la foto con el scroll (solo navegadores que lo soportan) */
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .frame :global(.photo) { animation: parallax linear both; animation-timeline: scroll(root); animation-range: 0 700px; }
+      @keyframes parallax { from { transform: scale(1.02) translateY(0); } to { transform: scale(1.12) translateY(-5%); } }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rise, .frame, .sticker { animation: none; }
   }
 </style>

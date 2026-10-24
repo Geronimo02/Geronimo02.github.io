@@ -1,12 +1,17 @@
 ---
 import Pending from './Pending.astro';
+import Foto from './Foto.astro';
+import { foto as hasFoto, type FotoName } from '../lib/fotos';
 import { formatPrice, splitPending, type MenuItem } from '../lib/menu';
 
-interface Props { item: MenuItem; headingLevel?: 'h3' | 'h4' }
-const { item, headingLevel: H = 'h3' } = Astro.props;
+interface Props { item: MenuItem; headingLevel?: 'h3' | 'h4'; photos?: boolean }
+const { item, headingLevel: H = 'h3', photos = false } = Astro.props;
+const showPhoto = photos && item.foto && hasFoto(item.foto);
 const desc = splitPending(item.description);
 ---
-<article class="item" id={`plato-${item.id}`}>
+<article class:list={['item', showPhoto && 'has-photo']} id={`plato-${item.id}`}>
+  {showPhoto && <div class="thumb"><Foto name={item.foto as FotoName} alt="" widths={[160, 320]} sizes="112px" /></div>}
+  <div class="body">
   <div class="head">
     <H class="name">{item.name}</H>
     <span class="dots" aria-hidden="true"></span>
@@ -25,10 +30,16 @@ const desc = splitPending(item.description);
     </p>
   )}
   <slot />
+  </div>
 </article>
 
 <style>
   .item { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+  .body { display: grid; gap: 6px; min-width: 0; }
+  .item.has-photo { grid-template-columns: 88px 1fr; gap: 16px; align-items: start; }
+  .thumb { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+  .thumb :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  @media (min-width: 640px) { .item.has-photo { grid-template-columns: 112px 1fr; } .thumb { width: 112px; height: 112px; } }
   .head { display: flex; align-items: baseline; gap: 10px; }
   .name { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; line-height: 1.2; letter-spacing: -.01em; min-width: 0; }
   .dots { flex: 1; min-width: 16px; border-bottom: 2px dotted var(--line-strong); transform: translateY(-5px); }

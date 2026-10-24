@@ -15,10 +15,18 @@ Elegidas por afinidad con una cantina casual y contundente (pizza, pasta, comida
 2. **Estado abierto/cerrado y mapa dibujado** (Smashhouse): ya estaban; la referencia los confirma.
 3. **Un protagonista por escena** (Smashhouse): ya lo hace "poner la mesa", con índice 01/02/03.
 
+## Aplicadas después de ver el sitio con fotos reales
+- Botones con borde grueso y **sombra dura** estilo sticker (todo el sitio).
+- **Palabra gigante** de fondo en el hero ("A LA MESA"), en beige papel, sin contorno, para no pelear con el titular.
+
 ## Propuestas, sin aplicar (a decidir)
-- Botones con borde grueso y **sombra dura** estilo sticker. Encaja con el humor del feed y con la regla de "una sola sombra", pero cambia el carácter de todos los CTA.
-- **Texto gigante fantasma** detrás del plato del hero ("PASTA LIBRE"). Cuidado con el contraste y con el recorte en celular.
 - Reseñas como **notas adhesivas**, solo si hay reseñas reales con nombre y fecha; hoy no hay, así que no se hace.
 
 ## Fuera de alcance
 Reservas con formulario, reviews de terceros, 3D. Ninguna está confirmada para Cantina Pink (ver BRAND.md, matriz de funciones).
+
+## Fotos reales (material del cliente)
+12 archivos en `assets/SaveInta.com_*.jpg`, bajados del Instagram @cantina_pink. Se recortan con `node scripts/prepare-photos.mjs` (sin tocar los originales) a `src/assets/fotos/`.
+- **Derechos y calidad:** son del feed de la marca, comprimidos por Instagram; falta confirmar con las dueñas que autorizan su uso en la web y pedir los originales. Tres son de ~1080 px (se ven bien hasta ~540 px de ancho).
+- **Promos NO usadas:** las piezas "Pedí una pizza / milanesa / docena de empanadas y te regalamos cerveza" traen promos con texto; no se publican como vigentes sin confirmación. Solo se usó la mitad de abajo (la foto).
+- **Faltan:** postres, exterior del local, salón, gente, un logo vectorial.

@@ -1,16 +1,16 @@
 ---
-import Recorte from '../Recorte.astro';
-import type { Recorte as R } from '../../lib/menu';
+import Foto from '../Foto.astro';
+import type { FotoName } from '../../lib/fotos';
 
 // Posición final sobre la mesa (en % de un cuadrado) y desde dónde llega cada plato.
 // from: desplazamiento inicial en vw/vh, giro y escala. win: tramo del scroll (0–1) en el que llega.
-interface Plato { name: R; x: number; y: number; w: number; rot: number; from: [number, number, number, number]; win: [number, number]; z: number }
+interface Plato { name: FotoName; pos?: string; x: number; y: number; w: number; rot: number; from: [number, number, number, number]; win: [number, number]; z: number }
 const platos: Plato[] = [
-  { name: 'flan',     x: 2,  y: 4,  w: 28, rot: 0,   from: [-60, -70, -40, 1.2], win: [0.10, 0.34], z: 1 },
-  { name: 'empanada', x: 62, y: 0,  w: 36, rot: 8,   from: [70, -80, 35, 1.3],   win: [0.20, 0.44], z: 1 },
-  { name: 'pasta',    x: 0,  y: 52, w: 40, rot: -6,  from: [-90, 30, -30, 1.3],  win: [0.30, 0.58], z: 2 },
-  { name: 'milanesa', x: 58, y: 54, w: 42, rot: 10,  from: [90, 40, 45, 1.3],    win: [0.40, 0.68], z: 2 },
-  { name: 'pizza',    x: 26, y: 22, w: 48, rot: 0,   from: [0, -120, 90, 1.5],   win: [0.54, 0.84], z: 3 },
+  { name: 'pizza-huevos', pos: '40% 50%', x: 2,  y: 4,  w: 28, rot: 0,   from: [-60, -70, -40, 1.2], win: [0.10, 0.34], z: 1 },
+  { name: 'empanada-salsa', pos: '28% 50%', x: 62, y: 0,  w: 36, rot: 8,   from: [70, -80, 35, 1.3],   win: [0.20, 0.44], z: 1 },
+  { name: 'pasta-3-salsa', x: 0,  y: 52, w: 40, rot: -6,  from: [-90, 30, -30, 1.3],  win: [0.30, 0.58], z: 2 },
+  { name: 'milanesa-caballo', pos: '72% 62%', x: 58, y: 54, w: 42, rot: 10,  from: [90, 40, 45, 1.3],    win: [0.40, 0.68], z: 2 },
+  { name: 'pizza-jamon-rucula', x: 26, y: 22, w: 48, rot: 0,   from: [0, -120, 90, 1.5],   win: [0.54, 0.84], z: 3 },
 ];
 const pasos = ['Se tiende el mantel.', 'Llegan las empanadas, la pasta y la milanesa.', 'Y la pizza al medio, como corresponde.'];
 ---
@@ -36,7 +36,7 @@ const pasos = ['Se tiende el mantel.', 'Llegan las empanadas, la pasta y la mila
           data-rot={p.rot}
           style={`left:${p.x}%;top:${p.y}%;width:${p.w}%;z-index:${p.z};transform:rotate(${p.rot}deg)`}
         >
-          <Recorte name={p.name} alt="" sizes="(min-width: 960px) 360px, 45vw" />
+          <Foto name={p.name} alt="" position={p.pos ?? 'center'} widths={[320, 520, 800]} sizes="(min-width: 960px) 360px, 45vw" />
         </div>
       ))}
     </div>
@@ -122,7 +122,8 @@ const pasos = ['Se tiende el mantel.', 'Llegan las empanadas, la pasta y la mila
     width: min(88vw, 56svh); left: 50%; bottom: 4svh; translate: -50% 0;
   }
   .pm-plate { position: absolute; will-change: transform, opacity; }
-  .pm-plate :global(img) { width: 100%; height: auto; filter: drop-shadow(0 14px 0 rgba(59, 23, 25, .14)); }
+  .pm-plate { aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 5px solid var(--cream); box-shadow: 0 14px 0 rgba(59, 23, 25, .25); background: var(--paper); }
+  .pm-plate :global(img) { width: 100%; height: 100%; object-fit: cover; }
 
   /* Con JS y movimiento permitido: sección alta con escena fija mientras se recorre. */
   .pm.is-animated { height: 210vh; }

@@ -1,15 +1,11 @@
 ---
+import Foto from '../Foto.astro';
 import Pending from '../Pending.astro';
 import Icon from '../Icon.astro';
 import { whatsappUrl, telUrl } from '../../lib/contact';
 import { business } from '../../lib/hours';
 
 const wa = whatsappUrl('Hola Cantina Pink! Somos un grupo y queríamos consultar por una mesa.');
-const fotos = [
-  { label: 'La esquina', brief: 'exterior y cartel en horario de atención, 3:2' },
-  { label: 'La mesa llena', brief: 'mesa con platos insignia y gente compartiendo (con permiso), 4:5' },
-  { label: 'El salón', brief: 'detalle del local y los manteles, 4:5' },
-];
 ---
 <section class="nc" aria-labelledby="nc-title">
   <div class="mantel mantel-band--thin" data-tender aria-hidden="true"></div>
@@ -19,15 +15,13 @@ const fotos = [
       <h2 id="nc-title" class="display-l">La buena comida se comparte.</h2>
       <p class="lead">Abrimos en {business.foundedYear} en la esquina de San Martín e Yrigoyen, para juntarse a almorzar o cenar sin mirar el reloj.</p>
       <p>Por eso las porciones vienen como vienen y las pizzas se piden para el centro. Si sobra, te lo llevás. Si no sobra, también está bien.</p>
+      <p class="falta"><Pending note="Faltan fotos originales del exterior (esquina con el cartel) y del salón." /> Faltan fotos de la esquina y del salón.</p>
     </div>
 
-    <ul class="fotos" aria-label="Fotos del local (pendientes)">
-      {fotos.map((f, i) => (
-        <li class:list={['foto', `foto-${i + 1}`]}>
-          <span class="foto-label">{f.label}</span>
-          <span class="foto-note"><Pending note={`Foto original: ${f.brief}`} /></span>
-        </li>
-      ))}
+    <ul class="collage" aria-label="Fotos de la comida">
+      <li class="c1" data-reveal="pop" style="--tilt:-3deg"><Foto name="pizza-huevos" alt="Pizza con jamón y huevos fritos, con el queso estirándose" widths={[400, 700, 1000]} sizes="(min-width: 960px) 420px, 60vw" position="40% 45%" /><span class="tape">Pizza con huevos</span></li>
+      <li class="c2" data-reveal="pop" style="--tilt:3deg;--reveal-delay:120ms"><Foto name="mesa-milanesas" alt="Mesa con cuatro milanesas gigantes" widths={[400, 700]} sizes="(min-width: 960px) 300px, 45vw" position="50% 35%" /></li>
+      <li class="c3" data-reveal="pop" style="--tilt:-2deg;--reveal-delay:240ms"><Foto name="pasta-5-montana" alt="Montaña de queso rallado sobre la pasta en pan" widths={[400, 700]} sizes="(min-width: 960px) 300px, 45vw" /><span class="tape tape--red">Pedí más queso</span></li>
     </ul>
   </div>
 
@@ -51,28 +45,29 @@ const fotos = [
 
 <style>
   .nc { padding: 0 0 80px; }
-  .nc-grid { display: grid; gap: 40px; padding: 72px 0 56px; }
+  .nc-grid { display: grid; gap: 48px; padding: 72px 0 64px; }
   .story { display: grid; gap: 18px; align-content: start; }
-  .story p:not(.kicker):not(.lead) { max-width: 46ch; }
+  .story p:not(.kicker):not(.lead):not(.falta) { max-width: 46ch; }
+  .falta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: .875rem; }
 
-  .fotos { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .foto {
-    position: relative; border-radius: var(--radius-sm); background: var(--paper); border: 1px solid var(--line);
-    display: flex; flex-direction: column; justify-content: space-between; padding: 14px; min-height: 180px;
-  }
-  .foto-1 { grid-column: 1 / -1; aspect-ratio: 3 / 2; min-height: 0; }
-  .foto-2, .foto-3 { aspect-ratio: 4 / 5; min-height: 0; }
-  .foto-label { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; color: var(--wine); }
+  .collage { list-style: none; position: relative; display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(6, minmax(34px, 7vw)); gap: 10px; min-height: 340px; }
+  .collage li { position: relative; border: 3px solid var(--ink); border-radius: var(--radius-sm); overflow: hidden; box-shadow: 5px 5px 0 var(--ink); rotate: var(--tilt); background: var(--paper); transition: rotate var(--motion-long) var(--ease-out), transform var(--motion-long) var(--ease-out); }
+  .collage li:hover { rotate: 0deg; transform: scale(1.03); z-index: 3; }
+  .collage :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .c1 { grid-column: 1 / span 4; grid-row: 1 / span 4; }
+  .c2 { grid-column: 4 / span 3; grid-row: 4 / span 3; z-index: 2; }
+  .c3 { grid-column: 1 / span 3; grid-row: 5 / span 2; }
+  .tape { position: absolute; left: 10px; bottom: 10px; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--cream); border: 2px solid var(--ink); font-family: var(--font-display); font-weight: 800; font-size: .9375rem; }
+  .tape--red { background: var(--red); color: var(--cream); }
 
   @media (min-width: 960px) {
-    .nc-grid { grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; }
-    .fotos { grid-template-columns: 1.2fr 1fr; grid-template-rows: auto auto; }
-    .foto-1 { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: 4 / 5; }
-    .foto-2, .foto-3 { aspect-ratio: 4 / 3; }
+    .nc-grid { grid-template-columns: 5fr 7fr; gap: 72px; align-items: center; }
+    .collage { grid-template-rows: repeat(6, 64px); min-height: 0; }
   }
 
   .grupos { border-radius: var(--radius-sm); padding: 32px 24px; display: grid; gap: 24px; align-items: center; }
   .grupos p { margin-top: 8px; max-width: 48ch; }
   .grupos-cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   @media (min-width: 960px) { .grupos { grid-template-columns: 1fr auto; padding: 40px 48px; } }
+  @media (prefers-reduced-motion: reduce) { .collage li { transition: none; } .collage li:hover { transform: none; } }
 </style>

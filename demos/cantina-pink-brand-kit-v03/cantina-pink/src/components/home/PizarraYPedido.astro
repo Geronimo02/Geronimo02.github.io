@@ -1,5 +1,6 @@
 ---
-import Recorte from '../Recorte.astro';
+import Foto from '../Foto.astro';
+import type { FotoName } from '../../lib/fotos';
 import Pending from '../Pending.astro';
 import Icon from '../Icon.astro';
 import { menu, dailySpecialItem, formatPrice, isOrderable, splitPending } from '../../lib/menu';
@@ -26,7 +27,7 @@ const pasos = [
         {isOrderable(special) && (
           <a class="btn btn--cream" href={`/carta#plato-${special.id}`}>Pedilo para retirar <Icon name="flecha" size={20} /></a>
         )}
-        <Recorte name={special.image ?? 'pasta'} alt="" class="pizarra-img" />
+        {special.foto && <div class="pizarra-img"><Foto name={special.foto as FotoName} alt="" widths={[320, 520, 800]} sizes="(min-width: 960px) 300px, 60vw" /></div>}
       </article>
     )}
 
@@ -56,7 +57,9 @@ const pasos = [
   .pizarra-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1; text-transform: uppercase; max-width: 10ch; margin-top: 8px; }
   .pizarra-desc { max-width: 26ch; }
   .pizarra-price { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 1.375rem; }
-  .pizarra :global(.pizarra-img) { position: absolute; z-index: 1; width: 64%; right: -18%; bottom: -16%; transform: rotate(14deg); }
+  .pizarra .pizarra-img { position: absolute; z-index: 1; width: 62%; aspect-ratio: 1; right: -16%; bottom: -14%; transform: rotate(10deg); border-radius: 50%; overflow: hidden; border: 6px solid var(--cream); box-shadow: 0 12px 0 rgba(0,0,0,.3); transition: transform var(--motion-long) var(--ease-out); }
+  .pizarra:hover .pizarra-img { transform: rotate(-4deg) scale(1.05); }
+  .pizarra-img :global(img) { width: 100%; height: 100%; object-fit: cover; }
 
   .pedido { display: grid; gap: 24px; justify-items: start; }
   .steps { list-style: none; display: grid; width: 100%; }

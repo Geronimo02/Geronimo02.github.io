@@ -20,7 +20,7 @@ const cats = menu.categories.map((c) => ({ c, items: c.items }));
 
   <div class="container carta-body">
     <div class="list">
-      {cats.map(({ c, items }, i) => <MenuCategory category={c} items={items} index={i} />)}
+      {cats.map(({ c, items }, i) => <MenuCategory category={c} items={items} index={i} photos />)}
     </div>
     <aside id="pedido" class="pedido-box placa on-dark">
       <p class="kicker">Tu pedido</p>
