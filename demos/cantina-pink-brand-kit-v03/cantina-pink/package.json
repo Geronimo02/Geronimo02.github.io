@@ -15,7 +15,8 @@
     "e2e": "node scripts/e2e-carrito.mjs && node scripts/e2e-grupos.mjs && node scripts/e2e-extras.mjs && node scripts/a11y-carrito.mjs",
     "e2e:admin": "node scripts/e2e-admin.mjs",
     "dev:admin": "wrangler pages dev dist --kv=CARTA --binding=ADMIN_PASSWORD=prueba-local-123 --port 8788",
-    "mesa": "node scripts/prepare-mesa.mjs"
+    "mesa": "node scripts/prepare-mesa.mjs",
+    "logo": "node scripts/make-logo.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.1.0",
@@ -27,6 +28,9 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
+    "@fontsource/alfa-slab-one": "^5.3.0",
+    "@fontsource/rye": "^5.3.0",
+    "opentype.js": "^2.0.0",
     "playwright": "^1.64.1",
     "qrcode": "^1.5.4",
     "wrangler": "^4.152.0"

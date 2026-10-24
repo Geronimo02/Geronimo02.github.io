@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 
-const PRIVATE = ['/sistema', '/og-image', '/qr', '/admin'];
+const PRIVATE = ["/sistema", "/og-image", "/qr", "/admin", "/logo"];
 
 // [COMPLETAR] dominio definitivo; mientras tanto, el subdominio de Cloudflare Pages.
 const SITE = process.env.SITE_URL ?? 'https://cantina-pink.pages.dev';

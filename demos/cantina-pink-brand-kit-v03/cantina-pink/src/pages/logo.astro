@@ -1,0 +1,169 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import original from '../assets/logo/cantina-pink-logo.jpg';
+
+interface Opt {
+  key: string;
+  titulo: string;
+  nota: string;
+  claro: string | null;
+  oscuro: string | null;
+  descarga: { label: string; href: string }[];
+  pros: string;
+  contras: string;
+}
+const opciones: Opt[] = [
+  {
+    key: 'orig', titulo: 'Original (hoy)', nota: 'JPG de 150 px del perfil de Instagram',
+    claro: null, oscuro: null, descarga: [],
+    pros: 'Es el logo real de la marca.', contras: 'Borroso, con fondo beige cuadrado, y se pierde chico.',
+  },
+  {
+    key: 'a', titulo: 'A · Fiel, en vector', nota: 'Mismo diseño: marco, cartel con sombra azul, lamparitas, fileteado y rosa',
+    claro: '/logo/cantina-pink-a-fiel.svg', oscuro: '/logo/cantina-pink-a-fiel.svg',
+    descarga: [{ label: 'SVG', href: '/logo/cantina-pink-a-fiel.svg' }],
+    pros: 'Conserva todo el carácter. Nítido a cualquier tamaño.', contras: 'Con poca altura todavía se sobrecarga. Reinterpretación: la tipografía no es idéntica.',
+  },
+  {
+    key: 'b', titulo: 'B · Simplificada', nota: 'Sin marco; misma tipografía de cartel, lamparitas y rosa. Dos colores',
+    claro: '/logo/cantina-pink-b-simple-claro.svg', oscuro: '/logo/cantina-pink-b-simple-oscuro.svg',
+    descarga: [{ label: 'SVG claro', href: '/logo/cantina-pink-b-simple-claro.svg' }, { label: 'SVG oscuro', href: '/logo/cantina-pink-b-simple-oscuro.svg' }],
+    pros: 'Se lee en el encabezado y sobre cualquier fondo, incluido el mantel.', contras: 'Pierde el marco verde de fileteado.',
+  },
+  {
+    key: 'c', titulo: 'C · La rosa, sola', nota: 'Solo el sello de la rosa roja, para favicon y detalles',
+    claro: '/logo/cantina-pink-c-rosa.svg', oscuro: '/logo/cantina-pink-c-rosa.svg',
+    descarga: [{ label: 'SVG', href: '/logo/cantina-pink-c-rosa.svg' }],
+    pros: 'Funciona hasta en 16 px. Es un símbolo propio de la marca.', contras: 'No dice el nombre: solo sirve de complemento.',
+  },
+];
+
+const row = (o: Opt, dark: boolean) => (dark ? o.oscuro : o.claro);
+---
+<Base title="Propuestas de logo" noindex lite>
+  <div class="container wrap">
+    <header class="head">
+      <p class="kicker">Uso interno · no indexada</p>
+      <h1 class="display-l">Logo: original y tres propuestas</h1>
+      <p class="lead">Mismas condiciones para todas: así se verían en el encabezado, sobre el mantel, sobre vino y en tamaños chicos. Las propuestas son <strong>reinterpretaciones mías</strong>, no el logo oficial; el original no se toca hasta que lo aprueben.</p>
+    </header>
+
+    <div class="cols hdr" aria-hidden="true">
+      {opciones.map((o) => <div class="colhead"><h2>{o.titulo}</h2><p>{o.nota}</p></div>)}
+    </div>
+
+    <section aria-labelledby="r-grande">
+      <h2 id="r-grande" class="rowtitle">Grande</h2>
+      <div class="cols">
+        {opciones.map((o) => (
+          <figure class="cell on-cream big">
+            {o.key === 'orig' ? <Image src={original} alt="Logo original de Cantina Pink" width={300} height={300} densities={[1, 2]} /> : <img src={row(o, false)!} alt={o.titulo} width="300" />}
+            <figcaption>
+              <span class="pro">+ {o.pros}</span>
+              <span class="con">− {o.contras}</span>
+              {o.descarga.length > 0 && <span class="dl">{o.descarga.map((d) => <a href={d.href} download>{d.label}</a>)}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="r-enc">
+      <h2 id="r-enc" class="rowtitle">Encabezado (56 px de alto)</h2>
+      <div class="cols">
+        {opciones.map((o) => (
+          <div class="cell paper bar">
+            {o.key === 'orig' ? <Image src={original} alt="" width={56} height={56} densities={[1, 2]} class="orig-h" /> : <img src={row(o, false)!} alt="" height="56" class="h56" />}
+            <span class="fakenav">La carta · Grupos · Cómo llegar</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="r-mantel">
+      <h2 id="r-mantel" class="rowtitle">Sobre el mantel</h2>
+      <div class="cols">
+        {opciones.map((o) => (
+          <div class="cell mantel center">
+            {o.key === 'orig' ? <Image src={original} alt="" width={170} height={170} densities={[1, 2]} /> : <img src={row(o, false)!} alt="" width="190" class={o.key === 'b' ? 'on-card' : ''} />}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="r-vino">
+      <h2 id="r-vino" class="rowtitle">Sobre vino (pie, placas)</h2>
+      <div class="cols">
+        {opciones.map((o) => (
+          <div class="cell placa center on-dark">
+            {o.key === 'orig' ? <Image src={original} alt="" width={170} height={170} densities={[1, 2]} /> : <img src={row(o, true)!} alt="" width="190" />}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="r-chico">
+      <h2 id="r-chico" class="rowtitle">Tamaños chicos (ancho de 130 · 84 · 56 · 32 px)</h2>
+      <div class="cols">
+        {opciones.map((o) => (
+          <div class="cell cream center small">
+            {[130, 84, 56, 32].map((s) => (
+              o.key === 'orig'
+                ? <Image src={original} alt="" width={s} height={s} class="sz" />
+                : <img src={row(o, false)!} alt="" width={s} class="sz" style={`width:${s}px;height:auto`} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section aria-labelledby="r-qr">
+      <h2 id="r-qr" class="rowtitle">Tarjeta del QR (cabecera)</h2>
+      <div class="cols">
+        {opciones.map((o) => (
+          <div class="cell paper center">
+            <div class="card">
+              <div class="band mantel" aria-hidden="true"></div>
+              {o.key === 'orig' ? <Image src={original} alt="" width={88} height={88} densities={[1, 2]} /> : <img src={row(o, false)!} alt="" height="88" style="height:88px;width:auto" />}
+              <p>La carta, acá.</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .wrap { padding: 40px 0 96px; display: grid; gap: 32px; }
+  .head { display: grid; gap: 12px; max-width: 70ch; }
+  .cols { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .cols { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1180px) { .cols { grid-template-columns: repeat(4, 1fr); } }
+  .hdr { display: none; }
+  @media (min-width: 1180px) { .hdr { display: grid; position: sticky; top: 0; z-index: 5; background: var(--cream); padding: 8px 0; border-bottom: 2px solid var(--ink); } }
+  .colhead h2 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.15; }
+  .colhead p { font-size: .8125rem; margin-top: 2px; }
+  .rowtitle { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; margin-bottom: 10px; padding-top: 8px; border-top: 1px solid var(--line-strong); }
+  .cell { border: 2.5px solid var(--ink); border-radius: var(--radius-sm); min-height: 120px; display: flex; flex-direction: column; justify-content: center; }
+  .cell.on-cream, .cell.cream { background: var(--cream); }
+  .cell.paper { background: var(--paper); }
+  .center { align-items: center; padding: 22px 12px; min-height: 220px; }
+  .big { padding: 18px; align-items: center; gap: 12px; justify-content: flex-start; min-height: 0; }
+  .big :global(img) { max-width: 100%; height: auto; }
+  figcaption { display: grid; gap: 4px; font-size: .8125rem; align-self: stretch; }
+  .pro { color: #1F5A2B; font-weight: 700; }
+  .con { color: #8B1D1D; }
+  .dl { display: flex; gap: 12px; margin-top: 4px; font-weight: 700; }
+  .bar { flex-direction: row; align-items: center; gap: 16px; padding: 10px 16px; min-height: 76px; justify-content: flex-start; }
+  .h56 { height: 56px; width: auto; }
+  .orig-h { width: 56px; height: 56px; }
+  .fakenav { font-weight: 700; font-size: .8125rem; margin-left: auto; text-align: right; }
+  .on-card { background: var(--cream); border-radius: var(--radius-sm); padding: 8px 12px; }
+  .small { flex-direction: row; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: flex-end; min-height: 160px; overflow: hidden; }
+  .sz { display: block; max-width: 100%; }
+  .card { width: 190px; background: var(--cream); border-radius: 8px; overflow: hidden; display: grid; justify-items: center; gap: 8px; padding-bottom: 14px; }
+  .card .band { --cell: 8px; height: 22px; width: 100%; }
+  .card p { font-family: var(--font-display); font-weight: 800; color: var(--wine); font-size: 1.125rem; }
+</style>

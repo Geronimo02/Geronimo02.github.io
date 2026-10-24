@@ -1,0 +1,38 @@
+[
+  {
+    "route": "/logo",
+    "width": 390,
+    "file": "logo-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/logo",
+    "width": 768,
+    "file": "logo-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/logo",
+    "width": 1024,
+    "file": "logo-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/logo",
+    "width": 1440,
+    "file": "logo-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  }
+]

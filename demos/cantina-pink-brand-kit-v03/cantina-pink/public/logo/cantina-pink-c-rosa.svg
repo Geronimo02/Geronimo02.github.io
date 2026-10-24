@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Cantina Pink (propuesta C, rosa como sello)"><title>Cantina Pink (propuesta C, rosa como sello)</title>
+  <circle cx="100" cy="100" r="94" fill="#F6EBD3" stroke="#2E7D43" stroke-width="8"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#2E7D43" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>
+  <g transform="translate(100 104) scale(4.9)">
+  <ellipse cx="-14" cy="9" rx="8.5" ry="3.6" transform="rotate(-28 -14 9)" fill="#3E7B3F" stroke="#14301A" stroke-width="1.2"/>
+  <ellipse cx="14" cy="9" rx="8.5" ry="3.6" transform="rotate(28 14 9)" fill="#3E7B3F" stroke="#14301A" stroke-width="1.2"/>
+  <circle r="13.5" fill="#B1252C" stroke="#3B1719" stroke-width="1.6"/>
+  <g fill="#CF343A" stroke="#3B1719" stroke-width="1.1">
+    <circle cx="0" cy="-8" r="6.2"/><circle cx="7.6" cy="-2.5" r="6.2"/><circle cx="4.7" cy="6.5" r="6.2"/><circle cx="-4.7" cy="6.5" r="6.2"/><circle cx="-7.6" cy="-2.5" r="6.2"/>
+  </g>
+  <circle r="6.4" fill="#8E1C24" stroke="#3B1719" stroke-width="1"/>
+  <path d="M0 -4 C 4 -4 5 1 1 2.2 C -2.5 3 -3.6 -1 -0.6 -1.6" fill="none" stroke="#F6EBD3" stroke-width="1.3" stroke-linecap="round"/>
+</g></svg>
