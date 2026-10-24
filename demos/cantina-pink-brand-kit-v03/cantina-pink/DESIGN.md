@@ -88,6 +88,14 @@ El pedido es una **mesa vista desde arriba**: cada unidad que sumás es un plato
 ## Armá tu pasta en pan (con el medidor de queso adentro)
 Una sola escena fija de cuatro pasos con las cinco fotos de su carrusel. Los tres primeros avanzan con el scroll (pan vacío, pasta, salsa). El **paso 4 de 4 es "¿Cuánto queso?"**: ahí la persona toma el control con un deslizador (0 a 300 g) que funde la salsa en el queso y el queso en la montaña; al pasar de 90 aparece el sello "Demasiado queso" y el plato tiembla. Los pasos inactivos son `inert` (no reciben foco). Con movimiento reducido no hay escena fija: se avanza con los botones Anterior / Siguiente y el deslizador funciona igual. Sin JavaScript queda una tira de cinco fotos.
 
+## Logo (versiones elegidas)
+Reinterpretación en vector del logo original (el JPG de 150 px queda en `src/assets/logo/` como referencia). Se generan con `npm run logo` (`scripts/make-logo.mjs`): las tipografías de cartel (Rye y Alfa Slab One) se convierten a trazos, así los SVG no dependen de fuentes.
+- **A, con marco** (`/logo/cantina-pink-a-fiel.svg`): pie de página, tarjeta del QR, imagen para compartir. Lleva fondo crema propio, sirve sobre cualquier fondo.
+- **B, simplificada** (`cantina-pink-b-simple-claro.svg` y `-oscuro.svg`): encabezado, carta del QR y panel. Es la de uso diario.
+- **C, la rosa** (`cantina-pink-c-rosa.svg`): favicon e íconos (`npm run icons`); es lo único que se lee a 32 px.
+- **Pendiente:** las dueñas tienen que aprobarlo (el manual exige aprobación para cambiar el logo). Lo ideal es pedir el archivo original (vector o PNG grande) y rehacer A y B sobre ese diseño exacto.
+- Página de comparación interna: `/logo`.
+
 ## Fotografía
 Platos siempre **en círculo** sobre el mantel (como se ven desde arriba), con borde crema y sombra dura. Fotos rectangulares con borde de tinta y leve inclinación. Textos y logos pegados en las piezas originales se recortan y se reescriben como HTML editable. Hero: foto de la mesa de milanesas, 4:5 inclinada 2°.
 

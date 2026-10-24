@@ -12,7 +12,7 @@ const C = { red: '#B1252C', redHi: '#CF343A', wine: '#741F25', ink: '#3B1719', b
 const r1 = (n) => Math.round(n * 10) / 10;
 
 /** Texto como trazo, ajustado a un ancho y centrado en (cx, cy). */
-function word(font, text, width, cx, cy) {
+function word(font, text, width, cx, cy, id) {
   // El trazo se genera siempre a un tamaño fijo y se escala con transform: opentype.js devuelve NaN en algunos tamaños sueltos.
   const U = 1000;
   const path = font.getPath(text, 0, 0, U);
@@ -22,7 +22,7 @@ function word(font, text, width, cx, cy) {
   const ty = cy - ((bb0.y1 + bb0.y2) / 2) * k;
   const d = path.toPathData(1);
   if (/NaN/.test(d)) throw new Error('Trazo inválido (NaN) en "' + text + '"');
-  return { d, k, tf: `translate(${r1(tx)} ${r1(ty)}) scale(${k.toFixed(5)})`, bb: { x1: bb0.x1 * k + tx, x2: bb0.x2 * k + tx, y1: bb0.y1 * k + ty, y2: bb0.y2 * k + ty } };
+  return { id, d, k, tf: `translate(${r1(tx)} ${r1(ty)}) scale(${k.toFixed(5)})`, bb: { x1: bb0.x1 * k + tx, x2: bb0.x2 * k + tx, y1: bb0.y1 * k + ty, y2: bb0.y2 * k + ty } };
 }
 
 const rose = (cx, cy, s) => `<g transform="translate(${cx} ${cy}) scale(${s})">
@@ -50,9 +50,11 @@ const FRAME = 'M 74 62 C 74 42, 132 46, 172 54 C 216 62, 252 36, 300 36 C 348 36
 
 function wordLayers(w, { fill, outline, shadow, sw = 7, off = 4 }) {
   const s = r1(sw / w.k * 10) / 10;
-  return `<path d="${w.d}" transform="translate(${off} ${off}) ${w.tf}" fill="${shadow}" stroke="${shadow}" stroke-width="${s}" stroke-linejoin="round"/>
-  <path d="${w.d}" transform="${w.tf}" fill="${outline}" stroke="${outline}" stroke-width="${s}" stroke-linejoin="round"/>
-  <path d="${w.d}" transform="${w.tf}" fill="${fill}"/>`;
+  // El trazo de la palabra se define una sola vez y se reutiliza para sombra, contorno y relleno.
+  return `<defs><path id="${w.id}" d="${w.d}"/></defs>
+  <use href="#${w.id}" transform="translate(${off} ${off}) ${w.tf}" fill="${shadow}" stroke="${shadow}" stroke-width="${s}" stroke-linejoin="round"/>
+  <use href="#${w.id}" transform="${w.tf}" fill="${outline}" stroke="${outline}" stroke-width="${s}" stroke-linejoin="round"/>
+  <use href="#${w.id}" transform="${w.tf}" fill="${fill}"/>`;
 }
 
 function bulbs(w, rows, id) {
@@ -60,7 +62,7 @@ function bulbs(w, rows, id) {
   const cy = (y1 + y2) / 2;
   const dots = [];
   for (const dy of rows) for (let x = x1 + 14; x < x2 - 6; x += 21) dots.push(`<circle cx="${r1(x)}" cy="${r1(cy + dy)}" r="3.2" fill="${C.gold}" stroke="#7A4B10" stroke-width=".9"/>`);
-  return `<clipPath id="${id}"><path d="${w.d}" transform="${w.tf}"/></clipPath><g clip-path="url(#${id})">${dots.join('')}</g>`;
+  return `<clipPath id="${id}"><use href="#${w.id}" transform="${w.tf}"/></clipPath><g clip-path="url(#${id})">${dots.join('')}</g>`;
 }
 
 const grad = (id, hi, lo) => `<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${hi}"/><stop offset="1" stop-color="${lo}"/></linearGradient>`;
@@ -69,8 +71,8 @@ const svg = (vb, body, title) => `<svg xmlns="http://www.w3.org/2000/svg" viewBo
 
 // ---------- A: fiel, en vector ----------
 function logoA() {
-  const can = word(RYE, 'CANTINA', 366, 300, 128);
-  const pink = word(SLAB, 'PINK', 352, 300, 232);
+  const can = word(RYE, 'CANTINA', 366, 300, 128, 'wc');
+  const pink = word(SLAB, 'PINK', 352, 300, 232, 'wp');
   return svg('0 0 600 380', `
   <defs>${grad('gA', C.redHi, '#8E1C24')}${grad('gB', C.redHi, '#86191F')}</defs>
   <path d="${FRAME}" fill="${C.cream}" stroke="${C.green}" stroke-width="9" stroke-linejoin="round"/>
@@ -86,8 +88,8 @@ function logoA() {
 function logoB(dark) {
   const ink = dark ? C.creamLight : C.wine;
   const shadow = dark ? '#1E0A0C' : C.red;
-  const can = word(RYE, 'CANTINA', 330, 280, 84);
-  const pink = word(SLAB, 'PINK', 360, 280, 182);
+  const can = word(RYE, 'CANTINA', 330, 280, 84, 'wc');
+  const pink = word(SLAB, 'PINK', 360, 280, 182, 'wp');
   return svg('0 0 560 300', `
   ${wordLayers(can, { fill: ink, outline: ink, shadow, sw: 1.2, off: 3.5 })}
   ${wordLayers(pink, { fill: ink, outline: ink, shadow, sw: 1.2, off: 4.5 })}

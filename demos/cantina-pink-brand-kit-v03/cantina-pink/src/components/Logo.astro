@@ -1,22 +1,27 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../assets/logo/cantina-pink-logo.jpg';
+// Logo en vector (propuestas A y B aprobadas, generadas con scripts/make-logo.mjs).
+//   a        → con marco; para lugares grandes (pie, QR, imagen para compartir). Funciona sobre cualquier fondo.
+//   b        → simplificada, para fondos claros (encabezado). Es la de uso diario.
+//   b-oscuro → simplificada, para fondos oscuros.
+// El logo original (JPG de 150 px) queda en src/assets/logo como referencia.
+type Variant = 'a' | 'b' | 'b-oscuro';
+interface Props { variant?: Variant; height?: number; class?: string; eager?: boolean }
+const { variant = 'b', height = 56, class: className, eager = false } = Astro.props;
 
-interface Props { size?: number; class?: string; eager?: boolean }
-const { size = 72, class: className, eager = false } = Astro.props;
+const FILES: Record<Variant, [string, number, number]> = {
+  a: ['/logo/cantina-pink-a-fiel.svg', 600, 380],
+  b: ['/logo/cantina-pink-b-simple-claro.svg', 560, 300],
+  'b-oscuro': ['/logo/cantina-pink-b-simple-oscuro.svg', 560, 300],
+};
+const [src, w, h] = FILES[variant];
+const width = Math.round((height * w) / h);
 ---
-<!-- Logo original sin retoques. [COMPLETAR] reemplazar por PNG/SVG master: la referencia es de 150 px. -->
-<Image
-  src={logo}
-  alt="Cantina Pink"
-  width={size}
-  height={size}
-  densities={[1, 2]}
-  format="webp"
-  quality={90}
+<img
   class:list={['logo', className]}
+  src={src}
+  width={width}
+  height={height}
+  alt="Cantina Pink"
   loading={eager ? 'eager' : 'lazy'}
+  decoding={eager ? 'sync' : 'async'}
 />
-<style>
-  .logo { border-radius: var(--radius-sm); }
-</style>

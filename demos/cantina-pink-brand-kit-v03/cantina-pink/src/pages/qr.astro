@@ -7,7 +7,7 @@ import Logo from '../components/Logo.astro';
     <p class="help no-print">Tarjeta de mesa lista para imprimir (A6, 105 × 148 mm). Para imprenta usá el <a href="/qr/mesa-qr.svg" download>QR en SVG</a> o el <a href="/qr/mesa-qr.png" download>PNG de 3000 px</a>. <button type="button" onclick="print()">Imprimir</button></p>
     <article class="card">
       <div class="band mantel" aria-hidden="true"></div>
-      <Logo size={88} eager />
+      <Logo variant="a" height={96} eager />
       <h1>La carta, acá.</h1>
       <img src="/qr/mesa-qr.svg" width="600" height="600" alt="Código QR que abre la carta de Cantina Pink" class="qr" />
       <p class="scan">Escaneá con la cámara del celu</p>
@@ -26,7 +26,7 @@ import Logo from '../components/Logo.astro';
     box-shadow: 0 2px 0 rgba(59, 23, 25, .2);
   }
   .band { --cell: 4mm; width: calc(100% + 16mm); height: 12mm; flex: none; margin-bottom: 2mm; }
-  .card :global(.logo) { width: 22mm; height: 22mm; }
+  .card :global(.logo) { height: 26mm; width: auto; }
   h1 { font-family: var(--font-display); font-weight: 800; font-size: 9mm; line-height: 1; color: var(--wine); }
   .qr { width: 60mm; height: 60mm; }
   .scan { font-weight: 700; font-size: 4mm; }

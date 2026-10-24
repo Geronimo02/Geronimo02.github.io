@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import Logo from './Logo.astro';
 import Pending from './Pending.astro';
 import { business, hoursTable } from '../lib/hours';
 import { whatsappUrl, telUrl } from '../lib/contact';
@@ -12,6 +13,7 @@ const year = new Date().getFullYear();
   <div class="placa body">
     <div class="container grid">
       <div class="address">
+        <Logo variant="a" height={104} class="foot-logo" />
         <p class="kicker">Dónde estamos</p>
         <p class="street">San Martín 501</p>
         <p class="corner">esquina Yrigoyen · Tandil</p>
@@ -62,6 +64,7 @@ const year = new Date().getFullYear();
   .grid { display: grid; gap: 48px; }
   @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } .address { grid-column: 1 / -1; } }
   @media (min-width: 1200px) { .grid { grid-template-columns: 1.6fr 1fr 1fr; } .address { grid-column: auto; } }
+  .address :global(.foot-logo) { display: block; margin-bottom: 28px; height: 104px; width: auto; }
   .street { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 7.5vw, 5.5rem); line-height: .95; letter-spacing: -.03em; margin-top: 12px; }
   .corner { font-size: 1.125rem; margin: 8px 0 24px; }
   .col h2 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }

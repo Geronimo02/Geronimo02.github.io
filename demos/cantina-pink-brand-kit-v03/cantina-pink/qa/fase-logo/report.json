@@ -1,35 +1,71 @@
 [
   {
-    "route": "/logo",
+    "route": "/admin",
     "width": 390,
-    "file": "logo-390.png",
+    "file": "admin-390.png",
     "horizontalOverflow": false,
     "offenders": [],
     "consoleErrors": [],
     "axe": []
   },
   {
-    "route": "/logo",
+    "route": "/admin",
     "width": 768,
-    "file": "logo-768.png",
+    "file": "admin-768.png",
     "horizontalOverflow": false,
     "offenders": [],
     "consoleErrors": [],
     "axe": []
   },
   {
-    "route": "/logo",
+    "route": "/admin",
     "width": 1024,
-    "file": "logo-1024.png",
+    "file": "admin-1024.png",
     "horizontalOverflow": false,
     "offenders": [],
     "consoleErrors": [],
     "axe": []
   },
   {
-    "route": "/logo",
+    "route": "/admin",
     "width": 1440,
-    "file": "logo-1440.png",
+    "file": "admin-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 390,
+    "file": "mesa-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 768,
+    "file": "mesa-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 1024,
+    "file": "mesa-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 1440,
+    "file": "mesa-1440.png",
     "horizontalOverflow": false,
     "offenders": [],
     "consoleErrors": [],
