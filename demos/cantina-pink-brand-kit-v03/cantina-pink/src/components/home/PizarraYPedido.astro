@@ -9,8 +9,8 @@ import { business } from '../../lib/hours';
 const special = dailySpecialItem();
 const pasos = [
   { t: 'Elegí de la carta', d: 'Sumá lo que quieras al pedido. Las cosas "libres" son para comer acá, eso no viaja.' },
-  { t: 'Pagá con Mercado Pago', d: 'Tarjeta, débito o dinero en cuenta. Te confirmamos el pedido apenas entra el pago.' },
-  { t: 'Pasá a buscarlo', d: `Elegís día y horario de retiro. Te esperamos en ${business.address.street}, ${business.address.corner}.` },
+  { t: 'Mandalo por WhatsApp', d: 'Elegís retiro o delivery, el día y la hora, y se abre WhatsApp con el pedido armado, con todo el detalle.' },
+  { t: 'Retiralo o esperalo en casa', d: `Te confirmamos por WhatsApp. Retirás en ${business.address.street}, ${business.address.corner}, o te lo llevamos. Se paga en persona.` },
 ];
 ---
 <section class="pp" aria-labelledby="pp-title">
@@ -25,7 +25,7 @@ const pasos = [
           {!menu.dailySpecial.verified && <Pending note={menu.dailySpecial.note} />}
         </p>
         {isOrderable(special) && (
-          <a class="btn btn--cream" href={`/carta#plato-${special.id}`}>Pedilo para retirar <Icon name="flecha" size={20} /></a>
+          <a class="btn btn--cream" href={`/carta#plato-${special.id}`}>Pedilo desde la carta <Icon name="flecha" size={20} /></a>
         )}
         {special.foto && <div class="pizarra-img"><Foto name={special.foto as FotoName} alt="" widths={[320, 520, 800]} sizes="(min-width: 960px) 300px, 60vw" /></div>}
       </article>
@@ -33,7 +33,7 @@ const pasos = [
 
     <div class="pedido">
       <p class="kicker">Para llevar</p>
-      <h2 id="pp-title" class="display-l">Pedí, pagá y pasá a buscarlo.</h2>
+      <h2 id="pp-title" class="display-l">Armalo acá. Mandalo por WhatsApp.</h2>
       <ol class="steps">
         {pasos.map((p, i) => (
           <li data-reveal style={`--reveal-delay:${i * 90}ms`}>

@@ -27,16 +27,12 @@
   "whatsapp": {
     "e164": null,
     "verified": false,
-    "_nota": "[COMPLETAR] Número de WhatsApp para consultas y pedidos. Sin número, el botón muestra el placeholder."
+    "_nota": "[COMPLETAR] Número de WhatsApp que recibe los pedidos y consultas, en formato internacional sin + (ej. 5492494440808). Sin número, el botón de enviar pedido queda deshabilitado y solo funciona 'Copiar pedido'."
   },
   "instagram": {
     "handle": "cantina_pink",
     "url": "https://www.instagram.com/cantina_pink/",
     "verified": true
-  },
-  "email": {
-    "orders": null,
-    "_nota": "[COMPLETAR] Mail donde las dueñas reciben los pedidos pagados (se configura como secret ORDERS_EMAIL_TO)."
   },
   "hours": {
     "verified": false,
@@ -52,6 +48,24 @@
       { "day": 6, "shifts": [["12:00", "15:00"], ["20:00", "24:00"]] }
     ],
     "closedDates": []
+  },
+  "delivery": {
+    "_ayuda": "Delivery. enabled:false lo oculta del carrito. fee: costo de envío en pesos; null = 'a confirmar por WhatsApp'. freeOver: monto desde el cual el envío es gratis (null = nunca). minOrder: pedido mínimo en pesos (null = sin mínimo). leadMinutes: tiempo mínimo entre el pedido y la entrega.",
+    "enabled": true,
+    "verified": false,
+    "_nota": "[VERIFICAR] El feed menciona 'delivery & take away', pero no hay zona, costo ni mínimo confirmados.",
+    "zone": null,
+    "fee": null,
+    "freeOver": null,
+    "minOrder": null,
+    "leadMinutes": 60
+  },
+  "payment": {
+    "_ayuda": "Medios de pago que se ofrecen en cada modalidad. No hay pago online: se paga al retirar o al recibir. La primera opción que diga 'Efectivo' pregunta con cuánto abona.",
+    "verified": false,
+    "_nota": "[VERIFICAR] Medios de pago aceptados, por modalidad.",
+    "retiro": ["Efectivo", "Transferencia", "Débito o crédito en el local"],
+    "delivery": ["Efectivo", "Transferencia"]
   },
   "pickup": {
     "_ayuda": "Retiro en el local. slotMinutes: cada cuánto hay turno. leadMinutes: tiempo mínimo de preparación. daysAhead: cuántos días se puede reservar a futuro. lastSlotBeforeCloseMinutes: último turno antes del cierre.",

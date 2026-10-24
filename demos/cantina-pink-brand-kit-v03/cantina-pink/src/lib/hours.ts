@@ -82,8 +82,9 @@ export function openStatus(now = new Date()): { open: boolean; label: string } {
 export interface PickupDay { ymd: string; label: string; slots: { value: string; label: string }[] }
 
 /** Turnos de retiro disponibles: dentro del horario, con tiempo de preparación y sin turnos pasados. */
-export function pickupDays(now = new Date()): PickupDay[] {
-  const { slotMinutes, leadMinutes, daysAhead, lastSlotBeforeCloseMinutes } = business.pickup;
+export function pickupDays(now = new Date(), leadOverride?: number): PickupDay[] {
+  const { slotMinutes, leadMinutes: pickupLead, daysAhead, lastSlotBeforeCloseMinutes } = business.pickup;
+  const leadMinutes = leadOverride ?? pickupLead;
   const earliest = now.getTime() + leadMinutes * 60_000;
   const days: PickupDay[] = [];
 
@@ -109,8 +110,15 @@ export function pickupDays(now = new Date()): PickupDay[] {
   return days;
 }
 
-export function isValidPickup(value: string, now = new Date()): boolean {
-  return pickupDays(now).some((d) => d.slots.some((s) => s.value === value));
+export function isValidPickup(value: string, now = new Date(), leadOverride?: number): boolean {
+  return pickupDays(now, leadOverride).some((d) => d.slots.some((s) => s.value === value));
+}
+
+/** "Lo antes posible" solo tiene sentido si el local está abierto y falta tiempo para el cierre. */
+export function canAsap(now = new Date()): boolean {
+  const { weekday, minutes } = localParts(now);
+  const shift = shiftsFor(weekday).find(([a, b]) => minutes >= toMin(a) && minutes < toMin(b));
+  return !!shift && toMin(shift[1]) - minutes >= business.pickup.lastSlotBeforeCloseMinutes + 15;
 }
 
 export function formatPickup(value: string): string {

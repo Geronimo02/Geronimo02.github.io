@@ -2,14 +2,17 @@
 import Base from '../../layouts/Base.astro';
 import MenuCategory from '../../components/MenuCategory.astro';
 import Pending from '../../components/Pending.astro';
+import Carrito from '../../components/Carrito.tsx';
 import { menu } from '../../lib/menu';
+import { business } from '../../lib/hours';
 
 const cats = menu.categories.map((c) => ({ c, items: c.items }));
 ---
-<Base title="La carta" description="Carta de Cantina Pink en Tandil: pizzas, milanesas XL, pastas, empanadas, picadas, postres y bebidas. Pedí online y retirá en San Martín 501.">
+<Base title="La carta" description="Carta de Cantina Pink en Tandil: pizzas, milanesas XL, pastas, empanadas, picadas, postres y bebidas. Armá tu pedido y mandalo por WhatsApp para retirar o con delivery.">
   <section class="container carta-head">
     <p class="kicker">La carta</p>
     <h1 class="display-xl">Mirá la carta. Después hablamos de compartir.</h1>
+    <p class="how">Sumá lo que quieras, elegí <strong>retiro o delivery</strong> y mandá el pedido por WhatsApp. El pago es en persona.</p>
     {!menu.verified && <p class="warn"><Pending note="Carta y precios de ejemplo hasta cargar la carta oficial." /> Carta y precios de ejemplo.</p>}
     <nav aria-label="Categorías">
       <ul class="chips">
@@ -20,14 +23,16 @@ const cats = menu.categories.map((c) => ({ c, items: c.items }));
 
   <div class="container carta-body">
     <div class="list">
-      {cats.map(({ c, items }, i) => <MenuCategory category={c} items={items} index={i} photos />)}
+      {cats.map(({ c, items }, i) => <MenuCategory category={c} items={items} index={i} photos ordering />)}
     </div>
-    <aside id="pedido" class="pedido-box placa on-dark">
-      <p class="kicker">Tu pedido</p>
-      <p class="display-m">Pedidos online en la próxima fase.</p>
-      <p>Acá va el carrito con retiro en el local y pago con Mercado Pago.</p>
+    <aside id="pedido" class="pedido-col" aria-label="Tu pedido">
+      <Carrito client:load wa={business.whatsapp.e164} />
     </aside>
   </div>
+  <p class="toast" data-toast role="status" aria-live="polite"></p>
+  <script>
+    import '../../scripts/carta.ts';
+  </script>
 </Base>
 
 <style>
@@ -38,9 +43,17 @@ const cats = menu.categories.map((c) => ({ c, items: c.items }));
   .chips a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: var(--radius-pill); border: 1.5px solid var(--ink); font-weight: 700; text-decoration: none; }
   .chips a:hover { background: var(--wine); color: var(--cream); border-color: var(--wine); }
   .carta-body { display: grid; gap: 40px; padding-bottom: 96px; }
-  .pedido-box { border-radius: var(--radius-sm); padding: 24px; display: grid; gap: 10px; align-self: start; }
+  .how { max-width: 52ch; font-size: 1.0625rem; }
+  .pedido-col { align-self: start; min-width: 0; }
+  .toast {
+    position: fixed; left: 0; right: 0; margin-inline: auto; width: max-content; bottom: 92px; translate: 0 12px; z-index: 40; max-width: calc(100vw - 24px); text-align: center;
+    padding: 10px 18px; border-radius: var(--radius-pill); background: var(--ink); color: var(--cream); font-weight: 700; font-size: .9375rem;
+    opacity: 0; pointer-events: none; transition: opacity var(--motion-short), translate var(--motion-long) var(--ease-out);
+  }
+  .toast.is-on { opacity: 1; translate: 0 0; }
+  @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
   @media (min-width: 960px) {
-    .carta-body { grid-template-columns: 1fr 360px; gap: 56px; }
-    .pedido-box { position: sticky; top: 24px; margin-top: 40px; }
+    .carta-body { grid-template-columns: 1fr 410px; gap: 48px; }
+    .pedido-col { margin-top: 40px; }
   }
 </style>

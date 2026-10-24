@@ -10,7 +10,8 @@
     "astro": "astro",
     "qa": "node scripts/qa-screenshots.mjs",
     "qr": "node scripts/make-qr.mjs",
-    "icons": "node scripts/make-icons.mjs"
+    "icons": "node scripts/make-icons.mjs",
+    "test": "node --test tests/order.test.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.1.0",

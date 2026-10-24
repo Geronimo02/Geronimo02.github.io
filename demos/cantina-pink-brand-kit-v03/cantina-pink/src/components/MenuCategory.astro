@@ -2,8 +2,8 @@
 import MenuItemRow from './MenuItemRow.astro';
 import type { MenuCategory, MenuItem } from '../lib/menu';
 
-interface Props { category: MenuCategory; items: MenuItem[]; index: number; photos?: boolean }
-const { category, items, index, photos = false } = Astro.props;
+interface Props { category: MenuCategory; items: MenuItem[]; index: number; photos?: boolean; ordering?: boolean }
+const { category, items, index, photos = false, ordering = false } = Astro.props;
 ---
 <section class="cat" id={`cat-${category.id}`} aria-labelledby={`cat-${category.id}-title`}>
   <header class="cat-head">
@@ -15,7 +15,7 @@ const { category, items, index, photos = false } = Astro.props;
   </header>
   <div class="cat-items">
     {items.map((item) => (
-      <MenuItemRow item={item} photos={photos} />
+      <MenuItemRow item={item} photos={photos} ordering={ordering} />
     ))}
   </div>
 </section>

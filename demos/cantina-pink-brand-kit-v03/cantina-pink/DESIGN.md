@@ -63,6 +63,16 @@ Titular del hero: se arma palabra por palabra (CSS puro). Stickers: aparecen con
 4. No recrear ni retocar el logo con CSS.
 5. No fotos de stock. Las fotos son las del feed de la marca (ver REFERENCES.md, derechos pendientes); lo que no tiene foto real (flan, exterior, salón) queda como `[COMPLETAR]`.
 
+## Pedido (carrito → WhatsApp)
+Sin pago online ni servidor: el pedido se arma en el navegador y sale por WhatsApp con un mensaje detallado. Se paga en persona (al retirar o al recibir).
+- **Estado:** `localStorage` (`cp-cart-v1`), saneado al leer. Fuente de verdad de precios: `menu.json`.
+- **Carta:** cada plato con `online: true` y precio muestra "Agregar"; luego un selector −/+ pegado al plato. Lo "solo en el local" no se agrega.
+- **Escritorio:** panel pegajoso a la derecha. **Celular:** barra fija "Ver mi pedido · cantidad · subtotal" que abre el pedido en pantalla completa (`<dialog>`: foco atrapado, Escape cierra, devuelve el foco).
+- **Formulario:** modalidad (retiro / delivery) → cuándo (lo antes posible solo con el local abierto, o día y hora dentro del horario) → datos (nombre, teléfono, y dirección y referencias si es delivery) → cómo paga (según modalidad, con vuelto opcional) → aclaraciones.
+- **Validación:** al enviar, lista de errores en voz de marca, foco en el primer campo con error, `aria-invalid` y mensajes asociados.
+- **Mensaje de WhatsApp:** número de pedido, cliente, modalidad, dirección, cuándo, detalle línea por línea con aclaraciones, subtotal, envío, total, pago y vuelto, aclaraciones. Solo ASCII en separadores para que el link no se infle. Hay vista previa ("Ver cómo le llega al local") y "Copiar pedido" como alternativa si el link es muy largo o no hay número.
+- **Datos editables** en `business.json`: `whatsapp.e164`, `delivery` (zona, costo, gratis desde, mínimo, tiempo de preparación), `payment` (medios por modalidad), `pickup` (turnos).
+
 ## Fotografía
 Platos siempre **en círculo** sobre el mantel (como se ven desde arriba), con borde crema y sombra dura. Fotos rectangulares con borde de tinta y leve inclinación. Textos y logos pegados en las piezas originales se recortan y se reescriben como HTML editable. Hero: foto de la mesa de milanesas, 4:5 inclinada 2°.
 

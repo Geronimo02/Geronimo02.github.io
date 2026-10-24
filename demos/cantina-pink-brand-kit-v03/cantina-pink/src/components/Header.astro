@@ -27,7 +27,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(href + '/')
     <div class="actions">
       <a href="/carta#pedido" class="btn btn--red order-btn" data-cart-link>
         <Icon name="bolsa" />
-        <span>Pedir<span class="hide-sm"> para retirar</span></span>
+        <span>Pedir<span class="hide-sm"> ahora</span></span>
         <span class="cart-count" data-cart-count hidden aria-label="productos en el pedido"></span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" data-menu-open>
@@ -51,7 +51,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(href + '/')
         {links.map((l) => (
           <li><a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a></li>
         ))}
-        <li><a href="/carta#pedido">Pedir para retirar</a></li>
+        <li><a href="/carta#pedido">Hacer un pedido</a></li>
       </ul>
       <div class="panel-foot">
         <p>{business.address.street}, {business.address.corner}</p>

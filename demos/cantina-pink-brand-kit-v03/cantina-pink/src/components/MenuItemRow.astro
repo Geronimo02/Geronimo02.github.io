@@ -2,10 +2,11 @@
 import Pending from './Pending.astro';
 import Foto from './Foto.astro';
 import { foto as hasFoto, type FotoName } from '../lib/fotos';
-import { formatPrice, splitPending, type MenuItem } from '../lib/menu';
+import { formatPrice, splitPending, isOrderable, type MenuItem } from '../lib/menu';
 
-interface Props { item: MenuItem; headingLevel?: 'h3' | 'h4'; photos?: boolean }
-const { item, headingLevel: H = 'h3', photos = false } = Astro.props;
+interface Props { item: MenuItem; headingLevel?: 'h3' | 'h4'; photos?: boolean; ordering?: boolean }
+const { item, headingLevel: H = 'h3', photos = false, ordering = false } = Astro.props;
+const canOrder = ordering && isOrderable(item);
 const showPhoto = photos && item.foto && hasFoto(item.foto);
 const desc = splitPending(item.description);
 ---
@@ -29,6 +30,11 @@ const desc = splitPending(item.description);
       {!item.priceVerified && item.price !== null && <Pending label="PRECIO DE EJEMPLO" note="Precio sin verificar con la carta oficial." />}
     </p>
   )}
+  {canOrder && (
+    <div class="add" data-add={item.id} data-name={item.name}>
+      <button type="button" class="btn btn--wine add-btn" data-act="add" aria-label={`Agregar ${item.name} al pedido`}>Agregar</button>
+    </div>
+  )}
   <slot />
   </div>
 </article>
@@ -47,4 +53,5 @@ const desc = splitPending(item.description);
   .price small { display: block; font-family: var(--font-body); font-weight: 500; font-size: .75rem; color: var(--ink); }
   .desc { color: var(--ink); max-width: 56ch; }
   .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .add { margin-top: 8px; min-height: 52px; }
 </style>

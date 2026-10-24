@@ -174,3 +174,14 @@ a:hover { text-decoration-thickness: 3px; }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+
+/* ---------- Selector de cantidad ---------- */
+.add-btn { min-height: 48px; padding: 8px 22px; }
+.stepper { display: inline-flex; align-items: center; border: 2.5px solid var(--ink); border-radius: var(--radius-pill); background: var(--cream); box-shadow: 3px 3px 0 var(--ink); overflow: hidden; }
+.stepper button { width: 48px; height: 46px; border: 0; background: transparent; font-size: 1.5rem; font-weight: 700; line-height: 1; cursor: pointer; color: var(--wine); }
+.stepper button:hover:not(:disabled) { background: var(--paper); }
+.stepper button:disabled { opacity: .35; cursor: not-allowed; }
+.stepper output { min-width: 3ch; text-align: center; font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; }
+.stepper--sm button { width: 40px; height: 40px; font-size: 1.25rem; }
+.stepper--sm { box-shadow: 2px 2px 0 var(--ink); }
+.stepper--sm output { font-size: 1.0625rem; }

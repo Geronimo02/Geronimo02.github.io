@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /api/
 
 Sitemap: https://cantina-pink.pages.dev/sitemap-index.xml
