@@ -4,7 +4,13 @@ compatibility_date = "2026-10-01"
 pages_build_output_dir = "dist"
 
 # Almacén donde se guardan los cambios del panel (precios, agotados, promo).
-# Crear con:  npx wrangler kv namespace create CARTA   y pegar acá el id que devuelve.
-[[kv_namespaces]]
-binding = "CARTA"
-id = "REEMPLAZAR_CON_EL_ID_DEL_KV"
+# Mientras no exista, el panel /admin responde "no configurado" y el sitio usa la carta de menu.json.
+# Para activarlo:
+#   1) npx wrangler kv namespace create CARTA     (devuelve un id)
+#   2) descomentar las tres líneas de abajo y pegar ese id
+#   3) npx wrangler pages secret put ADMIN_PASSWORD --project-name cantina-pink
+#   4) volver a publicar
+#
+# [[kv_namespaces]]
+# binding = "CARTA"
+# id = "PEGAR_ACA_EL_ID_DEL_KV"
