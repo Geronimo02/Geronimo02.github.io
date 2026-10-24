@@ -115,3 +115,10 @@ test('pedido mínimo de delivery', () => {
   assert.equal(validate({ ...ok, minOrder: 40000, subtotal: 30000 }).min, undefined);
 });
 test('formato de dinero argentino', () => assert.equal(money(1234567), '$1.234.567'));
+
+test('productos agotados bloquean el envío con un mensaje claro', () => {
+  const e = validate({ ...ok, soldOutNames: ['Milanesa XL', 'Flan casero'] });
+  assert.ok(e.soldout.includes('Milanesa XL, Flan casero'));
+  assert.equal(validate({ ...ok, soldOutNames: [] }).soldout, undefined);
+  assert.equal(validate(ok).soldout, undefined);
+});

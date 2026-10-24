@@ -105,7 +105,7 @@ export function waLink(e164: string, text: string): string {
   return `https://wa.me/${e164.replace(/\D/g, '')}?text=${encodeURIComponent(text)}`;
 }
 
-export type Errors = Partial<Record<'lines' | 'name' | 'phone' | 'street' | 'when' | 'payment' | 'cashWith' | 'min', string>>;
+export type Errors = Partial<Record<'soldout' | 'lines' | 'name' | 'phone' | 'street' | 'when' | 'payment' | 'cashWith' | 'min', string>>;
 
 export interface ValidateInput {
   lineCount: number;
@@ -119,10 +119,13 @@ export interface ValidateInput {
   cashWith: number | null;
   subtotal: number;
   minOrder: number | null;
+  /** Nombres de productos del pedido que las dueñas marcaron como agotados. */
+  soldOutNames?: string[];
 }
 
 export function validate(v: ValidateInput): Errors {
   const e: Errors = {};
+  if (v.soldOutNames && v.soldOutNames.length > 0) e.soldout = `Se agotó por hoy: ${v.soldOutNames.join(', ')}. Sacalo del pedido para seguir.`;
   if (v.lineCount === 0) e.lines = 'Agregá al menos un producto desde la carta.';
   if (v.name.trim().length < 2) e.name = 'Decinos tu nombre para llamarte cuando esté listo.';
   const digits = v.phone.replace(/\D/g, '');

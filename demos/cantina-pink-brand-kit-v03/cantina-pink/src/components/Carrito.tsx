@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { load, save, setQty, setNote, clearLines, countOf, MAX_QTY, type CartState, type Mode } from '../lib/cart';
 import { findItem, isOrderable, formatPrice, type MenuItem } from '../lib/menu';
 import { business, pickupDays, canAsap, openStatus, formatPickup, isValidPickup } from '../lib/hours';
+import { isSoldOut } from '../lib/overrides';
 import { buildMessage, newOrderId, validate, waLink, totalsOf, money, MAX_WA_URL, type OrderData } from '../lib/order';
 import '../styles/carrito.css';
 
@@ -23,8 +24,8 @@ const WaIcon = () => (
   </svg>
 );
 
-const FIELD_ORDER = ['lines', 'name', 'phone', 'street', 'when', 'payment', 'cashWith', 'min'] as const;
-const FIELD_ID: Record<string, string> = { lines: 'cart-lines', name: 'f-name', phone: 'f-phone', street: 'f-street', when: 'f-when', payment: 'f-pay-0', cashWith: 'f-cash', min: 'cart-lines' };
+const FIELD_ORDER = ['soldout', 'lines', 'name', 'phone', 'street', 'when', 'payment', 'cashWith', 'min'] as const;
+const FIELD_ID: Record<string, string> = { soldout: 'cart-lines', lines: 'cart-lines', name: 'f-name', phone: 'f-phone', street: 'f-street', when: 'f-when', payment: 'f-pay-0', cashWith: 'f-cash', min: 'cart-lines' };
 
 const onlyDigits = (v: string) => v.replace(/\D/g, '');
 
@@ -36,6 +37,7 @@ export default function Carrito({ wa }: Props) {
   const [attempted, setAttempted] = useState(false);
   const [sent, setSent] = useState<{ orderId: string; url: string | null; text: string } | null>(null);
   const [announce, setAnnounce] = useState('');
+  const [, setTick] = useState(0);
   const [day, setDay] = useState('');
   const dlg = useRef<HTMLDialogElement>(null);
   const orderId = useRef(newOrderId());
@@ -61,6 +63,13 @@ export default function Carrito({ wa }: Props) {
   }, []);
 
   useEffect(() => { const t = setInterval(() => setNow(new Date()), 60_000); return () => clearInterval(t); }, []);
+
+  // Precios o agotados cambiados desde /admin: el pedido se vuelve a calcular con lo vigente.
+  useEffect(() => {
+    const f = () => setTick((n) => n + 1);
+    window.addEventListener('cp:overrides', f);
+    return () => window.removeEventListener('cp:overrides', f);
+  }, []);
 
   // En celular el pedido se abre como pantalla completa: desde el botón del encabezado o desde #pedido.
   useEffect(() => {
@@ -102,6 +111,7 @@ export default function Carrito({ wa }: Props) {
   const errors = s ? validate({
     lineCount: lines.length, mode, name: s.name, phone: s.phone, street: s.street, whenOk, payment: s.payment,
     paymentOptions: payOptions, cashWith: s.payment.startsWith('Efectivo') ? cashWithNum : null, subtotal, minOrder: D.minOrder,
+    soldOutNames: lines.filter((l) => isSoldOut(l.item.id)).map((l) => l.item.name),
   }) : {};
   const hasErrors = Object.keys(errors).length > 0;
 
@@ -207,7 +217,7 @@ export default function Carrito({ wa }: Props) {
               <li class="line" key={item.id}>
                 <div class="line-top">
                   <div>
-                    <p class="line-name">{item.name}</p>
+                    <p class="line-name">{item.name}{isSoldOut(item.id) && <span class="line-sold"> · Agotado</span>}</p>
                     <p class="line-unit">{formatPrice(item.price)} c/u</p>
                   </div>
                   <p class="line-total">{money(qty * (item.price ?? 0))}</p>
@@ -229,6 +239,7 @@ export default function Carrito({ wa }: Props) {
             ))}
           </ul>
           {err('min') && <p class="err" role="alert">{err('min')}</p>}
+          {err('soldout') && <p class="err" role="alert">{err('soldout')}</p>}
 
           <fieldset class="field">
             <legend>¿Cómo lo querés?</legend>

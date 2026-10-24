@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import Foto from '../../components/Foto.astro';
+import Pending from '../../components/Pending.astro';
+import GrupoForm from '../../components/GrupoForm.tsx';
+import { business } from '../../lib/hours';
+
+const puntos = [
+  { t: 'Contanos cuántos son y cuándo', d: 'Elegís el día y la hora dentro del horario del local.' },
+  { t: 'Se arma el mensaje solo', d: 'Se abre WhatsApp con la consulta lista, con todo el detalle.' },
+  { t: 'Te contestamos', d: 'Te confirmamos si hay lugar. Es una consulta, no una reserva automática.' },
+];
+---
+<Base title="Mesa para grupos" description="Consultá una mesa para tu grupo en Cantina Pink, Tandil: cumpleaños, despedidas, reuniones. Armá la consulta y mandala por WhatsApp.">
+  <section class="container g-head">
+    <p class="kicker">Mesa para grupos</p>
+    <h1 class="display-xl">Venimos todos. ¿Hay lugar?</h1>
+    <p class="lead">Cumpleaños, despedidas, la previa de algo o el después de algo. Consultanos y organizamos la mesa.</p>
+  </section>
+
+  <div class="container g-body">
+    <div class="g-form">
+      <GrupoForm client:load wa={business.whatsapp.e164} />
+    </div>
+    <aside class="g-side">
+      <figure class="g-photo" data-reveal="pop" style="--tilt:2deg">
+        <Foto name="mesa-milanesas" alt="Mesa con cuatro milanesas gigantes sobre mantel a cuadros" widths={[400, 700, 1000]} sizes="(min-width: 960px) 380px, 90vw" position="50% 40%" />
+      </figure>
+      <ol class="g-steps">
+        {puntos.map((p, i) => (
+          <li>
+            <span class="num" aria-hidden="true">{i + 1}</span>
+            <div><h2>{p.t}</h2><p>{p.d}</p></div>
+          </li>
+        ))}
+      </ol>
+      <p class="g-small"><Pending label="VERIFICAR" note="Capacidad del salón y condiciones para grupos sin confirmar." /> Capacidad y condiciones, a confirmar con el local.</p>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .g-head { padding: 48px 0 24px; display: grid; gap: 16px; }
+  .g-head h1 { max-width: 12ch; }
+  .g-body { display: grid; gap: 48px; padding-bottom: 96px; }
+  .g-form { background: var(--cream); border: 3px solid var(--ink); border-radius: var(--radius-sm); box-shadow: 8px 8px 0 var(--ink); padding: 22px; min-width: 0; }
+  .g-side { display: grid; gap: 28px; align-content: start; }
+  .g-photo { margin: 0; aspect-ratio: 4 / 3; border-radius: var(--radius-sm); overflow: hidden; border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); rotate: var(--tilt); }
+  .g-photo :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .g-steps { list-style: none; display: grid; }
+  .g-steps li { display: grid; grid-template-columns: auto 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .g-steps li:last-child { border-bottom: 1px solid var(--line); }
+  .num { font-family: var(--font-display); font-weight: 800; font-size: 3rem; line-height: .85; color: var(--red); min-width: 1.5ch; }
+  .g-steps h2 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.2; margin-bottom: 2px; }
+  .g-small { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: .875rem; }
+  @media (min-width: 960px) {
+    .g-body { grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: start; }
+    .g-form { padding: 32px; }
+    .g-side { position: sticky; top: 24px; }
+  }
+</style>

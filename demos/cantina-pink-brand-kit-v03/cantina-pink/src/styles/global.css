@@ -185,3 +185,5 @@ a:hover { text-decoration-thickness: 3px; }
 .stepper--sm button { width: 40px; height: 40px; font-size: 1.25rem; }
 .stepper--sm { box-shadow: 2px 2px 0 var(--ink); }
 .stepper--sm output { font-size: 1.0625rem; }
+
+.soldout-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: var(--radius-pill); border: 2.5px dashed var(--ink); background: var(--paper); font-weight: 700; color: var(--ink); }

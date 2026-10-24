@@ -1,0 +1,10 @@
+# Cloudflare Pages: sitio estático (dist/) + dos funciones chicas para el panel /admin (carpeta functions/).
+name = "cantina-pink"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "dist"
+
+# Almacén donde se guardan los cambios del panel (precios, agotados, promo).
+# Crear con:  npx wrangler kv namespace create CARTA   y pegar acá el id que devuelve.
+[[kv_namespaces]]
+binding = "CARTA"
+id = "REEMPLAZAR_CON_EL_ID_DEL_KV"

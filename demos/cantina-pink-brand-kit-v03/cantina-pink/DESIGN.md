@@ -73,6 +73,15 @@ Sin pago online ni servidor: el pedido se arma en el navegador y sale por WhatsA
 - **Mensaje de WhatsApp:** número de pedido, cliente, modalidad, dirección, cuándo, detalle línea por línea con aclaraciones, subtotal, envío, total, pago y vuelto, aclaraciones. Solo ASCII en separadores para que el link no se infle. Hay vista previa ("Ver cómo le llega al local") y "Copiar pedido" como alternativa si el link es muy largo o no hay número.
 - **Datos editables** en `business.json`: `whatsapp.e164`, `delivery` (zona, costo, gratis desde, mínimo, tiempo de preparación), `payment` (medios por modalidad), `pickup` (turnos).
 
+## Extras
+- **Botón flotante:** aparece al bajar 420 px; abre WhatsApp, o llama por teléfono si todavía no hay número cargado. No se muestra en /carta (ahí está la barra del pedido) ni en /mesa.
+- **Cinta de promo:** arriba de todo, borgoña/rojo con botón crema. Se muestra la primera promo activa cuyo rango de fechas incluye el momento actual (hora de Argentina). Se cierra por sesión. `?promo=preview` muestra el primer borrador para ver cómo queda. Fuentes: `promos.json` o el panel /admin.
+- **Loop de pasta en pan** (hero): círculo con las cinco fotos en secuencia (10 s), enlaza a la sección del scroll. Sin movimiento muestra una sola foto.
+- **Humor:** "Cosas horribles que nos pasaron hoy", una frase a la vez en placa borgoña; botones anterior, siguiente y pausar (WCAG 2.2.2); sin autoplay con movimiento reducido. Frases en `humor.json` (copy propuesto).
+- **Reseñas:** notas adhesivas rotadas con reseñas reales de `reviews.json`. Sin reseñas cargadas no se muestra al público (solo un aviso `[COMPLETAR]` mientras haya marcadores).
+- **Grupos (/grupos):** formulario que arma una consulta de mesa (personas, día, hora dentro del horario, ocasión, intereses, alergias) y la manda por WhatsApp. Es una consulta, no una reserva confirmada.
+- **Panel (/admin):** contraseña (secret ADMIN_PASSWORD), precios del día, productos agotados y una promo editable. Se guarda en un almacén KV con dos funciones de Cloudflare; el navegador aplica los cambios sobre la carta base, así que si el servidor falla la web sigue con `menu.json`. Lo que llega se valida en servidor y se vuelve a validar en el navegador.
+
 ## Fotografía
 Platos siempre **en círculo** sobre el mantel (como se ven desde arriba), con borde crema y sombra dura. Fotos rectangulares con borde de tinta y leve inclinación. Textos y logos pegados en las piezas originales se recortan y se reescriben como HTML editable. Hero: foto de la mesa de milanesas, 4:5 inclinada 2°.
 

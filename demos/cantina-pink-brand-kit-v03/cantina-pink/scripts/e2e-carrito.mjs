@@ -21,7 +21,7 @@ async function newPage(viewport, at = OPEN_AT) {
   ctx.on('page', (p) => opened.push(p));
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
-  page.on('console', (m) => m.type() === 'error' && !m.text().includes('ERR_FAILED') && errors.push(m.text()));
+  page.on('console', (m) => m.type() === 'error' && !m.text().includes('ERR_FAILED') && !m.location().url.includes('/api/') && errors.push(m.text()));
   await page.clock.setFixedTime(at);
   return { ctx, page, opened, errors, waUrls };
 }

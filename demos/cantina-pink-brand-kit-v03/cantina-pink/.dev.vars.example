@@ -1,0 +1,5 @@
+# Copiá este archivo como .dev.vars para probar el panel /admin en tu compu (wrangler pages dev).
+# En producción NO se usa este archivo: la contraseña va como secret de Cloudflare:
+#   npx wrangler pages secret put ADMIN_PASSWORD --project-name cantina-pink
+# Usá una contraseña larga (mínimo 8 caracteres; mejor una frase de 4 o 5 palabras).
+ADMIN_PASSWORD=cambiar-por-una-frase-larga-y-secreta

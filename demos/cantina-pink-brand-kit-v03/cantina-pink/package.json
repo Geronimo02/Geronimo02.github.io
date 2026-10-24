@@ -11,7 +11,10 @@
     "qa": "node scripts/qa-screenshots.mjs",
     "qr": "node scripts/make-qr.mjs",
     "icons": "node scripts/make-icons.mjs",
-    "test": "node --test tests/order.test.mjs"
+    "test": "node --test \"tests/*.test.mjs\"",
+    "e2e": "node scripts/e2e-carrito.mjs && node scripts/e2e-grupos.mjs && node scripts/a11y-carrito.mjs",
+    "e2e:admin": "node scripts/e2e-admin.mjs",
+    "dev:admin": "wrangler pages dev dist --kv=CARTA --binding=ADMIN_PASSWORD=prueba-local-123 --port 8788"
   },
   "dependencies": {
     "@astrojs/preact": "^6.1.0",

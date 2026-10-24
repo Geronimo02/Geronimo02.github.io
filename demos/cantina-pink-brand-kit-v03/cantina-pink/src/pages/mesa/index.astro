@@ -38,7 +38,7 @@ const special = dailySpecialItem();
         <p class="m-special-name">{special.name}</p>
         <p>{splitPending(special.description).text}</p>
         <p class="m-special-price">
-          <span class="price-pill">{formatPrice(special.price)}</span>
+          <span class="price-pill"><span data-price-text={special.id}>{formatPrice(special.price)}</span></span>
           {!menu.dailySpecial.verified && <Pending note={menu.dailySpecial.note} />}
         </p>
       </aside>
@@ -57,6 +57,9 @@ const special = dailySpecialItem();
       <p class="m-foot-small">Cantina Pink · {business.address.street}, {business.address.corner} · Tandil</p>
     </footer>
   </div>
+  <script>
+    import '../../scripts/mesa.ts';
+  </script>
 </Base>
 
 <style>

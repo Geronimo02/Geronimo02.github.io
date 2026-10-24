@@ -115,3 +115,12 @@ html:has(dialog[open]) { overflow: hidden; }
   .choice, .choice input::after { transition: none; }
   .choice:hover { transform: none; }
 }
+
+/* Casillas (grupos) y detalles */
+.choice input.check { border-radius: 6px; }
+.choice input.check::after { width: 12px; height: 12px; border-radius: 3px; }
+.opt { font-family: var(--font-body); font-weight: 500; font-size: .8125rem; }
+.grupo { gap: 20px; }
+.pedido input[type='date'] { width: 100%; min-height: 48px; padding: 10px 14px; font: inherit; color: var(--ink); background: #fff; border: 2.5px solid var(--ink); border-radius: var(--radius-sm); box-shadow: 3px 3px 0 var(--ink); }
+.pedido select:disabled, .pedido input:disabled { opacity: .55; cursor: not-allowed; }
+.line-sold { color: #8B1D1D; font-weight: 800; font-family: var(--font-body); font-size: .8125rem; letter-spacing: .04em; text-transform: uppercase; }

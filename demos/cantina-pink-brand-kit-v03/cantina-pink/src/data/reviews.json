@@ -1,0 +1,6 @@
+{
+  "_ayuda": "Reseñas REALES para la sección de notas adhesivas. Copiá de Google Maps (o de donde las dueñas tengan permiso) el texto textual, el nombre como figura y la fecha. No inventar ni editar. Si la lista está vacía, la sección muestra solo un aviso [COMPLETAR]. Campos: name, date (ej. 'octubre de 2026'), stars (1 a 5), text, url (link a la reseña, opcional).",
+  "sourceLabel": "Reseñas de Google",
+  "sourceUrl": null,
+  "reviews": []
+}

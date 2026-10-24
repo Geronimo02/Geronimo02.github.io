@@ -1,0 +1,87 @@
+---
+import Pending from '../Pending.astro';
+import humor from '../../data/humor.json';
+
+const items = humor.items as string[];
+---
+<section class="hm placa on-dark" data-humor aria-labelledby="hm-title">
+  <div class="container hm-grid">
+    <div class="head">
+      <h2 id="hm-title" class="display-l">{humor.title}</h2>
+      {!humor.verified && <Pending label="COPY PROPUESTO" note={humor._nota} />}
+    </div>
+
+    <div class="stage">
+      <p class="quote" data-humor-text aria-live="off">{items[0]}</p>
+      <p class="count" aria-hidden="true"><span data-humor-n>1</span> / {items.length}</p>
+      <div class="ctrl">
+        <button type="button" class="btn btn--cream" data-humor-prev aria-label="Frase anterior">←</button>
+        <button type="button" class="btn btn--cream" data-humor-next aria-label="Frase siguiente">→</button>
+        <button type="button" class="btn btn--outline" data-humor-toggle aria-pressed="false" hidden>Pausar</button>
+      </div>
+    </div>
+
+    <ol class="all" hidden data-humor-all>
+      {items.map((t) => <li>{t}</li>)}
+    </ol>
+  </div>
+  <script type="application/json" data-humor-items set:html={JSON.stringify(items)} />
+</section>
+
+<script>
+  function setup() {
+    const root = document.querySelector<HTMLElement>('[data-humor]');
+    if (!root || root.dataset.bound) return;
+    root.dataset.bound = '1';
+    const items: string[] = JSON.parse(root.querySelector('[data-humor-items]')!.textContent!);
+    const text = root.querySelector<HTMLElement>('[data-humor-text]')!;
+    const n = root.querySelector<HTMLElement>('[data-humor-n]')!;
+    const toggle = root.querySelector<HTMLButtonElement>('[data-humor-toggle]')!;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = 0, playing = !reduced, hovering = false;
+
+    const show = (k: number) => {
+      i = (k + items.length) % items.length;
+      text.classList.remove('swap'); void text.offsetWidth;
+      text.textContent = items[i];
+      if (!reduced) text.classList.add('swap');
+      n.textContent = String(i + 1);
+    };
+    const tick = () => { clearTimeout(timer); if (playing && !hovering) timer = window.setTimeout(() => { show(i + 1); tick(); }, 5200); };
+
+    root.querySelector('[data-humor-prev]')!.addEventListener('click', () => { show(i - 1); tick(); });
+    root.querySelector('[data-humor-next]')!.addEventListener('click', () => { show(i + 1); tick(); });
+    toggle.hidden = reduced;
+    toggle.textContent = playing ? 'Pausar' : 'Seguir';
+    toggle.addEventListener('click', () => {
+      playing = !playing;
+      toggle.textContent = playing ? 'Pausar' : 'Seguir';
+      toggle.setAttribute('aria-pressed', String(!playing));
+      tick();
+    });
+    root.addEventListener('mouseenter', () => { hovering = true; clearTimeout(timer); });
+    root.addEventListener('mouseleave', () => { hovering = false; tick(); });
+    root.addEventListener('focusin', () => { hovering = true; clearTimeout(timer); });
+    root.addEventListener('focusout', () => { hovering = false; tick(); });
+    if (!reduced) {
+      new IntersectionObserver(([e]) => { if (!e.isIntersecting) clearTimeout(timer); else tick(); }, { threshold: .2 }).observe(root);
+    }
+  }
+  document.addEventListener('astro:page-load', setup);
+</script>
+
+<style>
+  .hm { padding: 72px 0; overflow: hidden; }
+  .hm-grid { display: grid; gap: 40px; align-items: center; }
+  .head { display: grid; gap: 14px; justify-items: start; }
+  .head h2 { max-width: 12ch; }
+  .stage { display: grid; gap: 18px; justify-items: start; }
+  .quote { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 4.2vw, 3rem); line-height: 1.1; letter-spacing: -.015em; min-height: 4.4em; max-width: 20ch; }
+  .quote.swap { animation: frase 520ms var(--ease-out) both; }
+  @keyframes frase { from { opacity: 0; transform: translateY(14px) rotate(-.6deg); } to { opacity: 1; transform: none; } }
+  .count { font-weight: 700; letter-spacing: .14em; font-size: .875rem; }
+  .ctrl { display: flex; flex-wrap: wrap; gap: 12px; }
+  .ctrl .btn { min-width: 56px; }
+  @media (min-width: 960px) { .hm-grid { grid-template-columns: 5fr 7fr; gap: 64px; } .quote { min-height: 3.4em; } }
+  @media (prefers-reduced-motion: reduce) { .quote.swap { animation: none; } }
+</style>

@@ -32,12 +32,12 @@ const wa = whatsappUrl('Hola Cantina Pink! Somos un grupo y queríamos consultar
         <p>Consultanos y organizamos la mesa. Cumpleaños, despedidas, la previa de algo o el después de algo.</p>
       </div>
       <div class="grupos-cta">
+        <a class="btn btn--cream" href="/grupos">Armar consulta de mesa <Icon name="flecha" size={20} /></a>
         {wa ? (
-          <a class="btn btn--cream" href={wa} target="_blank" rel="noopener"><Icon name="whatsapp" /> Consultar por WhatsApp</a>
+          <a class="btn btn--outline" href={wa} target="_blank" rel="noopener"><Icon name="whatsapp" /> Escribir directo</a>
         ) : (
-          <a class="btn btn--cream" href={telUrl()}><Icon name="telefono" /> Llamanos al {business.phone.display}</a>
+          <a class="btn btn--outline" href={telUrl()}><Icon name="telefono" /> Llamar</a>
         )}
-        {!wa && <Pending note="Cuando esté el número de WhatsApp, este botón pasa a abrir WhatsApp con el mensaje armado." />}
       </div>
     </aside>
   </div>

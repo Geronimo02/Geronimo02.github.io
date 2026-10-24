@@ -128,6 +128,27 @@ export function formatPickup(value: string): string {
   return `${DAY_NAMES[weekday]} ${day} a las ${fromMin(minutes)} h`;
 }
 
+/** Horas de llegada para una fecha (AAAA-MM-DD): cada `step` minutos dentro de los turnos, hasta `lastBefore` min antes del cierre. */
+export function slotsForDate(ymd: string, step = 30, lastBefore = 60): string[] {
+  if (business.hours.closedDates.includes(ymd)) return [];
+  const { weekday } = localParts(new Date(`${ymd}T12:00:00${TZ_OFFSET}`));
+  const out: string[] = [];
+  for (const [a, b] of shiftsFor(weekday)) {
+    for (let m = toMin(a); m <= toMin(b) - lastBefore; m += step) if (m < 1440) out.push(fromMin(m));
+  }
+  return out;
+}
+
+/** "viernes 24/10" para una fecha AAAA-MM-DD. */
+export function dayLabel(ymd: string): string {
+  const { weekday } = localParts(new Date(`${ymd}T12:00:00${TZ_OFFSET}`));
+  const [, mo, d] = ymd.split('-');
+  return `${DAY_NAMES[weekday]} ${Number(d)}/${Number(mo)}`;
+}
+
+/** Hoy en formato AAAA-MM-DD, en hora de Argentina. */
+export const todayYmd = (now = new Date()) => localParts(now).ymd;
+
 /** openingHoursSpecification para schema.org */
 export function openingHoursSchema() {
   const names = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

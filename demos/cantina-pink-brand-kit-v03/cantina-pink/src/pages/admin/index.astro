@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import Logo from '../../components/Logo.astro';
+import Admin from '../../components/Admin.tsx';
+import { menu } from '../../lib/menu';
+
+const items = menu.categories.flatMap((c) => c.items.map((i) => ({ id: i.id, name: i.name, category: c.name, price: i.price, online: i.online })));
+---
+<Base title="Panel de la carta" noindex lite>
+  <header class="top">
+    <div class="container bar">
+      <Logo size={48} eager />
+      <p class="top-title">Cantina Pink · Panel</p>
+      <a class="back" href="/">Ver la web</a>
+    </div>
+  </header>
+  <div class="container wrap">
+    <Admin client:load items={items} />
+  </div>
+</Base>
+
+<style>
+  .top { background: var(--paper); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; gap: 14px; padding: 10px 0; }
+  .bar :global(.logo) { width: 48px; height: 48px; flex: none; }
+  .top-title { font-family: var(--font-display); font-weight: 800; font-size: 1.125rem; white-space: nowrap; }
+  .back { margin-left: auto; white-space: nowrap; font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; }
+  .wrap { padding: 28px 0 0; max-width: 820px; }
+</style>

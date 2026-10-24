@@ -3,6 +3,7 @@ import Foto from '../Foto.astro';
 import Icon from '../Icon.astro';
 
 const titular = 'Hay lugar para todos en la mesa.'.split(' ');
+const frames = ['pasta-1-vacio', 'pasta-2-pasta', 'pasta-3-salsa', 'pasta-4-queso', 'pasta-5-montana'] as const;
 ---
 <section class="hero" aria-labelledby="hero-title">
   <div class="ghost" aria-hidden="true"></div>
@@ -24,6 +25,12 @@ const titular = 'Hay lugar para todos en la mesa.'.split(' ');
       <div class="frame">
         <Foto name="mesa-milanesas" priority sizes="(min-width: 960px) 46vw, 90vw" widths={[360, 560, 800, 1100, 1500]} position="50% 55%" class="photo" />
       </div>
+      <a class="loop" href="/#pasta-en-pan" aria-label="Pasta en pan: mirá cómo se arma">
+        <span class="loop-plate" aria-hidden="true">
+          {frames.map((f, k) => <span class="loop-frame" style={`--k:${k}`}><Foto name={f} alt="" low widths={[200, 360]} sizes="(min-width: 960px) 190px, 34vw" /></span>)}
+        </span>
+        <span class="loop-label">Pasta en pan</span>
+      </a>
       <p class="sticker s1" style="--r1:-6deg; --r0:-30deg; --d:1000ms">Milanesas XL</p>
       <p class="sticker s2" style="--r1:5deg; --r0:25deg; --d:1150ms">Para compartir</p>
       <p class="sticker s3 sticker--red" style="--r1:-3deg; --r0:-20deg; --d:1300ms">Pizza libre</p>
@@ -63,6 +70,13 @@ const titular = 'Hay lugar para todos en la mesa.'.split(' ');
     animation: pop 560ms cubic-bezier(.34, 1.56, .64, 1) var(--d, 0ms) both;
   }
   .sticker--red { background: var(--red); color: var(--cream); }
+  .loop { position: absolute; z-index: 3; right: -3%; bottom: -5%; width: clamp(110px, 32%, 190px); display: grid; justify-items: center; gap: 6px; text-decoration: none; animation: pop 640ms cubic-bezier(.34, 1.56, .64, 1) 1450ms both; --r0: 20deg; --r1: 4deg; }
+  .loop-plate { position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 4px solid var(--cream); box-shadow: 0 8px 0 var(--ink), 0 0 0 3px var(--ink); background: var(--paper); }
+  .loop-frame { position: absolute; inset: 0; opacity: 0; animation: ciclo 10s linear infinite; animation-delay: calc(var(--k) * 2s); }
+  .loop-frame :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  @keyframes ciclo { 0% { opacity: 0; } 4% { opacity: 1; } 20% { opacity: 1; } 24% { opacity: 0; } 100% { opacity: 0; } }
+  .loop-label { background: var(--cream); border: 2.5px solid var(--ink); border-radius: var(--radius-pill); padding: 2px 12px; font-family: var(--font-display); font-weight: 800; font-size: .9375rem; box-shadow: 2px 2px 0 var(--ink); white-space: nowrap; }
+  .loop:hover .loop-plate { box-shadow: 0 8px 0 var(--wine), 0 0 0 3px var(--ink); }
   .s1 { left: -4%; top: 10%; }
   .s2 { right: -3%; top: 46%; }
   .s3 { left: 6%; bottom: 7%; }
@@ -84,6 +98,8 @@ const titular = 'Hay lugar para todos en la mesa.'.split(' ');
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rise, .frame, .sticker { animation: none; }
+    .rise, .frame, .sticker, .loop { animation: none; }
+    .loop-frame { animation: none; }
+    .loop-frame:nth-child(3) { opacity: 1; }
   }
 </style>

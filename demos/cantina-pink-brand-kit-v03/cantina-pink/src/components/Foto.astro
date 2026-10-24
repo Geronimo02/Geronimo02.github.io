@@ -9,11 +9,13 @@ interface Props {
   sizes?: string;
   widths?: number[];
   priority?: boolean;
+  /** Decorativa o secundaria: no compite con la imagen principal de la página. */
+  low?: boolean;
   class?: string;
   style?: string;
   position?: string;
 }
-const { name, alt = FOTO_ALT[name], sizes = '(min-width: 960px) 50vw, 100vw', widths = [480, 800, 1200, 1600], priority = false, class: className, style, position = 'center' } = Astro.props;
+const { name, alt = FOTO_ALT[name], sizes = '(min-width: 960px) 50vw, 100vw', widths = [480, 800, 1200, 1600], priority = false, low = false, class: className, style, position = 'center' } = Astro.props;
 const src = foto(name);
 ---
 {src && (
@@ -26,7 +28,7 @@ const src = foto(name);
     class={className}
     style={`object-position:${position};${style ?? ''}`}
     loading={priority ? 'eager' : 'lazy'}
-    fetchpriority={priority ? 'high' : 'auto'}
+    fetchpriority={priority ? 'high' : low ? 'low' : 'auto'}
     decoding={priority ? 'sync' : 'async'}
   />
 )}

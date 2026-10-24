@@ -6,6 +6,7 @@ import { business, hoursTable } from '../lib/hours';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
   { href: '/carta', label: 'La carta' },
+  { href: '/grupos', label: 'Grupos' },
   { href: '/ubicacion', label: 'Cómo llegar' },
 ];
 const isCurrent = (href: string) => path === href || path.startsWith(href + '/');

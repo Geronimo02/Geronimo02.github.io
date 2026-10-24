@@ -1,0 +1,36 @@
+---
+import Icon from './Icon.astro';
+import { whatsappUrl, telUrl } from '../lib/contact';
+
+const wa = whatsappUrl();
+---
+<!-- Con número de WhatsApp abre el chat; sin número cae a llamar por teléfono, para que nunca sea un botón roto. -->
+<a
+  class="fab"
+  data-fab
+  href={wa ?? telUrl()}
+  target={wa ? '_blank' : undefined}
+  rel={wa ? 'noopener' : undefined}
+  aria-label={wa ? 'Escribinos por WhatsApp' : 'Llamanos por teléfono'}
+>
+  <Icon name={wa ? 'whatsapp' : 'telefono'} size={26} />
+  <span class="fab-label">{wa ? 'Escribinos' : 'Llamanos'}</span>
+</a>
+
+<style>
+  .fab {
+    position: fixed; right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); z-index: 25;
+    display: inline-flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 18px 0 16px;
+    background: var(--red); color: var(--cream); border: 2.5px solid var(--ink); border-radius: var(--radius-pill);
+    box-shadow: 4px 4px 0 var(--ink); text-decoration: none; font-weight: 700;
+    opacity: 0; translate: 0 16px; pointer-events: none;
+    transition: opacity var(--motion-long) var(--ease-out), translate var(--motion-long) var(--ease-out), transform var(--motion-short) var(--ease-out), box-shadow var(--motion-short) var(--ease-out);
+  }
+  .fab.is-on { opacity: 1; translate: 0 0; pointer-events: auto; }
+  .fab:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+  .fab:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  .fab-label { display: none; }
+  @media (min-width: 640px) { .fab { right: 24px; bottom: 24px; } .fab-label { display: inline; } }
+  @media (max-width: 639px) { .fab { width: 58px; padding: 0; justify-content: center; } }
+  @media (prefers-reduced-motion: reduce) { .fab { transition: none; translate: 0 0; } .fab:hover { transform: none; } }
+</style>

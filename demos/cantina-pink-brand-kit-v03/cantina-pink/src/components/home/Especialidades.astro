@@ -28,10 +28,10 @@ const data = placas.map((p) => ({ ...p, item: findItem(p.itemId)! }));
             <p class="card-line">{p.line}</p>
             <p class="card-price">
               <span class="price-pill">
-                {formatPrice(p.item.price)}
+                <span data-price-text={p.itemId}>{formatPrice(p.item.price)}</span>
                 {p.item.price !== null && p.item.unit && <small>{p.item.unit}</small>}
               </span>
-              {!p.item.priceVerified && <Pending label={p.item.price === null ? 'COMPLETAR' : 'VERIFICAR'} note={`Precio de ${p.item.name} sin confirmar.`} />}
+              {!p.item.priceVerified && <span data-price-note={p.itemId}><Pending label={p.item.price === null ? 'COMPLETAR' : 'VERIFICAR'} note={`Precio de ${p.item.name} sin confirmar.`} /></span>}
             </p>
             {p.tag && <span class="tag card-tag">{p.tag}</span>}
           </a>

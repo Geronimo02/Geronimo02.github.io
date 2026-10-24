@@ -21,7 +21,7 @@ const pasos = [
         <h2 id="pizarra-title" class="pizarra-title">{special.name}</h2>
         <p class="pizarra-desc">{splitPending(special.description).text}</p>
         <p class="pizarra-price">
-          <span class="price-pill">{formatPrice(special.price)}</span>
+          <span class="price-pill"><span data-price-text={special.id}>{formatPrice(special.price)}</span></span>
           {!menu.dailySpecial.verified && <Pending note={menu.dailySpecial.note} />}
         </p>
         {isOrderable(special) && (

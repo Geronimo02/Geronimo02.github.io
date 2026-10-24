@@ -18,7 +18,7 @@ for (const route of routes) {
     const ctx = await browser.newContext({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
     const errors = [];
-    page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
+    page.on('console', (m) => m.type() === 'error' && !m.location().url.includes('/api/') && errors.push(m.text()));
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto(base + route, { waitUntil: 'networkidle' });
     // Recorre la página para disparar reveals y lazy-load antes de capturar.

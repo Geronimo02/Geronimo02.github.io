@@ -1,0 +1,35 @@
+{
+  "_ayuda": "Promos que se muestran en una cinta arriba de todo el sitio. Se muestra la primera promo con active:true cuya ventana (startsAt a endsAt, hora de Argentina, formato AAAA-MM-DDTHH:MM) incluya el momento actual. Para ver cómo queda una promo sin publicarla, abrí el sitio con ?promo=preview. Las promos de abajo son borradores tomados de piezas del feed (oct 2026): confirmar vigencia antes de activarlas. También se puede activar una promo desde el panel /admin, sin tocar este archivo.",
+  "promos": [
+    {
+      "id": "pizza-2-latas",
+      "active": false,
+      "verified": false,
+      "title": "Pedí una pizza",
+      "text": "y te regalamos 2 latas de cerveza (Brahma o Quilmes) o una gaseosa de 1 L. Válida para delivery y take away, todos los días, mediodía y noche.",
+      "startsAt": "2026-10-01T00:00",
+      "endsAt": "2026-12-31T23:59",
+      "cta": { "label": "Pedir", "href": "/carta" }
+    },
+    {
+      "id": "milanesa-1-lata",
+      "active": false,
+      "verified": false,
+      "title": "Pedí una milanesa",
+      "text": "cualquiera de la carta, incluye guarnición, y te regalamos 1 lata de cerveza (Brahma o Quilmes) o una gaseosa de 500 ml. Para delivery y take away.",
+      "startsAt": "2026-10-01T00:00",
+      "endsAt": "2026-12-31T23:59",
+      "cta": { "label": "Pedir", "href": "/carta" }
+    },
+    {
+      "id": "empanadas-2-latas",
+      "active": false,
+      "verified": false,
+      "title": "Pedí una docena de empanadas",
+      "text": "y te regalamos 2 latas de cerveza (Brahma o Quilmes) o una gaseosa de 1 L. Para delivery y take away.",
+      "startsAt": "2026-10-01T00:00",
+      "endsAt": "2026-12-31T23:59",
+      "cta": { "label": "Pedir", "href": "/carta" }
+    }
+  ]
+}

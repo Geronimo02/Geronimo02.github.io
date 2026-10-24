@@ -1,5 +1,6 @@
 // Botones "Agregar" de la carta. Delegación de eventos: un solo listener para todos los platos.
 import { load, save, qtyOf, setQty, addOne, MAX_QTY } from '../lib/cart';
+import { isSoldOut } from '../lib/overrides';
 
 let toastTimer = 0;
 let bound = false;
@@ -31,7 +32,7 @@ function render() {
     const qty = qtyOf(state, id);
     const wasFocused = box.contains(document.activeElement);
     const act = (document.activeElement as HTMLElement | null)?.dataset.act;
-    box.innerHTML = qty > 0 ? stepper(name, qty) : addButton(name);
+    box.innerHTML = isSoldOut(id) ? '<span class="soldout-btn">Agotado</span>' : qty > 0 ? stepper(name, qty) : addButton(name);
     box.classList.toggle('in-cart', qty > 0);
     if (wasFocused) box.querySelector<HTMLElement>(`[data-act="${act === 'add' ? 'inc' : act}"]`)?.focus() ?? box.querySelector<HTMLElement>('button')?.focus();
   });
@@ -61,6 +62,7 @@ function init() {
     document.addEventListener('click', onClick);
     window.addEventListener('cp:cart', (e) => { if ((e as CustomEvent).detail?.source !== 'page') render(); });
     window.addEventListener('storage', render);
+    window.addEventListener('cp:overrides', render);
   }
 }
 document.addEventListener('astro:page-load', init);
