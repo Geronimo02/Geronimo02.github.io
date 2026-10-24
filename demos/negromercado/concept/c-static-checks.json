@@ -1,9 +1,0 @@
-{
-  "js_syntax": "pass",
-  "embedded_images": "pass",
-  "internal_anchors": "pass",
-  "palette_tokens": "pass",
-  "browser_render": "not_tested",
-  "browser_interactions": "not_tested",
-  "motion_study": "5 seconds, 960x640 h264; frames visually inspected, not HTML capture"
-}

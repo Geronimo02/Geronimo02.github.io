@@ -1,0 +1,206 @@
+[
+  {
+    "route": "/",
+    "width": 390,
+    "file": "inicio-390.png",
+    "horizontalOverflow": false,
+    "offenders": [
+      "div.ghost",
+      "span.loop-plate",
+      "span.loop-frame",
+      "img.",
+      "span.loop-frame"
+    ],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/",
+    "width": 768,
+    "file": "inicio-768.png",
+    "horizontalOverflow": false,
+    "offenders": [
+      "div.ghost",
+      "div.track",
+      "ul.",
+      "li.",
+      "li."
+    ],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/",
+    "width": 1024,
+    "file": "inicio-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [
+      "div.ghost",
+      "div.track",
+      "ul.",
+      "li.",
+      "li."
+    ],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/",
+    "width": 1440,
+    "file": "inicio-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [
+      "div.ghost",
+      "div.track",
+      "ul.",
+      "li.",
+      "li."
+    ],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/carta",
+    "width": 390,
+    "file": "carta-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/carta",
+    "width": 768,
+    "file": "carta-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/carta",
+    "width": 1024,
+    "file": "carta-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/carta",
+    "width": 1440,
+    "file": "carta-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 390,
+    "file": "mesa-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 768,
+    "file": "mesa-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 1024,
+    "file": "mesa-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/mesa",
+    "width": 1440,
+    "file": "mesa-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/grupos",
+    "width": 390,
+    "file": "grupos-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/grupos",
+    "width": 768,
+    "file": "grupos-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/grupos",
+    "width": 1024,
+    "file": "grupos-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/grupos",
+    "width": 1440,
+    "file": "grupos-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/ubicacion",
+    "width": 390,
+    "file": "ubicacion-390.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/ubicacion",
+    "width": 768,
+    "file": "ubicacion-768.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/ubicacion",
+    "width": 1024,
+    "file": "ubicacion-1024.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  },
+  {
+    "route": "/ubicacion",
+    "width": 1440,
+    "file": "ubicacion-1440.png",
+    "horizontalOverflow": false,
+    "offenders": [],
+    "consoleErrors": [],
+    "axe": []
+  }
+]
