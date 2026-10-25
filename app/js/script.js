@@ -7,31 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     // ==================== ANIMACIONES AL SCROLL ====================
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Aplicar a todas las secciones
+        document.querySelectorAll('section:not(.presentation-strip)').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
         });
-    }, { threshold: 0.1 });
 
-    // Aplicar a todas las secciones
-    document.querySelectorAll('section:not(.presentation-strip)').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'all 0.6s ease-out';
-        observer.observe(section);
-    });
-
-    // Animación para cards individuales con delay
-    const cards = document.querySelectorAll('.service-card, .result-card, .cert-card, .project-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `all 0.5s ease-out ${index * 0.1}s`;
-        observer.observe(card);
-    });
+        // Animación para cards individuales con delay
+        const cards = document.querySelectorAll('.service-card, .result-card, .cert-card, .project-card, .demo-showcase-card, .portfolio-video-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `all 0.5s ease-out ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    }
 
     // ==================== FORMULARIO DE CONTACTO (Envío por WhatsApp) ====================
     const contactForm = document.getElementById('contactForm');
@@ -160,5 +163,19 @@ ${message}`;
     const resultsSection = document.getElementById('results');
     if (resultsSection) {
         counterObserver.observe(resultsSection);
+    }
+
+    // Pausar previews fuera de pantalla para no consumir recursos innecesarios.
+    const portfolioVideos = document.querySelectorAll('.portfolio-video-card video');
+    if ('IntersectionObserver' in window && portfolioVideos.length) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting && !entry.target.paused) {
+                    entry.target.pause();
+                }
+            });
+        }, { threshold: 0.15 });
+
+        portfolioVideos.forEach((video) => videoObserver.observe(video));
     }
 });
