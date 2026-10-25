@@ -43,4 +43,16 @@
 
         sections.forEach(function (s) { io.observe(s); });
     }
+
+    /* --- previews de video: se pausan al salir de pantalla --- */
+    var motionVideos = Array.prototype.slice.call(document.querySelectorAll(".motion-card video"));
+    if ("IntersectionObserver" in window && motionVideos.length) {
+        var videoIo = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting && !entry.target.paused) entry.target.pause();
+            });
+        }, { threshold: 0.15 });
+
+        motionVideos.forEach(function (video) { videoIo.observe(video); });
+    }
 })();
