@@ -36,55 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==================== FORMULARIO DE CONTACTO (Envío por WhatsApp) ====================
-    const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            // Construir el mensaje para WhatsApp
-            const whatsappMessage = `Hola Geronimo,
-
-*Nombre:* ${name}
-*Email:* ${email}
-*Asunto:* ${subject}
-
-*Mensaje:*
-${message}`;
-
-            // Encodificar el mensaje para URL
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            
-            // Número de WhatsApp: +54 92494589884
-            const whatsappURL = `https://wa.me/5492494589884?text=${encodedMessage}`;
-
-            // Mostrar mensaje de estado
-            formStatus.className = 'form-status success';
-            formStatus.innerHTML = '<i class="fas fa-check-circle"></i> Redirigiendo a WhatsApp...';
-            formStatus.style.display = 'block';
-
-            // Abrir WhatsApp después de 1 segundo
-            setTimeout(() => {
-                window.open(whatsappURL, '_blank');
-                
-                // Limpiar formulario
-                contactForm.reset();
-                
-                // Ocultar mensaje después de 3 segundos
-                setTimeout(() => {
-                    formStatus.style.display = 'none';
-                }, 3000);
-            }, 1000);
-        });
-    }
-
     // ==================== MODO OSCURO ====================
     // Crear botón de toggle
     const themeToggle = document.createElement('button');

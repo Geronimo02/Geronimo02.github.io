@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-booking-api",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "cf": "^1.0.0-beta.19",
+    "wrangler": "^4.0.0"
+  }
+}
