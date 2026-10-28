@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>Política de privacidad · Agencia Gero</title>
+  <meta name="description" content="Cómo Agencia Gero trata los datos de quienes reservan una reunión, incluido el uso de Google Calendar." />
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --surface: #12151a;
+      --line: #232830;
+      --fg: #f2f4f7;
+      --fg-2: #aab2be;
+      --fg-3: #7b8491;
+      --accent: #c8ff3d;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg: #ffffff; --surface: #f4f6f8; --line: #dde2e8; --fg: #12161c; --fg-2: #46505e; --fg-3: #6b7685; --accent: #3f6b00; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 48px 20px 72px; }
+    .brand { font: 600 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); text-decoration: none; }
+    h1 { margin: 12px 0 4px; font-size: 2rem; line-height: 1.2; letter-spacing: -.02em; }
+    h2 { margin: 40px 0 8px; font-size: 1.25rem; letter-spacing: -.01em; }
+    p, li { color: var(--fg-2); }
+    p { margin: 10px 0; }
+    ul { padding-left: 1.2rem; }
+    li { margin: 6px 0; }
+    strong { color: var(--fg); }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    code { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .9em; color: var(--fg); }
+    .meta { color: var(--fg-3); font-size: .9rem; }
+    .box { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 4px 20px; margin: 16px 0; }
+    footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--fg-3); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="brand" href="landing.html">Agencia Gero</a>
+    <h1>Política de privacidad</h1>
+    <p class="meta">Última actualización: 28 de octubre de 2026</p>
+
+    <p>
+      Esta política explica qué datos personales trata Agencia Gero (“nosotros”) cuando reservás una reunión desde nuestra
+      página web, para qué los usamos y qué derechos tenés sobre ellos.
+    </p>
+
+    <h2>1. Qué datos tratamos</h2>
+    <ul>
+      <li><strong>Datos de la reserva:</strong> tu nombre, tu email, tu teléfono o WhatsApp (opcional), el mensaje que quieras dejarnos (opcional) y el día y horario que elegiste.</li>
+      <li><strong>Datos de contacto posteriores:</strong> si seguimos conversando o te enviamos una propuesta, guardamos lo necesario para esa comunicación.</li>
+    </ul>
+    <p>No te pedimos que inicies sesión con Google ni accedemos a tu cuenta de Google.</p>
+
+    <h2>2. Para qué los usamos</h2>
+    <ul>
+      <li>Confirmar y coordinar la reunión que pediste.</li>
+      <li>Enviarte la invitación con el link de la videollamada.</li>
+      <li>Responder tus consultas y, si corresponde, prepararte una propuesta.</li>
+    </ul>
+    <p>
+      No vendemos tus datos, no los compartimos con terceros con fines publicitarios y no los usamos para entrenar modelos de
+      inteligencia artificial.
+    </p>
+
+    <h2>3. Uso de Google Calendar y Google Meet</h2>
+    <div class="box">
+      <p>
+        Nuestra herramienta de gestión se conecta, <strong>con autorización de la persona titular de la agencia</strong>, a su
+        propio Google Calendar mediante el permiso <code>https://www.googleapis.com/auth/calendar.events</code>.
+      </p>
+      <p>
+        Usamos ese acceso <strong>únicamente</strong> para crear en ese calendario el evento de cada reserva, con un link de
+        Google Meet, e invitar por email a la persona que reservó. No leemos, modificamos ni compartimos otros eventos del
+        calendario para ningún otro fin.
+      </p>
+      <p>
+        El uso y la transferencia a cualquier otra aplicación de la información recibida de las APIs de Google respetarán la
+        <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Política de datos de usuario de los servicios de las API de Google</a>,
+        incluidos los requisitos de uso limitado.
+      </p>
+    </div>
+
+    <h2>4. Dónde se guardan y cómo se protegen</h2>
+    <p>
+      Los datos de las reservas se guardan en una base de datos alojada en Supabase, con acceso restringido a la agencia. La
+      credencial de acceso a Google Calendar se guarda como secreto cifrado en el servidor y nunca se expone en el navegador ni
+      en esta web.
+    </p>
+
+    <h2>5. Con quién los compartimos</h2>
+    <p>
+      Solo con los proveedores técnicos necesarios para prestar el servicio: Supabase (base de datos), Vercel (alojamiento de la
+      herramienta) y Google (calendario, Meet y envío de la invitación). Pueden tratar los datos únicamente para ese fin.
+    </p>
+
+    <h2>6. Cuánto tiempo los conservamos</h2>
+    <p>
+      Conservamos los datos de una reserva mientras sean necesarios para la relación comercial o para cumplir obligaciones
+      legales. Después los eliminamos o anonimizamos.
+    </p>
+
+    <h2>7. Tus derechos</h2>
+    <p>
+      Podés pedirnos en cualquier momento acceder a tus datos, corregirlos, actualizarlos o suprimirlos, y oponerte a su
+      tratamiento. En Argentina, la Agencia de Acceso a la Información Pública es el órgano de control de la Ley 25.326 de
+      Protección de los Datos Personales y atiende las denuncias por incumplimientos.
+    </p>
+    <p>
+      La persona titular de la agencia puede revocar el acceso a Google Calendar en cualquier momento desde
+      <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.
+    </p>
+
+    <h2>8. Cambios en esta política</h2>
+    <p>Si la actualizamos, publicaremos la nueva versión en esta misma página y cambiaremos la fecha de arriba.</p>
+
+    <h2>9. Contacto</h2>
+    <p>
+      Para ejercer tus derechos o hacer consultas sobre esta política escribinos a
+      <a href="mailto:serrattigeronimo1@gmail.com">serrattigeronimo1@gmail.com</a>.
+    </p>
+
+    <footer>
+      <a href="landing.html">← Volver a Agencia Gero</a>
+    </footer>
+  </main>
+</body>
+</html>
