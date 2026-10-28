@@ -787,6 +787,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .trust .material-symbols-outlined { font-size: 16px; }
 
 .contact-direct { display: flex; gap: var(--space-sm); }
+.contact-calendar-frame {
+    display: block;
+    width: 100%;
+    min-height: 760px;
+    border: 0;
+    border-radius: var(--radius-lg);
+    background: #fff;
+}
+.contact-calendar-link { margin-top: var(--space-md); }
 
 /* ---------------------------------------------------------------- footer */
 .site-footer {

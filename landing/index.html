@@ -20,7 +20,6 @@
 
     <link rel="icon" type="image/png" href="../FOTO PERFIL .png">
     <link rel="stylesheet" href="../app/css/landing.css">
-    <link rel="stylesheet" href="../app/css/booking-calendar.css">
     <script>
         if (window.location.pathname.endsWith('/index.html')) {
             const cleanPath = window.location.pathname.slice(0, -'index.html'.length);
@@ -28,8 +27,6 @@
         }
     </script>
     <script src="../app/js/landing.js" defer></script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
-    <script src="../app/js/booking-calendar-live.js" defer></script>
 </head>
 <body>
 
@@ -795,61 +792,15 @@
                     </div>
                 </div>
 
-                <div class="contact-calendar">
-                    <div class="booking-widget" id="demo" data-booking-mode="live" data-booking-api="https://portfolio-booking-api.gserratti.workers.dev">
-                        <div class="booking-profile">
-                            <img src="../FOTO PERFIL .png" alt="" width="44" height="44">
-                            <div>
-                                <span class="booking-owner">Geronimo Serratti</span>
-                                <h3>Llamada de diagnóstico — Software y automatización</h3>
-                                <p>60 minutos · Videollamada por Google Meet</p>
-                            </div>
-                        </div>
-                        <p class="booking-description">Una llamada de 60 minutos para entender tu negocio, detectar qué proceso está generando fricción y evaluar si tiene sentido resolverlo con software a medida, automatizaciones o integraciones. Durante la llamada vamos a revisar cómo funciona hoy el proceso, qué herramientas utilizan, dónde están los principales problemas y cuál podría ser el mejor camino para resolverlos. No hace falta que tengas una solución definida. La idea es entender primero el problema y después evaluar qué tecnología tiene sentido utilizar.</p>
-                        <div class="booking-notice" data-booking-status role="status">Buscando horarios disponibles…</div>
-                        <div class="booking-main">
-                            <div class="booking-toolbar">
-                                <h4>Seleccioná una hora para la cita</h4>
-                                <span>Hora de Argentina · Buenos Aires</span>
-                            </div>
-                            <div class="booking-picker">
-                                <div class="booking-month">
-                                    <div class="booking-month-head">
-                                        <strong data-month-title></strong>
-                                        <div class="booking-month-actions">
-                                            <button type="button" data-prev-month aria-label="Mes anterior">‹</button>
-                                            <button type="button" data-next-month aria-label="Mes siguiente">›</button>
-                                        </div>
-                                    </div>
-                                    <div class="booking-weekdays" aria-hidden="true"><span>D</span><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span></div>
-                                    <div class="booking-days" data-calendar-days aria-label="Días disponibles"></div>
-                                </div>
-                                <div class="booking-times">
-                                    <div class="booking-day-heading" data-selected-day></div>
-                                    <div class="booking-slots" data-time-slots></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="booking-form-wrap" data-booking-form hidden>
-                            <div class="booking-form-head">
-                                <div><span>Tu cita</span><strong data-chosen-slot></strong></div>
-                                <button type="button" data-back-to-slots>Elegir otro horario</button>
-                            </div>
-                            <form>
-                                <label>Nombre y apellido <input type="text" name="name" autocomplete="name" maxlength="100" required></label>
-                                <label>Correo electrónico <input type="email" name="email" autocomplete="email" maxlength="254" required></label>
-                                <label>¿Qué te gustaría conversar? <textarea name="message" rows="3" maxlength="1000"></textarea></label>
-                                <div class="cf-turnstile" data-sitekey="0x4AAAAAAFmpHf0kyo6cpbRf" data-action="booking"></div>
-                                <button type="submit">Confirmar reserva</button>
-                                <p>Recibirás una invitación por correo con el enlace de Google Meet.</p>
-                            </form>
-                        </div>
-                        <div class="booking-success" data-booking-success role="status" hidden>
-                            <h4>Tu llamada quedó reservada</h4>
-                            <p data-booking-success-time></p>
-                            <p>Te enviamos una invitación al correo que ingresaste con el enlace de Google Meet.</p>
-                        </div>
-                    </div>
+                <div class="contact-calendar" id="demo">
+                    <iframe
+                        class="contact-calendar-frame"
+                        src="https://agencia-geronimo.vercel.app/r/919722ad-1f0f-4380-ad8d-59df8205165c"
+                        title="Reservar reunión"
+                        loading="lazy"></iframe>
+                    <a class="btn btn--ghost btn--sm contact-calendar-link"
+                       href="https://agencia-geronimo.vercel.app/r/919722ad-1f0f-4380-ad8d-59df8205165c"
+                       target="_blank" rel="noopener noreferrer">Abrir agenda en otra pestaña</a>
                 </div>
             </div>
         </div>
