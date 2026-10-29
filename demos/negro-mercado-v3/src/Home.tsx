@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { business, formatARS, menu } from './data';
+import { business, formatARS } from './data';
+import { useMenu } from './menu';
 import { PillLink, type Cart } from './App';
 
 const img = (name: string) => `/images/${name}.webp`;
@@ -38,6 +39,7 @@ function useHeroParallax(ref: React.RefObject<HTMLElement | null>) {
 }
 
 export default function Home({ cart }: { cart: Cart }) {
+  const { items: menu, soldOut } = useMenu();
   const hero = useRef<HTMLElement>(null);
   const [tab, setTab] = useState<(typeof heroTabs)[number]['id']>('cafe');
   useHeroParallax(hero);
@@ -82,17 +84,18 @@ export default function Home({ cart }: { cart: Cart }) {
       <section className="rail-section" id="carta">
         <div className="section-head" data-reveal>
           <h2><img src={img('la-carta-manuscrita')} alt="La carta. ¿Qué te tienta hoy?" width="900" height="321" /></h2>
-          <p>Deslizá, elegí y sumalo al pedido. Lo cerramos por WhatsApp con el local.</p>
+          <p>Deslizá, elegí y sumalo al pedido. Escaneá el QR de tu mesa y pedí sin levantarte.</p>
         </div>
         <div className="rail" tabIndex={0} aria-label="Productos de la carta">
           {railProducts.map((r) => {
-            const item = menu.find((m) => m.id === r.id)!;
+            const item = menu.find((m) => m.id === r.id);
+            if (!item) return null;
             const variant = item.variants[0];
             return (
               <article className="rail-card" style={{ background: r.tint }} key={r.id}>
                 <div className="rail-card-top">
                   <p>{item.category}</p>
-                  <button onClick={() => cart.add(item, variant.label)} aria-label={`Sumar ${item.name} al pedido`}>sumar +</button>
+                  <button disabled={soldOut.has(item.id)} onClick={() => cart.add(item, variant.label)} aria-label={`Sumar ${item.name} al pedido`}>{soldOut.has(item.id) ? 'agotado' : 'sumar +'}</button>
                 </div>
                 <div className="rail-art"><img src={img(r.file)} alt={r.alt} loading="lazy" /></div>
                 <div className="rail-card-foot"><h3>{item.name}</h3><p>desde {formatARS(variant.price)}</p></div>
@@ -150,12 +153,12 @@ export default function Home({ cart }: { cart: Cart }) {
         <div data-reveal>
           <p className="script">tu pedido</p>
           <h2>{cart.count ? 'casi listo.' : 'armá el tuyo.'}</h2>
-          <p>{cart.count ? 'Revisalo y mandalo por WhatsApp. El local lo confirma.' : 'Sumá productos desde la carta y los mandamos por WhatsApp. Sin cobro online.'}</p>
+          <p>{cart.count ? 'Revisalo y mandalo a tu mesa.' : 'Sumá productos desde la carta. Se pide desde la mesa, escaneando el QR, y el equipo te lo lleva.'}</p>
         </div>
         <div className="cta-card" data-reveal>
           <p className="eyebrow">Resumen</p>
           <strong>{cart.count} producto{cart.count === 1 ? '' : 's'}</strong>
-          <p>El local confirma disponibilidad y precio final.</p>
+          <p>Pedido para consumir en el local. Sin cobro online ni delivery.</p>
           <PillLink href="/pedido/" tone="green">Ver mi pedido</PillLink>
         </div>
       </section>

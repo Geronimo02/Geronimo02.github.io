@@ -23,8 +23,8 @@ export default function Productos() {
         </div>
         <div className="duo-card duo-mint">
           <p className="eyebrow eyebrow-brown">Ya podés pedir</p>
-          <h2>Lo de la carta,<br />para llevar.</h2>
-          <p>Sumá café, fríos y vermú al pedido y lo coordinamos por WhatsApp.</p>
+          <h2>Lo de la carta,<br />a tu mesa.</h2>
+          <p>Escaneá el QR de tu mesa, sumá café, fríos y vermú, y el equipo te lo lleva.</p>
           <PillLink href="/carta/" tone="outline">Ver la carta</PillLink>
         </div>
       </section>

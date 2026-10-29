@@ -1,0 +1,63 @@
+.panel,.panel-login{min-height:100vh;background:#f5f2eb;color:#0a0807;font-family:'DM Sans',system-ui,sans-serif}
+.panel-brand{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:30px;line-height:1;margin:0;letter-spacing:-.02em}
+.panel-brand small{font-size:12px;letter-spacing:.08em;font-weight:800}
+.panel-bar{position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:12px 20px;background:#044433;color:#f5f2eb}
+.panel-bar nav{display:flex;gap:6px}
+.panel button{font-family:inherit;cursor:pointer;min-height:44px;border:0;border-radius:999px;padding:8px 20px;background:#044433;color:#f5f2eb;font-size:14px;font-weight:700}
+.panel-bar button{background:transparent;color:#f5f2eb;border:1.5px solid #f5f2eb}
+.panel-bar button.on{background:#f5f2eb;color:#044433}
+.panel button.ghost{background:transparent;color:#044433;border:1.5px solid #044433}
+.panel-bar button.ghost{color:#f5f2eb;border-color:#f5f2eb}
+.panel button:disabled{opacity:.45;cursor:not-allowed}
+.panel main{padding:20px}
+.panel-error{background:#f1d9d3;color:#8a3e24;border-radius:12px;padding:10px 14px;font-weight:700;margin:0 0 12px}
+.panel-hint{color:#5c564e;font-size:14px;margin:8px 0 16px}
+.sound{margin-bottom:16px}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;align-items:start}
+.col{background:#e3ebe2;border-radius:20px;padding:14px;min-height:200px}
+.col h2{margin:0 0 12px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:24px;display:flex;justify-content:space-between}
+.col h2 span{background:#044433;color:#f5f2eb;border-radius:999px;min-width:30px;text-align:center;font-size:16px;padding:0 8px}
+.col-new{background:#f3e2c7}.col-ready{background:#cfe3d2}
+.col-empty{color:#5c564e}
+.ticket{background:#fff;border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 1px 0 #d9d2c4}
+.ticket.flash{animation:flash 1s ease-in-out 6}
+@keyframes flash{50%{box-shadow:0 0 0 4px #8a3e24}}
+.ticket header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ticket-table{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:34px;line-height:1;color:#044433}
+.ticket header span{font-size:13px;color:#5c564e}
+.ticket-name{margin:2px 0 0;font-weight:700}
+.ticket ul{list-style:none;margin:10px 0;padding:0;display:grid;gap:4px;font-size:16px}
+.ticket li em{color:#5c564e;font-style:normal;font-size:14px}
+.ticket-notes{background:#f5f2eb;border-radius:10px;padding:8px 10px;font-size:14px;margin:0 0 10px}
+.ticket footer{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+.ticket footer span{margin-right:auto;font-weight:700}
+.done{margin-top:20px}.done ul{padding-left:20px}
+.panel-login{display:grid;place-items:center;padding:20px}
+.panel-login form{background:#fff;border-radius:24px;padding:32px;display:grid;gap:14px;width:min(100%,360px)}
+.panel-login h1{margin:0;font-family:'Baloo 2',sans-serif;font-size:32px;color:#044433}
+.panel-login label{display:grid;gap:6px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.panel-login input,.panel input,.panel select{min-height:44px;border:1.5px solid #d9d2c4;border-radius:12px;padding:0 12px;font-size:16px;font-family:inherit;background:#fff;min-width:0}
+.panel-login button{font-family:inherit;min-height:48px;border:0;border-radius:999px;background:#044433;color:#f5f2eb;font-weight:700;font-size:15px;cursor:pointer}
+.panel-login button:disabled{opacity:.5}
+.new-product{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;background:#e3ebe2;border-radius:20px;padding:16px;align-items:end}
+.new-product h2{grid-column:1/-1;margin:0;font-family:'Baloo 2',sans-serif;font-size:26px}
+.new-product label,.settings label{display:grid;gap:4px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.new-product .wide{grid-column:span 2}
+.table-wrap{overflow-x:auto}
+.panel table{border-collapse:collapse;width:100%;min-width:860px}
+.panel th{text-align:left;font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:8px;border-bottom:2px solid #044433}
+.panel td{padding:8px;border-bottom:1px solid #d9d2c4;vertical-align:middle}
+.panel tr.off{opacity:.65}
+.prices{display:flex;gap:8px;flex-wrap:wrap}
+.prices label{display:grid;gap:2px;font-size:11px;font-weight:700}
+.prices input{width:96px}
+.check{display:flex!important;align-items:center;gap:6px;font-size:14px!important;text-transform:none!important;letter-spacing:0!important;white-space:nowrap}
+.check input{min-height:auto;width:20px;height:20px}
+.settings{display:flex;flex-wrap:wrap;gap:12px;align-items:end;background:#e3ebe2;border-radius:20px;padding:16px}
+.qr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.qr-grid figure{margin:0;background:#fff;border-radius:16px;padding:14px;text-align:center;break-inside:avoid}
+.qr-grid img{width:100%;height:auto}
+.qr-grid figcaption{display:grid;gap:2px}
+.qr-grid strong{font-family:'Baloo 2',sans-serif;font-size:28px;color:#044433;line-height:1}
+.qr-grid span{font-size:13px;color:#5c564e}
+@media print{.panel-bar,.settings,.panel-hint,.sound{display:none!important}.panel main{padding:0}.qr-grid{grid-template-columns:repeat(3,1fr)}}

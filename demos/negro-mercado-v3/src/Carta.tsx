@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react';
-import { categories, coffeeAddOns, formatARS, menu, type MenuItem } from './data';
+import { coffeeAddOns, formatARS, type MenuItem } from './data';
+import { useMenu } from './menu';
+import { readTable } from './table';
 import type { Cart } from './App';
 
 const img = (name: string) => `/images/${name}.webp`;
@@ -17,6 +19,8 @@ export function artFor(item: MenuItem): string | null {
 }
 
 export default function Carta({ cart }: { cart: Cart }) {
+  const { items: allItems, categories, soldOut } = useMenu();
+  const table = readTable();
   const [cat, setCat] = useState('Todos');
   const [query, setQuery] = useState('');
   const [sel, setSel] = useState<Record<string, string>>({});
@@ -24,11 +28,11 @@ export default function Carta({ cart }: { cart: Cart }) {
 
   const groups = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('es');
-    const items = menu.filter((m) => m.published && (!q || m.name.toLocaleLowerCase('es').includes(q)));
+    const items = allItems.filter((m) => !q || m.name.toLocaleLowerCase('es').includes(q));
     return categories.slice(1)
       .map((name) => ({ name, items: items.filter((m) => m.category === name) }))
       .filter((g) => g.items.length && (cat === 'Todos' || q || g.name === cat));
-  }, [cat, query]);
+  }, [cat, query, allItems, categories]);
 
   return (
     <>
@@ -48,10 +52,11 @@ export default function Carta({ cart }: { cart: Cart }) {
               <button key={c} aria-pressed={cat === c && !query} className={cat === c && !query ? 'on' : ''} onClick={() => { setCat(c); setQuery(''); }}>{c}</button>
             ))}
           </nav>
-          <p>Pedís por WhatsApp. El local confirma precio y disponibilidad.</p>
+          <p>Pedís desde tu mesa. El equipo te lo lleva.</p>
         </aside>
 
         <div className="carta-main">
+          <p className={`table-banner ${table ? 'on' : ''}`}>{table ? `Estás en la mesa ${table}. Sumá lo que quieras y enviá el pedido desde \"Pedido\".` : 'Estás viendo la carta. Para pedir, escaneá el QR de tu mesa.'}</p>
           <label className="search-label" htmlFor="q">Buscar en la carta</label>
           <input id="q" className="search" type="search" placeholder="Café, vermú, limonada…" value={query} onChange={(e) => setQuery(e.target.value)} />
           <p className="notice">Productos y precios de la carta compartida. Las imágenes son ilustrativas; presentación y disponibilidad se confirman con el local. S, D y T conservan las siglas impresas.</p>
@@ -70,7 +75,7 @@ export default function Carta({ cart }: { cart: Cart }) {
                     <article className="p-card" style={{ background: tints[item.category] }} key={item.id}>
                       <div className="p-card-head">
                         <h3>{item.name}</h3>
-                        <button className="p-add" onClick={() => cart.add(item, variant.label, addOnId || undefined)} aria-label={`Sumar ${item.name} ${variant.label} al pedido`}>sumar +</button>
+                        <button className="p-add" disabled={soldOut.has(item.id)} onClick={() => cart.add(item, variant.label, addOnId || undefined)} aria-label={`Sumar ${item.name} ${variant.label} al pedido`}>{soldOut.has(item.id) ? 'agotado' : 'sumar +'}</button>
                       </div>
                       <div className="p-art">
                         {art ? <img src={img(art)} alt={`Imagen ilustrativa de ${item.category}`} loading="lazy" /> : <span aria-hidden="true">ö</span>}

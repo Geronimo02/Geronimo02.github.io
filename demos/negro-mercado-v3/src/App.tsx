@@ -3,6 +3,9 @@ import Home from './Home';
 import Carta from './Carta';
 import Pedido from './Pedido';
 import Productos from './Productos';
+import Panel from './Panel';
+import { MenuProvider } from './menu';
+import { captureTable, readTable } from './table';
 import { business, coffeeAddOns, formatARS, menu, type MenuItem } from './data';
 
 export type CartLine = { key: string; itemId: string; variant: string; addOnId?: string; quantity: number };
@@ -40,7 +43,7 @@ export function PillLink({ href, children, tone = 'green', external = false }: {
   );
 }
 
-function Header({ count, path }: { count: number; path: string }) {
+function Header({ count, path, table }: { count: number; path: string; table: number | null }) {
   const [open, setOpen] = useState(false);
   const link = (href: string, label: string, match?: string) => (
     <a href={href} aria-current={match && path === match ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</a>
@@ -55,6 +58,7 @@ function Header({ count, path }: { count: number; path: string }) {
           {link('/#local', 'El local')}
         </nav>
         <div className="header-actions">
+          {table && <a className="table-chip" href="/carta/" aria-label={`Estás en la mesa ${table}`}>Mesa {table}</a>}
           <a className="cart-pill" href="/pedido/" aria-label={`Ver pedido, ${count} productos`} aria-current={path === '/pedido' ? 'page' : undefined}>
             Pedido <span className="cart-count">{count}</span>
           </a>
@@ -100,7 +104,9 @@ export function useReveal(deps: unknown[] = []) {
 
 export default function App() {
   const [lines, setLines] = useState<CartLine[]>(readCart);
+  if (captureTable()) window.history.replaceState(null, '', '/carta/');
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  const table = readTable()?.table ?? null;
 
   useEffect(() => { try { localStorage.setItem(cartKey, JSON.stringify(lines)); } catch { /* sin almacenamiento */ } }, [lines]);
 
@@ -119,18 +125,20 @@ export default function App() {
 
   useReveal([path]);
 
+  if (path === '/panel') return <Panel />;
+
   return (
-    <>
+    <MenuProvider>
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
-      <Header count={cart.count} path={path} />
+      <Header count={cart.count} path={path} table={table} />
       <main id="contenido">
         {path === '/carta' ? <Carta cart={cart} />
           : path === '/productos' ? <Productos />
-          : path === '/pedido' ? <Pedido cart={cart} />
+          : path === '/pedido' ? <Pedido cart={cart} table={readTable()} />
           : <Home cart={cart} />}
       </main>
       <Footer />
-    </>
+    </MenuProvider>
   );
 }
 

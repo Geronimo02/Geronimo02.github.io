@@ -284,3 +284,17 @@ h1,h2,h3,p{margin:0}
   *,*::before,*::after{animation:none!important;transition:none!important}
   [data-reveal]{opacity:1;transform:none}
 }
+
+/* mesa por QR */
+.table-chip{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:var(--brown);color:var(--cream);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.table-banner{margin:0 0 14px;border-radius:16px;padding:12px 18px;font-size:14px;font-weight:700;background:var(--paper);color:var(--ink)}
+.table-banner.on{background:var(--green);color:var(--cream)}
+.p-add:disabled,.rail-card-top button:disabled{opacity:.5;cursor:not-allowed}
+.review.error{background:#f1d9d3;color:var(--brown);font-weight:700}
+.tracker{background:var(--mint);border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:14px;max-width:640px}
+.tracker h2{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;color:var(--green)}
+.steps{list-style:none;margin:6px 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.steps li{border-top:6px solid var(--line);padding-top:6px;font-size:12px;font-weight:700;color:var(--muted)}
+.steps li.done{border-top-color:var(--green);color:var(--green)}
+.tracker-items{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.tracker-items li{display:flex;justify-content:space-between;gap:12px;font-size:15px}
