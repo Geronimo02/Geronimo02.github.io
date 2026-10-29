@@ -15,8 +15,8 @@ const items = humor.items as string[];
       <p class="quote" data-humor-text aria-live="off">{items[0]}</p>
       <p class="count" aria-hidden="true"><span data-humor-n>1</span> / {items.length}</p>
       <div class="ctrl">
-        <button type="button" class="btn btn--cream" data-humor-prev aria-label="Frase anterior">←</button>
-        <button type="button" class="btn btn--cream" data-humor-next aria-label="Frase siguiente">→</button>
+        <button type="button" class="btn btn--cream" data-humor-prev aria-label="Frase anterior"><span class="icon-arrow-left icon-flush" aria-hidden="true"></span></button>
+        <button type="button" class="btn btn--cream" data-humor-next aria-label="Frase siguiente"><span class="icon-arrow-right icon-flush" aria-hidden="true"></span></button>
         <button type="button" class="btn btn--outline" data-humor-toggle aria-pressed="false" hidden>Pausar</button>
       </div>
     </div>
@@ -37,7 +37,7 @@ const items = humor.items as string[];
     const text = root.querySelector<HTMLElement>('[data-humor-text]')!;
     const n = root.querySelector<HTMLElement>('[data-humor-n]')!;
     const toggle = root.querySelector<HTMLButtonElement>('[data-humor-toggle]')!;
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduced = false;
     let i = 0, timer = 0, playing = !reduced, hovering = false;
 
     const show = (k: number) => {
@@ -83,5 +83,5 @@ const items = humor.items as string[];
   .ctrl { display: flex; flex-wrap: wrap; gap: 12px; }
   .ctrl .btn { min-width: 56px; }
   @media (min-width: 960px) { .hm-grid { grid-template-columns: 5fr 7fr; gap: 64px; } .quote { min-height: 3.4em; } }
-  @media (prefers-reduced-motion: reduce) { .quote.swap { animation: none; } }
+  
 </style>

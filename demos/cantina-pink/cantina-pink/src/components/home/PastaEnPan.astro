@@ -51,8 +51,8 @@ const pasos = [
       </ol>
 
       <div class="pp-nav" data-pasta-nav hidden>
-        <button type="button" class="btn btn--outline" data-pasta-prev>← Anterior</button>
-        <button type="button" class="btn btn--wine" data-pasta-next>Siguiente →</button>
+        <button type="button" class="btn btn--outline" data-pasta-prev><span class="icon-arrow-left icon-flush" aria-hidden="true"></span> Anterior</button>
+        <button type="button" class="btn btn--wine" data-pasta-next>Siguiente <span class="icon-arrow-right icon-flush" aria-hidden="true"></span></button>
       </div>
     </div>
 
@@ -92,7 +92,7 @@ const pasos = [
     const section = document.querySelector<HTMLElement>('[data-pasta]');
     if (!section || section.dataset.bound) return;
     section.dataset.bound = '1';
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduced = false;
     section.classList.add(reduced ? 'is-manual' : 'is-animated');
 
     const frames = [...section.querySelectorAll<HTMLElement>('[data-pasta-frame]')];
@@ -243,5 +243,5 @@ const pasos = [
     .plate { width: min(78vw, 40svh); }
   }
   @media (max-width: 959px) and (max-height: 720px) { .plate { width: min(70vw, 30svh); } }
-  @media (prefers-reduced-motion: reduce) { .frame, .cap, .stamp, .dots li { transition: none; } .plate.bump, .plate.shake { animation: none; } }
+  
 </style>

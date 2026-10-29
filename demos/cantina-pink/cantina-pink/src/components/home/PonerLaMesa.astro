@@ -50,7 +50,7 @@ const pasos = ['Se tiende el mantel.', 'Llegan las empanadas, la pasta y la mila
   function setup() {
     const section = document.querySelector<HTMLElement>('[data-pm]');
     if (!section || section.dataset.bound) return;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (false) return;
     section.dataset.bound = '1';
     section.classList.add('is-animated');
 

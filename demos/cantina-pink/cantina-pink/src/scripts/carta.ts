@@ -40,7 +40,7 @@ function render() {
 
 /** El plato vuela desde el botón hasta "Tu mesa" (escritorio) o hasta la barra del pedido (celular). */
 function fly(box: HTMLElement) {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('animate' in Element.prototype)) return;
+  if (false || !('animate' in Element.prototype)) return;
   const from = box.getBoundingClientRect();
   const size = 64;
   const mesa = innerWidth >= 960 ? document.querySelector<HTMLElement>('[data-mesa-target]')?.getBoundingClientRect() : undefined;

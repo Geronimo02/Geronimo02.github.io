@@ -24,14 +24,5 @@ const hechos = ['Pizza libre', 'Milanesas XL para compartir', 'Pastas', 'Empanad
   }
   li::after { content: ''; width: 12px; height: 12px; margin-inline: 28px; background: var(--cream); transform: rotate(45deg); flex: none; }
   @keyframes correr { to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) {
-    .track { animation: none; width: 100%; padding-inline: var(--gutter); }
-    ul + ul { display: none; }
-    ul { flex: 1 1 auto; flex-wrap: wrap; justify-content: center; row-gap: 8px; }
-    li { font-size: clamp(1rem, 4.4vw, 1.5rem); }
-    li::after { margin-inline: 14px; width: 9px; height: 9px; }
-    li:last-child::after { display: none; }
-    .track { min-width: 0; }
-    ul { min-width: 0; max-width: 100%; }
-  }
+  
 </style>

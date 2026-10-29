@@ -51,7 +51,7 @@ const cats = menu.categories.map((c) => ({ c, items: c.items }));
     opacity: 0; pointer-events: none; transition: opacity var(--motion-short), translate var(--motion-long) var(--ease-out);
   }
   .toast.is-on { opacity: 1; translate: 0 0; }
-  @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+  
   @media (min-width: 960px) {
     .carta-body { grid-template-columns: 1fr 410px; gap: 48px; }
     .pedido-col { margin-top: 40px; }

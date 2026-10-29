@@ -91,15 +91,11 @@ const frames = ['pasta-1-vacio', 'pasta-2-pasta', 'pasta-3-salsa', 'pasta-4-ques
 
   /* Parallax suave de la foto con el scroll (solo navegadores que lo soportan) */
   @supports (animation-timeline: scroll()) {
-    @media (prefers-reduced-motion: no-preference) {
+    
       .frame :global(.photo) { animation: parallax linear both; animation-timeline: scroll(root); animation-range: 0 700px; }
       @keyframes parallax { from { transform: scale(1.02) translateY(0); } to { transform: scale(1.12) translateY(-5%); } }
-    }
+    
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .rise, .frame, .sticker, .loop { animation: none; }
-    .loop-frame { animation: none; }
-    .loop-frame:nth-child(3) { opacity: 1; }
-  }
+  
 </style>

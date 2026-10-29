@@ -167,7 +167,7 @@ export default function Carrito({ wa }: Props) {
     const key = FIELD_ORDER.find((k) => (errors as Record<string, string>)[k]);
     if (!key) return;
     const el = document.getElementById(FIELD_ID[key]);
-    el?.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    el?.scrollIntoView({ block: 'center', behavior: false ? 'auto' : 'smooth' });
     (el as HTMLElement | null)?.focus({ preventScroll: true });
   };
 

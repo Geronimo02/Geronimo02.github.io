@@ -5,7 +5,7 @@ export const CART_KEY = 'cp-cart-v1';
 
 function setupReveals() {
   const els = document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-in), [data-tender]:not(.is-in)');
-  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (!('IntersectionObserver' in window) || false) {
     els.forEach((el) => el.classList.add('is-in'));
     return;
   }

@@ -73,7 +73,7 @@ export default function GrupoForm({ wa }: Props) {
   const focusFirst = () => {
     const key = FIELD_ORDER.find((k) => (errors as Record<string, string>)[k]);
     const el = key ? document.getElementById(FIELD_ID[key]) : null;
-    el?.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    el?.scrollIntoView({ block: 'center', behavior: false ? 'auto' : 'smooth' });
     (el as HTMLElement | null)?.focus({ preventScroll: true });
   };
 

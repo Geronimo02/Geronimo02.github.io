@@ -110,3 +110,19 @@ Sin embargo, antes de ejecutar la tarea:
 5. Determinar cuáles tienen sentido para esta tarea.
 6. Si la tarea requiere aprobación de skills, presentarlas y esperar.
 7. Recién después: investigar → planificar → diseñar → implementar → verificar.
+
+
+---
+
+## REGLAS TÉCNICAS PARA TODAS LAS WEBS
+
+### A. Animaciones siempre visibles
+- NO usar `prefers-reduced-motion` (ni en CSS ni con `matchMedia` en JS). Si el usuario tiene desactivadas las animaciones de Windows, la web igual tiene que verse animada.
+- Referencia: FIGLIO, Foster, Hasta el moño. Ver `motion-preference.test.mjs`, que prueba ambas configuraciones.
+
+### B. Íconos sin emojis
+- NO usar caracteres de texto como íconos: `↗ → ← ↑ ↓ ★ ☆ ✦ × ✓ ✕` ni emojis. En mobile (iOS/Android) se dibujan como emoji a color y se ven mal.
+- Usar siempre los íconos vectoriales de `icons.css` (máscaras SVG que toman el color del texto): `icon-arrow` (↗), `icon-arrow-right`, `icon-arrow-left`, `icon-arrow-up`, `icon-arrow-down`, `icon-close`, `icon-check`, `icon-sparkle`, `icon-star`, `icon-star-empty`. Para un ícono solo, sumar `icon-flush`.
+- Los proyectos con build copian `icons.css` dentro de su `src/`.
+- Excepción: el texto del mensaje de WhatsApp puede llevar emojis, porque ahí sí los renderiza WhatsApp.
+- Si una web vieja ya usa un símbolo de texto, como mínimo debe llevar el selector de texto `U+FE0E` (`↗︎`) para que el celular no lo dibuje como emoji. Lo ideal sigue siendo el ícono de `icons.css`.
