@@ -1,0 +1,11 @@
+{
+  "source_records": 65,
+  "unique_ids": "pass",
+  "embedded_images_decode": "pass",
+  "unresolved_tokens": 0,
+  "javascript_syntax": "pass",
+  "browser_render": "not_tested",
+  "interactive_browser": "not_tested",
+  "grouping_65_exactly_once": "pass",
+  "preview_membership": "pass"
+}

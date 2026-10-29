@@ -1,0 +1,114 @@
+[
+  {
+    "id": "F01",
+    "url": "https://www.instagram.com/negromercado.ok/",
+    "tipo": "canal aportado por usuario",
+    "estado": "Revisión v0.2: acceso directo en navegador exitoso; perfil, bio, menú destacado y carrusel de renovación inspeccionados",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F02",
+    "url": "https://www.google.com/maps/place/Negro+Mercado+Cafe/@-37.3329451,-59.1334364,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x95911fe92f6f1151:0x4117aaba87078d77!8m2!3d-37.3329451!4d-59.1308615!16s%2Fg%2F11qps81c06",
+    "tipo": "localización aportada",
+    "estado": "Revisión v0.2: ficha y fotografías abiertas directamente; identidad/dirección/contacto contrastados",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F03",
+    "url": "https://www.lanacion.com.ar/revista-lugares/los-mejores-lugares-para-dormir-y-comer-en-tandil-nid04102021/",
+    "tipo": "prensa gastronómica",
+    "estado": "texto abierto; evidencia histórica, no carta vigente",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F04",
+    "url": "https://es.restaurantguru.com/Negro-Mercado-Tandil",
+    "tipo": "agregador",
+    "estado": "texto abierto; horario y contacto requieren contraste primario",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F05",
+    "url": "https://www.waze.com/es/live-map/directions/ar/provincia-de-buenos-aires/tandil/negro-mercado-cafe?to=place.ChIJURFvL-kfkZURd40Hh7qqF0E",
+    "tipo": "directorio navegación",
+    "estado": "indexado; discrepancia de horarios y teléfonos entre versiones",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F06",
+    "url": "https://www.tripadvisor.es/Restaurant_Review-g312761-d22979302-Reviews-Negro_Mercado-Tandil_Province_of_Buenos_Aires_Central_Argentina.html",
+    "tipo": "directorio y reseñas",
+    "estado": "indexado; oferta e información histórica",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F07",
+    "url": "https://negozona.com/anuncios/12633",
+    "tipo": "anuncio comercial no disponible",
+    "estado": "texto abierto; corresponde a Aristegui, no trasladar claims actuales a Avellaneda",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F08",
+    "url": "https://www.eldiariodetandil.com/2023/09/20/sigue-la-semana-gastronomica-sabores-de-tandil-en-los-restaurantes-con-el-plato-solidario",
+    "tipo": "prensa local",
+    "estado": "indexado; dos domicilios en 2023, no prueba vigencia actual",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F09",
+    "url": "https://www.pagina12.com.ar/783469-las-malas-artes-que-cambiaron-todo/",
+    "tipo": "prensa cultural",
+    "estado": "extracto indexado menciona futura mudanza de galería; artículo abierto sin cuerpo completo; no verificar realización",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F10",
+    "url": "https://img02.restaurantguru.com/c4f4-Cafeteria-Negro-Mercado-Cafe-design.jpg",
+    "tipo": "collage fotográfico de terceros",
+    "estado": "descargado e inspeccionado; procedencia temporal no comprobada; sin licencia de redistribución",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F11",
+    "url": "https://www.behance.net/gallery/115437555/Content-NEGRO-MERCADO-TANDIL",
+    "tipo": "portfolio audiovisual",
+    "estado": "título y autor indexados; proyecto bloqueado 403; no atribuir autoría del branding",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "F12",
+    "url": "https://es.restaurantguru.com/Negro-Mercado-Tandil/menu",
+    "tipo": "carta candidata",
+    "estado": "fetch falló; no hay carta vigente verificada",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R01",
+    "url": "https://www.instagram.com/negromercado.ok/",
+    "tipo": "primaria; observación navegador",
+    "estado": "bio/feed/avatar inspeccionados",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R02",
+    "url": "https://www.instagram.com/stories/highlights/17961471578727361/",
+    "tipo": "primaria; destacada",
+    "estado": "dos páginas de carta inspeccionadas; primera indica 2 d; precios por transcribir con original",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R03",
+    "url": "https://www.instagram.com/negromercado.ok/p/DeADrQuG6z8/",
+    "tipo": "primaria; renovación de identidad",
+    "estado": "siete láminas inspeccionadas; interfaz fecha 2 de octubre",
+    "consultado": "2026-10-19"
+  },
+  {
+    "id": "R04",
+    "url": "https://linktr.ee/Negro_Mercado_Tandil",
+    "tipo": "primaria; link bio oficial",
+    "estado": "enlaces menú/take away y WhatsApp observados; sin enviar mensajes",
+    "consultado": "2026-10-19"
+  }
+]

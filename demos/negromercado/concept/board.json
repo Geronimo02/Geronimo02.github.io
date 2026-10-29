@@ -1,0 +1,86 @@
+{
+  "version": "1",
+  "business": "Negro Mercado",
+  "mode": "demo",
+  "selected": "c",
+  "selection_status": "base_aceptada_para_ajustes",
+  "approval_record": "Usuario: «ahora nos vamos entendiendo un poco más» y «dale... agregaría un café en la parte de la carta». Alcance: continuar y afinar C, no cierre de QA ni publicación.",
+  "recommended": "c",
+  "stage_status": "in_progress_render_pending",
+  "directions": [
+    {
+      "id": "a",
+      "title": "Negro, de cerca",
+      "concept": "Gastronomía en primer plano: deseo de producto y acceso directo a carta.",
+      "narrative": "El antojo abre la visita; carta por momentos y cierre en la esquina.",
+      "layout": "Fotografía oscura a sangre, gran titular superpuesto; segunda escena crema en dos columnas con tabs.",
+      "typography": "Bricolage Grotesque 800 + DM Sans 400 (propuesta OFL, no fuentes originales confirmadas)",
+      "imagery": "REPRESENTACION: imágenes generadas, explícitamente rotuladas; originales del negocio pendientes",
+      "motion": "Entrada breve del titular, transición de contenido al cambiar pestañas, hover de CTA.",
+      "mobile": "Hero de 775px con recorte al 65%; tipografía 79px; segunda escena apilada y tabs con teclado.",
+      "cta": "Carta oficial; WhatsApp general sin texto preenviado; cómo llegar",
+      "signature": "Un café en Negro, subrayado gestual y contraste nocturno/crema.",
+      "source_priority": "marca",
+      "identity_traces": [
+        "Identidad renovada observada: minúsculas redondeadas → tratamiento tipográfico propuesto, no logo oficial",
+        "Crema/verde/azul de la marca → paleta interpretada, HEX no master",
+        "Bio café/pastelería/vermú → categorías y narrativa de momentos",
+        "Avellaneda 702 → cierre de visita con horario oficial"
+      ],
+      "risks": [
+        "Sin capturas ni revisión visual de render",
+        "Imágenes ilustrativas; no muestran el negocio ni productos exactos",
+        "Original de logo y validación comercial pendientes"
+      ],
+      "reference_status": "Referencias inspeccionadas; aplicación escrita en código, resultado visual no verificado"
+    },
+    {
+      "id": "b",
+      "title": "La pausa de Avellaneda",
+      "concept": "Una pausa luminosa y cercana, con protagonismo del tiempo compartido.",
+      "narrative": "Primero la invitación a quedarse, luego los momentos del día y la dirección.",
+      "layout": "Portada crema asimétrica con foto vertical de remate arqueado; cinta editorial y acordeón azul grisáceo.",
+      "typography": "Bricolage Grotesque 800 + DM Sans 400 (propuesta OFL, no fuentes originales confirmadas)",
+      "imagery": "REPRESENTACION: imágenes generadas, explícitamente rotuladas; originales del negocio pendientes",
+      "motion": "Entrada suave de escena, hover de CTA, apertura nativa de secciones.",
+      "mobile": "Título 77px, foto de 330px debajo de copy; cinta reducida y acordeón amplio.",
+      "cta": "Carta oficial; WhatsApp general sin texto preenviado; cómo llegar",
+      "signature": "Acá, el tiempo es tuyo; fotografía cálida y gran arco como gesto editorial propuesto.",
+      "source_priority": "marca",
+      "identity_traces": [
+        "Identidad renovada observada: minúsculas redondeadas → tratamiento tipográfico propuesto, no logo oficial",
+        "Crema/verde/azul de la marca → paleta interpretada, HEX no master",
+        "Bio café/pastelería/vermú → categorías y narrativa de momentos",
+        "Avellaneda 702 → cierre de visita con horario oficial"
+      ],
+      "risks": [
+        "Sin capturas ni revisión visual de render",
+        "Imágenes ilustrativas; no muestran el negocio ni productos exactos",
+        "Original de logo y validación comercial pendientes"
+      ],
+      "reference_status": "Referencias inspeccionadas; aplicación escrita en código, resultado visual no verificado"
+    },
+    {
+      "id": "c",
+      "title": "Rompé la rutina",
+      "status": "exploración por feedback del usuario",
+      "concept": "Un gesto de pastelería transforma el scroll en un antojo.",
+      "layout": "Lienzo crema, gran tipo verde, producto recortado y franja azul.",
+      "narrative": "Croissant abre el antojo; capas dan paso a carta y visita.",
+      "signature": "Croissant se separa al recorrer la portada.",
+      "typography": "Bricolage Grotesque y DM Sans propuestas",
+      "imagery": "REPRESENTACION generada + símbolo JPEG original del usuario",
+      "motion": "Escena sticky; capas fotográficas con traslación/rotación por scroll; reduced motion estático",
+      "mobile": "Hero reordenado, producto ampliado y navegación desplegable",
+      "cta": "Carta, ubicación y consulta",
+      "source_priority": "marca",
+      "identity_traces": [
+        "Símbolo aportado sin deformar",
+        "Paleta extraída de piezas oficiales",
+        "Oferta café/pastelería/vermú y dirección Avellaneda"
+      ],
+      "reference_status": "inspiración libre; resultado HTML sin render verificado"
+    }
+  ],
+  "active_revision": "c"
+}

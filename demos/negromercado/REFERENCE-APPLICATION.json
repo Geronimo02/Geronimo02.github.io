@@ -1,0 +1,162 @@
+{
+  "business": "Negro Mercado",
+  "user_reference_urls": [
+    "https://www.behance.net/",
+    "https://dribbble.com/"
+  ],
+  "items": [
+    {
+      "id": "R01",
+      "url": "https://gails.com/",
+      "priority": "P2",
+      "kind": "visual",
+      "status": "verified",
+      "decision": "inspiration_only",
+      "observed": "Portada comercial con producto a sangre, texto superpuesto y dos accesos claros; inspección visual directa de la home.",
+      "principle": "Dominancia fotográfica y texto corto con CTA de carta.",
+      "brand_anchor": "Oferta de café y pastelería, producto como atractivo principal.",
+      "concept_path": "concept/directions/a/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "a"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar tipografía serif, rojo, fotos, marca ni composición exacta."
+    },
+    {
+      "id": "R02",
+      "url": "https://lacabra.com/pages/east-village",
+      "priority": "P2",
+      "kind": "visual",
+      "status": "verified",
+      "decision": "inspiration_only",
+      "observed": "Página de local: campo fotográfico vertical junto a texto, dirección, horario y Directions; inspeccionada sin overlays.",
+      "principle": "Vincular una invitación editorial con datos para visitar.",
+      "brand_anchor": "Esquina Avellaneda 702 y horarios publicados.",
+      "concept_path": "concept/directions/b/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "b"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar imágenes, paleta literal, logo ni atribuir su interior a Negro Mercado."
+    },
+    {
+      "id": "R03",
+      "url": "https://ui.aceternity.com/components/tabs",
+      "priority": "P2",
+      "kind": "component",
+      "status": "verified",
+      "decision": "inspiration_only",
+      "observed": "Se inspeccionó demo y se pulsó Services: estado activo en píldora, panel cambia con jerarquía por capas.",
+      "principle": "Tabs con estado visible y recambio de contenido; adaptación propia con ARIA y teclado.",
+      "brand_anchor": "Café, pastelería y vermú como entradas naturales a la carta.",
+      "concept_path": "concept/directions/a/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "a"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar código del componente, stack React, púrpura SaaS ni tarjetas apiladas."
+    },
+    {
+      "id": "R04",
+      "url": "https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partial",
+      "decision": "inspiration_only",
+      "observed": "Documentación oficial consultada sobre condiciones responsive y reduced motion; no se ejecutó un demo GSAP.",
+      "principle": "Adaptar presentación por viewport y suprimir movimiento si el sistema lo pide.",
+      "brand_anchor": "Pausa tranquila y acceso móvil claro.",
+      "concept_path": "concept/directions/a/index.html",
+      "concept_screen": null,
+      "applied_to": [
+        "a",
+        "b"
+      ],
+      "implementation_status": "written_not_render_verified",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No afirmar uso de GSAP: se implementó CSS y Web Animations nativos; no se añadió la dependencia."
+    },
+    {
+      "id": "R05",
+      "url": "https://brandmotion.in/store/chai-theory-cafe",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partial",
+      "decision": "inspiration_only",
+      "observed": "Se consultó explicación publicada de una secuencia de vertido por scroll; no se ejecutó la demo ni se compró código.",
+      "principle": "Un gesto gastronómico articula el recorrido.",
+      "brand_anchor": "Pastelería y laminados publicados por Negro Mercado; símbolo aportado y paleta muestreada.",
+      "concept_path": "concept/directions/c/index.html",
+      "concept_screen": null,
+      "implementation_status": "capas fotográficas y scroll escritos; estudio MP4 renderizado, HTML sin verificar visualmente",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar el vertido, layout, escenas, fotos ni código; se propone croissant con recorrido propio."
+    },
+    {
+      "id": "R06-OLE",
+      "url": "https://www.behance.net/gallery/220571581/Caf-Ol-Brand-Motion-Identity",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partially_verified",
+      "decision": "inspiration_only",
+      "observed": "Página y secciones Custom Font/alfabeto vistas; DOM de video logo con 6s/control Pausar; no reel completo ni easing medido.",
+      "principle": "Marca y motion comparten sistema; preservar nuevo lenguaje elegido.",
+      "brand_anchor": "Especialidad café y pastelería; lenguaje de branding aceptado por usuario.",
+      "concept_path": "concept/revision-06/DIRECTION-LOCK.md",
+      "concept_screen": null,
+      "applied_to": [
+        "revision-06-motion-plan"
+      ],
+      "implementation_status": "proposed_not_implemented",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar oso, fuente, colores ni videos."
+    },
+    {
+      "id": "R06-POUR",
+      "url": "https://www.behance.net/gallery/237205459/Pouring-Coffee-Animation",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partially_verified",
+      "decision": "inspiration_only",
+      "observed": "Screenshot muestra chorro sobre taza turquesa; iframe y play; reproducción completa no verificada.",
+      "principle": "Vertido como foco corto de portada; estilo fotográfico del boceto Negro.",
+      "brand_anchor": "Especialidad café y pastelería; lenguaje de branding aceptado por usuario.",
+      "concept_path": "concept/revision-06/DIRECTION-LOCK.md",
+      "concept_screen": null,
+      "applied_to": [
+        "revision-06-motion-plan"
+      ],
+      "implementation_status": "proposed_not_implemented",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No usar CGI, colores ni video de referencia."
+    },
+    {
+      "id": "R06-BEANS",
+      "url": "https://dribbble.com/shots/5375015-Coffee-Animation",
+      "priority": "P2",
+      "kind": "motion",
+      "status": "partially_verified",
+      "decision": "inspiration_only",
+      "observed": "GIF con taza roja, salpicadura y granos en distintas escalas; dos screenshots con posiciones diferentes; autor describe flotación Matrix.",
+      "principle": "Profundidad en pocos granos como transición; caída propuesta propia, no observada como scroll.",
+      "brand_anchor": "Especialidad café y pastelería; lenguaje de branding aceptado por usuario.",
+      "concept_path": "concept/revision-06/DIRECTION-LOCK.md",
+      "concept_screen": null,
+      "applied_to": [
+        "revision-06-motion-plan"
+      ],
+      "implementation_status": "proposed_not_implemented",
+      "license_checked": "not_applicable_inspiration",
+      "dont_copy": "No copiar taza roja/turquesa ni GIF. No afirmar caída vertical/scroll verificados."
+    }
+  ],
+  "selection_note": "No reference marked selected until screenshot evidence exists. Sources actually inspected; implementation awaits rendering.",
+  "active_direction": "hybrid-04 / correction revision-06",
+  "revision_note": "P1 es boceto propio adjunto del híbrido 04; usuario rechaza desvío tipográfico/logo de menu-05. Revisión 06 corrige imagen, no implementación ni motion ejecutado."
+}
