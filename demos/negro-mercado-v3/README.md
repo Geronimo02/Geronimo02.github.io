@@ -23,8 +23,7 @@ Los precios se recalculan en el servidor con la carta de la base: lo que mande e
 npm install
 cp .dev.vars.example .dev.vars
 npm run build
-npx wrangler d1 execute negro-mercado --local --file db/schema.sql
-npx wrangler d1 execute negro-mercado --local --file db/seed.sql
+npm run db:local
 npx wrangler dev
 ```
 
@@ -32,16 +31,24 @@ Panel: `http://127.0.0.1:8787/panel/` (PIN de `.dev.vars`). Los QR salen de la p
 
 ## Publicar (requiere tu cuenta de Cloudflare)
 
+Antes de publicar: `npm run check:deploy` arma el sitio y simula el deploy sin subir nada.
+
 ```bash
 npx wrangler d1 create negro-mercado          # copiar database_id en wrangler.jsonc
-npx wrangler d1 execute negro-mercado --remote --file db/schema.sql
-npx wrangler d1 execute negro-mercado --remote --file db/seed.sql
+npm run db:remote                             # crea tablas y carga la carta inicial
 npx wrangler secret put PANEL_PIN
 npx wrangler secret put TABLE_SECRET
-npm run build && npx wrangler deploy
+npm run deploy
 ```
 
 Después, entrar a `/panel/`, ajustar la cantidad de mesas e imprimir los QR. Cambiar `TABLE_SECRET` invalida los QR impresos.
+
+## Seguridad
+
+- El PIN del panel se compara en tiempo constante y se bloquea una IP tras 10 intentos fallidos en 10 minutos.
+- El panel queda cerrado si no existe `PANEL_PIN`.
+- El pedido valida mesa, código, producto, opción, stock y cantidades; ignora los precios que mande el navegador.
+- Hay límite de pedidos por IP (8 por minuto). Es una defensa adicional por instancia del Worker; para un límite estricto usar las reglas de rate limiting de Cloudflare.
 
 ## Pendiente
 

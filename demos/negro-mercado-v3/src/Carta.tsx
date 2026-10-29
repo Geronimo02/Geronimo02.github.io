@@ -56,7 +56,7 @@ export default function Carta({ cart }: { cart: Cart }) {
         </aside>
 
         <div className="carta-main">
-          <p className={`table-banner ${table ? 'on' : ''}`}>{table ? `Estás en la mesa ${table}. Sumá lo que quieras y enviá el pedido desde \"Pedido\".` : 'Estás viendo la carta. Para pedir, escaneá el QR de tu mesa.'}</p>
+          <p className={`table-banner ${table ? 'on' : ''}`}>{table ? `Estás en la mesa ${table.table}. Sumá lo que quieras y enviá el pedido desde \"Pedido\".` : 'Estás viendo la carta. Para pedir, escaneá el QR de tu mesa.'}</p>
           <label className="search-label" htmlFor="q">Buscar en la carta</label>
           <input id="q" className="search" type="search" placeholder="Café, vermú, limonada…" value={query} onChange={(e) => setQuery(e.target.value)} />
           <p className="notice">Productos y precios de la carta compartida. Las imágenes son ilustrativas; presentación y disponibilidad se confirman con el local. S, D y T conservan las siglas impresas.</p>

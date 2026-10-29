@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { business, formatARS } from './data';
 import { useMenu } from './menu';
+import { readTable } from './table';
 import { PillLink, type Cart } from './App';
 
 const img = (name: string) => `/images/${name}.webp`;
@@ -40,6 +41,7 @@ function useHeroParallax(ref: React.RefObject<HTMLElement | null>) {
 
 export default function Home({ cart }: { cart: Cart }) {
   const { items: menu, soldOut } = useMenu();
+  const table = readTable();
   const hero = useRef<HTMLElement>(null);
   const [tab, setTab] = useState<(typeof heroTabs)[number]['id']>('cafe');
   useHeroParallax(hero);
@@ -50,7 +52,7 @@ export default function Home({ cart }: { cart: Cart }) {
       <section className="hero" id="inicio" ref={hero}>
         <div className="hero-ghost" aria-hidden="true">ö</div>
         <div className="hero-copy">
-          <p className="tag tag-outline">buenos momentos</p>
+          {table ? <a className="tag tag-table" href="/carta/">Mesa {table.table} · pedí desde acá →</a> : <p className="tag tag-outline">buenos momentos</p>}
           <h1><img className="hero-title" src={img('un-rato-en-negro')} alt="Un rato en negro. Café del bueno." width="1400" height="700" /></h1>
           <p className="eyebrow">Un lugar para quedarse</p>
           <p className="lead">Café de especialidad, pastelería y algo rico para disfrutar en Tandil.</p>

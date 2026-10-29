@@ -61,3 +61,10 @@
 .qr-grid strong{font-family:'Baloo 2',sans-serif;font-size:28px;color:#044433;line-height:1}
 .qr-grid span{font-size:13px;color:#5c564e}
 @media print{.panel-bar,.settings,.panel-hint,.sound{display:none!important}.panel main{padding:0}.qr-grid{grid-template-columns:repeat(3,1fr)}}
+
+.ticket.late{box-shadow:0 0 0 3px #8a3e24}
+.ticket.late header span{color:#8a3e24;font-weight:700}
+.panel-bar nav button{min-width:96px}
+.qr-brand{display:block;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;line-height:1;letter-spacing:-.02em;margin-bottom:6px}
+.qr-brand small{font-size:10px;letter-spacing:.08em}
+@media (min-width:900px) and (max-width:1300px){.ticket li{font-size:18px}.ticket-table{font-size:40px}}

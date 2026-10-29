@@ -95,7 +95,7 @@ function Orders({ pin, beep, armed, arm }: { pin: string; beep: () => void; arme
         {list.map((o) => {
           const act = nextAction[o.status];
           return (
-            <article className={`ticket ${flash.has(o.id) ? 'flash' : ''}`} key={o.id}>
+            <article className={`ticket ${flash.has(o.id) ? 'flash' : ''} ${o.status !== 'ready' && now - o.createdAt > 10 * 60000 ? 'late' : ''}`} key={o.id}>
               <header><strong className="ticket-table">Mesa {o.table}</strong><span>#{o.number} · {ago(now - o.createdAt)}</span></header>
               {o.customer && <p className="ticket-name">{o.customer}</p>}
               <ul>{o.items.map((it, i) => <li key={i}><b>{it.qty}×</b> {it.name} <em>({it.variant}{it.addOn ? ` + ${it.addOn}` : ''})</em></li>)}</ul>
@@ -218,8 +218,9 @@ function Tables({ pin }: { pin: string }) {
       <div className="qr-grid">
         {codes.map((c) => (
           <figure key={c.table}>
+            <span className="qr-brand">negrö <small>mercado</small></span>
             <img src={c.img} alt={`QR de la mesa ${c.table}`} />
-            <figcaption><strong>Mesa {c.table}</strong><span>Escaneá y pedí desde acá</span></figcaption>
+            <figcaption><strong>Mesa {c.table}</strong><span>Escaneá y pedí desde tu mesa</span></figcaption>
           </figure>
         ))}
       </div>

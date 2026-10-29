@@ -4,7 +4,7 @@ import Carta from './Carta';
 import Pedido from './Pedido';
 import Productos from './Productos';
 import Panel from './Panel';
-import { MenuProvider } from './menu';
+import { MenuProvider, useMenu } from './menu';
 import { captureTable, readTable } from './table';
 import { business, coffeeAddOns, formatARS, menu, type MenuItem } from './data';
 
@@ -75,6 +75,24 @@ function Header({ count, path, table }: { count: number; path: string; table: nu
   );
 }
 
+function CartBar({ cart, path }: { cart: Cart; path: string }) {
+  const { items } = useMenu();
+  if (cart.count === 0 || path === '/pedido') return null;
+  const total = cart.lines.reduce((sum, l) => {
+    const item = items.find((m) => m.id === l.itemId);
+    const v = item?.variants.find((x) => x.label === l.variant);
+    const add = coffeeAddOns.find((x) => x.id === l.addOnId);
+    return sum + ((v?.price || 0) + (add?.price || 0)) * l.quantity;
+  }, 0);
+  return (
+    <a className="cart-bar" href="/pedido/">
+      <span><b>{cart.count}</b> {cart.count === 1 ? 'producto' : 'productos'}</span>
+      <span className="cart-bar-total">{formatARS(total)}</span>
+      <span className="cart-bar-go">Ver pedido →</span>
+    </a>
+  );
+}
+
 function Footer() {
   return (
     <footer className="site-footer">
@@ -104,6 +122,7 @@ export function useReveal(deps: unknown[] = []) {
 
 export default function App() {
   const [lines, setLines] = useState<CartLine[]>(readCart);
+  const [toast, setToast] = useState('');
   if (captureTable()) window.history.replaceState(null, '', '/carta/');
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
   const table = readTable()?.table ?? null;
@@ -114,6 +133,7 @@ export default function App() {
     lines,
     count: lines.reduce((n, l) => n + l.quantity, 0),
     add: (item, variant, addOnId) => {
+      setToast(`${item.name} sumado al pedido`);
       const key = `${item.id}:${variant}:${addOnId || ''}`;
       setLines((cur) => cur.some((l) => l.key === key)
         ? cur.map((l) => (l.key === key ? { ...l, quantity: l.quantity + 1 } : l))
@@ -124,6 +144,7 @@ export default function App() {
   }), [lines]);
 
   useReveal([path]);
+  useEffect(() => { if (!toast) return; const t = setTimeout(() => setToast(''), 1800); return () => clearTimeout(t); }, [toast]);
 
   if (path === '/panel') return <Panel />;
 
@@ -138,6 +159,8 @@ export default function App() {
           : <Home cart={cart} />}
       </main>
       <Footer />
+      <CartBar cart={cart} path={path} />
+      <div className={`toast ${toast ? 'on' : ''}`} role="status" aria-live="polite">{toast}</div>
     </MenuProvider>
   );
 }

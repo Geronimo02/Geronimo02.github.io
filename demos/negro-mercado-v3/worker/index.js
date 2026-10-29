@@ -35,9 +35,16 @@ function safeEqual(a, b) {
   return diff === 0;
 }
 
+const failures = new Map(); // intentos fallidos de PIN por IP
 function isPanel(request, env) {
   if (!env.PANEL_PIN) return false; // sin PIN configurado, el panel queda cerrado
-  return safeEqual(request.headers.get('x-panel-pin') || '', env.PANEL_PIN);
+  const ip = request.headers.get('cf-connecting-ip') || 'local';
+  const now = Date.now();
+  const recent = (failures.get(ip) || []).filter((t) => now - t < 10 * 60_000);
+  if (recent.length >= 10) return false; // bloqueo temporal tras 10 errores en 10 minutos
+  const ok = safeEqual(request.headers.get('x-panel-pin') || '', env.PANEL_PIN);
+  if (!ok) { recent.push(now); failures.set(ip, recent); }
+  return ok;
 }
 
 const rowToProduct = (r) => ({ id: r.id, name: r.name, category: r.category, description: r.description, variants: JSON.parse(r.variants), available: !!r.available, published: !!r.published, sort: r.sort });
