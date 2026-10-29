@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import QRCode from 'qrcode';
-import { api, type OrderStatus, type PanelOrder, type PanelProduct } from './api';
+import { api, DEMO_PIN, resetDemo, type OrderStatus, type PanelOrder, type PanelProduct } from './api';
 import { formatARS } from './data';
 import './panel.css';
 
@@ -45,6 +45,7 @@ function Login({ onPin }: { onPin: (pin: string) => void }) {
       <form onSubmit={submit}>
         <p className="panel-brand">negrö <small>mercado</small></p>
         <h1>Panel del salón</h1>
+        <p className="demo-note">Demo con datos ficticios. El PIN es <strong>{DEMO_PIN}</strong>.</p>
         <label>PIN<input type="password" inputMode="numeric" autoComplete="current-password" value={pin} onChange={(e) => setPin(e.target.value)} autoFocus /></label>
         {error && <p className="panel-error" role="alert">{error}</p>}
         <button type="submit" disabled={!pin}>Entrar</button>
@@ -79,7 +80,13 @@ function Orders({ pin, beep, armed, arm }: { pin: string; beep: () => void; arme
     } catch (e) { setError((e as Error).message); }
   }, [pin, beep]);
 
-  useEffect(() => { void load(); const t = setInterval(load, 4000); return () => clearInterval(t); }, [load]);
+  useEffect(() => {
+    void load();
+    const t = setInterval(load, 2500);
+    const onStorage = () => { void load(); };
+    window.addEventListener('storage', onStorage); // pedidos enviados desde otra pestaña de este navegador
+    return () => { clearInterval(t); window.removeEventListener('storage', onStorage); };
+  }, [load]);
   useEffect(() => { const t = setInterval(() => setNow(Date.now()), 30000); return () => clearInterval(t); }, []);
 
   async function move(o: PanelOrder, to: OrderStatus) {
@@ -214,7 +221,7 @@ function Tables({ pin }: { pin: string }) {
         <button className="ghost" onClick={() => window.print()}>Imprimir QR</button>
         <small>{msg}</small>
       </div>
-      <p className="panel-hint">Cada QR lleva el número de mesa y un código propio. Si cambiás el secreto del Worker, hay que imprimirlos de nuevo.</p>
+      <p className="panel-hint">En la demo cada QR abre la carta con el número de mesa. Escaneálo con el celular o abrí el link en otra pestaña.</p>
       <div className="qr-grid">
         {codes.map((c) => (
           <figure key={c.table}>
@@ -243,6 +250,8 @@ export default function Panel() {
             <button key={id} aria-pressed={tab === id} className={tab === id ? 'on' : ''} onClick={() => setTab(id)}>{label}</button>
           ))}
         </nav>
+        <span className="demo-badge">DEMO · datos ficticios</span>
+        <button className="ghost" onClick={() => { if (confirm('¿Volver a los datos de ejemplo? Se borran los pedidos y cambios hechos en la demo.')) { resetDemo(); location.reload(); } }}>Restablecer demo</button>
         <button className="ghost" onClick={() => { try { sessionStorage.removeItem(pinKey); } catch { /* nada */ } setPin(''); }}>Salir</button>
       </header>
       <main>

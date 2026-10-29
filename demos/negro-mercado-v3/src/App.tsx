@@ -99,7 +99,7 @@ function Footer() {
       <Wordmark light />
       <p>{business.address} · {business.hoursWeek} · {business.hoursWeekend}</p>
       <a href={business.instagram} target="_blank" rel="noopener noreferrer">@negromercado.ok ↗</a>
-      <p className="footer-note">Propuesta de diseño. Imágenes ilustrativas y precios a confirmar con el local.</p>
+      <p className="footer-note">Demo con datos ficticios. Imágenes ilustrativas; precios y productos de ejemplo.</p>
     </footer>
   );
 }

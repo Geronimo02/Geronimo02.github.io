@@ -23,8 +23,9 @@ function Tracker({ id, onNew }: { id: string; onNew: () => void }) {
     let alive = true;
     const tick = () => api.order(id).then((o) => { if (alive) { setOrder(o); setError(''); } }).catch((e) => { if (alive) setError(e.message); });
     tick();
-    const t = setInterval(tick, 5000);
-    return () => { alive = false; clearInterval(t); };
+    const t = setInterval(tick, 2500);
+    window.addEventListener('storage', tick);
+    return () => { alive = false; clearInterval(t); window.removeEventListener('storage', tick); };
   }, [id]);
   if (error && !order) return <div className="empty-card"><p>{error}</p><button className="link-button" onClick={onNew}>Hacer otro pedido</button></div>;
   if (!order) return <div className="empty-card"><p>Cargando tu pedido…</p></div>;

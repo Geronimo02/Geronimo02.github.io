@@ -68,3 +68,6 @@
 .qr-brand{display:block;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:26px;line-height:1;letter-spacing:-.02em;margin-bottom:6px}
 .qr-brand small{font-size:10px;letter-spacing:.08em}
 @media (min-width:900px) and (max-width:1300px){.ticket li{font-size:18px}.ticket-table{font-size:40px}}
+
+.demo-note{margin:0;background:#f3e2c7;border-radius:12px;padding:10px 14px;font-size:14px}
+.demo-badge{background:#8a3e24;color:#f5f2eb;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}

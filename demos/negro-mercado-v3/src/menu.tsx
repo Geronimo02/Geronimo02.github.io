@@ -20,8 +20,10 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<MenuState>(() => build(staticMenu, true, false));
   useEffect(() => {
     let alive = true;
-    api.menu().then((r) => { if (alive) setState(build(r.items, r.accepting, true)); }).catch(() => { /* sin API (vite dev): queda la carta estática */ });
-    return () => { alive = false; };
+    const load = () => api.menu().then((r) => { if (alive) setState(build(r.items, r.accepting, true)); }).catch(() => { /* queda la carta estática */ });
+    void load();
+    window.addEventListener('storage', load); // cambios hechos desde el panel en otra pestaña
+    return () => { alive = false; window.removeEventListener('storage', load); };
   }, []);
   return <MenuContext.Provider value={state}>{children}</MenuContext.Provider>;
 }
