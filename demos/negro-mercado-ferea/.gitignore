@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.vite/
+.cloudflare/
+tsconfig.tsbuildinfo
+qa/rebuild/
+qa/reference-crops/
+qa/reference-motion/
+qa/user-videos/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
