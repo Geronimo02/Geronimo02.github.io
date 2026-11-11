@@ -1,5 +1,5 @@
 
-/* BRAICO B4 | Animación fotográfica independiente, sin frameworks. */
+/* PANINARO B4 | Animazione fotografica indipendente, senza framework. */
 (function(){
 'use strict';
 const art=document.querySelector('#recipe-stage');
@@ -13,13 +13,13 @@ const keys=[...document.querySelectorAll('.b4-key')];
 const label=toggle.querySelector('.button-label');
 const pct=document.querySelector('#b4-pct');
 const detail={
- 'pan-superior':['PAN SUPERIOR','El pan de la representación visual. El tipo exacto no está confirmado en la carta.'],
- 'dijon':['MOSTAZA DIJON','La salsa Dijon aparece expresamente en la receta de Carlitos.'],
- 'pepinillos':['PEPINILLOS','El toque fresco y ácido que figura en la combinación original.'],
- 'mortadela-pistachos':['MORTADELA CON PISTACHOS','El ingrediente protagonista que le da identidad a Carlitos.'],
- 'queso-tybo':['QUESO TYBO','El queso de la receta original publicada por Braico.'],
- 'aceite-oliva':['ACEITE DE OLIVA','Presente en la descripción de Carlitos de diciembre de 2025.'],
- 'pan-inferior':['BASE DE PAN','Soporte visual orientativo. El tipo de pan requiere confirmación.']
+ 'pan-superior':['PANE SUPERIORE','Il pane della rappresentazione visiva. Il tipo esatto è da confermare.'],
+ 'dijon':['SENAPE DIJON','La senape Dijon è presente nella ricetta.'],
+ 'pepinillos':['CETRIOLINI','Il tocco fresco e acidulo della ricetta.'],
+ 'mortadela-pistachos':['MORTADELLA AL PISTACCHIO','L’ingrediente protagonista di Santo Stefano.'],
+ 'queso-tybo':['FORMAGGIO TYBO','Il formaggio della ricetta.'],
+ 'aceite-oliva':['OLIO D’OLIVA','Presente nella descrizione della ricetta.'],
+ 'pan-inferior':['BASE DI PANE','Supporto visivo orientativo. Il tipo di pane è da confermare.']
 };
 let selected='mortadela-pistachos';
 let drag=false;
@@ -40,9 +40,9 @@ function move(value){
  art.classList.toggle('is-open',open);
  art.dataset.view=open?'open':'closed';
  toggle.setAttribute('aria-pressed',String(open));
- toggle.setAttribute('aria-label',open?'Juntar las capas del Carlitos ilustrativo':'Separar las capas del Carlitos ilustrativo');
- label.textContent=open?'VOLVER A ARMAR':'ABRIR EL CARLITOS';
- state.textContent=open?'RECETA / ABIERTA':'RECETA / CERRADA';
+ toggle.setAttribute('aria-label',open?'Chiudi gli strati di Santo Stefano':'Separa gli strati di Santo Stefano');
+ label.textContent=open?'RICOMPONI':'APRI SANTO STEFANO';
+ state.textContent=open?'RICETTA / APERTA':'RICETTA / CHIUSA';
  whole.style.opacity=String(Math.max(0,1-factor*1.55));
  whole.style.transform=`translate(-50%,-50%) scale(${(1-factor*.15).toFixed(3)})`;
  const alpha=Math.min(1,Math.max(0,(factor-.04)*2.2));

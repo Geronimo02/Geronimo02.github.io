@@ -1,23 +1,15 @@
-/* Datos de la carta de Braico, diciembre 2025. Precios y disponibilidad sin verificar en 2026. */
+/* Nomi e ingredienti editoriali di Paninaro. Prezzi e disponibilità da confermare. */
 window.BRAICO_CATALOG = [
- {id:'h-osvaldo',cat:'h',name:'Osvaldo',desc:'Jamón horneado, queso tybo, pepinillos, manteca y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-carlitos',cat:'h',name:'Carlitos',desc:'Mortadela con pistachos, queso tybo, pepinillos, mostaza Dijon y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-donjorge',cat:'h',name:'Don Jorge',desc:'Matambre, queso, tomate, lechuga y mayonesa con aceitunas.',badge:'HOMENAJE'},
- {id:'h-sirpaul',cat:'h',name:'Sir Paul',desc:'Porchetta, queso, verduras grilladas, pesto con nueces, mayonesa de alcaparras y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-cacho',cat:'h',name:'Cacho',desc:'Asadito argentino, queso tybo, pepinillos, mayonesa saborizada, morrones y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-karinagao',cat:'h',name:'Karina Gao',desc:'Jamón crudo, rúcula con teriyaki, chutney, champiñones y crema de queso azul.',badge:'HOMENAJE'},
- {id:'h-koqui',cat:'h',name:'Koqui',desc:'Bondiola serrana, queso tybo, hojas verdes, queso crema con verdeo y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-pichi',cat:'h',name:'Pichi',desc:'Jamón cocido natural, queso, huevo duro, rúcula, crema de palta, semillas de girasol y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-sarita',cat:'h',name:'Sarita',desc:'Berenjenas, queso, verduras grilladas, pesto con nueces y hojas verdes.',badge:'VEGETARIANO'},
- {id:'h-donpepe',cat:'h',name:'Don Pepe',desc:'Lomito cocido con hierbas, queso gouda, tomates hidratados, pesto de albahaca y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-pepeluiggi',cat:'h',name:'Pepe Luiggi',desc:'Mortadela con nuez, queso tybo, tomate con aceite y orégano, nueces molidas y mayonesa.',badge:'HOMENAJE'},
- {id:'h-titi',cat:'h',name:'Titi',desc:'Salame tipo Milán, hojas verdes, queso brie, mayonesa de pickles y tomates horneados.',badge:'HOMENAJE'},
- {id:'h-donbonaudi',cat:'h',name:'Don Bonaudi',desc:'Lomo Praga, hojas verdes, crema de palta, queso con ciboulette, champiñones y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-retama',cat:'h',name:'Retama',desc:'Bresaola con hierbas, queso, hojas verdes, mayonesa, nueces y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-tito',cat:'h',name:'Tito',desc:'Jamón crudo, queso, rúcula, tomates horneados y aceite de oliva.',badge:'HOMENAJE'},
- {id:'h-raul',cat:'h',name:'Raúl',desc:'Panceta ahumada, queso, cebolla caramelizada, huevo rallado, mayonesa saborizada y BBQ.',badge:'HOMENAJE'},
- {id:'h-alemi',cat:'h',name:'Ale Mi',desc:'Hojas verdes, queso saborizado, verduras grilladas, huevo, cebolla caramelizada y morrones.',badge:'VEGETARIANO'},
- {id:'h-julipepo',cat:'h',name:'Juli Pepo',desc:'Jamón natural, queso, tomate, palta, hojas verdes y queso crema. Se sugiere en pan bagel.',badge:'HOMENAJE'},
+ {id:'h-osvaldo',cat:'h',name:'Santo Stefano',desc:'Mortadella, burrata e pesto di pistacchio in schiacciata toscana.',badge:'SANTO'},
+ {id:'h-carlitos',cat:'h',name:'San Giovanni',desc:'Salumi italiani, formaggio cremoso e verdure fresche.',badge:'SANTO'},
+ {id:'h-donjorge',cat:'h',name:'San Lorenzo',desc:'Porchetta, scamorza affumicata e salsa alla senape.',badge:'SANTO'},
+ {id:'h-sirpaul',cat:'h',name:'San Siro',desc:'Prosciutto, stracciatella e pesto fresco.',badge:'SANTO'},
+ {id:'h-cacho',cat:'h',name:'Santa Maria',desc:'Porchetta DOP, crema di patate, scamorza affumicata e senape.',badge:'SANTO'},
+ {id:'h-karinagao',cat:'h',name:'Santa Rosalia',desc:'Parmigiana di melanzane, pesto, basilico e Parmigiano Reggiano.',badge:'VEGETARIANO'},
+ {id:'h-koqui',cat:'h',name:'Sant’Ambrogio',desc:'Salumi, formaggi e verdure di stagione.',badge:'SANTO'},
+ {id:'h-pichi',cat:'h',name:'San Michele',desc:'Mortadella, formaggio e crema di pistacchio.',badge:'SANTO'},
+ {id:'h-sarita',cat:'h',name:'San Rocco',desc:'Melanzane, pesto, basilico e formaggio.',badge:'VEGETARIANO'},
+ {id:'h-donpepe',cat:'h',name:'San Giuseppe',desc:'Salumi, formaggi e salsa della casa.',badge:'SANTO'},
  {id:'m-jyq',cat:'m',name:'Jamón y queso',desc:'En pan blanco o negro.',badge:'DE MIGA'},
  {id:'m-jh',cat:'m',name:'Jamón y huevo',desc:'Una combinación clásica.',badge:'DE MIGA'},
  {id:'m-sal',cat:'m',name:'Salame y queso',desc:'Sándwich de miga.',badge:'DE MIGA'},
@@ -58,4 +50,4 @@ window.BRAICO_CATALOG = [
  {id:'d-chocotorta',cat:'d',name:'Chocotorta',desc:'Postres de la carta.',badge:'DULCE'},
  {id:'d-oreo',cat:'d',name:'Postre Oreo',desc:'Postres de la carta.',badge:'DULCE'},
 ];
-window.BRAICO_CATEGORIES = {all:'Toda la carta',h:'Homenajes',m:'De miga',c:'Calientes',d:'Café y dulces',p:'Picadas'};
+window.BRAICO_CATEGORIES = {all:'Tutta la carta',h:'I santi',m:'Schiacciata',c:'Caldi',d:'Caffè e dolci',p:'Picada'};

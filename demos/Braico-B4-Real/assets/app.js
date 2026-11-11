@@ -67,28 +67,28 @@
     const card=el('article','menu-item');
     const number=el('span','item-index',String(index+1).padStart(2,'0'));
     const info=el('div','item-main');
-    info.append(el('span','item-tag',p.badge),el('h3','',p.name),el('p','',p.desc),el('small','','PRECIO Y DISPONIBILIDAD A CONFIRMAR'));
+    info.append(el('span','item-tag',p.badge),el('h3','',p.name),el('p','',p.desc),el('small','','PREZZO E DISPONIBILITÀ DA CONFERMARE'));
     const button=el('button','add-item','+');
     button.type='button'; button.dataset.add=p.id;
-    button.setAttribute('aria-label',`Agregar ${p.name} a mi selección`);
-    button.title=`Agregar ${p.name}`;
+    button.setAttribute('aria-label',`Aggiungi ${p.name} alla mia scelta`);
+    button.title=`Aggiungi ${p.name}`;
     card.append(number,info,button);
     return card;
   }
   function makeNoResults(isPicadas){
     const container=el('div','menu-empty');
     if(isPicadas){
-      container.append(el('h3','','¿UNA PICADA?'),el('p','','Braico ofrece picadas, pero la carta compartida no detalla tamaños ni precios. Podés preparar una consulta sin inventar combinaciones.'));
-      const button=el('button','','PREPARAR CONSULTA POR PICADAS ↗︎');
+      container.append(el('h3','','UNA TAGLIERE?'),el('p','','La disponibilità dei taglieri va confermata. Puoi preparare una richiesta senza inventare combinazioni.'));
+      const button=el('button','','CHIEDI INFORMAZIONI SUI TAGLIERI ↗︎');
       button.type='button';button.addEventListener('click',()=>{
-        noteField.value='Quisiera consultar por las picadas disponibles, tamaños y precios.';
+        noteField.value='Vorrei informazioni sui taglieri disponibili, dimensioni e prezzi.';
         openCart();
         noteField.focus();
       });
       container.append(button);
     }else{
-      container.append(el('h3','','NO ENCONTRAMOS ESA COMBINACIÓN.'),el('p','','Probá buscando otro nombre o volvé a las categorías de la carta.'));
-      const button=el('button','','VOLVER A LOS HOMENAJES ↗︎');
+      container.append(el('h3','','NESSUNA RICETTA TROVATA.'),el('p','','Prova un altro nome o torna alle categorie del menu.'));
+      const button=el('button','','TORNA AI SANTI ↗︎');
       button.type='button';button.addEventListener('click',()=>{searchInput.value='';setCategory('h');});
       container.append(button);
     }
@@ -115,7 +115,7 @@
     count.textContent=`${visible.length} DE ${data.length} OPCIONES`;
     moreWrap.hidden=!(data.length>9 && !searchText);
     moreBtn.innerHTML='';
-    moreBtn.append(document.createTextNode(expanded?'VER MENOS':'VER LAS '+data.length+' OPCIONES'));
+    moreBtn.append(document.createTextNode(expanded?'VEDI MENO':'VEDI LE '+data.length+' OPZIONI'));
     moreBtn.append(el('span','','↘︎'));
   }
   function setCategory(cat){
@@ -145,7 +145,7 @@
   function addProduct(id){
     const p=productsById[id];if(!p)return;
     cart[id]=Math.min(99,(cart[id]||0)+1);
-    stored();renderCart();notice(`${p.name} agregado a tu selección`);
+    stored();renderCart();notice(`${p.name} aggiunto alla tua scelta`);
   }
   function renderCart(){
     const q=quantity();
@@ -157,7 +157,7 @@
     const hasProducts=entries.length>0;
     if(!entries.length){
       const empty=el('div','cart-empty');
-      empty.append(el('div','empty-glyph','✳︎'),el('h3','','TODA BUENA ELECCIÓN EMPIEZA ACÁ.'),el('p','','Sumá algún sándwich de la carta para preparar tu consulta.'));
+      empty.append(el('div','empty-glyph','✳︎'),el('h3','','OGNI BUONA SCELTA INIZIA QUI.'),el('p','','Aggiungi una ricetta dal menu per preparare la tua richiesta.'));
       cartItems.append(empty);
     }else{
       const animateItems=!orderDetails.contains(document.activeElement);
@@ -165,9 +165,9 @@
         const product=productsById[id];
         const card=el('div',animateItems?'cart-item cart-item-new':'cart-item');
         const details=el('div','');
-        details.append(el('h3','',product.name),el('span','','PRECIO A CONFIRMAR'));
+        details.append(el('h3','',product.name),el('span','','PREZZO DA CONFERMARE'));
         const controls=el('div','qty-controls');
-        const minus=el('button','','−');minus.type='button';minus.dataset.dec=id;minus.setAttribute('aria-label',`Restar una unidad de ${product.name}`);
+        const minus=el('button','','−');minus.type='button';minus.dataset.dec=id;minus.setAttribute('aria-label',`Rimuovi una unità di ${product.name}`);
         const plus=el('button','','+');plus.type='button';plus.dataset.inc=id;plus.setAttribute('aria-label',`Sumar una unidad de ${product.name}`);
         controls.append(minus,el('strong','',qty),plus);
         card.append(details,controls);cartItems.append(card);
@@ -177,8 +177,8 @@
     const filledFields=[...orderDetails.elements].filter(field=>field.name && field.value.trim()).length;
     const detailsStep=filledFields >= 4;
     progressDots.forEach((dot,index)=>dot.classList.toggle('is-active',index===0 || (index===1 && hasProducts) || (index===2 && ready)));
-    cartLiveStatus.textContent=hasProducts ? `${q} ${q===1?'PRODUCTO':'PRODUCTOS'} · DATOS DEL PEDIDO` : 'ELEGÍ TUS PRODUCTOS PARA EMPEZAR';
-    cartReady.textContent=ready?'¡Listo! Revisá la consulta y compartila por WhatsApp.':detailsStep?'Falta completar algún dato obligatorio.':'Completá tus datos para preparar la consulta.';
+    cartLiveStatus.textContent=hasProducts ? `${q} ${q===1?'RICETTA':'RICETTE'} · DATI DELLA RICHIESTA` : 'SCEGLI LE RICETTE PER INIZIARE';
+    cartReady.textContent=ready?'Fatto! Controlla la richiesta e condividila su WhatsApp.':detailsStep?'Manca un dato obbligatorio.':'Completa i tuoi dati per preparare la richiesta.';
     cartReady.classList.toggle('is-complete',ready);
     copyBtn.disabled=!ready;
     if(ready){
@@ -192,7 +192,7 @@
     const delivery=orderMethod.value==='Envío a domicilio';
     orderAddress.closest('label').hidden=!delivery;
     orderAddress.required=delivery;
-    orderAddress.placeholder=delivery?'Calle, número, barrio y localidad':'Completá solo si pedís envío';
+    orderAddress.placeholder=delivery?'Via, numero e quartiere':'Compila solo per la consegna';
   }
   cartItems.addEventListener('click',e=>{
     const btn=e.target.closest('[data-inc],[data-dec]');if(!btn)return;
@@ -204,7 +204,7 @@
   function orderMessage(){
     const entries=Object.entries(cart).filter(([id,q])=>productsById[id]&&q>0);
     const data=new FormData(orderDetails);
-    const lines=['Hola, quería consultar por estos productos de Braico (carta de referencia: diciembre 2025):','',
+    const lines=['Ciao, vorrei informazioni su queste ricette di Paninaro:','',
       `Nombre: ${data.get('name')}`,
       `WhatsApp / teléfono: ${data.get('phone')}`,
       `Modalidad: ${data.get('method')}`,
@@ -213,7 +213,7 @@
     lines.push('','DETALLE DEL PEDIDO:');
     if(entries.length){entries.forEach(([id,q])=>lines.push(`• ${q} x ${productsById[id].name}`));}
     const notes=noteField.value.trim();if(notes)lines.push('',`Indicaciones: ${notes}`);
-    lines.push('','¿Me confirman disponibilidad, precios actualizados y cómo puedo hacer el pedido? ¡Gracias!');
+    lines.push('','Potete confermare disponibilità, prezzi aggiornati e come effettuare l’ordine? Grazie!');
     return lines.join('\n');
   }
   async function copyMessage(){
@@ -229,7 +229,7 @@
       try{done=document.execCommand('copy');}catch (_){}
       hidden.remove();
     }
-    notice(done?'Mensaje copiado. Elegí un contacto para enviarlo.':'No se pudo copiar automáticamente. Seleccioná el texto desde WhatsApp.');
+    notice(done?'Messaggio copiato. Scegli un contatto a cui inviarlo.':'Copia automatica non riuscita. Seleziona il testo da WhatsApp.');
   }
   copyBtn.addEventListener('click',copyMessage);
   orderDetails.addEventListener('input',renderCart);
@@ -265,7 +265,7 @@
     shareLink.href='https://api.whatsapp.com/send?text='+encodeURIComponent(orderMessage());
   });
 
-  // Signature Braico: fichero interactivo de nombres reales. Es el mismo inventario que usa el carrito.
+  // Archivio interattivo dei santi; usa gli stessi prodotti del carrello.
   const homenajeProducts=products.filter(p=>p.cat==='h');
   const homenajeIndexButtons=$('#homenaje-names');
   const homenajeName=$('#homenaje-name');
@@ -280,7 +280,7 @@
     homenajeDesc.textContent=p.desc;
     homenajePosition.textContent=`${String(homenajeIndex+1).padStart(2,'0')} / ${String(homenajeProducts.length).padStart(2,'0')}`;
     homenajeAdd.dataset.homenajeAdd=p.id;
-    homenajeAdd.setAttribute('aria-label',`Agregar ${p.name} a mi selección`);
+    homenajeAdd.setAttribute('aria-label',`Aggiungi ${p.name} alla mia scelta`);
     if(scrollChips){
       const card=$('#ticket-flip');
       const nameBox=card.querySelector('.counter-name-box');
@@ -316,7 +316,7 @@
       const data=new FormData(cateringForm);
       const date=String(data.get('date')||'').split('-').reverse().join('/');
       const lines=[
-        'Hola, quería consultar por catering en Braico.',
+        'Ciao, vorrei informazioni sul catering Paninaro.',
         '',
         `Tipo de evento: ${data.get('event')}`,
         `Fecha estimada: ${date}`,
@@ -326,7 +326,7 @@
       ];
       const details=String(data.get('details')||'').trim();
       if(details)lines.push(`Consulta: ${details}`);
-      lines.push('','¿Me cuentan qué opciones, disponibilidad y presupuesto tienen? ¡Gracias!');
+      lines.push('','Potete indicarmi opzioni, disponibilità e preventivo? Grazie!');
       const whatsappUrl='https://api.whatsapp.com/send?text='+encodeURIComponent(lines.join('\n'));
       cateringStatus.textContent='Abriendo WhatsApp con tu consulta…';
       window.open(whatsappUrl,'_blank','noopener,noreferrer');
