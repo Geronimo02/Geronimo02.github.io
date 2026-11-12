@@ -16,7 +16,7 @@
   const cartItems = $('#cart-items');
   const noteField = $('#order-note');
   const copyBtn = $('#copy-order');
-  const shareLink = $('#share-order');
+  const shareLinks = [...document.querySelectorAll('[data-whatsapp]')];
   const toast = $('#toast');
   const orderDetails = $('#order-details');
   const orderMethod = $('#order-method');
@@ -182,14 +182,16 @@
     cartReady.classList.toggle('is-complete',ready);
     copyBtn.disabled=!ready;
     if(ready){
-      shareLink.removeAttribute('aria-disabled');
-      shareLink.href='https://api.whatsapp.com/send?text='+encodeURIComponent(orderMessage());
+      shareLinks.forEach(link=>{
+        link.removeAttribute('aria-disabled');
+        link.href=`https://api.whatsapp.com/send?phone=${link.dataset.whatsapp}&text=${encodeURIComponent(orderMessage())}`;
+      });
     }else{
-      shareLink.setAttribute('aria-disabled','true');shareLink.removeAttribute('href');
+      shareLinks.forEach(link=>{link.setAttribute('aria-disabled','true');link.removeAttribute('href');});
     }
   }
   function syncOrderFields(){
-    const delivery=orderMethod.value==='Envío a domicilio';
+    const delivery=orderMethod.value==='Consegna a domicilio';
     orderAddress.closest('label').hidden=!delivery;
     orderAddress.required=delivery;
     orderAddress.placeholder=delivery?'Via, numero e quartiere':'Compila solo per la consegna';
@@ -205,14 +207,14 @@
     const entries=Object.entries(cart).filter(([id,q])=>productsById[id]&&q>0);
     const data=new FormData(orderDetails);
     const lines=['Ciao, vorrei informazioni su queste ricette di Paninaro:','',
-      `Nombre: ${data.get('name')}`,
-      `WhatsApp / teléfono: ${data.get('phone')}`,
-      `Modalidad: ${data.get('method')}`,
-      `Para cuándo: ${data.get('when')}`];
-    if(data.get('address'))lines.push(`Dirección: ${data.get('address')}`);
-    lines.push('','DETALLE DEL PEDIDO:');
+      `Nome: ${data.get('name')}`,
+      `WhatsApp / telefono: ${data.get('phone')}`,
+      `Modalità: ${data.get('method')}`,
+      `Per quando: ${data.get('when')}`];
+    if(data.get('address'))lines.push(`Indirizzo: ${data.get('address')}`);
+    lines.push('','DETTAGLIO DELLA RICHIESTA:');
     if(entries.length){entries.forEach(([id,q])=>lines.push(`• ${q} x ${productsById[id].name}`));}
-    const notes=noteField.value.trim();if(notes)lines.push('',`Indicaciones: ${notes}`);
+    const notes=noteField.value.trim();if(notes)lines.push('',`Note: ${notes}`);
     lines.push('','Potete confermare disponibilità, prezzi aggiornati e come effettuare l’ordine? Grazie!');
     return lines.join('\n');
   }
@@ -259,11 +261,10 @@
   $('#close-cart').addEventListener('click',closeCart);
   scrim.addEventListener('click',closeCart);
   // Proteger demo contra una falsa confirmación de pedido.
-  shareLink.addEventListener('click',e=>{
-    if(shareLink.getAttribute('aria-disabled')==='true' || !orderDetails.reportValidity() || !quantity()){e.preventDefault();return;}
-    // El enlace de compartir no contiene ningún número de destino.
-    shareLink.href='https://api.whatsapp.com/send?text='+encodeURIComponent(orderMessage());
-  });
+  shareLinks.forEach(link=>link.addEventListener('click',e=>{
+    if(link.getAttribute('aria-disabled')==='true' || !orderDetails.reportValidity() || !quantity()){e.preventDefault();return;}
+    link.href=`https://api.whatsapp.com/send?phone=${link.dataset.whatsapp}&text=${encodeURIComponent(orderMessage())}`;
+  }));
 
   // Archivio interattivo dei santi; usa gli stessi prodotti del carrello.
   const homenajeProducts=products.filter(p=>p.cat==='h');
