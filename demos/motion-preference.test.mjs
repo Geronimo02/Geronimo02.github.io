@@ -50,8 +50,7 @@ async function connect() {
 const pages = [
   ["demos/sushi-fan/index.html", `(() => ({height:document.querySelector('#platosSection').offsetHeight,pin:getComputedStyle(document.querySelector('.platos-pin')).position}))()`],
   ["demos/malabar/index.html", `(() => ({height:document.querySelector('#hero-stage').offsetHeight,events:document.querySelector('#eventos').offsetHeight,motion:document.body.classList.contains('motion-on')}))()`],
-  ["demos/Braico-B4-Real/index.html", `(() => ({animation:getComputedStyle(document.querySelector('.hero-eyebrow')).animationDuration,motion:document.documentElement.classList.contains('b3-animated')}))()`],
-  ["demos/Braico-B4-Real/Braico-B4.html", `(() => ({animation:getComputedStyle(document.querySelector('.hero-eyebrow')).animationDuration,motion:document.documentElement.classList.contains('b3-animated')}))()`],
+  ["demos/Paninaro/index.html", `(() => ({animation:getComputedStyle(document.querySelector('.hero-eyebrow')).animationDuration,motion:document.documentElement.classList.contains('b3-animated')}))()`],
   ["demos/malabar/MALABAR_V3/preview/index.html", `(() => ({height:document.querySelector('#hero-stage').offsetHeight,motion:document.body.classList.contains('motion-on')}))()`],
   ["demos/malabar/MALABAR_V3/MALABAR_V3_PREVIEW.html", `(() => ({height:document.querySelector('#hero-stage').offsetHeight,motion:document.body.classList.contains('motion-on')}))()`],
   ["demos/fooster club/index.html", `(() => ({animation:getComputedStyle(document.querySelector('.hero-photo img')).animationDuration}))()`],
